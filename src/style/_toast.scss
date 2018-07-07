@@ -1,0 +1,84 @@
+$toastTop: 20px;
+$toastBottom: 20px;
+$toastRight: 20px;
+$toastLeft: 20px;
+
+.#{$prefix-cls}-toast {
+  position: fixed;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: default;
+  z-index: 2000;
+  white-space: nowrap;
+  vertical-align: baseline;
+  text-align: center;
+  padding: 6px 10px;
+  &-default {
+    background: $N30;
+    color: $N400;
+  }
+  &-success {
+    background: $G100;
+    color: $G400;
+  }
+  &-warning {
+    background: $Y100;
+    color: $N700;
+  }
+  &-primary {
+    background: $B100;
+    color: $N0;
+  }
+  &-info {
+    background: $T200;
+    color: $N0;
+  }
+  &-danger {
+    background: $R300;
+    color: $N0;
+  }
+}
+
+.#{$prefix-cls}-toast-center {
+  margin: 0 auto;
+  left: 50%;
+  top: 50%;
+}
+
+.#{$prefix-cls}-toast-top {
+  top: $toastTop;
+  margin: 0 auto;
+  left: 50%;
+}
+
+.#{$prefix-cls}-toast-bottom {
+  bottom: $toastBottom;
+  margin: 0 auto;
+  left: 50%;
+  top: initial;
+}
+
+.#{$prefix-cls}-toast-top-right {
+  top: $toastTop;
+  right: $toastRight;
+  left: initial;
+}
+
+.#{$prefix-cls}-toast-top-left {
+  top: $toastTop;
+  left: $toastLeft;
+}
+
+.#{$prefix-cls}-toast-bottom-right {
+  bottom: $toastBottom;
+  right: $toastRight;
+  left: initial;
+  top: initial;
+}
+
+.#{$prefix-cls}-toast-bottom-left {
+  top: initial;
+  bottom: $toastBottom;
+  left: $toastBottom;
+}

@@ -1,0 +1,2762 @@
+$font_0: -apple-system;
+$font_1: BlinkMacSystemFont;
+$font_2: Segoe UI;
+$font_3: Arial;
+$font_4: Ubuntu;
+$font_5: Roboto;
+$font_6: Fira Sans;
+$font_7: Droid Sans;
+$font_8: Helvetica Neue;
+$font_9: sans-serif;
+$font_mono: SFMono-Medium,
+"SF Mono",
+"Segoe UI Mono",
+"Roboto Mono",
+"Ubuntu Mono",
+Menlo,
+Courier,
+monospace;
+* {
+  font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8, $font_9;
+}
+
+body {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $N800;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+}
+
+h2 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+}
+
+h3 {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 20px;
+}
+
+h4 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.006em;
+  line-height: 16px;
+}
+
+.subheading {
+  font-size: 16px;
+  line-height: 1.4em;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+p {
+  margin: 1em 0 0 0;
+  line-height: 24px;
+}
+
+a:not(.#{$prefix-cls}-btn),
+a:active:not(.#{$prefix-cls}-btn),
+a:link:not(.#{$prefix-cls}-btn),
+a:visited:not(.#{$prefix-cls}-btn) {
+  color: $B400;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: lighten($B400, 15%);
+}
+
+a:active {
+  color: darken($B400, 3%);
+}
+
+a:focus {
+  outline: 2px solid $B100;
+  outline-offset: 2px;
+}
+
+code,
+code * {
+  font-family: $font_mono;
+  letter-spacing: -0.07px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('./fa/fontawesome-webfont.eot?v=4.6.3');
+  src: url('./fa/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('./fa/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('./fa/fontawesome-webfont.woff?v=4.6.3') format('woff'), url('./fa/fontawesome-webfont.ttf?v=4.6.3') format('truetype'), url('./fa/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.#{$prefix-cls}-fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.#{$prefix-cls}-fa-glass:before {
+  content: "\f000";
+}
+
+.#{$prefix-cls}-fa-music:before {
+  content: "\f001";
+}
+
+.#{$prefix-cls}-fa-search:before {
+  content: "\f002";
+}
+
+.#{$prefix-cls}-fa-envelope-o:before {
+  content: "\f003";
+}
+
+.#{$prefix-cls}-fa-heart:before {
+  content: "\f004";
+}
+
+.#{$prefix-cls}-fa-star:before {
+  content: "\f005";
+}
+
+.#{$prefix-cls}-fa-star-o:before {
+  content: "\f006";
+}
+
+.#{$prefix-cls}-fa-user:before {
+  content: "\f007";
+}
+
+.#{$prefix-cls}-fa-film:before {
+  content: "\f008";
+}
+
+.#{$prefix-cls}-fa-th-large:before {
+  content: "\f009";
+}
+
+.#{$prefix-cls}-fa-th:before {
+  content: "\f00a";
+}
+
+.#{$prefix-cls}-fa-th-list:before {
+  content: "\f00b";
+}
+
+.#{$prefix-cls}-fa-check:before {
+  content: "\f00c";
+}
+
+.#{$prefix-cls}-fa-remove:before,
+.#{$prefix-cls}-fa-close:before,
+.#{$prefix-cls}-fa-times:before {
+  content: "\f00d";
+}
+
+.#{$prefix-cls}-fa-search-plus:before {
+  content: "\f00e";
+}
+
+.#{$prefix-cls}-fa-search-minus:before {
+  content: "\f010";
+}
+
+.#{$prefix-cls}-fa-power-off:before {
+  content: "\f011";
+}
+
+.#{$prefix-cls}-fa-signal:before {
+  content: "\f012";
+}
+
+.#{$prefix-cls}-fa-gear:before,
+.#{$prefix-cls}-fa-cog:before {
+  content: "\f013";
+}
+
+.#{$prefix-cls}-fa-trash-o:before {
+  content: "\f014";
+}
+
+.#{$prefix-cls}-fa-home:before {
+  content: "\f015";
+}
+
+.#{$prefix-cls}-fa-file-o:before {
+  content: "\f016";
+}
+
+.#{$prefix-cls}-fa-clock-o:before {
+  content: "\f017";
+}
+
+.#{$prefix-cls}-fa-road:before {
+  content: "\f018";
+}
+
+.#{$prefix-cls}-fa-download:before {
+  content: "\f019";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-o-down:before {
+  content: "\f01a";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-o-up:before {
+  content: "\f01b";
+}
+
+.#{$prefix-cls}-fa-inbox:before {
+  content: "\f01c";
+}
+
+.#{$prefix-cls}-fa-play-circle-o:before {
+  content: "\f01d";
+}
+
+.#{$prefix-cls}-fa-rotate-right:before,
+.#{$prefix-cls}-fa-repeat:before {
+  content: "\f01e";
+}
+
+.#{$prefix-cls}-fa-refresh:before {
+  content: "\f021";
+}
+
+.#{$prefix-cls}-fa-list-alt:before {
+  content: "\f022";
+}
+
+.#{$prefix-cls}-fa-lock:before {
+  content: "\f023";
+}
+
+.#{$prefix-cls}-fa-flag:before {
+  content: "\f024";
+}
+
+.#{$prefix-cls}-fa-headphones:before {
+  content: "\f025";
+}
+
+.#{$prefix-cls}-fa-volume-off:before {
+  content: "\f026";
+}
+
+.#{$prefix-cls}-fa-volume-down:before {
+  content: "\f027";
+}
+
+.#{$prefix-cls}-fa-volume-up:before {
+  content: "\f028";
+}
+
+.#{$prefix-cls}-fa-qrcode:before {
+  content: "\f029";
+}
+
+.#{$prefix-cls}-fa-barcode:before {
+  content: "\f02a";
+}
+
+.#{$prefix-cls}-fa-tag:before {
+  content: "\f02b";
+}
+
+.#{$prefix-cls}-fa-tags:before {
+  content: "\f02c";
+}
+
+.#{$prefix-cls}-fa-book:before {
+  content: "\f02d";
+}
+
+.#{$prefix-cls}-fa-bookmark:before {
+  content: "\f02e";
+}
+
+.#{$prefix-cls}-fa-print:before {
+  content: "\f02f";
+}
+
+.#{$prefix-cls}-fa-camera:before {
+  content: "\f030";
+}
+
+.#{$prefix-cls}-fa-font:before {
+  content: "\f031";
+}
+
+.#{$prefix-cls}-fa-bold:before {
+  content: "\f032";
+}
+
+.#{$prefix-cls}-fa-italic:before {
+  content: "\f033";
+}
+
+.#{$prefix-cls}-fa-text-height:before {
+  content: "\f034";
+}
+
+.#{$prefix-cls}-fa-text-width:before {
+  content: "\f035";
+}
+
+.#{$prefix-cls}-fa-align-left:before {
+  content: "\f036";
+}
+
+.#{$prefix-cls}-fa-align-center:before {
+  content: "\f037";
+}
+
+.#{$prefix-cls}-fa-align-right:before {
+  content: "\f038";
+}
+
+.#{$prefix-cls}-fa-align-justify:before {
+  content: "\f039";
+}
+
+.#{$prefix-cls}-fa-list:before {
+  content: "\f03a";
+}
+
+.#{$prefix-cls}-fa-dedent:before,
+.#{$prefix-cls}-fa-outdent:before {
+  content: "\f03b";
+}
+
+.#{$prefix-cls}-fa-indent:before {
+  content: "\f03c";
+}
+
+.#{$prefix-cls}-fa-video-camera:before {
+  content: "\f03d";
+}
+
+.#{$prefix-cls}-fa-photo:before,
+.#{$prefix-cls}-fa-image:before,
+.#{$prefix-cls}-fa-picture-o:before {
+  content: "\f03e";
+}
+
+.#{$prefix-cls}-fa-pencil:before {
+  content: "\f040";
+}
+
+.#{$prefix-cls}-fa-map-marker:before {
+  content: "\f041";
+}
+
+.#{$prefix-cls}-fa-adjust:before {
+  content: "\f042";
+}
+
+.#{$prefix-cls}-fa-tint:before {
+  content: "\f043";
+}
+
+.#{$prefix-cls}-fa-edit:before,
+.#{$prefix-cls}-fa-pencil-square-o:before {
+  content: "\f044";
+}
+
+.#{$prefix-cls}-fa-share-square-o:before {
+  content: "\f045";
+}
+
+.#{$prefix-cls}-fa-check-square-o:before {
+  content: "\f046";
+}
+
+.#{$prefix-cls}-fa-arrows:before {
+  content: "\f047";
+}
+
+.#{$prefix-cls}-fa-step-backward:before {
+  content: "\f048";
+}
+
+.#{$prefix-cls}-fa-fast-backward:before {
+  content: "\f049";
+}
+
+.#{$prefix-cls}-fa-backward:before {
+  content: "\f04a";
+}
+
+.#{$prefix-cls}-fa-play:before {
+  content: "\f04b";
+}
+
+.#{$prefix-cls}-fa-pause:before {
+  content: "\f04c";
+}
+
+.#{$prefix-cls}-fa-stop:before {
+  content: "\f04d";
+}
+
+.#{$prefix-cls}-fa-forward:before {
+  content: "\f04e";
+}
+
+.#{$prefix-cls}-fa-fast-forward:before {
+  content: "\f050";
+}
+
+.#{$prefix-cls}-fa-step-forward:before {
+  content: "\f051";
+}
+
+.#{$prefix-cls}-fa-eject:before {
+  content: "\f052";
+}
+
+.#{$prefix-cls}-fa-chevron-left:before {
+  content: "\f053";
+}
+
+.#{$prefix-cls}-fa-chevron-right:before {
+  content: "\f054";
+}
+
+.#{$prefix-cls}-fa-plus-circle:before {
+  content: "\f055";
+}
+
+.#{$prefix-cls}-fa-minus-circle:before {
+  content: "\f056";
+}
+
+.#{$prefix-cls}-fa-times-circle:before {
+  content: "\f057";
+}
+
+.#{$prefix-cls}-fa-check-circle:before {
+  content: "\f058";
+}
+
+.#{$prefix-cls}-fa-question-circle:before {
+  content: "\f059";
+}
+
+.#{$prefix-cls}-fa-info-circle:before {
+  content: "\f05a";
+}
+
+.#{$prefix-cls}-fa-crosshairs:before {
+  content: "\f05b";
+}
+
+.#{$prefix-cls}-fa-times-circle-o:before {
+  content: "\f05c";
+}
+
+.#{$prefix-cls}-fa-check-circle-o:before {
+  content: "\f05d";
+}
+
+.#{$prefix-cls}-fa-ban:before {
+  content: "\f05e";
+}
+
+.#{$prefix-cls}-fa-arrow-left:before {
+  content: "\f060";
+}
+
+.#{$prefix-cls}-fa-arrow-right:before {
+  content: "\f061";
+}
+
+.#{$prefix-cls}-fa-arrow-up:before {
+  content: "\f062";
+}
+
+.#{$prefix-cls}-fa-arrow-down:before {
+  content: "\f063";
+}
+
+.#{$prefix-cls}-fa-mail-forward:before,
+.#{$prefix-cls}-fa-share:before {
+  content: "\f064";
+}
+
+.#{$prefix-cls}-fa-expand:before {
+  content: "\f065";
+}
+
+.#{$prefix-cls}-fa-compress:before {
+  content: "\f066";
+}
+
+.#{$prefix-cls}-fa-plus:before {
+  content: "\f067";
+}
+
+.#{$prefix-cls}-fa-minus:before {
+  content: "\f068";
+}
+
+.#{$prefix-cls}-fa-asterisk:before {
+  content: "\f069";
+}
+
+.#{$prefix-cls}-fa-exclamation-circle:before {
+  content: "\f06a";
+}
+
+.#{$prefix-cls}-fa-gift:before {
+  content: "\f06b";
+}
+
+.#{$prefix-cls}-fa-leaf:before {
+  content: "\f06c";
+}
+
+.#{$prefix-cls}-fa-fire:before {
+  content: "\f06d";
+}
+
+.#{$prefix-cls}-fa-eye:before {
+  content: "\f06e";
+}
+
+.#{$prefix-cls}-fa-eye-slash:before {
+  content: "\f070";
+}
+
+.#{$prefix-cls}-fa-warning:before,
+.#{$prefix-cls}-fa-exclamation-triangle:before {
+  content: "\f071";
+}
+
+.#{$prefix-cls}-fa-plane:before {
+  content: "\f072";
+}
+
+.#{$prefix-cls}-fa-calendar:before {
+  content: "\f073";
+}
+
+.#{$prefix-cls}-fa-random:before {
+  content: "\f074";
+}
+
+.#{$prefix-cls}-fa-comment:before {
+  content: "\f075";
+}
+
+.#{$prefix-cls}-fa-magnet:before {
+  content: "\f076";
+}
+
+.#{$prefix-cls}-fa-chevron-up:before {
+  content: "\f077";
+}
+
+.#{$prefix-cls}-fa-chevron-down:before {
+  content: "\f078";
+}
+
+.#{$prefix-cls}-fa-retweet:before {
+  content: "\f079";
+}
+
+.#{$prefix-cls}-fa-shopping-cart:before {
+  content: "\f07a";
+}
+
+.#{$prefix-cls}-fa-folder:before {
+  content: "\f07b";
+}
+
+.#{$prefix-cls}-fa-folder-open:before {
+  content: "\f07c";
+}
+
+.#{$prefix-cls}-fa-arrows-v:before {
+  content: "\f07d";
+}
+
+.#{$prefix-cls}-fa-arrows-h:before {
+  content: "\f07e";
+}
+
+.#{$prefix-cls}-fa-bar-chart-o:before,
+.#{$prefix-cls}-fa-bar-chart:before {
+  content: "\f080";
+}
+
+.#{$prefix-cls}-fa-twitter-square:before {
+  content: "\f081";
+}
+
+.#{$prefix-cls}-fa-facebook-square:before {
+  content: "\f082";
+}
+
+.#{$prefix-cls}-fa-camera-retro:before {
+  content: "\f083";
+}
+
+.#{$prefix-cls}-fa-key:before {
+  content: "\f084";
+}
+
+.#{$prefix-cls}-fa-gears:before,
+.#{$prefix-cls}-fa-cogs:before {
+  content: "\f085";
+}
+
+.#{$prefix-cls}-fa-comments:before {
+  content: "\f086";
+}
+
+.#{$prefix-cls}-fa-thumbs-o-up:before {
+  content: "\f087";
+}
+
+.#{$prefix-cls}-fa-thumbs-o-down:before {
+  content: "\f088";
+}
+
+.#{$prefix-cls}-fa-star-half:before {
+  content: "\f089";
+}
+
+.#{$prefix-cls}-fa-heart-o:before {
+  content: "\f08a";
+}
+
+.#{$prefix-cls}-fa-sign-out:before {
+  content: "\f08b";
+}
+
+.#{$prefix-cls}-fa-linkedin-square:before {
+  content: "\f08c";
+}
+
+.#{$prefix-cls}-fa-thumb-tack:before {
+  content: "\f08d";
+}
+
+.#{$prefix-cls}-fa-external-link:before {
+  content: "\f08e";
+}
+
+.#{$prefix-cls}-fa-sign-in:before {
+  content: "\f090";
+}
+
+.#{$prefix-cls}-fa-trophy:before {
+  content: "\f091";
+}
+
+.#{$prefix-cls}-fa-github-square:before {
+  content: "\f092";
+}
+
+.#{$prefix-cls}-fa-upload:before {
+  content: "\f093";
+}
+
+.#{$prefix-cls}-fa-lemon-o:before {
+  content: "\f094";
+}
+
+.#{$prefix-cls}-fa-phone:before {
+  content: "\f095";
+}
+
+.#{$prefix-cls}-fa-square-o:before {
+  content: "\f096";
+}
+
+.#{$prefix-cls}-fa-bookmark-o:before {
+  content: "\f097";
+}
+
+.#{$prefix-cls}-fa-phone-square:before {
+  content: "\f098";
+}
+
+.#{$prefix-cls}-fa-twitter:before {
+  content: "\f099";
+}
+
+.#{$prefix-cls}-fa-facebook-f:before,
+.#{$prefix-cls}-fa-facebook:before {
+  content: "\f09a";
+}
+
+.#{$prefix-cls}-fa-github:before {
+  content: "\f09b";
+}
+
+.#{$prefix-cls}-fa-unlock:before {
+  content: "\f09c";
+}
+
+.#{$prefix-cls}-fa-credit-card:before {
+  content: "\f09d";
+}
+
+.#{$prefix-cls}-fa-feed:before,
+.#{$prefix-cls}-fa-rss:before {
+  content: "\f09e";
+}
+
+.#{$prefix-cls}-fa-hdd-o:before {
+  content: "\f0a0";
+}
+
+.#{$prefix-cls}-fa-bullhorn:before {
+  content: "\f0a1";
+}
+
+.#{$prefix-cls}-fa-bell:before {
+  content: "\f0f3";
+}
+
+.#{$prefix-cls}-fa-certificate:before {
+  content: "\f0a3";
+}
+
+.#{$prefix-cls}-fa-hand-o-right:before {
+  content: "\f0a4";
+}
+
+.#{$prefix-cls}-fa-hand-o-left:before {
+  content: "\f0a5";
+}
+
+.#{$prefix-cls}-fa-hand-o-up:before {
+  content: "\f0a6";
+}
+
+.#{$prefix-cls}-fa-hand-o-down:before {
+  content: "\f0a7";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-left:before {
+  content: "\f0a8";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-right:before {
+  content: "\f0a9";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-up:before {
+  content: "\f0aa";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-down:before {
+  content: "\f0ab";
+}
+
+.#{$prefix-cls}-fa-globe:before {
+  content: "\f0ac";
+}
+
+.#{$prefix-cls}-fa-wrench:before {
+  content: "\f0ad";
+}
+
+.#{$prefix-cls}-fa-tasks:before {
+  content: "\f0ae";
+}
+
+.#{$prefix-cls}-fa-filter:before {
+  content: "\f0b0";
+}
+
+.#{$prefix-cls}-fa-briefcase:before {
+  content: "\f0b1";
+}
+
+.#{$prefix-cls}-fa-arrows-alt:before {
+  content: "\f0b2";
+}
+
+.#{$prefix-cls}-fa-group:before,
+.#{$prefix-cls}-fa-users:before {
+  content: "\f0c0";
+}
+
+.#{$prefix-cls}-fa-chain:before,
+.#{$prefix-cls}-fa-link:before {
+  content: "\f0c1";
+}
+
+.#{$prefix-cls}-fa-cloud:before {
+  content: "\f0c2";
+}
+
+.#{$prefix-cls}-fa-flask:before {
+  content: "\f0c3";
+}
+
+.#{$prefix-cls}-fa-cut:before,
+.#{$prefix-cls}-fa-scissors:before {
+  content: "\f0c4";
+}
+
+.#{$prefix-cls}-fa-copy:before,
+.#{$prefix-cls}-fa-files-o:before {
+  content: "\f0c5";
+}
+
+.#{$prefix-cls}-fa-paperclip:before {
+  content: "\f0c6";
+}
+
+.#{$prefix-cls}-fa-save:before,
+.#{$prefix-cls}-fa-floppy-o:before {
+  content: "\f0c7";
+}
+
+.#{$prefix-cls}-fa-square:before {
+  content: "\f0c8";
+}
+
+.#{$prefix-cls}-fa-navicon:before,
+.#{$prefix-cls}-fa-reorder:before,
+.#{$prefix-cls}-fa-bars:before {
+  content: "\f0c9";
+}
+
+.#{$prefix-cls}-fa-list-ul:before {
+  content: "\f0ca";
+}
+
+.#{$prefix-cls}-fa-list-ol:before {
+  content: "\f0cb";
+}
+
+.#{$prefix-cls}-fa-strikethrough:before {
+  content: "\f0cc";
+}
+
+.#{$prefix-cls}-fa-underline:before {
+  content: "\f0cd";
+}
+
+.#{$prefix-cls}-fa-table:before {
+  content: "\f0ce";
+}
+
+.#{$prefix-cls}-fa-magic:before {
+  content: "\f0d0";
+}
+
+.#{$prefix-cls}-fa-truck:before {
+  content: "\f0d1";
+}
+
+.#{$prefix-cls}-fa-pinterest:before {
+  content: "\f0d2";
+}
+
+.#{$prefix-cls}-fa-pinterest-square:before {
+  content: "\f0d3";
+}
+
+.#{$prefix-cls}-fa-google-plus-square:before {
+  content: "\f0d4";
+}
+
+.#{$prefix-cls}-fa-google-plus:before {
+  content: "\f0d5";
+}
+
+.#{$prefix-cls}-fa-money:before {
+  content: "\f0d6";
+}
+
+.#{$prefix-cls}-fa-caret-down:before {
+  content: "\f0d7";
+}
+
+.#{$prefix-cls}-fa-caret-up:before {
+  content: "\f0d8";
+}
+
+.#{$prefix-cls}-fa-caret-left:before {
+  content: "\f0d9";
+}
+
+.#{$prefix-cls}-fa-caret-right:before {
+  content: "\f0da";
+}
+
+.#{$prefix-cls}-fa-columns:before {
+  content: "\f0db";
+}
+
+.#{$prefix-cls}-fa-unsorted:before,
+.#{$prefix-cls}-fa-sort:before {
+  content: "\f0dc";
+}
+
+.#{$prefix-cls}-fa-sort-down:before,
+.#{$prefix-cls}-fa-sort-desc:before {
+  content: "\f0dd";
+}
+
+.#{$prefix-cls}-fa-sort-up:before,
+.#{$prefix-cls}-fa-sort-asc:before {
+  content: "\f0de";
+}
+
+.#{$prefix-cls}-fa-envelope:before {
+  content: "\f0e0";
+}
+
+.#{$prefix-cls}-fa-linkedin:before {
+  content: "\f0e1";
+}
+
+.#{$prefix-cls}-fa-rotate-left:before,
+.#{$prefix-cls}-fa-undo:before {
+  content: "\f0e2";
+}
+
+.#{$prefix-cls}-fa-legal:before,
+.#{$prefix-cls}-fa-gavel:before {
+  content: "\f0e3";
+}
+
+.#{$prefix-cls}-fa-dashboard:before,
+.#{$prefix-cls}-fa-tachometer:before {
+  content: "\f0e4";
+}
+
+.#{$prefix-cls}-fa-comment-o:before {
+  content: "\f0e5";
+}
+
+.#{$prefix-cls}-fa-comments-o:before {
+  content: "\f0e6";
+}
+
+.#{$prefix-cls}-fa-flash:before,
+.#{$prefix-cls}-fa-bolt:before {
+  content: "\f0e7";
+}
+
+.#{$prefix-cls}-fa-sitemap:before {
+  content: "\f0e8";
+}
+
+.#{$prefix-cls}-fa-umbrella:before {
+  content: "\f0e9";
+}
+
+.#{$prefix-cls}-fa-paste:before,
+.#{$prefix-cls}-fa-clipboard:before {
+  content: "\f0ea";
+}
+
+.#{$prefix-cls}-fa-lightbulb-o:before {
+  content: "\f0eb";
+}
+
+.#{$prefix-cls}-fa-exchange:before {
+  content: "\f0ec";
+}
+
+.#{$prefix-cls}-fa-cloud-download:before {
+  content: "\f0ed";
+}
+
+.#{$prefix-cls}-fa-cloud-upload:before {
+  content: "\f0ee";
+}
+
+.#{$prefix-cls}-fa-user-md:before {
+  content: "\f0f0";
+}
+
+.#{$prefix-cls}-fa-stethoscope:before {
+  content: "\f0f1";
+}
+
+.#{$prefix-cls}-fa-suitcase:before {
+  content: "\f0f2";
+}
+
+.#{$prefix-cls}-fa-bell-o:before {
+  content: "\f0a2";
+}
+
+.#{$prefix-cls}-fa-coffee:before {
+  content: "\f0f4";
+}
+
+.#{$prefix-cls}-fa-cutlery:before {
+  content: "\f0f5";
+}
+
+.#{$prefix-cls}-fa-file-text-o:before {
+  content: "\f0f6";
+}
+
+.#{$prefix-cls}-fa-building-o:before {
+  content: "\f0f7";
+}
+
+.#{$prefix-cls}-fa-hospital-o:before {
+  content: "\f0f8";
+}
+
+.#{$prefix-cls}-fa-ambulance:before {
+  content: "\f0f9";
+}
+
+.#{$prefix-cls}-fa-medkit:before {
+  content: "\f0fa";
+}
+
+.#{$prefix-cls}-fa-fighter-jet:before {
+  content: "\f0fb";
+}
+
+.#{$prefix-cls}-fa-beer:before {
+  content: "\f0fc";
+}
+
+.#{$prefix-cls}-fa-h-square:before {
+  content: "\f0fd";
+}
+
+.#{$prefix-cls}-fa-plus-square:before {
+  content: "\f0fe";
+}
+
+.#{$prefix-cls}-fa-angle-double-left:before {
+  content: "\f100";
+}
+
+.#{$prefix-cls}-fa-angle-double-right:before {
+  content: "\f101";
+}
+
+.#{$prefix-cls}-fa-angle-double-up:before {
+  content: "\f102";
+}
+
+.#{$prefix-cls}-fa-angle-double-down:before {
+  content: "\f103";
+}
+
+.#{$prefix-cls}-fa-angle-left:before {
+  content: "\f104";
+}
+
+.#{$prefix-cls}-fa-angle-right:before {
+  content: "\f105";
+}
+
+.#{$prefix-cls}-fa-angle-up:before {
+  content: "\f106";
+}
+
+.#{$prefix-cls}-fa-angle-down:before {
+  content: "\f107";
+}
+
+.#{$prefix-cls}-fa-desktop:before {
+  content: "\f108";
+}
+
+.#{$prefix-cls}-fa-laptop:before {
+  content: "\f109";
+}
+
+.#{$prefix-cls}-fa-tablet:before {
+  content: "\f10a";
+}
+
+.#{$prefix-cls}-fa-mobile-phone:before,
+.#{$prefix-cls}-fa-mobile:before {
+  content: "\f10b";
+}
+
+.#{$prefix-cls}-fa-circle-o:before {
+  content: "\f10c";
+}
+
+.#{$prefix-cls}-fa-quote-left:before {
+  content: "\f10d";
+}
+
+.#{$prefix-cls}-fa-quote-right:before {
+  content: "\f10e";
+}
+
+.#{$prefix-cls}-fa-spinner:before {
+  content: "\f110";
+}
+
+.#{$prefix-cls}-fa-circle:before {
+  content: "\f111";
+}
+
+.#{$prefix-cls}-fa-mail-reply:before,
+.#{$prefix-cls}-fa-reply:before {
+  content: "\f112";
+}
+
+.#{$prefix-cls}-fa-github-alt:before {
+  content: "\f113";
+}
+
+.#{$prefix-cls}-fa-folder-o:before {
+  content: "\f114";
+}
+
+.#{$prefix-cls}-fa-folder-open-o:before {
+  content: "\f115";
+}
+
+.#{$prefix-cls}-fa-smile-o:before {
+  content: "\f118";
+}
+
+.#{$prefix-cls}-fa-frown-o:before {
+  content: "\f119";
+}
+
+.#{$prefix-cls}-fa-meh-o:before {
+  content: "\f11a";
+}
+
+.#{$prefix-cls}-fa-gamepad:before {
+  content: "\f11b";
+}
+
+.#{$prefix-cls}-fa-keyboard-o:before {
+  content: "\f11c";
+}
+
+.#{$prefix-cls}-fa-flag-o:before {
+  content: "\f11d";
+}
+
+.#{$prefix-cls}-fa-flag-checkered:before {
+  content: "\f11e";
+}
+
+.#{$prefix-cls}-fa-terminal:before {
+  content: "\f120";
+}
+
+.#{$prefix-cls}-fa-code:before {
+  content: "\f121";
+}
+
+.#{$prefix-cls}-fa-mail-reply-all:before,
+.#{$prefix-cls}-fa-reply-all:before {
+  content: "\f122";
+}
+
+.#{$prefix-cls}-fa-star-half-empty:before,
+.#{$prefix-cls}-fa-star-half-full:before,
+.#{$prefix-cls}-fa-star-half-o:before {
+  content: "\f123";
+}
+
+.#{$prefix-cls}-fa-location-arrow:before {
+  content: "\f124";
+}
+
+.#{$prefix-cls}-fa-crop:before {
+  content: "\f125";
+}
+
+.#{$prefix-cls}-fa-code-fork:before {
+  content: "\f126";
+}
+
+.#{$prefix-cls}-fa-unlink:before,
+.#{$prefix-cls}-fa-chain-broken:before {
+  content: "\f127";
+}
+
+.#{$prefix-cls}-fa-question:before {
+  content: "\f128";
+}
+
+.#{$prefix-cls}-fa-info:before {
+  content: "\f129";
+}
+
+.#{$prefix-cls}-fa-exclamation:before {
+  content: "\f12a";
+}
+
+.#{$prefix-cls}-fa-superscript:before {
+  content: "\f12b";
+}
+
+.#{$prefix-cls}-fa-subscript:before {
+  content: "\f12c";
+}
+
+.#{$prefix-cls}-fa-eraser:before {
+  content: "\f12d";
+}
+
+.#{$prefix-cls}-fa-puzzle-piece:before {
+  content: "\f12e";
+}
+
+.#{$prefix-cls}-fa-microphone:before {
+  content: "\f130";
+}
+
+.#{$prefix-cls}-fa-microphone-slash:before {
+  content: "\f131";
+}
+
+.#{$prefix-cls}-fa-shield:before {
+  content: "\f132";
+}
+
+.#{$prefix-cls}-fa-calendar-o:before {
+  content: "\f133";
+}
+
+.#{$prefix-cls}-fa-fire-extinguisher:before {
+  content: "\f134";
+}
+
+.#{$prefix-cls}-fa-rocket:before {
+  content: "\f135";
+}
+
+.#{$prefix-cls}-fa-maxcdn:before {
+  content: "\f136";
+}
+
+.#{$prefix-cls}-fa-chevron-circle-left:before {
+  content: "\f137";
+}
+
+.#{$prefix-cls}-fa-chevron-circle-right:before {
+  content: "\f138";
+}
+
+.#{$prefix-cls}-fa-chevron-circle-up:before {
+  content: "\f139";
+}
+
+.#{$prefix-cls}-fa-chevron-circle-down:before {
+  content: "\f13a";
+}
+
+.#{$prefix-cls}-fa-html5:before {
+  content: "\f13b";
+}
+
+.#{$prefix-cls}-fa-css3:before {
+  content: "\f13c";
+}
+
+.#{$prefix-cls}-fa-anchor:before {
+  content: "\f13d";
+}
+
+.#{$prefix-cls}-fa-unlock-alt:before {
+  content: "\f13e";
+}
+
+.#{$prefix-cls}-fa-bullseye:before {
+  content: "\f140";
+}
+
+.#{$prefix-cls}-fa-ellipsis-h:before {
+  content: "\f141";
+}
+
+.#{$prefix-cls}-fa-ellipsis-v:before {
+  content: "\f142";
+}
+
+.#{$prefix-cls}-fa-rss-square:before {
+  content: "\f143";
+}
+
+.#{$prefix-cls}-fa-play-circle:before {
+  content: "\f144";
+}
+
+.#{$prefix-cls}-fa-ticket:before {
+  content: "\f145";
+}
+
+.#{$prefix-cls}-fa-minus-square:before {
+  content: "\f146";
+}
+
+.#{$prefix-cls}-fa-minus-square-o:before {
+  content: "\f147";
+}
+
+.#{$prefix-cls}-fa-level-up:before {
+  content: "\f148";
+}
+
+.#{$prefix-cls}-fa-level-down:before {
+  content: "\f149";
+}
+
+.#{$prefix-cls}-fa-check-square:before {
+  content: "\f14a";
+}
+
+.#{$prefix-cls}-fa-pencil-square:before {
+  content: "\f14b";
+}
+
+.#{$prefix-cls}-fa-external-link-square:before {
+  content: "\f14c";
+}
+
+.#{$prefix-cls}-fa-share-square:before {
+  content: "\f14d";
+}
+
+.#{$prefix-cls}-fa-compass:before {
+  content: "\f14e";
+}
+
+.#{$prefix-cls}-fa-toggle-down:before,
+.#{$prefix-cls}-fa-caret-square-o-down:before {
+  content: "\f150";
+}
+
+.#{$prefix-cls}-fa-toggle-up:before,
+.#{$prefix-cls}-fa-caret-square-o-up:before {
+  content: "\f151";
+}
+
+.#{$prefix-cls}-fa-toggle-right:before,
+.#{$prefix-cls}-fa-caret-square-o-right:before {
+  content: "\f152";
+}
+
+.#{$prefix-cls}-fa-euro:before,
+.#{$prefix-cls}-fa-eur:before {
+  content: "\f153";
+}
+
+.#{$prefix-cls}-fa-gbp:before {
+  content: "\f154";
+}
+
+.#{$prefix-cls}-fa-dollar:before,
+.#{$prefix-cls}-fa-usd:before {
+  content: "\f155";
+}
+
+.#{$prefix-cls}-fa-rupee:before,
+.#{$prefix-cls}-fa-inr:before {
+  content: "\f156";
+}
+
+.#{$prefix-cls}-fa-cny:before,
+.#{$prefix-cls}-fa-rmb:before,
+.#{$prefix-cls}-fa-yen:before,
+.#{$prefix-cls}-fa-jpy:before {
+  content: "\f157";
+}
+
+.#{$prefix-cls}-fa-ruble:before,
+.#{$prefix-cls}-fa-rouble:before,
+.#{$prefix-cls}-fa-rub:before {
+  content: "\f158";
+}
+
+.#{$prefix-cls}-fa-won:before,
+.#{$prefix-cls}-fa-krw:before {
+  content: "\f159";
+}
+
+.#{$prefix-cls}-fa-bitcoin:before,
+.#{$prefix-cls}-fa-btc:before {
+  content: "\f15a";
+}
+
+.#{$prefix-cls}-fa-file:before {
+  content: "\f15b";
+}
+
+.#{$prefix-cls}-fa-file-text:before {
+  content: "\f15c";
+}
+
+.#{$prefix-cls}-fa-sort-alpha-asc:before {
+  content: "\f15d";
+}
+
+.#{$prefix-cls}-fa-sort-alpha-desc:before {
+  content: "\f15e";
+}
+
+.#{$prefix-cls}-fa-sort-amount-asc:before {
+  content: "\f160";
+}
+
+.#{$prefix-cls}-fa-sort-amount-desc:before {
+  content: "\f161";
+}
+
+.#{$prefix-cls}-fa-sort-numeric-asc:before {
+  content: "\f162";
+}
+
+.#{$prefix-cls}-fa-sort-numeric-desc:before {
+  content: "\f163";
+}
+
+.#{$prefix-cls}-fa-thumbs-up:before {
+  content: "\f164";
+}
+
+.#{$prefix-cls}-fa-thumbs-down:before {
+  content: "\f165";
+}
+
+.#{$prefix-cls}-fa-youtube-square:before {
+  content: "\f166";
+}
+
+.#{$prefix-cls}-fa-youtube:before {
+  content: "\f167";
+}
+
+.#{$prefix-cls}-fa-xing:before {
+  content: "\f168";
+}
+
+.#{$prefix-cls}-fa-xing-square:before {
+  content: "\f169";
+}
+
+.#{$prefix-cls}-fa-youtube-play:before {
+  content: "\f16a";
+}
+
+.#{$prefix-cls}-fa-dropbox:before {
+  content: "\f16b";
+}
+
+.#{$prefix-cls}-fa-stack-overflow:before {
+  content: "\f16c";
+}
+
+.#{$prefix-cls}-fa-instagram:before {
+  content: "\f16d";
+}
+
+.#{$prefix-cls}-fa-flickr:before {
+  content: "\f16e";
+}
+
+.#{$prefix-cls}-fa-adn:before {
+  content: "\f170";
+}
+
+.#{$prefix-cls}-fa-bitbucket:before {
+  content: "\f171";
+}
+
+.#{$prefix-cls}-fa-bitbucket-square:before {
+  content: "\f172";
+}
+
+.#{$prefix-cls}-fa-tumblr:before {
+  content: "\f173";
+}
+
+.#{$prefix-cls}-fa-tumblr-square:before {
+  content: "\f174";
+}
+
+.#{$prefix-cls}-fa-long-arrow-down:before {
+  content: "\f175";
+}
+
+.#{$prefix-cls}-fa-long-arrow-up:before {
+  content: "\f176";
+}
+
+.#{$prefix-cls}-fa-long-arrow-left:before {
+  content: "\f177";
+}
+
+.#{$prefix-cls}-fa-long-arrow-right:before {
+  content: "\f178";
+}
+
+.#{$prefix-cls}-fa-apple:before {
+  content: "\f179";
+}
+
+.#{$prefix-cls}-fa-windows:before {
+  content: "\f17a";
+}
+
+.#{$prefix-cls}-fa-android:before {
+  content: "\f17b";
+}
+
+.#{$prefix-cls}-fa-linux:before {
+  content: "\f17c";
+}
+
+.#{$prefix-cls}-fa-dribbble:before {
+  content: "\f17d";
+}
+
+.#{$prefix-cls}-fa-skype:before {
+  content: "\f17e";
+}
+
+.#{$prefix-cls}-fa-foursquare:before {
+  content: "\f180";
+}
+
+.#{$prefix-cls}-fa-trello:before {
+  content: "\f181";
+}
+
+.#{$prefix-cls}-fa-female:before {
+  content: "\f182";
+}
+
+.#{$prefix-cls}-fa-male:before {
+  content: "\f183";
+}
+
+.#{$prefix-cls}-fa-gittip:before,
+.#{$prefix-cls}-fa-gratipay:before {
+  content: "\f184";
+}
+
+.#{$prefix-cls}-fa-sun-o:before {
+  content: "\f185";
+}
+
+.#{$prefix-cls}-fa-moon-o:before {
+  content: "\f186";
+}
+
+.#{$prefix-cls}-fa-archive:before {
+  content: "\f187";
+}
+
+.#{$prefix-cls}-fa-bug:before {
+  content: "\f188";
+}
+
+.#{$prefix-cls}-fa-vk:before {
+  content: "\f189";
+}
+
+.#{$prefix-cls}-fa-weibo:before {
+  content: "\f18a";
+}
+
+.#{$prefix-cls}-fa-renren:before {
+  content: "\f18b";
+}
+
+.#{$prefix-cls}-fa-pagelines:before {
+  content: "\f18c";
+}
+
+.#{$prefix-cls}-fa-stack-exchange:before {
+  content: "\f18d";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-o-right:before {
+  content: "\f18e";
+}
+
+.#{$prefix-cls}-fa-arrow-circle-o-left:before {
+  content: "\f190";
+}
+
+.#{$prefix-cls}-fa-toggle-left:before,
+.#{$prefix-cls}-fa-caret-square-o-left:before {
+  content: "\f191";
+}
+
+.#{$prefix-cls}-fa-dot-circle-o:before {
+  content: "\f192";
+}
+
+.#{$prefix-cls}-fa-wheelchair:before {
+  content: "\f193";
+}
+
+.#{$prefix-cls}-fa-vimeo-square:before {
+  content: "\f194";
+}
+
+.#{$prefix-cls}-fa-turkish-lira:before,
+.#{$prefix-cls}-fa-try:before {
+  content: "\f195";
+}
+
+.#{$prefix-cls}-fa-plus-square-o:before {
+  content: "\f196";
+}
+
+.#{$prefix-cls}-fa-space-shuttle:before {
+  content: "\f197";
+}
+
+.#{$prefix-cls}-fa-slack:before {
+  content: "\f198";
+}
+
+.#{$prefix-cls}-fa-envelope-square:before {
+  content: "\f199";
+}
+
+.#{$prefix-cls}-fa-wordpress:before {
+  content: "\f19a";
+}
+
+.#{$prefix-cls}-fa-openid:before {
+  content: "\f19b";
+}
+
+.#{$prefix-cls}-fa-institution:before,
+.#{$prefix-cls}-fa-bank:before,
+.#{$prefix-cls}-fa-university:before {
+  content: "\f19c";
+}
+
+.#{$prefix-cls}-fa-mortar-board:before,
+.#{$prefix-cls}-fa-graduation-cap:before {
+  content: "\f19d";
+}
+
+.#{$prefix-cls}-fa-yahoo:before {
+  content: "\f19e";
+}
+
+.#{$prefix-cls}-fa-google:before {
+  content: "\f1a0";
+}
+
+.#{$prefix-cls}-fa-reddit:before {
+  content: "\f1a1";
+}
+
+.#{$prefix-cls}-fa-reddit-square:before {
+  content: "\f1a2";
+}
+
+.#{$prefix-cls}-fa-stumbleupon-circle:before {
+  content: "\f1a3";
+}
+
+.#{$prefix-cls}-fa-stumbleupon:before {
+  content: "\f1a4";
+}
+
+.#{$prefix-cls}-fa-delicious:before {
+  content: "\f1a5";
+}
+
+.#{$prefix-cls}-fa-digg:before {
+  content: "\f1a6";
+}
+
+.#{$prefix-cls}-fa-pied-piper-pp:before {
+  content: "\f1a7";
+}
+
+.#{$prefix-cls}-fa-pied-piper-alt:before {
+  content: "\f1a8";
+}
+
+.#{$prefix-cls}-fa-drupal:before {
+  content: "\f1a9";
+}
+
+.#{$prefix-cls}-fa-joomla:before {
+  content: "\f1aa";
+}
+
+.#{$prefix-cls}-fa-language:before {
+  content: "\f1ab";
+}
+
+.#{$prefix-cls}-fa-fax:before {
+  content: "\f1ac";
+}
+
+.#{$prefix-cls}-fa-building:before {
+  content: "\f1ad";
+}
+
+.#{$prefix-cls}-fa-child:before {
+  content: "\f1ae";
+}
+
+.#{$prefix-cls}-fa-paw:before {
+  content: "\f1b0";
+}
+
+.#{$prefix-cls}-fa-spoon:before {
+  content: "\f1b1";
+}
+
+.#{$prefix-cls}-fa-cube:before {
+  content: "\f1b2";
+}
+
+.#{$prefix-cls}-fa-cubes:before {
+  content: "\f1b3";
+}
+
+.#{$prefix-cls}-fa-behance:before {
+  content: "\f1b4";
+}
+
+.#{$prefix-cls}-fa-behance-square:before {
+  content: "\f1b5";
+}
+
+.#{$prefix-cls}-fa-steam:before {
+  content: "\f1b6";
+}
+
+.#{$prefix-cls}-fa-steam-square:before {
+  content: "\f1b7";
+}
+
+.#{$prefix-cls}-fa-recycle:before {
+  content: "\f1b8";
+}
+
+.#{$prefix-cls}-fa-automobile:before,
+.#{$prefix-cls}-fa-car:before {
+  content: "\f1b9";
+}
+
+.#{$prefix-cls}-fa-cab:before,
+.#{$prefix-cls}-fa-taxi:before {
+  content: "\f1ba";
+}
+
+.#{$prefix-cls}-fa-tree:before {
+  content: "\f1bb";
+}
+
+.#{$prefix-cls}-fa-spotify:before {
+  content: "\f1bc";
+}
+
+.#{$prefix-cls}-fa-deviantart:before {
+  content: "\f1bd";
+}
+
+.#{$prefix-cls}-fa-soundcloud:before {
+  content: "\f1be";
+}
+
+.#{$prefix-cls}-fa-database:before {
+  content: "\f1c0";
+}
+
+.#{$prefix-cls}-fa-file-pdf-o:before {
+  content: "\f1c1";
+}
+
+.#{$prefix-cls}-fa-file-word-o:before {
+  content: "\f1c2";
+}
+
+.#{$prefix-cls}-fa-file-excel-o:before {
+  content: "\f1c3";
+}
+
+.#{$prefix-cls}-fa-file-powerpoint-o:before {
+  content: "\f1c4";
+}
+
+.#{$prefix-cls}-fa-file-photo-o:before,
+.#{$prefix-cls}-fa-file-picture-o:before,
+.#{$prefix-cls}-fa-file-image-o:before {
+  content: "\f1c5";
+}
+
+.#{$prefix-cls}-fa-file-zip-o:before,
+.#{$prefix-cls}-fa-file-archive-o:before {
+  content: "\f1c6";
+}
+
+.#{$prefix-cls}-fa-file-sound-o:before,
+.#{$prefix-cls}-fa-file-audio-o:before {
+  content: "\f1c7";
+}
+
+.#{$prefix-cls}-fa-file-movie-o:before,
+.#{$prefix-cls}-fa-file-video-o:before {
+  content: "\f1c8";
+}
+
+.#{$prefix-cls}-fa-file-code-o:before {
+  content: "\f1c9";
+}
+
+.#{$prefix-cls}-fa-vine:before {
+  content: "\f1ca";
+}
+
+.#{$prefix-cls}-fa-codepen:before {
+  content: "\f1cb";
+}
+
+.#{$prefix-cls}-fa-jsfiddle:before {
+  content: "\f1cc";
+}
+
+.#{$prefix-cls}-fa-life-bouy:before,
+.#{$prefix-cls}-fa-life-buoy:before,
+.#{$prefix-cls}-fa-life-saver:before,
+.#{$prefix-cls}-fa-support:before,
+.#{$prefix-cls}-fa-life-ring:before {
+  content: "\f1cd";
+}
+
+.#{$prefix-cls}-fa-circle-o-notch:before {
+  content: "\f1ce";
+}
+
+.#{$prefix-cls}-fa-ra:before,
+.#{$prefix-cls}-fa-resistance:before,
+.#{$prefix-cls}-fa-rebel:before {
+  content: "\f1d0";
+}
+
+.#{$prefix-cls}-fa-ge:before,
+.#{$prefix-cls}-fa-empire:before {
+  content: "\f1d1";
+}
+
+.#{$prefix-cls}-fa-git-square:before {
+  content: "\f1d2";
+}
+
+.#{$prefix-cls}-fa-git:before {
+  content: "\f1d3";
+}
+
+.#{$prefix-cls}-fa-y-combinator-square:before,
+.#{$prefix-cls}-fa-yc-square:before,
+.#{$prefix-cls}-fa-hacker-news:before {
+  content: "\f1d4";
+}
+
+.#{$prefix-cls}-fa-tencent-weibo:before {
+  content: "\f1d5";
+}
+
+.#{$prefix-cls}-fa-qq:before {
+  content: "\f1d6";
+}
+
+.#{$prefix-cls}-fa-wechat:before,
+.#{$prefix-cls}-fa-weixin:before {
+  content: "\f1d7";
+}
+
+.#{$prefix-cls}-fa-send:before,
+.#{$prefix-cls}-fa-paper-plane:before {
+  content: "\f1d8";
+}
+
+.#{$prefix-cls}-fa-send-o:before,
+.#{$prefix-cls}-fa-paper-plane-o:before {
+  content: "\f1d9";
+}
+
+.#{$prefix-cls}-fa-history:before {
+  content: "\f1da";
+}
+
+.#{$prefix-cls}-fa-circle-thin:before {
+  content: "\f1db";
+}
+
+.#{$prefix-cls}-fa-header:before {
+  content: "\f1dc";
+}
+
+.#{$prefix-cls}-fa-paragraph:before {
+  content: "\f1dd";
+}
+
+.#{$prefix-cls}-fa-sliders:before {
+  content: "\f1de";
+}
+
+.#{$prefix-cls}-fa-share-alt:before {
+  content: "\f1e0";
+}
+
+.#{$prefix-cls}-fa-share-alt-square:before {
+  content: "\f1e1";
+}
+
+.#{$prefix-cls}-fa-bomb:before {
+  content: "\f1e2";
+}
+
+.#{$prefix-cls}-fa-soccer-ball-o:before,
+.#{$prefix-cls}-fa-futbol-o:before {
+  content: "\f1e3";
+}
+
+.#{$prefix-cls}-fa-tty:before {
+  content: "\f1e4";
+}
+
+.#{$prefix-cls}-fa-binoculars:before {
+  content: "\f1e5";
+}
+
+.#{$prefix-cls}-fa-plug:before {
+  content: "\f1e6";
+}
+
+.#{$prefix-cls}-fa-slideshare:before {
+  content: "\f1e7";
+}
+
+.#{$prefix-cls}-fa-twitch:before {
+  content: "\f1e8";
+}
+
+.#{$prefix-cls}-fa-yelp:before {
+  content: "\f1e9";
+}
+
+.#{$prefix-cls}-fa-newspaper-o:before {
+  content: "\f1ea";
+}
+
+.#{$prefix-cls}-fa-wifi:before {
+  content: "\f1eb";
+}
+
+.#{$prefix-cls}-fa-calculator:before {
+  content: "\f1ec";
+}
+
+.#{$prefix-cls}-fa-paypal:before {
+  content: "\f1ed";
+}
+
+.#{$prefix-cls}-fa-google-wallet:before {
+  content: "\f1ee";
+}
+
+.#{$prefix-cls}-fa-cc-visa:before {
+  content: "\f1f0";
+}
+
+.#{$prefix-cls}-fa-cc-mastercard:before {
+  content: "\f1f1";
+}
+
+.#{$prefix-cls}-fa-cc-discover:before {
+  content: "\f1f2";
+}
+
+.#{$prefix-cls}-fa-cc-amex:before {
+  content: "\f1f3";
+}
+
+.#{$prefix-cls}-fa-cc-paypal:before {
+  content: "\f1f4";
+}
+
+.#{$prefix-cls}-fa-cc-stripe:before {
+  content: "\f1f5";
+}
+
+.#{$prefix-cls}-fa-bell-slash:before {
+  content: "\f1f6";
+}
+
+.#{$prefix-cls}-fa-bell-slash-o:before {
+  content: "\f1f7";
+}
+
+.#{$prefix-cls}-fa-trash:before {
+  content: "\f1f8";
+}
+
+.#{$prefix-cls}-fa-copyright:before {
+  content: "\f1f9";
+}
+
+.#{$prefix-cls}-fa-at:before {
+  content: "\f1fa";
+}
+
+.#{$prefix-cls}-fa-eyedropper:before {
+  content: "\f1fb";
+}
+
+.#{$prefix-cls}-fa-paint-brush:before {
+  content: "\f1fc";
+}
+
+.#{$prefix-cls}-fa-birthday-cake:before {
+  content: "\f1fd";
+}
+
+.#{$prefix-cls}-fa-area-chart:before {
+  content: "\f1fe";
+}
+
+.#{$prefix-cls}-fa-pie-chart:before {
+  content: "\f200";
+}
+
+.#{$prefix-cls}-fa-line-chart:before {
+  content: "\f201";
+}
+
+.#{$prefix-cls}-fa-lastfm:before {
+  content: "\f202";
+}
+
+.#{$prefix-cls}-fa-lastfm-square:before {
+  content: "\f203";
+}
+
+.#{$prefix-cls}-fa-toggle-off:before {
+  content: "\f204";
+}
+
+.#{$prefix-cls}-fa-toggle-on:before {
+  content: "\f205";
+}
+
+.#{$prefix-cls}-fa-bicycle:before {
+  content: "\f206";
+}
+
+.#{$prefix-cls}-fa-bus:before {
+  content: "\f207";
+}
+
+.#{$prefix-cls}-fa-ioxhost:before {
+  content: "\f208";
+}
+
+.#{$prefix-cls}-fa-angellist:before {
+  content: "\f209";
+}
+
+.#{$prefix-cls}-fa-cc:before {
+  content: "\f20a";
+}
+
+.#{$prefix-cls}-fa-shekel:before,
+.#{$prefix-cls}-fa-sheqel:before,
+.#{$prefix-cls}-fa-ils:before {
+  content: "\f20b";
+}
+
+.#{$prefix-cls}-fa-meanpath:before {
+  content: "\f20c";
+}
+
+.#{$prefix-cls}-fa-buysellads:before {
+  content: "\f20d";
+}
+
+.#{$prefix-cls}-fa-connectdevelop:before {
+  content: "\f20e";
+}
+
+.#{$prefix-cls}-fa-dashcube:before {
+  content: "\f210";
+}
+
+.#{$prefix-cls}-fa-forumbee:before {
+  content: "\f211";
+}
+
+.#{$prefix-cls}-fa-leanpub:before {
+  content: "\f212";
+}
+
+.#{$prefix-cls}-fa-sellsy:before {
+  content: "\f213";
+}
+
+.#{$prefix-cls}-fa-shirtsinbulk:before {
+  content: "\f214";
+}
+
+.#{$prefix-cls}-fa-simplybuilt:before {
+  content: "\f215";
+}
+
+.#{$prefix-cls}-fa-skyatlas:before {
+  content: "\f216";
+}
+
+.#{$prefix-cls}-fa-cart-plus:before {
+  content: "\f217";
+}
+
+.#{$prefix-cls}-fa-cart-arrow-down:before {
+  content: "\f218";
+}
+
+.#{$prefix-cls}-fa-diamond:before {
+  content: "\f219";
+}
+
+.#{$prefix-cls}-fa-ship:before {
+  content: "\f21a";
+}
+
+.#{$prefix-cls}-fa-user-secret:before {
+  content: "\f21b";
+}
+
+.#{$prefix-cls}-fa-motorcycle:before {
+  content: "\f21c";
+}
+
+.#{$prefix-cls}-fa-street-view:before {
+  content: "\f21d";
+}
+
+.#{$prefix-cls}-fa-heartbeat:before {
+  content: "\f21e";
+}
+
+.#{$prefix-cls}-fa-venus:before {
+  content: "\f221";
+}
+
+.#{$prefix-cls}-fa-mars:before {
+  content: "\f222";
+}
+
+.#{$prefix-cls}-fa-mercury:before {
+  content: "\f223";
+}
+
+.#{$prefix-cls}-fa-intersex:before,
+.#{$prefix-cls}-fa-transgender:before {
+  content: "\f224";
+}
+
+.#{$prefix-cls}-fa-transgender-alt:before {
+  content: "\f225";
+}
+
+.#{$prefix-cls}-fa-venus-double:before {
+  content: "\f226";
+}
+
+.#{$prefix-cls}-fa-mars-double:before {
+  content: "\f227";
+}
+
+.#{$prefix-cls}-fa-venus-mars:before {
+  content: "\f228";
+}
+
+.#{$prefix-cls}-fa-mars-stroke:before {
+  content: "\f229";
+}
+
+.#{$prefix-cls}-fa-mars-stroke-v:before {
+  content: "\f22a";
+}
+
+.#{$prefix-cls}-fa-mars-stroke-h:before {
+  content: "\f22b";
+}
+
+.#{$prefix-cls}-fa-neuter:before {
+  content: "\f22c";
+}
+
+.#{$prefix-cls}-fa-genderless:before {
+  content: "\f22d";
+}
+
+.#{$prefix-cls}-fa-facebook-official:before {
+  content: "\f230";
+}
+
+.#{$prefix-cls}-fa-pinterest-p:before {
+  content: "\f231";
+}
+
+.#{$prefix-cls}-fa-whatsapp:before {
+  content: "\f232";
+}
+
+.#{$prefix-cls}-fa-server:before {
+  content: "\f233";
+}
+
+.#{$prefix-cls}-fa-user-plus:before {
+  content: "\f234";
+}
+
+.#{$prefix-cls}-fa-user-times:before {
+  content: "\f235";
+}
+
+.#{$prefix-cls}-fa-hotel:before,
+.#{$prefix-cls}-fa-bed:before {
+  content: "\f236";
+}
+
+.#{$prefix-cls}-fa-viacoin:before {
+  content: "\f237";
+}
+
+.#{$prefix-cls}-fa-train:before {
+  content: "\f238";
+}
+
+.#{$prefix-cls}-fa-subway:before {
+  content: "\f239";
+}
+
+.#{$prefix-cls}-fa-medium:before {
+  content: "\f23a";
+}
+
+.#{$prefix-cls}-fa-yc:before,
+.#{$prefix-cls}-fa-y-combinator:before {
+  content: "\f23b";
+}
+
+.#{$prefix-cls}-fa-optin-monster:before {
+  content: "\f23c";
+}
+
+.#{$prefix-cls}-fa-opencart:before {
+  content: "\f23d";
+}
+
+.#{$prefix-cls}-fa-expeditedssl:before {
+  content: "\f23e";
+}
+
+.#{$prefix-cls}-fa-battery-4:before,
+.#{$prefix-cls}-fa-battery-full:before {
+  content: "\f240";
+}
+
+.#{$prefix-cls}-fa-battery-3:before,
+.#{$prefix-cls}-fa-battery-three-quarters:before {
+  content: "\f241";
+}
+
+.#{$prefix-cls}-fa-battery-2:before,
+.#{$prefix-cls}-fa-battery-half:before {
+  content: "\f242";
+}
+
+.#{$prefix-cls}-fa-battery-1:before,
+.#{$prefix-cls}-fa-battery-quarter:before {
+  content: "\f243";
+}
+
+.#{$prefix-cls}-fa-battery-0:before,
+.#{$prefix-cls}-fa-battery-empty:before {
+  content: "\f244";
+}
+
+.#{$prefix-cls}-fa-mouse-pointer:before {
+  content: "\f245";
+}
+
+.#{$prefix-cls}-fa-i-cursor:before {
+  content: "\f246";
+}
+
+.#{$prefix-cls}-fa-object-group:before {
+  content: "\f247";
+}
+
+.#{$prefix-cls}-fa-object-ungroup:before {
+  content: "\f248";
+}
+
+.#{$prefix-cls}-fa-sticky-note:before {
+  content: "\f249";
+}
+
+.#{$prefix-cls}-fa-sticky-note-o:before {
+  content: "\f24a";
+}
+
+.#{$prefix-cls}-fa-cc-jcb:before {
+  content: "\f24b";
+}
+
+.#{$prefix-cls}-fa-cc-diners-club:before {
+  content: "\f24c";
+}
+
+.#{$prefix-cls}-fa-clone:before {
+  content: "\f24d";
+}
+
+.#{$prefix-cls}-fa-balance-scale:before {
+  content: "\f24e";
+}
+
+.#{$prefix-cls}-fa-hourglass-o:before {
+  content: "\f250";
+}
+
+.#{$prefix-cls}-fa-hourglass-1:before,
+.#{$prefix-cls}-fa-hourglass-start:before {
+  content: "\f251";
+}
+
+.#{$prefix-cls}-fa-hourglass-2:before,
+.#{$prefix-cls}-fa-hourglass-half:before {
+  content: "\f252";
+}
+
+.#{$prefix-cls}-fa-hourglass-3:before,
+.#{$prefix-cls}-fa-hourglass-end:before {
+  content: "\f253";
+}
+
+.#{$prefix-cls}-fa-hourglass:before {
+  content: "\f254";
+}
+
+.#{$prefix-cls}-fa-hand-grab-o:before,
+.#{$prefix-cls}-fa-hand-rock-o:before {
+  content: "\f255";
+}
+
+.#{$prefix-cls}-fa-hand-stop-o:before,
+.#{$prefix-cls}-fa-hand-paper-o:before {
+  content: "\f256";
+}
+
+.#{$prefix-cls}-fa-hand-scissors-o:before {
+  content: "\f257";
+}
+
+.#{$prefix-cls}-fa-hand-lizard-o:before {
+  content: "\f258";
+}
+
+.#{$prefix-cls}-fa-hand-spock-o:before {
+  content: "\f259";
+}
+
+.#{$prefix-cls}-fa-hand-pointer-o:before {
+  content: "\f25a";
+}
+
+.#{$prefix-cls}-fa-hand-peace-o:before {
+  content: "\f25b";
+}
+
+.#{$prefix-cls}-fa-trademark:before {
+  content: "\f25c";
+}
+
+.#{$prefix-cls}-fa-registered:before {
+  content: "\f25d";
+}
+
+.#{$prefix-cls}-fa-creative-commons:before {
+  content: "\f25e";
+}
+
+.#{$prefix-cls}-fa-gg:before {
+  content: "\f260";
+}
+
+.#{$prefix-cls}-fa-gg-circle:before {
+  content: "\f261";
+}
+
+.#{$prefix-cls}-fa-tripadvisor:before {
+  content: "\f262";
+}
+
+.#{$prefix-cls}-fa-odnoklassniki:before {
+  content: "\f263";
+}
+
+.#{$prefix-cls}-fa-odnoklassniki-square:before {
+  content: "\f264";
+}
+
+.#{$prefix-cls}-fa-get-pocket:before {
+  content: "\f265";
+}
+
+.#{$prefix-cls}-fa-wikipedia-w:before {
+  content: "\f266";
+}
+
+.#{$prefix-cls}-fa-safari:before {
+  content: "\f267";
+}
+
+.#{$prefix-cls}-fa-chrome:before {
+  content: "\f268";
+}
+
+.#{$prefix-cls}-fa-firefox:before {
+  content: "\f269";
+}
+
+.#{$prefix-cls}-fa-opera:before {
+  content: "\f26a";
+}
+
+.#{$prefix-cls}-fa-internet-explorer:before {
+  content: "\f26b";
+}
+
+.#{$prefix-cls}-fa-tv:before,
+.#{$prefix-cls}-fa-television:before {
+  content: "\f26c";
+}
+
+.#{$prefix-cls}-fa-contao:before {
+  content: "\f26d";
+}
+
+.#{$prefix-cls}-fa-500px:before {
+  content: "\f26e";
+}
+
+.#{$prefix-cls}-fa-amazon:before {
+  content: "\f270";
+}
+
+.#{$prefix-cls}-fa-calendar-plus-o:before {
+  content: "\f271";
+}
+
+.#{$prefix-cls}-fa-calendar-minus-o:before {
+  content: "\f272";
+}
+
+.#{$prefix-cls}-fa-calendar-times-o:before {
+  content: "\f273";
+}
+
+.#{$prefix-cls}-fa-calendar-check-o:before {
+  content: "\f274";
+}
+
+.#{$prefix-cls}-fa-industry:before {
+  content: "\f275";
+}
+
+.#{$prefix-cls}-fa-map-pin:before {
+  content: "\f276";
+}
+
+.#{$prefix-cls}-fa-map-signs:before {
+  content: "\f277";
+}
+
+.#{$prefix-cls}-fa-map-o:before {
+  content: "\f278";
+}
+
+.#{$prefix-cls}-fa-map:before {
+  content: "\f279";
+}
+
+.#{$prefix-cls}-fa-commenting:before {
+  content: "\f27a";
+}
+
+.#{$prefix-cls}-fa-commenting-o:before {
+  content: "\f27b";
+}
+
+.#{$prefix-cls}-fa-houzz:before {
+  content: "\f27c";
+}
+
+.#{$prefix-cls}-fa-vimeo:before {
+  content: "\f27d";
+}
+
+.#{$prefix-cls}-fa-black-tie:before {
+  content: "\f27e";
+}
+
+.#{$prefix-cls}-fa-fonticons:before {
+  content: "\f280";
+}
+
+.#{$prefix-cls}-fa-reddit-alien:before {
+  content: "\f281";
+}
+
+.#{$prefix-cls}-fa-edge:before {
+  content: "\f282";
+}
+
+.#{$prefix-cls}-fa-credit-card-alt:before {
+  content: "\f283";
+}
+
+.#{$prefix-cls}-fa-codiepie:before {
+  content: "\f284";
+}
+
+.#{$prefix-cls}-fa-modx:before {
+  content: "\f285";
+}
+
+.#{$prefix-cls}-fa-fort-awesome:before {
+  content: "\f286";
+}
+
+.#{$prefix-cls}-fa-usb:before {
+  content: "\f287";
+}
+
+.#{$prefix-cls}-fa-product-hunt:before {
+  content: "\f288";
+}
+
+.#{$prefix-cls}-fa-mixcloud:before {
+  content: "\f289";
+}
+
+.#{$prefix-cls}-fa-scribd:before {
+  content: "\f28a";
+}
+
+.#{$prefix-cls}-fa-pause-circle:before {
+  content: "\f28b";
+}
+
+.#{$prefix-cls}-fa-pause-circle-o:before {
+  content: "\f28c";
+}
+
+.#{$prefix-cls}-fa-stop-circle:before {
+  content: "\f28d";
+}
+
+.#{$prefix-cls}-fa-stop-circle-o:before {
+  content: "\f28e";
+}
+
+.#{$prefix-cls}-fa-shopping-bag:before {
+  content: "\f290";
+}
+
+.#{$prefix-cls}-fa-shopping-basket:before {
+  content: "\f291";
+}
+
+.#{$prefix-cls}-fa-hashtag:before {
+  content: "\f292";
+}
+
+.#{$prefix-cls}-fa-bluetooth:before {
+  content: "\f293";
+}
+
+.#{$prefix-cls}-fa-bluetooth-b:before {
+  content: "\f294";
+}
+
+.#{$prefix-cls}-fa-percent:before {
+  content: "\f295";
+}
+
+.#{$prefix-cls}-fa-gitlab:before {
+  content: "\f296";
+}
+
+.#{$prefix-cls}-fa-wpbeginner:before {
+  content: "\f297";
+}
+
+.#{$prefix-cls}-fa-wpforms:before {
+  content: "\f298";
+}
+
+.#{$prefix-cls}-fa-envira:before {
+  content: "\f299";
+}
+
+.#{$prefix-cls}-fa-universal-access:before {
+  content: "\f29a";
+}
+
+.#{$prefix-cls}-fa-wheelchair-alt:before {
+  content: "\f29b";
+}
+
+.#{$prefix-cls}-fa-question-circle-o:before {
+  content: "\f29c";
+}
+
+.#{$prefix-cls}-fa-blind:before {
+  content: "\f29d";
+}
+
+.#{$prefix-cls}-fa-audio-description:before {
+  content: "\f29e";
+}
+
+.#{$prefix-cls}-fa-volume-control-phone:before {
+  content: "\f2a0";
+}
+
+.#{$prefix-cls}-fa-braille:before {
+  content: "\f2a1";
+}
+
+.#{$prefix-cls}-fa-assistive-listening-systems:before {
+  content: "\f2a2";
+}
+
+.#{$prefix-cls}-fa-asl-interpreting:before,
+.#{$prefix-cls}-fa-american-sign-language-interpreting:before {
+  content: "\f2a3";
+}
+
+.#{$prefix-cls}-fa-deafness:before,
+.#{$prefix-cls}-fa-hard-of-hearing:before,
+.#{$prefix-cls}-fa-deaf:before {
+  content: "\f2a4";
+}
+
+.#{$prefix-cls}-fa-glide:before {
+  content: "\f2a5";
+}
+
+.#{$prefix-cls}-fa-glide-g:before {
+  content: "\f2a6";
+}
+
+.#{$prefix-cls}-fa-signing:before,
+.#{$prefix-cls}-fa-sign-language:before {
+  content: "\f2a7";
+}
+
+.#{$prefix-cls}-fa-low-vision:before {
+  content: "\f2a8";
+}
+
+.#{$prefix-cls}-fa-viadeo:before {
+  content: "\f2a9";
+}
+
+.#{$prefix-cls}-fa-viadeo-square:before {
+  content: "\f2aa";
+}
+
+.#{$prefix-cls}-fa-snapchat:before {
+  content: "\f2ab";
+}
+
+.#{$prefix-cls}-fa-snapchat-ghost:before {
+  content: "\f2ac";
+}
+
+.#{$prefix-cls}-fa-snapchat-square:before {
+  content: "\f2ad";
+}
+
+.#{$prefix-cls}-fa-pied-piper:before {
+  content: "\f2ae";
+}
+
+.#{$prefix-cls}-fa-first-order:before {
+  content: "\f2b0";
+}
+
+.#{$prefix-cls}-fa-yoast:before {
+  content: "\f2b1";
+}
+
+.#{$prefix-cls}-fa-themeisle:before {
+  content: "\f2b2";
+}
+
+.#{$prefix-cls}-fa-google-plus-circle:before,
+.#{$prefix-cls}-fa-google-plus-official:before {
+  content: "\f2b3";
+}
+
+.#{$prefix-cls}-fa-fa:before,
+.#{$prefix-cls}-fa-font-awesome:before {
+  content: "\f2b4";
+}

@@ -1,0 +1,86 @@
+.#{$prefix-cls}-page-loading-con {
+  display: inline-block;
+  z-index: 1000;
+  position: relative;
+  /*see _button.scss for more position information related to*/
+  /*-page-loading-con being inside of a button*/
+}
+.#{$prefix-cls}-path {
+  stroke: #dcdcdc;
+  stroke-linecap: round;
+  stroke-width: 5px;
+  transform-origin: center center 0px;
+  animation: newdash 1s ease-in-out forwards;
+}
+.#{$prefix-cls}-spinner {
+  transform-origin: center center 0px;
+  animation: rotate 1s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
+}
+.#{$prefix-cls}-page-loading {
+  animation: rotate 2s linear infinite;
+  font-size: 28px;
+  float: left;
+  width: 20px;
+
+  &.#{$prefix-cls}-loading-lg {
+    width: 40px;
+    + svg {
+      width: 40px;
+    }
+  }
+  &.#{$prefix-cls}-loading-lg.#{$prefix-cls}-loading-center {
+    margin: -20px 0 0 -20px;
+  }
+  &.#{$prefix-cls}-loading-md {
+    width: 30px;
+    + svg {
+      width: 30px;
+      transform-origin: center center 0px;
+    }
+  }
+  &.#{$prefix-cls}-loading-md.#{$prefix-cls}-loading-center {
+    margin: -15px 0 0 -15px;
+  }
+  &.#{$prefix-cls}-loading-sm {
+    width: 18px;
+    + svg {
+      width: 18px;
+    }
+  }
+  &.#{$prefix-cls}-loading-sm.#{$prefix-cls}-loading-center {
+    margin: -9px 0 0 -9px;
+  }
+  &.#{$prefix-cls}-loading-xs {
+    width: 12px;
+    + svg {
+      width: 12px;
+    }
+  }
+  &.#{$prefix-cls}-loading-xs.#{$prefix-cls}-loading-center {
+    margin: -6px 0 0 -6px;
+  }
+}
+.#{$prefix-cls}-loading-center {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin: -14px 0 0 -14px;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes newdash {
+  0% {
+    transform: rotate(50deg);
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    transform: rotate(120deg);
+    // stroke-dasharray: 16;
+    stroke-dasharray: 30, 150;
+    stroke-dashoffset: -35;
+  }
+}

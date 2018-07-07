@@ -1,0 +1,75 @@
+.#{$prefix-cls}-page-header {
+
+  margin-top: 35px;
+  margin-bottom: 20px;
+
+  /* TITLE */
+  &-title-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    // margin-bottom: 24px;
+    margin-top: 10px;
+  }
+
+  &-title-container {
+    width: 100%;
+    flex-shrink: 1;
+    min-width: 0%;
+
+    h1 {
+      font-weight: 500;
+      font-size: 1.71em;
+      font-style: inherit;
+      letter-spacing: -0.01em;
+      line-height: 32px;
+      margin-top: 0;
+    }
+  }
+
+  &-subtitle-container {
+    width: 100%;
+    flex-shrink: 1;
+    min-width: 0%;
+
+    h2 {
+      font-weight: 400;
+      font-size: 1.25em;
+      font-style: inherit;
+      letter-spacing: -0.01em;
+      line-height: 32px;
+      margin-top: 0;
+    }
+  }
+  /* ACTIONS */
+  &-actions-wrapper {
+    white-space: nowrap;
+    padding-left: 32px;
+    min-width: 0%;
+    flex-shrink: 0;
+  }
+
+  /* BREADCRUMBS */
+  &-breadcrumb-wrapper {
+
+  }
+
+  &-breadcrumb-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* BOTTOM BAR */
+  &-bottom-wrapper {
+    margin-top: 24px;
+    & > div {
+      display: flex;
+      flex-direction: row;
+      & > * {
+        margin-right: 6px;
+      }
+    }
+    margin-bottom: 36px;
+  }
+
+}

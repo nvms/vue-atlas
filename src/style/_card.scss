@@ -1,0 +1,29 @@
+.#{$prefix-cls}-card {
+  border-radius: 3px;
+  transition: all 0.3s;
+  background: $N0;
+}
+
+.#{$prefix-cls}-card-elevation-0 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 3px 5px -5px rgba(9, 30, 66, 0.2);
+}
+
+.#{$prefix-cls}-card-elevation-1 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 6px 12px -7px rgba(9, 30, 66, 0.2);
+}
+
+.#{$prefix-cls}-card-elevation-2 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 9px 17px -8px rgba(9, 30, 66, 0.2);
+}
+
+.#{$prefix-cls}-card-elevation-3 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 12px 22px -9px rgba(9, 30, 66, 0.2);
+}
+
+.#{$prefix-cls}-card-elevation-4 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 15px 27px -10px rgba(9, 30, 66, 0.2);
+}
+
+.#{$prefix-cls}-card-elevation-5 {
+  box-shadow: 0 0 2px rgba(9, 30, 66, 0.2), 0 18px 32px -11px rgba(9, 30, 66, 0.25);
+}

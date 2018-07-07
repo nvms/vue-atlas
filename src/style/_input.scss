@@ -1,0 +1,73 @@
+.#{$prefix-cls}-input-con {
+  position: relative;
+  &.#{$prefix-cls}-show-clean {
+    input[type="text"].#{$prefix-cls}-form-control {
+      padding-right: 26px;
+    }
+  }
+  &:hover {
+    .#{$prefix-cls}-input-show-clean {
+      opacity: 1;
+    }
+  }
+}
+
+.#{$prefix-cls}-show-clean:hover .#{$prefix-cls}-input-show-icon {
+  display:none;
+}
+
+/*the icon*/
+
+.#{$prefix-cls}-input-show-clean,
+.#{$prefix-cls}-input-show-icon {
+  position: absolute;
+  font-size: 26px;
+  padding: 0;
+  top: 10px;
+  right: 10px;
+  // cursor: pointer;
+  color: $N80;
+  transition: opacity .1s linear;
+}
+
+.#{$prefix-cls}-input-show-clean {
+  opacity: 0;
+  cursor: pointer;
+  &:hover {
+    color: $N100;
+  }
+  &:active,
+  &:focus {
+    color: $B100;
+  }
+}
+.#{$prefix-cls}-input-show-icon {
+  opacity: 1;
+}
+
+/*positioning the icon based on input size*/
+
+/*sm*/
+
+.#{$prefix-cls}-input-con {
+  &.#{$prefix-cls}-show-clean {
+    &.#{$prefix-cls}-input-sm {
+      .#{$prefix-cls}-input-show-clean {
+        top: 8px;
+      }
+    }
+  }
+}
+
+/*xs*/
+
+.#{$prefix-cls}-input-con {
+  &.#{$prefix-cls}-show-clean {
+    &.#{$prefix-cls}-input-xs {
+      .#{$prefix-cls}-input-show-clean {
+        font-size: 14px;
+        top: 6px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.#{$prefix-cls}-alert {
+  padding: 15px;
+  &-warning {
+    border-left: 4px solid $Y300;
+    background: $Y75;
+  }
+  &-success {
+    border-left: 4px solid $G300;
+    background: $G75;
+  }
+  &-info {
+    border-left: 4px solid $B300;
+    background: $B75;
+  }
+  &-danger {
+    border-left: 4px solid $R300;
+    background: $R75;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top :0;
+    font-weight: 700;
+  }
+  p {
+    margin: 0;
+  }
+}

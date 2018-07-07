@@ -1,0 +1,124 @@
+@function rem($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+    @return ($pixels / $context) * 1rem;
+}
+
+$num-columns: 12;
+$context: 16px;
+$xs-min: 320px;
+$sm-min: 480px;
+$md-min: 768px;
+$lg-min: 960px;
+$sm-res: rem($sm-min, $context);
+$md-res: rem($md-min, $context);
+$lg-res: rem($lg-min, $context);
+$sizes: (sm: $sm-res, md: $md-res, lg: $lg-res);
+$gutter-width: rem(20px, $context);
+$outer-margin: rem(16px, $context);
+$half-gutter-width: $gutter-width / 2;
+
+@mixin column($name, $num) {
+  .#{$prefix-cls}-col-#{$name}-#{$num} {
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        padding-right: $gutter-width * .5;
+        padding-left: $gutter-width * .5;
+        flex-basis: 100% / $num-columns * $num;
+        max-width: 100% / $num-columns * $num;
+    }
+}
+
+@mixin offset($name, $num) {
+  .#{$prefix-cls}-col-#{$name}-offset-#{$num} {
+        margin-left: 100% / $num-columns * $num;
+    }
+}
+
+@mixin container($width) {
+  .#{$prefix-cls}-container {
+        box-sizing: border-box;
+        width: $width;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: $outer-margin;
+        padding-right: $outer-margin;
+    }
+}
+
+@mixin positions($size) {
+    .#{$prefix-cls}-start-#{$size} {
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    .#{$prefix-cls}-center-#{$size} {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .#{$prefix-cls}-end-#{$size} {
+        justify-content: flex-end;
+        text-align: end;
+    }
+
+    .#{$prefix-cls}-top-#{$size} {
+        align-items: flex-start;
+    }
+
+    .#{$prefix-cls}-middle-#{$size} {
+        align-items: center;
+    }
+
+    .#{$prefix-cls}-bottom-#{$size} {
+        align-items: flex-end;
+    }
+
+    .#{$prefix-cls}-around-#{$size} {
+        justify-content: space-around;
+    }
+
+    .#{$prefix-cls}-between-#{$size} {
+        justify-content: space-between;
+    }
+
+    .#{$prefix-cls}-first-#{$size} {
+        order: -1;
+    }
+
+    .#{$prefix-cls}-last-#{$size} {
+        order: 1;
+    }
+}
+
+@include container($xs-min);
+@include positions('xs');
+
+@for $i from 1 through $num-columns {
+    @include column('xs', $i);
+    @include offset('xs', $i);
+}
+
+@each $size, $res in $sizes {
+    @media only screen and (min-width: $res) {
+        @include container($res);
+        @include positions($size);
+        @for $i from 1 through $num-columns {
+            @include column($size, $i);
+            @include offset($size, $i);
+        }
+    }
+}
+
+.#{$prefix-cls}-row {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 0 1 auto;
+    margin-left: $half-gutter-width * -1;
+    margin-right: $half-gutter-width * -1;
+}

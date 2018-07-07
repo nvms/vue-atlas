@@ -1,0 +1,25 @@
+.#{$prefix-cls}-close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1.4;
+  color: $N800;
+  text-shadow: 0 1px 0 $N0;
+  opacity: .2;
+  outline: none;
+  &:hover,
+  &:focus {
+    color: $N800;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: .5;
+  }
+}
+
+button.#{$prefix-cls}-close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}

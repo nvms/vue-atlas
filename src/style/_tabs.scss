@@ -1,0 +1,31 @@
+.#{$prefix-cls}-nav-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: 2px solid $N30;
+  .#{$prefix-cls}-nav-tab {
+    padding-bottom: 4px;
+    margin-right: 15px;
+    line-height: 20px !important;
+    a {
+      color: $N300;
+      font-weight: 600;
+      padding-bottom: 6px;
+      &:hover {
+        text-decoration: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    &-active {
+      a {
+        color: $B400;
+        border-bottom: 2px solid $B300;
+      }
+    }
+  }
+}

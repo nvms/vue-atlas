@@ -1,0 +1,149 @@
+@mixin input-size($padding, $fontSize, $lineHeight, $borderRadius, $minHeight, $maxHeight) {
+  padding: $padding;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  border-radius: $borderRadius;
+  min-height: $minHeight;
+  max-height: $maxHeight;
+}
+
+@mixin defaultInputSize() {
+  @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 4px, $minHeight: 34px, $maxHeight: 34px);
+}
+
+@mixin smallInputSize() {
+  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 4px, $minHeight: 32px, $maxHeight: 32px);
+}
+
+@mixin extraSmallInputSize() {
+  @include input-size( $padding: 5px, $fontSize: 11px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
+}
+
+@mixin baseInputStyle () {
+  align-items: center;
+  background-color: $N10;
+  color: $N900;
+  display: block;
+  width: 100%;
+  border-color: $N40;
+  border-style: solid;
+  border-width: 2px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  &:focus {
+    border-color: $B100;
+    outline: none;
+    background-color: $N0 !important;
+  }
+  &:hover {
+    background-color: $N20;
+  }
+}
+
+/*sizes*/
+
+.#{$prefix-cls}-form-control {
+  @include baseInputStyle();
+  @include defaultInputSize();
+  &[readonly] {
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.#{$prefix-cls}-input-sm {
+  .#{$prefix-cls}-form-control {
+    @include smallInputSize();
+  }
+}
+
+.#{$prefix-cls}-input-xs {
+  .#{$prefix-cls}-form-control {
+    @include extraSmallInputSize();
+    font-weight: 500;
+  }
+}
+
+.#{$prefix-cls}-form-horizontal .#{$prefix-cls}-control-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: $N300;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.#{$prefix-cls}-form-need {
+  color: $R300;
+  position: relative;
+  top: 3px;
+  left: 1px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .#{$prefix-cls}-form-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .#{$prefix-cls}-form-group {
+      display: inline-block;
+      margin-bottom: 20px;
+      margin-right: 6px;
+      vertical-align: middle;
+
+    }
+    .#{$prefix-cls}-form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+    .#{$prefix-cls}-form-control-static {
+      display: inline-block;
+    }
+    .#{$prefix-cls}-control-label {
+      margin-bottom: 0;
+      vertical-align: top;
+      font-weight: 600;
+      font-size: 0.86em;
+      color: $N300;
+    }
+  }
+}
+
+.#{$prefix-cls}-form-group {
+  margin: 0 0 15px 0;
+}
+
+.#{$prefix-cls}-form-horizontal .#{$prefix-cls}-form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .#{$prefix-cls}-form-horizontal .#{$prefix-cls}-control-label {
+    margin: 0;
+    text-align: right;
+  }
+}
+
+/*validation*/
+
+@mixin validationDefaults() {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.#{$prefix-cls}-err-tip {
+  @include validationDefaults();
+  color: $R400;
+}
+
+.#{$prefix-cls}-has-error {
+  input[type=text].#{$prefix-cls}-form-control {
+    border-color: $R400;
+  }
+}

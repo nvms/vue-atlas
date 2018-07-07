@@ -1,0 +1,41 @@
+.#{$prefix-cls}-table {
+  margin: 1em 0;
+  &-fullwidth {
+    table {
+      width: 100%;
+    }
+  }
+  &-hover {
+    table tbody tr:hover {
+      background: $N10;
+    }
+  }
+  table {
+    border-collapse: collapse;
+  }
+  thead,
+  tbody,
+  tfoot {
+    border-bottom: 2px solid $N40;
+  }
+  thead tr th {
+    color: $N90;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  table td,
+  table td:first-child,
+  table th,
+  table th:first-child {
+    margin: 0;
+    padding: 8px;
+    text-align: left;
+  }
+}
+
+
+.#{$prefix-cls}-page-container-article {
+  .#{$prefix-cls}-table {
+    margin: 3em 0 4em 0;
+  }
+}

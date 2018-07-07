@@ -1,0 +1,26 @@
+.#{$prefix-cls}-breadcrumb {
+  cursor: default;
+  &-item {
+    color: $N200;
+    &-icon {
+
+    }
+    &-icon, &-separator {
+      margin:0 5px !important;
+    }
+    &:last-child {
+      .#{$prefix-cls}-breadcrumb-item-icon {
+        display: none;
+      }
+      .#{$prefix-cls}-breadcrumb-item-separator {
+        display: none !important;
+      }
+    }
+  }
+  &-link {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

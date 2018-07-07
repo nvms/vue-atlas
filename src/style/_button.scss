@@ -1,0 +1,453 @@
+/*button sizes*/
+@mixin btn-size($padding, $fontSize, $lineHeight, $borderRadius) {
+  padding: $padding;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  border-radius: $borderRadius;
+}
+@mixin mdButtonSize() {
+  @include btn-size(
+    $padding: 0px 9px,
+    $fontSize: 14px,
+    $lineHeight: 2.2em,
+    $borderRadius: 3px
+  );
+  min-width: 34px;
+  min-height: 34px;
+}
+
+@mixin lgButtonSize() {
+  @include btn-size(
+    $padding: 4px 14px,
+    $fontSize: 15px,
+    $lineHeight: 2.5em,
+    $borderRadius: 3px
+  );
+  min-width: 45px;
+  min-height: 45px;
+}
+
+@mixin smButtonSize() {
+  @include btn-size(
+    $padding: 1px 8px,
+    $fontSize: 13px,
+    $lineHeight: 2.2em,
+    $borderRadius: 3px
+  );
+  min-width: 30px;
+  min-height: 30px;
+}
+
+@mixin xsButtonSize() {
+  @include btn-size(
+    $padding: 4px 8px,
+    $fontSize: 12px,
+    $lineHeight: 1.5em,
+    $borderRadius: 3px
+  );
+  min-width: 26px;
+  min-height: 26px;
+}
+
+.#{$prefix-cls}-btn {
+  border: none;
+  outline: 0;
+  margin: 0;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  vertical-align: baseline;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: background 0.1s ease-out,
+  box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:active:focus,
+  &-active:focus {
+    outline: 0;
+  }
+
+  &:active {
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -ms-transition-property: none;
+    transition-property: none;
+  }
+
+  @mixin btn-type($bgCol, $fontCol, $bgColHover, $fontColHover, $bgColActive, $fontColActive, $badgeBgCol, $badgeFontCol) {
+    background-color: $bgCol;
+    color: $fontCol;
+
+    &:hover {
+      background-color: $bgColHover;
+      color: $fontColHover;
+    }
+
+    &:active {
+      background-color: $bgColActive;
+      color: $fontColActive;
+    }
+
+    .#{$prefix-cls}-badge {
+      color: $badgeFontCol;
+      background-color: $badgeBgCol;
+    }
+  }
+
+  &-default {
+    @include btn-type(
+      $bgCol: $N20,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400
+      );
+  }
+  &-primary {
+    @include btn-type(
+      $bgCol: $B400,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B500,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400
+      );
+  }
+  &-primary-light {
+    @include btn-type(
+      $bgCol: $B300,
+      $fontCol: $N0,
+      $bgColHover: $B200,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400
+      );
+  }
+  &-primary-dark {
+    @include btn-type(
+      $bgCol: $B500,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400
+      );
+  }
+  &-success {
+    @include btn-type(
+      $bgCol: $G400,
+      $fontCol: $N0,
+      $bgColHover: $G300,
+      $fontColHover: $N0,
+      $bgColActive: $G500,
+      $fontColActive: $N0,
+      $badgeBgCol: $G300,
+      $badgeFontCol: $N0
+    );
+  }
+  &-info {
+    @include btn-type(
+      $bgCol: $T400,
+      $fontCol: $N0,
+      $bgColHover: $T300,
+      $fontColHover: $N0,
+      $bgColActive: $T500,
+      $fontColActive: $N0,
+      $badgeBgCol: $T400,
+      $badgeFontCol: $N0
+    );
+  }
+  &-warning {
+    @include btn-type(
+      $bgCol: $Y400,
+      $fontCol: $N600,
+      $bgColHover: $Y300,
+      $fontColHover: $N600,
+      $bgColActive: $Y500,
+      $fontColActive: $N600,
+      $badgeBgCol: $Y400,
+      $badgeFontCol: $N0
+    );
+  }
+  &-danger {
+    @include btn-type(
+      $bgCol: $R400,
+      $fontCol: $N0,
+      $bgColHover: $R300,
+      $fontColHover: $N0,
+      $bgColActive: $R500,
+      $fontColActive: $N0,
+      $badgeBgCol: $R400,
+      $badgeFontCol: $N0
+    );
+  }
+  &-subtle {
+    @include btn-type(
+      $bgCol: transparent,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500
+    );
+  }
+  &-link {
+    @include btn-type(
+      $bgCol: transparent,
+      $fontCol: $B300,
+      $bgColHover: transparent,
+      $fontColHover: $B200,
+      $bgColActive: transparent,
+      $fontColActive: $B400,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500
+    );
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+  &-subtle-link {
+    @include btn-type(
+      $bgCol: transparent,
+      $fontCol: $N100,
+      $bgColHover: transparent,
+      $fontColHover: $N80,
+      $bgColActive: transparent,
+      $fontColActive: $N400,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500
+    );
+    &:hover {
+      text-decoration: underline;
+    }
+    &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+  &-active {
+    @include btn-type(
+      $bgCol: $N500,
+      $fontCol: $N40,
+      $bgColHover: $N600,
+      $fontColHover: $N40,
+      $bgColActive: $N700,
+      $fontColActive: $N40,
+      $badgeBgCol: $N700,
+      $badgeFontCol: $N40
+    );
+  }
+}
+
+.#{$prefix-cls}-btn-round {
+  border-radius: 50% !important;
+}
+
+.#{$prefix-cls}-btn-text-fade {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+  opacity: 1;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.#{$prefix-cls}-btn-text-fade-out {
+  opacity: 0;
+}
+
+.#{$prefix-cls}-btn-block {
+  display: block;
+}
+
+.#{$prefix-cls}-btn-md {
+  @include mdButtonSize()
+}
+
+.#{$prefix-cls}-btn-lg,
+.#{$prefix-cls}-btn-group-lg>.#{$prefix-cls}-btn {
+  @include lgButtonSize()
+}
+
+.#{$prefix-cls}-btn-sm,
+.#{$prefix-cls}-btn-group-sm>.#{$prefix-cls}-btn {
+  @include smButtonSize()
+}
+
+.#{$prefix-cls}-btn-xs,
+.#{$prefix-cls}-btn-group-xs>.#{$prefix-cls}-btn {
+  @include xsButtonSize()
+}
+
+.#{$prefix-cls}-btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.#{$prefix-cls}-btn-group>.#{$prefix-cls}-btn {
+  position: relative;
+  float: left;
+}
+
+.#{$prefix-cls}-btn-group {
+  >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+    border-radius: 0;
+  }
+  >.#{$prefix-cls}-btn:first-child {
+    margin-left: 0;
+  }
+  >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  >.#{$prefix-cls}-btn:last-child:not(:first-child),
+  >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group {
+    float: left;
+  }
+  >.#{$prefix-cls}-btn-group:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
+    border-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
+  >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.#{$prefix-cls}-btn-group-vertical {
+  position: relative;
+  display: inline-flex !important;
+  vertical-align: middle;
+}
+
+.#{$prefix-cls}-btn-group-vertical>.#{$prefix-cls}-btn {
+  position: relative;
+  float: left;
+}
+
+.#{$prefix-cls}-btn-group-vertical {
+  >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+    border-radius: 0;
+  }
+  >.#{$prefix-cls}-btn:first-child {
+    margin-left: 0;
+  }
+  >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  >.#{$prefix-cls}-btn:last-child:not(:first-child),
+  >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group-vertical {
+    float: left;
+  }
+  >.#{$prefix-cls}-btn-group-vertical:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
+    border-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
+  >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  >.#{$prefix-cls}-btn-group-vertical:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.#{$prefix-cls}-btn {
+  .#{$prefix-cls}-page-loading-con {
+    position: absolute;
+  }
+}
+
+.#{$prefix-cls}-btn-xs {
+  .#{$prefix-cls}-page-loading-con {
+    margin-top: 1px;
+    svg {
+      width: 16px !important;
+    }
+  }
+}
+
+.#{$prefix-cls}-btn-sm {
+  .#{$prefix-cls}-page-loading-con {
+    margin-top: 3px;
+    svg {
+      width: 18px !important;
+    }
+  }
+}
+
+.#{$prefix-cls}-btn-md {
+  .#{$prefix-cls}-page-loading-con {
+    margin-top: 4px;
+    svg {
+      width: 20px !important;
+    }
+  }
+}
+
+.#{$prefix-cls}-btn-lg {
+  .#{$prefix-cls}-page-loading-con {
+    margin-top: 6px;
+    svg {
+      width: 25px !important;
+    }
+  }
+}
+
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn {
+    background-color: $N500;
+    color: #F4F5F7;
+  }
+}
+
+.#{$prefix-cls}-topbar {
+  .#{$prefix-cls}-dropdown-selected {
+    >span>div>a.#{$prefix-cls}-btn {
+      background-color: $B500;
+      color: #F4F5F7;
+    }
+    >span>div>a.#{$prefix-cls}-btn-primary-dark {
+      background: $B400;
+    }
+  }
+}

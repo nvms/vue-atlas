@@ -1,0 +1,202 @@
+.#{$prefix-cls}-select-group {
+  &.#{$prefix-cls}-has-error {
+    .#{$prefix-cls}-btn {
+      &:after {
+        border: 2px solid $R500 !important;
+      }
+    }
+  }
+  .#{$prefix-cls}-select-btn-open {
+    background-color: $N0 !important;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 4px;
+      border: 2px solid $B200 !important;
+    }
+  }
+  .#{$prefix-cls}-selected-tag {
+    background: $N40;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 8px;
+    margin-right: 3px;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    line-height: 2;
+    font-size: 12px;
+    position: relative;
+    z-index: 20;
+    &:hover {
+      background: $N60;
+      color: $N0;
+      &:after {
+        color: $R300;
+      }
+    }
+    &:after {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      margin-right: 5px;
+      min-height: 25px;
+      min-width: 15px;
+      align-items: center;
+      display: flex;
+      justify-content: space-around;
+      content: "\F00D";
+      font: normal normal normal 11px/1 FontAwesome;
+      margin-left: 5px;
+      margin-top: 1px;
+      color: $N60;
+      :hover {
+        // background: blue;
+      }
+    }
+    &:active {
+      &:after {
+        color: $R400 !important;
+      }
+    }
+  }
+  .#{$prefix-cls}-select-multiple {
+    padding: 2px 9px 2px 6px;
+    .#{$prefix-cls}-btn-text-fade {
+      margin-top: 3px;
+    }
+  }
+  .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn-default {
+    min-height: 34px;
+    max-height: 34px;
+    background-color: $N10;
+    cursor: default;
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 4px;
+      border: 2px solid $N40;
+      z-index: 15;
+    }
+    &:hover {
+      background: $N20;
+    }
+    &:active {
+      color: $N400;
+    }
+  }
+  .#{$prefix-cls}-select-search {
+    border: 0px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 1px solid $N40;
+    font-size: 14px;
+  }
+  .#{$prefix-cls}-dropdown-menu {
+    display: block;
+    overflow-y: auto;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 155px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 4px 0;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+    border-radius: 3px;
+    list-style-type: none;
+    li {
+      a {
+        padding: 8px 34px 8px 12px;
+        span {
+          cursor: default;
+        }
+        i.#{$prefix-cls}-fa {
+          // color: $N60; /* Default color unless otherwise specified */
+          margin-left: 8px;
+          position: relative;
+          top: 4px;
+        }
+      }
+    }
+    .#{$prefix-cls}-notify {
+      position: absolute;
+      bottom: 5px;
+      width: 96%;
+      margin: 0 2%;
+      min-height: 26px;
+      padding: 3px 5px;
+      background: $Y100;
+      border: 1px solid $N100;
+      border-radius: 3px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+      pointer-events: none;
+    }
+    .#{$prefix-cls}-fa-check {
+      position: absolute;
+      display: inline-block;
+      right: 10px;
+      top: 10px;
+    }
+    .#{$prefix-cls}-fa-plus-square-o {
+      font-size: 16px;
+      position: absolute;
+      top: 13px;
+      right: 10px;
+      color: $N60;
+    }
+    .#{$prefix-cls}-select-all {
+      position: relative;
+      border-bottom: 1px solid $N40;
+      cursor: default;
+      a {
+        i {
+          color: $N60;
+        }
+      }
+    }
+  }
+  .#{$prefix-cls}-dropdown-toggle {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    min-width: 80px;
+    justify-content: space-evenly;
+    .#{$prefix-cls}-select-placeholder {
+      color: $N70;
+    }
+    .#{$prefix-cls}-btn-text-fade {
+      justify-content: space-between !important;
+      i {
+        position: inherit;
+        right: 7px;
+        top: 50%;
+        margin-top: -1px;
+        margin-right: 3px;
+      }
+    }
+    &>span {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+  }
+}

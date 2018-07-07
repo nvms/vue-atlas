@@ -1,0 +1,90 @@
+.#{$prefix-cls}-dropdown-con {
+  position: relative;
+  display: inline-block;
+  .#{$prefix-cls}-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 155px;
+    box-sizing: border-box;
+    padding: 4px 0;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    background-color: $N0;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+    border-radius: 3px;
+    list-style-type: none;
+    overflow-y: hidden;
+
+    hr {
+      margin: 5px 0;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(23, 47, 87, 0.22);
+      &:hover {
+        background-color: rgba(9, 30, 66, 0.45);
+      }
+    }
+    &::-webkit-scrollbar-track {
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar {
+      width: 0px;
+      padding:5px 2px 5px 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+    }
+    &:hover {
+      &::-webkit-scrollbar {
+        width: 7px;
+      }
+      overflow-y: auto;
+    }
+
+    >li {
+      white-space: nowrap;
+      display: block;
+      a {
+        i {
+          padding-left: 12px !important;
+          position: relative;
+          top: 3px;
+        }
+      }
+    }
+    >li>a {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      color: $N800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.5;
+      &:hover {
+        text-decoration: none;
+        background-color: $N20;
+      }
+      &:active {
+        background-color: $B75;
+        text-decoration: none;
+        outline: none;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.#{$prefix-cls}-dropdown {
+  position: relative;
+}
+
+.#{$prefix-cls}-dropdown-toggle:focus {
+  outline: 0;
+}

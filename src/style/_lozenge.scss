@@ -1,0 +1,75 @@
+@mixin lozengeType($bgCol, $fontCol) {
+  background-color: $bgCol;
+  color: $fontCol;
+}
+
+.#{$prefix-cls}-lozenge {
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-block;
+  padding: 2px 4px 3px;
+  border-radius: 3px;
+  overflow: hidden;
+  &-truncate {
+    max-width: 180px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-uppercase {
+    text-transform: uppercase;
+  }
+  &-sm {
+    padding: 1px 3px 2px;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+  &-lg {
+    padding: 3px 4px 4px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  &.#{$prefix-cls}-lozenge-default {
+    @include lozengeType( $bgCol: $N20, $fontCol: $N300);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $N500, $fontCol: $N20);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-primary {
+    @include lozengeType( $bgCol: $B50, $fontCol: $B500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $B400, $fontCol: $N20);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-success {
+    @include lozengeType( $bgCol: $G50, $fontCol: $G500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $G400, $fontCol: $N20);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-warning {
+    @include lozengeType( $bgCol: $Y75, $fontCol: $N500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $Y400, $fontCol: $N600);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-purple {
+    @include lozengeType( $bgCol: $P50, $fontCol: $P500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $P400, $fontCol: $N20);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-danger {
+    @include lozengeType( $bgCol: $R50, $fontCol: $R500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $R400, $fontCol: $N20);
+    }
+  }
+  &.#{$prefix-cls}-lozenge-subtle {
+    @include lozengeType( $bgCol: $N0, $fontCol: $N500);
+    &.#{$prefix-cls}-lozenge-bold {
+      @include lozengeType( $bgCol: $N0, $fontCol: $N90);
+    }
+  }
+}

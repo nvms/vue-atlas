@@ -1,0 +1,99 @@
+.#{$prefix-cls}-modal-open {
+  overflow-x: hidden;
+}
+
+.#{$prefix-cls}-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2100;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  transition: all 0.3s ease;
+  &-hide-y {
+    overflow-y: hidden;
+  }
+  &-in {
+    background: rgba(9, 30, 66, 0.54);
+  }
+  &-dialog {
+    position: relative;
+    width: auto;
+    margin: 80px auto 0 auto;
+    border-radius: 3px;
+  }
+  &-content {
+    position: relative;
+    background-color: $N0;
+    background-clip: padding-box;
+    border-radius: 3px;
+    outline: 0;
+    box-shadow: none;
+    border: none;
+    padding: 15px;
+  }
+  &-loading {
+    position: relative;
+    background-color: $N0;
+    border-radius: 3px;
+    outline: 0;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  &-title {
+    margin: 0;
+    line-height: 1.7;
+    color: $N900;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    .#{$prefix-cls}-fa {
+      font-size: 14px;
+      margin-right: 10px;
+    }
+  }
+  &-body {
+    padding: 15px 0;
+  }
+  &-footer {
+    text-align: right;
+  }
+  /*fade*
+  &-fade &-dialog {
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  /*expands to class="va-modal-fade va-modal-in" and references a child va-modal-dialog selector*/
+  &-fade#{&}-in &-dialog {
+    opacity: 1 !important;
+  }
+  /*fade-up*/
+  &-fade-up &-dialog {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  &-fade-up#{&}-in &-dialog {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: rgba(9, 30, 66, 0.08) 0px 0px 0px 1px, rgba(9, 30, 66, 0.08) 0px 2px 1px, rgba(9, 30, 66, 0.31) 0px 0px 20px -6px;
+  }
+  &-fade-up#{&}-out &-dialog {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}

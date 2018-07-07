@@ -1,0 +1,87 @@
+{
+  "name": "vue-atlas",
+  "version": "1.1.2",
+  "description": "A library of Vue.js 2.x components baed on the Atlassian Design Guidelines.",
+  "main": "dist/index.min.js",
+  "author": "Jonathan Pyers <jon@pye.rs>",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nvms/vue-atlas"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "scripts": {
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "lint": "eslint --ext .js,.vue src || exit 0",
+    "build": "node build/build.js",
+    "build2": "webpack --progress --hide-modules --config webpack.build.min.js && webpack --progress --hide-modules --config webpack.build.js"
+  },
+  "dependencies": {
+    "velocity-animate": "^1.5.1",
+    "moment": "^2.22.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.6",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^8.2.1",
+    "babel-helper-vue-jsx-merge-props": "^2.0.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-syntax-jsx": "^6.18.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-stage-2": "^6.22.0",
+    "browser-sync": "^2.24.4",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.0",
+    "eslint": "^4.15.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-vue": "^4.0.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.4",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "marked": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "node-notifier": "^5.1.2",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "ora": "^2.1.0",
+    "path": "^0.12.7",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.0.8",
+    "postcss-url": "^7.3.2",
+    "shelljs": "^0.8.2",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.1.1",
+    "url-loader": "^0.5.8",
+    "vue": "^2.5.16",
+    "vue-highlightjs": "^1.3.3",
+    "vue-html-loader": "^1.2.4",
+    "vue-loader": "^13.3.0",
+    "vue-router": "^3.0.1",
+    "vue-style-loader": "^3.1.2",
+    "vue-template-compiler": "^2.5.2",
+    "webpack": "^3.6.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.2"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}
