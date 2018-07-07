@@ -1,0 +1,39 @@
+.#{$prefix-cls}-badge {
+  display: inline-block;
+  text-align: center;
+  font-weight: normal;
+  min-width: 10px;
+  padding: 3px 7px;
+  border-radius: 32px;
+  line-height: 1;
+  font-size: 12px;
+
+  &-default {
+    background-color: $N30;
+    color: $N800;
+  }
+  &-primary {
+    background-color: $B200;
+    color: $N0;
+  }
+  &-warning {
+    background-color: $Y200;
+    color: $N500;
+  }
+  &-danger {
+    background-color: $R300;
+    color: $N0;
+  }
+  &-success {
+    background-color: $G300;
+    color: $N0;
+  }
+  &-info {
+    background-color: $T300;
+    color: $N0;
+  }
+}
+
+.#{$prefix-cls}-btn .#{$prefix-cls}-badge {}
+
+.#{$prefix-cls}-btn-xs .#{$prefix-cls}-badge {}
