@@ -8730,6 +8730,33 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8745,6 +8772,10 @@ if (false) {(function () {
         return ['default', 'white', 'blue', 'dark', 'darker'];
       }
     },
+    sidebarItems: {
+      type: Array,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -8752,7 +8783,13 @@ if (false) {(function () {
   },
   data: function data() {
     return {
-      currentTopbarHeight: 0
+      currentTopbarHeight: 0,
+      isMobile: false,
+      minibarTopItems: [{
+        icon: 'arrow-left',
+        size: '1.25em',
+        method: this.closeMobileSidebar
+      }]
     };
   },
   created: function created() {
@@ -8763,12 +8800,26 @@ if (false) {(function () {
     });
     this.$on('Va@topbarHeightChange', function (val) {
       _this.currentTopbarHeight = val;
+      console.log('Topbar received currentTopbarHeight', _this.currentTopbarHeight);
+    });
+    this.$on('Va@topbarIsMobile', function (val) {
+      if (val === true) {
+        // this.isMobile = true
+      }
     });
   },
   beforeDestroy: function beforeDestroy() {
     this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true);
   },
 
+  methods: {
+    showMobileSidebar: function showMobileSidebar() {
+      this.$refs.aside.open();
+    },
+    closeMobileSidebar: function closeMobileSidebar() {
+      this.$refs.aside.close();
+    }
+  },
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
@@ -9103,11 +9154,21 @@ if (false) {(function () {
       default: 'va'
     }
   },
+  data: function data() {
+    return {
+      isMobile: false
+    };
+  },
   created: function created() {
     var _this = this;
 
     this.$on('Va@sidebarPresenceCheck', function (val) {
       _this.dispatch('VaLayoutManager', 'Va@sidebarPresenceReply', true);
+    });
+    this.$on('Va@sidebarIsMobile', function (val) {
+      if (val === true) {
+        _this.isMobile = true;
+      }
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -9118,13 +9179,15 @@ if (false) {(function () {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
           theme = this.theme,
-          compact = this.compact;
+          compact = this.compact,
+          isMobile = this.isMobile;
 
       var klass = {};
 
       klass[prefixCls + '-sidebar'] = true;
       klass[prefixCls + '-sidebar--theme-' + theme] = true;
       klass[prefixCls + '-sidebar-compact'] = compact;
+      klass[prefixCls + '-sidebar-mobile'] = isMobile;
 
       return klass;
     }
@@ -28938,6 +29001,25 @@ if (false) {(function () {
       default: 0,
       required: false
     },
+    mobileFriendly: {
+      type: Boolean,
+      default: true
+    },
+    mobileSidebarWidth: {
+      type: [Number, String],
+      default: 0,
+      required: false
+    },
+    mobileMinibarWidth: {
+      type: [Number, String],
+      default: 0,
+      required: false
+    },
+    mobileTopbarHeight: {
+      type: [Number, String],
+      default: 50,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -28948,7 +29030,13 @@ if (false) {(function () {
       haveTopbar: false,
       haveMinibar: false,
       haveSidebar: false,
-      havePage: false
+      havePage: false,
+
+      currentTopbarHeight: 0,
+      currentMinibarWidth: 0,
+      currentSidebarWidth: 0,
+
+      isMobile: false
     };
   },
 
@@ -28978,6 +29066,10 @@ if (false) {(function () {
       this.broadcast('VaPage', 'Va@topbarHeightChange', val);
       this.broadcast('VaTopbar', 'Va@topbarHeightChange', val);
     },
+    broadcastIsMobile: function broadcastIsMobile(val) {
+      this.broadcast('VaTopbar', 'Va@topbarIsMobile', val);
+      this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val);
+    },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);
     },
@@ -28989,11 +29081,35 @@ if (false) {(function () {
     },
     checkForPresenceOfPage: function checkForPresenceOfPage() {
       this.broadcast('VaPage', 'Va@pagePresenceCheck', true);
+    },
+    checkIfMobile: function checkIfMobile() {
+      if (this.mobileFriendly) {
+        var isMobile = window.matchMedia('only screen and (max-width: 760px)');
+        if (isMobile.matches) {
+          this.currentSidebarWidth = this.mobileSidebarWidth;
+          this.currentMinibarWidth = this.mobileMinibarWidth;
+          this.currentTopbarHeight = this.mobileTopbarHeight;
+          this.isMobile = true;
+        } else {
+          this.isMobile = false;
+        }
+      }
     }
   },
   mounted: function mounted() {
-    this.broadcastSidebarWidth(this.sidebarWidth);
-    this.broadcastMinibarWidth(this.minibarWidth);
+    this.currentTopbarHeight = this.topbarHeight;
+    this.currentMinibarWidth = this.minibarWidth;
+    this.currentSidebarWidth = this.sidebarWidth;
+
+    this.checkIfMobile();
+
+    // Tell the Topbar that we're mobile, so that it
+    // knows to load the mobile hamburger menu.
+    this.broadcastIsMobile(this.isMobile);
+
+    this.broadcastSidebarWidth(this.currentSidebarWidth);
+    this.broadcastMinibarWidth(this.currentMinibarWidth);
+    this.broadcastTopbarHeight(this.currentTopbarHeight);
 
     this.checkForPresenceOfTopbar();
     this.checkForPresenceOfSidebar();
@@ -29006,8 +29122,6 @@ if (false) {(function () {
     this.$on('Va@topbarPresenceReply', function (val) {
       if (val === true) {
         _this.haveTopbar = true;
-        // topbar height value needs to be broadcast right away
-        _this.broadcastTopbarHeight(_this.topbarHeight);
       }
     });
     this.$on('Va@minibarPresenceReply', function (val) {
@@ -32883,18 +32997,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: _vm.classObj, style: _vm.styleObj }, [
-    _c("div", { class: _vm.prefixCls + "-topbar-inner" }, [
-      _c("div", { class: _vm.prefixCls + "-topbar-left" }, [_vm._t("left")], 2),
+  return _c(
+    "div",
+    { class: _vm.classObj, style: _vm.styleObj },
+    [
+      _c("div", { class: _vm.prefixCls + "-topbar-inner" }, [
+        _c(
+          "div",
+          { class: _vm.prefixCls + "-topbar-left" },
+          [
+            _vm.isMobile
+              ? _c(
+                  "va-button",
+                  {
+                    staticStyle: { float: "left" },
+                    attrs: { type: "primary-dark", round: "" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.showMobileSidebar($event)
+                      }
+                    }
+                  },
+                  [_c("va-icon", { attrs: { type: "bars", color: "white" } })],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._t("left")
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { class: _vm.prefixCls + "-topbar-right" },
+          [_vm._t("right")],
+          2
+        )
+      ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { class: _vm.prefixCls + "-topbar-right" },
-        [_vm._t("right")],
-        2
-      )
-    ])
-  ])
+      _vm.isMobile
+        ? _c(
+            "va-aside",
+            { ref: "aside", attrs: { placement: "left", width: 300 } },
+            [
+              _c(
+                "va-bars",
+                [
+                  _c("va-minibar", {
+                    attrs: {
+                      theme: "default",
+                      "top-items": _vm.minibarTopItems
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "va-sidebar",
+                    { attrs: { theme: "default" } },
+                    [
+                      _c("va-sidebar-group", {
+                        staticStyle: { "margin-top": "18px" },
+                        attrs: {
+                          items: _vm.sidebarItems,
+                          title: "Navigation",
+                          "default-open-level": 1
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
