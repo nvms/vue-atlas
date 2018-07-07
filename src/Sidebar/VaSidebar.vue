@@ -34,9 +34,19 @@ export default {
       default: 'va'
     }
   },
+  data () {
+    return {
+      isMobile: false
+    }
+  },
   created () {
     this.$on('Va@sidebarPresenceCheck', (val) => {
       this.dispatch('VaLayoutManager', 'Va@sidebarPresenceReply', true)
+    })
+    this.$on('Va@sidebarIsMobile', (val) => {
+      if (val === true) {
+        this.isMobile = true
+      }
     })
   },
   beforeDestroy () {
@@ -44,12 +54,13 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, theme, compact} = this
+      let {prefixCls, theme, compact, isMobile} = this
       let klass = {}
 
       klass[prefixCls + '-sidebar'] = true
       klass[prefixCls + '-sidebar--theme-' + theme] = true
       klass[prefixCls + '-sidebar-compact'] = compact
+      klass[prefixCls + '-sidebar-mobile'] = isMobile
 
       return klass
     }

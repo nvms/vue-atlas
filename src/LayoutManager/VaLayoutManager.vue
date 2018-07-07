@@ -27,6 +27,25 @@ export default {
       default: 0,
       required: false
     },
+    mobileFriendly: {
+      type: Boolean,
+      default: true
+    },
+    mobileSidebarWidth: {
+      type: [Number, String],
+      default: 0,
+      required: false
+    },
+    mobileMinibarWidth: {
+      type: [Number, String],
+      default: 0,
+      required: false
+    },
+    mobileTopbarHeight: {
+      type: [Number, String],
+      default: 50,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -37,7 +56,13 @@ export default {
       haveTopbar: false,
       haveMinibar: false,
       haveSidebar: false,
-      havePage: false
+      havePage: false,
+
+      currentTopbarHeight: 0,
+      currentMinibarWidth: 0,
+      currentSidebarWidth: 0,
+
+      isMobile: false
     }
   },
   watch: {
@@ -66,6 +91,10 @@ export default {
       this.broadcast('VaPage', 'Va@topbarHeightChange', val)
       this.broadcast('VaTopbar', 'Va@topbarHeightChange', val)
     },
+    broadcastIsMobile (val) {
+      this.broadcast('VaTopbar', 'Va@topbarIsMobile', val)
+      this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val)
+    },
 
     checkForPresenceOfTopbar () {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true)
@@ -78,11 +107,36 @@ export default {
     },
     checkForPresenceOfPage () {
       this.broadcast('VaPage', 'Va@pagePresenceCheck', true)
+    },
+
+    checkIfMobile () {
+      if (this.mobileFriendly) {
+        let isMobile = window.matchMedia('only screen and (max-width: 760px)')
+        if (isMobile.matches) {
+          this.currentSidebarWidth = this.mobileSidebarWidth
+          this.currentMinibarWidth = this.mobileMinibarWidth
+          this.currentTopbarHeight = this.mobileTopbarHeight
+          this.isMobile = true
+        } else {
+          this.isMobile = false
+        }
+      }
     }
   },
   mounted () {
-    this.broadcastSidebarWidth(this.sidebarWidth)
-    this.broadcastMinibarWidth(this.minibarWidth)
+    this.currentTopbarHeight = this.topbarHeight
+    this.currentMinibarWidth = this.minibarWidth
+    this.currentSidebarWidth = this.sidebarWidth
+
+    this.checkIfMobile()
+
+    // Tell the Topbar that we're mobile, so that it
+    // knows to load the mobile hamburger menu.
+    this.broadcastIsMobile(this.isMobile)
+
+    this.broadcastSidebarWidth(this.currentSidebarWidth)
+    this.broadcastMinibarWidth(this.currentMinibarWidth)
+    this.broadcastTopbarHeight(this.currentTopbarHeight)
 
     this.checkForPresenceOfTopbar()
     this.checkForPresenceOfSidebar()
@@ -93,8 +147,6 @@ export default {
     this.$on('Va@topbarPresenceReply', (val) => {
       if (val === true) {
         this.haveTopbar = true
-        // topbar height value needs to be broadcast right away
-        this.broadcastTopbarHeight(this.topbarHeight)
       }
     })
     this.$on('Va@minibarPresenceReply', (val) => {

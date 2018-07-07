@@ -2,12 +2,39 @@
   <div :class="classObj" :style="styleObj">
     <div :class="`${prefixCls}-topbar-inner`">
       <div :class="`${prefixCls}-topbar-left`">
+        <va-button
+          v-if="isMobile"
+          type="primary-dark"
+          round
+          style="float:left;"
+          @click.native="showMobileSidebar">
+          <va-icon type="bars" color="white"></va-icon>
+        </va-button>
         <slot name="left"/>
       </div>
       <div :class="`${prefixCls}-topbar-right`">
         <slot name="right"/>
       </div>
     </div>
+    <va-aside
+      v-if="isMobile"
+      ref="aside"
+      placement="left"
+      :width="300">
+      <va-bars>
+        <va-minibar
+          theme="default"
+          :top-items="minibarTopItems">
+        </va-minibar>
+        <va-sidebar theme="default">
+          <va-sidebar-group
+            :items="sidebarItems"
+            title="Navigation"
+            style="margin-top:18px;"
+            :default-open-level="1"/>
+        </va-sidebar>
+      </va-bars>
+    </va-aside>
   </div>
 </template>
 
@@ -32,6 +59,10 @@ export default {
         ]
       }
     },
+    sidebarItems: {
+      type: Array,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -39,7 +70,15 @@ export default {
   },
   data () {
     return {
-      currentTopbarHeight: 0
+      currentTopbarHeight: 0,
+      isMobile: false,
+      minibarTopItems: [
+        {
+          icon: 'arrow-left',
+          size: '1.25em',
+          method: this.closeMobileSidebar
+        }
+      ]
     }
   },
   created () {
@@ -48,10 +87,24 @@ export default {
     })
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
+      console.log('Topbar received currentTopbarHeight', this.currentTopbarHeight)
+    })
+    this.$on('Va@topbarIsMobile', (val) => {
+      if (val === true) {
+        // this.isMobile = true
+      }
     })
   },
   beforeDestroy () {
     this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true)
+  },
+  methods: {
+    showMobileSidebar () {
+      this.$refs.aside.open()
+    },
+    closeMobileSidebar () {
+      this.$refs.aside.close()
+    }
   },
   computed: {
     classObj () {
