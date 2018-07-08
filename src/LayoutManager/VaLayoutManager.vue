@@ -94,6 +94,7 @@ export default {
     broadcastIsMobile (val) {
       this.broadcast('VaTopbar', 'Va@topbarIsMobile', val)
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val)
+      this.broadcast('VaPage', 'Va@pageIsMobile', val)
     },
 
     checkForPresenceOfTopbar () {

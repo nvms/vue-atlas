@@ -6030,7 +6030,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     return {
       currentSidebarWidth: 240,
       currentMinibarWidth: 64,
-      currentTopbarHeight: 0
+      currentTopbarHeight: 0,
+      isMobile: false
     };
   },
   created: function created() {
@@ -6045,7 +6046,9 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     this.$on('Va@topbarHeightChange', function (val) {
       _this.currentTopbarHeight = val;
     });
-
+    this.$on('Va@pageIsMobile', function (val) {
+      _this.isMobile = true;
+    });
     this.$on('Va@pagePresenceCheck', function (val) {
       _this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true);
     });
@@ -6058,11 +6061,14 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     pageClassObj: function pageClassObj() {
       var prefixCls = this.prefixCls,
           size = this.size,
-          article = this.article;
+          article = this.article,
+          isMobile = this.isMobile;
 
       var klass = {};
 
-      klass[prefixCls + '-page-container-' + size] = true;
+      klass[prefixCls + '-page-container-' + size] = true && !isMobile;
+      klass[prefixCls + '-page-container-lg'] = isMobile;
+
       klass[prefixCls + '-page-container-article'] = article;
 
       return klass;
@@ -29069,6 +29075,7 @@ if (false) {(function () {
     broadcastIsMobile: function broadcastIsMobile(val) {
       this.broadcast('VaTopbar', 'Va@topbarIsMobile', val);
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val);
+      this.broadcast('VaPage', 'Va@pageIsMobile', val);
     },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);

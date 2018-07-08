@@ -41,7 +41,8 @@ export default {
     return {
       currentSidebarWidth: 240,
       currentMinibarWidth: 64,
-      currentTopbarHeight: 0
+      currentTopbarHeight: 0,
+      isMobile: false
     }
   },
   created () {
@@ -54,7 +55,9 @@ export default {
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
     })
-
+    this.$on('Va@pageIsMobile', (val) => {
+      this.isMobile = true
+    })
     this.$on('Va@pagePresenceCheck', (val) => {
       this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true)
     })
@@ -64,10 +67,12 @@ export default {
   },
   computed: {
     pageClassObj () {
-      let {prefixCls, size, article} = this
+      let {prefixCls, size, article, isMobile} = this
       let klass = {}
 
-      klass[prefixCls + '-page-container-' + size] = true
+      klass[prefixCls + '-page-container-' + size] = true && !isMobile
+      klass[prefixCls + '-page-container-lg'] = isMobile
+
       klass[prefixCls + '-page-container-article'] = article
 
       return klass
