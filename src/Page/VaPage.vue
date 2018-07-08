@@ -56,7 +56,9 @@ export default {
       this.currentTopbarHeight = val
     })
     this.$on('Va@pageIsMobile', (val) => {
-      this.isMobile = true
+      if (val === true) {
+        this.isMobile = true
+      }
     })
     this.$on('Va@pagePresenceCheck', (val) => {
       this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true)

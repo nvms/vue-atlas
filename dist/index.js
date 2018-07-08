@@ -6047,7 +6047,9 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       _this.currentTopbarHeight = val;
     });
     this.$on('Va@pageIsMobile', function (val) {
-      _this.isMobile = true;
+      if (val === true) {
+        _this.isMobile = true;
+      }
     });
     this.$on('Va@pagePresenceCheck', function (val) {
       _this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true);
