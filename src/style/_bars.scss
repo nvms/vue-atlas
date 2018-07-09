@@ -178,6 +178,9 @@
   }
   &-header {
     margin: 15px 11px 15px 11px;
+    a {
+      outline: none !important;
+    }
     .#{$prefix-cls}-btn {
       padding-left: 4px;
       padding-top: 4px;
@@ -764,7 +767,7 @@ blue
       &:active,
       &:focus {
         color: $N0;
-        border: 2px solid $B100;
+        // border: 2px solid $B100;
         background-color: $B200;
       }
     }
@@ -836,7 +839,7 @@ dark
       &:active,
       &:focus {
         color: $B100 !important;
-        border: 2px solid $N500;
+        // border: 2px solid $N500;
         background-color: $N500;
       }
     }
@@ -908,7 +911,7 @@ darker
       &:active,
       &:focus {
         color: $B100 !important;
-        border: 2px solid $N500;
+        // border: 2px solid $N500;
         background-color: $N500;
       }
     }

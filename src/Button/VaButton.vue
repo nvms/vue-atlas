@@ -31,7 +31,9 @@ export default {
           'subtle',
           'link',
           'subtle-link',
-          'active'
+          'active',
+          'dark',
+          'darker'
         ].includes(v)
       }
     },
@@ -128,6 +130,10 @@ export default {
         case 'subtle-link':
           return darker
         case 'danger':
+          return white
+        case 'dark':
+          return white
+        case 'darker':
           return white
       }
 

@@ -7932,7 +7932,7 @@ if (false) {(function () {
       values: ['default', 'primary'],
       note: 'The style of button to render.',
       validator: function validator(v) {
-        return ['default', 'primary', 'primary-light', 'primary-dark', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active'].includes(v);
+        return ['default', 'primary', 'primary-light', 'primary-dark', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active', 'dark', 'darker'].includes(v);
       }
     },
     size: {
@@ -8025,6 +8025,10 @@ if (false) {(function () {
         case 'subtle-link':
           return darker;
         case 'danger':
+          return white;
+        case 'dark':
+          return white;
+        case 'darker':
           return white;
       }
 
