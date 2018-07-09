@@ -18,8 +18,8 @@
 
 @mixin lgButtonSize() {
   @include btn-size(
-    $padding: 4px 20px,
-    $fontSize: 15px,
+    $padding: 2px 20px,
+    $fontSize: 17px,
     $lineHeight: 2.5em,
     $borderRadius: 3px
   );
@@ -249,6 +249,30 @@
       text-decoration: none;
     }
   }
+  &-dark {
+    @include btn-type(
+      $bgCol: $N700,
+      $fontCol: $N100,
+      $bgColHover: $N500,
+      $fontColHover: $N80,
+      $bgColActive: $N800,
+      $fontColActive: $N200,
+      $badgeBgCol: $N500,
+      $badgeFontCol: $N200
+    )
+  }
+  &-darker {
+    @include btn-type(
+      $bgCol: $N800,
+      $fontCol: $N100,
+      $bgColHover: $N500,
+      $fontColHover: $N80,
+      $bgColActive: $N700,
+      $fontColActive: $N200,
+      $badgeBgCol: $N500,
+      $badgeFontCol: $N200
+    )
+  }
   &-active {
     @include btn-type(
       $bgCol: $N500,
@@ -441,7 +465,7 @@
   }
 }
 
-.#{$prefix-cls}-topbar {
+.#{$prefix-cls}-topbar--theme-blue {
   .#{$prefix-cls}-dropdown-selected {
     >span>div>a.#{$prefix-cls}-btn {
       background-color: $B500;

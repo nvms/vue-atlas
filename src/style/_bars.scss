@@ -86,7 +86,6 @@
     align-items: center;
     width: 100%;
     justify-content: space-between;
-    color: $N0;
     cursor: default;
   }
 }
@@ -99,6 +98,9 @@
 
 .#{$prefix-cls}-topbar--theme-blue {
   background-color: $B500;
+  .#{$prefix-cls}-topbar-inner {
+    color: $N0;
+  }
   .#{$prefix-cls}-input-con {
     .#{$prefix-cls}-form-control {
       background: darken($B500, 10%);
@@ -107,6 +109,56 @@
       &:focus {
         border: 2px solid $B300;
         background: darken($B500, 10%) !important;
+      }
+    }
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-white {
+  background-color: $N0;
+  .#{$prefix-cls}-topbar-inner {
+    color: $N500;
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-default {
+  background-color: $N20;
+  .#{$prefix-cls}-topbar-inner {
+    color: $N500;
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-dark {
+  background-color: $N700;
+  .#{$prefix-cls}-topbar-inner {
+    color: $N60;
+  }
+  .#{$prefix-cls}-input-con {
+    .#{$prefix-cls}-form-control {
+      background: $N400;
+      border: 2px solid $N400;
+      color: $N0;
+      &:focus {
+        border: 2px solid $N200;
+        background: $N500 !important;
+      }
+    }
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-darker {
+  background-color: $N800;
+  .#{$prefix-cls}-topbar-inner {
+    color: $N80;
+  }
+  .#{$prefix-cls}-input-con {
+    .#{$prefix-cls}-form-control {
+      background: $N500;
+      border: 2px solid $N500;
+      color: $N0;
+      &:focus {
+        border: 2px solid $N300;
+        background: $N600 !important;
       }
     }
   }
