@@ -2,6 +2,8 @@
 
 A library of [Vue.js](https://vuejs.org) 2.x components based on the [Atlassian Design Guidelines](https://atlassian.design/).
 
+![](https://img.shields.io/npm/v/vue-atlas.svg)
+
 [Documentation](https://vue-atlas.com)
 
 ## Installation
