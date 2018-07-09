@@ -72,9 +72,7 @@ export default {
       let {prefixCls, size, article, isMobile} = this
       let klass = {}
 
-      klass[prefixCls + '-page-container-' + size] = true && !isMobile
-      klass[prefixCls + '-page-container-lg'] = isMobile
-
+      isMobile ? klass[prefixCls + '-page-container-lg'] = true : klass[prefixCls + '-page-container-' + size] = true
       klass[prefixCls + '-page-container-article'] = article
 
       return klass

@@ -6068,9 +6068,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
       var klass = {};
 
-      klass[prefixCls + '-page-container-' + size] = true && !isMobile;
-      klass[prefixCls + '-page-container-lg'] = isMobile;
-
+      isMobile ? klass[prefixCls + '-page-container-lg'] = true : klass[prefixCls + '-page-container-' + size] = true;
       klass[prefixCls + '-page-container-article'] = article;
 
       return klass;
@@ -7384,6 +7382,7 @@ function removeClass(el, cls) {
 //
 //
 //
+//
 
 
 
@@ -7416,6 +7415,11 @@ function removeClass(el, cls) {
     showClean: {
       type: Boolean,
       default: false
+    },
+    autofocus: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   // directives: {
@@ -32026,6 +32030,7 @@ var render = function() {
           readonly: _vm.readonly,
           disabled: _vm.disabled,
           placeholder: _vm.placeholder,
+          autofocus: _vm.autofocus,
           type: _vm.type
         },
         domProps: { value: _vm.value },

@@ -24,6 +24,7 @@
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"
+      :autofocus="autofocus"
       :type="type"
       @blur="blur"
       @input="update($event.target.value)"
@@ -82,6 +83,11 @@ export default {
     showClean: {
       type: Boolean,
       default: false
+    },
+    autofocus: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   // directives: {
