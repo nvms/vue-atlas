@@ -12,6 +12,9 @@
         </va-button>
         <slot name="left"/>
       </div>
+      <div :class="`${prefixCls}-topbar-center`">
+        <slot name="center"/>
+      </div>
       <div :class="`${prefixCls}-topbar-right`">
         <slot name="right"/>
       </div>
@@ -87,7 +90,6 @@ export default {
     })
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
-      console.log('Topbar received currentTopbarHeight', this.currentTopbarHeight)
     })
     this.$on('Va@topbarIsMobile', (val) => {
       if (val === true) {

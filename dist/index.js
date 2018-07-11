@@ -8773,6 +8773,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
 
 
 
@@ -8816,7 +8819,6 @@ if (false) {(function () {
     });
     this.$on('Va@topbarHeightChange', function (val) {
       _this.currentTopbarHeight = val;
-      console.log('Topbar received currentTopbarHeight', _this.currentTopbarHeight);
     });
     this.$on('Va@topbarIsMobile', function (val) {
       if (val === true) {
@@ -9184,6 +9186,8 @@ if (false) {(function () {
     this.$on('Va@sidebarIsMobile', function (val) {
       if (val === true) {
         _this.isMobile = true;
+      } else {
+        _this.isMobile = false;
       }
     });
   },
@@ -9455,7 +9459,8 @@ if (false) {(function () {
   },
   data: function data() {
     return {
-      currentMinibarWidth: 64
+      currentMinibarWidth: 0,
+      isMobile: false
     };
   },
   created: function created() {
@@ -9466,6 +9471,11 @@ if (false) {(function () {
     });
     this.$on('Va@minibarWidthChange', function (val) {
       _this.currentMinibarWidth = val;
+    });
+    this.$on('Va@minibarIsMobile', function (val) {
+      if (val === true) {
+        _this.isMobile = true;
+      }
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -29002,17 +29012,17 @@ if (false) {(function () {
   name: 'VaLayoutManager',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
-    sidebarWidth: {
+    desktopSidebarWidth: {
       type: [Number, String],
       default: 0,
       required: false
     },
-    minibarWidth: {
+    desktopMinibarWidth: {
       type: [Number, String],
       default: 0,
       required: false
     },
-    topbarHeight: {
+    desktopTopbarHeight: {
       type: [Number, String],
       default: 0,
       required: false
@@ -29020,6 +29030,11 @@ if (false) {(function () {
     mobileFriendly: {
       type: Boolean,
       default: true
+    },
+    mobileBreakpoint: {
+      type: Number,
+      default: 768,
+      required: false
     },
     mobileSidebarWidth: {
       type: [Number, String],
@@ -29052,22 +29067,48 @@ if (false) {(function () {
       currentMinibarWidth: 0,
       currentSidebarWidth: 0,
 
-      isMobile: false
+      isMobile: false,
+      pastMobileBreakpoint: false,
+      windowWidth: 0
     };
   },
 
   watch: {
-    sidebarWidth: function sidebarWidth(val) {
-      this.broadcastSidebarWidth(val);
+    pastMobileBreakpoint: function pastMobileBreakpoint(val) {
+      this.broadcastIsMobile(val);
+      this.setAndBroadcastDimensions();
     },
-    minibarWidth: function minibarWidth(val) {
-      this.broadcastMinibarWidth(val);
+    desktopSidebarWidth: function desktopSidebarWidth(val) {
+      this.setAndBroadcastDimensions();
     },
-    topbarHeight: function topbarHeight(val) {
-      this.broadcastTopbarHeight(val);
+    desktopMinibarWidth: function desktopMinibarWidth(val) {
+      this.setAndBroadcastDimensions();
+    },
+    desktopTopbarHeight: function desktopTopbarHeight(val) {
+      this.setAndBroadcastDimensions();
+    },
+    mobileSidebarWidth: function mobileSidebarWidth(val) {
+      this.setAndBroadcastDimensions();
+    },
+    mobileMinibarWidth: function mobileMinibarWidth(val) {
+      this.setAndBroadcastDimensions();
+    },
+    mobileTopbarHeight: function mobileTopbarHeight(val) {
+      this.setAndBroadcastDimensions();
     }
   },
   methods: {
+    _handleResize: function _handleResize() {
+      var ww = window.innerWidth || document.body.clientWidth;
+
+      if (parseInt(ww) < this.mobileBreakpoint) {
+        this.pastMobileBreakpoint = true;
+      } else {
+        this.pastMobileBreakpoint ? this.pastMobileBreakpoint = false : true;
+      }
+
+      this.windowWidth = parseInt(ww);
+    },
     broadcastSidebarWidth: function broadcastSidebarWidth(val) {
       this.broadcast('VaBars', 'Va@sidebarWidthChange', val);
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val);
@@ -29086,6 +29127,7 @@ if (false) {(function () {
       this.broadcast('VaTopbar', 'Va@topbarIsMobile', val);
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val);
       this.broadcast('VaPage', 'Va@pageIsMobile', val);
+      this.broadcast('VaMinibar', 'Va@minibarIsMobile', val);
     },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);
@@ -29099,38 +29141,33 @@ if (false) {(function () {
     checkForPresenceOfPage: function checkForPresenceOfPage() {
       this.broadcast('VaPage', 'Va@pagePresenceCheck', true);
     },
-    checkIfMobile: function checkIfMobile() {
-      if (this.mobileFriendly) {
-        var isMobile = window.matchMedia('only screen and (max-width: 760px)');
-        if (isMobile.matches) {
-          this.currentSidebarWidth = this.mobileSidebarWidth;
-          this.currentMinibarWidth = this.mobileMinibarWidth;
-          this.currentTopbarHeight = this.mobileTopbarHeight;
-          this.isMobile = true;
-        } else {
-          this.isMobile = false;
-        }
+    setAndBroadcastDimensions: function setAndBroadcastDimensions() {
+      if (this.pastMobileBreakpoint) {
+        this.currentTopbarHeight = this.mobileTopbarHeight;
+        this.currentMinibarWidth = this.mobileMinibarWidth;
+        this.currentSidebarWidth = this.mobileSidebarWidth;
+      } else {
+        this.currentTopbarHeight = this.desktopTopbarHeight;
+        this.currentMinibarWidth = this.desktopMinibarWidth;
+        this.currentSidebarWidth = this.desktopSidebarWidth;
       }
+      this.broadcastSidebarWidth(this.currentSidebarWidth);
+      this.broadcastMinibarWidth(this.currentMinibarWidth);
+      this.broadcastTopbarHeight(this.currentTopbarHeight);
     }
   },
   mounted: function mounted() {
-    this.currentTopbarHeight = this.topbarHeight;
-    this.currentMinibarWidth = this.minibarWidth;
-    this.currentSidebarWidth = this.sidebarWidth;
+    window.addEventListener('resize', this._handleResize, false);
+    this._handleResize();
 
-    this.checkIfMobile();
-
-    // Tell the Topbar that we're mobile, so that it
-    // knows to load the mobile hamburger menu.
-    this.broadcastIsMobile(this.isMobile);
-
-    this.broadcastSidebarWidth(this.currentSidebarWidth);
-    this.broadcastMinibarWidth(this.currentMinibarWidth);
-    this.broadcastTopbarHeight(this.currentTopbarHeight);
+    this.setAndBroadcastDimensions();
 
     this.checkForPresenceOfTopbar();
     this.checkForPresenceOfSidebar();
     this.checkForPresenceOfPage();
+  },
+  beforeDestroy: function beforeDestroy() {
+    window.removeEventListener('resize', this._handleResize, false);
   },
   created: function created() {
     var _this = this;
@@ -33043,6 +33080,13 @@ var render = function() {
             _vm._v(" "),
             _vm._t("left")
           ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { class: _vm.prefixCls + "-topbar-center" },
+          [_vm._t("center")],
           2
         ),
         _vm._v(" "),

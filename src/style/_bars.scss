@@ -116,6 +116,9 @@
 
 .#{$prefix-cls}-topbar--theme-white {
   background-color: $N0;
+  // -webkit-box-shadow: inset 0px -1px 0px 0px $N40;
+  // -moz-box-shadow: inset 0px -1px 0px 0px $N40;
+  // box-shadow: inset 0px -1px 0px 0px $N40;
   .#{$prefix-cls}-topbar-inner {
     color: $N500;
   }

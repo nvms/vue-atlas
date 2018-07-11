@@ -12,17 +12,17 @@ export default {
   name: 'VaLayoutManager',
   mixins: [events],
   props: {
-    sidebarWidth: {
+    desktopSidebarWidth: {
       type: [Number, String],
       default: 0,
       required: false
     },
-    minibarWidth: {
+    desktopMinibarWidth: {
       type: [Number, String],
       default: 0,
       required: false
     },
-    topbarHeight: {
+    desktopTopbarHeight: {
       type: [Number, String],
       default: 0,
       required: false
@@ -30,6 +30,11 @@ export default {
     mobileFriendly: {
       type: Boolean,
       default: true
+    },
+    mobileBreakpoint: {
+      type: Number,
+      default: 768,
+      required: false
     },
     mobileSidebarWidth: {
       type: [Number, String],
@@ -62,21 +67,47 @@ export default {
       currentMinibarWidth: 0,
       currentSidebarWidth: 0,
 
-      isMobile: false
+      isMobile: false,
+      pastMobileBreakpoint: false,
+      windowWidth: 0
     }
   },
   watch: {
-    sidebarWidth (val) {
-      this.broadcastSidebarWidth(val)
+    pastMobileBreakpoint (val) {
+      this.broadcastIsMobile(val)
+      this.setAndBroadcastDimensions()
     },
-    minibarWidth (val) {
-      this.broadcastMinibarWidth(val)
+    desktopSidebarWidth (val) {
+      this.setAndBroadcastDimensions()
     },
-    topbarHeight (val) {
-      this.broadcastTopbarHeight(val)
+    desktopMinibarWidth (val) {
+      this.setAndBroadcastDimensions()
+    },
+    desktopTopbarHeight (val) {
+      this.setAndBroadcastDimensions()
+    },
+    mobileSidebarWidth (val) {
+      this.setAndBroadcastDimensions()
+    },
+    mobileMinibarWidth (val) {
+      this.setAndBroadcastDimensions()
+    },
+    mobileTopbarHeight (val) {
+      this.setAndBroadcastDimensions()
     }
   },
   methods: {
+    _handleResize () {
+      let ww = window.innerWidth || document.body.clientWidth
+
+      if (parseInt(ww) < this.mobileBreakpoint) {
+        this.pastMobileBreakpoint = true
+      } else {
+        this.pastMobileBreakpoint ? this.pastMobileBreakpoint = false : true
+      }
+
+      this.windowWidth = parseInt(ww)
+    },
     broadcastSidebarWidth (val) {
       this.broadcast('VaBars', 'Va@sidebarWidthChange', val)
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val)
@@ -95,6 +126,7 @@ export default {
       this.broadcast('VaTopbar', 'Va@topbarIsMobile', val)
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val)
       this.broadcast('VaPage', 'Va@pageIsMobile', val)
+      this.broadcast('VaMinibar', 'Va@minibarIsMobile', val)
     },
 
     checkForPresenceOfTopbar () {
@@ -109,39 +141,33 @@ export default {
     checkForPresenceOfPage () {
       this.broadcast('VaPage', 'Va@pagePresenceCheck', true)
     },
-
-    checkIfMobile () {
-      if (this.mobileFriendly) {
-        let isMobile = window.matchMedia('only screen and (max-width: 760px)')
-        if (isMobile.matches) {
-          this.currentSidebarWidth = this.mobileSidebarWidth
-          this.currentMinibarWidth = this.mobileMinibarWidth
-          this.currentTopbarHeight = this.mobileTopbarHeight
-          this.isMobile = true
-        } else {
-          this.isMobile = false
-        }
+    setAndBroadcastDimensions () {
+      if (this.pastMobileBreakpoint) {
+        this.currentTopbarHeight = this.mobileTopbarHeight
+        this.currentMinibarWidth = this.mobileMinibarWidth
+        this.currentSidebarWidth = this.mobileSidebarWidth
+      } else {
+        this.currentTopbarHeight = this.desktopTopbarHeight
+        this.currentMinibarWidth = this.desktopMinibarWidth
+        this.currentSidebarWidth = this.desktopSidebarWidth
       }
+      this.broadcastSidebarWidth(this.currentSidebarWidth)
+      this.broadcastMinibarWidth(this.currentMinibarWidth)
+      this.broadcastTopbarHeight(this.currentTopbarHeight)
     }
   },
   mounted () {
-    this.currentTopbarHeight = this.topbarHeight
-    this.currentMinibarWidth = this.minibarWidth
-    this.currentSidebarWidth = this.sidebarWidth
+    window.addEventListener('resize', this._handleResize, false)
+    this._handleResize()
 
-    this.checkIfMobile()
-
-    // Tell the Topbar that we're mobile, so that it
-    // knows to load the mobile hamburger menu.
-    this.broadcastIsMobile(this.isMobile)
-
-    this.broadcastSidebarWidth(this.currentSidebarWidth)
-    this.broadcastMinibarWidth(this.currentMinibarWidth)
-    this.broadcastTopbarHeight(this.currentTopbarHeight)
+    this.setAndBroadcastDimensions()
 
     this.checkForPresenceOfTopbar()
     this.checkForPresenceOfSidebar()
     this.checkForPresenceOfPage()
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this._handleResize, false)
   },
   created () {
     // Presence replies

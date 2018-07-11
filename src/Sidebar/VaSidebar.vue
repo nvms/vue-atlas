@@ -46,6 +46,8 @@ export default {
     this.$on('Va@sidebarIsMobile', (val) => {
       if (val === true) {
         this.isMobile = true
+      } else {
+        this.isMobile = false
       }
     })
   },

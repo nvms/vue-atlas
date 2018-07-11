@@ -66,7 +66,8 @@ export default {
   },
   data () {
     return {
-      currentMinibarWidth: 64
+      currentMinibarWidth: 0,
+      isMobile: false
     }
   },
   created () {
@@ -75,6 +76,11 @@ export default {
     })
     this.$on('Va@minibarWidthChange', (val) => {
       this.currentMinibarWidth = val
+    })
+    this.$on('Va@minibarIsMobile', (val) => {
+      if (val === true) {
+        this.isMobile = true
+      }
     })
   },
   beforeDestroy () {
