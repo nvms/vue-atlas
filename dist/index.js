@@ -6493,7 +6493,8 @@ function getOffset(element) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_events__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__ = __webpack_require__(7);
 //
 //
 //
@@ -6505,11 +6506,13 @@ function getOffset(element) {
 //
 //
 //
+
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaRange',
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
     min: {
       type: [String, Number],
@@ -6623,6 +6626,7 @@ function getOffset(element) {
         _this.isMobile = false;
       }
     });
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -6642,7 +6646,7 @@ function getOffset(element) {
     wrp.appendChild(preBar);
 
     var r = this.$refs.range;
-    this._inputEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener_js__["a" /* default */].listen(r, 'input', function () {
+    this._inputEvent = __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__["a" /* default */].listen(r, 'input', function () {
       preBar.style.width = _this2.getVal() + 'px';
     });
 
@@ -29175,6 +29179,14 @@ if (false) {(function () {
     this.$on('Va@pagePresenceReply', function (val) {
       if (val === true) {
         _this.havePage = true;
+      }
+    });
+
+    // Some components might want to request the isMobile status, for example,
+    // if they have been created a while after isMobile was broadcast.
+    this.$on('Va@requestIsMobile', function (val) {
+      if (val === true) {
+        _this.broadcastIsMobile(_this.pastMobileBreakpoint);
       }
     });
 

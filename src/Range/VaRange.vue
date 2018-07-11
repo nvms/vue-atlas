@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import events from '../utils/events'
 import EventListener from '../utils/EventListener.js'
 
 export default {
   name: 'VaRange',
+  mixins: [events],
   props: {
     min: {
       type: [String, Number],
@@ -124,6 +126,7 @@ export default {
         this.isMobile = false
       }
     })
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
   },
   mounted () {
     let {prefixCls} = this

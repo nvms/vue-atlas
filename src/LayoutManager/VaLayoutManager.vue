@@ -193,6 +193,14 @@ export default {
       }
     })
 
+    // Some components might want to request the isMobile status, for example,
+    // if they have been created a while after isMobile was broadcast.
+    this.$on('Va@requestIsMobile', (val) => {
+      if (val === true) {
+        this.broadcastIsMobile(this.pastMobileBreakpoint)
+      }
+    })
+
     // Disconnections
     this.$on('Va@sidebarDisconnect', (val) => {
       if (val === true) {
