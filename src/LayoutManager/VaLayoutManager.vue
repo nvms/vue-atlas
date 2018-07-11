@@ -48,7 +48,7 @@ export default {
     },
     mobileTopbarHeight: {
       type: [Number, String],
-      default: 50,
+      default: 0,
       required: false
     },
     prefixCls: {

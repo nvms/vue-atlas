@@ -8751,33 +8751,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -8793,10 +8766,6 @@ if (false) {(function () {
         return ['default', 'white', 'blue', 'dark', 'darker'];
       }
     },
-    sidebarItems: {
-      type: Array,
-      required: false
-    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -8805,12 +8774,7 @@ if (false) {(function () {
   data: function data() {
     return {
       currentTopbarHeight: 0,
-      isMobile: false,
-      minibarTopItems: [{
-        icon: 'arrow-left',
-        size: '1.25em',
-        method: this.closeMobileSidebar
-      }]
+      isMobile: false
     };
   },
   created: function created() {
@@ -8824,7 +8788,9 @@ if (false) {(function () {
     });
     this.$on('Va@topbarIsMobile', function (val) {
       if (val === true) {
-        // this.isMobile = true
+        _this.isMobile = true;
+      } else {
+        _this.isMobile = false;
       }
     });
   },
@@ -8832,14 +8798,6 @@ if (false) {(function () {
     this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true);
   },
 
-  methods: {
-    showMobileSidebar: function showMobileSidebar() {
-      this.$refs.aside.open();
-    },
-    closeMobileSidebar: function closeMobileSidebar() {
-      this.$refs.aside.close();
-    }
-  },
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
@@ -9477,6 +9435,8 @@ if (false) {(function () {
     this.$on('Va@minibarIsMobile', function (val) {
       if (val === true) {
         _this.isMobile = true;
+      } else {
+        _this.isMobile = false;
       }
     });
   },
@@ -29050,7 +29010,7 @@ if (false) {(function () {
     },
     mobileTopbarHeight: {
       type: [Number, String],
-      default: 50,
+      default: 0,
       required: false
     },
     prefixCls: {
@@ -33054,92 +33014,25 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { class: _vm.classObj, style: _vm.styleObj },
-    [
-      _c("div", { class: _vm.prefixCls + "-topbar-inner" }, [
-        _c(
-          "div",
-          { class: _vm.prefixCls + "-topbar-left" },
-          [
-            _vm.isMobile
-              ? _c(
-                  "va-button",
-                  {
-                    staticStyle: { float: "left" },
-                    attrs: { type: "primary-dark", round: "" },
-                    nativeOn: {
-                      click: function($event) {
-                        return _vm.showMobileSidebar($event)
-                      }
-                    }
-                  },
-                  [_c("va-icon", { attrs: { type: "bars", color: "white" } })],
-                  1
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm._t("left")
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: _vm.prefixCls + "-topbar-center" },
-          [_vm._t("center")],
-          2
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { class: _vm.prefixCls + "-topbar-right" },
-          [_vm._t("right")],
-          2
-        )
-      ]),
+  return _c("div", { class: _vm.classObj, style: _vm.styleObj }, [
+    _c("div", { class: _vm.prefixCls + "-topbar-inner" }, [
+      _c("div", { class: _vm.prefixCls + "-topbar-left" }, [_vm._t("left")], 2),
       _vm._v(" "),
-      _vm.isMobile
-        ? _c(
-            "va-aside",
-            { ref: "aside", attrs: { placement: "left", width: 300 } },
-            [
-              _c(
-                "va-bars",
-                [
-                  _c("va-minibar", {
-                    attrs: {
-                      theme: "default",
-                      "top-items": _vm.minibarTopItems
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "va-sidebar",
-                    { attrs: { theme: "default" } },
-                    [
-                      _c("va-sidebar-group", {
-                        staticStyle: { "margin-top": "18px" },
-                        attrs: {
-                          items: _vm.sidebarItems,
-                          title: "Navigation",
-                          "default-open-level": 1
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        : _vm._e()
-    ],
-    1
-  )
+      _c(
+        "div",
+        { class: _vm.prefixCls + "-topbar-center" },
+        [_vm._t("center")],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { class: _vm.prefixCls + "-topbar-right" },
+        [_vm._t("right")],
+        2
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
