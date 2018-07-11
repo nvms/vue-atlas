@@ -1,4 +1,8 @@
-# vue-atlas
+<p align="center">
+  <img src="https://vue-atlas.com/branding_github.png">
+</p>
+
+---
 
 A library of [Vue.js](https://vuejs.org) 2.x components based on the [Atlassian Design Guidelines](https://atlassian.design/).
 
