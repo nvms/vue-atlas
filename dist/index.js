@@ -6049,6 +6049,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     this.$on('Va@pageIsMobile', function (val) {
       if (val === true) {
         _this.isMobile = true;
+      } else {
+        _this.isMobile = false;
       }
     });
     this.$on('Va@pagePresenceCheck', function (val) {

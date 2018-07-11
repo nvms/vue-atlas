@@ -58,6 +58,8 @@ export default {
     this.$on('Va@pageIsMobile', (val) => {
       if (val === true) {
         this.isMobile = true
+      } else {
+        this.isMobile = false
       }
     })
     this.$on('Va@pagePresenceCheck', (val) => {
