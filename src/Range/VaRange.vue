@@ -49,7 +49,8 @@ export default {
     return {
       showoutput: false,
       currentValue: value,
-      preBarElement: null
+      preBarElement: null,
+      isMobile: false
     }
   },
   watch: {
@@ -79,16 +80,25 @@ export default {
       let min = parseInt(this.min, 10)
       let max = parseInt(this.max, 10)
 
+      /**
+      *  I wonder if there's a way to figure out the width of the runnable track..
+      *  Right now, we listen for isMobile from LayoutManager.
+      *  Width is 16px on desktop, 28px on mobile.
+      */
+
+      let thumbWidth
+      this.isMobile ? thumbWidth = 28 : thumbWidth = 16
+
       max = max - min
       cv = cv - min
       min = min - min
 
       if (min === 0 && max === 100) {
-        return cv * w / 100 - (cv * 16 / 100) // because the thumb is 16px wide
+        return cv * w / 100 - (cv * thumbWidth / 100) // because the thumb is 16px wide
       } else {
         let p = cv * 100 / max
         let pp = p * w / 100
-        pp = pp - (p * 16 / 100)
+        pp = pp - (p * thumbWidth / 100)
 
         return pp
       }
@@ -105,6 +115,15 @@ export default {
 
       return style
     }
+  },
+  created () {
+    this.$on('Va@rangeIsMobile', (val) => {
+      if (val === true) {
+        this.isMobile = true
+      } else {
+        this.isMobile = false
+      }
+    })
   },
   mounted () {
     let {prefixCls} = this

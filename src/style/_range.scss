@@ -25,7 +25,7 @@ input[type=range].#{$prefix-cls}-range.colorized {
   margin: 0px;
   cursor: pointer;
   z-index: 100;
-  left: 0px
+  left: 0px;
 }
 
 input[type=range].#{$prefix-cls}-range.colorized::-webkit-slider-runnable-track {
@@ -46,7 +46,23 @@ input[type=range].#{$prefix-cls}-range.colorized::-webkit-slider-thumb {
   background: white;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 3px 1px;
   margin-top: -5px;
-  z-index: 400;
+}
+
+@media (max-width: 768px) {
+  input[type=range].#{$prefix-cls}-range.colorized::-webkit-slider-thumb {
+    height: 28px;
+    width: 28px;
+    margin-top: -12px;
+  }
+  .#{$prefix-cls}-range-barCnt {
+    margin-top: 14px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .#{$prefix-cls}-range-barCnt .#{$prefix-cls}-range-preBar {
+    height: 7px;
+    line-height: 7px;
+  }
 }
 
 input[type=range].#{$prefix-cls}-range.colorized:focus {

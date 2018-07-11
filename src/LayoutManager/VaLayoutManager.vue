@@ -127,6 +127,7 @@ export default {
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val)
       this.broadcast('VaPage', 'Va@pageIsMobile', val)
       this.broadcast('VaMinibar', 'Va@minibarIsMobile', val)
+      this.broadcast('VaRange', 'Va@rangeIsMobile', val)
     },
 
     checkForPresenceOfTopbar () {

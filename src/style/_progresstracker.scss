@@ -114,7 +114,16 @@ $stepRoundLineMargin: 7px;
   margin: 18px 0px;
   padding: 0px;
   display: flex;
+  line-height:1em !important;
 
+  .#{$prefix-cls}-steps-finished,
+  .#{$prefix-cls}-steps-current {
+    .#{$prefix-cls}-steps-wrap {
+      .#{$prefix-cls}-steps-round {
+        display: none !important;
+      }
+    }
+  }
 
   > li .#{$prefix-cls}-steps-round {
     color: $N0;
@@ -151,7 +160,7 @@ $stepRoundLineMargin: 7px;
     position: relative;
     flex:1;
     background-color:transparent;
-    line-height: 20px !important;
+    line-height: 22.5px !important;
   }
 
   &:before,
@@ -193,7 +202,7 @@ $stepRoundLineMargin: 7px;
     vertical-align: middle;
     font-size: 12px;
     color: $N0;
-    line-height: 22px;
+    // line-height: 22px;
     text-align: center;
     border: 4px $lightGrayColor solid;
     color: $weightGrayColor;

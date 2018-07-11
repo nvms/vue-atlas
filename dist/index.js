@@ -6545,7 +6545,8 @@ function getOffset(element) {
     return {
       showoutput: false,
       currentValue: value,
-      preBarElement: null
+      preBarElement: null,
+      isMobile: false
     };
   },
 
@@ -6576,16 +6577,25 @@ function getOffset(element) {
       var min = parseInt(this.min, 10);
       var max = parseInt(this.max, 10);
 
+      /**
+      *  I wonder if there's a way to figure out the width of the runnable track..
+      *  Right now, we listen for isMobile from LayoutManager.
+      *  Width is 16px on desktop, 28px on mobile.
+      */
+
+      var thumbWidth = void 0;
+      this.isMobile ? thumbWidth = 28 : thumbWidth = 16;
+
       max = max - min;
       cv = cv - min;
       min = min - min;
 
       if (min === 0 && max === 100) {
-        return cv * w / 100 - cv * 16 / 100; // because the thumb is 16px wide
+        return cv * w / 100 - cv * thumbWidth / 100; // because the thumb is 16px wide
       } else {
         var p = cv * 100 / max;
         var pp = p * w / 100;
-        pp = pp - p * 16 / 100;
+        pp = pp - p * thumbWidth / 100;
 
         return pp;
       }
@@ -6603,8 +6613,19 @@ function getOffset(element) {
       return style;
     }
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
+
+    this.$on('Va@rangeIsMobile', function (val) {
+      if (val === true) {
+        _this.isMobile = true;
+      } else {
+        _this.isMobile = false;
+      }
+    });
+  },
+  mounted: function mounted() {
+    var _this2 = this;
 
     var prefixCls = this.prefixCls;
 
@@ -6622,11 +6643,11 @@ function getOffset(element) {
 
     var r = this.$refs.range;
     this._inputEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener_js__["a" /* default */].listen(r, 'input', function () {
-      preBar.style.width = _this.getVal() + 'px';
+      preBar.style.width = _this2.getVal() + 'px';
     });
 
     this.$nextTick(function () {
-      preBar.style.width = _this.getVal() + 'px';
+      preBar.style.width = _this2.getVal() + 'px';
     });
 
     this.$refs.range.value = this.value;
@@ -29090,6 +29111,7 @@ if (false) {(function () {
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val);
       this.broadcast('VaPage', 'Va@pageIsMobile', val);
       this.broadcast('VaMinibar', 'Va@minibarIsMobile', val);
+      this.broadcast('VaRange', 'Va@rangeIsMobile', val);
     },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);
