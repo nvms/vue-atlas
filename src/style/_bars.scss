@@ -102,6 +102,9 @@
     color: $N0;
   }
   .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N50;
+    }
     .#{$prefix-cls}-form-control {
       background: darken($B500, 10%);
       border: 2px solid darken($B500, 10%);
@@ -122,12 +125,22 @@
   .#{$prefix-cls}-topbar-inner {
     color: $N500;
   }
+  .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N70;
+    }
+  }
 }
 
 .#{$prefix-cls}-topbar--theme-default {
   background-color: $N20;
   .#{$prefix-cls}-topbar-inner {
     color: $N500;
+  }
+  .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N90;
+    }
   }
 }
 
@@ -137,6 +150,9 @@
     color: $N60;
   }
   .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N70;
+    }
     .#{$prefix-cls}-form-control {
       background: $N400;
       border: 2px solid $N400;
@@ -155,6 +171,9 @@
     color: $N80;
   }
   .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N80;
+    }
     .#{$prefix-cls}-form-control {
       background: $N500;
       border: 2px solid $N500;
