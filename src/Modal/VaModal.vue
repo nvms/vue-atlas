@@ -149,7 +149,7 @@ export default {
           element.removeClass(el, this.prefixCls + '-modal-out')
           body.style.paddingRight = '0'
           this.$emit('closed', { type: 'closed' })
-        }, 300) // TODO look into why this is 300
+        }, 300)
       }
     }
   },

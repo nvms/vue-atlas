@@ -6535,8 +6535,7 @@ function getOffset(element) {
       required: false
     },
     width: {
-      type: Number,
-      default: 300
+      type: Number
     },
     prefixCls: {
       type: String,
@@ -7864,7 +7863,7 @@ if (false) {(function () {
           __WEBPACK_IMPORTED_MODULE_3__utils_element__["a" /* default */].removeClass(el, _this.prefixCls + '-modal-out');
           body.style.paddingRight = '0';
           _this.$emit('closed', { type: 'closed' });
-        }, 300); // TODO look into why this is 300
+        }, 300);
       }
     }
   },
@@ -31466,7 +31465,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "wrap", style: { width: _vm.width + "px" } },
+    { staticClass: "wrap", style: { width: _vm.width + "px" || "100%" } },
     [
       _c("input", {
         ref: "range",

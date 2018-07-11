@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap" :style="{width: width + 'px'}">
+  <div class="wrap" :style="{width: width + 'px' || '100%'}">
     <input ref="range" :class="`${prefixCls}-range`" :value="currentValue" type="range" :min="min" :max="max" :step="step" @input="onInput" />
     <transition name="fade">
       <div v-if="showoutput" class="output_position">
@@ -38,8 +38,7 @@ export default {
       required: false
     },
     width: {
-      type: Number,
-      default: 300
+      type: Number
     },
     prefixCls: {
       type: String,
