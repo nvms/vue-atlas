@@ -8,22 +8,24 @@ import VaIcon from './Icon/VaIcon.vue'
 import VaPage from './Page/VaPage.vue'
 import VaTabs from './Tabs/VaTabs.vue'
 import VaCard from './Card/VaCard.vue'
-import VaAffix from './Affix/VaAffix.vue'
 import VaTable from './Table/VaTable.vue'
 import VaRange from './Range/VaRange.vue'
 import VaAside from './Aside/VaAside.vue'
 import VaRadio from './Radio/VaRadio.vue'
-import VaInput from './Input/VaInput.vue'
+import VaAffix from './Affix/VaAffix.vue'
 import VaAlert from './Alert/VaAlert.vue'
 import VaBars from './Sidebar/VaBars.vue'
 import VaModal from './Modal/VaModal.vue'
 import VaBadge from './Badge/VaBadge.vue'
+import VaInput from './Input/VaInput.vue'
+import VaButton from './Button/VaButton.vue'
+import VaColumn from './Layout/VaColumn.vue'
 import VaSelect from './Select/VaSelect.vue'
 import VaOption from './Select/VaOption.vue'
 import VaTopbar from './Topbar/VaTopbar.vue'
-import VaColumn from './Layout/VaColumn.vue'
-import VaButton from './Button/VaButton.vue'
+import VaMobile from './Mobile/VaMobile.vue'
 import VaFormItem from './Form/VaFormItem.vue'
+import VaDesktop from './Desktop/VaDesktop.vue'
 import VaLoading from './Loading/VaLoading.vue'
 import VaTooltip from './Tooltip/VaTooltip.vue'
 import VaSidebar from './Sidebar/VaSidebar.vue'
@@ -71,8 +73,6 @@ const Components = {
   VaPage,
   VaIcon,
   VaBars,
-  VaModal,
-  VaInput,
   VaRadio,
   VaTable,
   VaAside,
@@ -80,29 +80,33 @@ const Components = {
   VaAffix,
   VaBadge,
   VaAlert,
-  VaSelect,
+  VaInput,
+  VaModal,
   VaColumn,
   VaTopbar,
   VaOption,
+  VaMobile,
+  VaSelect,
   VaButton,
-  VaLoading,
   VaTooltip,
-  VaSidebar,
   VaLozenge,
   VaMinibar,
-  VaCheckbox,
-  VaFormItem,
-  VaRadioBtn,
+  VaDesktop,
+  VaLoading,
+  VaSidebar,
   VaDropdown,
   VaTextarea,
+  VaFormItem,
+  VaCheckbox,
+  VaRadioBtn,
+  VaTypeahead,
   VaContainer,
   VaAnimQueue,
-  VaTypeahead,
   VaTimepicker,
-  VaBreadcrumb,
   VaDatepicker,
   VaRadioGroup,
   VaPageHeader,
+  VaBreadcrumb,
   VaPlaceholder,
   VaCheckboxBtn,
   VaMinibarItem,

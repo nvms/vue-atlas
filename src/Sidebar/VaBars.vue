@@ -12,13 +12,18 @@ export default {
   props: {
     sidebarWidth: {
       type: [String, Number],
-      default: 240,
+      default: 0,
       required: false
     },
     minibarWidth: {
       type: [String, Number],
-      default: 64,
+      default: 0,
       required: false
+    },
+    reverse: {
+      type: Boolean,
+      default: false,
+      note: 'When true, moves the minibar to the right of the sidebar.'
     },
     relative: {
       type: Boolean,
@@ -35,7 +40,8 @@ export default {
     return {
       currentSidebarWidth: this.sidebarWidth,
       currentMinibarWidth: this.minibarWidth,
-      currentTopbarHeight: 0
+      currentTopbarHeight: 0,
+      isRTL: false
     }
   },
   created () {
@@ -47,6 +53,9 @@ export default {
     })
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
+    })
+    this.$on('Va@barsIsRTL', (val) => {
+      this.isRTL = val
     })
   },
   computed: {
@@ -60,7 +69,7 @@ export default {
       return klass
     },
     styleObj () {
-      let {currentSidebarWidth, currentMinibarWidth, currentTopbarHeight} = this
+      let {currentSidebarWidth, currentMinibarWidth, currentTopbarHeight, reverse, isRTL} = this
       let sideWidth = parseInt(currentSidebarWidth)
       let miniWidth = parseInt(currentMinibarWidth)
       let topHeight = parseInt(currentTopbarHeight)
@@ -69,6 +78,8 @@ export default {
       style['top'] = topHeight + 'px'
       style['width'] = sideWidth + miniWidth + 'px'
       style['paddingBottom'] = topHeight + 'px'
+      reverse ? style['flexDirection'] = 'row-reverse' : ''
+      isRTL ? style['right'] = '0px' : ''
 
       return style
     }

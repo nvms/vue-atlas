@@ -42,7 +42,8 @@ export default {
       currentSidebarWidth: 240,
       currentMinibarWidth: 64,
       currentTopbarHeight: 0,
-      isMobile: false
+      isMobile: false,
+      isRTL: false
     }
   },
   created () {
@@ -61,6 +62,9 @@ export default {
       } else {
         this.isMobile = false
       }
+    })
+    this.$on('Va@pageIsRTL', (val) => {
+      this.isRTL = val
     })
     this.$on('Va@pagePresenceCheck', (val) => {
       this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true)
@@ -81,6 +85,7 @@ export default {
     },
     styleObj () {
       // let {prefixCls, sidebarWidth} = this
+      let {isRTL} = this
       let stl = {}
 
       let sbw = parseInt(this.currentSidebarWidth)
@@ -89,7 +94,8 @@ export default {
       let totalw = sbw + mbw
 
       stl['position'] = 'absolute'
-      stl['left'] = totalw + 'px'
+      // stl['left'] = totalw + 'px'
+      isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px'
       stl['top'] = tbh + 'px'
       stl['width'] = 'calc(100% - ' + totalw + 'px)'
 

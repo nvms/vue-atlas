@@ -200,8 +200,8 @@ export default {
     },
     hit (index) {
       if (this.citems && this.citems.length) {
-        index ? this.current = index : ''
-        this.onHit(this.citems[this.current], this)
+        // index ? this.current = index : ''
+        this.onHit(this.citems[index], this)
       }
     },
     up () {

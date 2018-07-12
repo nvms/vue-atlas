@@ -51,6 +51,10 @@ export default {
       default: 0,
       required: false
     },
+    rtl: {
+      type: Boolean,
+      default: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -69,6 +73,7 @@ export default {
 
       isMobile: false,
       pastMobileBreakpoint: false,
+
       windowWidth: 0
     }
   },
@@ -94,6 +99,9 @@ export default {
     },
     mobileTopbarHeight (val) {
       this.setAndBroadcastDimensions()
+    },
+    rtl (val) {
+      this.broadcastIsRTL(val)
     }
   },
   methods: {
@@ -128,6 +136,14 @@ export default {
       this.broadcast('VaPage', 'Va@pageIsMobile', val)
       this.broadcast('VaMinibar', 'Va@minibarIsMobile', val)
       this.broadcast('VaRange', 'Va@rangeIsMobile', val)
+
+      this.broadcast('VaMobile', 'Va@mobileIsMobile', val)
+      this.broadcast('VaDesktop', 'Va@desktopIsMobile', val)
+    },
+
+    broadcastIsRTL (val) {
+      this.broadcast('VaPage', 'Va@pageIsRTL', val)
+      this.broadcast('VaBars', 'Va@barsIsRTL', val)
     },
 
     checkForPresenceOfTopbar () {
@@ -195,6 +211,7 @@ export default {
 
     // Some components might want to request the isMobile status, for example,
     // if they have been created a while after isMobile was broadcast.
+    // See VaRange.
     this.$on('Va@requestIsMobile', (val) => {
       if (val === true) {
         this.broadcastIsMobile(this.pastMobileBreakpoint)
