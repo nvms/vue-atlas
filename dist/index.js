@@ -6091,9 +6091,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       var totalw = sbw + mbw;
 
       stl['position'] = 'absolute';
-      // stl['left'] = totalw + 'px'
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px';
-      stl['top'] = tbh + 'px';
+      stl['paddingTop'] = tbh + 'px';
       stl['width'] = 'calc(100% - ' + totalw + 'px)';
 
       return stl;
@@ -8316,6 +8315,9 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
 
 
 
@@ -8452,7 +8454,8 @@ if (false) {(function () {
       show: false,
       showNotify: false,
       currentValue: this.value,
-      currentOptions: this.options
+      currentOptions: this.options,
+      activeItemClass: this.prefixCls + '-select-item-active'
     };
   },
 
@@ -32955,14 +32958,6 @@ var render = function() {
                       attrs: { placeholder: _vm.inputPlaceholder },
                       domProps: { value: _vm.searchText },
                       on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.searchText = $event.target.value
-                        }
-                      },
-                      nativeOn: {
                         keydown: function($event) {
                           if (
                             !("button" in $event) &&
@@ -32977,6 +32972,12 @@ var render = function() {
                             return null
                           }
                           return _vm.addExtra($event)
+                        },
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.searchText = $event.target.value
                         }
                       }
                     }),
@@ -33041,35 +33042,40 @@ var render = function() {
                       attrs: { value: option.value }
                     },
                     [
-                      _c(
-                        "a",
-                        {
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              _vm.select(option)
-                            }
-                          }
-                        },
-                        [
-                          _c("span", {
-                            domProps: { innerHTML: _vm._s(option.label) }
-                          }),
-                          _vm._v(" "),
-                          _c("va-icon", {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: _vm.findIndex(option.value) !== -1,
-                                expression: "findIndex(option.value) !== -1"
+                      _vm.findIndex(option.value) !== -1
+                        ? _c(
+                            "a",
+                            {
+                              class: _vm.prefixCls + "-select-item-active",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.select(option)
+                                }
                               }
-                            ],
-                            attrs: { type: "check-square", color: "#0052CC" }
-                          })
-                        ],
-                        1
-                      )
+                            },
+                            [
+                              _c("span", {
+                                domProps: { innerHTML: _vm._s(option.label) }
+                              })
+                            ]
+                          )
+                        : _c(
+                            "a",
+                            {
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  _vm.select(option)
+                                }
+                              }
+                            },
+                            [
+                              _c("span", {
+                                domProps: { innerHTML: _vm._s(option.label) }
+                              })
+                            ]
+                          )
                     ]
                   )
                 })
