@@ -15570,6 +15570,7 @@ function transformArguments(arg) {
 //
 //
 //
+//
 
 
 
@@ -35911,6 +35912,12 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
+              value: _vm.show,
+              expression: "show"
+            },
+            {
+              name: "va-position",
+              rawName: "v-va-position",
               value: _vm.show,
               expression: "show"
             }
