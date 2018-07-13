@@ -16,6 +16,7 @@ $placeholderRoundedRadius: 3px;
 .#{$prefix-cls}-placeholder {
   position: relative;
   overflow: hidden;
+  max-width: 100%;
   &-rounded * {
     border-radius: $placeholderRoundedRadius;
   }
