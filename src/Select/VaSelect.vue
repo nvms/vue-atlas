@@ -40,7 +40,7 @@
               :class="`${prefixCls}-select-search`"
               :placeholder="inputPlaceholder"
               v-model="searchText"
-              @keydown.native.enter="addExtra" />
+              @keydown.enter="addExtra" />
 
             <va-icon type="plus-square-o" v-if="extra" @click.native="addExtra"></va-icon>
           </li>
@@ -57,9 +57,12 @@
                 :key="index"
                 :value="option.value"
                 style="position:relative">
-              <a @click.prevent="select(option)">
+              <a @click.prevent="select(option)" v-if="findIndex(option.value) !== -1" :class="`${prefixCls}-select-item-active`">
                 <span v-html="option.label"></span>
-                <va-icon type="check-square" color="#0052CC" v-show="findIndex(option.value) !== -1"></va-icon>
+                <!-- <va-icon type="check" color="#0052CC" v-show="findIndex(option.value) !== -1"></va-icon> -->
+              </a>
+              <a @click.prevent="select(option)" v-else>
+                <span v-html="option.label"></span>
               </a>
             </li>
           </template>
@@ -216,7 +219,8 @@ export default {
       show: false,
       showNotify: false,
       currentValue: this.value,
-      currentOptions: this.options
+      currentOptions: this.options,
+      activeItemClass: this.prefixCls + '-select-item-active'
     }
   },
   watch: {

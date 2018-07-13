@@ -200,3 +200,10 @@
     }
   }
 }
+
+.#{$prefix-cls}-select-item-active {
+  background: $B50;
+  &:hover {
+    background: $B50 !important;
+  }
+}
