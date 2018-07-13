@@ -18,7 +18,7 @@
 
 @mixin lgButtonSize() {
   @include btn-size(
-    $padding: 2px 20px,
+    $padding: 2px 15px,
     $fontSize: 17px,
     $lineHeight: 2.5em,
     $borderRadius: 3px
