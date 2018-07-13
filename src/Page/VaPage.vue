@@ -94,9 +94,8 @@ export default {
       let totalw = sbw + mbw
 
       stl['position'] = 'absolute'
-      // stl['left'] = totalw + 'px'
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px'
-      stl['top'] = tbh + 'px'
+      stl['paddingTop'] = tbh + 'px'
       stl['width'] = 'calc(100% - ' + totalw + 'px)'
 
       return stl
