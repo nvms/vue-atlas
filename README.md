@@ -4,7 +4,7 @@
 
 ---
 
-A library of [Vue.js](https://vuejs.org) 2.x components based on the [Atlassian Design Guidelines](https://atlassian.design/).
+A library of [Vue.js](https://vuejs.org) 2.x components based on the [Atlassian&trade; Design Guidelines](https://atlassian.design/).
 
 ![](https://img.shields.io/npm/v/vue-atlas.svg)
 
