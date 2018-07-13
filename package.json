@@ -1,6 +1,6 @@
 {
   "name": "vue-atlas",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "A library of Vue.js 2.x components baed on the Atlassian Design Guidelines.",
   "main": "dist/index.min.js",
   "author": "Jonathan Pyers <jon@pye.rs>",
