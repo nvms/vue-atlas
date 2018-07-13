@@ -6262,6 +6262,13 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       klass[prefixCls + '-nav-tab-active'] = tab.isActive;
 
       return klass;
+    },
+    disabledTabClass: function disabledTabClass(tab) {
+      if (tab.isDisabled) {
+        return this.prefixCls + '-nav-tab-disabled';
+      } else {
+        return '';
+      }
     }
   }
 });
@@ -31271,7 +31278,7 @@ var render = function() {
               }
             ],
             key: i,
-            class: _vm.liclassObj(tab)
+            class: [_vm.liclassObj(tab), _vm.disabledTabClass(tab)]
           },
           [
             _c("a", {

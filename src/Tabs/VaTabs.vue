@@ -4,7 +4,7 @@
       <li
         v-for="(tab, i) in tabs"
         :key="i"
-        :class="liclassObj(tab)"
+        :class="[liclassObj(tab), disabledTabClass(tab)]"
         v-show="tab.isVisible">
         <a
           v-html="tab.header"
@@ -142,6 +142,13 @@ export default {
       klass[prefixCls + '-nav-tab-active'] = tab.isActive
 
       return klass
+    },
+    disabledTabClass (tab) {
+      if (tab.isDisabled) {
+        return this.prefixCls + '-nav-tab-disabled'
+      } else {
+        return ''
+      }
     }
   }
 }

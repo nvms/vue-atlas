@@ -10,6 +10,13 @@
     padding-bottom: 4px;
     margin-right: 15px;
     line-height: 20px !important;
+    &-disabled {
+      a {
+        color: $N70 !important;
+        font-weight: normal !important;
+        cursor: not-allowed;
+      }
+    }
     a {
       color: $N300;
       font-weight: 600;

@@ -18,8 +18,14 @@
     list-style-type: none;
     overflow-y: hidden;
 
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     hr {
       margin: 5px 0;
+      border-bottom-width: 1px;
     }
 
     &::-webkit-scrollbar-thumb {
@@ -59,7 +65,7 @@
     >li>a {
       display: flex;
       justify-content: space-between;
-      padding: 8px 12px;
+      padding: 5px 12px;
       color: $N800;
       white-space: nowrap;
       overflow: hidden;
