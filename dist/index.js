@@ -15995,6 +15995,12 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaSidebarGroupItem',
@@ -35984,6 +35990,11 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core__ = __webpack_require__(385);
 
+/**
+ * Original implementation by MisRob and released under the MIT license.
+ * https://github.com/MisRob/vue-tree-navigation
+ * Modified for use with vue-atlas
+ */
 
 
 var VaSidebarGroup = {
@@ -36062,6 +36073,11 @@ var VaSidebarGroup = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__VaSidebarGroupItem_vue__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(398);
 
+/**
+ * Original implementation by MisRob and released under the MIT license.
+ * https://github.com/MisRob/vue-tree-navigation
+ * Modified for use with vue-atlas
+ */
 
 
 
@@ -36637,6 +36653,10 @@ if (false) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sanitizeRoute; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return startsWithUrl; });
 /**
+ * Original implementation by MisRob and released under the MIT license.
+ * https://github.com/MisRob/vue-tree-navigation
+ * Modified for use with vue-atlas
+ *
  * Remove a domain and router's `/#` from URL.
  */
 var getRelativeUrl = function getRelativeUrl(url, origin) {
