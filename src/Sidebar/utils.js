@@ -1,4 +1,8 @@
 /**
+ * Original implementation by MisRob and released under the MIT license.
+ * https://github.com/MisRob/vue-tree-navigation
+ * Modified for use with vue-atlas
+ *
  * Remove a domain and router's `/#` from URL.
  */
 export const getRelativeUrl = (url, origin) => {

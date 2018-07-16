@@ -1,3 +1,8 @@
+/**
+ * Original implementation by MisRob and released under the MIT license.
+ * https://github.com/MisRob/vue-tree-navigation
+ * Modified for use with vue-atlas
+ */
 import { insertMetadataToItems, generateLevel } from './core'
 
 const VaSidebarGroup = {
