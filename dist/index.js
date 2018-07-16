@@ -5948,6 +5948,15 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       required: true,
       note: 'The type of icon: .fa-[type]'
     },
+    iconStyle: {
+      type: String,
+      default: 'solid',
+      required: false,
+      note: 'Use fa-regular, fa-solid or fa-brand?',
+      validator: function validator(v) {
+        return ['solid', 'regular', 'brands'].includes(v);
+      }
+    },
     size: {
       type: String,
       required: false,
@@ -5980,6 +5989,20 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
     prefixCls: {
       type: String,
       default: 'va'
+    }
+  },
+  computed: {
+    fontStyle: function fontStyle() {
+      switch (this.iconStyle) {
+        case 'regular':
+          return 'far';
+        case 'solid':
+          return 'fas';
+        case 'brands':
+          return 'fab';
+        default:
+          return 'fas';
+      }
     }
   }
 });
@@ -30969,7 +30992,7 @@ var render = function() {
   return _c(
     "i",
     {
-      class: [_vm.prefixCls + "-fa", _vm.prefixCls + "-fa-" + _vm.type],
+      class: [_vm.fontStyle, "fa-" + _vm.type],
       style: {
         fontSize: _vm.size,
         color: _vm.color,
