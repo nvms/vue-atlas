@@ -33021,7 +33021,7 @@ var render = function() {
                     _vm._v(" "),
                     _vm.extra
                       ? _c("va-icon", {
-                          attrs: { type: "plus-square-o" },
+                          attrs: { type: "plus-square", "icon-style": "solid" },
                           nativeOn: {
                             click: function($event) {
                               return _vm.addExtra($event)
@@ -33061,7 +33061,12 @@ var render = function() {
                             expression: "allSelected"
                           }
                         ],
-                        attrs: { type: "check-square", color: "#0052CC" }
+                        attrs: {
+                          type: "check",
+                          color: "#0052CC",
+                          margin: "5px 0 0 0",
+                          size: "10px"
+                        }
                       })
                     ],
                     1
@@ -37085,7 +37090,7 @@ var render = function() {
           disabled: _vm.disabled,
           readonly: _vm.readonly,
           "show-clean": true,
-          icon: "clock-o"
+          icon: "clock"
         },
         on: { clean: _vm.clean },
         nativeOn: {

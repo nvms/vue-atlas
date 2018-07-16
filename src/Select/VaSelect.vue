@@ -42,12 +42,12 @@
               v-model="searchText"
               @keydown.enter="addExtra" />
 
-            <va-icon type="plus-square-o" v-if="extra" @click.native="addExtra"></va-icon>
+            <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon>
           </li>
           <li v-if="multiple" :class="`${prefixCls}-select-all`">
             <a @click.prevent="selectAll">
               {{getL('all')}}
-             <va-icon type="check-square" color="#0052CC" v-show="allSelected"></va-icon>
+             <va-icon type="check" color="#0052CC" v-show="allSelected" margin="5px 0 0 0" size="10px"></va-icon>
             </a>
           </li>
 

@@ -48,8 +48,8 @@
       align-items: center;
       display: flex;
       justify-content: space-around;
-      content: "\F00D";
-      font: normal normal normal 11px/1 FontAwesome;
+      content: "\f00d";
+      font: normal normal normal 11px/1 "Font Awesome 5 Free Solid";
       margin-left: 5px;
       margin-top: 1px;
       color: $N60;
@@ -129,12 +129,12 @@
         span {
           cursor: default;
         }
-        i.#{$prefix-cls}-fa {
-          // color: $N60; /* Default color unless otherwise specified */
-          margin-left: 8px;
-          position: relative;
-          top: 4px;
-        }
+      }
+      i.fa, i.far, i.fas, i.fab {
+        // color: $N60; /* Default color unless otherwise specified */
+        position: relative;
+        top: 0px;
+        margin-left: -26px !important;
       }
     }
     .#{$prefix-cls}-notify {
