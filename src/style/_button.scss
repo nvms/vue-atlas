@@ -342,9 +342,13 @@
 .#{$prefix-cls}-btn-group {
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
+    margin-right: 1px;
   }
   >.#{$prefix-cls}-btn:first-child {
     margin-left: 0;
+  }
+  >.#{$prefix-cls}-btn:first-child:not(:last-child) {
+    margin-right: 1px;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-top-right-radius: 0;

@@ -21,7 +21,7 @@
     }
   }
   .#{$prefix-cls}-selected-tag {
-    background: $N40;
+    // background: $N40;
     display: flex;
     align-items: center;
     padding: 0 0 0 8px;
@@ -29,12 +29,12 @@
     border-radius: 4px;
     margin-bottom: 3px;
     line-height: 2;
-    font-size: 12px;
+    // font-size: 12px;
     position: relative;
     z-index: 20;
     &:hover {
-      background: $N60;
-      color: $N0;
+      // background: $N60;
+      // color: $N0;
       &:after {
         color: $R300;
       }
@@ -59,7 +59,7 @@
     }
     &:active {
       &:after {
-        color: $R400 !important;
+        color: $R500 !important;
       }
     }
   }

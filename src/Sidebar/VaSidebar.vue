@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+      <slot />
   </div>
 </template>
 
@@ -24,10 +24,6 @@ export default {
           'darker'
         ].includes(v)
       }
-    },
-    compact: {
-      type: Boolean,
-      default: false
     },
     prefixCls: {
       type: String,
@@ -56,12 +52,11 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, theme, compact, isMobile} = this
+      let {prefixCls, theme, isMobile} = this
       let klass = {}
 
       klass[prefixCls + '-sidebar'] = true
       klass[prefixCls + '-sidebar--theme-' + theme] = true
-      klass[prefixCls + '-sidebar-compact'] = compact
       klass[prefixCls + '-sidebar-mobile'] = isMobile
 
       return klass
@@ -69,5 +64,32 @@ export default {
   },
   watch: {
   }
+  // methods: {
+  //   initResize (e) {
+  //     /**
+  //      * Prevent text selection while dragging.
+  //      * https://stackoverflow.com/questions/5429827/how-can-i-prevent-text-element-selection-with-cursor-drag
+  //      */
+  //     if (e.stopPropagation) {
+  //       e.stopPropagation()
+  //     }
+  //     if (e.preventDefault) {
+  //       e.preventDefault()
+  //     }
+  //     e.cancelBubble = true
+  //     e.returnValue = false
+
+  //     window.addEventListener('mousemove', this.doResize, false)
+  //     window.addEventListener('mouseup', this.stopResize, false)
+  //   },
+  //   doResize (e) {
+  //     let el = this.$refs.sidebar
+  //     this.dispatch('VaLayoutManager', 'Va@sidebarWidthChange', e.clientX - el.offsetLeft)
+  //   },
+  //   stopResize () {
+  //     window.removeEventListener('mouseup', this.stopResize, false)
+  //     window.removeEventListener('mousemove', this.doResize, false)
+  //   }
+  // }
 }
 </script>

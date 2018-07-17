@@ -209,6 +209,11 @@ export default {
       }
     })
 
+    // Listen for Sidebar width change - implemented when Sidebar's resizer was implemented
+    // this.$on('Va@sidebarWidthChange', (val) => {
+    //   this.broadcastSidebarWidth(val)
+    // })
+
     // Some components might want to request the isMobile status, for example,
     // if they have been created a while after isMobile was broadcast.
     // See VaRange.
