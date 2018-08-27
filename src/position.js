@@ -54,7 +54,7 @@ export default {
     if (!binding.value) {
       setTimeout(() => {
         el.classList.remove('position-right-bottom', 'position-right-top', 'position-left-bottom', 'position-left-top')
-      }, 400)
+      }, 400) // TODO: setTimeout timeout should match used effect duration
       return
     }
     if (binding.value !== binding.oldValue) {

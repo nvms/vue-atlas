@@ -1,6 +1,6 @@
 <template>
   <div :class="[`${prefixCls}-dropdown-con`, classObj]">
-    <span ref="trigger">
+    <span ref="trigger" :focus="onFocus">
       <slot name="trigger" />
     </span>
 
@@ -75,6 +75,9 @@ export default {
     toggleDropdown () {
       this.isShow ? this.close() : this.open()
       this.$emit('toggle')
+    },
+    onFocus () {
+      console.log('Dropdown trigger wrapper was focused.')
     }
   },
   components: {

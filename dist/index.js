@@ -9397,6 +9397,16 @@ if (false) {(function () {
   name: 'VaSidebar',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
+    compact: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    textLinks: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     theme: {
       type: String,
       default: 'default',
@@ -9437,13 +9447,17 @@ if (false) {(function () {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
           theme = this.theme,
-          isMobile = this.isMobile;
+          isMobile = this.isMobile,
+          compact = this.compact,
+          textLinks = this.textLinks;
 
       var klass = {};
 
       klass[prefixCls + '-sidebar'] = true;
       klass[prefixCls + '-sidebar--theme-' + theme] = true;
       klass[prefixCls + '-sidebar-mobile'] = isMobile;
+      klass[prefixCls + '-sidebar-compact'] = compact;
+      klass[prefixCls + '-sidebar-text-links'] = textLinks;
 
       return klass;
     }
@@ -9857,6 +9871,9 @@ if (false) {(function () {
     toggleDropdown: function toggleDropdown() {
       this.isShow ? this.close() : this.open();
       this.$emit('toggle');
+    },
+    onFocus: function onFocus() {
+      console.log('Dropdown trigger wrapper was focused.');
     }
   },
   components: {
@@ -30000,7 +30017,7 @@ var calPosition = function calPosition(el) {
     if (!binding.value) {
       setTimeout(function () {
         el.classList.remove('position-right-bottom', 'position-right-top', 'position-left-bottom', 'position-left-top');
-      }, 400);
+      }, 400); // TODO: setTimeout timeout should match used effect duration
       return;
     }
     if (binding.value !== binding.oldValue) {
@@ -35077,7 +35094,12 @@ var render = function() {
     "div",
     { class: [_vm.prefixCls + "-dropdown-con", _vm.classObj] },
     [
-      _c("span", { ref: "trigger" }, [_vm._t("trigger")], 2),
+      _c(
+        "span",
+        { ref: "trigger", attrs: { focus: _vm.onFocus } },
+        [_vm._t("trigger")],
+        2
+      ),
       _vm._v(" "),
       _vm.effect != "collapse"
         ? _c("transition", { attrs: { name: _vm.effect } }, [
@@ -38929,7 +38951,7 @@ var render = function() {
       [
         !_vm.open
           ? _c("va-icon", {
-              attrs: { type: "angle-right", size: "12px", margin: "0 8px 0 0" }
+              attrs: { type: "angle-right", size: "12px", margin: "0 6px 0 0" }
             })
           : _c("va-icon", {
               attrs: { type: "angle-down", size: "12px", margin: "0 4.5px 0 0" }

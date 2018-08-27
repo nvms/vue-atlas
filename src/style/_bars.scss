@@ -195,7 +195,16 @@
   justify-content: flex-start;
   overflow-y: auto;
   &-compact {
-    flex-basis: 70px;
+    .#{$prefix-cls}-sidebar-group-item {
+      min-height: 25px;
+      line-height: inherit;
+    }
+    .#{$prefix-cls}-sidebar-group-item-text {
+      min-height: 25px;
+    }
+    .#{$prefix-cls}-sidebar-group-item-text a {
+      min-height: 25px;
+    }
   }
   &-header {
     margin: 15px 11px 15px 11px;
@@ -296,7 +305,6 @@ global sidebar item style
     margin-right: 10px;
     min-width: 18px;
   }
-  &:hover {}
   &:active,
   &:focus {
     outline: none;
@@ -319,7 +327,7 @@ global sidebar item style
       line-height: 1;
     }
     &-icon {
-      font-size: 5px;
+      font-size: 4px;
       position: relative;
       top: 0px;
       left: -9px;
@@ -349,7 +357,6 @@ global sidebar item style
   flex-direction: column;
   line-height: 2em;
   &:active {}
-  &:hover {}
   &:active,
   &:focus {
     outline: none;
@@ -650,7 +657,6 @@ default
   }
   .#{$prefix-cls}-sidebar-header {
     .#{$prefix-cls}-btn {
-      &:hover {}
     }
   }
   .#{$prefix-cls}-sidebar-scrollarea {
@@ -672,7 +678,7 @@ default
     }
     &-text-icon,
     &-toggle-icon {
-      color: $N200 !important;
+      color: $N500 !important;
     }
     &-text {
       &-icon {
@@ -812,7 +818,7 @@ blue
     }
     &-text-icon,
     &-toggle-icon {
-      color: $N200 !important;
+      color: $N500 !important;
     }
     &-text {
       &-icon {
@@ -1201,6 +1207,15 @@ Sidebar scroll area
       position: fixed;
       width: 200px;
       z-index: 2000;
+    }
+  }
+}
+
+.#{$prefix-cls}-sidebar-text-links {
+  .#{$prefix-cls}-sidebar-group-item {
+    &:hover {
+      background: none !important;
+      text-decoration: underline;
     }
   }
 }

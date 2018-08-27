@@ -1,7 +1,7 @@
 <template>
   <span :class="classObj">
     <span :class="iconObj">
-      <va-icon type="angle-right" size="12px" margin="0 8px 0 0" v-if="!open"></va-icon>
+      <va-icon type="angle-right" size="12px" margin="0 6px 0 0" v-if="!open"></va-icon>
       <va-icon type="angle-down" size="12px" margin="0 4.5px 0 0" v-else></va-icon>
     </span>
   </span>

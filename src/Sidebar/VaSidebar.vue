@@ -11,6 +11,16 @@ export default {
   name: 'VaSidebar',
   mixins: [events],
   props: {
+    compact: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    textLinks: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     theme: {
       type: String,
       default: 'default',
@@ -52,12 +62,14 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, theme, isMobile} = this
+      let {prefixCls, theme, isMobile, compact, textLinks} = this
       let klass = {}
 
       klass[prefixCls + '-sidebar'] = true
       klass[prefixCls + '-sidebar--theme-' + theme] = true
       klass[prefixCls + '-sidebar-mobile'] = isMobile
+      klass[prefixCls + '-sidebar-compact'] = compact
+      klass[prefixCls + '-sidebar-text-links'] = textLinks
 
       return klass
     }
