@@ -1213,6 +1213,9 @@ Sidebar scroll area
 
 .#{$prefix-cls}-sidebar-text-links {
   .#{$prefix-cls}-sidebar-group-item {
+    &.active {
+      background: none !important;
+    }
     &:hover {
       background: none !important;
       text-decoration: underline;
