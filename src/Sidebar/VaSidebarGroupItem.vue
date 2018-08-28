@@ -14,7 +14,8 @@
 
     <!-- The item's FontAwesome icon, if any -->
     <span v-if="showIcon" :class="`${prefixCls}-sidebar-group-item-icon`">
-      <va-icon :type="item.icon"></va-icon>
+      <va-icon v-if="item.iconColor" :type="item.icon" :color="item.iconColor" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
+      <va-icon v-else :type="item.icon" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
     </span>
 
     <!-- If this is just a label -->

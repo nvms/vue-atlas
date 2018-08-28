@@ -60,10 +60,12 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, relative} = this
+      let {prefixCls, relative, reverse, isRTL} = this
       let klass = {}
 
       klass[prefixCls + '-bars'] = true
+      klass[prefixCls + '-bars-rtl'] = isRTL
+      klass[prefixCls + '-bars-reverse'] = reverse
       klass['relative'] = relative
 
       return klass

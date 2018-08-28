@@ -136,6 +136,9 @@ export const getItemMetadata = (item, parent) => {
   const route = item.route
   const external = item.external
   const icon = item.icon || false
+  const iconColor = item.iconColor || false
+  const iconSize = item.iconSize || '1em'
+  const iconStyle = item.iconStyle || 'solid'
 
   // item is its own parent
   if (parent === undefined) {
@@ -177,6 +180,9 @@ export const getItemMetadata = (item, parent) => {
   if (external !== undefined) {
     return {
       icon,
+      iconColor,
+      iconSize,
+      iconStyle,
       path: parentPath,
       target: external
     }
@@ -185,6 +191,9 @@ export const getItemMetadata = (item, parent) => {
   if (route !== undefined) {
     return {
       icon,
+      iconColor,
+      iconSize,
+      iconStyle,
       path: route,
       target: route
     }
@@ -193,6 +202,9 @@ export const getItemMetadata = (item, parent) => {
   if (element !== undefined) {
     return {
       icon,
+      iconColor,
+      iconSize,
+      iconStyle,
       path: parentPath,
       target: sanitizeRoute(parentPath + element)
     }
@@ -200,6 +212,9 @@ export const getItemMetadata = (item, parent) => {
 
   return {
     icon,
+    iconColor,
+    iconSize,
+    iconStyle,
     path: parentPath,
     target: ''
   }

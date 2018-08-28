@@ -7054,11 +7054,15 @@ function getOffset(element) {
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
-          relative = this.relative;
+          relative = this.relative,
+          reverse = this.reverse,
+          isRTL = this.isRTL;
 
       var klass = {};
 
       klass[prefixCls + '-bars'] = true;
+      klass[prefixCls + '-bars-rtl'] = isRTL;
+      klass[prefixCls + '-bars-reverse'] = reverse;
       klass['relative'] = relative;
 
       return klass;
@@ -16011,6 +16015,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+//
 //
 //
 //
@@ -36279,6 +36284,9 @@ var getItemMetadata = function getItemMetadata(item, parent) {
   var route = item.route;
   var external = item.external;
   var icon = item.icon || false;
+  var iconColor = item.iconColor || false;
+  var iconSize = item.iconSize || '1em';
+  var iconStyle = item.iconStyle || 'solid';
 
   // item is its own parent
   if (parent === undefined) {
@@ -36316,6 +36324,9 @@ var getItemMetadata = function getItemMetadata(item, parent) {
   if (external !== undefined) {
     return {
       icon: icon,
+      iconColor: iconColor,
+      iconSize: iconSize,
+      iconStyle: iconStyle,
       path: parentPath,
       target: external
     };
@@ -36324,6 +36335,9 @@ var getItemMetadata = function getItemMetadata(item, parent) {
   if (route !== undefined) {
     return {
       icon: icon,
+      iconColor: iconColor,
+      iconSize: iconSize,
+      iconStyle: iconStyle,
       path: route,
       target: route
     };
@@ -36332,6 +36346,9 @@ var getItemMetadata = function getItemMetadata(item, parent) {
   if (element !== undefined) {
     return {
       icon: icon,
+      iconColor: iconColor,
+      iconSize: iconSize,
+      iconStyle: iconStyle,
       path: parentPath,
       target: Object(__WEBPACK_IMPORTED_MODULE_3__utils__["b" /* sanitizeRoute */])(parentPath + element)
     };
@@ -36339,6 +36356,9 @@ var getItemMetadata = function getItemMetadata(item, parent) {
 
   return {
     icon: icon,
+    iconColor: iconColor,
+    iconSize: iconSize,
+    iconStyle: iconStyle,
     path: parentPath,
     target: ''
   };
@@ -36636,7 +36656,24 @@ var render = function() {
         ? _c(
             "span",
             { class: _vm.prefixCls + "-sidebar-group-item-icon" },
-            [_c("va-icon", { attrs: { type: _vm.item.icon } })],
+            [
+              _vm.item.iconColor
+                ? _c("va-icon", {
+                    attrs: {
+                      type: _vm.item.icon,
+                      color: _vm.item.iconColor,
+                      size: _vm.item.iconSize,
+                      "icon-style": _vm.item.iconStyle
+                    }
+                  })
+                : _c("va-icon", {
+                    attrs: {
+                      type: _vm.item.icon,
+                      size: _vm.item.iconSize,
+                      "icon-style": _vm.item.iconStyle
+                    }
+                  })
+            ],
             1
           )
         : _vm._e(),

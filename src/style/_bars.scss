@@ -12,6 +12,20 @@
   z-index: 5;
 }
 
+.#{$prefix-cls}-bars-rtl {
+  .#{$prefix-cls}-sidebar-group-title {
+    margin-right: 20px;
+    text-align: right;
+  }
+  .#{$prefix-cls}-sidebar-group-item-text {
+    text-align: right;
+  }
+}
+
+.#{$prefix-cls}-bars-reverse {
+  
+}
+
 .#{$prefix-cls}-minibar {
   display: flex;
   flex-direction: column;
@@ -304,6 +318,7 @@ global sidebar item style
     font-size: 17px;
     margin-right: 10px;
     min-width: 18px;
+    display: flex;
   }
   &:active,
   &:focus {
