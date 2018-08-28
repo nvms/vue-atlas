@@ -1,3 +1,11 @@
+@mixin button-focus-mixin($color, $opacity: 0.6) {
+  &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
+    box-shadow: $color 0px 0px 0px 2px; /* fallback */
+    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+    outline: none;
+  }
+}
+
 /*button sizes*/
 @mixin btn-size($padding, $fontSize, $lineHeight, $borderRadius) {
   padding: $padding;
@@ -116,6 +124,7 @@
       $badgeBgCol: $N20,
       $badgeFontCol: $N400
       );
+      @include button-focus-mixin($B200, 0.6);
   }
   &-primary {
     @include btn-type(
@@ -128,6 +137,8 @@
       $badgeBgCol: $N20,
       $badgeFontCol: $N400
       );
+      @include button-focus-mixin($B300, 0.6);
+      
   }
   &-primary-light {
     @include btn-type(
@@ -164,6 +175,7 @@
       $badgeBgCol: $G300,
       $badgeFontCol: $N0
     );
+    @include button-focus-mixin($G300, 0.6);
   }
   &-info {
     @include btn-type(
@@ -176,6 +188,7 @@
       $badgeBgCol: $T400,
       $badgeFontCol: $N0
     );
+    @include button-focus-mixin($T300, 0.6);
   }
   &-warning {
     @include btn-type(
@@ -188,6 +201,7 @@
       $badgeBgCol: $Y400,
       $badgeFontCol: $N0
     );
+    @include button-focus-mixin($Y500, 1);
   }
   &-danger {
     @include btn-type(
@@ -200,6 +214,7 @@
       $badgeBgCol: $R400,
       $badgeFontCol: $N0
     );
+    @include button-focus-mixin($R200, 0.6);
   }
   &-subtle {
     @include btn-type(
@@ -212,6 +227,7 @@
       $badgeBgCol: $N50,
       $badgeFontCol: $N500
     );
+    @include button-focus-mixin($B200, 0.6);
   }
   &-link {
     @include btn-type(
@@ -230,6 +246,7 @@
     &:active, &:focus {
       text-decoration: none;
     }
+    @include button-focus-mixin($B200, 0.6);
   }
   &-subtle-link {
     @include btn-type(
@@ -248,6 +265,7 @@
     &:active, &:focus {
       text-decoration: none;
     }
+    @include button-focus-mixin($B200, 0.6);
   }
   &-dark {
     @include btn-type(

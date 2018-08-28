@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj" >
+  <div :class="classObj">
     <va-button
       :style="{width:width}"
       :disabled="disabled"
@@ -16,8 +16,10 @@
             <render
               :key="index"
               @click.native.prevent.stop="del(item)"
+              v-on:keyup.enter.native.prevent.stop="del(item)"
               :class="`${prefixCls}-selected-tag`"
               :context="context || $parent._self"
+              tabindex="0"
               :template="format(item)">
             </render>
           </template>

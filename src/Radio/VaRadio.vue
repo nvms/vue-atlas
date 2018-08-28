@@ -1,15 +1,16 @@
 <template>
   <label :class="`${prefixCls}-radio-con`">
     <span :class="objClass">
-      <span :class="`${prefixCls}-radio-inner`"></span>
+      <span :class="`${prefixCls}-radio-inner`" tabindex="0" v-on:keyup.enter="handleClick"></span>
       <input
         type="radio"
+        tabindex="-1"
         :disabled="disabled"
         :checked="currentChecked"
         :class="`${prefixCls}-radio-input`"
         @click.prevent="handleClick">
     </span>
-    <span :class="`${prefixCls}-label`">
+    <span :class="`${prefixCls}-label`" tabindex="-1">
       <slot />
     </span>
     <validate

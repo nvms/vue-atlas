@@ -1,10 +1,11 @@
 <template>
   <label :class="classObj">
     <span>
-      <span :class="`${prefixCls}-checkbox-inner`">
+      <span :class="`${prefixCls}-checkbox-inner`" tabindex="0" v-on:keyup.enter="enterPressed">
         <va-icon type="check" :class="`${prefixCls}-checkbox-inner-check`"></va-icon>
       </span>
       <input
+        tabindex="-1"
         type="checkbox"
         :class="`${prefixCls}-checkbox-input`"
         :disabled="disabled"
@@ -99,6 +100,9 @@ export default {
       this.currentChecked = !this.currentChecked
       this.dispatch('VaCheckboxGroup', 'Va@checkboxChange', this)
       this.$emit('change', this.currentChecked)
+    },
+    enterPressed () {
+      this.handleClick()
     }
   }
 }

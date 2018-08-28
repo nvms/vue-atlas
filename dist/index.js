@@ -4748,7 +4748,7 @@ if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
 
 var store = __webpack_require__(34)('wks');
 var uid = __webpack_require__(25);
-var Symbol = __webpack_require__(5).Symbol;
+var Symbol = __webpack_require__(6).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
 var $exports = module.exports = function (name) {
@@ -4761,40 +4761,6 @@ $exports.store = store;
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject = __webpack_require__(17);
-var IE8_DOM_DEFINE = __webpack_require__(45);
-var toPrimitive = __webpack_require__(29);
-var dP = Object.defineProperty;
-
-exports.f = __webpack_require__(8) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if (IE8_DOM_DEFINE) try {
-    return dP(O, P, Attributes);
-  } catch (e) { /* empty */ }
-  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
-  if ('value' in Attributes) O[P] = Attributes.value;
-  return O;
-};
-
-
-/***/ }),
-/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4827,6 +4793,40 @@ var EventListener = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (EventListener);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__(17);
+var IE8_DOM_DEFINE = __webpack_require__(45);
+var toPrimitive = __webpack_require__(29);
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__(8) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
 
 /***/ }),
 /* 8 */
@@ -4925,7 +4925,7 @@ if (false) {(function () {
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(5);
+var global = __webpack_require__(6);
 var core = __webpack_require__(3);
 var ctx = __webpack_require__(44);
 var hide = __webpack_require__(13);
@@ -4993,7 +4993,7 @@ module.exports = $export;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(6);
+var dP = __webpack_require__(7);
 var createDesc = __webpack_require__(19);
 module.exports = __webpack_require__(8) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
@@ -5336,7 +5336,7 @@ module.exports = function (key) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(3);
-var global = __webpack_require__(5);
+var global = __webpack_require__(6);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || (global[SHARED] = {});
 
@@ -5370,7 +5370,7 @@ exports.f = Object.getOwnPropertySymbols;
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(6).f;
+var def = __webpack_require__(7).f;
 var has = __webpack_require__(9);
 var TAG = __webpack_require__(4)('toStringTag');
 
@@ -5390,11 +5390,11 @@ exports.f = __webpack_require__(4);
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(5);
+var global = __webpack_require__(6);
 var core = __webpack_require__(3);
 var LIBRARY = __webpack_require__(24);
 var wksExt = __webpack_require__(38);
-var defineProperty = __webpack_require__(6).f;
+var defineProperty = __webpack_require__(7).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -5635,7 +5635,7 @@ module.exports = !__webpack_require__(8) && !__webpack_require__(14)(function ()
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(18);
-var document = __webpack_require__(5).document;
+var document = __webpack_require__(6).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
 module.exports = function (it) {
@@ -6424,7 +6424,7 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_events__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__ = __webpack_require__(5);
 //
 //
 //
@@ -6598,7 +6598,7 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_element__ = __webpack_require__(66);
 //
 //
@@ -7150,7 +7150,7 @@ if (false) {(function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_getScrollBarWidth__ = __webpack_require__(312);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Button_VaButton__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_element__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Mixin_localeMixin__ = __webpack_require__(16);
@@ -7387,6 +7387,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 //
 //
 //
@@ -7397,6 +7398,8 @@ if (false) {(function () {
 //
 //
 //
+
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaButton',
@@ -7460,6 +7463,11 @@ if (false) {(function () {
       default: false,
       required: false
     },
+    focused: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -7468,7 +7476,8 @@ if (false) {(function () {
   data: function data() {
     var loading = this.loading;
     return {
-      loadingSpinner: loading
+      loadingSpinner: loading,
+      isFocused: this.focused
     };
   },
 
@@ -7517,7 +7526,8 @@ if (false) {(function () {
           block = this.block,
           active = this.active,
           disabled = this.disabled,
-          round = this.round;
+          round = this.round,
+          isFocused = this.isFocused;
 
       var klass = {};
 
@@ -7528,6 +7538,8 @@ if (false) {(function () {
       size ? klass[prefixCls + '-btn-' + size] = true : '';
       type ? klass[prefixCls + '-btn-' + type] = true : '';
       klass[prefixCls + '-btn-round'] = round;
+
+      klass[prefixCls + '-btn-' + type + '-focused'] = isFocused;
 
       return klass;
     },
@@ -7562,6 +7574,30 @@ if (false) {(function () {
         });
       }
     }
+  },
+  methods: {
+    enterPressed: function enterPressed() {
+      var el = this.$refs.btn;
+      var evObj = document.createEvent('Events');
+      evObj.initEvent('click', true, false);
+      el.dispatchEvent(evObj);
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.$nextTick(function () {
+      var el = _this2.$el;
+
+      _this2._clickEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(window, 'click', function (e) {
+        if (!el.contains(e.target)) {
+          _this2.isFocused = false;
+        }
+      });
+    });
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this._clickEvent) this._clickEvent.remove();
   }
 });
 
@@ -7623,6 +7659,8 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validate_vue__ = __webpack_require__(10);
+//
+//
 //
 //
 //
@@ -7772,6 +7810,12 @@ if (false) {(function () {
     focus: function focus() {
       this.focused = true;
       this.$emit('focus', this.value);
+    },
+    enterPressed: function enterPressed() {
+      var el = this.$refs.input;
+      var evObj = document.createEvent('Events');
+      evObj.initEvent('click', true, false);
+      el.dispatchEvent(evObj);
     }
   }
 });
@@ -8139,6 +8183,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -8272,12 +8317,14 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_validationMixin__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__render_vue__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validate_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_type__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Mixin_localeMixin_js__ = __webpack_require__(16);
+//
+//
 //
 //
 //
@@ -9714,6 +9761,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -9797,6 +9845,9 @@ if (false) {(function () {
       this.currentChecked = !this.currentChecked;
       this.dispatch('VaCheckboxGroup', 'Va@checkboxChange', this);
       this.$emit('change', this.currentChecked);
+    },
+    enterPressed: function enterPressed() {
+      this.handleClick();
     }
   }
 });
@@ -9806,7 +9857,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__VaCollapseTransition__ = __webpack_require__(367);
 //
 //
@@ -16386,7 +16437,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
 //
@@ -16654,10 +16705,35 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_format__ = __webpack_require__(413);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -30363,7 +30439,7 @@ module.exports = function (Constructor, NAME, next) {
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(6);
+var dP = __webpack_require__(7);
 var anObject = __webpack_require__(17);
 var getKeys = __webpack_require__(20);
 
@@ -30382,7 +30458,7 @@ module.exports = __webpack_require__(8) ? Object.defineProperties : function def
 /* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(5).document;
+var document = __webpack_require__(6).document;
 module.exports = document && document.documentElement;
 
 
@@ -30410,7 +30486,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(269);
-var global = __webpack_require__(5);
+var global = __webpack_require__(6);
 var hide = __webpack_require__(13);
 var Iterators = __webpack_require__(22);
 var TO_STRING_TAG = __webpack_require__(4)('toStringTag');
@@ -30511,7 +30587,7 @@ module.exports = __webpack_require__(3).Symbol;
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global = __webpack_require__(5);
+var global = __webpack_require__(6);
 var has = __webpack_require__(9);
 var DESCRIPTORS = __webpack_require__(8);
 var $export = __webpack_require__(12);
@@ -30534,7 +30610,7 @@ var createDesc = __webpack_require__(19);
 var _create = __webpack_require__(54);
 var gOPNExt = __webpack_require__(278);
 var $GOPD = __webpack_require__(279);
-var $DP = __webpack_require__(6);
+var $DP = __webpack_require__(7);
 var $keys = __webpack_require__(20);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -30752,7 +30828,7 @@ setToStringTag(global.JSON, 'JSON', true);
 var META = __webpack_require__(25)('meta');
 var isObject = __webpack_require__(18);
 var has = __webpack_require__(9);
-var setDesc = __webpack_require__(6).f;
+var setDesc = __webpack_require__(7).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -31367,7 +31443,7 @@ module.exports = function defineProperty(it, key, desc) {
 
 var $export = __webpack_require__(12);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(8), 'Object', { defineProperty: __webpack_require__(6).f });
+$export($export.S + $export.F * !__webpack_require__(8), 'Object', { defineProperty: __webpack_require__(7).f });
 
 
 /***/ }),
@@ -32075,7 +32151,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "a",
-    { ref: "btn", class: _vm.classObj },
+    {
+      ref: "btn",
+      class: _vm.classObj,
+      attrs: { tabindex: "0" },
+      on: {
+        keyup: function($event) {
+          if (
+            !("button" in $event) &&
+            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+          ) {
+            return null
+          }
+          return _vm.enterPressed($event)
+        }
+      }
+    },
     [
       _c(
         "div",
@@ -32634,13 +32725,23 @@ var render = function() {
           disabled: _vm.disabled,
           placeholder: _vm.placeholder,
           autofocus: _vm.autofocus,
-          type: _vm.type
+          type: _vm.type,
+          tabindex: "0"
         },
         domProps: { value: _vm.value },
         on: {
           blur: _vm.blur,
           input: function($event) {
             _vm.update($event.target.value)
+          },
+          keyup: function($event) {
+            if (
+              !("button" in $event) &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            return _vm.enterPressed($event)
           }
         }
       }),
@@ -32761,11 +32862,25 @@ var render = function() {
     { class: _vm.prefixCls + "-radio-con" },
     [
       _c("span", { class: _vm.objClass }, [
-        _c("span", { class: _vm.prefixCls + "-radio-inner" }),
+        _c("span", {
+          class: _vm.prefixCls + "-radio-inner",
+          attrs: { tabindex: "0" },
+          on: {
+            keyup: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+              ) {
+                return null
+              }
+              return _vm.handleClick($event)
+            }
+          }
+        }),
         _vm._v(" "),
         _c("input", {
           class: _vm.prefixCls + "-radio-input",
-          attrs: { type: "radio", disabled: _vm.disabled },
+          attrs: { type: "radio", tabindex: "-1", disabled: _vm.disabled },
           domProps: { checked: _vm.currentChecked },
           on: {
             click: function($event) {
@@ -32776,7 +32891,12 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("span", { class: _vm.prefixCls + "-label" }, [_vm._t("default")], 2),
+      _c(
+        "span",
+        { class: _vm.prefixCls + "-label", attrs: { tabindex: "-1" } },
+        [_vm._t("default")],
+        2
+      ),
       _vm._v(" "),
       _c("validate", {
         attrs: {
@@ -33009,10 +33129,28 @@ var render = function() {
                             class: _vm.prefixCls + "-selected-tag",
                             attrs: {
                               context: _vm.context || _vm.$parent._self,
+                              tabindex: "0",
                               template: _vm.format(item)
                             },
                             nativeOn: {
                               click: function($event) {
+                                $event.preventDefault()
+                                $event.stopPropagation()
+                                _vm.del(item)
+                              },
+                              keyup: function($event) {
+                                if (
+                                  !("button" in $event) &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
                                 $event.preventDefault()
                                 $event.stopPropagation()
                                 _vm.del(item)
@@ -34011,7 +34149,7 @@ if (false) {(function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_type__ = __webpack_require__(21);
 
 
@@ -34538,7 +34676,21 @@ var render = function() {
       _c("span", [
         _c(
           "span",
-          { class: _vm.prefixCls + "-checkbox-inner" },
+          {
+            class: _vm.prefixCls + "-checkbox-inner",
+            attrs: { tabindex: "0" },
+            on: {
+              keyup: function($event) {
+                if (
+                  !("button" in $event) &&
+                  _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                ) {
+                  return null
+                }
+                return _vm.enterPressed($event)
+              }
+            }
+          },
           [
             _c("va-icon", {
               class: _vm.prefixCls + "-checkbox-inner-check",
@@ -34550,7 +34702,7 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           class: _vm.prefixCls + "-checkbox-input",
-          attrs: { type: "checkbox", disabled: _vm.disabled },
+          attrs: { tabindex: "-1", type: "checkbox", disabled: _vm.disabled },
           domProps: { checked: _vm.currentChecked },
           on: { click: _vm.handleClick }
         })
@@ -36505,7 +36657,7 @@ module.exports = function (it) {
 
 "use strict";
 
-var $defineProperty = __webpack_require__(6);
+var $defineProperty = __webpack_require__(7);
 var createDesc = __webpack_require__(19);
 
 module.exports = function (object, index, value) {
@@ -37987,14 +38139,56 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-preBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextMonthClick(0)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextMonthClick(0)
                         }
                       }
                     },
                     [_c("va-icon", { attrs: { type: "arrow-left" } })],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      attrs: { tabindex: "0" },
+                      on: {
+                        click: _vm.switchMonthView,
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.switchMonthView($event)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.stringifyDayHeader(_vm.currDate)))]
                   ),
                   _vm._v(" "),
                   _c(
@@ -38005,19 +38199,31 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-nextBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextMonthClick(1)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextMonthClick(1)
                         }
                       }
                     },
                     [_c("va-icon", { attrs: { type: "arrow-right" } })],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("p", { on: { click: _vm.switchMonthView } }, [
-                    _vm._v(_vm._s(_vm.stringifyDayHeader(_vm.currDate)))
-                  ])
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -38037,8 +38243,24 @@ var render = function() {
                       {
                         key: index,
                         class: d.sclass,
+                        attrs: { tabindex: "0" },
                         on: {
                           click: function($event) {
+                            _vm.daySelect(d.date, d.text, d.sclass)
+                          },
+                          keyup: function($event) {
+                            if (
+                              !("button" in $event) &&
+                              _vm._k(
+                                $event.keyCode,
+                                "enter",
+                                13,
+                                $event.key,
+                                "Enter"
+                              )
+                            ) {
+                              return null
+                            }
                             _vm.daySelect(d.date, d.text, d.sclass)
                           }
                         }
@@ -38085,14 +38307,56 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-preBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextYearClick(0)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextYearClick(0)
                         }
                       }
                     },
                     [_c("va-icon", { attrs: { type: "arrow-left" } })],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      attrs: { tabindex: "0" },
+                      on: {
+                        click: _vm.switchDecadeView,
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
+                          return _vm.switchDecadeView($event)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.stringifyYearHeader(_vm.currDate)))]
                   ),
                   _vm._v(" "),
                   _c(
@@ -38103,19 +38367,31 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-nextBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextYearClick(1)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextYearClick(1)
                         }
                       }
                     },
                     [_c("va-icon", { attrs: { type: "arrow-right" } })],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("p", { on: { click: _vm.switchDecadeView } }, [
-                    _vm._v(_vm._s(_vm.stringifyYearHeader(_vm.currDate)))
-                  ])
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -38129,7 +38405,23 @@ var render = function() {
                           {
                             key: index,
                             class: _vm.monthClassObj(m),
+                            attrs: { tabindex: "0" },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !("button" in $event) &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                _vm.monthSelect(index)
+                              },
                               click: function($event) {
                                 _vm.monthSelect(index)
                               }
@@ -38180,8 +38472,24 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-preBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextDecadeClick(0)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextDecadeClick(0)
                         }
                       }
@@ -38198,8 +38506,24 @@ var render = function() {
                         "-month-btn " +
                         _vm.prefixCls +
                         "-datepicker-nextBtn",
+                      attrs: { tabindex: "0" },
                       on: {
                         click: function($event) {
+                          _vm.preNextDecadeClick(1)
+                        },
+                        keyup: function($event) {
+                          if (
+                            !("button" in $event) &&
+                            _vm._k(
+                              $event.keyCode,
+                              "enter",
+                              13,
+                              $event.key,
+                              "Enter"
+                            )
+                          ) {
+                            return null
+                          }
                           _vm.preNextDecadeClick(1)
                         }
                       }
@@ -38234,7 +38558,23 @@ var render = function() {
                           {
                             key: index,
                             class: _vm.yearClassObj(decade),
+                            attrs: { tabindex: "0" },
                             on: {
+                              keyup: function($event) {
+                                if (
+                                  !("button" in $event) &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                _vm.yearSelect(decade.text)
+                              },
                               click: function($event) {
                                 $event.stopPropagation()
                                 _vm.yearSelect(decade.text)

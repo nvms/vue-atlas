@@ -1,3 +1,11 @@
+@mixin checkbox-focus-mixin($color, $opacity: 0.6) {
+  &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
+    box-shadow: $color 0px 0px 0px 2px; /* fallback */
+    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+    outline: none;
+  }
+}
+
 .#{$prefix-cls}-checkbox-label {
   white-space: nowrap;
   cursor: default;
@@ -74,6 +82,7 @@
     left: 1px;
     transition: all 0.3s;
   }
+  @include checkbox-focus-mixin($B200, 0.6);
 }
 
 .#{$prefix-cls}-checkbox-input {

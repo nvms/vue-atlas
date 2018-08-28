@@ -74,7 +74,7 @@ export default {
     iconStyle: {
       type: String,
       default: 'regular',
-      required: false,
+      required: false
     },
     limit: {
       type: Number,

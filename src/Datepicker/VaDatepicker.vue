@@ -22,16 +22,23 @@
           <div :class="`${prefixCls}-datepicker-body`">
             <div :class="`${prefixCls}-datepicker-ctrl`">
               <span
+                tabindex="0"
                 :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-preBtn`"
-                @click="preNextMonthClick(0)">
+                @click="preNextMonthClick(0)"
+                v-on:keyup.enter="preNextMonthClick(0)">
                 <va-icon type="arrow-left"></va-icon>
               </span>
+              <p
+                @click="switchMonthView"
+                tabindex="0"
+                v-on:keyup.enter="switchMonthView">{{stringifyDayHeader(currDate)}}</p>
               <span
+                tabindex="0"
                 :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-nextBtn`"
-                @click="preNextMonthClick(1)">
+                @click="preNextMonthClick(1)"
+                v-on:keyup.enter="preNextMonthClick(1)">
                 <va-icon type="arrow-right"></va-icon>
               </span>
-              <p @click="switchMonthView">{{stringifyDayHeader(currDate)}}</p>
             </div>
             <div :class="`${prefixCls}-datepicker-weekRange`">
               <span v-for="(w, index) in weekRange" :key="index">{{w}}</span>
@@ -39,7 +46,10 @@
             <div :class="`${prefixCls}-datepicker-dateRange`">
               <span
                 v-for="(d, index) in dateRange" :class="d.sclass"
-                @click="daySelect(d.date, d.text, d.sclass)" :key="index">{{d.text}}</span>
+                @click="daySelect(d.date, d.text, d.sclass)"
+                :key="index"
+                tabindex="0"
+                v-on:keyup.enter="daySelect(d.date, d.text, d.sclass)">{{d.text}}</span>
             </div>
           </div>
         </div>
@@ -52,21 +62,30 @@
             <div :class="`${prefixCls}-datepicker-ctrl`">
             <span
               :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-preBtn`"
-              @click="preNextYearClick(0)">
+              @click="preNextYearClick(0)"
+              tabindex="0"
+              v-on:keyup.enter="preNextYearClick(0)">
               <va-icon type="arrow-left"></va-icon>
             </span>
+            <p
+              @click="switchDecadeView"
+              tabindex="0"
+              v-on:keyup.enter="switchDecadeView">{{stringifyYearHeader(currDate)}}</p>
             <span
               :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-nextBtn`"
-              @click="preNextYearClick(1)">
+              @click="preNextYearClick(1)"
+              tabindex="0"
+              v-on:keyup.enter="preNextYearClick(1)">
               <va-icon type="arrow-right"></va-icon>
             </span>
-            <p @click="switchDecadeView">{{stringifyYearHeader(currDate)}}</p>
             </div>
             <div :class="`${prefixCls}-datepicker-monthRange`">
               <template v-for="(m, index) in monthNames">
                 <span
                   :class="monthClassObj(m)"
                   :key="index"
+                  tabindex="0"
+                  v-on:keyup.enter="monthSelect(index)"
                   @click="monthSelect(index)">{{m}}</span>
               </template>
             </div>
@@ -81,12 +100,16 @@
             <div :class="`${prefixCls}-datepicker-ctrl`">
               <span
                 :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-preBtn`"
-                @click="preNextDecadeClick(0)">
+                @click="preNextDecadeClick(0)"
+                tabindex="0"
+                v-on:keyup.enter="preNextDecadeClick(0)">
                 <va-icon type="arrow-left"></va-icon>
               </span>
               <span
                 :class="`${prefixCls}-month-btn ${prefixCls}-datepicker-nextBtn`"
-                @click="preNextDecadeClick(1)">
+                @click="preNextDecadeClick(1)"
+                tabindex="0"
+                v-on:keyup.enter="preNextDecadeClick(1)">
                 <va-icon type="arrow-right"></va-icon>
               </span>
               <p>
@@ -98,6 +121,8 @@
                 <span
                   :class="yearClassObj(decade)"
                   :key="index"
+                  tabindex="0"
+                  v-on:keyup.enter="yearSelect(decade.text)"
                   @click.stop="yearSelect(decade.text)">
                   {{decade.text}}
                 </span>

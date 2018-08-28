@@ -28,6 +28,8 @@
       :type="type"
       @blur="blur"
       @input="update($event.target.value)"
+      tabindex="0"
+      v-on:keyup.enter="enterPressed"
       :value="value" />
 
     <va-icon
@@ -141,6 +143,12 @@ export default {
     focus () {
       this.focused = true
       this.$emit('focus', this.value)
+    },
+    enterPressed () {
+      let el = this.$refs.input
+      let evObj = document.createEvent('Events')
+      evObj.initEvent('click', true, false)
+      el.dispatchEvent(evObj)
     }
   }
 }

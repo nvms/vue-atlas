@@ -1,5 +1,5 @@
 <template>
-  <a :class="classObj" ref="btn">
+  <a :class="classObj" ref="btn" tabindex="0" v-on:keyup.enter="enterPressed">
     <div :class="fadeclassObj">
       <slot />
       <va-badge v-if="badge" :margin="badgeMargin">{{badge}}</va-badge>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import EventListener from '../utils/EventListener'
+
 export default {
   name: 'VaButton',
   props: {
@@ -91,6 +93,11 @@ export default {
       default: false,
       required: false
     },
+    focused: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -99,7 +106,8 @@ export default {
   data () {
     let loading = this.loading
     return {
-      loadingSpinner: loading
+      loadingSpinner: loading,
+      isFocused: this.focused
     }
   },
   computed: {
@@ -140,7 +148,7 @@ export default {
       return white
     },
     classObj () {
-      let {prefixCls, type, size, block, active, disabled, round} = this
+      let {prefixCls, type, size, block, active, disabled, round, isFocused} = this
       let klass = {}
 
       klass[prefixCls + '-btn'] = true
@@ -150,6 +158,8 @@ export default {
       size ? klass[prefixCls + '-btn-' + size] = true : ''
       type ? klass[prefixCls + '-btn-' + type] = true : ''
       klass[prefixCls + '-btn-round'] = round
+
+      klass[prefixCls + '-btn-' + type + '-focused'] = isFocused
 
       return klass
     },
@@ -180,6 +190,29 @@ export default {
         })
       }
     }
+  },
+  methods: {
+    enterPressed () {
+      let el = this.$refs.btn
+      let evObj = document.createEvent('Events')
+      evObj.initEvent('click', true, false)
+      el.dispatchEvent(evObj)
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      let el = this.$el
+      
+      this._clickEvent = EventListener.listen(window, 'click', (e) => {
+        if (!el.contains(e.target)) {
+          this.isFocused = false
+        }
+      })
+
+    })
+  },
+  beforeDestroy () {
+    if (this._clickEvent) this._clickEvent.remove()
   }
 }
 </script>
