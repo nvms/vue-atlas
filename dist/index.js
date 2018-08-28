@@ -7674,6 +7674,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -7702,6 +7703,11 @@ if (false) {(function () {
     },
     icon: {
       type: String
+    },
+    iconStyle: {
+      type: String,
+      default: 'regular',
+      required: false
     },
     showClean: {
       type: Boolean,
@@ -15643,6 +15649,7 @@ function transformArguments(arg) {
 //
 //
 //
+//
 
 
 
@@ -15671,6 +15678,11 @@ function transformArguments(arg) {
     },
     icon: {
       type: String,
+      required: false
+    },
+    iconStyle: {
+      type: String,
+      default: 'regular',
       required: false
     },
     limit: {
@@ -16374,6 +16386,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
+//
 //
 //
 //
@@ -32645,7 +32658,7 @@ var render = function() {
       _vm.icon !== undefined
         ? _c("va-icon", {
             class: _vm.prefixCls + "-input-show-icon",
-            attrs: { type: _vm.icon }
+            attrs: { type: _vm.icon, "icon-style": _vm.iconStyle }
           })
         : _vm._e(),
       _vm._v(" "),
@@ -35966,7 +35979,8 @@ var render = function() {
           readonly: _vm.readonly,
           disabled: _vm.disabled,
           "show-clean": _vm.showClean,
-          icon: _vm.icon
+          icon: _vm.icon,
+          "icon-style": _vm.iconStyle
         },
         on: { focus: _vm.focus, blur: _vm.blur },
         nativeOn: {
@@ -37279,7 +37293,8 @@ var render = function() {
           disabled: _vm.disabled,
           readonly: _vm.readonly,
           "show-clean": true,
-          icon: "clock"
+          icon: "clock",
+          "icon-style": "regular"
         },
         on: { clean: _vm.clean },
         nativeOn: {
@@ -37920,7 +37935,7 @@ var render = function() {
           disabled: _vm.disabled,
           readonly: _vm.readonly,
           "show-clean": true,
-          icon: "calendar"
+          icon: "calendar-alt"
         },
         on: { clean: _vm.clean },
         nativeOn: {

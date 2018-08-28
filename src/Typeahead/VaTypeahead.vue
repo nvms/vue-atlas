@@ -13,6 +13,7 @@
       v-model="query"
       :show-clean="showClean"
       :icon="icon"
+      :icon-style="iconStyle"
       @focus="focus"
       @blur="blur"
       @input.native="update"
@@ -69,6 +70,11 @@ export default {
     icon: {
       type: String,
       required: false
+    },
+    iconStyle: {
+      type: String,
+      default: 'regular',
+      required: false,
     },
     limit: {
       type: Number,

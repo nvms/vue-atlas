@@ -137,7 +137,8 @@ $stepRoundLineMargin: 7px;
     // border: 4px $primaryColorHover solid;
   }
   > .#{$prefix-cls}-steps-finished label {
-    color: $primaryColorHover;
+    // color: $primaryColorHover;
+    color: $N600 !important;
     font-weight: 600;
   }
   > .#{$prefix-cls}-steps-current:before {
@@ -152,7 +153,7 @@ $stepRoundLineMargin: 7px;
     color:$N0;
   }
   > .#{$prefix-cls}-steps-current label {
-    color: $B400 !important;
+    color: $B300 !important;
     font-weight: 700;
   }
   > li {
@@ -214,7 +215,8 @@ $stepRoundLineMargin: 7px;
   > li label {
     width: 100%;
     text-align: center;
-    color: $weightGrayColor;
+    color: $N100;
+    font-weight: 500;
     margin: 10px 0px 0px;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -10,7 +10,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :show-clean="true"
-      icon="calendar"
+      icon="calendar-alt"
       @clean="clean"
       @click.native="inputClick"
       v-model="currentValue">

@@ -39,7 +39,8 @@
 
     <va-icon v-if="icon !== undefined"
       :class="`${prefixCls}-input-show-icon`"
-      :type="icon">
+      :type="icon"
+      :icon-style="iconStyle">
     </va-icon>
 
     <validate
@@ -79,6 +80,11 @@ export default {
     },
     icon: {
       type: String
+    },
+    iconStyle: {
+      type: String,
+      default: 'regular',
+      required: false
     },
     showClean: {
       type: Boolean,

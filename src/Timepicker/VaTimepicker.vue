@@ -12,6 +12,7 @@
       @click.native="inputClick"
       :show-clean="true"
       icon="clock"
+      icon-style="regular"
       v-model="currentValue">
     </va-input>
     <transition name="fadeDown">
