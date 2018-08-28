@@ -6115,8 +6115,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
       stl['position'] = 'absolute';
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px';
-      stl['paddingTop'] = tbh + 'px';
+      // stl['paddingTop'] = tbh + 'px'
+      stl['top'] = tbh + 'px';
       stl['width'] = 'calc(100% - ' + totalw + 'px)';
+      stl['height'] = 'calc(100% - ' + tbh + 'px)';
 
       return stl;
     }
@@ -7621,6 +7623,7 @@ if (false) {(function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__validate_vue__ = __webpack_require__(10);
+//
 //
 //
 //
@@ -32645,7 +32648,7 @@ var render = function() {
       _vm.showClean
         ? _c("va-icon", {
             class: _vm.prefixCls + "-input-show-clean",
-            attrs: { type: "times-circle" },
+            attrs: { type: "times", "icon-style": "solid" },
             nativeOn: {
               click: function($event) {
                 $event.stopPropagation()

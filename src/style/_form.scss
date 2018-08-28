@@ -8,15 +8,15 @@
 }
 
 @mixin defaultInputSize() {
-  @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 4px, $minHeight: 34px, $maxHeight: 34px);
+  @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 3px, $minHeight: 34px, $maxHeight: 34px);
 }
 
 @mixin smallInputSize() {
-  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 4px, $minHeight: 32px, $maxHeight: 32px);
+  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 3px, $minHeight: 32px, $maxHeight: 32px);
 }
 
 @mixin extraSmallInputSize() {
-  @include input-size( $padding: 5px, $fontSize: 11px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
+  @include input-size( $padding: 5px, $fontSize: 11px, $lineHeight: 1.2em, $borderRadius: 3px, $minHeight: 28px, $maxHeight: 28px);
 }
 
 @mixin baseInputStyle () {

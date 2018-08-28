@@ -95,8 +95,10 @@ export default {
 
       stl['position'] = 'absolute'
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px'
-      stl['paddingTop'] = tbh + 'px'
+      // stl['paddingTop'] = tbh + 'px'
+      stl['top'] = tbh + 'px'
       stl['width'] = 'calc(100% - ' + totalw + 'px)'
+      stl['height'] = 'calc(100% - ' + tbh + 'px)'
 
       return stl
     }

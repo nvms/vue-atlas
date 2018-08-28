@@ -31,7 +31,8 @@
       :value="value" />
 
     <va-icon
-      type="times-circle"
+      type="times"
+      icon-style="solid"
       v-if="showClean"
       :class="`${prefixCls}-input-show-clean`"
       @click.native.stop="clean">
