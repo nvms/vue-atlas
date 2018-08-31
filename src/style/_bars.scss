@@ -17,14 +17,13 @@
     margin-right: 20px;
     text-align: right;
   }
+
   .#{$prefix-cls}-sidebar-group-item-text {
     text-align: right;
   }
 }
 
-.#{$prefix-cls}-bars-reverse {
-
-}
+.#{$prefix-cls}-bars-reverse {}
 
 .#{$prefix-cls}-minibar {
   display: flex;
@@ -43,6 +42,7 @@
       flex-direction: row;
       justify-content: flex-start;
       width: auto !important;
+
       .#{$prefix-cls}-minibar-top,
       .#{$prefix-cls}-minibar-bottom {
         >div {
@@ -50,6 +50,7 @@
           flex-direction: row;
         }
       }
+
       .#{$prefix-cls}-page-container {
         position: absolute;
         top: 51px !important;
@@ -63,10 +64,12 @@
     flex-basis: 0;
     padding-top: 20px;
   }
+
   &-bottom {
     flex-grow: 0;
     padding-bottom: 20px;
   }
+
   &-item {
     display: flex;
     align-items: center;
@@ -77,6 +80,7 @@
     height: 40px;
     padding: 0;
     line-height: 1;
+
     &-brand {
       margin-bottom: 20px;
       border-radius: 0px;
@@ -95,6 +99,7 @@
   align-items: center;
   padding: 0 7px;
   overflow: visible;
+
   &-inner {
     display: flex;
     align-items: center;
@@ -104,25 +109,55 @@
   }
 }
 
-.#{$prefix-cls}-topbar-left > div, .#{$prefix-cls}-topbar-right > div {
+.#{$prefix-cls}-topbar-left>div,
+.#{$prefix-cls}-topbar-right>div {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
 
-.#{$prefix-cls}-topbar--theme-blue {
-  background-color: $B500;
+.#{$prefix-cls}-topbar--theme-purple {
+  background-color: $P500;
+
   .#{$prefix-cls}-topbar-inner {
     color: $N0;
   }
+
   .#{$prefix-cls}-input-con {
     input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
       color: $N50;
     }
+
+    .#{$prefix-cls}-form-control {
+      background: darken($P500, 10%);
+      border: 2px solid darken($P500, 10%);
+      color: $N0;
+
+      &:focus {
+        border: 2px solid $P300;
+        background: darken($P500, 10%) !important;
+      }
+    }
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-blue {
+  background-color: $B500;
+
+  .#{$prefix-cls}-topbar-inner {
+    color: $N0;
+  }
+
+  .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $N50;
+    }
+
     .#{$prefix-cls}-form-control {
       background: darken($B500, 10%);
       border: 2px solid darken($B500, 10%);
       color: $N0;
+
       &:focus {
         border: 2px solid $B300;
         background: darken($B500, 10%) !important;
@@ -133,12 +168,14 @@
 
 .#{$prefix-cls}-topbar--theme-white {
   background-color: $N0;
+
   // -webkit-box-shadow: inset 0px -1px 0px 0px $N40;
   // -moz-box-shadow: inset 0px -1px 0px 0px $N40;
   // box-shadow: inset 0px -1px 0px 0px $N40;
   .#{$prefix-cls}-topbar-inner {
     color: $N500;
   }
+
   .#{$prefix-cls}-input-con {
     input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
       color: $N70;
@@ -148,9 +185,11 @@
 
 .#{$prefix-cls}-topbar--theme-default {
   background-color: $N20;
+
   .#{$prefix-cls}-topbar-inner {
     color: $N500;
   }
+
   .#{$prefix-cls}-input-con {
     input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
       color: $N90;
@@ -160,17 +199,21 @@
 
 .#{$prefix-cls}-topbar--theme-dark {
   background-color: $N700;
+
   .#{$prefix-cls}-topbar-inner {
     color: $N60;
   }
+
   .#{$prefix-cls}-input-con {
     input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
       color: $N70;
     }
+
     .#{$prefix-cls}-form-control {
       background: $N400;
       border: 2px solid $N400;
       color: $N0;
+
       &:focus {
         border: 2px solid $N200;
         background: $N500 !important;
@@ -181,17 +224,21 @@
 
 .#{$prefix-cls}-topbar--theme-darker {
   background-color: $N800;
+
   .#{$prefix-cls}-topbar-inner {
     color: $N80;
   }
+
   .#{$prefix-cls}-input-con {
     input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
       color: $N80;
     }
+
     .#{$prefix-cls}-form-control {
       background: $N500;
       border: 2px solid $N500;
       color: $N0;
+
       &:focus {
         border: 2px solid $N300;
         background: $N600 !important;
@@ -208,23 +255,33 @@
   padding: 0 0 10px 0;
   justify-content: flex-start;
   overflow-y: auto;
+
   &-compact {
     .#{$prefix-cls}-sidebar-group-item {
       min-height: 25px;
       line-height: inherit;
     }
+
+    .#{$prefix-cls}-sidebar-group-item-text > .#{$prefix-cls}-sidebar-group-item-icon {
+      font-size: 12px;
+    }
+
     .#{$prefix-cls}-sidebar-group-item-text {
       min-height: 25px;
     }
+
     .#{$prefix-cls}-sidebar-group-item-text a {
       min-height: 25px;
     }
   }
+
   &-header {
     margin: 15px 11px 15px 11px;
+
     a {
       outline: none !important;
     }
+
     .#{$prefix-cls}-btn {
       padding-left: 4px;
       padding-top: 4px;
@@ -232,10 +289,13 @@
       font-size: 14px;
       font-weight: 500;
       transition: none;
+
       &-text-fade {
         justify-content: flex-start;
       }
+
       i.#{$prefix-cls}-fa {}
+
       &:active {
         color: $N400;
         -webkit-box-shadow: inset 0px 0px 0px 2px $B200;
@@ -244,13 +304,16 @@
       }
     }
   }
+
   &-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     &-title {
       font-size: 11px;
       font-weight: 600;
@@ -270,6 +333,7 @@
   padding: 0 11px 0 10px;
   margin: 0 0 10px 0;
   width: 100%;
+
   ul {
     padding: 0;
     margin: 0;
@@ -279,6 +343,7 @@
     -ms-user-select: none;
     user-select: none;
   }
+
   li {}
 }
 
@@ -288,6 +353,7 @@
       display: none;
     }
   }
+
   &-children {
     li {
       margin-left: 34px;
@@ -296,9 +362,8 @@
 }
 
 /*
-global sidebar item style
+sidebar item defaults
 */
-
 .#{$prefix-cls}-sidebar-group-item {
   $el: &;
   display: flex;
@@ -314,24 +379,29 @@ global sidebar item style
   border-radius: 3px;
   min-height: 36px;
   font-weight: 400;
+
   &-icon {
     font-size: 17px;
     margin-right: 10px;
     min-width: 18px;
     display: flex;
   }
+
   &:active,
   &:focus {
     outline: none;
+
     .#{$prefix-cls}-sidebar-group-item-icon {
       // color: $B300;
     }
   }
+
   &-text {
     display: flex;
     flex: 1;
     align-items: center;
     min-height: 36px;
+
     a {
       flex: 1;
       position: relative;
@@ -341,6 +411,7 @@ global sidebar item style
       justify-content: center;
       line-height: 1;
     }
+
     &-icon {
       font-size: 4px;
       position: relative;
@@ -360,6 +431,7 @@ global sidebar item style
   position: relative;
   top: -1.5px;
   margin-right: 7px;
+
   &-closed {}
 }
 
@@ -371,7 +443,9 @@ global sidebar item style
   display: flex;
   flex-direction: column;
   line-height: 2em;
+
   &:active {}
+
   &:active,
   &:focus {
     outline: none;
@@ -388,10 +462,12 @@ global sidebar item style
 
 .#{$prefix-cls}-sidebar-scrollarea {
   overflow-y: hidden;
+
   &:hover {
     overflow-y: auto;
   }
 }
+
 .#{$prefix-cls}-sidebar-mobile {
   .#{$prefix-cls}-sidebar-scrollarea {
     overflow-y: auto;
@@ -407,15 +483,16 @@ global sidebar item style
  |_|
 foundation
 */
-
 .#{$prefix-cls}-sidebar {
   .#{$prefix-cls}-placeholder {
     margin: 10px 5px 40px 20px;
+
     &-text {
       &-line {
         width: 60% !important;
         margin-left: 24px;
         margin-bottom: 22px;
+
         &::before {
           content: '';
           position: relative;
@@ -425,25 +502,31 @@ foundation
         }
       }
     }
+
     &-heading {
       margin-top: 10px;
       margin-bottom: 26px;
       display: flex;
       aign-items: center;
+
       &-image {
         width: 40px;
         height: 40px;
       }
+
       &-content {
         width: 60%;
+
         &-title {
           margin-bottom: 0;
         }
+
         &-subtitle {
           display: none;
         }
       }
     }
+
     &-animated {
       &::before {
         max-width: 1800px;
@@ -460,7 +543,6 @@ foundation
   \__|_| |_|\___|_| |_| |_|\___||___/
   ___________________________________
 */
-
 /*
         _                _           _     _           
   _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
@@ -470,28 +552,32 @@ foundation
  |_|
 sidebar theme: default
 */
-
 .#{$prefix-cls}-sidebar--theme-default {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $N40;
+
         &::before {
           border: 7px solid $N40;
         }
       }
     }
+
     &-heading {
       &-image {
         background: $N40;
       }
+
       &-content {
+
         &-title,
         &-subtitle {
           background: $N40;
         }
       }
     }
+
     &-animated {
       &::before {
         background: linear-gradient(to right, transparent 0%, $N20 15%, transparent 30%);
@@ -509,28 +595,32 @@ sidebar theme: default
  |_|
 sidebar theme: white
 */
-
 .#{$prefix-cls}-sidebar--theme-white {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $N30;
+
         &::before {
           border: 7px solid $N30;
         }
       }
     }
+
     &-heading {
       &-image {
         background: $N30;
       }
+
       &-content {
+
         &-title,
         &-subtitle {
           background: $N30;
         }
       }
     }
+
     &-animated {
       &::before {
         background: linear-gradient(to right, transparent 0%, $N0 15%, transparent 30%);
@@ -548,28 +638,32 @@ sidebar theme: white
  |_|
 sidebar theme: blue
 */
-
 .#{$prefix-cls}-sidebar--theme-blue {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $B300;
+
         &::before {
           border: 7px solid rgba(38, 132, 255, 0.5);
         }
       }
     }
+
     &-heading {
       &-image {
         background: $B300;
       }
+
       &-content {
+
         &-title,
         &-subtitle {
           background: $B300;
         }
       }
     }
+
     &-animated {
       &::before {
         background: linear-gradient(to right, transparent 0%, $B500 15%, transparent 30%);
@@ -587,28 +681,32 @@ sidebar theme: blue
  |_|
 sidebar theme: dark
 */
-
 .#{$prefix-cls}-sidebar--theme-dark {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $N500;
+
         &::before {
           border: 7px solid $N600;
         }
       }
     }
+
     &-heading {
       &-image {
         background: $N500;
       }
+
       &-content {
+
         &-title,
         &-subtitle {
           background: $N500;
         }
       }
     }
+
     &-animated {
       &::before {
         background: linear-gradient(to right, transparent 0%, $N700 15%, transparent 30%);
@@ -626,28 +724,32 @@ sidebar theme: dark
  |_|
 sidebar theme: darker
 */
-
 .#{$prefix-cls}-sidebar--theme-darker {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $N600;
+
         &::before {
           border: 7px solid $N700;
         }
       }
     }
+
     &-heading {
       &-image {
         background: $N600;
       }
+
       &-content {
+
         &-title,
         &-subtitle {
           background: $N600;
         }
       }
     }
+
     &-animated {
       &::before {
         background: linear-gradient(to right, transparent 0%, $N800 15%, transparent 30%);
@@ -656,544 +758,473 @@ sidebar theme: darker
   }
 }
 
-/*
-      _     _      _                
-  ___(_) __| | ___| |__   __ _ _ __ 
- / __| |/ _` |/ _ \ '_ \ / _` | '__|
- \__ \ | (_| |  __/ |_) | (_| | |   
- |___/_|\__,_|\___|_.__/ \__,_|_|
-default
+/**
+  __,                     
+ (    o    /    /         
+  `. ,  __/ _  /  __,  _  
+(___)(_(_/_(/_/_)(_/(_/ (_
+theme mixin
 */
 
+@mixin sidebar-theme-mixin(
+  $mainBG,
+  $groupTitleColor,
+  $headerColor,
+  $headerBG,
+  $headerHoverBG,
+  $headerActiveColor,
+  $headerActiveBG,
+  $headerActiveBoxShadow,
+  $scrollareaThumbBG,
+  $scrollareaThumbHoverBG,
+  $itemBG,
+  $itemColor,
+  $itemSubstringColor,
+  $itemIconColor,
+  $itemToggleIconColor,
+  $itemTextIconColor,
+  $itemActiveStateColor,
+  $itemActiveStateBG,
+  $itemHoverBG,
+  $itemActiveFocusColor,
+  $itemActiveFocusBG,
+  $itemActiveFocusBoxShadow,
+  $itemFocusOutline
+) {
+  background: $mainBG;
+  .#{$prefix-cls}-sidebar-group-title {
+    color: $groupTitleColor;
+  }
+  .#{$prefix-cls}-sidebar-header {
+    .#{$prefix-cls}-btn {
+      color: $headerColor;
+      background: $headerBG;
+      &:hover {
+        background: $headerHoverBG;
+      }
+      &:active {
+        color: $headerActiveColor;
+        background: $headerActiveBG;
+        -webkit-box-shadow: $headerActiveBoxShadow;
+        -moz-box-shadow: $headerActiveBoxShadow;
+        box-shadow: $headerActiveBoxShadow;
+      }
+    }
+  }
+  .#{$prefix-cls}-sidebar-scrollarea {
+    &::-webkit-scrollbar-thumb {
+      background: $scrollareaThumbBG;
+      &:hover {
+        background: $scrollareaThumbHoverBG;
+      }
+    }
+  }
+  .#{$prefix-cls}-sidebar-group-item {
+    background: $itemBG;
+    color: $itemColor;
+    &-substring {
+      color: $itemSubstringColor;
+    }
+    &-icon {
+      color: $itemIconColor;
+    }
+    &-text-icon, &-toggle-icon {
+      color: $itemToggleIconColor;
+    }
+    &-text {
+      &-icon {
+        color: $itemTextIconColor;
+      }
+    }
+    &.active {
+      color: $itemActiveStateColor;
+      background: $itemActiveStateBG;
+    }
+    &:hover {
+      background: $itemHoverBG;
+    }
+    &:active, &:focus {
+      color: $itemActiveFocusColor;
+      background: $itemActiveFocusBG;
+      box-shadow: $itemActiveFocusBoxShadow;
+    }
+    &:focus {
+      outline: $itemFocusOutline !important;
+    }
+  }
+}
+
+/*
+default
+*/
 .#{$prefix-cls}-sidebar--theme-default {
-  background-color: $N20;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $N600;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-    }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(9, 30, 66, 0.42);
-      &:hover {
-        background-color: rgba(9, 30, 66, 0.55);
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background-color: $N20;
-    color: $N400 !important;
-    &-substring {
-      color: $N80;
-    }
-    &-icon {
-      color: $N400;
-    }
-    &-text-icon,
-    &-toggle-icon {
-      color: $N500 !important;
-    }
-    &-text {
-      &-icon {
-        color: $N300;
-      }
-    }
-    &.active {
-      color: $B400 !important;
-      background: $N30;
-    }
-    &:hover {
-      background-color: $N30;
-      color: $N400;
-    }
-    &:active,
-    &:focus {
-      color: $N400;
-      background-color: $B50;
-    }
-    &:focus {
-      outline: none;
-      .#{$prefix-cls}-btn {
-        border: 2px solid red !important;
-      }
-    }
-  }
+  @include sidebar-theme-mixin(
+    $mainBG: $N20,
+    $groupTitleColor: $N600,
+    $headerColor: $N400,
+    $headerBG: transparent,
+    $headerHoverBG: $N30,
+    $headerActiveColor: inherit,
+    $headerActiveBG: $B50,
+    $headerActiveBoxShadow: rgba($B200, 0.6) 0px 0px 0px 2px,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: $N20,
+    $itemColor: $N400 !important,
+    $itemSubstringColor: $N80,
+    $itemIconColor: $N400,
+    $itemToggleIconColor: $N500 !important,
+    $itemTextIconColor: $N300,
+    $itemActiveStateColor: $B400 !important,
+    $itemActiveStateBG: $N30,
+    $itemHoverBG: $N30,
+    $itemActiveFocusColor: $N400,
+    $itemActiveFocusBG: $B50,
+    $itemActiveFocusBoxShadow: none,
+    $itemFocusOutline: none
+  )
 }
 
 /*
-      _     _      _                
-  ___(_) __| | ___| |__   __ _ _ __ 
- / __| |/ _` |/ _ \ '_ \ / _` | '__|
- \__ \ | (_| |  __/ |_) | (_| | |   
- |___/_|\__,_|\___|_.__/ \__,_|_|
+purple
+*/
+.#{$prefix-cls}-sidebar--theme-purple {
+  @include sidebar-theme-mixin(
+    $mainBG: $P500,
+    $groupTitleColor: $N30,
+    $headerColor: $N30,
+    $headerBG: transparent,
+    $headerHoverBG: #342882,
+    $headerActiveColor: $N0,
+    $headerActiveBG: $P400,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $P200,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: transparent,
+    $itemColor: $N50 !important,
+    $itemSubstringColor: $N80,
+    $itemIconColor: $N400,
+    $itemToggleIconColor: $N100 !important,
+    $itemTextIconColor: $N300,
+    $itemActiveStateColor: $N0 !important,
+    $itemActiveStateBG: #342882,
+    $itemHoverBG: #342882,
+    $itemActiveFocusColor: $N400,
+    $itemActiveFocusBG: $P400,
+    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $P300,
+    $itemFocusOutline: 2px solid red !important
+  )
+}
+
+/*
 white
 */
-
 .#{$prefix-cls}-sidebar--theme-white {
-  background-color: $N0;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $N300;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-      background: white;
-      &:hover {
-        background: $N20;
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(9, 30, 66, 0.32);
-      &:hover {
-        background-color: rgba(9, 30, 66, 0.45);
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background-color: $N0;
-    color: $N400 !important;
-    &-substring {
-      color: $N80;
-    }
-    &-icon {
-      color: $N400;
-    }
-    &-text-icon,
-    &-toggle-icon {
-      color: $N100 !important;
-    }
-    &-text {
-      &-icon {
-        color: $N300;
-      }
-    }
-    &.active {
-      color: $B400 !important;
-      background-color: $N20;
-    }
-    &:hover {
-      background-color: $N20;
-    }
-    &:active,
-    &:focus {
-      color: $N400;
-      background-color: $B50;
-    }
-  }
+  @include sidebar-theme-mixin(
+    $mainBG: $N0,
+    $groupTitleColor: $N300,
+    $headerColor: $N700,
+    $headerBG: white,
+    $headerHoverBG: $N20,
+    $headerActiveColor: inherit,
+    $headerActiveBG: inherit,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: $N0,
+    $itemColor: $N400 !important,
+    $itemSubstringColor: $N80,
+    $itemIconColor: $N400,
+    $itemToggleIconColor: $N100 !important,
+    $itemTextIconColor: $N300,
+    $itemActiveStateColor: $N400 !important,
+    $itemActiveStateBG: $N20,
+    $itemHoverBG: $N20,
+    $itemActiveFocusColor: $N400,
+    $itemActiveFocusBG: $B50,
+    $itemActiveFocusBoxShadow: none,
+    $itemFocusOutline: transparent
+  )
 }
 
 /*
-      _     _      _                
-  ___(_) __| | ___| |__   __ _ _ __ 
- / __| |/ _` |/ _ \ '_ \ / _` | '__|
- \__ \ | (_| |  __/ |_) | (_| | |   
- |___/_|\__,_|\___|_.__/ \__,_|_|
+grayscale
+*/
+.#{$prefix-cls}-sidebar--theme-grayscale {
+  @include sidebar-theme-mixin(
+    $mainBG: #252525,
+    $groupTitleColor: #ccc,
+    $headerColor: $N30,
+    $headerBG: transparent,
+    $headerHoverBG: #113679,
+    $headerActiveColor: inherit,
+    $headerActiveBG: $N400,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $N200,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: transparent,
+    $itemColor: #999 !important,
+    $itemSubstringColor: $N50,
+    $itemIconColor: $N0,
+    $itemToggleIconColor: $N500 !important,
+    $itemTextIconColor: $N0,
+    $itemActiveStateColor: #ddd !important,
+    $itemActiveStateBG: #313131,
+    $itemHoverBG: #313131,
+    $itemActiveFocusColor: #ddd,
+    $itemActiveFocusBG: #444,
+    $itemActiveFocusBoxShadow: none,
+    $itemFocusOutline: transparent
+  )
+}
+
+/*
 blue
 */
-
 .#{$prefix-cls}-sidebar--theme-blue {
-  background-color: $B500;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $N0;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-      background: $B500;
-      color: $N0;
-      &:hover {
-        background: rgba(9, 30, 66, 0.42);
-      }
-      &:active,
-      &:focus {
-        color: $N0;
-        // border: 2px solid $B100;
-        background-color: $B200;
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(141, 163, 202, 0.52);
-      &:hover {
-        background-color: rgba(141, 163, 202, 0.7);
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background-color: $B500;
-    color: $N0 !important;
-    &-substring {
-      color: $N50;
-    }
-    &-icon {
-      color: $N0;
-    }
-    &-text-icon,
-    &-toggle-icon {
-      color: $N500 !important;
-    }
-    &-text {
-      &-icon {
-        color: $N0;
-      }
-    }
-    &.active {
-      background: #123C89;
-    }
-    &:hover {
-      background: #113679;
-    }
-    &:active,
-    &:focus {
-      color: $N400;
-      -webkit-box-shadow: inset 0px 0px 0px 2px $B100;
-      -moz-box-shadow: inset 0px 0px 0px 2px $B100;
-      box-shadow: inset 0px 0px 0px 2px $B100;
-      background-color: $B200;
-    }
-  }
+  @include sidebar-theme-mixin(
+    $mainBG: $B500,
+    $groupTitleColor: $N0,
+    $headerColor: $N30,
+    $headerBG: transparent,
+    $headerHoverBG: #113679,
+    $headerActiveColor: inherit,
+    $headerActiveBG: $B400,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
+    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
+    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
+    $itemBG: $B500,
+    $itemColor: $N0 !important,
+    $itemSubstringColor: $N50,
+    $itemIconColor: $N0,
+    $itemToggleIconColor: $N500 !important,
+    $itemTextIconColor: $N0,
+    $itemActiveStateColor: inherit,
+    $itemActiveStateBG: #123C89,
+    $itemHoverBG: #113679,
+    $itemActiveFocusColor: $N400,
+    $itemActiveFocusBG: $B200,
+    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
+    $itemFocusOutline: transparent
+  )
 }
 
 /*
-      _     _      _                
-  ___(_) __| | ___| |__   __ _ _ __ 
- / __| |/ _` |/ _ \ '_ \ / _` | '__|
- \__ \ | (_| |  __/ |_) | (_| | |   
- |___/_|\__,_|\___|_.__/ \__,_|_|
 dark
 */
-
 .#{$prefix-cls}-sidebar--theme-dark {
-  background-color: $N700;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $N70;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-      background: $N700;
-      color: $N0;
-      &:hover {
-        background: $N900;
-      }
-      &:active,
-      &:focus {
-        color: $B100 !important;
-        // border: 2px solid $N500;
-        background-color: $N500;
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(141, 163, 202, 0.52);
-      &:hover {
-        background-color: rgba(141, 163, 202, 0.7);
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background-color: $N700;
-    color: $N0 !important;
-    &-substring {
-      color: $N70;
-    }
-    &-icon {
-      color: $N0;
-    }
-    &-text-icon,
-    &-toggle-icon {
-      color: $N300 !important;
-    }
-    &-text {
-      &-icon {
-        color: $N0;
-      }
-    }
-    &.active {
-      background: $N800;
-    }
-    &:hover {
-      background: $N900;
-    }
-    &:active,
-    &:focus {
-      color: $B100 !important;
-      -webkit-box-shadow: inset 0px 0px 0px 2px $N500;
-      -moz-box-shadow: inset 0px 0px 0px 2px $N500;
-      box-shadow: inset 0px 0px 0px 2px $N500;
-      background-color: $N500;
-    }
-  }
+  @include sidebar-theme-mixin(
+    $mainBG: $N700,
+    $groupTitleColor: $N70,
+    $headerColor: $N0,
+    $headerBG: $N700,
+    $headerHoverBG: $N900,
+    $headerActiveColor: $B100 !important,
+    $headerActiveBG: $N500,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
+    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
+    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
+    $itemBG: $N700,
+    $itemColor: $N0 !important,
+    $itemSubstringColor: $N70,
+    $itemIconColor: $N0,
+    $itemToggleIconColor: $N300 !important,
+    $itemTextIconColor: $N0,
+    $itemActiveStateColor: inherit,
+    $itemActiveStateBG: $N800,
+    $itemHoverBG: $N900,
+    $itemActiveFocusColor: $B100,
+    $itemActiveFocusBG: $N500,
+    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N500,
+    $itemFocusOutline: transparent
+  )
 }
 
 /*
-      _     _      _                
-  ___(_) __| | ___| |__   __ _ _ __ 
- / __| |/ _` |/ _ \ '_ \ / _` | '__|
- \__ \ | (_| |  __/ |_) | (_| | |   
- |___/_|\__,_|\___|_.__/ \__,_|_|
 darker
 */
-
 .#{$prefix-cls}-sidebar--theme-darker {
-  background-color: $N800;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $N70;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-      background: $N800;
-      color: $N0;
-      &:hover {
-        background: $N900;
-      }
-      &:active,
-      &:focus {
-        color: $B100 !important;
-        // border: 2px solid $N500;
-        background-color: $N500;
-      }
+  @include sidebar-theme-mixin(
+    $mainBG: $N800,
+    $groupTitleColor: $N70,
+    $headerColor: $N0,
+    $headerBG: $N800,
+    $headerHoverBG: $N900,
+    $headerActiveColor: $B100 !important,
+    $headerActiveBG: $N500,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
+    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
+    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
+    $itemBG: $N800,
+    $itemColor: $N0 !important,
+    $itemSubstringColor: $N70,
+    $itemIconColor: $N0,
+    $itemToggleIconColor: $N300 !important,
+    $itemTextIconColor: $N0,
+    $itemActiveStateColor: inherit,
+    $itemActiveStateBG: $N900,
+    $itemHoverBG: $N900,
+    $itemActiveFocusColor: $B100,
+    $itemActiveFocusBG: $N700,
+    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N700,
+    $itemFocusOutline: transparent
+  )
+}
+
+/**
+ _ _ _                      
+( / ) )o       o  /         
+ / / /,  _ _  ,  /  __,  _  
+/ / (_(_/ / /_(_/_)(_/(_/ (_
+theme mixin
+*/
+@mixin minibar-theme-mixin($mainBG, $itemBG, $iconColor, $itemHoverBG, $itemActiveBG, $itemFocusBorder, $itemBrandHoverBG, $itemBrandActiveBorder, $itemBrandActiveIconColor) {
+  background: $mainBG;
+
+  .#{$prefix-cls}-minibar-item {
+    background: $itemBG;
+
+    i {
+      color: $iconColor;
     }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(141, 163, 202, 0.52);
-      &:hover {
-        background-color: rgba(141, 163, 202, 0.7);
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background-color: $N800;
-    color: $N0 !important;
-    &-substring {
-      color: $N70;
-    }
-    &-icon {
-      color: $N0;
-    }
-    &-text-icon,
-    &-toggle-icon {
-      color: $N300 !important;
-    }
-    &-text {
-      &-icon {
-        color: $N0;
-      }
-    }
-    &.active {
-      background: $N900;
-    }
+
     &:hover {
-      background: $N900;
+      background: $itemHoverBG;
     }
-    &:active,
+
+    &:active {
+      background: $itemActiveBG;
+    }
+
     &:focus {
-      color: $B100 !important;
-      -webkit-box-shadow: inset 0px 0px 0px 2px $N700;
-      -moz-box-shadow: inset 0px 0px 0px 2px $N700;
-      box-shadow: inset 0px 0px 0px 2px $N700;
-      background-color: $N700;
+      border: $itemFocusBorder;
+    }
+
+    &-brand {
+      &:hover {
+        background: $itemBrandHoverBG;
+      }
+
+      &:active {
+        border: $itemBrandActiveBorder;
+
+        i {
+          color: $itemBrandActiveIconColor;
+        }
+      }
     }
   }
 }
 
 /*
-            _       _ _                
-  _ __ ___ (_)_ __ (_) |__   __ _ _ __ 
- | '_ ` _ \| | '_ \| | '_ \ / _` | '__|
- | | | | | | | | | | | |_) | (_| | |   
- |_| |_| |_|_|_| |_|_|_.__/ \__,_|_|
 default
 */
-
 .#{$prefix-cls}-minibar--theme-default {
-  background: $N20;
-  .#{$prefix-cls}-minibar-item {
-    background: transparent;
-    i {
-      color: $N300;
-    }
-    &:hover {
-      background: $N30;
-    }
-    &:active {
-      background: $B50;
-    }
-    &:focus {
-      border: 2px solid $B50;
-    }
-    &-brand {
-      &:hover {
-        background: transparent;
-      }
-      &:active {
-        border: 2px solid transparent;
-        i {
-          color: $B100;
-        }
-      }
-    }
-  }
+  @include minibar-theme-mixin($mainBG: $N20,
+    $itemBG: transparent,
+    $iconColor: $N300,
+    $itemHoverBG: $N30,
+    $itemActiveBG: $B50,
+    $itemFocusBorder: 2px solid $B50,
+    $itemBrandHoverBG: transparent,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $B100);
 }
 
 /*
-            _       _ _                
-  _ __ ___ (_)_ __ (_) |__   __ _ _ __ 
- | '_ ` _ \| | '_ \| | '_ \ / _` | '__|
- | | | | | | | | | | | |_) | (_| | |   
- |_| |_| |_|_|_| |_|_|_.__/ \__,_|_|
 blue
 */
-
 .#{$prefix-cls}-minibar--theme-blue {
-  background: $B500;
-  .#{$prefix-cls}-minibar-item {
-    background: transparent;
-    i {
-      color: $N0;
-    }
-    &:hover {
-      background: rgba(9, 30, 66, 0.42);
-    }
-    &:active {
-      background: $B200;
-    }
-    &:focus {
-      border: 2px solid $B200;
-    }
-    &-brand {
-      &:hover {
-        background: transparent !important;
-      }
-      &:active {
-        border: 2px solid $B100;
-      }
-    }
-  }
+  @include minibar-theme-mixin($mainBG: $B500,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: rgba(9, 30, 66, 0.42),
+    $itemActiveBG: $B200,
+    $itemFocusBorder: 2px solid $B200,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $B100);
 }
 
 /*
-            _       _ _                
-  _ __ ___ (_)_ __ (_) |__   __ _ _ __ 
- | '_ ` _ \| | '_ \| | '_ \ / _` | '__|
- | | | | | | | | | | | |_) | (_| | |   
- |_| |_| |_|_|_| |_|_|_.__/ \__,_|_|
+purple
+*/
+.#{$prefix-cls}-minibar--theme-purple {
+  @include minibar-theme-mixin($mainBG: $P500,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: rgba(9, 30, 66, 0.42),
+    $itemActiveBG: $P200,
+    $itemFocusBorder: 2px solid $P200,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $P100);
+}
+
+/*
 white
 */
-
 .#{$prefix-cls}-minibar--theme-white {
-  background-color: $N0;
-  .#{$prefix-cls}-minibar-item {
-    i {
-      color: $N300;
-    }
-    &:hover {
-      background: $N20;
-    }
-    &:active {
-      background-color: $B50;
-    }
-    &-brand {
-      &:hover {
-        background: transparent;
-      }
-      &:active {
-        border: 2px solid transparent;
-        i {
-          color: $B100;
-        }
-      }
-    }
-  }
+  @include minibar-theme-mixin($mainBG: $N0,
+    $itemBG: transparent,
+    $iconColor: $N300,
+    $itemHoverBG: $N20,
+    $itemActiveBG: $B50,
+    $itemFocusBorder: 2px solid transparent,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $B100);
 }
 
 /*
-            _       _ _                
-  _ __ ___ (_)_ __ (_) |__   __ _ _ __ 
- | '_ ` _ \| | '_ \| | '_ \ / _` | '__|
- | | | | | | | | | | | |_) | (_| | |   
- |_| |_| |_|_|_| |_|_|_.__/ \__,_|_|
 dark
 */
-
 .#{$prefix-cls}-minibar--theme-dark {
-  background: $N700;
-  .#{$prefix-cls}-minibar-item {
-    background: transparent;
-    i {
-      color: $N0;
-    }
-    &:hover {
-      background: rgba(9, 30, 66, 0.42);
-    }
-    &:active {
-      background: $N500;
-    }
-    &:focus {
-      border: 2px solid $N500;
-    }
-    &-brand {
-      &:hover {
-        background: transparent !important;
-      }
-      &:active {
-        border: 2px solid transparent;
-        i {
-          color: $N300;
-        }
-      }
-    }
-  }
+  @include minibar-theme-mixin($mainBG: $N700,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: rgba(9, 30, 66, 0.42),
+    $itemActiveBG: $N500,
+    $itemFocusBorder: 2px solid $N500,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $N300);
 }
 
 /*
-            _       _ _                
-  _ __ ___ (_)_ __ (_) |__   __ _ _ __ 
- | '_ ` _ \| | '_ \| | '_ \ / _` | '__|
- | | | | | | | | | | | |_) | (_| | |   
- |_| |_| |_|_|_| |_|_|_.__/ \__,_|_|
 darker
 */
-
 .#{$prefix-cls}-minibar--theme-darker {
-  background: $N800;
-  .#{$prefix-cls}-minibar-item {
-    background: transparent;
-    i {
-      color: $N0;
-    }
-    &:hover {
-      background: rgba(49, 70, 107, 0.6);
-    }
-    &:active {
-      background: $N600;
-    }
-    &:focus {
-      border: 2px solid $N600;
-    }
-    &-brand {
-      &:hover {
-        background: transparent !important;
-      }
-      &:active {
-        border: 2px solid transparent;
-        i {
-          color: $N400;
-        }
-      }
-    }
-  }
+  @include minibar-theme-mixin($mainBG: $N800,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: rgba(49, 70, 107, 0.6),
+    $itemActiveBG: $N600,
+    $itemFocusBorder: 2px solid $N600,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $N400);
+}
+
+/*
+grayscale
+*/
+.#{$prefix-cls}-minibar--theme-grayscale {
+  @include minibar-theme-mixin($mainBG: #252525,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: #313131,
+    $itemActiveBG: #444,
+    $itemFocusBorder: 2px solid transparent,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: #bbb);
 }
 
 /*
 This is personal preference, and a convenience style for when the sidebar
 is placed inside of an aside.
 */
-
 .#{$prefix-cls}-aside-body {
   .#{$prefix-cls}-sidebar {
     padding-top: 12px;
@@ -1201,19 +1232,25 @@ is placed inside of an aside.
 }
 
 /*
-Sidebar scroll area
+  __,                                        _  _           
+ (    o    /    /                           // // /         
+  `. ,  __/ _  /  __,  _     (   _, _   __ // // /  __,  _  
+(___)(_(_/_(/_/_)(_/(_/ (_  /_)_(__/ (_(_)(/_(/_/_)(_/(_/ (_
 */
 .#{$prefix-cls}-sidebar-scrollarea {
   &::-webkit-scrollbar-track {
     border-radius: 10px;
   }
+
   &::-webkit-scrollbar {
     width: 7px;
     height: 7px;
   }
+
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
   }
+
   &-scrolled {
     &::before {
       content: '';
@@ -1231,6 +1268,7 @@ Sidebar scroll area
     &.active {
       background: none !important;
     }
+
     &:hover {
       background: none !important;
       text-decoration: underline;

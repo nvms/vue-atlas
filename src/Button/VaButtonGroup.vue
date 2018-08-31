@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-btn-group`">
+  <div :class="classObj">
     <slot/>
   </div>
 </template>
@@ -8,9 +8,25 @@
 export default {
   name: 'VaButtonGroup',
   props: {
+    vertical: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
+    }
+  },
+  computed: {
+    classObj () {
+      let {prefixCls, vertical} = this
+      let klass = {}
+
+      klass[prefixCls + '-btn-group'] = true
+      klass[prefixCls + '-btn-group-vertical'] = vertical
+
+      return klass
     }
   }
 }

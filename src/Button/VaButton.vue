@@ -35,7 +35,10 @@ export default {
           'subtle-link',
           'active',
           'dark',
-          'darker'
+          'darker',
+          'purple',
+          'purple-light',
+          'purple-dark'
         ].includes(v)
       }
     },
@@ -202,13 +205,12 @@ export default {
   mounted () {
     this.$nextTick(() => {
       let el = this.$el
-      
+
       this._clickEvent = EventListener.listen(window, 'click', (e) => {
         if (!el.contains(e.target)) {
           this.isFocused = false
         }
       })
-
     })
   },
   beforeDestroy () {

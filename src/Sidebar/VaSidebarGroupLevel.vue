@@ -3,7 +3,11 @@
     <div :class="`${prefixCls}-sidebar-navigationlevel-parent`">
       <div :class="`${prefixCls}-sidebar-group-item`">
         <va-sidebar-group-toggle :open="isOpen" @click.native="onToggleClick" v-if="showToggle"/>
-        <va-sidebar-group-item :item="parentItem" @click.native="onItemClick" :is-open="isOpen" :show-toggle="showToggle" />
+        <va-sidebar-group-item
+          :item="parentItem"
+          @click.native="onItemClick"
+          :is-open="isOpen"
+          :show-toggle="showToggle" />
       </div>
     </div>
     <ul :class="`${prefixCls}-sidebar-navigationlevel-children`">

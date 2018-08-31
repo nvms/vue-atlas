@@ -7269,7 +7269,8 @@ if (false) {(function () {
   data: function data() {
     var show = this.show;
     return {
-      isShow: show
+      isShow: show,
+      focused: false
     };
   },
 
@@ -7411,7 +7412,7 @@ if (false) {(function () {
       values: ['default', 'primary'],
       note: 'The style of button to render.',
       validator: function validator(v) {
-        return ['default', 'primary', 'primary-light', 'primary-dark', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active', 'dark', 'darker'].includes(v);
+        return ['default', 'primary', 'primary-light', 'primary-dark', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active', 'dark', 'darker', 'purple', 'purple-light', 'purple-dark'].includes(v);
       }
     },
     size: {
@@ -8939,7 +8940,7 @@ if (false) {(function () {
       default: 'default',
       required: false,
       validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker'];
+        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'];
       }
     },
     prefixCls: {
@@ -9196,7 +9197,7 @@ if (false) {(function () {
       default: 'default',
       required: false,
       validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker'].includes(v);
+        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'].includes(v);
       }
     },
     prefixCls: {
@@ -9472,7 +9473,7 @@ if (false) {(function () {
       default: 'default',
       required: false,
       validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker'].includes(v);
+        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'].includes(v);
       }
     },
     prefixCls: {
@@ -15957,6 +15958,10 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaSidebarGroupLevel',
@@ -16162,13 +16167,6 @@ if (false) {(function () {
       minified: false
     };
   },
-  created: function created() {
-    var _this = this;
-
-    this.$on('Va@sidebarMinifiedChange', function (val) {
-      _this.minified = val;
-    });
-  },
 
   computed: {
     showIcon: function showIcon() {
@@ -16252,9 +16250,27 @@ if (false) {(function () {
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaButtonGroup',
   props: {
+    vertical: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
+    }
+  },
+  computed: {
+    classObj: function classObj() {
+      var prefixCls = this.prefixCls,
+          vertical = this.vertical;
+
+      var klass = {};
+
+      klass[prefixCls + '-btn-group'] = true;
+      klass[prefixCls + '-btn-group-vertical'] = vertical;
+
+      return klass;
     }
   }
 });
@@ -32467,7 +32483,7 @@ var render = function() {
                       _c(
                         "va-button",
                         {
-                          attrs: { type: "primary" },
+                          attrs: { type: "primary", focused: _vm.focused },
                           nativeOn: {
                             click: function($event) {
                               return _vm.confirm($event)
@@ -37111,12 +37127,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { class: _vm.prefixCls + "-btn-group" },
-    [_vm._t("default")],
-    2
-  )
+  return _c("div", { class: _vm.classObj }, [_vm._t("default")], 2)
 }
 var staticRenderFns = []
 render._withStripped = true

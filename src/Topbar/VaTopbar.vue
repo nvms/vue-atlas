@@ -31,7 +31,8 @@ export default {
           'white',
           'blue',
           'dark',
-          'darker'
+          'darker',
+          'purple'
         ]
       }
     },

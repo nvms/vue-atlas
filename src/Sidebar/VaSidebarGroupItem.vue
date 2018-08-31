@@ -79,11 +79,6 @@ export default {
       minified: false
     }
   },
-  created () {
-    this.$on('Va@sidebarMinifiedChange', (val) => {
-      this.minified = val
-    })
-  },
   computed: {
     showIcon () {
       return this.item.icon !== undefined

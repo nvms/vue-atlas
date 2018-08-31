@@ -22,7 +22,7 @@
         <slot name="footer">
           <div :class="`${prefixCls}-modal-footer`">
             <va-button type="subtle" @click.native="close">{{getL('cancel')}}</va-button>
-            <va-button type="primary" @click.native="confirm">{{getL('confirm')}}</va-button>
+            <va-button type="primary" @click.native="confirm" :focused="focused">{{getL('confirm')}}</va-button>
           </div>
         </slot>
 
@@ -110,7 +110,8 @@ export default {
   data () {
     let show = this.show
     return {
-      isShow: show
+      isShow: show,
+      focused: false
     }
   },
   watch: {

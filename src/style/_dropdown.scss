@@ -76,7 +76,8 @@
         background-color: $N20;
       }
       &:active {
-        background-color: $B75;
+        // background-color: $B75;
+        background-color: $N60;
         text-decoration: none;
         outline: none;
       }
@@ -93,4 +94,74 @@
 
 .#{$prefix-cls}-dropdown-toggle:focus {
   outline: 0;
+}
+
+
+
+/**
+
+|    |                        
+|--- |---.,---.,-.-.,---.,---.
+|    |   ||---'| | ||---'`---.
+`---'`   '`---'` ' '`---'`---'
+
+*/
+/**
+The following styles apply to a button that exists as a dropdown trigger
+and is currently active (dropdown is toggled on).
+*/
+// Base style
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn {
+    background-color: $N500;
+    color: $N20;
+  }
+}
+// Primary
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn-primary {
+    background-color: $B300;
+    color: $N20;
+  }
+}
+// Subtle
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn-subtle {
+    background-color: $B50;
+    color: $N200;
+  }
+}
+// Purple
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn-purple {
+    background-color: $P400;
+    color: $N20;
+  }
+}
+/**
+The following styles apply to a button that exists as a dropdown trigger
+that resides inside of the va-topbar element.
+*/
+.#{$prefix-cls}-topbar--theme-blue {
+  .#{$prefix-cls}-dropdown-selected {
+    >span>div>a.#{$prefix-cls}-btn {
+      background-color: $B500;
+      color: $N20;
+    }
+    >span>div>a.#{$prefix-cls}-btn-primary-dark {
+      background: $B400;
+    }
+  }
+}
+
+.#{$prefix-cls}-topbar--theme-purple {
+  .#{$prefix-cls}-dropdown-selected {
+    >span>div>a.#{$prefix-cls}-btn {
+      background-color: $P400;
+      color: $N20;
+    }
+    >span>div>a.#{$prefix-cls}-btn-purple-dark {
+      background: $P400;
+    }
+  }
 }
