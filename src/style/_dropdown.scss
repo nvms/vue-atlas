@@ -96,7 +96,13 @@
   outline: 0;
 }
 
-
+/**
+Dropdowns, while active, don't need a focus ring. It shows focus state by changing the background color.
+*/
+.#{$prefix-cls}-dropdown-con.#{$prefix-cls}-dropdown-selected > span > div > .#{$prefix-cls}-btn:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
+.#{$prefix-cls}-dropdown-con.#{$prefix-cls}-dropdown-selected > span > div > .#{$prefix-cls}-btn-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
+  box-shadow: none !important;
+}
 
 /**
 
@@ -121,6 +127,13 @@ and is currently active (dropdown is toggled on).
 .#{$prefix-cls}-dropdown-selected {
   >span>div>a.#{$prefix-cls}-btn-primary {
     background-color: $B300;
+    color: $N20;
+  }
+}
+// Paleblue
+.#{$prefix-cls}-dropdown-selected {
+  >span>div>a.#{$prefix-cls}-btn-paleblue {
+    background: $PB200;
     color: $N20;
   }
 }

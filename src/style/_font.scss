@@ -98,9 +98,19 @@ a:active {
   color: darken($B400, 3%);
 }
 
-a:focus {
+a:focus:not(.#{$prefix-cls}-btn) {
   outline: 2px solid $B100;
+  // outline-offset: 2px;
+  outline: -webkit-focus-ring-color auto 4px;
   outline-offset: 2px;
+  border-bottom: 2px solid rgba($B100, 0.5);
+  // text-decoration: underline !important;
+  // border-radius: 3px;
+  // box-shadow: rgba($PB200, 0.6) 0px 0px 0px 2px;
+}
+
+a:active:not(.#{$prefix-cls}-btn) {
+  border-bottom: 2px solid $B100;
 }
 
 code,

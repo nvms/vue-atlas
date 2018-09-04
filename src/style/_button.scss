@@ -16,8 +16,8 @@
   //   outline: none;
   // }
   // ring on hover
-  &:focus:not(:active),
-  &-focused:not(:active) {
+  &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
+  &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
     box-shadow: $color 0px 0px 0px 2px;
     /* fallback */
     box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
@@ -153,7 +153,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $B400,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($B200, 0.6);
+    @include button-focus-mixin($B200, 0.5);
   }
 
   &-primary {
@@ -165,7 +165,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($B300, 0.6);
+    @include button-focus-mixin($B200, 0.5);
   }
 
   &-primary-light {
@@ -224,6 +224,18 @@ $lgBorderRadius: $borderRadius;
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
     @include button-focus-mixin($P300, 0.6);
+  }
+
+  &-paleblue {
+    @include btn-type($bgCol: $PB300,
+      $fontCol: $N0,
+      $bgColHover: $PB200,
+      $bgColActive: $PB400,
+      $fontColHover: $N0,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($PB100, 0.6);
   }
 
   &-success {
@@ -430,19 +442,19 @@ Ready to be confused?
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
-    margin-right: 1px;
+    margin-right: 2px;
   }
   >.#{$prefix-cls}-btn:first-child {
     margin-left: 0;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
-    margin-right: 1px;
+    margin-right: 2px;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    margin-right: 1px;
+    margin-right: 2px;
   }
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
@@ -502,14 +514,14 @@ And, of course, when the button group is a vertical button group.
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
     margin-right: 0px;
   }
   >.#{$prefix-cls}-btn:first-child {
     margin-top: 0;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-bottom-left-radius: 0;

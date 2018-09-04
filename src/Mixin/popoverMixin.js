@@ -99,10 +99,14 @@ const PopoverMixin = {
 
       if (this.trigger === 'hover') {
         this._mouseenterEvent = EventListener.listen(triger, 'mouseenter', () => {
-          this.isShow = true
+          setTimeout(() => {
+            this.isShow = true
+          }, 200)
         })
         this._mouseleaveEvent = EventListener.listen(triger, 'mouseleave', () => {
-          this.isShow = false
+          setTimeout(() => {
+            this.isShow = false
+          }, 200)
         })
       } else if (this.trigger === 'focus') {
         let input = this.$refs.trigger.querySelector('input')

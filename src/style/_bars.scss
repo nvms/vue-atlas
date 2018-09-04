@@ -116,135 +116,119 @@
   flex-direction: row;
 }
 
+@mixin topbar-theme-mixin(
+  $mainBG,
+  $mainColor,
+  $inputPlaceholderColor,
+  $formControlBG,
+  $formControlBorder,
+  $formControlColor,
+  $formControlFocusBorder,
+  $formControlFocusBG
+) {
+  background: $mainBG;
+  .#{$prefix-cls}-topbar-inner {
+    color: $mainColor;
+  }
+  .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $inputPlaceholderColor;
+    }
+    .#{$prefix-cls}-form-control {
+      background: $formControlBG;
+      border: $formControlBorder;
+      color: $formControlColor;
+      &:focus {
+        border: $formControlFocusBorder;
+        background: $formControlFocusBG;
+      }
+    }
+  }
+}
+
 .#{$prefix-cls}-topbar--theme-purple {
-  background-color: $P500;
-
-  .#{$prefix-cls}-topbar-inner {
-    color: $N0;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N50;
-    }
-
-    .#{$prefix-cls}-form-control {
-      background: darken($P500, 10%);
-      border: 2px solid darken($P500, 10%);
-      color: $N0;
-
-      &:focus {
-        border: 2px solid $P300;
-        background: darken($P500, 10%) !important;
-      }
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $P500,
+    $mainColor: $N0,
+    $inputPlaceholderColor: $N50,
+    $formControlBG: darken($P500, 10%),
+    $formControlBorder: 2px solid darken($P500, 10%),
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid $P300,
+    $formControlFocusBG: darken($P500, 10%) !important
+  );
 }
-
 .#{$prefix-cls}-topbar--theme-blue {
-  background-color: $B500;
-
-  .#{$prefix-cls}-topbar-inner {
-    color: $N0;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N50;
-    }
-
-    .#{$prefix-cls}-form-control {
-      background: darken($B500, 10%);
-      border: 2px solid darken($B500, 10%);
-      color: $N0;
-
-      &:focus {
-        border: 2px solid $B300;
-        background: darken($B500, 10%) !important;
-      }
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $B500,
+    $mainColor: $N0,
+    $inputPlaceholderColor: $N50,
+    $formControlBG: darken($B500, 10%),
+    $formControlBorder: 2px solid darken($B500, 10%),
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid $B300,
+    $formControlFocusBG: darken($B500, 10%) !important
+  );
 }
-
 .#{$prefix-cls}-topbar--theme-white {
-  background-color: $N0;
-
-  // -webkit-box-shadow: inset 0px -1px 0px 0px $N40;
-  // -moz-box-shadow: inset 0px -1px 0px 0px $N40;
-  // box-shadow: inset 0px -1px 0px 0px $N40;
-  .#{$prefix-cls}-topbar-inner {
-    color: $N500;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N70;
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $N0,
+    $mainColor: $N500,
+    $inputPlaceholderColor: $N70,
+    $formControlBG: revert,
+    $formControlBorder: revert,
+    $formControlColor: revert,
+    $formControlFocusBorder: revert,
+    $formControlFocusBG: revert
+  );
 }
-
 .#{$prefix-cls}-topbar--theme-default {
-  background-color: $N20;
-
-  .#{$prefix-cls}-topbar-inner {
-    color: $N500;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N90;
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $N20,
+    $mainColor: $N500,
+    $inputPlaceholderColor: $N90,
+    $formControlBG: revert,
+    $formControlBorder: revert,
+    $formControlColor: revert,
+    $formControlFocusBorder: revert,
+    $formControlFocusBG: revert
+  );
 }
-
 .#{$prefix-cls}-topbar--theme-dark {
-  background-color: $N700;
-
-  .#{$prefix-cls}-topbar-inner {
-    color: $N60;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N70;
-    }
-
-    .#{$prefix-cls}-form-control {
-      background: $N400;
-      border: 2px solid $N400;
-      color: $N0;
-
-      &:focus {
-        border: 2px solid $N200;
-        background: $N500 !important;
-      }
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $N700,
+    $mainColor: $N60,
+    $inputPlaceholderColor: $N70,
+    $formControlBG: $N400,
+    $formControlBorder: 2px solid $N400,
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid $N200,
+    $formControlFocusBG: $N500 !important
+  );
 }
-
 .#{$prefix-cls}-topbar--theme-darker {
-  background-color: $N800;
-
-  .#{$prefix-cls}-topbar-inner {
-    color: $N80;
-  }
-
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $N80;
-    }
-
-    .#{$prefix-cls}-form-control {
-      background: $N500;
-      border: 2px solid $N500;
-      color: $N0;
-
-      &:focus {
-        border: 2px solid $N300;
-        background: $N600 !important;
-      }
-    }
-  }
+  @include topbar-theme-mixin(
+    $mainBG: $N800,
+    $mainColor: $N80,
+    $inputPlaceholderColor: $N80,
+    $formControlBG: $N500,
+    $formControlBorder: 2px solid $N500,
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid $N300,
+    $formControlFocusBG: $N600 !important
+  );
+}
+.#{$prefix-cls}-topbar--theme-grayscale {
+  @include topbar-theme-mixin(
+    $mainBG: #252525,
+    $mainColor: #999,
+    $inputPlaceholderColor: #666,
+    $formControlBG: #383838,
+    $formControlBorder: 2px solid #383838,
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid #525252,
+    $formControlFocusBG: #383838 !important
+  );
 }
 
 .#{$prefix-cls}-sidebar {
@@ -448,7 +432,8 @@ sidebar item defaults
 
   &:active,
   &:focus {
-    outline: none;
+    outline: none !important;
+    border-bottom: none !important;
   }
 }
 
@@ -536,223 +521,37 @@ foundation
 }
 
 /*
-  _   _                              
- | |_| |__   ___ _ __ ___   ___  ___ 
- | __| '_ \ / _ \ '_ ` _ \ / _ \/ __|
- | |_| | | |  __/ | | | | |  __/\__ \
-  \__|_| |_|\___|_| |_| |_|\___||___/
-  ___________________________________
+placeholder theme mixin
 */
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-sidebar theme: default
-*/
-.#{$prefix-cls}-sidebar--theme-default {
+@mixin placeholder-theme-mixin(
+  $textLineBG,
+  $textLineBeforeBorder,
+  $headingImageBG,
+  $headingContentTitleBG,
+  $animatedBeforeBG
+) {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
-        background: $N40;
-
+        background: $textLineBG;
         &::before {
-          border: 7px solid $N40;
+          border: $textLineBeforeBorder;
         }
       }
     }
-
     &-heading {
       &-image {
-        background: $N40;
+        background: $headingImageBG;
       }
-
       &-content {
-
-        &-title,
-        &-subtitle {
-          background: $N40;
+        &-title, &-subtitle {
+          background: $headingContentTitleBG;
         }
       }
     }
-
     &-animated {
       &::before {
-        background: linear-gradient(to right, transparent 0%, $N20 15%, transparent 30%);
-      }
-    }
-  }
-}
-
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-sidebar theme: white
-*/
-.#{$prefix-cls}-sidebar--theme-white {
-  .#{$prefix-cls}-placeholder {
-    &-text {
-      &-line {
-        background: $N30;
-
-        &::before {
-          border: 7px solid $N30;
-        }
-      }
-    }
-
-    &-heading {
-      &-image {
-        background: $N30;
-      }
-
-      &-content {
-
-        &-title,
-        &-subtitle {
-          background: $N30;
-        }
-      }
-    }
-
-    &-animated {
-      &::before {
-        background: linear-gradient(to right, transparent 0%, $N0 15%, transparent 30%);
-      }
-    }
-  }
-}
-
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-sidebar theme: blue
-*/
-.#{$prefix-cls}-sidebar--theme-blue {
-  .#{$prefix-cls}-placeholder {
-    &-text {
-      &-line {
-        background: $B300;
-
-        &::before {
-          border: 7px solid rgba(38, 132, 255, 0.5);
-        }
-      }
-    }
-
-    &-heading {
-      &-image {
-        background: $B300;
-      }
-
-      &-content {
-
-        &-title,
-        &-subtitle {
-          background: $B300;
-        }
-      }
-    }
-
-    &-animated {
-      &::before {
-        background: linear-gradient(to right, transparent 0%, $B500 15%, transparent 30%);
-      }
-    }
-  }
-}
-
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-sidebar theme: dark
-*/
-.#{$prefix-cls}-sidebar--theme-dark {
-  .#{$prefix-cls}-placeholder {
-    &-text {
-      &-line {
-        background: $N500;
-
-        &::before {
-          border: 7px solid $N600;
-        }
-      }
-    }
-
-    &-heading {
-      &-image {
-        background: $N500;
-      }
-
-      &-content {
-
-        &-title,
-        &-subtitle {
-          background: $N500;
-        }
-      }
-    }
-
-    &-animated {
-      &::before {
-        background: linear-gradient(to right, transparent 0%, $N700 15%, transparent 30%);
-      }
-    }
-  }
-}
-
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-sidebar theme: darker
-*/
-.#{$prefix-cls}-sidebar--theme-darker {
-  .#{$prefix-cls}-placeholder {
-    &-text {
-      &-line {
-        background: $N600;
-
-        &::before {
-          border: 7px solid $N700;
-        }
-      }
-    }
-
-    &-heading {
-      &-image {
-        background: $N600;
-      }
-
-      &-content {
-
-        &-title,
-        &-subtitle {
-          background: $N600;
-        }
-      }
-    }
-
-    &-animated {
-      &::before {
-        background: linear-gradient(to right, transparent 0%, $N800 15%, transparent 30%);
+        background: $animatedBeforeBG;
       }
     }
   }
@@ -880,9 +679,17 @@ default
     $itemHoverBG: $N30,
     $itemActiveFocusColor: $N400,
     $itemActiveFocusBG: $B50,
+    // $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
     $itemActiveFocusBoxShadow: none,
     $itemFocusOutline: none
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $N40,
+    $textLineBeforeBorder: 7px solid $N40,
+    $headingImageBG: $N40,
+    $headingContentTitleBG: $N40,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N20 15%, transparent 30%)
+  );
 }
 
 /*
@@ -898,8 +705,8 @@ purple
     $headerActiveColor: $N0,
     $headerActiveBG: $P400,
     $headerActiveBoxShadow: inset 0px 0px 0px 2px $P200,
-    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
-    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
+    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
     $itemBG: transparent,
     $itemColor: $N50 !important,
     $itemSubstringColor: $N80,
@@ -912,8 +719,15 @@ purple
     $itemActiveFocusColor: $N400,
     $itemActiveFocusBG: $P400,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $P300,
-    $itemFocusOutline: 2px solid red !important
-  )
+    $itemFocusOutline: transparent
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $P400,
+    $textLineBeforeBorder: 7px solid $P400,
+    $headingImageBG: $P400,
+    $headingContentTitleBG: $P400,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $P500 15%, transparent 30%)
+  );
 }
 
 /*
@@ -944,7 +758,14 @@ white
     $itemActiveFocusBG: $B50,
     $itemActiveFocusBoxShadow: none,
     $itemFocusOutline: transparent
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $N30,
+    $textLineBeforeBorder: 7px solid $N30,
+    $headingImageBG: $N30,
+    $headingContentTitleBG: $N30,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N0 15%, transparent 30%)
+  );
 }
 
 /*
@@ -975,7 +796,14 @@ grayscale
     $itemActiveFocusBG: #444,
     $itemActiveFocusBoxShadow: none,
     $itemFocusOutline: transparent
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: #444,
+    $textLineBeforeBorder: 7px solid rgba(2, 9, 19, 0.5),
+    $headingImageBG: #444,
+    $headingContentTitleBG: #444,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $GS400 15%, transparent 30%)
+  );
 }
 
 /*
@@ -1006,7 +834,14 @@ blue
     $itemActiveFocusBG: $B200,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
     $itemFocusOutline: transparent
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $B400,
+    $textLineBeforeBorder: 7px solid rgba(38, 132, 255, 0.5),
+    $headingImageBG: $B400,
+    $headingContentTitleBG: $B400,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $B500 15%, transparent 30%)
+  );
 }
 
 /*
@@ -1037,7 +872,14 @@ dark
     $itemActiveFocusBG: $N500,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N500,
     $itemFocusOutline: transparent
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $N500,
+    $textLineBeforeBorder: 7px solid $N600,
+    $headingImageBG: $N500,
+    $headingContentTitleBG: $N500,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N700 15%, transparent 30%)
+  );
 }
 
 /*
@@ -1068,7 +910,14 @@ darker
     $itemActiveFocusBG: $N700,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N700,
     $itemFocusOutline: transparent
-  )
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $N600,
+    $textLineBeforeBorder: 7px solid $N700,
+    $headingImageBG: $N600,
+    $headingContentTitleBG: $N600,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N800 15%, transparent 30%)
+  );
 }
 
 /**
@@ -1140,6 +989,21 @@ blue
     $iconColor: $N0,
     $itemHoverBG: rgba(9, 30, 66, 0.42),
     $itemActiveBG: $B200,
+    $itemFocusBorder: 2px solid $B200,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $B100);
+}
+
+/*
+paleblue
+*/
+.#{$prefix-cls}-minibar--theme-paleblue {
+  @include minibar-theme-mixin($mainBG: #325594,
+    $itemBG: transparent,
+    $iconColor: $N0,
+    $itemHoverBG: rgba(17, 52, 111, 0.42),
+    $itemActiveBG: #397fd6,
     $itemFocusBorder: 2px solid $B200,
     $itemBrandHoverBG: transparent !important,
     $itemBrandActiveBorder: 2px solid transparent,

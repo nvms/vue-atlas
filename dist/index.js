@@ -5913,16 +5913,14 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       var _this = this;
 
       var ret = {};
-      if (this.gutter) {
-        var half = this.gutter / 2;
-        ret.marginLeft = ret.marginRight = -half + 'px';
-        this.$nextTick(function () {
-          _this.$children.forEach(function (children) {
-            children.$el.style.paddingLeft = children.$el.style.paddingRight = half + 'px';
-            children.$el.style.marginBottom = _this.gutter + 'px';
-          });
+      var half = Math.floor(this.gutter / 2);
+      ret.marginLeft = ret.marginRight = -half + 'px';
+      this.$nextTick(function () {
+        _this.$children.forEach(function (children) {
+          children.$el.style.paddingLeft = children.$el.style.paddingRight = half + 'px';
+          children.$el.style.marginBottom = _this.gutter + 'px';
         });
-      }
+      });
       return ret;
     }
   }
@@ -6113,7 +6111,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       var tbh = parseInt(this.currentTopbarHeight);
       var totalw = sbw + mbw;
 
-      stl['position'] = 'absolute';
+      stl['position'] = 'relative';
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px';
       // stl['paddingTop'] = tbh + 'px'
       stl['top'] = tbh + 'px';
@@ -7412,7 +7410,7 @@ if (false) {(function () {
       values: ['default', 'primary'],
       note: 'The style of button to render.',
       validator: function validator(v) {
-        return ['default', 'primary', 'primary-light', 'primary-dark', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active', 'dark', 'darker', 'purple', 'purple-light', 'purple-dark'].includes(v);
+        return ['default', 'primary', 'primary-light', 'primary-dark', 'paleblue', 'success', 'info', 'warning', 'danger', 'subtle', 'link', 'subtle-link', 'active', 'dark', 'darker', 'purple', 'purple-light', 'purple-dark'].includes(v);
       }
     },
     size: {
@@ -16286,6 +16284,13 @@ if (false) {(function () {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaMinibarItem',
@@ -16295,6 +16300,11 @@ if (false) {(function () {
       default: false,
       required: false,
       note: 'If true, this item will have a larger bottom margin so as to make a distinction between it and other items.'
+    },
+    tooltip: {
+      type: String,
+      default: '',
+      required: false
     },
     prefixCls: {
       type: String,
@@ -33851,7 +33861,7 @@ var render = function() {
               ? _c(
                   "va-minibar-item",
                   {
-                    attrs: { brand: item.brand },
+                    attrs: { tooltip: item.tooltip, brand: item.brand },
                     nativeOn: {
                       click: function($event) {
                         return item.method($event)
@@ -33867,7 +33877,7 @@ var render = function() {
                 )
               : _c(
                   "va-minibar-item",
-                  { attrs: { brand: item.brand } },
+                  { attrs: { brand: item.brand, tooltip: item.tooltip } },
                   [
                     _c("va-icon", {
                       attrs: { type: item.icon, size: item.size }
@@ -33893,6 +33903,7 @@ var render = function() {
               ? _c(
                   "va-minibar-item",
                   {
+                    attrs: { tooltip: item.tooltip },
                     nativeOn: {
                       click: function($event) {
                         return item.method($event)
@@ -33908,6 +33919,7 @@ var render = function() {
                 )
               : _c(
                   "va-minibar-item",
+                  { attrs: { tooltip: item.tooltip } },
                   [
                     _c("va-icon", {
                       attrs: { type: item.icon, size: item.size }
@@ -34273,10 +34285,14 @@ var PopoverMixin = {
 
       if (_this2.trigger === 'hover') {
         _this2._mouseenterEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(triger, 'mouseenter', function () {
-          _this2.isShow = true;
+          setTimeout(function () {
+            _this2.isShow = true;
+          }, 200);
         });
         _this2._mouseleaveEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(triger, 'mouseleave', function () {
-          _this2.isShow = false;
+          setTimeout(function () {
+            _this2.isShow = false;
+          }, 200);
         });
       } else if (_this2.trigger === 'focus') {
         var input = _this2.$refs.trigger.querySelector('input');
@@ -37201,7 +37217,27 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { class: _vm.classObj }, [_vm._t("default")], 2)
+  return _c(
+    "div",
+    [
+      _vm.tooltip
+        ? _c(
+            "va-tooltip",
+            {
+              attrs: {
+                content: _vm.tooltip,
+                placement: "right",
+                trigger: "hover",
+                effect: "tooltip-fade-right",
+                arrow: ""
+              }
+            },
+            [_c("div", { class: _vm.classObj }, [_vm._t("default")], 2)]
+          )
+        : _c("div", { class: _vm.classObj }, [_vm._t("default")], 2)
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

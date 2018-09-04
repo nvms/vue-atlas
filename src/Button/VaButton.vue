@@ -26,6 +26,7 @@ export default {
           'primary',
           'primary-light',
           'primary-dark',
+          'paleblue',
           'success',
           'info',
           'warning',

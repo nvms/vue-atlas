@@ -1,6 +1,13 @@
 <template>
-  <div :class="classObj">
-    <slot />
+  <div>
+    <va-tooltip v-if="tooltip" :content="tooltip" placement="right" trigger="hover" effect="tooltip-fade-right" arrow>
+      <div :class="classObj">
+          <slot />
+      </div>
+    </va-tooltip>
+    <div v-else :class="classObj">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -13,6 +20,11 @@ export default {
       default: false,
       required: false,
       note: 'If true, this item will have a larger bottom margin so as to make a distinction between it and other items.'
+    },
+    tooltip: {
+      type: String,
+      default: '',
+      required: false
     },
     prefixCls: {
       type: String,

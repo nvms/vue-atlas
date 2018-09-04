@@ -7,6 +7,16 @@
   max-height: $maxHeight;
 }
 
+@mixin input-focus-mixin($color, $opacity: 0.6) {
+
+  &:focus {
+    box-shadow: $color 0px 0px 0px 2px;
+    /* fallback */
+    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+    outline: none;
+  }
+}
+
 @mixin defaultInputSize() {
   @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 3px, $minHeight: 34px, $maxHeight: 34px);
 }
@@ -37,6 +47,7 @@
   &:hover {
     background-color: $N20;
   }
+  // @include input-focus-mixin($B100, 0.2);
 }
 
 /*sizes*/

@@ -212,3 +212,11 @@
     background: $B50 !important;
   }
 }
+
+/**
+No focus ring on an open Select
+*/
+.#{$prefix-cls}-select-btn-open.#{$prefix-cls}-btn:focus,
+.#{$prefix-cls}-select-btn-open.#{$prefix-cls}-btn-focused {
+  box-shadow: none;
+}

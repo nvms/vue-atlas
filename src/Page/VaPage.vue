@@ -93,7 +93,7 @@ export default {
       let tbh = parseInt(this.currentTopbarHeight)
       let totalw = sbw + mbw
 
-      stl['position'] = 'absolute'
+      stl['position'] = 'relative'
       isRTL ? stl['left'] = '0px' : stl['left'] = totalw + 'px'
       // stl['paddingTop'] = tbh + 'px'
       stl['top'] = tbh + 'px'

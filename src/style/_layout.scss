@@ -119,6 +119,8 @@ $half-gutter-width: $gutter-width / 2;
     display: flex;
     flex-flow: row wrap;
     flex: 0 1 auto;
-    margin-left: $half-gutter-width * -1;
-    margin-right: $half-gutter-width * -1;
+    // margin-left: $half-gutter-width * -1;
+    // margin-right: $half-gutter-width * -1;
+    margin-left: 0px;
+    margin-right: 0px;
 }

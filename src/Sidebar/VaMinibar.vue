@@ -4,10 +4,10 @@
     <div :class="`${prefixCls}-minibar-top`">
 
       <div v-for="(item, index) in topItems" :key="index">
-        <va-minibar-item v-if="item.method" :brand="item.brand" @click.native="item.method">
+        <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
           <va-icon :type="item.icon" :size="item.size"></va-icon>
         </va-minibar-item>
-        <va-minibar-item v-else :brand="item.brand">
+        <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
           <va-icon :type="item.icon" :size="item.size"></va-icon>
         </va-minibar-item>
       </div>
@@ -17,10 +17,10 @@
     <div :class="`${prefixCls}-minibar-bottom`">
 
       <div v-for="(item, index) in bottomItems" :key="index">
-        <va-minibar-item v-if="item.method" @click.native="item.method">
+        <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
           <va-icon :type="item.icon" :size="item.size"></va-icon>
         </va-minibar-item>
-        <va-minibar-item v-else>
+        <va-minibar-item v-else :tooltip="item.tooltip">
           <va-icon :type="item.icon" :size="item.size"></va-icon>
         </va-minibar-item>
       </div>

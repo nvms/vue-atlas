@@ -19,17 +19,15 @@ export default {
   },
   computed: {
     styles () {
-      const ret = {}
-      if (this.gutter) {
-        const half = this.gutter / 2
-        ret.marginLeft = ret.marginRight = `${-half}px`
-        this.$nextTick(() => {
-          this.$children.forEach((children) => {
-            children.$el.style.paddingLeft = children.$el.style.paddingRight = `${half}px`
-            children.$el.style.marginBottom = this.gutter + 'px'
-          })
+      let ret = {}
+      let half = Math.floor(this.gutter / 2)
+      ret.marginLeft = ret.marginRight = `${-half}px`
+      this.$nextTick(() => {
+        this.$children.forEach((children) => {
+          children.$el.style.paddingLeft = children.$el.style.paddingRight = `${half}px`
+          children.$el.style.marginBottom = this.gutter + 'px'
         })
-      }
+      })
       return ret
     }
   }
