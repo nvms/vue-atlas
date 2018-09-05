@@ -6382,17 +6382,20 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaTable',
   props: {
-    fullWidth: {
-      type: Boolean,
-      default: false,
-      required: false,
-      note: 'When true, the table will be given 100% width to fill up the parent container.'
-    },
     hover: {
       type: Boolean,
       default: false,
       required: false,
       note: 'When true, changes the background color of rows when hovering.'
+    },
+    size: {
+      type: String,
+      default: 'lg',
+      validator: function validator(v) {
+        return ['lg', 'md', 'sm'].includes(v);
+      },
+
+      note: 'The size of the table.'
     },
     prefixCls: {
       type: String,
@@ -6402,13 +6405,13 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
-          fullWidth = this.fullWidth,
+          size = this.size,
           hover = this.hover;
 
       var klass = {};
 
       klass[prefixCls + '-table'] = true;
-      klass[prefixCls + '-table-fullwidth'] = fullWidth;
+      klass[prefixCls + '-table-' + size] = true;
       klass[prefixCls + '-table-hover'] = hover;
 
       return klass;
@@ -7185,6 +7188,8 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 
@@ -7319,9 +7324,11 @@ if (false) {(function () {
   methods: {
     close: function close() {
       this.isShow = false;
+      this.$emit('hide', { type: 'hide' });
     },
     open: function open() {
       this.isShow = true;
+      this.$emit('show', { type: 'show' });
     },
     confirm: function confirm() {
       this.$emit('confirm', { type: 'confirm' });
@@ -17115,7 +17122,8 @@ if (false) {(function () {
       .replace(/M(?!a)/g, month).replace(/d/g, day);
     },
     parse: function parse(str) {
-      var date = new Date(__WEBPACK_IMPORTED_MODULE_3__utils_format__["a" /* default */].dateParse(str, 'YYYY-MM-DD'));
+      // const date = new Date(format.dateParse(str, 'YYYY-MM-DD'))
+      var date = new Date(__WEBPACK_IMPORTED_MODULE_3__utils_format__["a" /* default */].dateParse(str, this.format));
       return isNaN(date.getFullYear()) ? null : date;
     },
     getDayCount: function getDayCount(year, month) {
@@ -17165,6 +17173,7 @@ if (false) {(function () {
         }
       }
 
+      time.day = time.day;
       for (var _i2 = 1; _i2 <= dayCount; _i2++) {
         var date = new Date(time.year, time.month, _i2);
         // const week = date.getDay()
@@ -17175,6 +17184,12 @@ if (false) {(function () {
             var valueDate = this.parse(this.currentValue);
 
             if (valueDate) {
+              console.log('getFullYear:', valueDate.getFullYear());
+              console.log('getMonth:', valueDate.getMonth());
+              console.log('currentValue:', this.currentValue);
+              console.log('valueDate:', valueDate);
+              console.log('time.day:', time.day);
+              console.log('--------------------');
               if (valueDate.getFullYear() === time.year && valueDate.getMonth() === time.month) {
                 sclass = this.prefixCls + '-datepicker-dateRange-item-active';
               }
@@ -32448,21 +32463,36 @@ var render = function() {
               { class: _vm.prefixCls + "-modal-content" },
               [
                 _vm._t("header", [
-                  _c("div", { class: _vm.prefixCls + "-modal-header" }, [
-                    _c(
-                      "button",
-                      {
-                        class: _vm.prefixCls + "-close",
-                        attrs: { type: "button" },
-                        on: { click: _vm.close }
-                      },
-                      [_c("span", [_vm._v("×")])]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { class: _vm.prefixCls + "-modal-title" }, [
-                      _vm._v(_vm._s(_vm.title))
-                    ])
-                  ])
+                  _c(
+                    "div",
+                    { class: _vm.prefixCls + "-modal-header" },
+                    [
+                      _c(
+                        "va-button",
+                        {
+                          class: _vm.prefixCls + "-close",
+                          attrs: { type: "subtle" },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.close($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("va-icon", {
+                            staticStyle: {},
+                            attrs: { type: "times" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { class: _vm.prefixCls + "-modal-title" }, [
+                        _vm._v(_vm._s(_vm.title))
+                      ])
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -35836,7 +35866,7 @@ var confirm = function confirm(options) {
     components: {
       VaModal: __WEBPACK_IMPORTED_MODULE_1__VaModal_vue__["a" /* default */]
     },
-    template: '<VaModal ref="modal" title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @confirm="handleConfirm"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <button type="button" :class="btnCls" @click="handleClose"><span>&times;</span></button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- lol.. this means.. if has title -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n    </VaModal>',
+    template: '<VaModal ref="modal" title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @confirm="handleConfirm"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- lol.. this means.. if has title -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n    </VaModal>',
     mounted: function mounted() {
       var _this = this;
 
@@ -35910,7 +35940,7 @@ var alert = function alert(options) {
     components: {
       VaModal: __WEBPACK_IMPORTED_MODULE_1__VaModal_vue__["a" /* default */]
     },
-    template: '<VaModal title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ref="modal"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <button type="button" :class="btnCls" @click="handleClose"><span>&times;</span></button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- TODO: there has to be a better way -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n      <div slot="footer" class="va-modal-footer">\n        <va-button @click.native="handleConfirm">{{getL(\'confirm\')}}</va-button>\n      </div>\n    </VaModal>',
+    template: '<VaModal title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ref="modal"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- TODO: there has to be a better way -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n      <div slot="footer" class="va-modal-footer">\n        <va-button @click.native="handleConfirm">{{getL(\'confirm\')}}</va-button>\n      </div>\n    </VaModal>',
     mounted: function mounted() {
       var _this2 = this;
 
@@ -37814,7 +37844,8 @@ if (false) {(function () {
     if (typeof str !== 'string') {
       return str;
     }
-    return __WEBPACK_IMPORTED_MODULE_0_moment___default()(str).format(format).toString();
+    // return moment(str).format(format).toString()
+    return __WEBPACK_IMPORTED_MODULE_0_moment___default()(str, format).toString();
   }
 });
 

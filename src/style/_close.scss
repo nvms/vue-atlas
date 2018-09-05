@@ -5,14 +5,14 @@
   line-height: 1.4;
   color: $N800;
   text-shadow: 0 1px 0 $N0;
-  opacity: .2;
+  opacity: .8;
   outline: none;
   &:hover,
   &:focus {
     color: $N800;
     text-decoration: none;
     cursor: pointer;
-    opacity: .5;
+    opacity: 1;
   }
 }
 

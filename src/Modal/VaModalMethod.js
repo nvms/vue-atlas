@@ -55,7 +55,9 @@ const confirm = (options) => {
       @show="handleShow"
       @closed="destroy">
       <div slot="header" :class="headerCls">
-        <button type="button" :class="btnCls" @click="handleClose"><span>&times;</span></button>
+        <va-button type="subtle" :class="btnCls" @click.native="handleClose">
+          <va-icon type="times" style="solid"></va-icon>
+        </va-button>
         <div :class="titleCls" v-if="!${!title}"> <!-- lol.. this means.. if has title -->
           <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>
           <span v-if="!${!title}">${title}</span>
@@ -134,7 +136,9 @@ const alert = (options) => {
       @show="handleShow"
       @closed="destroy">
       <div slot="header" :class="headerCls">
-        <button type="button" :class="btnCls" @click="handleClose"><span>&times;</span></button>
+        <va-button type="subtle" :class="btnCls" @click.native="handleClose">
+          <va-icon type="times" style="solid"></va-icon>
+        </va-button>
         <div :class="titleCls" v-if="!${!title}"> <!-- TODO: there has to be a better way -->
           <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>
           <span v-if="!${!title}">${title}</span>

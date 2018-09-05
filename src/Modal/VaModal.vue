@@ -10,7 +10,9 @@
 
         <slot name="header">
           <div :class="`${prefixCls}-modal-header`">
-            <button type="button" :class="`${prefixCls}-close`" @click="close"><span>&times;</span></button>
+            <va-button type="subtle" :class="`${prefixCls}-close`" @click.native="close">
+              <va-icon type="times" style="solid"></va-icon>
+            </va-button>
             <div :class="`${prefixCls}-modal-title`">{{title}}</div>
           </div>
         </slot>
@@ -157,9 +159,11 @@ export default {
   methods: {
     close () {
       this.isShow = false
+      this.$emit('hide', { type: 'hide' })
     },
     open () {
       this.isShow = true
+      this.$emit('show', { type: 'show' })
     },
     confirm () {
       this.$emit('confirm', { type: 'confirm' })

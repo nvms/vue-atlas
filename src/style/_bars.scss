@@ -653,6 +653,17 @@ theme mixin
   }
 }
 
+/**
+Disable box shadow on active/focus textLinks
+*/
+.#{$prefix-cls}-sidebar.#{$prefix-cls}-sidebar-text-links {
+  .#{$prefix-cls}-sidebar-group-item {
+    &:active, &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
 /*
 default
 */
@@ -831,7 +842,7 @@ blue
     $itemActiveStateBG: #123C89,
     $itemHoverBG: #113679,
     $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $B200,
+    $itemActiveFocusBG: $R200 !important,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
     $itemFocusOutline: transparent
   );

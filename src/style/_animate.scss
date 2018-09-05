@@ -137,6 +137,32 @@
   opacity: 0;
 }
 
+/*fadeRight*/
+
+.fadeRight-enter-active,
+.fadeRight-leave-active {
+  transition: all .3s ease;
+}
+
+.fadeRight-enter,
+.fadeRight-leave-active {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+/*fadeUp*/
+
+.fadeUp-enter-active,
+.fadeUp-leave-active {
+  transition: all .3s ease;
+}
+
+.fadeUp-enter,
+.fadeUp-leave-active {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
 /*fadeDown*/
 
 .fadeDown-enter-active,

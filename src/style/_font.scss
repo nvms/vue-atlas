@@ -98,6 +98,7 @@ a:active {
   color: darken($B400, 3%);
 }
 
+a:focus:not(.#{$prefix-cls}-dropdown-menu>li>a),
 a:focus:not(.#{$prefix-cls}-btn) {
   outline: 2px solid $B100;
   // outline-offset: 2px;
@@ -109,6 +110,7 @@ a:focus:not(.#{$prefix-cls}-btn) {
   // box-shadow: rgba($PB200, 0.6) 0px 0px 0px 2px;
 }
 
+a:active:not(.#{$prefix-cls}-dropdown-menu>li>a),
 a:active:not(.#{$prefix-cls}-btn) {
   border-bottom: 2px solid $B100;
 }
