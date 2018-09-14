@@ -16,7 +16,7 @@
     margin-left: 7px;
   }
   &:hover {
-    cursor: pointer;
+    cursor: default;
   }
   .#{$prefix-cls}-radio-span {
     white-space: nowrap;
@@ -50,7 +50,7 @@
     position: absolute !important;
     left: 0;
     z-index: 1;
-    cursor: pointer;
+    cursor: default;
     opacity: 0;
     top: 0;
     bottom: 0;

@@ -6075,7 +6075,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
         _this.isMobile = false;
       }
     });
-    this.$on('Va@pageIsRTL', function (val) {
+    this.$on('Va@rtlChange', function (val) {
       _this.isRTL = val;
     });
     this.$on('Va@pagePresenceCheck', function (val) {
@@ -6487,19 +6487,25 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
     currentValue: function currentValue(val) {
       this.$emit('input', val);
       this.$emit('change', val);
-      this.preBarElement.style.width = this.getVal() + 'px';
+      this.update();
+    },
+    value: function value(val) {
+      this.currentValue = parseInt(val);
     },
     min: function min(val) {
-      this.preBarElement.style.width = this.getVal() + 'px';
+      this.update();
     },
     max: function max(val) {
-      this.preBarElement.style.width = this.getVal() + 'px';
+      this.update();
     },
     step: function step(val) {
-      this.preBarElement.style.width = this.getVal() + 'px';
+      this.update();
     }
   },
   methods: {
+    update: function update() {
+      this.preBarElement.style.width = this.getVal() + 'px';
+    },
     onInput: function onInput(e) {
       this.currentValue = parseInt(e.target.value);
       this.$emit('input', parseInt(e.target.value));
@@ -6532,6 +6538,38 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
 
         return pp;
       }
+    },
+    init: function init() {
+      var _this = this;
+
+      var prefixCls = this.prefixCls;
+
+      var wrp = document.createElement('div');
+      var preBar = document.createElement('p');
+
+      wrp.className = prefixCls + '-range-barCnt';
+      preBar.className = prefixCls + '-range-preBar';
+
+      this.$refs.range.className = this.$refs.range.className.length ? this.$refs.range.className + ' colorized' : 'colorized';
+      this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range);
+
+      wrp.appendChild(this.$refs.range);
+      wrp.appendChild(preBar);
+
+      var r = this.$refs.range;
+      this._inputEvent = __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__["a" /* default */].listen(r, 'input', function () {
+        preBar.style.width = _this.getVal() + 'px';
+      });
+
+      this.$nextTick(function () {
+        preBar.style.width = _this.getVal() + 'px';
+      });
+
+      this.$refs.range.value = this.value;
+      this.preBarElement = preBar;
+    },
+    _resizeEvent: function _resizeEvent() {
+      this.update();
     }
   },
   computed: {
@@ -6547,50 +6585,30 @@ module.exports = { "default": __webpack_require__(295), __esModule: true };
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     this.$on('Va@rangeIsMobile', function (val) {
       if (val === true) {
-        _this.isMobile = true;
+        _this2.isMobile = true;
       } else {
-        _this.isMobile = false;
+        _this2.isMobile = false;
       }
     });
     this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
   },
   mounted: function mounted() {
-    var _this2 = this;
-
-    var prefixCls = this.prefixCls;
-
-    var wrp = document.createElement('div');
-    var preBar = document.createElement('p');
-
-    wrp.className = prefixCls + '-range-barCnt';
-    preBar.className = prefixCls + '-range-preBar';
-
-    this.$refs.range.className = this.$refs.range.className.length ? this.$refs.range.className + ' colorized' : 'colorized';
-    this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range);
-
-    wrp.appendChild(this.$refs.range);
-    wrp.appendChild(preBar);
-
-    var r = this.$refs.range;
-    this._inputEvent = __WEBPACK_IMPORTED_MODULE_1__utils_EventListener_js__["a" /* default */].listen(r, 'input', function () {
-      preBar.style.width = _this2.getVal() + 'px';
-    });
-
-    this.$nextTick(function () {
-      preBar.style.width = _this2.getVal() + 'px';
-    });
-
-    this.$refs.range.value = this.value;
-    this.preBarElement = preBar;
+    this.init();
+    window.addEventListener('resize', this._resizeEvent, false);
   },
   beforeDestroy: function beforeDestroy() {
     if (this._inputEvent) this._inputEvent.remove();
     if (this._mouseupEvent) this._mouseupEvent.remove();
     if (this._mousedownEvent) this._mousedownEvent.remove();
+
+    /**
+     * This event was not created using EventListener.
+     */
+    window.removeEventListener('resize', this._resizeEvent, false);
   }
 });
 
@@ -7034,7 +7052,8 @@ function getOffset(element) {
       currentSidebarWidth: this.sidebarWidth,
       currentMinibarWidth: this.minibarWidth,
       currentTopbarHeight: 0,
-      isRTL: false
+      isRTL: false,
+      sidebarPriority: false
     };
   },
   created: function created() {
@@ -7049,8 +7068,11 @@ function getOffset(element) {
     this.$on('Va@topbarHeightChange', function (val) {
       _this.currentTopbarHeight = val;
     });
-    this.$on('Va@barsIsRTL', function (val) {
+    this.$on('Va@rtlChange', function (val) {
       _this.isRTL = val;
+    });
+    this.$on('Va@sidebarPriorityChange', function (val) {
+      _this.sidebarPriority = val;
     });
   },
 
@@ -7075,16 +7097,18 @@ function getOffset(element) {
           currentMinibarWidth = this.currentMinibarWidth,
           currentTopbarHeight = this.currentTopbarHeight,
           reverse = this.reverse,
-          isRTL = this.isRTL;
+          isRTL = this.isRTL,
+          sidebarPriority = this.sidebarPriority;
 
       var sideWidth = parseInt(currentSidebarWidth);
       var miniWidth = parseInt(currentMinibarWidth);
       var topHeight = parseInt(currentTopbarHeight);
+      var sp = sidebarPriority;
       var style = {};
 
-      style['top'] = topHeight + 'px';
+      sp ? style['top'] = '0px' : style['top'] = topHeight + 'px';
       style['width'] = sideWidth + miniWidth + 'px';
-      style['paddingBottom'] = topHeight + 'px';
+      sp ? style['paddingBottom'] = '0px' : style['paddingBottom'] = topHeight + 'px';
       reverse ? style['flexDirection'] = 'row-reverse' : '';
       isRTL ? style['right'] = '0px' : '';
 
@@ -7324,11 +7348,9 @@ if (false) {(function () {
   methods: {
     close: function close() {
       this.isShow = false;
-      this.$emit('hide', { type: 'hide' });
     },
     open: function open() {
       this.isShow = true;
-      this.$emit('show', { type: 'show' });
     },
     confirm: function confirm() {
       this.$emit('confirm', { type: 'confirm' });
@@ -7764,6 +7786,14 @@ if (false) {(function () {
       type: Boolean,
       default: false,
       required: false
+    },
+    theme: {
+      type: String,
+      default: 'primary',
+      required: false,
+      validator: function validator(v) {
+        return ['default', 'primary', 'success', 'warning', 'danger', 'purple'];
+      }
     }
   },
   // directives: {
@@ -7796,6 +7826,17 @@ if (false) {(function () {
       klass[prefixCls + '-show-icon'] = icon ? true : false;
       size ? klass[prefixCls + '-input-' + size] = true : '';
       klass['inline'] = true;
+
+      return klass;
+    },
+    inputClassObj: function inputClassObj() {
+      var prefixCls = this.prefixCls,
+          theme = this.theme;
+
+      var klass = {};
+
+      klass[prefixCls + '-form-control'] = true;
+      klass[prefixCls + '-form-control-' + theme] = true;
 
       return klass;
     }
@@ -8414,6 +8455,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -8458,7 +8500,9 @@ if (false) {(function () {
     context: {},
     type: {
       type: String,
-      default: 'success'
+      default: 'default',
+      required: false,
+      note: 'The type of button to render as the Select button. See VaButton for possible values.'
     },
     options: {
       type: Array,
@@ -8956,7 +9000,11 @@ if (false) {(function () {
   data: function data() {
     return {
       currentTopbarHeight: 0,
-      isMobile: false
+      isMobile: false,
+      currentSidebarWidth: 0,
+      currentMinibarWidth: 0,
+      sidebarPriority: false,
+      isRTL: false
     };
   },
   created: function created() {
@@ -8968,12 +9016,20 @@ if (false) {(function () {
     this.$on('Va@topbarHeightChange', function (val) {
       _this.currentTopbarHeight = val;
     });
+    this.$on('Va@sidebarWidthChange', function (val) {
+      _this.currentSidebarWidth = val;
+    });
+    this.$on('Va@minibarWidthChange', function (val) {
+      _this.currentMinibarWidth = val;
+    });
     this.$on('Va@topbarIsMobile', function (val) {
-      if (val === true) {
-        _this.isMobile = true;
-      } else {
-        _this.isMobile = false;
-      }
+      _this.isMobile = val;
+    });
+    this.$on('Va@rtlChange', function (val) {
+      _this.isRTL = val;
+    });
+    this.$on('Va@sidebarPriorityChange', function (val) {
+      _this.sidebarPriority = val;
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -8994,9 +9050,18 @@ if (false) {(function () {
     },
     styleObj: function styleObj() {
       var topHeight = parseInt(this.currentTopbarHeight);
+      var mw = parseInt(this.currentMinibarWidth);
+      var sw = parseInt(this.currentSidebarWidth);
+      var sp = this.sidebarPriority;
+      var rtl = this.isRTL;
       var style = {};
 
       style['height'] = topHeight + 'px';
+      if (!rtl) {
+        sp ? style['left'] = sw + mw + 'px' : style['left'] = 0;
+      } else {
+        sp ? style['right'] = sw + mw + 'px' : style['right'] = 0;
+      }
 
       // Less than 40 and we don't want overflow.
       // Greater than 40 and we do, because we don't want
@@ -9915,7 +9980,7 @@ if (false) {(function () {
       type: String,
       default: 'fadeDown',
       required: false,
-      note: 'The effect to use. Try \'collapse\', \'fade\' or \'fadeDown\'.'
+      note: 'The effect to use.'
     },
     prefixCls: {
       type: String,
@@ -9938,7 +10003,7 @@ if (false) {(function () {
       this.isShow = false;
       this.$emit('hide');
     },
-    toggleDropdown: function toggleDropdown() {
+    toggle: function toggle() {
       this.isShow ? this.close() : this.open();
       this.$emit('toggle');
     },
@@ -9967,7 +10032,7 @@ if (false) {(function () {
       var el = _this.$el;
       var trig = _this.$refs.trigger.children[0];
       if (_this.triggerEvent === 'click') {
-        _this._clickEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(trig, 'click', _this.toggleDropdown);
+        _this._clickEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(trig, 'click', _this.toggle);
         _this._closeEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(window, 'click', function (e) {
           if (!_this.clickClose && !el.contains(e.target)) {
             _this.close();
@@ -10050,7 +10115,7 @@ function animate(node, show, transitionName, done) {
 /* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS.org (1.5.0). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS.org (1.5.2). (C) 2014 Julian Shapiro. MIT @license: en.wikipedia.org/wiki/MIT_License */
 
 /*************************
  Velocity jQuery Shim
@@ -10833,7 +10898,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS
 			hook: null, /* Defined below. */
 			/* Velocity-wide animation time remapping for testing purposes. */
 			mock: false,
-			version: {major: 1, minor: 5, patch: 1},
+			version: {major: 1, minor: 5, patch: 2},
 			/* Set to 1 or 2 (most verbose) to output debug info to console. */
 			debug: false,
 			/* Use rAF high resolution timestamp when available */
@@ -12891,10 +12956,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS
 										if (propertiesMap === "stop") {
 											/* Since "reverse" uses cached start values (the previous call's endValues), these values must be
 											 changed to reflect the final value that the elements were actually tweened to. */
-											/* Note: If only queue:false animations are currently running on an element, it won't have a tweensContainer
-											 object. Also, queue:false animations can't be reversed. */
+											/* Note: If only queue:false/queue:"custom" animations are currently running on an element, it won't have a tweensContainer
+											 object. Also, queue:false/queue:"custom" animations can't be reversed. */
 											var data = Data(element);
-											if (data && data.tweensContainer && queueName !== false) {
+											if (data && data.tweensContainer && (queueName === true || queueName === "")) {
 												$.each(data.tweensContainer, function(m, activeTween) {
 													activeTween.endValue = activeTween.currentValue;
 												});
@@ -29387,6 +29452,11 @@ if (false) {(function () {
       type: Boolean,
       default: false
     },
+    sidebarPriority: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -29435,6 +29505,9 @@ if (false) {(function () {
     },
     rtl: function rtl(val) {
       this.broadcastIsRTL(val);
+    },
+    sidebarPriority: function sidebarPriority(val) {
+      this.broadcastSidebarPriority(val);
     }
   },
   methods: {
@@ -29452,11 +29525,13 @@ if (false) {(function () {
     broadcastSidebarWidth: function broadcastSidebarWidth(val) {
       this.broadcast('VaBars', 'Va@sidebarWidthChange', val);
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val);
+      this.broadcast('VaTopbar', 'Va@sidebarWidthChange', val);
     },
     broadcastMinibarWidth: function broadcastMinibarWidth(val) {
       this.broadcast('VaBars', 'Va@minibarWidthChange', val);
       this.broadcast('VaPage', 'Va@minibarWidthChange', val);
       this.broadcast('VaMinibar', 'Va@minibarWidthChange', val);
+      this.broadcast('VaTopbar', 'Va@minibarWidthChange', val);
     },
     broadcastTopbarHeight: function broadcastTopbarHeight(val) {
       this.broadcast('VaBars', 'Va@topbarHeightChange', val);
@@ -29474,8 +29549,13 @@ if (false) {(function () {
       this.broadcast('VaDesktop', 'Va@desktopIsMobile', val);
     },
     broadcastIsRTL: function broadcastIsRTL(val) {
-      this.broadcast('VaPage', 'Va@pageIsRTL', val);
-      this.broadcast('VaBars', 'Va@barsIsRTL', val);
+      this.broadcast('VaPage', 'Va@rtlChange', val);
+      this.broadcast('VaBars', 'Va@rtlChange', val);
+      this.broadcast('VaTopbar', 'Va@rtlChange', val);
+    },
+    broadcastSidebarPriority: function broadcastSidebarPriority(val) {
+      this.broadcast('VaBars', 'Va@sidebarPriorityChange', val);
+      this.broadcast('VaTopbar', 'Va@sidebarPriorityChange', val);
     },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);
@@ -29513,6 +29593,9 @@ if (false) {(function () {
     this.checkForPresenceOfTopbar();
     this.checkForPresenceOfSidebar();
     this.checkForPresenceOfPage();
+
+    this.broadcastIsRTL(this.rtl);
+    this.broadcastSidebarPriority(this.sidebarPriority);
   },
   beforeDestroy: function beforeDestroy() {
     window.removeEventListener('resize', this._handleResize, false);
@@ -32773,7 +32856,7 @@ var render = function() {
     [
       _c("input", {
         ref: "input",
-        class: _vm.prefixCls + "-form-control",
+        class: _vm.inputClassObj,
         style: { width: _vm.width },
         attrs: {
           "auto-complete": "off",
@@ -33158,7 +33241,7 @@ var render = function() {
             _vm.show ? _vm.prefixCls + "-select-btn-open" : ""
           ],
           style: { width: _vm.width },
-          attrs: { disabled: _vm.disabled, size: _vm.size },
+          attrs: { type: _vm.type, disabled: _vm.disabled, size: _vm.size },
           nativeOn: {
             click: function($event) {
               return _vm.toggleDropdown($event)
@@ -33900,7 +33983,11 @@ var render = function() {
                   },
                   [
                     _c("va-icon", {
-                      attrs: { type: item.icon, size: item.size }
+                      attrs: {
+                        type: item.icon,
+                        size: item.size,
+                        "icon-style": item.iconStyle || "solid"
+                      }
                     })
                   ],
                   1
@@ -33910,7 +33997,11 @@ var render = function() {
                   { attrs: { brand: item.brand, tooltip: item.tooltip } },
                   [
                     _c("va-icon", {
-                      attrs: { type: item.icon, size: item.size }
+                      attrs: {
+                        type: item.icon,
+                        size: item.size,
+                        "icon-style": item.iconStyle || "solid"
+                      }
                     })
                   ],
                   1
@@ -33942,7 +34033,11 @@ var render = function() {
                   },
                   [
                     _c("va-icon", {
-                      attrs: { type: item.icon, size: item.size }
+                      attrs: {
+                        type: item.icon,
+                        size: item.size,
+                        "icon-style": item.iconStyle || "solid"
+                      }
                     })
                   ],
                   1
@@ -33952,7 +34047,11 @@ var render = function() {
                   { attrs: { tooltip: item.tooltip } },
                   [
                     _c("va-icon", {
-                      attrs: { type: item.icon, size: item.size }
+                      attrs: {
+                        type: item.icon,
+                        size: item.size,
+                        "icon-style": item.iconStyle || "solid"
+                      }
                     })
                   ],
                   1
@@ -35852,7 +35951,8 @@ var confirm = function confirm(options) {
       width = options.width,
       onConfirm = options.onConfirm,
       onHide = options.onHide,
-      onShow = options.onShow;
+      onShow = options.onShow,
+      backdropClickable = options.backdropClickable;
 
   new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: createNode(),
@@ -35866,7 +35966,7 @@ var confirm = function confirm(options) {
     components: {
       VaModal: __WEBPACK_IMPORTED_MODULE_1__VaModal_vue__["a" /* default */]
     },
-    template: '<VaModal ref="modal" title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @confirm="handleConfirm"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- lol.. this means.. if has title -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n    </VaModal>',
+    template: '<VaModal ref="modal" title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="' + (backdropClickable || 'false') + '"\n      @confirm="handleConfirm"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- lol.. this means.. if has title -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n    </VaModal>',
     mounted: function mounted() {
       var _this = this;
 
@@ -35883,7 +35983,11 @@ var confirm = function confirm(options) {
 
     computed: {
       iconType: function iconType() {
-        return typeMap[type];
+        if (type) {
+          return typeMap[type];
+        } else {
+          return typeMap['info'];
+        }
       },
       headerCls: function headerCls() {
         return this.pc + '-modal-header';
@@ -35925,7 +36029,8 @@ var alert = function alert(options) {
       width = options.width,
       onConfirm = options.onConfirm,
       onHide = options.onHide,
-      onShow = options.onShow;
+      onShow = options.onShow,
+      backdropClickable = options.backdropClickable;
 
   new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: createNode(),
@@ -35940,7 +36045,7 @@ var alert = function alert(options) {
     components: {
       VaModal: __WEBPACK_IMPORTED_MODULE_1__VaModal_vue__["a" /* default */]
     },
-    template: '<VaModal title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ref="modal"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="false"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- TODO: there has to be a better way -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n      <div slot="footer" class="va-modal-footer">\n        <va-button @click.native="handleConfirm">{{getL(\'confirm\')}}</va-button>\n      </div>\n    </VaModal>',
+    template: '<VaModal title="' + title + '"\n      effect="' + (effect || 'fade-up') + '"\n      ref="modal"\n      ' + (width ? 'width="' + width + '"' : '') + '\n      :backdrop-clickable="' + (backdropClickable || 'false') + '"\n      @hide="handleHide"\n      @show="handleShow"\n      @closed="destroy">\n      <div slot="header" :class="headerCls">\n        <va-button type="subtle" :class="btnCls" @click.native="handleClose">\n          <va-icon type="times" style="solid"></va-icon>\n        </va-button>\n        <div :class="titleCls" v-if="!' + !title + '"> <!-- TODO: there has to be a better way -->\n          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>\n          <span v-if="!' + !title + '">' + title + '</span>\n        </div>\n      </div>\n      <div slot="body">\n        ' + message + '\n      </div>\n      <div slot="footer" class="va-modal-footer">\n        <va-button @click.native="handleConfirm">{{getL(\'confirm\')}}</va-button>\n      </div>\n    </VaModal>',
     mounted: function mounted() {
       var _this2 = this;
 
@@ -35957,7 +36062,11 @@ var alert = function alert(options) {
 
     computed: {
       iconType: function iconType() {
-        return typeMap[type];
+        if (type) {
+          return typeMap[type];
+        } else {
+          return typeMap['info'];
+        }
       },
       headerCls: function headerCls() {
         return this.pc + '-modal-header';

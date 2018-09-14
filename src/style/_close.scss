@@ -11,7 +11,7 @@
   &:focus {
     color: $N800;
     text-decoration: none;
-    cursor: pointer;
+    cursor: default;
     opacity: 1;
   }
 }
@@ -19,7 +19,7 @@
 button.#{$prefix-cls}-close {
   -webkit-appearance: none;
   padding: 0;
-  cursor: pointer;
+  cursor: default;
   background: transparent;
   border: 0;
 }

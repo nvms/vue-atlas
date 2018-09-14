@@ -44,7 +44,11 @@ export default {
   data () {
     return {
       currentTopbarHeight: 0,
-      isMobile: false
+      isMobile: false,
+      currentSidebarWidth: 0,
+      currentMinibarWidth: 0,
+      sidebarPriority: false,
+      isRTL: false
     }
   },
   created () {
@@ -54,12 +58,20 @@ export default {
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
     })
+    this.$on('Va@sidebarWidthChange', (val) => {
+      this.currentSidebarWidth = val
+    })
+    this.$on('Va@minibarWidthChange', (val) => {
+      this.currentMinibarWidth = val
+    })
     this.$on('Va@topbarIsMobile', (val) => {
-      if (val === true) {
-        this.isMobile = true
-      } else {
-        this.isMobile = false
-      }
+      this.isMobile = val
+    })
+    this.$on('Va@rtlChange', (val) => {
+      this.isRTL = val
+    })
+    this.$on('Va@sidebarPriorityChange', (val) => {
+      this.sidebarPriority = val
     })
   },
   beforeDestroy () {
@@ -77,9 +89,18 @@ export default {
     },
     styleObj () {
       let topHeight = parseInt(this.currentTopbarHeight)
+      let mw = parseInt(this.currentMinibarWidth)
+      let sw = parseInt(this.currentSidebarWidth)
+      let sp = this.sidebarPriority
+      let rtl = this.isRTL
       let style = {}
 
       style['height'] = topHeight + 'px'
+      if (!rtl) {
+        sp ? style['left'] = (sw + mw) + 'px' : style['left'] = 0
+      } else {
+        sp ? style['right'] = (sw + mw) + 'px' : style['right'] = 0
+      }
 
       // Less than 40 and we don't want overflow.
       // Greater than 40 and we do, because we don't want

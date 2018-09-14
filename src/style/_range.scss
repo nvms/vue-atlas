@@ -23,7 +23,7 @@ input[type=range].#{$prefix-cls}-range.colorized {
   position: absolute;
   padding: 0px;
   margin: 0px;
-  cursor: pointer;
+  cursor: default;
   z-index: 100;
   left: 0px;
 }

@@ -19,7 +19,7 @@
     <input
       ref="input"
       auto-complete="off"
-      :class="`${prefixCls}-form-control`"
+      :class="inputClassObj"
       :style="{'width': width}"
       :readonly="readonly"
       :disabled="disabled"
@@ -97,6 +97,21 @@ export default {
       type: Boolean,
       default: false,
       required: false
+    },
+    theme: {
+      type: String,
+      default: 'primary',
+      required: false,
+      validator (v) {
+        return [
+          'default',
+          'primary',
+          'success',
+          'warning',
+          'danger',
+          'purple'
+        ]
+      }
     }
   },
   // directives: {
@@ -123,6 +138,15 @@ export default {
       klass[prefixCls + '-show-icon'] = icon ? true : false
       size ? klass[prefixCls + '-input-' + size] = true : ''
       klass['inline'] = true
+
+      return klass
+    },
+    inputClassObj () {
+      let {prefixCls, theme} = this
+      let klass = {}
+
+      klass[prefixCls + '-form-control'] = true
+      klass[prefixCls + '-form-control-' + theme] = true
 
       return klass
     }

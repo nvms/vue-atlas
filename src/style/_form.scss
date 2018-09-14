@@ -56,9 +56,9 @@
   @include baseInputStyle();
   @include defaultInputSize();
   &[readonly] {
-    cursor: pointer;
+    cursor: default;
     &:hover {
-      cursor: pointer;
+      cursor: default;
     }
   }
 }
@@ -154,7 +154,41 @@
 }
 
 .#{$prefix-cls}-has-error {
-  input[type=text].#{$prefix-cls}-form-control {
-    border-color: $R400;
+  .#{$prefix-cls}-form-control {
+    border-color: $R400 !important;
   }
 }
+
+/**
+Input theme mixin.
+*/
+@mixin form-control-input-theme(
+  $selector,
+  $backgroundColor,
+  $color,
+  $focusBorderColor,
+  $focusBGColor,
+  $hoverBGColor
+) {
+  .#{$prefix-cls}-form-control-#{$selector} {
+    background-color: $backgroundColor;
+    color: $color;
+    &:focus {
+      border-color: $focusBorderColor;
+      background-color: $focusBGColor;
+    }
+    &:hover {
+      background-color: $hoverBGColor;
+    }
+  }
+}
+
+/**
+Input themes. Default is 'primary' in VaInput.vue.
+*/
+@include form-control-input-theme('default', revert, revert, $N100, revert, revert);
+@include form-control-input-theme('primary', revert, revert, $B100, revert, revert);
+@include form-control-input-theme('purple', revert, revert, $P100, revert, revert);
+@include form-control-input-theme('success', revert, revert, $G200, revert, revert);
+@include form-control-input-theme('warning', revert, revert, $Y200, revert, revert);
+@include form-control-input-theme('danger', revert, revert, $R200, revert, revert);

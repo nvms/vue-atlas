@@ -34,7 +34,7 @@ const typeMap = {
 }
 
 const confirm = (options) => {
-  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow} = options
+  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow, backdropClickable} = options
   new Vue({
     el: createNode(),
     data () {
@@ -49,7 +49,7 @@ const confirm = (options) => {
     template: `<VaModal ref="modal" title="${title}"
       effect="${effect || 'fade-up'}"
       ${width ? 'width="' + width + '"' : ''}
-      :backdrop-clickable="false"
+      :backdrop-clickable="${backdropClickable || 'false'}"
       @confirm="handleConfirm"
       @hide="handleHide"
       @show="handleShow"
@@ -80,7 +80,11 @@ const confirm = (options) => {
     },
     computed: {
       iconType () {
-        return typeMap[type]
+        if (type) {
+          return typeMap[type]
+        } else {
+          return typeMap['info']
+        }
       },
       headerCls () {
         return this.pc + '-modal-header'
@@ -114,7 +118,7 @@ const confirm = (options) => {
 }
 
 const alert = (options) => {
-  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow} = options
+  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow, backdropClickable} = options
   new Vue({
     el: createNode(),
     mixins: [localeMixin('VaModal')],
@@ -131,7 +135,7 @@ const alert = (options) => {
       effect="${effect || 'fade-up'}"
       ref="modal"
       ${width ? 'width="' + width + '"' : ''}
-      :backdrop-clickable="false"
+      :backdrop-clickable="${backdropClickable || 'false'}"
       @hide="handleHide"
       @show="handleShow"
       @closed="destroy">
@@ -164,7 +168,11 @@ const alert = (options) => {
     },
     computed: {
       iconType () {
-        return typeMap[type]
+        if (type) {
+          return typeMap[type]
+        } else {
+          return typeMap['info']
+        }
       },
       headerCls () {
         return this.pc + '-modal-header'

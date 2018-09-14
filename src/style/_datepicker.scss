@@ -87,7 +87,7 @@ $datepickerRangeSize: 40px;
   &-ctrl p,
   &-dateRange span {
     // transition: all .3s ease;
-    cursor: pointer;
+    cursor: default;
   }
   &-monthRange span:hover,
   &-ctrl p:hover,

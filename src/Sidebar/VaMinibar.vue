@@ -5,10 +5,10 @@
 
       <div v-for="(item, index) in topItems" :key="index">
         <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
-          <va-icon :type="item.icon" :size="item.size"></va-icon>
+          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
         </va-minibar-item>
         <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size"></va-icon>
+          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
         </va-minibar-item>
       </div>
 
@@ -18,10 +18,10 @@
 
       <div v-for="(item, index) in bottomItems" :key="index">
         <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size"></va-icon>
+          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
         </va-minibar-item>
         <va-minibar-item v-else :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size"></va-icon>
+          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
         </va-minibar-item>
       </div>
 

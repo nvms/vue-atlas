@@ -41,7 +41,8 @@ export default {
       currentSidebarWidth: this.sidebarWidth,
       currentMinibarWidth: this.minibarWidth,
       currentTopbarHeight: 0,
-      isRTL: false
+      isRTL: false,
+      sidebarPriority: false
     }
   },
   created () {
@@ -54,8 +55,11 @@ export default {
     this.$on('Va@topbarHeightChange', (val) => {
       this.currentTopbarHeight = val
     })
-    this.$on('Va@barsIsRTL', (val) => {
+    this.$on('Va@rtlChange', (val) => {
       this.isRTL = val
+    })
+    this.$on('Va@sidebarPriorityChange', (val) => {
+      this.sidebarPriority = val
     })
   },
   computed: {
@@ -71,15 +75,16 @@ export default {
       return klass
     },
     styleObj () {
-      let {currentSidebarWidth, currentMinibarWidth, currentTopbarHeight, reverse, isRTL} = this
+      let {currentSidebarWidth, currentMinibarWidth, currentTopbarHeight, reverse, isRTL, sidebarPriority} = this
       let sideWidth = parseInt(currentSidebarWidth)
       let miniWidth = parseInt(currentMinibarWidth)
       let topHeight = parseInt(currentTopbarHeight)
+      let sp = sidebarPriority
       let style = {}
 
-      style['top'] = topHeight + 'px'
+      sp ? style['top'] = '0px' : style['top'] = topHeight + 'px'
       style['width'] = sideWidth + miniWidth + 'px'
-      style['paddingBottom'] = topHeight + 'px'
+      sp ? style['paddingBottom'] = '0px' : style['paddingBottom'] = topHeight + 'px'
       reverse ? style['flexDirection'] = 'row-reverse' : ''
       isRTL ? style['right'] = '0px' : ''
 

@@ -2,12 +2,13 @@
   &.#{$prefix-cls}-has-error {
     .#{$prefix-cls}-btn {
       &:after {
-        border: 2px solid $R500 !important;
+        border: 2px solid $R400 !important;
       }
     }
   }
   .#{$prefix-cls}-select-btn-open {
-    background-color: $N0 !important;
+    background-color: $N500 !important;
+    color: $N20 !important;
     &:after {
       content: '';
       display: block;
@@ -17,7 +18,7 @@
       bottom: 0;
       left: 0;
       border-radius: 3px;
-      border: 2px solid $B200 !important;
+      // border: 2px solid $N500 !important;
     }
   }
   .#{$prefix-cls}-selected-tag {
@@ -33,13 +34,14 @@
     position: relative;
     z-index: 20;
     &:focus {
-      box-shadow: $R300 0px 0px 0px 2px; /* fallback */
-      box-shadow: rgba($R300, 0.6) 0px 0px 0px 2px;
+      // box-shadow: $R300 0px 0px 0px 2px; /* fallback */
+      // box-shadow: rgba($R300, 0.6) 0px 0px 0px 2px;
       outline: none;
     }
     &:hover {
       // background: $N60;
       // color: $N0;
+      color: $R300;
       &:after {
         color: $R300;
       }
@@ -63,6 +65,7 @@
       }
     }
     &:active {
+      color: $R500 !important;
       &:after {
         color: $R500 !important;
       }
@@ -74,10 +77,10 @@
       margin-top: 3px;
     }
   }
-  .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn-default {
+  .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn {
     min-height: 34px;
     max-height: 34px;
-    background-color: $N10;
+    // background-color: $N10;
     cursor: default;
     &:after {
       content: '';
@@ -88,14 +91,14 @@
       bottom: 0;
       left: 0;
       border-radius: 3px;
-      border: 2px solid $N40;
+      // border: 2px solid $N40;
       z-index: 15;
     }
     &:hover {
-      background: $N20;
+      // background: $N20;
     }
     &:active {
-      color: $N400;
+      // color: $N400;
     }
   }
   .#{$prefix-cls}-select-search {
@@ -207,9 +210,9 @@
 }
 
 .#{$prefix-cls}-select-item-active {
-  background: $B50;
+  background: $N30;
   &:hover {
-    background: $B50 !important;
+    background: $N30 !important;
   }
 }
 

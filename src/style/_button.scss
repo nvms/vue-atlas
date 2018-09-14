@@ -18,9 +18,9 @@
   // ring on hover
   &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
   &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
-    box-shadow: $color 0px 0px 0px 2px;
+    box-shadow: inset $color 0px 0px 0px 2px;
     /* fallback */
-    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+    box-shadow: inset rgba($color, $opacity) 0px 0px 0px 2px;
     outline: none;
   }
 }
@@ -95,7 +95,7 @@ $lgBorderRadius: $borderRadius;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
   font-family: inherit;
   text-decoration: none;
   vertical-align: baseline;
@@ -153,7 +153,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $B400,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($B200, 0.5);
+    @include button-focus-mixin($B100, 0.6);
   }
 
   &-primary {
@@ -165,7 +165,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($B200, 0.5);
+    @include button-focus-mixin($B100, 1);
   }
 
   &-primary-light {
@@ -199,7 +199,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($P200, 0.6);
+    @include button-focus-mixin($P100, 1);
   }
 
   &-purple-light {
@@ -235,7 +235,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($PB100, 0.6);
+    @include button-focus-mixin($PB100, 1);
   }
 
   &-success {
@@ -247,7 +247,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $G300,
       $badgeFontCol: $N0);
-    @include button-focus-mixin($G300, 0.6);
+    @include button-focus-mixin($G300, 1);
   }
 
   &-info {
@@ -259,19 +259,19 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $T400,
       $badgeFontCol: $N0);
-    @include button-focus-mixin($T300, 0.6);
+    @include button-focus-mixin($T200, 1);
   }
 
   &-warning {
     @include btn-type($bgCol: $Y400,
-      $fontCol: $N600,
+      $fontCol: $N500,
       $bgColHover: $Y300,
       $fontColHover: $N600,
       $bgColActive: $Y500,
       $fontColActive: $N600,
       $badgeBgCol: $Y400,
       $badgeFontCol: $N0);
-    @include button-focus-mixin($Y500, 1);
+    @include button-focus-mixin(darken($Y500, 7%), 1);
   }
 
   &-danger {
@@ -283,7 +283,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $R400,
       $badgeFontCol: $N0);
-    @include button-focus-mixin($R200, 0.6);
+    @include button-focus-mixin($R100, 1);
   }
 
   &-subtle {
@@ -442,19 +442,19 @@ Ready to be confused?
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
-    margin-right: 2px;
+    margin-right: 1px;
   }
   >.#{$prefix-cls}-btn:first-child {
     margin-left: 0;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
-    margin-right: 2px;
+    margin-right: 1px;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-    margin-right: 2px;
+    margin-right: 1px;
   }
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
@@ -514,14 +514,14 @@ And, of course, when the button group is a vertical button group.
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     margin-right: 0px;
   }
   >.#{$prefix-cls}-btn:first-child {
     margin-top: 0;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-bottom-left-radius: 0;

@@ -50,7 +50,7 @@ export default {
       type: String,
       default: 'fadeDown',
       required: false,
-      note: 'The effect to use. Try \'collapse\', \'fade\' or \'fadeDown\'.'
+      note: 'The effect to use.'
     },
     prefixCls: {
       type: String,
@@ -72,7 +72,7 @@ export default {
       this.isShow = false
       this.$emit('hide')
     },
-    toggleDropdown () {
+    toggle () {
       this.isShow ? this.close() : this.open()
       this.$emit('toggle')
     },
@@ -98,7 +98,7 @@ export default {
       let el = this.$el
       let trig = this.$refs.trigger.children[0]
       if (this.triggerEvent === 'click') {
-        this._clickEvent = EventListener.listen(trig, 'click', this.toggleDropdown)
+        this._clickEvent = EventListener.listen(trig, 'click', this.toggle)
         this._closeEvent = EventListener.listen(window, 'click', (e) => {
           if (!this.clickClose && !el.contains(e.target)) {
             this.close()

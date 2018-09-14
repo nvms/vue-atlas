@@ -58,19 +58,25 @@ export default {
     currentValue (val) {
       this.$emit('input', val)
       this.$emit('change', val)
-      this.preBarElement.style.width = this.getVal() + 'px'
+      this.update()
+    },
+    value (val) {
+      this.currentValue = parseInt(val)
     },
     min (val) {
-      this.preBarElement.style.width = this.getVal() + 'px'
+      this.update()
     },
     max (val) {
-      this.preBarElement.style.width = this.getVal() + 'px'
+      this.update()
     },
     step (val) {
-      this.preBarElement.style.width = this.getVal() + 'px'
+      this.update()
     }
   },
   methods: {
+    update () {
+      this.preBarElement.style.width = this.getVal() + 'px'
+    },
     onInput (e) {
       this.currentValue = parseInt(e.target.value)
       this.$emit('input', parseInt(e.target.value))
@@ -103,6 +109,35 @@ export default {
 
         return pp
       }
+    },
+    init () {
+      let {prefixCls} = this
+      var wrp = document.createElement('div')
+      var preBar = document.createElement('p')
+
+      wrp.className = prefixCls + '-range-barCnt'
+      preBar.className = prefixCls + '-range-preBar'
+
+      this.$refs.range.className = this.$refs.range.className.length ? (this.$refs.range.className + ' colorized') : 'colorized'
+      this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range)
+
+      wrp.appendChild(this.$refs.range)
+      wrp.appendChild(preBar)
+
+      let r = this.$refs.range
+      this._inputEvent = EventListener.listen(r, 'input', () => {
+        preBar.style.width = this.getVal() + 'px'
+      })
+
+      this.$nextTick(() => {
+        preBar.style.width = this.getVal() + 'px'
+      })
+
+      this.$refs.range.value = this.value
+      this.preBarElement = preBar
+    },
+    _resizeEvent () {
+      this.update()
     }
   },
   computed: {
@@ -128,35 +163,18 @@ export default {
     this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
   },
   mounted () {
-    let {prefixCls} = this
-    var wrp = document.createElement('div')
-    var preBar = document.createElement('p')
-
-    wrp.className = prefixCls + '-range-barCnt'
-    preBar.className = prefixCls + '-range-preBar'
-
-    this.$refs.range.className = this.$refs.range.className.length ? (this.$refs.range.className + ' colorized') : 'colorized'
-    this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range)
-
-    wrp.appendChild(this.$refs.range)
-    wrp.appendChild(preBar)
-
-    let r = this.$refs.range
-    this._inputEvent = EventListener.listen(r, 'input', () => {
-      preBar.style.width = this.getVal() + 'px'
-    })
-
-    this.$nextTick(() => {
-      preBar.style.width = this.getVal() + 'px'
-    })
-
-    this.$refs.range.value = this.value
-    this.preBarElement = preBar
+    this.init()
+    window.addEventListener('resize', this._resizeEvent, false)
   },
   beforeDestroy () {
     if (this._inputEvent) this._inputEvent.remove()
     if (this._mouseupEvent) this._mouseupEvent.remove()
     if (this._mousedownEvent) this._mousedownEvent.remove()
+
+    /**
+     * This event was not created using EventListener.
+     */
+    window.removeEventListener('resize', this._resizeEvent, false)
   }
 }
 </script>

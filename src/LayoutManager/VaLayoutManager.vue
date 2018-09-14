@@ -55,6 +55,11 @@ export default {
       type: Boolean,
       default: false
     },
+    sidebarPriority: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -102,6 +107,9 @@ export default {
     },
     rtl (val) {
       this.broadcastIsRTL(val)
+    },
+    sidebarPriority (val) {
+      this.broadcastSidebarPriority(val)
     }
   },
   methods: {
@@ -119,11 +127,13 @@ export default {
     broadcastSidebarWidth (val) {
       this.broadcast('VaBars', 'Va@sidebarWidthChange', val)
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val)
+      this.broadcast('VaTopbar', 'Va@sidebarWidthChange', val)
     },
     broadcastMinibarWidth (val) {
       this.broadcast('VaBars', 'Va@minibarWidthChange', val)
       this.broadcast('VaPage', 'Va@minibarWidthChange', val)
       this.broadcast('VaMinibar', 'Va@minibarWidthChange', val)
+      this.broadcast('VaTopbar', 'Va@minibarWidthChange', val)
     },
     broadcastTopbarHeight (val) {
       this.broadcast('VaBars', 'Va@topbarHeightChange', val)
@@ -140,12 +150,15 @@ export default {
       this.broadcast('VaMobile', 'Va@mobileIsMobile', val)
       this.broadcast('VaDesktop', 'Va@desktopIsMobile', val)
     },
-
     broadcastIsRTL (val) {
-      this.broadcast('VaPage', 'Va@pageIsRTL', val)
-      this.broadcast('VaBars', 'Va@barsIsRTL', val)
+      this.broadcast('VaPage', 'Va@rtlChange', val)
+      this.broadcast('VaBars', 'Va@rtlChange', val)
+      this.broadcast('VaTopbar', 'Va@rtlChange', val)
     },
-
+    broadcastSidebarPriority (val) {
+      this.broadcast('VaBars', 'Va@sidebarPriorityChange', val)
+      this.broadcast('VaTopbar', 'Va@sidebarPriorityChange', val)
+    },
     checkForPresenceOfTopbar () {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true)
     },
@@ -182,6 +195,9 @@ export default {
     this.checkForPresenceOfTopbar()
     this.checkForPresenceOfSidebar()
     this.checkForPresenceOfPage()
+
+    this.broadcastIsRTL(this.rtl)
+    this.broadcastSidebarPriority(this.sidebarPriority)
   },
   beforeDestroy () {
     window.removeEventListener('resize', this._handleResize, false)

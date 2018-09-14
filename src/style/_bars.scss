@@ -12,16 +12,16 @@
   z-index: 5;
 }
 
-.#{$prefix-cls}-bars-rtl {
-  .#{$prefix-cls}-sidebar-group-title {
-    margin-right: 20px;
-    text-align: right;
-  }
+// .#{$prefix-cls}-bars-rtl {
+//   .#{$prefix-cls}-sidebar-group-title {
+//     margin-right: 20px;
+//     text-align: right;
+//   }
 
-  .#{$prefix-cls}-sidebar-group-item-text {
-    text-align: right;
-  }
-}
+//   .#{$prefix-cls}-sidebar-group-item-text {
+//     text-align: right;
+//   }
+// }
 
 .#{$prefix-cls}-bars-reverse {}
 
@@ -53,8 +53,6 @@
 
       .#{$prefix-cls}-page-container {
         position: absolute;
-        top: 51px !important;
-        color: red !important;
       }
     }
   }
@@ -75,7 +73,7 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 50%;
-    cursor: pointer;
+    cursor: default;
     width: 40px;
     height: 40px;
     padding: 0;
@@ -154,7 +152,7 @@
     $formControlBG: darken($P500, 10%),
     $formControlBorder: 2px solid darken($P500, 10%),
     $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid $P300,
+    $formControlFocusBorder: 2px solid $P200,
     $formControlFocusBG: darken($P500, 10%) !important
   );
 }
@@ -345,6 +343,17 @@
   }
 }
 
+// .#{$prefix-cls}-bars-rtl {
+//   .#{$prefix-cls}-sidebar-navigationlevel {
+//     &-children {
+//       li {
+//         margin-right: 0;
+//         padding-right: 34px;
+//       }
+//     }
+//   }
+// }
+
 /*
 sidebar item defaults
 */
@@ -352,7 +361,7 @@ sidebar item defaults
   $el: &;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
   outline: 0;
   margin: 0 0 4px 0;
   text-decoration: none;
@@ -721,7 +730,7 @@ purple
     $itemBG: transparent,
     $itemColor: $N50 !important,
     $itemSubstringColor: $N80,
-    $itemIconColor: $N400,
+    $itemIconColor: $N40,
     $itemToggleIconColor: $N100 !important,
     $itemTextIconColor: $N300,
     $itemActiveStateColor: $N0 !important,

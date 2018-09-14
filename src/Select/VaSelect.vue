@@ -1,6 +1,7 @@
 <template>
   <div :class="classObj">
     <va-button
+      :type="type"
       :style="{width:width}"
       :disabled="disabled"
       :size="size"
@@ -129,7 +130,9 @@ export default {
     },
     type: {
       type: String,
-      default: 'success'
+      default: 'default',
+      required: false,
+      note: 'The type of button to render as the Select button. See VaButton for possible values.'
     },
     options: {
       type: Array,

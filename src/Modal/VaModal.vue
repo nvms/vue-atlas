@@ -159,11 +159,9 @@ export default {
   methods: {
     close () {
       this.isShow = false
-      this.$emit('hide', { type: 'hide' })
     },
     open () {
       this.isShow = true
-      this.$emit('show', { type: 'show' })
     },
     confirm () {
       this.$emit('confirm', { type: 'confirm' })

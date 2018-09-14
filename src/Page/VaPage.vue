@@ -63,7 +63,7 @@ export default {
         this.isMobile = false
       }
     })
-    this.$on('Va@pageIsRTL', (val) => {
+    this.$on('Va@rtlChange', (val) => {
       this.isRTL = val
     })
     this.$on('Va@pagePresenceCheck', (val) => {
