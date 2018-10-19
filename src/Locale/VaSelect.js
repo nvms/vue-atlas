@@ -1,6 +1,7 @@
 export default {
-  'all': {
-    'en': 'All',
-    'es': 'Todos'
-  }
-}
+	all: {
+		en: "All",
+		es: "Todos",
+		fr: "Tous"
+	}
+};

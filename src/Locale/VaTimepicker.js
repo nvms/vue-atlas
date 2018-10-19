@@ -1,14 +1,17 @@
 export default {
-  'hour': {
-    'en': 'H',
-    'es': 'H'
+  hour: {
+    en: "H",
+    es: "H",
+    fr: "H"
   },
-  'minute': {
-    'en': 'M',
-    'es': 'M'
+  minute: {
+    en: "M",
+    es: "M",
+    fr: "M"
   },
-  'second': {
-    'en': 'S',
-    'es': 'S'
+  second: {
+    en: "S",
+    es: "S",
+    fr: "S"
   }
-}
+};
