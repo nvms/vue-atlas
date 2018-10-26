@@ -146,6 +146,7 @@
 @mixin validationDefaults() {
   font-size: 12px;
   font-weight: 500;
+  margin-top: 6px;
 }
 
 .#{$prefix-cls}-err-tip {
