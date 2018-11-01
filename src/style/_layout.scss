@@ -11,10 +11,14 @@
 
 $num-columns: 12;
 $context: 16px;
-$xs-min: 320px;
-$sm-min: 480px;
-$md-min: 768px;
-$lg-min: 960px;
+$xs-min: 480px;
+$sm-min: 768px;
+$md-min: 960px;
+$lg-min: 1280px;
+// $xs-min: 320px;
+// $sm-min: 480px;
+// $md-min: 768px;
+// $lg-min: 960px;
 $sm-res: rem($sm-min, $context);
 $md-res: rem($md-min, $context);
 $lg-res: rem($lg-min, $context);

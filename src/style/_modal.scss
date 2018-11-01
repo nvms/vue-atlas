@@ -10,7 +10,8 @@
   left: 0;
   z-index: 2100;
   display: none;
-  overflow: hidden;
+  // overflow: hidden;
+  overflow: scroll;
   -webkit-overflow-scrolling: touch;
   outline: 0;
   transition: all 0.3s ease;
@@ -23,7 +24,7 @@
   &-dialog {
     position: relative;
     width: auto;
-    margin: 140px auto 0 auto;
+    margin: 140px auto 140px auto;
     border-radius: 3px;
     max-width: 90%;
   }

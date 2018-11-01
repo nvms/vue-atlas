@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj" ref="modal">
+  <div :class="classObj" ref="modal" :style="styleObj">
     <div :class="`${prefixCls}-modal-dialog`" :style="{'width': width + 'px'}">
 
       <div v-if="modalIsLoading" :class="`${prefixCls}-modal-loading`">
@@ -73,6 +73,11 @@ export default {
       default: false,
       note: 'When true, modal shows its loading state/'
     },
+    backdrop: {
+      type: Boolean,
+      default: true,
+      required: false
+    },
     backdropClickable: {
       type: Boolean,
       default: true,
@@ -105,6 +110,19 @@ export default {
 
       return klass
     },
+    styleObj () {
+      let {backdrop, numberOfParentModals} = this
+      let style = {}
+
+      if (!backdrop) {
+        style['background'] = 'none !important'
+      }
+
+      let topMargin = parseInt(numberOfParentModals) * 20
+      style['padding-top'] = topMargin + 'px'
+
+      return style
+    },
     modalIsLoading () {
       return this.loading
     }
@@ -113,13 +131,17 @@ export default {
     let show = this.show
     return {
       isShow: show,
-      focused: false
+      focused: false,
+      numberOfParentModals: 0
     }
   },
   watch: {
     isShow (val) {
       if (val) {
         this.$emit('show', { type: 'show' })
+
+        let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
+        this.numberOfParentModals = x.length
       } else {
         this.$emit('hide', { type: 'hide' })
       }
