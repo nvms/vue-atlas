@@ -9862,6 +9862,7 @@ if (false) {(function () {
     }
   },
   data: function data() {
+    var tli = this.textLinks;
     var s = this.showToggle;
     var c = this.compact;
     var t = this.theme;
@@ -9869,17 +9870,18 @@ if (false) {(function () {
       currentDesktopMinimumWidth: 0,
       currentDesktopMargin: 0,
       currentSidebarWidth: 0,
-      currentMinibarWidth: 0,
       currentTopbarHeight: 0,
       minibarPriority: false,
       currentContentWidth: 0,
       sidebarPriority: false,
+      currentMinibarWidth: 0,
       currentWindowWidth: 0,
       isReverse: false,
       isMobile: false,
       isSplit: false,
       isRTL: false,
       comp: c,
+      tl: tli,
       th: t,
       st: s
     };
@@ -9932,6 +9934,9 @@ if (false) {(function () {
     this.$on('Va@splitChange', function (val) {
       _this.isSplit = val;
     });
+    this.$on('Va@textLinksChange', function (val) {
+      _this.tl = val;
+    });
     this.$on('Va@compactChange', function (val) {
       _this.comp = val;
     });
@@ -9960,7 +9965,7 @@ if (false) {(function () {
           th = this.th,
           isMobile = this.isMobile,
           comp = this.comp,
-          textLinks = this.textLinks;
+          tl = this.tl;
 
       var klass = {};
 
@@ -9968,7 +9973,7 @@ if (false) {(function () {
       klass[prefixCls + '-sidebar--theme-' + th] = true;
       klass[prefixCls + '-sidebar-mobile'] = isMobile;
       klass[prefixCls + '-sidebar-compact'] = comp;
-      klass[prefixCls + '-sidebar-text-links'] = textLinks;
+      klass[prefixCls + '-sidebar-text-links'] = tl;
 
       return klass;
     },
@@ -30443,8 +30448,8 @@ function transformArguments(arg) {
       mPageBgColor: dPageBgColor,
       allowMarginUpdates: true,
       currentMinibarWidth: 0,
-      currentSidebarWidth: 0,
       currentTopbarHeight: 0,
+      currentSidebarWidth: 0,
       mMinibarTheme: 'blue',
       mSidebarTheme: 'blue',
       mTopbarTheme: 'blue',
@@ -30454,6 +30459,7 @@ function transformArguments(arg) {
       mBgColor: dBgColor,
       haveSidebar: false,
       haveTopbar: false,
+      mTextLinks: false,
       mCompact: false,
       havePage: false,
       isMobile: false,
@@ -30517,6 +30523,9 @@ function transformArguments(arg) {
     },
     mCompact: function mCompact(val) {
       this.broadcastCompact(val);
+    },
+    mTextLinks: function mTextLinks(val) {
+      this.broadcastTextLinks(val);
     },
     mShowToggle: function mShowToggle(val) {
       this.broadcastShowToggle(val);
@@ -30608,6 +30617,9 @@ function transformArguments(arg) {
     },
     broadcastCompact: function broadcastCompact(val) {
       this.broadcast('VaSidebar', 'Va@compactChange', val);
+    },
+    broadcastTextLinks: function broadcastTextLinks(val) {
+      this.broadcast('VaSidebar', 'Va@textLinksChange', val);
     },
     broadcastShowToggle: function broadcastShowToggle(val) {
       this.broadcast('VaSidebar', 'Va@showToggleChange', val);
@@ -30790,6 +30802,9 @@ function transformArguments(arg) {
       this.$on('Va@configRtlChange', function (val) {
         _this.mRtl = val;
       });
+      this.$on('Va@configTextLinksChange', function (val) {
+        _this.mTextLinks = val;
+      });
     },
     broadcastDefaultsToConfig: function broadcastDefaultsToConfig() {
       var _this2 = this;
@@ -30815,6 +30830,7 @@ function transformArguments(arg) {
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', _this2.mPageSize);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', _this2.mCompact);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', _this2.mReverse);
+        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', _this2.mTextLinks);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', _this2.mBgColor);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', _this2.mSplit);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', _this2.mRtl);
@@ -31580,6 +31596,9 @@ function transformArguments(arg) {
 //
 //
 //
+//
+//
+//
 
 
 
@@ -31610,6 +31629,7 @@ function transformArguments(arg) {
 
       showToggle: false,
       compact: false,
+      textLinks: false,
 
       desktopSidebarWidth: 210,
       desktopMinibarWidth: 50,
@@ -31683,6 +31703,9 @@ function transformArguments(arg) {
     },
     showToggle: function showToggle(val) {
       this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val);
+    },
+    textLinks: function textLinks(val) {
+      this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', val);
     },
     pageSize: function pageSize(val) {
       this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', val);
@@ -31760,23 +31783,20 @@ function transformArguments(arg) {
     this.$on('Va@configReceiveDesktopMinibarWidth', function (val) {
       _this2.desktopMinibarWidth = val;
     });
+    this.$on('Va@configReceiveDesktopMinimumWidth', function (val) {
+      _this2.desktopMinimumWidth = val;
+    });
     this.$on('Va@configReceiveDesktopSidebarWidth', function (val) {
       _this2.desktopSidebarWidth = val;
-    });
-    this.$on('Va@configReceiveMobileTopbarHeight', function (val) {
-      _this2.mobileTopbarHeight = val;
-    });
-    this.$on('Va@configReceiveMobileMinibarWidth', function (val) {
-      _this2.mobileMinibarWidth = val;
     });
     this.$on('Va@configReceiveMobileSidebarWidth', function (val) {
       _this2.mobileSidebarWidth = val;
     });
-    this.$on('Va@configReceiveDesktopMargin', function (val) {
-      _this2.desktopMargin = val;
+    this.$on('Va@configReceiveMobileMinibarWidth', function (val) {
+      _this2.mobileMinibarWidth = val;
     });
-    this.$on('Va@configReceiveDesktopMinimumWidth', function (val) {
-      _this2.desktopMinimumWidth = val;
+    this.$on('Va@configReceiveMobileTopbarHeight', function (val) {
+      _this2.mobileTopbarHeight = val;
     });
     this.$on('Va@configReceiveSidebarPriority', function (val) {
       _this2.sidebarPriority = val;
@@ -31787,29 +31807,17 @@ function transformArguments(arg) {
     this.$on('Va@configReceiveTopbarPriority', function (val) {
       _this2.topbarPriority = val;
     });
+    this.$on('Va@configReceiveDesktopMargin', function (val) {
+      _this2.desktopMargin = val;
+    });
     this.$on('Va@configReceiveTopbarPadded', function (val) {
       _this2.topbarPadded = val;
     });
-    this.$on('Va@configReceiveReverse', function (val) {
-      _this2.reverse = val;
-    });
-    this.$on('Va@configReceiveSplit', function (val) {
-      _this2.split = val;
-    });
-    this.$on('Va@configReceiveRtl', function (val) {
-      _this2.rtl = val;
-    });
-    this.$on('Va@configReceivePageSize', function (val) {
-      _this2.pageSize = val;
-    });
-    this.$on('Va@configReceiveCompact', function (val) {
-      _this2.compact = val;
+    this.$on('Va@configReceiveMinibarTheme', function (val) {
+      _this2.minibarTheme = val;
     });
     this.$on('Va@configReceiveSidebarTheme', function (val) {
       _this2.sidebarTheme = val;
-    });
-    this.$on('Va@configReceiveMinibarTheme', function (val) {
-      _this2.minibarTheme = val;
     });
     this.$on('Va@configReceiveTopbarTheme', function (val) {
       _this2.topbarTheme = val;
@@ -31817,8 +31825,26 @@ function transformArguments(arg) {
     this.$on('Va@configReceivePageBgColor', function (val) {
       _this2.pageBgColor = val;
     });
+    this.$on('Va@configReceiveTextLinks', function (val) {
+      _this2.textLinks = val;
+    });
+    this.$on('Va@configReceivePageSize', function (val) {
+      _this2.pageSize = val;
+    });
+    this.$on('Va@configReceiveCompact', function (val) {
+      _this2.compact = val;
+    });
+    this.$on('Va@configReceiveReverse', function (val) {
+      _this2.reverse = val;
+    });
     this.$on('Va@configReceiveBgColor', function (val) {
       _this2.bgColor = val;
+    });
+    this.$on('Va@configReceiveSplit', function (val) {
+      _this2.split = val;
+    });
+    this.$on('Va@configReceiveRtl', function (val) {
+      _this2.rtl = val;
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -42304,6 +42330,26 @@ var render = function() {
                                     }
                                   },
                                   [_vm._v("compact")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              [
+                                _c(
+                                  "va-checkbox",
+                                  {
+                                    model: {
+                                      value: _vm.textLinks,
+                                      callback: function($$v) {
+                                        _vm.textLinks = $$v
+                                      },
+                                      expression: "textLinks"
+                                    }
+                                  },
+                                  [_vm._v("textLinks")]
                                 )
                               ],
                               1

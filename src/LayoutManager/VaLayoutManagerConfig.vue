@@ -137,6 +137,9 @@
                 <p>
                   <va-checkbox v-model="compact">compact</va-checkbox>
                 </p>
+                <p>
+                  <va-checkbox v-model="textLinks">textLinks</va-checkbox>
+                </p>
               </va-column>
             </va-row>
 
@@ -302,6 +305,7 @@ export default {
 
       showToggle: false,
       compact: false,
+      textLinks: false,
 
       desktopSidebarWidth: 210,
       desktopMinibarWidth: 50,
@@ -341,6 +345,7 @@ export default {
     reverse (val) { this.dispatch('VaLayoutManager', 'Va@configReverseChange', val) },
     compact (val) { this.dispatch('VaLayoutManager', 'Va@configCompactChange', val) },
     showToggle (val) { this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val) },
+    textLinks (val) { this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', val) },
     pageSize (val) { this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', val) },
 
     topbarTheme (val) { this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', val) },
@@ -399,26 +404,27 @@ export default {
      */
     this.$on('Va@configReceiveDesktopTopbarHeight', (val) => { this.desktopTopbarHeight = val })
     this.$on('Va@configReceiveDesktopMinibarWidth', (val) => { this.desktopMinibarWidth = val })
-    this.$on('Va@configReceiveDesktopSidebarWidth', (val) => { this.desktopSidebarWidth = val })
-    this.$on('Va@configReceiveMobileTopbarHeight', (val) => { this.mobileTopbarHeight = val })
-    this.$on('Va@configReceiveMobileMinibarWidth', (val) => { this.mobileMinibarWidth = val })
-    this.$on('Va@configReceiveMobileSidebarWidth', (val) => { this.mobileSidebarWidth = val })
-    this.$on('Va@configReceiveDesktopMargin', (val) => { this.desktopMargin = val })
     this.$on('Va@configReceiveDesktopMinimumWidth', (val) => { this.desktopMinimumWidth = val })
+    this.$on('Va@configReceiveDesktopSidebarWidth', (val) => { this.desktopSidebarWidth = val })
+    this.$on('Va@configReceiveMobileSidebarWidth', (val) => { this.mobileSidebarWidth = val })
+    this.$on('Va@configReceiveMobileMinibarWidth', (val) => { this.mobileMinibarWidth = val })
+    this.$on('Va@configReceiveMobileTopbarHeight', (val) => { this.mobileTopbarHeight = val })
     this.$on('Va@configReceiveSidebarPriority', (val) => { this.sidebarPriority = val })
     this.$on('Va@configReceiveMinibarPriority', (val) => { this.minibarPriority = val })
     this.$on('Va@configReceiveTopbarPriority', (val) => { this.topbarPriority = val })
+    this.$on('Va@configReceiveDesktopMargin', (val) => { this.desktopMargin = val })
     this.$on('Va@configReceiveTopbarPadded', (val) => { this.topbarPadded = val })
-    this.$on('Va@configReceiveReverse', (val) => { this.reverse = val })
-    this.$on('Va@configReceiveSplit', (val) => { this.split = val })
-    this.$on('Va@configReceiveRtl', (val) => { this.rtl = val })
-    this.$on('Va@configReceivePageSize', (val) => { this.pageSize = val })
-    this.$on('Va@configReceiveCompact', (val) => { this.compact = val })
-    this.$on('Va@configReceiveSidebarTheme', (val) => { this.sidebarTheme = val })
     this.$on('Va@configReceiveMinibarTheme', (val) => { this.minibarTheme = val })
+    this.$on('Va@configReceiveSidebarTheme', (val) => { this.sidebarTheme = val })
     this.$on('Va@configReceiveTopbarTheme', (val) => { this.topbarTheme = val })
     this.$on('Va@configReceivePageBgColor', (val) => { this.pageBgColor = val })
+    this.$on('Va@configReceiveTextLinks', (val) => { this.textLinks = val })
+    this.$on('Va@configReceivePageSize', (val) => { this.pageSize = val })
+    this.$on('Va@configReceiveCompact', (val) => { this.compact = val })
+    this.$on('Va@configReceiveReverse', (val) => { this.reverse = val })
     this.$on('Va@configReceiveBgColor', (val) => { this.bgColor = val })
+    this.$on('Va@configReceiveSplit', (val) => { this.split = val })
+    this.$on('Va@configReceiveRtl', (val) => { this.rtl = val })
   },
   beforeDestroy () {
     window.removeEventListener('resize', this._handleResize, false)

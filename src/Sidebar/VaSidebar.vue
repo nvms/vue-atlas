@@ -47,6 +47,7 @@ export default {
     }
   },
   data () {
+    let tli = this.textLinks
     let s = this.showToggle
     let c = this.compact
     let t = this.theme
@@ -54,17 +55,18 @@ export default {
       currentDesktopMinimumWidth: 0,
       currentDesktopMargin: 0,
       currentSidebarWidth: 0,
-      currentMinibarWidth: 0,
       currentTopbarHeight: 0,
       minibarPriority: false,
       currentContentWidth: 0,
       sidebarPriority: false,
+      currentMinibarWidth: 0,
       currentWindowWidth: 0,
       isReverse: false,
       isMobile: false,
       isSplit: false,
       isRTL: false,
       comp: c,
+      tl: tli,
       th: t,
       st: s
     }
@@ -85,6 +87,7 @@ export default {
     this.$on('Va@sidebarThemeChange', (val) => { this.th = val })
     this.$on('Va@showToggleChange', (val) => { this.st = val })
     this.$on('Va@splitChange', (val) => { this.isSplit = val })
+    this.$on('Va@textLinksChange', (val) => { this.tl = val })
     this.$on('Va@compactChange', (val) => { this.comp = val })
     this.$on('Va@rtlChange', (val) => { this.isRTL = val })
   },
@@ -102,14 +105,14 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, th, isMobile, comp, textLinks} = this
+      let {prefixCls, th, isMobile, comp, tl} = this
       let klass = {}
 
       klass[prefixCls + '-sidebar'] = true
       klass[prefixCls + '-sidebar--theme-' + th] = true
       klass[prefixCls + '-sidebar-mobile'] = isMobile
       klass[prefixCls + '-sidebar-compact'] = comp
-      klass[prefixCls + '-sidebar-text-links'] = textLinks
+      klass[prefixCls + '-sidebar-text-links'] = tl
 
       return klass
     },

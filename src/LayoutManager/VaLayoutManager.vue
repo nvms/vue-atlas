@@ -146,8 +146,8 @@ export default {
       mPageBgColor: dPageBgColor,
       allowMarginUpdates: true,
       currentMinibarWidth: 0,
-      currentSidebarWidth: 0,
       currentTopbarHeight: 0,
+      currentSidebarWidth: 0,
       mMinibarTheme: 'blue',
       mSidebarTheme: 'blue',
       mTopbarTheme: 'blue',
@@ -157,6 +157,7 @@ export default {
       mBgColor: dBgColor,
       haveSidebar: false,
       haveTopbar: false,
+      mTextLinks: false,
       mCompact: false,
       havePage: false,
       isMobile: false,
@@ -219,6 +220,9 @@ export default {
     },
     mCompact (val) {
       this.broadcastCompact(val)
+    },
+    mTextLinks (val) {
+      this.broadcastTextLinks(val)
     },
     mShowToggle (val) {
       this.broadcastShowToggle(val)
@@ -310,6 +314,9 @@ export default {
     },
     broadcastCompact (val) {
       this.broadcast('VaSidebar', 'Va@compactChange', val)
+    },
+    broadcastTextLinks (val) {
+      this.broadcast('VaSidebar', 'Va@textLinksChange', val)
     },
     broadcastShowToggle (val) {
       this.broadcast('VaSidebar', 'Va@showToggleChange', val)
@@ -445,6 +452,7 @@ export default {
       this.$on('Va@configBgColorChange', (val) => { this.mBgColor = val })
       this.$on('Va@configSplitChange', (val) => { this.mSplit = val })
       this.$on('Va@configRtlChange', (val) => { this.mRtl = val })
+      this.$on('Va@configTextLinksChange', (val) => { this.mTextLinks = val })
     },
     broadcastDefaultsToConfig () {
       setTimeout(() => {
@@ -468,6 +476,7 @@ export default {
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', this.mPageSize)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', this.mCompact)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', this.mReverse)
+        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', this.mTextLinks)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', this.mBgColor)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', this.mSplit)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', this.mRtl)
