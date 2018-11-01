@@ -1,78 +1,97 @@
 export default {
-  'sunday': {
-    'en': 'Sun',
-    'es': 'Do'
+  sunday: {
+    en: "Sun",
+    es: "Do",
+    fr: "Dim"
   },
-  'monday': {
-    'en': 'Mon',
-    'es': 'Lu'
+  monday: {
+    en: "Mon",
+    es: "Lu",
+    fr: "Lun"
   },
-  'tuesday': {
-    'en': 'Tue',
-    'es': 'Ma'
+  tuesday: {
+    en: "Tue",
+    es: "Ma",
+    fr: "Mar"
   },
-  'wednesday': {
-    'en': 'Wed',
-    'es': 'Mi'
+  wednesday: {
+    en: "Wed",
+    es: "Mi",
+    fr: "Mer"
   },
-  'thursday': {
-    'en': 'Thu',
-    'es': 'Ju'
+  thursday: {
+    en: "Thu",
+    es: "Ju",
+    fr: "Jeu"
   },
-  'friday': {
-    'en': 'Fri',
-    'es': 'Vi'
+  friday: {
+    en: "Fri",
+    es: "Vi",
+    fr: "Ven"
   },
-  'saturday': {
-    'en': 'Sat',
-    'es': 'Sá'
+  saturday: {
+    en: "Sat",
+    es: "Sá",
+    fr: "Sam"
   },
-  'january': {
-    'en': 'January',
-    'es': 'Ene'
+  january: {
+    en: "January",
+    es: "Ene",
+    fr: "Janvier"
   },
-  'february': {
-    'en': 'February',
-    'es': 'Feb'
+  february: {
+    en: "February",
+    es: "Feb",
+    fr: "Février"
   },
-  'march': {
-    'en': 'March',
-    'es': 'Mar'
+  march: {
+    en: "March",
+    es: "Mar",
+    fr: "Mars"
   },
-  'april': {
-    'en': 'April',
-    'es': 'Abr'
+  april: {
+    en: "April",
+    es: "Abr",
+    fr: "Avril"
   },
-  'may': {
-    'en': 'May',
-    'es': 'May'
+  may: {
+    en: "May",
+    es: "May",
+    fr: "Mai"
   },
-  'june': {
-    'en': 'June',
-    'es': 'Jun'
+  june: {
+    en: "June",
+    es: "Jun",
+    fr: "Juin"
   },
-  'july': {
-    'en': 'July',
-    'es': 'Jul'
+  july: {
+    en: "July",
+    es: "Jul",
+    fr: "Juillet"
   },
-  'august': {
-    'en': 'August',
-    'es': 'Aug'
+  august: {
+    en: "August",
+    es: "Aug",
+    fr: "Août"
   },
-  'september': {
-    'en': 'September',
-    'es': 'Sep'
+  september: {
+    en: "September",
+    es: "Sep",
+    fr: "Septembre"
   },
-  'october': {
-    'en': 'October',
-    'es': 'Oct'
+  october: {
+    en: "October",
+    es: "Oct",
+    fr: "Octobre"
   },
-  'november': {
-    'en': 'November',
-    'es': 'Nov'
+  november: {
+    en: "November",
+    es: "Nov",
+    fr: "Novembre"
   },
-  'december': {
-    'en': 'December',
-    'es': 'Dec'
+  december: {
+    en: "December",
+    es: "Dec",
+    fr: "Décembre"
   }
-}
+};
