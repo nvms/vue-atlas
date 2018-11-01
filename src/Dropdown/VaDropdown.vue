@@ -77,7 +77,6 @@ export default {
       this.$emit('toggle')
     },
     onFocus () {
-      console.log('Dropdown trigger wrapper was focused.')
     }
   },
   components: {

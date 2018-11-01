@@ -5,10 +5,10 @@
  */
 -->
 <template>
-  <span :class="classObj" ref="itemText">
+  <span :class="classObj" ref="itemText" v-on="itemMethod">
 
     <!-- The toggle icon -->
-    <span v-if="showToggle && toggleType === 'circle'" :class="`${prefixCls}-sidebar-group-item-text-icon`">
+    <span v-if="st && toggleType === 'circle'" :class="`${prefixCls}-sidebar-group-item-text-icon`">
       <va-icon type="circle"></va-icon>
     </span>
 
@@ -75,11 +75,28 @@ export default {
     }
   },
   data () {
+    let s = this.showToggle
     return {
+      st: s,
       minified: false
     }
   },
+  created () {
+    this.$on('Va@showToggleChange', (val) => {
+      this.st = val
+    })
+  },
   computed: {
+    itemHasMethod () {
+      return this.item.method !== undefined
+    },
+    itemMethod () {
+      if (this.itemHasMethod) {
+        return {
+          click: this.item.method
+        }
+      }
+    },
     showIcon () {
       return this.item.icon !== undefined
     },

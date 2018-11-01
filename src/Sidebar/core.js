@@ -136,6 +136,7 @@ export const getItemMetadata = (item, parent) => {
   const route = item.route
   const external = item.external
   const icon = item.icon || false
+  const method = item.method || false
   const iconColor = item.iconColor || false
   const iconSize = item.iconSize || '1em'
   const iconStyle = item.iconStyle || 'solid'
@@ -183,6 +184,7 @@ export const getItemMetadata = (item, parent) => {
       iconColor,
       iconSize,
       iconStyle,
+      method,
       path: parentPath,
       target: external
     }
@@ -194,6 +196,7 @@ export const getItemMetadata = (item, parent) => {
       iconColor,
       iconSize,
       iconStyle,
+      method,
       path: route,
       target: route
     }
@@ -205,6 +208,7 @@ export const getItemMetadata = (item, parent) => {
       iconColor,
       iconSize,
       iconStyle,
+      method,
       path: parentPath,
       target: sanitizeRoute(parentPath + element)
     }
@@ -215,6 +219,7 @@ export const getItemMetadata = (item, parent) => {
     iconColor,
     iconSize,
     iconStyle,
+    method,
     path: parentPath,
     target: ''
   }

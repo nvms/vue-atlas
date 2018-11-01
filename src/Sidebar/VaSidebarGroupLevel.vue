@@ -2,12 +2,12 @@
   <div :class="classObj">
     <div :class="`${prefixCls}-sidebar-navigationlevel-parent`">
       <div :class="`${prefixCls}-sidebar-group-item`">
-        <va-sidebar-group-toggle :open="isOpen" @click.native="onToggleClick" v-if="showToggle"/>
+        <va-sidebar-group-toggle :open="isOpen" @click.native="onToggleClick" v-if="st"/>
         <va-sidebar-group-item
           :item="parentItem"
           @click.native="onItemClick"
           :is-open="isOpen"
-          :show-toggle="showToggle" />
+          :show-toggle="st" />
       </div>
     </div>
     <ul :class="`${prefixCls}-sidebar-navigationlevel-children`">
@@ -53,9 +53,16 @@ export default {
     }
   },
   data () {
+    let s = this.showToggle
     return {
+      st: s,
       isOpen: this.open
     }
+  },
+  created () {
+    this.$on('Va@showToggleChange', (val) => {
+      this.st = val
+    })
   },
   computed: {
     classObj () {

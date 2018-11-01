@@ -109,6 +109,21 @@
 .#{$prefix-cls}-checkbox-disabled .#{$prefix-cls}-checkbox-inner {
   border-color: $N500;
   background-color: $N500;
+  i.#{$prefix-cls}-checkbox-inner-check {
+    color:$N500;
+  }
+}
+
+.#{$prefix-cls}-checkbox-disabled.#{$prefix-cls}-checkbox-label:hover {
+  &:hover {
+    .#{$prefix-cls}-checkbox-inner {
+      background-color:$N500;
+      border-color: $N500;
+    }
+    i.#{$prefix-cls}-checkbox-inner-check {
+      color: $N500;
+    }
+  }
 }
 
 .#{$prefix-cls}-checkbox-disabled .#{$prefix-cls}-checkbox-inner:after {

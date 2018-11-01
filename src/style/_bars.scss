@@ -1,31 +1,6 @@
-.#{$prefix-cls}-bars {
-  display: flex;
-  flex-direction: row;
-  flex-basis: auto;
-  flex-grow: 1;
-  flex-shrink: 1;
-  min-height: 100%;
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  position: fixed;
-  z-index: 5;
-}
-
-// .#{$prefix-cls}-bars-rtl {
-//   .#{$prefix-cls}-sidebar-group-title {
-//     margin-right: 20px;
-//     text-align: right;
-//   }
-
-//   .#{$prefix-cls}-sidebar-group-item-text {
-//     text-align: right;
-//   }
-// }
-
-.#{$prefix-cls}-bars-reverse {}
-
 .#{$prefix-cls}-minibar {
+  position: fixed;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,6 +205,8 @@
 }
 
 .#{$prefix-cls}-sidebar {
+  position: fixed;
+  z-index: 2;
   overflow-y: none;
   display: flex;
   flex-direction: column;
@@ -271,6 +248,7 @@
       font-size: 14px;
       font-weight: 500;
       transition: none;
+      border-radius: 7px;
 
       &-text-fade {
         justify-content: flex-start;
@@ -395,6 +373,8 @@ sidebar item defaults
     align-items: center;
     min-height: 36px;
 
+    max-width: 100%;
+
     a {
       flex: 1;
       position: relative;
@@ -436,6 +416,7 @@ sidebar item defaults
   display: flex;
   flex-direction: column;
   line-height: 2em;
+  max-width: 100%;
 
   &:active {}
 
@@ -452,6 +433,7 @@ sidebar item defaults
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 5px;
 }
 
 .#{$prefix-cls}-sidebar-scrollarea {
@@ -692,7 +674,7 @@ default
     $itemColor: $N400 !important,
     $itemSubstringColor: $N80,
     $itemIconColor: $N400,
-    $itemToggleIconColor: $N500 !important,
+    $itemToggleIconColor: $N80 !important,
     $itemTextIconColor: $N300,
     $itemActiveStateColor: $B400 !important,
     $itemActiveStateBG: $N30,
@@ -836,7 +818,7 @@ blue
     $headerColor: $N30,
     $headerBG: transparent,
     $headerHoverBG: #113679,
-    $headerActiveColor: inherit,
+    $headerActiveColor: $N0,
     $headerActiveBG: $B400,
     $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
     $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
@@ -845,13 +827,13 @@ blue
     $itemColor: $N0 !important,
     $itemSubstringColor: $N50,
     $itemIconColor: $N0,
-    $itemToggleIconColor: $N500 !important,
+    $itemToggleIconColor: $N100 !important,
     $itemTextIconColor: $N0,
     $itemActiveStateColor: inherit,
     $itemActiveStateBG: #123C89,
     $itemHoverBG: #113679,
     $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $R200 !important,
+    $itemActiveFocusBG: $B200 !important,
     $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
     $itemFocusOutline: transparent
   );

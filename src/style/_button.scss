@@ -39,7 +39,7 @@
   border-radius: $borderRadius;
 }
 
-$borderRadius: 3px;
+$borderRadius: 4px;
 
 $xsBorderRadius: $borderRadius;
 $smBorderRadius: $borderRadius;
@@ -344,9 +344,9 @@ $lgBorderRadius: $borderRadius;
 
   &-dark {
     @include btn-type($bgCol: $N700,
-      $fontCol: $N100,
+      $fontCol: $N50,
       $bgColHover: $N500,
-      $fontColHover: $N80,
+      $fontColHover: $N40,
       $bgColActive: $N800,
       $fontColActive: $N200,
       $badgeBgCol: $N500,
@@ -356,9 +356,9 @@ $lgBorderRadius: $borderRadius;
 
   &-darker {
     @include btn-type($bgCol: $N800,
-      $fontCol: $N100,
+      $fontCol: $N50,
       $bgColHover: $N500,
-      $fontColHover: $N80,
+      $fontColHover: $N40,
       $bgColActive: $N700,
       $fontColActive: $N200,
       $badgeBgCol: $N500,

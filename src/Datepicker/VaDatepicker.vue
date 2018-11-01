@@ -458,12 +458,6 @@ export default {
             const valueDate = this.parse(this.currentValue)
 
             if (valueDate) {
-              console.log('getFullYear:', valueDate.getFullYear())
-              console.log('getMonth:', valueDate.getMonth())
-              console.log('currentValue:', this.currentValue)
-              console.log('valueDate:', valueDate)
-              console.log('time.day:', time.day)
-              console.log('--------------------')
               if (valueDate.getFullYear() === time.year && valueDate.getMonth() === time.month) {
                 sclass = this.prefixCls + '-datepicker-dateRange-item-active'
               }

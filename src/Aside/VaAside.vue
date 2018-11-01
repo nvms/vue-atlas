@@ -1,6 +1,7 @@
 <template>
   <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
     <div
+      ref="aside"
       :style="{width:width + 'px'}"
       :class="classObj"
       v-show="show">
@@ -62,6 +63,15 @@ export default {
       show: false
     }
   },
+  mounted () {
+    const $body = document.querySelector('body')
+    $body.appendChild(this.$refs.aside)
+  },
+  beforeDestroy () {
+    const $body = document.querySelector('body')
+    $body.removeChild(this.$refs.aside)
+    this.performClose()
+  },
   computed: {
     classObj () {
       let {prefixCls, placement} = this
@@ -118,9 +128,6 @@ export default {
         this.$emit('hide')
       }
     }
-  },
-  beforeDestroy () {
-    this.performClose()
   }
 }
 </script>
