@@ -242,13 +242,13 @@
   &lt;/va-topbar&gt;
 
   &lt;!-- https://vue-atlas.com/documentation/minibar --&gt;
-  &lt;va-minibar top-items="" bottom-items="" theme="{{minibarTheme}}" /&gt;
+  &lt;va-minibar top-items="[{icon:'user'}]" bottom-items="[{icon:'question'}]" theme="{{minibarTheme}}" /&gt;
 
   &lt;!-- https://vue-atlas.com/documentation/sidebar --&gt;
   &lt;va-sidebar theme="{{sidebarTheme}}"&gt;
     &lt;va-sidebar-scrollarea&gt;
-      &lt;va-sidebar-group items="" title="" show-toggle="{{showToggle}}" /&gt;
-      &lt;va-sidebar-group items="" title="" show-toggle="{{showToggle}}" /&gt;
+      &lt;va-sidebar-group items="[{name:'Item1'}]" title="Category 1" show-toggle="{{showToggle}}" /&gt;
+      &lt;va-sidebar-group items="[{name:'Item1'}]" title="Category 2" show-toggle="{{showToggle}}" /&gt;
     &lt;/va-sidebar-scrollarea&gt;
   &lt;/va-sidebar&gt;
 

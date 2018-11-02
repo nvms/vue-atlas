@@ -2,7 +2,7 @@
   <div :class="classObj">
     <va-button
       :type="type"
-      :style="{width:width}"
+      :style="{width:width + 'px'}"
       :disabled="disabled"
       :size="size"
       :class="[`${prefixCls}-dropdown-toggle`,
@@ -175,7 +175,7 @@ export default {
       note: 'Allows you to set a maximum number of selected items.'
     },
     width: {
-      type: String
+      type: Number
     },
     menuMaxHeight: {
       type: Number,

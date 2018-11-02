@@ -8521,7 +8521,7 @@ if (false) {(function () {
       note: 'Allows you to set a maximum number of selected items.'
     },
     width: {
-      type: String
+      type: Number
     },
     menuMaxHeight: {
       type: Number,
@@ -35049,7 +35049,7 @@ var render = function() {
               : "",
             _vm.show ? _vm.prefixCls + "-select-btn-open" : ""
           ],
-          style: { width: _vm.width },
+          style: { width: _vm.width + "px" },
           attrs: { type: _vm.type, disabled: _vm.disabled, size: _vm.size },
           nativeOn: {
             click: function($event) {
@@ -42659,13 +42659,13 @@ var render = function() {
                               _vm._s(_vm.topbarPadded) +
                               '">\n\n  <!-- https://vue-atlas.com/documentation/topbar -->\n  <va-topbar theme="' +
                               _vm._s(_vm.topbarTheme) +
-                              '">\n    <div slot="left">...</div>\n    <div slot="center">...</div>\n    <div slot="right">...</div>\n  </va-topbar>\n\n  <!-- https://vue-atlas.com/documentation/minibar -->\n  <va-minibar top-items="" bottom-items="" theme="' +
+                              '">\n    <div slot="left">...</div>\n    <div slot="center">...</div>\n    <div slot="right">...</div>\n  </va-topbar>\n\n  <!-- https://vue-atlas.com/documentation/minibar -->\n  <va-minibar top-items="[{icon:\'user\'}]" bottom-items="[{icon:\'question\'}]" theme="' +
                               _vm._s(_vm.minibarTheme) +
                               '" />\n\n  <!-- https://vue-atlas.com/documentation/sidebar -->\n  <va-sidebar theme="' +
                               _vm._s(_vm.sidebarTheme) +
-                              '">\n    <va-sidebar-scrollarea>\n      <va-sidebar-group items="" title="" show-toggle="' +
+                              '">\n    <va-sidebar-scrollarea>\n      <va-sidebar-group items="[{name:\'Item1\'}]" title="Category 1" show-toggle="' +
                               _vm._s(_vm.showToggle) +
-                              '" />\n      <va-sidebar-group items="" title="" show-toggle="' +
+                              '" />\n      <va-sidebar-group items="[{name:\'Item1\'}]" title="Category 2" show-toggle="' +
                               _vm._s(_vm.showToggle) +
                               '" />\n    </va-sidebar-scrollarea>\n  </va-sidebar>\n\n  <!-- https://vue-atlas.com/documentation/page -->\n  <va-page size="' +
                               _vm._s(_vm.pageSize) +
