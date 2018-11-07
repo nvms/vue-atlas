@@ -7,6 +7,7 @@
       <input
         tabindex="-1"
         type="checkbox"
+        :name="name"
         :class="`${prefixCls}-checkbox-input`"
         :disabled="disabled"
         :checked="currentChecked"
@@ -33,6 +34,9 @@ export default {
   name: 'VaCheckbox',
   mixins: [validationMixin, events],
   props: {
+    name: {
+      type: String
+    },
     value: {
       type: [String, Boolean]
     },

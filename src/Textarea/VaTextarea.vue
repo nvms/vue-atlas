@@ -31,6 +31,9 @@ export default {
   name: 'VaTextarea',
   mixins: [validationMixin],
   props: {
+    name: {
+      type: String
+    },
     placeholder: {
       type: String,
       default: '',

@@ -19,6 +19,7 @@
     <input
       ref="input"
       auto-complete="off"
+      :name="name"
       :class="inputClassObj"
       :style="{'width': width}"
       :readonly="readonly"
@@ -64,11 +65,11 @@ export default {
   name: 'VaInput',
   mixins: [inputMixin],
   props: {
-    size: {
-      type: String
-    },
     value: {
       type: [String, Number]
+    },
+    size: {
+      type: String
     },
     onChange: {
       type: Function

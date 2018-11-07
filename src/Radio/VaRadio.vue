@@ -5,6 +5,7 @@
       <input
         type="radio"
         tabindex="-1"
+        :name="name"
         :disabled="disabled"
         :checked="currentChecked"
         :class="`${prefixCls}-radio-input`"
@@ -31,6 +32,9 @@ export default {
   name: 'VaRadio',
   mixins: [validationMixin, events],
   props: {
+    name: {
+      type: String
+    },
     value: {
       type: String
     },

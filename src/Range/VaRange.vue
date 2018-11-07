@@ -1,6 +1,6 @@
 <template>
   <div class="wrap" :style="{width: width + 'px' || '100%'}">
-    <input ref="range" :class="`${prefixCls}-range`" :value="currentValue" type="range" :min="min" :max="max" :step="step" @input="onInput" />
+    <input ref="range" :class="`${prefixCls}-range`" :value="currentValue" type="range" :name="name" :min="min" :max="max" :step="step" @input="onInput" />
     <transition name="fade">
       <div v-if="showoutput" class="output_position">
         <output for="r" ></output>
@@ -17,6 +17,9 @@ export default {
   name: 'VaRange',
   mixins: [events],
   props: {
+    name: {
+      type: String,
+    },
     min: {
       type: [String, Number],
       default: '0',
