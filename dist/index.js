@@ -5480,6 +5480,12 @@ module.exports = { "default": __webpack_require__(326), __esModule: true };
   name: 'VaForm',
   mixins: [__WEBPACK_IMPORTED_MODULE_2__utils_events__["a" /* default */]],
   props: {
+    id: {
+      type: String
+    },
+    name: {
+      type: String
+    },
     type: {
       type: String,
       default: 'horizontal',
@@ -6164,7 +6170,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       stl['position'] = 'fixed';
       stl['top'] = th + 'px';
       stl['height'] = 'calc(100% - ' + th + 'px)';
-      stl['overflow'] = 'scroll';
+      // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
 
       /**
@@ -6542,6 +6548,9 @@ module.exports = { "default": __webpack_require__(299), __esModule: true };
   name: 'VaRange',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
+    name: {
+      type: String
+    },
     min: {
       type: [String, Number],
       default: '0',
@@ -7727,6 +7736,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -7736,6 +7746,9 @@ if (false) {(function () {
   name: 'VaRadio',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__Mixin_validationMixin__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1__utils_events__["a" /* default */]],
   props: {
+    name: {
+      type: String
+    },
     value: {
       type: String
     },
@@ -8212,6 +8225,8 @@ if (false) {(function () {
 //
 //
 //
+//
+//
 
 
 
@@ -8221,11 +8236,11 @@ if (false) {(function () {
   name: 'VaInput',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__Mixin_inputMixin__["a" /* default */]],
   props: {
-    size: {
-      type: String
-    },
     value: {
       type: [String, Number]
+    },
+    size: {
+      type: String
     },
     onChange: {
       type: Function
@@ -8346,6 +8361,7 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validate_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_type__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Mixin_localeMixin_js__ = __webpack_require__(16);
+//
 //
 //
 //
@@ -10334,6 +10350,7 @@ if (false) {(function () {
 //
 //
 //
+//
 
 
 
@@ -10343,6 +10360,9 @@ if (false) {(function () {
   name: 'VaCheckbox',
   mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_validationMixin__["a" /* default */], __WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
+    name: {
+      type: String
+    },
     value: {
       type: [String, Boolean]
     },
@@ -15781,6 +15801,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! VelocityJS
   name: 'VaTextarea',
   mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_validationMixin_js__["a" /* default */]],
   props: {
+    name: {
+      type: String
+    },
     placeholder: {
       type: String,
       default: '',
@@ -30968,7 +30991,7 @@ function transformArguments(arg) {
       style['right'] = '0px';
       style['bottom'] = '0px';
       style['left'] = '0px';
-      style['overflow'] = 'scroll';
+      style['overflow'] = 'auto';
 
       return style;
     }
@@ -31003,7 +31026,7 @@ function transformArguments(arg) {
 
   methods: {
     onScroll: function onScroll() {
-      var el = document.getElementById('akSidebarScrollArea');
+      var el = document.getElementById('vaSidebarScrollArea');
       var y = el.scrollTop;
       if (y > 1) {
         this.scrolled = true;
@@ -33075,6 +33098,7 @@ var render = function() {
     "form",
     {
       class: _vm.classObj,
+      attrs: { id: _vm.id, name: _vm.name },
       on: {
         submit: function($event) {
           $event.preventDefault()
@@ -33807,7 +33831,13 @@ var render = function() {
       _c("input", {
         ref: "range",
         class: _vm.prefixCls + "-range",
-        attrs: { type: "range", min: _vm.min, max: _vm.max, step: _vm.step },
+        attrs: {
+          type: "range",
+          name: _vm.name,
+          min: _vm.min,
+          max: _vm.max,
+          step: _vm.step
+        },
         domProps: { value: _vm.currentValue },
         on: { input: _vm.onInput }
       }),
@@ -34786,7 +34816,12 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           class: _vm.prefixCls + "-radio-input",
-          attrs: { type: "radio", tabindex: "-1", disabled: _vm.disabled },
+          attrs: {
+            type: "radio",
+            tabindex: "-1",
+            name: _vm.name,
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm.currentChecked },
           on: {
             click: function($event) {
@@ -34898,6 +34933,7 @@ var render = function() {
         style: { width: _vm.width },
         attrs: {
           "auto-complete": "off",
+          name: _vm.name,
           readonly: _vm.readonly,
           disabled: _vm.disabled,
           placeholder: _vm.placeholder,
@@ -35038,6 +35074,35 @@ var render = function() {
     "div",
     { class: _vm.classObj },
     [
+      _c("select", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.valueArray,
+            expression: "valueArray"
+          }
+        ],
+        staticStyle: { visibility: "hidden" },
+        attrs: { name: _vm.name },
+        domProps: { value: _vm.valueArray },
+        on: {
+          change: function($event) {
+            var $$selectedVal = Array.prototype.filter
+              .call($event.target.options, function(o) {
+                return o.selected
+              })
+              .map(function(o) {
+                var val = "_value" in o ? o._value : o.value
+                return val
+              })
+            _vm.valueArray = $event.target.multiple
+              ? $$selectedVal
+              : $$selectedVal[0]
+          }
+        }
+      }),
+      _vm._v(" "),
       _c(
         "va-button",
         {
@@ -36781,7 +36846,12 @@ var render = function() {
         _vm._v(" "),
         _c("input", {
           class: _vm.prefixCls + "-checkbox-input",
-          attrs: { tabindex: "-1", type: "checkbox", disabled: _vm.disabled },
+          attrs: {
+            tabindex: "-1",
+            type: "checkbox",
+            name: _vm.name,
+            disabled: _vm.disabled
+          },
           domProps: { checked: _vm.currentChecked },
           on: { click: _vm.handleClick }
         })
@@ -40997,7 +41067,7 @@ var render = function() {
     {
       ref: "scrollArea",
       class: _vm.classObj,
-      attrs: { id: "akSidebarScrollArea" },
+      attrs: { id: "vaSidebarScrollArea" },
       on: { scroll: _vm.onScroll }
     },
     [_vm._t("default")],
