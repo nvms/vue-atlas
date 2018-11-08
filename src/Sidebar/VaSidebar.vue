@@ -98,6 +98,8 @@ export default {
      */
     setTimeout(() => {
       this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th)
+      this.dispatch('VaLayoutManager', 'Va@configCompactChange', this.comp)
+      this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', this.tl)
     }, 10)
   },
   beforeDestroy () {

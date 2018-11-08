@@ -9969,6 +9969,8 @@ if (false) {(function () {
      */
     setTimeout(function () {
       _this2.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', _this2.th);
+      _this2.dispatch('VaLayoutManager', 'Va@configCompactChange', _this2.comp);
+      _this2.dispatch('VaLayoutManager', 'Va@configTextLinksChange', _this2.tl);
     }, 10);
   },
   beforeDestroy: function beforeDestroy() {
