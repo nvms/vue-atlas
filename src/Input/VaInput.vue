@@ -34,14 +34,15 @@
       :value="value" />
 
     <va-icon
+      v-if="showClean"
       type="times"
       icon-style="solid"
-      v-if="showClean"
       :class="`${prefixCls}-input-show-clean`"
       @click.native.stop="clean">
     </va-icon>
 
-    <va-icon v-if="icon !== undefined"
+    <va-icon
+      v-if="icon !== undefined"
       :class="`${prefixCls}-input-show-icon`"
       :type="icon"
       :icon-style="iconStyle">

@@ -18,7 +18,7 @@ export default {
   mixins: [events],
   props: {
     name: {
-      type: String,
+      type: String
     },
     min: {
       type: [String, Number],
