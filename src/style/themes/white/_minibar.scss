@@ -1,0 +1,11 @@
+.#{$prefix-cls}-minibar--theme-white {
+  @include minibar-theme-mixin($mainBG: $N0,
+    $itemBG: transparent,
+    $iconColor: $N300,
+    $itemHoverBG: $N20,
+    $itemActiveBG: $B50,
+    $itemFocusBorder: 2px solid transparent,
+    $itemBrandHoverBG: transparent !important,
+    $itemBrandActiveBorder: 2px solid transparent,
+    $itemBrandActiveIconColor: $B100);
+}

@@ -1,0 +1,87 @@
+@mixin sidebar-theme-mixin(
+  $mainBG,
+  $groupTitleColor,
+  $headerColor,
+  $headerBG,
+  $headerHoverBG,
+  $headerActiveColor,
+  $headerActiveBG,
+  $headerActiveBoxShadow,
+  $scrollareaThumbBG,
+  $scrollareaThumbHoverBG,
+  $itemBG,
+  $itemColor,
+  $itemSubstringColor,
+  $itemIconColor,
+  $itemToggleIconColor,
+  $itemTextIconColor,
+  $itemActiveStateColor,
+  $itemActiveStateBG,
+  $itemHoverBG,
+  $itemActiveFocusColor,
+  $itemActiveFocusBG,
+  $itemActiveFocusBoxShadow,
+  $itemFocusOutline
+) {
+  background: $mainBG;
+  .#{$prefix-cls}-sidebar-group-title {
+    color: $groupTitleColor;
+  }
+  .#{$prefix-cls}-sidebar-header {
+    .#{$prefix-cls}-btn {
+      color: $headerColor;
+      background: $headerBG;
+      &:hover {
+        background: $headerHoverBG;
+      }
+      &:active {
+        color: $headerActiveColor;
+        background: $headerActiveBG;
+        -webkit-box-shadow: $headerActiveBoxShadow;
+        -moz-box-shadow: $headerActiveBoxShadow;
+        box-shadow: $headerActiveBoxShadow;
+      }
+    }
+  }
+  .#{$prefix-cls}-sidebar-scrollarea {
+    &::-webkit-scrollbar-thumb {
+      background: $scrollareaThumbBG;
+      &:hover {
+        background: $scrollareaThumbHoverBG;
+      }
+    }
+  }
+  .#{$prefix-cls}-sidebar-group-item {
+    background: $itemBG;
+    color: $itemColor;
+    &-substring {
+      color: $itemSubstringColor;
+    }
+    &-icon {
+      color: $itemIconColor;
+    }
+    &-text-icon, &-toggle-icon {
+      color: $itemToggleIconColor;
+    }
+    &-text {
+      &-icon {
+        color: $itemTextIconColor;
+      }
+    }
+    &.active {
+      color: $itemActiveStateColor;
+      background: $itemActiveStateBG;
+    }
+    &:hover {
+      background: $itemHoverBG;
+    }
+    &:active, &:focus {
+      color: $itemActiveFocusColor;
+      background: $itemActiveFocusBG;
+      box-shadow: $itemActiveFocusBoxShadow;
+    }
+    &:focus {
+      outline: $itemFocusOutline !important;
+    }
+  }
+}

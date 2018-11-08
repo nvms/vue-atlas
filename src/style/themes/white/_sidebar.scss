@@ -1,0 +1,34 @@
+.#{$prefix-cls}-sidebar--theme-white {
+  @include sidebar-theme-mixin(
+    $mainBG: $N0,
+    $groupTitleColor: $N300,
+    $headerColor: $N700,
+    $headerBG: white,
+    $headerHoverBG: $N20,
+    $headerActiveColor: inherit,
+    $headerActiveBG: inherit,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: $N0,
+    $itemColor: $N400 !important,
+    $itemSubstringColor: $N80,
+    $itemIconColor: $N400,
+    $itemToggleIconColor: $N100 !important,
+    $itemTextIconColor: $N300,
+    $itemActiveStateColor: $N400 !important,
+    $itemActiveStateBG: $N20,
+    $itemHoverBG: $N20,
+    $itemActiveFocusColor: $N400,
+    $itemActiveFocusBG: $B50,
+    $itemActiveFocusBoxShadow: none,
+    $itemFocusOutline: transparent
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: $N30,
+    $textLineBeforeBorder: 7px solid $N30,
+    $headingImageBG: $N30,
+    $headingContentTitleBG: $N30,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N0 15%, transparent 30%)
+  );
+}

@@ -89,120 +89,6 @@
   flex-direction: row;
 }
 
-@mixin topbar-theme-mixin(
-  $mainBG,
-  $mainColor,
-  $inputPlaceholderColor,
-  $formControlBG,
-  $formControlBorder,
-  $formControlColor,
-  $formControlFocusBorder,
-  $formControlFocusBG
-) {
-  background: $mainBG;
-  .#{$prefix-cls}-topbar-inner {
-    color: $mainColor;
-  }
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
-      color: $inputPlaceholderColor;
-    }
-    .#{$prefix-cls}-form-control {
-      background: $formControlBG;
-      border: $formControlBorder;
-      color: $formControlColor;
-      &:focus {
-        border: $formControlFocusBorder;
-        background: $formControlFocusBG;
-      }
-    }
-  }
-}
-
-.#{$prefix-cls}-topbar--theme-purple {
-  @include topbar-theme-mixin(
-    $mainBG: $P500,
-    $mainColor: $N0,
-    $inputPlaceholderColor: $N50,
-    $formControlBG: darken($P500, 10%),
-    $formControlBorder: 2px solid darken($P500, 10%),
-    $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid $P200,
-    $formControlFocusBG: darken($P500, 10%) !important
-  );
-}
-.#{$prefix-cls}-topbar--theme-blue {
-  @include topbar-theme-mixin(
-    $mainBG: $B500,
-    $mainColor: $N0,
-    $inputPlaceholderColor: $N50,
-    $formControlBG: darken($B500, 10%),
-    $formControlBorder: 2px solid darken($B500, 10%),
-    $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid $B300,
-    $formControlFocusBG: darken($B500, 10%) !important
-  );
-}
-.#{$prefix-cls}-topbar--theme-white {
-  @include topbar-theme-mixin(
-    $mainBG: $N0,
-    $mainColor: $N500,
-    $inputPlaceholderColor: $N70,
-    $formControlBG: revert,
-    $formControlBorder: revert,
-    $formControlColor: revert,
-    $formControlFocusBorder: revert,
-    $formControlFocusBG: revert
-  );
-}
-.#{$prefix-cls}-topbar--theme-default {
-  @include topbar-theme-mixin(
-    $mainBG: $N20,
-    $mainColor: $N500,
-    $inputPlaceholderColor: $N90,
-    $formControlBG: revert,
-    $formControlBorder: revert,
-    $formControlColor: revert,
-    $formControlFocusBorder: revert,
-    $formControlFocusBG: revert
-  );
-}
-.#{$prefix-cls}-topbar--theme-dark {
-  @include topbar-theme-mixin(
-    $mainBG: $N700,
-    $mainColor: $N60,
-    $inputPlaceholderColor: $N70,
-    $formControlBG: $N400,
-    $formControlBorder: 2px solid $N400,
-    $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid $N200,
-    $formControlFocusBG: $N500 !important
-  );
-}
-.#{$prefix-cls}-topbar--theme-darker {
-  @include topbar-theme-mixin(
-    $mainBG: $N800,
-    $mainColor: $N80,
-    $inputPlaceholderColor: $N80,
-    $formControlBG: $N500,
-    $formControlBorder: 2px solid $N500,
-    $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid $N300,
-    $formControlFocusBG: $N600 !important
-  );
-}
-.#{$prefix-cls}-topbar--theme-grayscale {
-  @include topbar-theme-mixin(
-    $mainBG: #252525,
-    $mainColor: #999,
-    $inputPlaceholderColor: #666,
-    $formControlBG: #383838,
-    $formControlBorder: 2px solid #383838,
-    $formControlColor: $N0,
-    $formControlFocusBorder: 2px solid #525252,
-    $formControlFocusBG: #383838 !important
-  );
-}
 
 .#{$prefix-cls}-sidebar {
   position: fixed;
@@ -320,18 +206,6 @@
     }
   }
 }
-
-// .#{$prefix-cls}-bars-rtl {
-//   .#{$prefix-cls}-sidebar-navigationlevel {
-//     &-children {
-//       li {
-//         margin-right: 0;
-//         padding-right: 34px;
-//       }
-//     }
-//   }
-// }
-
 /*
 sidebar item defaults
 */
@@ -436,20 +310,6 @@ sidebar item defaults
   margin-bottom: 5px;
 }
 
-.#{$prefix-cls}-sidebar-scrollarea {
-  overflow-y: hidden;
-
-  &:hover {
-    overflow-y: auto;
-  }
-}
-
-.#{$prefix-cls}-sidebar-mobile {
-  .#{$prefix-cls}-sidebar-scrollarea {
-    overflow-y: auto;
-  }
-}
-
 /*
         _                _           _     _           
   _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
@@ -549,102 +409,6 @@ placeholder theme mixin
 }
 
 /**
-  __,                     
- (    o    /    /         
-  `. ,  __/ _  /  __,  _  
-(___)(_(_/_(/_/_)(_/(_/ (_
-theme mixin
-*/
-
-@mixin sidebar-theme-mixin(
-  $mainBG,
-  $groupTitleColor,
-  $headerColor,
-  $headerBG,
-  $headerHoverBG,
-  $headerActiveColor,
-  $headerActiveBG,
-  $headerActiveBoxShadow,
-  $scrollareaThumbBG,
-  $scrollareaThumbHoverBG,
-  $itemBG,
-  $itemColor,
-  $itemSubstringColor,
-  $itemIconColor,
-  $itemToggleIconColor,
-  $itemTextIconColor,
-  $itemActiveStateColor,
-  $itemActiveStateBG,
-  $itemHoverBG,
-  $itemActiveFocusColor,
-  $itemActiveFocusBG,
-  $itemActiveFocusBoxShadow,
-  $itemFocusOutline
-) {
-  background: $mainBG;
-  .#{$prefix-cls}-sidebar-group-title {
-    color: $groupTitleColor;
-  }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
-      color: $headerColor;
-      background: $headerBG;
-      &:hover {
-        background: $headerHoverBG;
-      }
-      &:active {
-        color: $headerActiveColor;
-        background: $headerActiveBG;
-        -webkit-box-shadow: $headerActiveBoxShadow;
-        -moz-box-shadow: $headerActiveBoxShadow;
-        box-shadow: $headerActiveBoxShadow;
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-scrollarea {
-    &::-webkit-scrollbar-thumb {
-      background: $scrollareaThumbBG;
-      &:hover {
-        background: $scrollareaThumbHoverBG;
-      }
-    }
-  }
-  .#{$prefix-cls}-sidebar-group-item {
-    background: $itemBG;
-    color: $itemColor;
-    &-substring {
-      color: $itemSubstringColor;
-    }
-    &-icon {
-      color: $itemIconColor;
-    }
-    &-text-icon, &-toggle-icon {
-      color: $itemToggleIconColor;
-    }
-    &-text {
-      &-icon {
-        color: $itemTextIconColor;
-      }
-    }
-    &.active {
-      color: $itemActiveStateColor;
-      background: $itemActiveStateBG;
-    }
-    &:hover {
-      background: $itemHoverBG;
-    }
-    &:active, &:focus {
-      color: $itemActiveFocusColor;
-      background: $itemActiveFocusBG;
-      box-shadow: $itemActiveFocusBoxShadow;
-    }
-    &:focus {
-      outline: $itemFocusOutline !important;
-    }
-  }
-}
-
-/**
 Disable box shadow on active/focus textLinks
 */
 .#{$prefix-cls}-sidebar.#{$prefix-cls}-sidebar-text-links {
@@ -653,438 +417,6 @@ Disable box shadow on active/focus textLinks
       box-shadow: none;
     }
   }
-}
-
-/*
-default
-*/
-.#{$prefix-cls}-sidebar--theme-default {
-  @include sidebar-theme-mixin(
-    $mainBG: $N20,
-    $groupTitleColor: $N600,
-    $headerColor: $N400,
-    $headerBG: transparent,
-    $headerHoverBG: $N30,
-    $headerActiveColor: inherit,
-    $headerActiveBG: $B50,
-    $headerActiveBoxShadow: rgba($B200, 0.6) 0px 0px 0px 2px,
-    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
-    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
-    $itemBG: $N20,
-    $itemColor: $N400 !important,
-    $itemSubstringColor: $N80,
-    $itemIconColor: $N400,
-    $itemToggleIconColor: $N80 !important,
-    $itemTextIconColor: $N300,
-    $itemActiveStateColor: $B400 !important,
-    $itemActiveStateBG: $N30,
-    $itemHoverBG: $N30,
-    $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $B50,
-    // $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
-    $itemActiveFocusBoxShadow: none,
-    $itemFocusOutline: none
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $N40,
-    $textLineBeforeBorder: 7px solid $N40,
-    $headingImageBG: $N40,
-    $headingContentTitleBG: $N40,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N20 15%, transparent 30%)
-  );
-}
-
-/*
-purple
-*/
-.#{$prefix-cls}-sidebar--theme-purple {
-  @include sidebar-theme-mixin(
-    $mainBG: $P500,
-    $groupTitleColor: $N30,
-    $headerColor: $N30,
-    $headerBG: transparent,
-    $headerHoverBG: #342882,
-    $headerActiveColor: $N0,
-    $headerActiveBG: $P400,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $P200,
-    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
-    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
-    $itemBG: transparent,
-    $itemColor: $N50 !important,
-    $itemSubstringColor: $N80,
-    $itemIconColor: $N40,
-    $itemToggleIconColor: $N100 !important,
-    $itemTextIconColor: $N300,
-    $itemActiveStateColor: $N0 !important,
-    $itemActiveStateBG: #342882,
-    $itemHoverBG: #342882,
-    $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $P400,
-    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $P300,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $P400,
-    $textLineBeforeBorder: 7px solid $P400,
-    $headingImageBG: $P400,
-    $headingContentTitleBG: $P400,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $P500 15%, transparent 30%)
-  );
-}
-
-/*
-white
-*/
-.#{$prefix-cls}-sidebar--theme-white {
-  @include sidebar-theme-mixin(
-    $mainBG: $N0,
-    $groupTitleColor: $N300,
-    $headerColor: $N700,
-    $headerBG: white,
-    $headerHoverBG: $N20,
-    $headerActiveColor: inherit,
-    $headerActiveBG: inherit,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
-    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
-    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
-    $itemBG: $N0,
-    $itemColor: $N400 !important,
-    $itemSubstringColor: $N80,
-    $itemIconColor: $N400,
-    $itemToggleIconColor: $N100 !important,
-    $itemTextIconColor: $N300,
-    $itemActiveStateColor: $N400 !important,
-    $itemActiveStateBG: $N20,
-    $itemHoverBG: $N20,
-    $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $B50,
-    $itemActiveFocusBoxShadow: none,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $N30,
-    $textLineBeforeBorder: 7px solid $N30,
-    $headingImageBG: $N30,
-    $headingContentTitleBG: $N30,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N0 15%, transparent 30%)
-  );
-}
-
-/*
-grayscale
-*/
-.#{$prefix-cls}-sidebar--theme-grayscale {
-  @include sidebar-theme-mixin(
-    $mainBG: #252525,
-    $groupTitleColor: #ccc,
-    $headerColor: $N30,
-    $headerBG: transparent,
-    $headerHoverBG: #113679,
-    $headerActiveColor: inherit,
-    $headerActiveBG: $N400,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $N200,
-    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
-    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
-    $itemBG: transparent,
-    $itemColor: #999 !important,
-    $itemSubstringColor: $N50,
-    $itemIconColor: $N0,
-    $itemToggleIconColor: $N500 !important,
-    $itemTextIconColor: $N0,
-    $itemActiveStateColor: #ddd !important,
-    $itemActiveStateBG: #313131,
-    $itemHoverBG: #313131,
-    $itemActiveFocusColor: #ddd,
-    $itemActiveFocusBG: #444,
-    $itemActiveFocusBoxShadow: none,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: #444,
-    $textLineBeforeBorder: 7px solid rgba(2, 9, 19, 0.5),
-    $headingImageBG: #444,
-    $headingContentTitleBG: #444,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $GS400 15%, transparent 30%)
-  );
-}
-
-/*
-blue
-*/
-.#{$prefix-cls}-sidebar--theme-blue {
-  @include sidebar-theme-mixin(
-    $mainBG: $B500,
-    $groupTitleColor: $N0,
-    $headerColor: $N30,
-    $headerBG: transparent,
-    $headerHoverBG: #113679,
-    $headerActiveColor: $N0,
-    $headerActiveBG: $B400,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
-    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
-    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
-    $itemBG: $B500,
-    $itemColor: $N0 !important,
-    $itemSubstringColor: $N50,
-    $itemIconColor: $N0,
-    $itemToggleIconColor: $N100 !important,
-    $itemTextIconColor: $N0,
-    $itemActiveStateColor: inherit,
-    $itemActiveStateBG: #123C89,
-    $itemHoverBG: #113679,
-    $itemActiveFocusColor: $N400,
-    $itemActiveFocusBG: $B200 !important,
-    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $B400,
-    $textLineBeforeBorder: 7px solid rgba(38, 132, 255, 0.5),
-    $headingImageBG: $B400,
-    $headingContentTitleBG: $B400,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $B500 15%, transparent 30%)
-  );
-}
-
-/*
-dark
-*/
-.#{$prefix-cls}-sidebar--theme-dark {
-  @include sidebar-theme-mixin(
-    $mainBG: $N700,
-    $groupTitleColor: $N70,
-    $headerColor: $N0,
-    $headerBG: $N700,
-    $headerHoverBG: $N900,
-    $headerActiveColor: $B100 !important,
-    $headerActiveBG: $N500,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
-    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
-    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
-    $itemBG: $N700,
-    $itemColor: $N0 !important,
-    $itemSubstringColor: $N70,
-    $itemIconColor: $N0,
-    $itemToggleIconColor: $N300 !important,
-    $itemTextIconColor: $N0,
-    $itemActiveStateColor: inherit,
-    $itemActiveStateBG: $N800,
-    $itemHoverBG: $N900,
-    $itemActiveFocusColor: $B100,
-    $itemActiveFocusBG: $N500,
-    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N500,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $N500,
-    $textLineBeforeBorder: 7px solid $N600,
-    $headingImageBG: $N500,
-    $headingContentTitleBG: $N500,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N700 15%, transparent 30%)
-  );
-}
-
-/*
-darker
-*/
-.#{$prefix-cls}-sidebar--theme-darker {
-  @include sidebar-theme-mixin(
-    $mainBG: $N800,
-    $groupTitleColor: $N70,
-    $headerColor: $N0,
-    $headerBG: $N800,
-    $headerHoverBG: $N900,
-    $headerActiveColor: $B100 !important,
-    $headerActiveBG: $N500,
-    $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
-    $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
-    $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
-    $itemBG: $N800,
-    $itemColor: $N0 !important,
-    $itemSubstringColor: $N70,
-    $itemIconColor: $N0,
-    $itemToggleIconColor: $N300 !important,
-    $itemTextIconColor: $N0,
-    $itemActiveStateColor: inherit,
-    $itemActiveStateBG: $N900,
-    $itemHoverBG: $N900,
-    $itemActiveFocusColor: $B100,
-    $itemActiveFocusBG: $N700,
-    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N700,
-    $itemFocusOutline: transparent
-  );
-  @include placeholder-theme-mixin(
-    $textLineBG: $N600,
-    $textLineBeforeBorder: 7px solid $N700,
-    $headingImageBG: $N600,
-    $headingContentTitleBG: $N600,
-    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $N800 15%, transparent 30%)
-  );
-}
-
-/**
- _ _ _                      
-( / ) )o       o  /         
- / / /,  _ _  ,  /  __,  _  
-/ / (_(_/ / /_(_/_)(_/(_/ (_
-theme mixin
-*/
-@mixin minibar-theme-mixin($mainBG, $itemBG, $iconColor, $itemHoverBG, $itemActiveBG, $itemFocusBorder, $itemBrandHoverBG, $itemBrandActiveBorder, $itemBrandActiveIconColor) {
-  background: $mainBG;
-
-  .#{$prefix-cls}-minibar-item {
-    background: $itemBG;
-
-    i {
-      color: $iconColor;
-    }
-
-    &:hover {
-      background: $itemHoverBG;
-    }
-
-    &:active {
-      background: $itemActiveBG;
-    }
-
-    &:focus {
-      border: $itemFocusBorder;
-    }
-
-    &-brand {
-      &:hover {
-        background: $itemBrandHoverBG;
-      }
-
-      &:active {
-        border: $itemBrandActiveBorder;
-
-        i {
-          color: $itemBrandActiveIconColor;
-        }
-      }
-    }
-  }
-}
-
-/*
-default
-*/
-.#{$prefix-cls}-minibar--theme-default {
-  @include minibar-theme-mixin($mainBG: $N20,
-    $itemBG: transparent,
-    $iconColor: $N300,
-    $itemHoverBG: $N30,
-    $itemActiveBG: $B50,
-    $itemFocusBorder: 2px solid $B50,
-    $itemBrandHoverBG: transparent,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $B100);
-}
-
-/*
-blue
-*/
-.#{$prefix-cls}-minibar--theme-blue {
-  @include minibar-theme-mixin($mainBG: $B500,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: rgba(9, 30, 66, 0.42),
-    $itemActiveBG: $B200,
-    $itemFocusBorder: 2px solid $B200,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $B100);
-}
-
-/*
-paleblue
-*/
-.#{$prefix-cls}-minibar--theme-paleblue {
-  @include minibar-theme-mixin($mainBG: #325594,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: rgba(17, 52, 111, 0.42),
-    $itemActiveBG: #397fd6,
-    $itemFocusBorder: 2px solid $B200,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $B100);
-}
-
-/*
-purple
-*/
-.#{$prefix-cls}-minibar--theme-purple {
-  @include minibar-theme-mixin($mainBG: $P500,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: rgba(9, 30, 66, 0.42),
-    $itemActiveBG: $P200,
-    $itemFocusBorder: 2px solid $P200,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $P100);
-}
-
-/*
-white
-*/
-.#{$prefix-cls}-minibar--theme-white {
-  @include minibar-theme-mixin($mainBG: $N0,
-    $itemBG: transparent,
-    $iconColor: $N300,
-    $itemHoverBG: $N20,
-    $itemActiveBG: $B50,
-    $itemFocusBorder: 2px solid transparent,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $B100);
-}
-
-/*
-dark
-*/
-.#{$prefix-cls}-minibar--theme-dark {
-  @include minibar-theme-mixin($mainBG: $N700,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: rgba(9, 30, 66, 0.42),
-    $itemActiveBG: $N500,
-    $itemFocusBorder: 2px solid $N500,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $N300);
-}
-
-/*
-darker
-*/
-.#{$prefix-cls}-minibar--theme-darker {
-  @include minibar-theme-mixin($mainBG: $N800,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: rgba(49, 70, 107, 0.6),
-    $itemActiveBG: $N600,
-    $itemFocusBorder: 2px solid $N600,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: $N400);
-}
-
-/*
-grayscale
-*/
-.#{$prefix-cls}-minibar--theme-grayscale {
-  @include minibar-theme-mixin($mainBG: #252525,
-    $itemBG: transparent,
-    $iconColor: $N0,
-    $itemHoverBG: #313131,
-    $itemActiveBG: #444,
-    $itemFocusBorder: 2px solid transparent,
-    $itemBrandHoverBG: transparent !important,
-    $itemBrandActiveBorder: 2px solid transparent,
-    $itemBrandActiveIconColor: #bbb);
 }
 
 /*
@@ -1103,6 +435,20 @@ is placed inside of an aside.
   `. ,  __/ _  /  __,  _     (   _, _   __ // // /  __,  _  
 (___)(_(_/_(/_/_)(_/(_/ (_  /_)_(__/ (_(_)(/_(/_/_)(_/(_/ (_
 */
+.#{$prefix-cls}-sidebar-scrollarea {
+  overflow-y: hidden;
+
+  &:hover {
+    overflow-y: auto;
+  }
+}
+
+.#{$prefix-cls}-sidebar-mobile {
+  .#{$prefix-cls}-sidebar-scrollarea {
+    overflow-y: auto;
+  }
+}
+
 .#{$prefix-cls}-sidebar-scrollarea {
   &::-webkit-scrollbar-track {
     border-radius: 10px;
@@ -1138,6 +484,33 @@ is placed inside of an aside.
     &:hover {
       background: none !important;
       text-decoration: underline;
+    }
+  }
+}
+
+.#{$prefix-cls}-page-wrapper {
+  overflow-y: hidden;
+  overflow-x: hidden;
+
+  &:hover {
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgba(9, 30, 66, 0.32);
+    &:hover {
+      background: rgba(9, 30, 66, 0.45);
     }
   }
 }

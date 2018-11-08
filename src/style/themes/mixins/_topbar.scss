@@ -1,0 +1,29 @@
+@mixin topbar-theme-mixin(
+  $mainBG,
+  $mainColor,
+  $inputPlaceholderColor,
+  $formControlBG,
+  $formControlBorder,
+  $formControlColor,
+  $formControlFocusBorder,
+  $formControlFocusBG
+) {
+  background: $mainBG;
+  .#{$prefix-cls}-topbar-inner {
+    color: $mainColor;
+  }
+  .#{$prefix-cls}-input-con {
+    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+      color: $inputPlaceholderColor;
+    }
+    .#{$prefix-cls}-form-control {
+      background: $formControlBG;
+      border: $formControlBorder;
+      color: $formControlColor;
+      &:focus {
+        border: $formControlFocusBorder;
+        background: $formControlFocusBG;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.#{$prefix-cls}-topbar--theme-white {
+  @include topbar-theme-mixin(
+    $mainBG: $N0,
+    $mainColor: $N500,
+    $inputPlaceholderColor: $N70,
+    $formControlBG: revert,
+    $formControlBorder: revert,
+    $formControlColor: revert,
+    $formControlFocusBorder: revert,
+    $formControlFocusBG: revert
+  );
+}

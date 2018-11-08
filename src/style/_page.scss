@@ -1,7 +1,11 @@
 .#{$prefix-cls}-page-wrapper {
   z-index: 1;
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
+
+  &:hover {
+    overflow-y:scroll;
+  }
 }
 
 .#{$prefix-cls}-page-container {

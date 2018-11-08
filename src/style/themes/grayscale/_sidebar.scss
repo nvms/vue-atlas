@@ -1,0 +1,34 @@
+.#{$prefix-cls}-sidebar--theme-grayscale {
+  @include sidebar-theme-mixin(
+    $mainBG: #252525,
+    $groupTitleColor: #ccc,
+    $headerColor: $N30,
+    $headerBG: transparent,
+    $headerHoverBG: #113679,
+    $headerActiveColor: inherit,
+    $headerActiveBG: $N400,
+    $headerActiveBoxShadow: inset 0px 0px 0px 2px $N200,
+    $scrollareaThumbBG: rgba(9, 30, 66, 0.32),
+    $scrollareaThumbHoverBG: rgba(9, 30, 66, 0.45),
+    $itemBG: transparent,
+    $itemColor: #999 !important,
+    $itemSubstringColor: $N50,
+    $itemIconColor: $N0,
+    $itemToggleIconColor: $N500 !important,
+    $itemTextIconColor: $N0,
+    $itemActiveStateColor: #ddd !important,
+    $itemActiveStateBG: #313131,
+    $itemHoverBG: #313131,
+    $itemActiveFocusColor: #ddd,
+    $itemActiveFocusBG: #444,
+    $itemActiveFocusBoxShadow: none,
+    $itemFocusOutline: transparent
+  );
+  @include placeholder-theme-mixin(
+    $textLineBG: #444,
+    $textLineBeforeBorder: 7px solid rgba(2, 9, 19, 0.5),
+    $headingImageBG: #444,
+    $headingContentTitleBG: #444,
+    $animatedBeforeBG: linear-gradient(to right, transparent 0%, $GS400 15%, transparent 30%)
+  );
+}
