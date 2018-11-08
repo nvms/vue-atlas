@@ -1,5 +1,5 @@
 <template>
-  <form :class="classObj" @submit.prevent="noop">
+  <form :class="classObj" @submit.prevent="noop" :id="id" :name="name">
     <slot />
   </form>
 </template>
@@ -12,6 +12,12 @@ export default {
   name: 'VaForm',
   mixins: [events],
   props: {
+    id: {
+      type: String
+    },
+    name: {
+      type: String
+    },
     type: {
       type: String,
       default: 'horizontal',
