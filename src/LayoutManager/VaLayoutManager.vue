@@ -575,7 +575,7 @@ export default {
       style['right'] = '0px'
       style['bottom'] = '0px'
       style['left'] = '0px'
-      style['overflow'] = 'scroll'
+      style['overflow'] = 'auto'
 
       return style
     }

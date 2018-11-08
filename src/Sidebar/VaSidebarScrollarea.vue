@@ -1,5 +1,5 @@
 <template>
-  <div ref="scrollArea" id="akSidebarScrollArea" :class="classObj" @scroll="onScroll">
+  <div ref="scrollArea" id="vaSidebarScrollArea" :class="classObj" @scroll="onScroll">
       <slot/>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     onScroll () {
-      let el = document.getElementById('akSidebarScrollArea')
+      let el = document.getElementById('vaSidebarScrollArea')
       let y = el.scrollTop
       if (y > 1) {
         this.scrolled = true

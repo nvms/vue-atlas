@@ -117,7 +117,7 @@ export default {
       stl['position'] = 'fixed'
       stl['top'] = th + 'px'
       stl['height'] = 'calc(100% - ' + th + 'px)'
-      stl['overflow'] = 'scroll'
+      // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
 
       /**
