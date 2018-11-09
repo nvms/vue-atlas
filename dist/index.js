@@ -9049,6 +9049,12 @@ if (false) {(function () {
     this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true);
   },
 
+  watch: {
+    theme: function theme(val) {
+      this.th = val;
+      this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', this.th);
+    }
+  },
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
@@ -9599,6 +9605,12 @@ if (false) {(function () {
     this.dispatch('VaLayoutManager', 'Va@minibarDisconnect', true);
   },
 
+  watch: {
+    theme: function theme(val) {
+      this.th = val;
+      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', this.th);
+    }
+  },
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
@@ -9976,6 +9988,12 @@ if (false) {(function () {
     this.dispatch('VaLayoutManager', 'Va@sidebarDisconnect', true);
   },
 
+  watch: {
+    theme: function theme(val) {
+      this.th = val;
+      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th);
+    }
+  },
   computed: {
     classObj: function classObj() {
       var prefixCls = this.prefixCls,
@@ -10066,8 +10084,7 @@ if (false) {(function () {
 
       return style;
     }
-  },
-  watch: {}
+  }
   // methods: {
   //   initResize (e) {
   //     /**
@@ -30500,47 +30517,92 @@ function transformArguments(arg) {
       this.broadcastIsMobile(val);
       this.setAndBroadcastDimensions();
     },
+    desktopSidebarWidth: function desktopSidebarWidth(val) {
+      this.mDesktopSidebarWidth = val;
+    },
     mDesktopSidebarWidth: function mDesktopSidebarWidth(val) {
       this.setAndBroadcastDimensions();
+    },
+    desktopMinibarWidth: function desktopMinibarWidth(val) {
+      this.mDesktopMinibarWidth = val;
     },
     mDesktopMinibarWidth: function mDesktopMinibarWidth(val) {
       this.setAndBroadcastDimensions();
     },
+    desktopTopbarHeight: function desktopTopbarHeight(val) {
+      this.mDesktopTopbarHeight = val;
+    },
     mDesktopTopbarHeight: function mDesktopTopbarHeight(val) {
       this.setAndBroadcastDimensions();
+    },
+    mobileSidebarWidth: function mobileSidebarWidth(val) {
+      this.mMobileSidebarWidth = val;
     },
     mMobileSidebarWidth: function mMobileSidebarWidth(val) {
       this.setAndBroadcastDimensions();
     },
+    mobileMinibarWidth: function mobileMinibarWidth(val) {
+      this.mMobileMinibarWidth = val;
+    },
     mMobileMinibarWidth: function mMobileMinibarWidth(val) {
       this.setAndBroadcastDimensions();
+    },
+    mobileTopbarHeight: function mobileTopbarHeight(val) {
+      this.mMobileTopbarHeight = val;
     },
     mMobileTopbarHeight: function mMobileTopbarHeight(val) {
       this.setAndBroadcastDimensions();
     },
+    rtl: function rtl(val) {
+      this.mRtl = val;
+    },
     mRtl: function mRtl(val) {
       this.broadcastIsRTL(val);
+    },
+    sidebarPriority: function sidebarPriority(val) {
+      this.mSidebarPriority = val;
     },
     mSidebarPriority: function mSidebarPriority(val) {
       this.broadcastSidebarPriority(val);
     },
+    minibarPriority: function minibarPriority(val) {
+      this.mMinibarPriority = val;
+    },
     mMinibarPriority: function mMinibarPriority(val) {
       this.broadcastMinibarPriority(val);
+    },
+    topbarPriority: function topbarPriority(val) {
+      this.mTopbarPriority = val;
     },
     mTopbarPriority: function mTopbarPriority(val) {
       this.broadcastTopbarPriority(val);
     },
+    topbarPadded: function topbarPadded(val) {
+      this.mTopbarPadded = val;
+    },
     mTopbarPadded: function mTopbarPadded(val) {
       this.broadcastTopbarPadded(val);
+    },
+    bgColor: function bgColor(val) {
+      this.mBgColor = val;
     },
     mBgColor: function mBgColor(val) {
       this.broadcastBgColor(val);
     },
+    pageBgColor: function pageBgColor(val) {
+      this.mPageBgColor = val;
+    },
     mPageBgColor: function mPageBgColor(val) {
       this.broadcastPageBgColor(val);
     },
+    split: function split(val) {
+      this.mSplit = val;
+    },
     mSplit: function mSplit(val) {
       this.broadcastIsSplit(val);
+    },
+    reverse: function reverse(val) {
+      this.mReverse = val;
     },
     mReverse: function mReverse(val) {
       this.broadcastIsReverse(val);
@@ -30554,6 +30616,9 @@ function transformArguments(arg) {
     mShowToggle: function mShowToggle(val) {
       this.broadcastShowToggle(val);
     },
+    desktopMargin: function desktopMargin(val) {
+      this.mDesktopMargin = val;
+    },
     mDesktopMargin: function mDesktopMargin(val) {
       /**
        * Calling _handleResize here. Why? So a new contentWidth
@@ -30561,6 +30626,9 @@ function transformArguments(arg) {
        */
       this._handleResize();
       this.broadcastDesktopMargin(val);
+    },
+    desktopMinimumWidth: function desktopMinimumWidth(val) {
+      this.mDesktopMinimumWidth = val;
     },
     mDesktopMinimumWidth: function mDesktopMinimumWidth(val) {
       this.broadcastDesktopMinimumWidth(val);
@@ -30577,11 +30645,20 @@ function transformArguments(arg) {
     mPageSize: function mPageSize(val) {
       this.broadcastPageSize(val);
     },
+    topbarTheme: function topbarTheme(val) {
+      this.mTopbarTheme = val;
+    },
     mTopbarTheme: function mTopbarTheme(val) {
       this.broadcastTopbarTheme(val);
     },
+    minibarTheme: function minibarTheme(val) {
+      this.mMinibarTheme = val;
+    },
     mMinibarTheme: function mMinibarTheme(val) {
       this.broadcastMinibarTheme(val);
+    },
+    sidebarTheme: function sidebarTheme(val) {
+      this.mSidebarTheme = val;
     },
     mSidebarTheme: function mSidebarTheme(val) {
       this.broadcastSidebarTheme(val);
@@ -31888,7 +31965,7 @@ function transformArguments(arg) {
       var position = this.btnPosition;
 
       style['position'] = 'fixed';
-      style['right'] = '10px';
+      style['right'] = '14px';
       style['z-index'] = '99999';
       style['top'] = woh / 2 - position.height * 1.5 + 'px';
       style['border-top-right-radius'] = '0px';
