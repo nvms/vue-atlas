@@ -93,6 +93,12 @@ export default {
   beforeDestroy () {
     this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true)
   },
+  watch: {
+    theme (val) {
+      this.th = val
+      this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', this.th)
+    }
+  },
   computed: {
     classObj () {
       let {prefixCls, th} = this

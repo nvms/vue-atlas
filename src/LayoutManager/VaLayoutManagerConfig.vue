@@ -442,7 +442,7 @@ export default {
       let position = this.btnPosition
 
       style['position'] = 'fixed'
-      style['right'] = '10px'
+      style['right'] = '14px'
       style['z-index'] = '99999'
       style['top'] = (woh / 2) - (position.height * 1.5) + 'px'
       style['border-top-right-radius'] = '0px'

@@ -173,48 +173,63 @@ export default {
       this.broadcastIsMobile(val)
       this.setAndBroadcastDimensions()
     },
+    desktopSidebarWidth (val) { this.mDesktopSidebarWidth = val },
     mDesktopSidebarWidth (val) {
       this.setAndBroadcastDimensions()
     },
+    desktopMinibarWidth (val) { this.mDesktopMinibarWidth = val },
     mDesktopMinibarWidth (val) {
       this.setAndBroadcastDimensions()
     },
+    desktopTopbarHeight (val) { this.mDesktopTopbarHeight = val },
     mDesktopTopbarHeight (val) {
       this.setAndBroadcastDimensions()
     },
+    mobileSidebarWidth (val) { this.mMobileSidebarWidth = val },
     mMobileSidebarWidth (val) {
       this.setAndBroadcastDimensions()
     },
+    mobileMinibarWidth (val) { this.mMobileMinibarWidth = val },
     mMobileMinibarWidth (val) {
       this.setAndBroadcastDimensions()
     },
+    mobileTopbarHeight (val) { this.mMobileTopbarHeight = val },
     mMobileTopbarHeight (val) {
       this.setAndBroadcastDimensions()
     },
+    rtl (val) { this.mRtl = val },
     mRtl (val) {
       this.broadcastIsRTL(val)
     },
+    sidebarPriority (val) { this.mSidebarPriority = val },
     mSidebarPriority (val) {
       this.broadcastSidebarPriority(val)
     },
+    minibarPriority (val) { this.mMinibarPriority = val },
     mMinibarPriority (val) {
       this.broadcastMinibarPriority(val)
     },
+    topbarPriority (val) { this.mTopbarPriority = val },
     mTopbarPriority (val) {
       this.broadcastTopbarPriority(val)
     },
+    topbarPadded (val) { this.mTopbarPadded = val },
     mTopbarPadded (val) {
       this.broadcastTopbarPadded(val)
     },
+    bgColor (val) { this.mBgColor = val },
     mBgColor (val) {
       this.broadcastBgColor(val)
     },
+    pageBgColor (val) { this.mPageBgColor = val },
     mPageBgColor (val) {
       this.broadcastPageBgColor(val)
     },
+    split (val) { this.mSplit = val },
     mSplit (val) {
       this.broadcastIsSplit(val)
     },
+    reverse (val) { this.mReverse = val },
     mReverse (val) {
       this.broadcastIsReverse(val)
     },
@@ -227,6 +242,7 @@ export default {
     mShowToggle (val) {
       this.broadcastShowToggle(val)
     },
+    desktopMargin (val) { this.mDesktopMargin = val },
     mDesktopMargin (val) {
       /**
        * Calling _handleResize here. Why? So a new contentWidth
@@ -235,6 +251,7 @@ export default {
       this._handleResize()
       this.broadcastDesktopMargin(val)
     },
+    desktopMinimumWidth (val) { this.mDesktopMinimumWidth = val },
     mDesktopMinimumWidth (val) {
       this.broadcastDesktopMinimumWidth(val)
     },
@@ -250,12 +267,15 @@ export default {
     mPageSize (val) {
       this.broadcastPageSize(val)
     },
+    topbarTheme (val) { this.mTopbarTheme = val },
     mTopbarTheme (val) {
       this.broadcastTopbarTheme(val)
     },
+    minibarTheme (val) { this.mMinibarTheme = val },
     mMinibarTheme (val) {
       this.broadcastMinibarTheme(val)
     },
+    sidebarTheme (val) { this.mSidebarTheme = val },
     mSidebarTheme (val) {
       this.broadcastSidebarTheme(val)
     }

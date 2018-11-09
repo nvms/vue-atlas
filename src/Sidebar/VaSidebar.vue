@@ -105,6 +105,12 @@ export default {
   beforeDestroy () {
     this.dispatch('VaLayoutManager', 'Va@sidebarDisconnect', true)
   },
+  watch: {
+    theme (val) {
+      this.th = val
+      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th)
+    }
+  },
   computed: {
     classObj () {
       let {prefixCls, th, isMobile, comp, tl} = this
@@ -190,8 +196,6 @@ export default {
 
       return style
     }
-  },
-  watch: {
   }
   // methods: {
   //   initResize (e) {

@@ -113,6 +113,12 @@ export default {
   beforeDestroy () {
     this.dispatch('VaLayoutManager', 'Va@minibarDisconnect', true)
   },
+  watch: {
+    theme (val) {
+      this.th = val
+      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', this.th)
+    }
+  },
   computed: {
     classObj () {
       let {prefixCls, th} = this

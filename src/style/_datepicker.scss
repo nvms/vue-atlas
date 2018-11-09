@@ -136,11 +136,13 @@ $datepickerRangeSize: 40px;
   }
   &-dateRange {
     span {
+      outline: none;
       &:hover {
         background: $N30;
       }
       &:active {
         background: $B75 !important;
+        outline: none;
       }
     }
   }
