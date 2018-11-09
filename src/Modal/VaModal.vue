@@ -66,7 +66,7 @@ export default {
       type: String,
       default: 'fade-up',
       required: false,
-      note: 'The css effect to apply to the modal.'
+      note: 'The css effect to apply to the modal. See _modal.scss'
     },
     loading: {
       type: Boolean,
