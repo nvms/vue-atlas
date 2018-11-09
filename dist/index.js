@@ -7247,7 +7247,7 @@ if (false) {(function () {
       type: String,
       default: 'fade-up',
       required: false,
-      note: 'The css effect to apply to the modal.'
+      note: 'The css effect to apply to the modal. See _modal.scss'
     },
     loading: {
       type: Boolean,
@@ -8361,7 +8361,6 @@ if (false) {(function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validate_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_type__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Mixin_localeMixin_js__ = __webpack_require__(16);
-//
 //
 //
 //
@@ -35076,35 +35075,6 @@ var render = function() {
     "div",
     { class: _vm.classObj },
     [
-      _c("select", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.valueArray,
-            expression: "valueArray"
-          }
-        ],
-        staticStyle: { visibility: "hidden" },
-        attrs: { name: _vm.name },
-        domProps: { value: _vm.valueArray },
-        on: {
-          change: function($event) {
-            var $$selectedVal = Array.prototype.filter
-              .call($event.target.options, function(o) {
-                return o.selected
-              })
-              .map(function(o) {
-                var val = "_value" in o ? o._value : o.value
-                return val
-              })
-            _vm.valueArray = $event.target.multiple
-              ? $$selectedVal
-              : $$selectedVal[0]
-          }
-        }
-      }),
-      _vm._v(" "),
       _c(
         "va-button",
         {
