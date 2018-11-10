@@ -11,257 +11,275 @@
     </va-button>
     <va-modal ref="configModal" title="LayoutManagerConfig" :width="800" :backdrop="false">
       <div slot="body" class="themeModalBody">
-        <va-tabs>
-          <va-tab name="Options">
-            <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager.</p>
-            <h3>Built-in themes</h3>
-            <hr/>
-            <va-row :gutter="10">
-              <va-column :xs="4">
-                <p>
-                  Minibar<br/>
-                  <va-select v-model="minibarTheme" no-uncheck>
-                    <va-option value="default">Default</va-option>
-                    <va-option value="white">White</va-option>
-                    <va-option value="blue">Blue</va-option>
-                    <va-option value="dark">Dark</va-option>
-                    <va-option value="darker">Darker</va-option>
-                    <va-option value="purple">Purple</va-option>
-                  </va-select>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Sidebar<br/>
-                  <va-select v-model="sidebarTheme" no-uncheck>
-                    <va-option value="default">Default</va-option>
-                    <va-option value="white">White</va-option>
-                    <va-option value="blue">Blue</va-option>
-                    <va-option value="dark">Dark</va-option>
-                    <va-option value="darker">Darker</va-option>
-                    <va-option value="purple">Purple</va-option>
-                  </va-select>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Topbar<br/>
-                  <va-select v-model="topbarTheme" no-uncheck>
-                    <va-option value="default">Default</va-option>
-                    <va-option value="white">White</va-option>
-                    <va-option value="blue">Blue</va-option>
-                    <va-option value="dark">Dark</va-option>
-                    <va-option value="darker">Darker</va-option>
-                    <va-option value="purple">Purple</va-option>
-                  </va-select>
-                </p>
-              </va-column>
-            </va-row>
-
-            <va-row :gutter="10">
-              <h3>Background colors</h3>
+        <va-mobile>
+          <p>
+            The LayoutManagerConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.
+          </p>
+        </va-mobile>
+        <va-desktop>
+          <va-tabs>
+            <va-tab name="Options">
+              <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager.</p>
+              <h3>Built-in themes</h3>
               <hr/>
-              <va-column :xs="6">
-                <p>
-                  Document<br/>
-                  <va-input v-model="bgColor"></va-input>
-                </p>
-              </va-column>
-              <va-column :xs="6">
-                <p>
-                  Page (content)<br/>
-                  <va-input v-model="pageBgColor"></va-input>
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <va-column :xs="4">
+                  <p>
+                    Minibar<br/>
+                    <va-select v-model="minibarTheme" no-uncheck>
+                      <va-option value="default">Default</va-option>
+                      <va-option value="white">White</va-option>
+                      <va-option value="blue">Blue</va-option>
+                      <va-option value="dark">Dark</va-option>
+                      <va-option value="darker">Darker</va-option>
+                      <va-option value="purple">Purple</va-option>
+                    </va-select>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Sidebar<br/>
+                    <va-select v-model="sidebarTheme" no-uncheck>
+                      <va-option value="default">Default</va-option>
+                      <va-option value="white">White</va-option>
+                      <va-option value="blue">Blue</va-option>
+                      <va-option value="dark">Dark</va-option>
+                      <va-option value="darker">Darker</va-option>
+                      <va-option value="purple">Purple</va-option>
+                    </va-select>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Topbar<br/>
+                    <va-select v-model="topbarTheme" no-uncheck>
+                      <va-option value="default">Default</va-option>
+                      <va-option value="white">White</va-option>
+                      <va-option value="blue">Blue</va-option>
+                      <va-option value="dark">Dark</va-option>
+                      <va-option value="darker">Darker</va-option>
+                      <va-option value="purple">Purple</va-option>
+                    </va-select>
+                  </p>
+                </va-column>
+              </va-row>
 
-            <va-row :gutter="10">
-              <h3>Page</h3>
-              <hr/>
-              <va-column :xs="12">
-                <p>
-                  Page size<br/>
-                  <va-select v-model="pageSize" no-uncheck>
-                    <va-option value="sm">Small</va-option>
-                    <va-option value="md">Medium</va-option>
-                    <va-option value="lg">Large</va-option>
-                  </va-select>
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <h3>Background colors</h3>
+                <hr/>
+                <va-column :xs="6">
+                  <p>
+                    Document<br/>
+                    <va-input v-model="bgColor"></va-input>
+                  </p>
+                </va-column>
+                <va-column :xs="6">
+                  <p>
+                    Page (content)<br/>
+                    <va-input v-model="pageBgColor"></va-input>
+                  </p>
+                </va-column>
+              </va-row>
 
-            <va-row :gutter="10">
-              <h3>Misc. layout manager props</h3>
-              <hr/>
-              <va-column :xs="4">
-                <p>
-                  <va-checkbox v-model="sidebarPriority">sidebarPriority</va-checkbox>
-                </p>
-                <p>
-                  <va-checkbox v-model="minibarPriority">minibarPriority</va-checkbox>
-                </p>
-                <p>
-                  <va-tooltip
-                    trigger="hover"
-                    content="Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0"
-                    placement="right"
-                    effect="tooltip-fade-right">
-                    <va-checkbox v-model="topbarPriority" :disabled="shouldTopbarPriorityBeDisabled">topbarPriority</va-checkbox>
-                  </va-tooltip>
-                </p>
-                <p>
-                  <va-tooltip
-                    trigger="hover"
-                    content="Disabled unless topbarPriority and desktopMargin !== 0"
-                    placement="right"
-                    effect="tooltip-fade-right">
-                    <va-checkbox v-model="topbarPadded" :disabled="shouldTopbarPaddedBeDisabled">topbarPadded</va-checkbox>
-                  </va-tooltip>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  <va-checkbox v-model="rtl">rtl</va-checkbox>
-                </p>
-                <p>
-                  <va-checkbox v-model="reverse">reverse</va-checkbox>
-                </p>
-                <p>
-                  <va-checkbox v-model="split">split</va-checkbox>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  <va-checkbox v-model="showToggle">showToggle</va-checkbox>
-                </p>
-                <p>
-                  <va-checkbox v-model="compact">compact</va-checkbox>
-                </p>
-                <p>
-                  <va-checkbox v-model="textLinks">textLinks</va-checkbox>
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <h3>Page</h3>
+                <hr/>
+                <va-column :xs="12">
+                  <p>
+                    Page size<br/>
+                    <va-select v-model="pageSize" no-uncheck>
+                      <va-option value="sm">Small</va-option>
+                      <va-option value="md">Medium</va-option>
+                      <va-option value="lg">Large</va-option>
+                    </va-select>
+                  </p>
+                </va-column>
+              </va-row>
 
-            <va-row :gutter="10">
-              <h3>Content margin and minimum width</h3>
-              <hr/>
-              <va-column :xs="4">
-                <p>
-                  Desktop margin: {{desktopMargin}}<br/>
-                  <va-range :min="0" :max="1000" :step="1" v-model="desktopMargin" ref="desktopMarginRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Desktop minimum width: {{desktopMinimumWidth}}<br/>
-                  <va-range :min="0" :max="1024" :step="1" v-model="desktopMinimumWidth" ref="desktopMinimumWidthRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  &nbsp;
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <h3>Misc. layout manager props</h3>
+                <hr/>
+                <va-column :xs="4">
+                  <p>
+                    <va-checkbox v-model="sidebarPriority">sidebarPriority</va-checkbox>
+                  </p>
+                  <p>
+                    <va-checkbox v-model="minibarPriority">minibarPriority</va-checkbox>
+                  </p>
+                  <p>
+                    <va-tooltip
+                      trigger="hover"
+                      content="Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0"
+                      placement="right"
+                      effect="tooltip-fade-right">
+                      <va-checkbox v-model="topbarPriority" :disabled="shouldTopbarPriorityBeDisabled">topbarPriority</va-checkbox>
+                    </va-tooltip>
+                  </p>
+                  <p>
+                    <va-tooltip
+                      trigger="hover"
+                      content="Disabled unless topbarPriority and desktopMargin !== 0"
+                      placement="right"
+                      effect="tooltip-fade-right">
+                      <va-checkbox v-model="topbarPadded" :disabled="shouldTopbarPaddedBeDisabled">topbarPadded</va-checkbox>
+                    </va-tooltip>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    <va-checkbox v-model="rtl">rtl</va-checkbox>
+                  </p>
+                  <p>
+                    <va-checkbox v-model="reverse">reverse</va-checkbox>
+                  </p>
+                  <p>
+                    <va-checkbox v-model="split">split</va-checkbox>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    <va-checkbox v-model="showToggle">showToggle</va-checkbox>
+                  </p>
+                  <p>
+                    <va-checkbox v-model="compact">compact</va-checkbox>
+                  </p>
+                  <p>
+                    <va-checkbox v-model="textLinks">textLinks</va-checkbox>
+                  </p>
+                </va-column>
+              </va-row>
 
-            <va-row :gutter="10">
-              <h3>Desktop bar dimensions</h3>
-              <hr/>
-              <va-column :xs="4">
-                <p>
-                  Sidebar width: {{desktopSidebarWidth}}<br/>
-                  <va-range :min="0" :max="400" :step="1" v-model="desktopSidebarWidth" ref="desktopSidebarWidthRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Minibar width: {{desktopMinibarWidth}}<br/>
-                  <va-range :min="0" :max="150" :step="1" v-model="desktopMinibarWidth" ref="desktopMinibarWidthRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Topbar height: {{desktopTopbarHeight}}<br/>
-                  <va-range :min="0" :max="150" :step="1" v-model="desktopTopbarHeight" ref="desktopTopbarHeightRange"></va-range>
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <h3>Content margin and minimum width</h3>
+                <hr/>
+                <va-column :xs="4">
+                  <p>
+                    Desktop margin: {{desktopMargin}}<br/>
+                    <va-range :min="0" :max="1000" :step="1" v-model="desktopMargin" ref="desktopMarginRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Desktop minimum width: {{desktopMinimumWidth}}<br/>
+                    <va-range :min="0" :max="1024" :step="1" v-model="desktopMinimumWidth" ref="desktopMinimumWidthRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    &nbsp;
+                  </p>
+                </va-column>
+              </va-row>
 
-            <va-row :gutter="10">
-              <h3>Mobile bar dimensions</h3>
-              <hr/>
-              <va-column :xs="4">
-                <p>
-                  Sidebar width: {{mobileSidebarWidth}}<br/>
-                  <va-range :min="0" :max="400" :step="1" v-model="mobileSidebarWidth" ref="mobileSidebarWidthRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Minibar width: {{mobileMinibarWidth}}<br/>
-                  <va-range :min="0" :max="150" :step="1" v-model="mobileMinibarWidth" ref="mobileMinibarWidthRange"></va-range>
-                </p>
-              </va-column>
-              <va-column :xs="4">
-                <p>
-                  Topbar height: {{mobileTopbarHeight}}<br/>
-                  <va-range :min="0" :max="150" :step="1" v-model="mobileTopbarHeight" ref="mobileTopbarHeightRange"></va-range>
-                </p>
-              </va-column>
-            </va-row>
+              <va-row :gutter="10">
+                <h3>Desktop bar dimensions</h3>
+                <hr/>
+                <va-column :xs="4">
+                  <p>
+                    Sidebar width: {{desktopSidebarWidth}}<br/>
+                    <va-range :min="0" :max="400" :step="1" v-model="desktopSidebarWidth" ref="desktopSidebarWidthRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Minibar width: {{desktopMinibarWidth}}<br/>
+                    <va-range :min="0" :max="150" :step="1" v-model="desktopMinibarWidth" ref="desktopMinibarWidthRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Topbar height: {{desktopTopbarHeight}}<br/>
+                    <va-range :min="0" :max="150" :step="1" v-model="desktopTopbarHeight" ref="desktopTopbarHeightRange"></va-range>
+                  </p>
+                </va-column>
+              </va-row>
 
-          </va-tab>
-          <va-tab name="Source">
-            <code>
-            <pre style="font-size:12px;line-height:14px;">&lt;!-- https://vue-atlas.com/documentation/layoutmanager --&gt;
-&lt;va-layout-manager
-  bg-color="{{bgColor}}"
-  page-bg-color="{{pageBgColor}}"
-  desktop-margin="{{desktopMargin}}"
-  desktop-minimum-width="{{desktopMinimumWidth}}"
-  desktop-sidebar-width="{{desktopSidebarWidth}}"
-  desktop-minibar-width="{{desktopMinibarWidth}}"
-  desktop-topbar-height="{{desktopTopbarHeight}}"
-  mobile-sidebar-width="{{mobileSidebarWidth}}"
-  mobile-minibar-width="{{mobileMinibarWidth}}"
-  mobile-topbar-height="{{mobileTopbarHeight}}"
-  rtl="{{rtl}}"
-  reverse="{{reverse}}"
-  split="{{split}}"
-  sidebar-priority="{{sidebarPriority}}"
-  minibar-priority="{{minibarPriority}}"
-  topbar-priority="{{topbarPriority}}"
-  topbar-padded="{{topbarPadded}}"&gt;
+              <va-row :gutter="10">
+                <h3>Mobile bar dimensions</h3>
+                <hr/>
+                <va-column :xs="4">
+                  <p>
+                    Sidebar width: {{mobileSidebarWidth}}<br/>
+                    <va-range :min="0" :max="400" :step="1" v-model="mobileSidebarWidth" ref="mobileSidebarWidthRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Minibar width: {{mobileMinibarWidth}}<br/>
+                    <va-range :min="0" :max="150" :step="1" v-model="mobileMinibarWidth" ref="mobileMinibarWidthRange"></va-range>
+                  </p>
+                </va-column>
+                <va-column :xs="4">
+                  <p>
+                    Topbar height: {{mobileTopbarHeight}}<br/>
+                    <va-range :min="0" :max="150" :step="1" v-model="mobileTopbarHeight" ref="mobileTopbarHeightRange"></va-range>
+                  </p>
+                </va-column>
+              </va-row>
 
-  &lt;!-- https://vue-atlas.com/documentation/topbar --&gt;
-  &lt;va-topbar theme="{{topbarTheme}}"&gt;
-    &lt;div slot="left"&gt;...&lt;/div&gt;
-    &lt;div slot="center"&gt;...&lt;/div&gt;
-    &lt;div slot="right"&gt;...&lt;/div&gt;
-  &lt;/va-topbar&gt;
+            </va-tab>
+            <!-- This is a test -->
+            <va-tab name="Source">
+              <code>
+              <pre class="back"><span class="blue">&lt;template&gt;</span>
+    <span class="comment">&lt;!-- https://vue-atlas.com/documentation/layoutmanager --&gt;</span>
+    <span class="blue">&lt;va-layout-manager</span>
+      <span class="yellow">bg-color</span>=<span class="green">"{{bgColor}}"</span>
+      <span class="yellow">page-bg-color</span>=<span class="green">"{{pageBgColor}}"</span>
+      <span class="yellow">desktop-margin</span>=<span class="green">"{{desktopMargin}}"</span>
+      <span class="yellow">desktop-minimum-width</span>=<span class="green">"{{desktopMinimumWidth}}"</span>
+      <span class="yellow">desktop-sidebar-width</span>=<span class="green">"{{desktopSidebarWidth}}"</span>
+      <span class="yellow">desktop-minibar-width</span>=<span class="green">"{{desktopMinibarWidth}}"</span>
+      <span class="yellow">desktop-topbar-height</span>=<span class="green">"{{desktopTopbarHeight}}"</span>
+      <span class="yellow">mobile-sidebar-width</span>=<span class="green">"{{mobileSidebarWidth}}"</span>
+      <span class="yellow">mobile-minibar-width</span>=<span class="green">"{{mobileMinibarWidth}}"</span>
+      <span class="yellow">mobile-topbar-height</span>=<span class="green">"{{mobileTopbarHeight}}"</span>
+      <span class="yellow">:rtl</span>=<span class="green">"{{rtl}}"</span>
+      <span class="yellow">:reverse</span>=<span class="green">"{{reverse}}"</span>
+      <span class="yellow">:split</span>=<span class="green">"{{split}}"</span>
+      <span class="yellow">:sidebar-priority</span>=<span class="green">"{{sidebarPriority}}"</span>
+      <span class="yellow">:minibar-priority</span>=<span class="green">"{{minibarPriority}}"</span>
+      <span class="yellow">:topbar-priority</span>=<span class="green">"{{topbarPriority}}"</span>
+      <span class="yellow">:topbar-padded</span>=<span class="green">"{{topbarPadded}}"</span><span class="blue">&gt;</span>
 
-  &lt;!-- https://vue-atlas.com/documentation/minibar --&gt;
-  &lt;va-minibar top-items="[{icon:'user'}]" bottom-items="[{icon:'question'}]" theme="{{minibarTheme}}" /&gt;
+      <span class="comment">&lt;!-- https://vue-atlas.com/documentation/topbar --&gt;</span>
+      <span class="blue">&lt;va-topbar</span> <span class="yellow">theme</span>=<span class="green">"{{topbarTheme}}"</span><span class="blue">&gt;</span>
+        <span class="blue">&lt;div</span> <span class="yellow">slot</span>=<span class="green">"left"</span><span class="blue">&gt;</span> L <span class="blue">&lt;/div&gt;</span>
+        <span class="blue">&lt;div</span> <span class="yellow">slot</span>=<span class="green">"center"</span><span class="blue">&gt;</span> C <span class="blue">&lt;/div&gt;</span>
+        <span class="blue">&lt;div</span> <span class="yellow">slot</span>=<span class="green">"right"</span><span class="blue">&gt;</span> R <span class="blue">&lt;/div&gt;</span>
+      <span class="blue">&lt;/va-topbar&gt;</span>
 
-  &lt;!-- https://vue-atlas.com/documentation/sidebar --&gt;
-  &lt;va-sidebar theme="{{sidebarTheme}}"&gt;
-    &lt;va-sidebar-scrollarea&gt;
-      &lt;va-sidebar-group items="[{name:'Item1'}]" title="Category 1" show-toggle="{{showToggle}}" /&gt;
-      &lt;va-sidebar-group items="[{name:'Item1'}]" title="Category 2" show-toggle="{{showToggle}}" /&gt;
-    &lt;/va-sidebar-scrollarea&gt;
-  &lt;/va-sidebar&gt;
+      <span class="comment">&lt;!-- https://vue-atlas.com/documentation/minibar --&gt;</span>
+      <span class="blue">&lt;va-minibar</span>
+        <span class="yellow">:top-items</span>=<span class="green">"[{icon:'home'},{icon:'search'},{icon:'user'}]"</span>
+        <span class="yellow">:bottom-items</span>=<span class="green">"[{icon:'question'}]"</span>
+        <span class="yellow">theme</span>=<span class="green">"{{minibarTheme}}"</span> <span class="blue">/&gt;</span>
 
-  &lt;!-- https://vue-atlas.com/documentation/page --&gt;
-  &lt;va-page size="{{pageSize}}"&gt;
-    ...
-  &lt;va-page&gt;
+      <span class="comment">&lt;!-- https://vue-atlas.com/documentation/sidebar --&gt;</span>
+      <span class="blue">&lt;va-sidebar</span> <span class="yellow">theme</span>=<span class="green">"{{sidebarTheme}}"</span><span class="blue">&gt;</span>
+        <span class="blue">&lt;va-sidebar-scrollarea&gt;</span>
+          <span class="blue">&lt;va-sidebar-group</span>
+            <span class="yellow">:items</span>=<span class="green">"[{name:'Item1'}]"</span>
+            <span class="yellow">title</span>=<span class="green">"Category 1"</span>
+            <span class="yellow">:show-toggle</span>=<span class="green">"{{showToggle}}"</span> <span class="blue">/&gt;</span>
+          <span class="blue">&lt;va-sidebar-group</span>
+            <span class="yellow">:items</span>=<span class="green">"[{name:'Item1'}]"</span>
+            <span class="yellow">title</span>=<span class="green">"Category 2"</span>
+            <span class="yellow">:show-toggle</span>=<span class="green">"{{showToggle}}"</span> <span class="blue">/&gt;</span>
+        <span class="blue">&lt;/va-sidebar-scrollarea&gt;</span>
+      <span class="blue">&lt;/va-sidebar&gt;</span>
 
-&lt;/va-layout-manager&gt;</pre>
-            </code>
-          </va-tab>
-        </va-tabs>
+      <span class="comment">&lt;!-- https://vue-atlas.com/documentation/page --&gt;</span>
+      <span class="blue">&lt;va-page</span> <span class="yellow">size</span>=<span class="green">"{{pageSize}}"</span><span class="blue">&gt;</span>
+        Hello, world.
+      <span class="blue">&lt;/va-page&gt;</span>
 
+    <span class="blue">&lt;/va-layout-manager&gt;</span>
+  <span class="blue">&lt;/template&gt;</span></pre>
+              </code>
+            </va-tab>
+          </va-tabs>
+        </va-desktop>
       </div>
       <!-- end body slot -->
       <div slot="footer">
@@ -404,10 +422,10 @@ export default {
      */
     this.$on('Va@configReceiveDesktopTopbarHeight', (val) => { this.desktopTopbarHeight = val })
     this.$on('Va@configReceiveDesktopMinibarWidth', (val) => { this.desktopMinibarWidth = val })
-    this.$on('Va@configReceiveDesktopMinimumWidth', (val) => { this.desktopMinimumWidth = val })
     this.$on('Va@configReceiveDesktopSidebarWidth', (val) => { this.desktopSidebarWidth = val })
-    this.$on('Va@configReceiveMobileSidebarWidth', (val) => { this.mobileSidebarWidth = val })
+    this.$on('Va@configReceiveDesktopMinimumWidth', (val) => { this.desktopMinimumWidth = val })
     this.$on('Va@configReceiveMobileMinibarWidth', (val) => { this.mobileMinibarWidth = val })
+    this.$on('Va@configReceiveMobileSidebarWidth', (val) => { this.mobileSidebarWidth = val })
     this.$on('Va@configReceiveMobileTopbarHeight', (val) => { this.mobileTopbarHeight = val })
     this.$on('Va@configReceiveSidebarPriority', (val) => { this.sidebarPriority = val })
     this.$on('Va@configReceiveMinibarPriority', (val) => { this.minibarPriority = val })
@@ -418,6 +436,7 @@ export default {
     this.$on('Va@configReceiveSidebarTheme', (val) => { this.sidebarTheme = val })
     this.$on('Va@configReceiveTopbarTheme', (val) => { this.topbarTheme = val })
     this.$on('Va@configReceivePageBgColor', (val) => { this.pageBgColor = val })
+    this.$on('Va@configReceiveShowToggle', (val) => { this.showToggle = val })
     this.$on('Va@configReceiveTextLinks', (val) => { this.textLinks = val })
     this.$on('Va@configReceivePageSize', (val) => { this.pageSize = val })
     this.$on('Va@configReceiveCompact', (val) => { this.compact = val })
@@ -485,5 +504,26 @@ export default {
   p {
     margin-top: 0em;
   }
+}
+.back {
+  background-color: #212733;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #B0AFAB;
+  border-radius: 5px;
+}
+.comment {
+  color: #5C676D;
+  font-style: italic;
+}
+.blue {
+  color: #5CCFE0;
+}
+.yellow {
+  color: #FFD580;
+}
+.green {
+  color: #BAE36D;
 }
 </style>
