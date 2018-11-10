@@ -6170,6 +6170,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       stl['position'] = 'fixed';
       stl['top'] = th + 'px';
       stl['height'] = 'calc(100% - ' + th + 'px)';
+
+      // If past mobile breakpoint - set overflow to auto so that scrolling is more natural
+      stl['overflow'] = 'auto';
+      // Otherwise... don't.
       // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
 
@@ -30447,6 +30451,11 @@ function transformArguments(arg) {
       default: '#FFFFFF',
       required: false
     },
+    showToggle: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -30468,6 +30477,7 @@ function transformArguments(arg) {
     var dTopbarPadded = this.topbarPadded;
     var dPageBgColor = this.pageBgColor;
     var dReverse = this.reverse;
+    var dShowToggle = this.showToggle;
     var dBgColor = this.bgColor;
     var dSplit = this.split;
     var dRtl = this.rtl;
@@ -30496,7 +30506,7 @@ function transformArguments(arg) {
       mTopbarTheme: 'blue',
       mReverse: dReverse,
       haveMinibar: false,
-      mShowToggle: false,
+      mShowToggle: dShowToggle,
       mBgColor: dBgColor,
       haveSidebar: false,
       haveTopbar: false,
@@ -30613,6 +30623,9 @@ function transformArguments(arg) {
     mTextLinks: function mTextLinks(val) {
       this.broadcastTextLinks(val);
     },
+    showToggle: function showToggle(val) {
+      this.mShowToggle = val;
+    },
     mShowToggle: function mShowToggle(val) {
       this.broadcastShowToggle(val);
     },
@@ -30682,18 +30695,21 @@ function transformArguments(arg) {
       this.broadcast('VaMinibar', 'Va@sidebarWidthChange', val);
       this.broadcast('VaTopbar', 'Va@sidebarWidthChange', val);
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastMinibarWidth: function broadcastMinibarWidth(val) {
       this.broadcast('VaSidebar', 'Va@minibarWidthChange', val);
       this.broadcast('VaMinibar', 'Va@minibarWidthChange', val);
       this.broadcast('VaTopbar', 'Va@minibarWidthChange', val);
       this.broadcast('VaPage', 'Va@minibarWidthChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastTopbarHeight: function broadcastTopbarHeight(val) {
       this.broadcast('VaSidebar', 'Va@topbarHeightChange', val);
       this.broadcast('VaMinibar', 'Va@topbarHeightChange', val);
       this.broadcast('VaTopbar', 'Va@topbarHeightChange', val);
       this.broadcast('VaPage', 'Va@topbarHeightChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastIsMobile: function broadcastIsMobile(val) {
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val);
@@ -30709,68 +30725,82 @@ function transformArguments(arg) {
       this.broadcast('VaMinibar', 'Va@rtlChange', val);
       this.broadcast('VaTopbar', 'Va@rtlChange', val);
       this.broadcast('VaPage', 'Va@rtlChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastIsSplit: function broadcastIsSplit(val) {
       this.broadcast('VaSidebar', 'Va@splitChange', val);
       this.broadcast('VaMinibar', 'Va@splitChange', val);
       this.broadcast('VaTopbar', 'Va@splitChange', val);
       this.broadcast('VaPage', 'Va@splitChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastCompact: function broadcastCompact(val) {
       this.broadcast('VaSidebar', 'Va@compactChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastTextLinks: function broadcastTextLinks(val) {
       this.broadcast('VaSidebar', 'Va@textLinksChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastShowToggle: function broadcastShowToggle(val) {
       this.broadcast('VaSidebar', 'Va@showToggleChange', val);
       this.broadcast('VaSidebarGroupItem', 'Va@showToggleChange', val);
       this.broadcast('VaSidebarGroupLevel', 'Va@showToggleChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastBgColor: function broadcastBgColor(val) {
       /**
        * Nobody needs to know about BgColor.
        * Only relevant to this component.
        */
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastPageBgColor: function broadcastPageBgColor(val) {
       this.broadcast('VaPage', 'Va@pageBgColorChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastIsReverse: function broadcastIsReverse(val) {
       this.broadcast('VaSidebar', 'Va@reverseChange', val);
       this.broadcast('VaMinibar', 'Va@reverseChange', val);
       this.broadcast('VaTopbar', 'Va@reverseChange', val);
       this.broadcast('VaPage', 'Va@reverseChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastSidebarPriority: function broadcastSidebarPriority(val) {
       this.broadcast('VaSidebar', 'Va@sidebarPriorityChange', val);
       this.broadcast('VaMinibar', 'Va@sidebarPriorityChange', val);
       this.broadcast('VaTopbar', 'Va@sidebarPriorityChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastMinibarPriority: function broadcastMinibarPriority(val) {
       this.broadcast('VaSidebar', 'Va@minibarPriorityChange', val);
       this.broadcast('VaMinibar', 'Va@minibarPriorityChange', val);
       this.broadcast('VaTopbar', 'Va@minibarPriorityChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastTopbarPriority: function broadcastTopbarPriority(val) {
       this.broadcast('VaSidebar', 'Va@topbarPriorityChange', val);
       this.broadcast('VaMinibar', 'Va@topbarPriorityChange', val);
       this.broadcast('VaTopbar', 'Va@topbarPriorityChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastTopbarPadded: function broadcastTopbarPadded(val) {
       this.broadcast('VaTopbar', 'Va@topbarPaddedChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastDesktopMargin: function broadcastDesktopMargin(val) {
       this.broadcast('VaSidebar', 'Va@desktopMarginChange', val);
       this.broadcast('VaMinibar', 'Va@desktopMarginChange', val);
       this.broadcast('VaTopbar', 'Va@desktopMarginChange', val);
       this.broadcast('VaPage', 'Va@desktopMarginChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastDesktopMinimumWidth: function broadcastDesktopMinimumWidth(val) {
       this.broadcast('VaSidebar', 'Va@desktopMinimumWidthChange', val);
       this.broadcast('VaMinibar', 'Va@desktopMinimumWidthChange', val);
       this.broadcast('VaTopbar', 'Va@desktopMinimumWidthChange', val);
       this.broadcast('VaPage', 'Va@desktopMinimumWidthChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastAllowMarginUpdates: function broadcastAllowMarginUpdates(val) {},
     broadcastWindowWidth: function broadcastWindowWidth(val) {
@@ -30787,15 +30817,19 @@ function transformArguments(arg) {
     },
     broadcastPageSize: function broadcastPageSize(val) {
       this.broadcast('VaPage', 'Va@pageSizeChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastTopbarTheme: function broadcastTopbarTheme(val) {
       this.broadcast('VaTopbar', 'Va@topbarThemeChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastSidebarTheme: function broadcastSidebarTheme(val) {
       this.broadcast('VaSidebar', 'Va@sidebarThemeChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     broadcastMinibarTheme: function broadcastMinibarTheme(val) {
       this.broadcast('VaMinibar', 'Va@minibarThemeChange', val);
+      this.broadcastDefaultsToConfig(0);
     },
     checkForPresenceOfTopbar: function checkForPresenceOfTopbar() {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true);
@@ -30837,22 +30871,22 @@ function transformArguments(arg) {
       this.$on('Va@configDesktopTopbarHeightChange', function (val) {
         _this.mDesktopTopbarHeight = val;
       });
-      this.$on('Va@configDesktopMinibarWidthChange', function (val) {
-        _this.mDesktopMinibarWidth = val;
+      this.$on('Va@configDesktopSidebarWidthChange', function (val) {
+        _this.mDesktopSidebarWidth = val;
       });
       this.$on('Va@configDesktopMinimumWidthChange', function (val) {
         _this.mDesktopMinimumWidth = val;
       });
-      this.$on('Va@configDesktopSidebarWidthChange', function (val) {
-        _this.mDesktopSidebarWidth = val;
+      this.$on('Va@configDesktopMinibarWidthChange', function (val) {
+        _this.mDesktopMinibarWidth = val;
       });
       this.$on('Va@configMobileTopbarHeightChange', function (val) {
         _this.mMobileTopbarHeight = val;
       });
-      this.$on('Va@configMobileSidebarWidth', function (val) {
+      this.$on('Va@configMobileSidebarWidthChange', function (val) {
         _this.mMobileSidebarWidth = val;
       });
-      this.$on('Va@configMobileMinibarWidth', function (val) {
+      this.$on('Va@configMobileMinibarWidthChange', function (val) {
         _this.mMobileMinibarWidth = val;
       });
       this.$on('Va@configSidebarPriorityChange', function (val) {
@@ -30885,6 +30919,9 @@ function transformArguments(arg) {
       this.$on('Va@configShowToggleChange', function (val) {
         _this.mShowToggle = val;
       });
+      this.$on('Va@configTextLinksChange', function (val) {
+        _this.mTextLinks = val;
+      });
       this.$on('Va@configPageSizeChange', function (val) {
         _this.mPageSize = val;
       });
@@ -30903,20 +30940,19 @@ function transformArguments(arg) {
       this.$on('Va@configRtlChange', function (val) {
         _this.mRtl = val;
       });
-      this.$on('Va@configTextLinksChange', function (val) {
-        _this.mTextLinks = val;
-      });
     },
     broadcastDefaultsToConfig: function broadcastDefaultsToConfig() {
       var _this2 = this;
 
+      var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+
       setTimeout(function () {
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopTopbarHeight', _this2.mDesktopTopbarHeight);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinibarWidth', _this2.mDesktopMinibarWidth);
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', _this2.mDesktopMinimumWidth);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopSidebarWidth', _this2.mDesktopSidebarWidth);
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', _this2.mMobileSidebarWidth);
+        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', _this2.mDesktopMinimumWidth);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileMinibarWidth', _this2.mMobileMinibarWidth);
+        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', _this2.mMobileSidebarWidth);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileTopbarHeight', _this2.mMobileTopbarHeight);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarPriority', _this2.mSidebarPriority);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarPriority', _this2.mMinibarPriority);
@@ -30928,14 +30964,14 @@ function transformArguments(arg) {
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarTheme', _this2.mTopbarTheme);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageBgColor', _this2.mPageBgColor);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveShowToggle', _this2.mShowToggle);
+        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', _this2.mTextLinks);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', _this2.mPageSize);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', _this2.mCompact);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', _this2.mReverse);
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', _this2.mTextLinks);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', _this2.mBgColor);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', _this2.mSplit);
         _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', _this2.mRtl);
-      }, 100);
+      }, delay);
     }
   },
   mounted: function mounted() {
@@ -31700,6 +31736,24 @@ function transformArguments(arg) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -31884,17 +31938,17 @@ function transformArguments(arg) {
     this.$on('Va@configReceiveDesktopMinibarWidth', function (val) {
       _this2.desktopMinibarWidth = val;
     });
-    this.$on('Va@configReceiveDesktopMinimumWidth', function (val) {
-      _this2.desktopMinimumWidth = val;
-    });
     this.$on('Va@configReceiveDesktopSidebarWidth', function (val) {
       _this2.desktopSidebarWidth = val;
     });
-    this.$on('Va@configReceiveMobileSidebarWidth', function (val) {
-      _this2.mobileSidebarWidth = val;
+    this.$on('Va@configReceiveDesktopMinimumWidth', function (val) {
+      _this2.desktopMinimumWidth = val;
     });
     this.$on('Va@configReceiveMobileMinibarWidth', function (val) {
       _this2.mobileMinibarWidth = val;
+    });
+    this.$on('Va@configReceiveMobileSidebarWidth', function (val) {
+      _this2.mobileSidebarWidth = val;
     });
     this.$on('Va@configReceiveMobileTopbarHeight', function (val) {
       _this2.mobileTopbarHeight = val;
@@ -31925,6 +31979,9 @@ function transformArguments(arg) {
     });
     this.$on('Va@configReceivePageBgColor', function (val) {
       _this2.pageBgColor = val;
+    });
+    this.$on('Va@configReceiveShowToggle', function (val) {
+      _this2.showToggle = val;
     });
     this.$on('Va@configReceiveTextLinks', function (val) {
       _this2.textLinks = val;
@@ -38037,6 +38094,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_events__ = __webpack_require__(2);
 
 /**
  * Original implementation by MisRob and released under the MIT license.
@@ -38045,7 +38103,9 @@ if (false) {
  */
 
 
+
 var VaSidebarGroup = {
+  mixins: [__WEBPACK_IMPORTED_MODULE_2__utils_events__["a" /* default */]],
   props: {
     items: {
       type: Array,
@@ -38081,6 +38141,18 @@ var VaSidebarGroup = {
 
       return false;
     }
+  },
+  watch: {
+    showToggle: function showToggle(val) {
+      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val);
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', _this.showToggle);
+    }, 10);
   },
   render: function render(createElement) {
     var prefixCls = this.prefixCls,
@@ -41851,7 +41923,7 @@ exports = module.exports = __webpack_require__(94)(false);
 
 
 // module
-exports.push([module.i, "\n.themeModalBody hr {\n  margin-bottom: 5px;\n}\n.va-col p {\n  margin-top: 0em;\n}\n", ""]);
+exports.push([module.i, "\n.themeModalBody hr {\n  margin-bottom: 5px;\n}\n.va-col p {\n  margin-top: 0em;\n}\n.back {\n  background-color: #212733;\n  padding: 10px;\n  font-size: 12px;\n  line-height: 16px;\n  color: #B0AFAB;\n  border-radius: 5px;\n}\n.comment {\n  color: #5C676D;\n  font-style: italic;\n}\n.blue {\n  color: #5CCFE0;\n}\n.yellow {\n  color: #FFD580;\n}\n.green {\n  color: #BAE36D;\n}\n", ""]);
 
 // exports
 
@@ -41901,899 +41973,1255 @@ var render = function() {
               slot: "body"
             },
             [
+              _c("va-mobile", [
+                _c("p", [
+                  _vm._v(
+                    "\n          The LayoutManagerConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.\n        "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
               _c(
-                "va-tabs",
+                "va-desktop",
                 [
                   _c(
-                    "va-tab",
-                    { attrs: { name: "Options" } },
+                    "va-tabs",
                     [
-                      _c("p", { staticStyle: { "margin-bottom": "10px" } }, [
-                        _vm._v(
-                          "There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager."
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("h3", [_vm._v("Built-in themes")]),
-                      _vm._v(" "),
-                      _c("hr"),
-                      _vm._v(" "),
                       _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
+                        "va-tab",
+                        { attrs: { name: "Options" } },
                         [
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Minibar"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c(
-                                  "va-select",
-                                  {
-                                    attrs: { "no-uncheck": "" },
-                                    model: {
-                                      value: _vm.minibarTheme,
-                                      callback: function($$v) {
-                                        _vm.minibarTheme = $$v
-                                      },
-                                      expression: "minibarTheme"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "default" } },
-                                      [_vm._v("Default")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "white" } },
-                                      [_vm._v("White")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "blue" } },
-                                      [_vm._v("Blue")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "dark" } },
-                                      [_vm._v("Dark")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "darker" } },
-                                      [_vm._v("Darker")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "purple" } },
-                                      [_vm._v("Purple")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ]),
+                          _c(
+                            "p",
+                            { staticStyle: { "margin-bottom": "10px" } },
+                            [
+                              _vm._v(
+                                "There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager."
+                              )
+                            ]
+                          ),
                           _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Sidebar"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c(
-                                  "va-select",
-                                  {
-                                    attrs: { "no-uncheck": "" },
-                                    model: {
-                                      value: _vm.sidebarTheme,
-                                      callback: function($$v) {
-                                        _vm.sidebarTheme = $$v
-                                      },
-                                      expression: "sidebarTheme"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "default" } },
-                                      [_vm._v("Default")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "white" } },
-                                      [_vm._v("White")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "blue" } },
-                                      [_vm._v("Blue")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "dark" } },
-                                      [_vm._v("Dark")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "darker" } },
-                                      [_vm._v("Darker")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "purple" } },
-                                      [_vm._v("Purple")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Topbar"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c(
-                                  "va-select",
-                                  {
-                                    attrs: { "no-uncheck": "" },
-                                    model: {
-                                      value: _vm.topbarTheme,
-                                      callback: function($$v) {
-                                        _vm.topbarTheme = $$v
-                                      },
-                                      expression: "topbarTheme"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "default" } },
-                                      [_vm._v("Default")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "white" } },
-                                      [_vm._v("White")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "blue" } },
-                                      [_vm._v("Blue")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "dark" } },
-                                      [_vm._v("Dark")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "darker" } },
-                                      [_vm._v("Darker")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "purple" } },
-                                      [_vm._v("Purple")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [_vm._v("Background colors")]),
+                          _c("h3", [_vm._v("Built-in themes")]),
                           _vm._v(" "),
                           _c("hr"),
                           _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 6 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Document"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-input", {
-                                  model: {
-                                    value: _vm.bgColor,
-                                    callback: function($$v) {
-                                      _vm.bgColor = $$v
-                                    },
-                                    expression: "bgColor"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 6 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Page (content)"),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-input", {
-                                  model: {
-                                    value: _vm.pageBgColor,
-                                    callback: function($$v) {
-                                      _vm.pageBgColor = $$v
-                                    },
-                                    expression: "pageBgColor"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [_vm._v("Page")]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 12 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v("\n                  Page size"),
-                                _c("br"),
-                                _vm._v(" "),
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-select",
-                                  {
-                                    attrs: { "no-uncheck": "" },
-                                    model: {
-                                      value: _vm.pageSize,
-                                      callback: function($$v) {
-                                        _vm.pageSize = $$v
-                                      },
-                                      expression: "pageSize"
-                                    }
-                                  },
+                                  "p",
                                   [
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "sm" } },
-                                      [_vm._v("Small")]
-                                    ),
+                                    _vm._v("\n                  Minibar"),
+                                    _c("br"),
                                     _vm._v(" "),
                                     _c(
-                                      "va-option",
-                                      { attrs: { value: "md" } },
-                                      [_vm._v("Medium")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "va-option",
-                                      { attrs: { value: "lg" } },
-                                      [_vm._v("Large")]
+                                      "va-select",
+                                      {
+                                        attrs: { "no-uncheck": "" },
+                                        model: {
+                                          value: _vm.minibarTheme,
+                                          callback: function($$v) {
+                                            _vm.minibarTheme = $$v
+                                          },
+                                          expression: "minibarTheme"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "default" } },
+                                          [_vm._v("Default")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "white" } },
+                                          [_vm._v("White")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "blue" } },
+                                          [_vm._v("Blue")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "dark" } },
+                                          [_vm._v("Dark")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "darker" } },
+                                          [_vm._v("Darker")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "purple" } },
+                                          [_vm._v("Purple")]
+                                        )
+                                      ],
+                                      1
                                     )
                                   ],
                                   1
                                 )
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [_vm._v("Misc. layout manager props")]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.sidebarPriority,
-                                      callback: function($$v) {
-                                        _vm.sidebarPriority = $$v
+                                  "p",
+                                  [
+                                    _vm._v("\n                  Sidebar"),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "va-select",
+                                      {
+                                        attrs: { "no-uncheck": "" },
+                                        model: {
+                                          value: _vm.sidebarTheme,
+                                          callback: function($$v) {
+                                            _vm.sidebarTheme = $$v
+                                          },
+                                          expression: "sidebarTheme"
+                                        }
                                       },
-                                      expression: "sidebarPriority"
-                                    }
-                                  },
-                                  [_vm._v("sidebarPriority")]
+                                      [
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "default" } },
+                                          [_vm._v("Default")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "white" } },
+                                          [_vm._v("White")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "blue" } },
+                                          [_vm._v("Blue")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "dark" } },
+                                          [_vm._v("Dark")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "darker" } },
+                                          [_vm._v("Darker")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "purple" } },
+                                          [_vm._v("Purple")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.minibarPriority,
-                                      callback: function($$v) {
-                                        _vm.minibarPriority = $$v
+                                  "p",
+                                  [
+                                    _vm._v("\n                  Topbar"),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "va-select",
+                                      {
+                                        attrs: { "no-uncheck": "" },
+                                        model: {
+                                          value: _vm.topbarTheme,
+                                          callback: function($$v) {
+                                            _vm.topbarTheme = $$v
+                                          },
+                                          expression: "topbarTheme"
+                                        }
                                       },
-                                      expression: "minibarPriority"
-                                    }
-                                  },
-                                  [_vm._v("minibarPriority")]
+                                      [
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "default" } },
+                                          [_vm._v("Default")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "white" } },
+                                          [_vm._v("White")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "blue" } },
+                                          [_vm._v("Blue")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "dark" } },
+                                          [_vm._v("Dark")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "darker" } },
+                                          [_vm._v("Darker")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "purple" } },
+                                          [_vm._v("Purple")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [_vm._v("Background colors")]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 6 } }, [
                                 _c(
-                                  "va-tooltip",
-                                  {
-                                    attrs: {
-                                      trigger: "hover",
-                                      content:
-                                        "Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0",
-                                      placement: "right",
-                                      effect: "tooltip-fade-right"
-                                    }
-                                  },
+                                  "p",
+                                  [
+                                    _vm._v("\n                  Document"),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-input", {
+                                      model: {
+                                        value: _vm.bgColor,
+                                        callback: function($$v) {
+                                          _vm.bgColor = $$v
+                                        },
+                                        expression: "bgColor"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 6 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Page (content)"
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-input", {
+                                      model: {
+                                        value: _vm.pageBgColor,
+                                        callback: function($$v) {
+                                          _vm.pageBgColor = $$v
+                                        },
+                                        expression: "pageBgColor"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [_vm._v("Page")]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 12 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _vm._v("\n                  Page size"),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "va-select",
+                                      {
+                                        attrs: { "no-uncheck": "" },
+                                        model: {
+                                          value: _vm.pageSize,
+                                          callback: function($$v) {
+                                            _vm.pageSize = $$v
+                                          },
+                                          expression: "pageSize"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "sm" } },
+                                          [_vm._v("Small")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "md" } },
+                                          [_vm._v("Medium")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "va-option",
+                                          { attrs: { value: "lg" } },
+                                          [_vm._v("Large")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [_vm._v("Misc. layout manager props")]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
                                   [
                                     _c(
                                       "va-checkbox",
                                       {
-                                        attrs: {
-                                          disabled:
-                                            _vm.shouldTopbarPriorityBeDisabled
-                                        },
                                         model: {
-                                          value: _vm.topbarPriority,
+                                          value: _vm.sidebarPriority,
                                           callback: function($$v) {
-                                            _vm.topbarPriority = $$v
+                                            _vm.sidebarPriority = $$v
                                           },
-                                          expression: "topbarPriority"
+                                          expression: "sidebarPriority"
                                         }
                                       },
-                                      [_vm._v("topbarPriority")]
+                                      [_vm._v("sidebarPriority")]
                                     )
                                   ],
                                   1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                                ),
+                                _vm._v(" "),
                                 _c(
-                                  "va-tooltip",
-                                  {
-                                    attrs: {
-                                      trigger: "hover",
-                                      content:
-                                        "Disabled unless topbarPriority and desktopMargin !== 0",
-                                      placement: "right",
-                                      effect: "tooltip-fade-right"
-                                    }
-                                  },
+                                  "p",
                                   [
                                     _c(
                                       "va-checkbox",
                                       {
-                                        attrs: {
-                                          disabled:
-                                            _vm.shouldTopbarPaddedBeDisabled
-                                        },
                                         model: {
-                                          value: _vm.topbarPadded,
+                                          value: _vm.minibarPriority,
                                           callback: function($$v) {
-                                            _vm.topbarPadded = $$v
+                                            _vm.minibarPriority = $$v
                                           },
-                                          expression: "topbarPadded"
+                                          expression: "minibarPriority"
                                         }
                                       },
-                                      [_vm._v("topbarPadded")]
+                                      [_vm._v("minibarPriority")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-tooltip",
+                                      {
+                                        attrs: {
+                                          trigger: "hover",
+                                          content:
+                                            "Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0",
+                                          placement: "right",
+                                          effect: "tooltip-fade-right"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "va-checkbox",
+                                          {
+                                            attrs: {
+                                              disabled:
+                                                _vm.shouldTopbarPriorityBeDisabled
+                                            },
+                                            model: {
+                                              value: _vm.topbarPriority,
+                                              callback: function($$v) {
+                                                _vm.topbarPriority = $$v
+                                              },
+                                              expression: "topbarPriority"
+                                            }
+                                          },
+                                          [_vm._v("topbarPriority")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-tooltip",
+                                      {
+                                        attrs: {
+                                          trigger: "hover",
+                                          content:
+                                            "Disabled unless topbarPriority and desktopMargin !== 0",
+                                          placement: "right",
+                                          effect: "tooltip-fade-right"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "va-checkbox",
+                                          {
+                                            attrs: {
+                                              disabled:
+                                                _vm.shouldTopbarPaddedBeDisabled
+                                            },
+                                            model: {
+                                              value: _vm.topbarPadded,
+                                              callback: function($$v) {
+                                                _vm.topbarPadded = $$v
+                                              },
+                                              expression: "topbarPadded"
+                                            }
+                                          },
+                                          [_vm._v("topbarPadded")]
+                                        )
+                                      ],
+                                      1
                                     )
                                   ],
                                   1
                                 )
-                              ],
-                              1
-                            )
-                          ]),
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.rtl,
+                                          callback: function($$v) {
+                                            _vm.rtl = $$v
+                                          },
+                                          expression: "rtl"
+                                        }
+                                      },
+                                      [_vm._v("rtl")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.reverse,
+                                          callback: function($$v) {
+                                            _vm.reverse = $$v
+                                          },
+                                          expression: "reverse"
+                                        }
+                                      },
+                                      [_vm._v("reverse")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.split,
+                                          callback: function($$v) {
+                                            _vm.split = $$v
+                                          },
+                                          expression: "split"
+                                        }
+                                      },
+                                      [_vm._v("split")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.showToggle,
+                                          callback: function($$v) {
+                                            _vm.showToggle = $$v
+                                          },
+                                          expression: "showToggle"
+                                        }
+                                      },
+                                      [_vm._v("showToggle")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.compact,
+                                          callback: function($$v) {
+                                            _vm.compact = $$v
+                                          },
+                                          expression: "compact"
+                                        }
+                                      },
+                                      [_vm._v("compact")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "p",
+                                  [
+                                    _c(
+                                      "va-checkbox",
+                                      {
+                                        model: {
+                                          value: _vm.textLinks,
+                                          callback: function($$v) {
+                                            _vm.textLinks = $$v
+                                          },
+                                          expression: "textLinks"
+                                        }
+                                      },
+                                      [_vm._v("textLinks")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ])
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [
+                                _vm._v("Content margin and minimum width")
+                              ]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.rtl,
-                                      callback: function($$v) {
-                                        _vm.rtl = $$v
-                                      },
-                                      expression: "rtl"
-                                    }
-                                  },
-                                  [_vm._v("rtl")]
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Desktop margin: " +
+                                        _vm._s(_vm.desktopMargin)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "desktopMarginRange",
+                                      attrs: { min: 0, max: 1000, step: 1 },
+                                      model: {
+                                        value: _vm.desktopMargin,
+                                        callback: function($$v) {
+                                          _vm.desktopMargin = $$v
+                                        },
+                                        expression: "desktopMargin"
+                                      }
+                                    })
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.reverse,
-                                      callback: function($$v) {
-                                        _vm.reverse = $$v
-                                      },
-                                      expression: "reverse"
-                                    }
-                                  },
-                                  [_vm._v("reverse")]
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Desktop minimum width: " +
+                                        _vm._s(_vm.desktopMinimumWidth)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "desktopMinimumWidthRange",
+                                      attrs: { min: 0, max: 1024, step: 1 },
+                                      model: {
+                                        value: _vm.desktopMinimumWidth,
+                                        callback: function($$v) {
+                                          _vm.desktopMinimumWidth = $$v
+                                        },
+                                        expression: "desktopMinimumWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
-                                _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.split,
-                                      callback: function($$v) {
-                                        _vm.split = $$v
-                                      },
-                                      expression: "split"
-                                    }
-                                  },
-                                  [_vm._v("split")]
-                                )
-                              ],
-                              1
-                            )
-                          ]),
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                   \n                "
+                                  )
+                                ])
+                              ])
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [_vm._v("Desktop bar dimensions")]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.showToggle,
-                                      callback: function($$v) {
-                                        _vm.showToggle = $$v
-                                      },
-                                      expression: "showToggle"
-                                    }
-                                  },
-                                  [_vm._v("showToggle")]
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Sidebar width: " +
+                                        _vm._s(_vm.desktopSidebarWidth)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "desktopSidebarWidthRange",
+                                      attrs: { min: 0, max: 400, step: 1 },
+                                      model: {
+                                        value: _vm.desktopSidebarWidth,
+                                        callback: function($$v) {
+                                          _vm.desktopSidebarWidth = $$v
+                                        },
+                                        expression: "desktopSidebarWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.compact,
-                                      callback: function($$v) {
-                                        _vm.compact = $$v
-                                      },
-                                      expression: "compact"
-                                    }
-                                  },
-                                  [_vm._v("compact")]
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Minibar width: " +
+                                        _vm._s(_vm.desktopMinibarWidth)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "desktopMinibarWidthRange",
+                                      attrs: { min: 0, max: 150, step: 1 },
+                                      model: {
+                                        value: _vm.desktopMinibarWidth,
+                                        callback: function($$v) {
+                                          _vm.desktopMinibarWidth = $$v
+                                        },
+                                        expression: "desktopMinibarWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "p",
-                              [
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
                                 _c(
-                                  "va-checkbox",
-                                  {
-                                    model: {
-                                      value: _vm.textLinks,
-                                      callback: function($$v) {
-                                        _vm.textLinks = $$v
-                                      },
-                                      expression: "textLinks"
-                                    }
-                                  },
-                                  [_vm._v("textLinks")]
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Topbar height: " +
+                                        _vm._s(_vm.desktopTopbarHeight)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "desktopTopbarHeightRange",
+                                      attrs: { min: 0, max: 150, step: 1 },
+                                      model: {
+                                        value: _vm.desktopTopbarHeight,
+                                        callback: function($$v) {
+                                          _vm.desktopTopbarHeight = $$v
+                                        },
+                                        expression: "desktopTopbarHeight"
+                                      }
+                                    })
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            )
-                          ])
+                              ])
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "va-row",
+                            { attrs: { gutter: 10 } },
+                            [
+                              _c("h3", [_vm._v("Mobile bar dimensions")]),
+                              _vm._v(" "),
+                              _c("hr"),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Sidebar width: " +
+                                        _vm._s(_vm.mobileSidebarWidth)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "mobileSidebarWidthRange",
+                                      attrs: { min: 0, max: 400, step: 1 },
+                                      model: {
+                                        value: _vm.mobileSidebarWidth,
+                                        callback: function($$v) {
+                                          _vm.mobileSidebarWidth = $$v
+                                        },
+                                        expression: "mobileSidebarWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Minibar width: " +
+                                        _vm._s(_vm.mobileMinibarWidth)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "mobileMinibarWidthRange",
+                                      attrs: { min: 0, max: 150, step: 1 },
+                                      model: {
+                                        value: _vm.mobileMinibarWidth,
+                                        callback: function($$v) {
+                                          _vm.mobileMinibarWidth = $$v
+                                        },
+                                        expression: "mobileMinibarWidth"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("va-column", { attrs: { xs: 4 } }, [
+                                _c(
+                                  "p",
+                                  [
+                                    _vm._v(
+                                      "\n                  Topbar height: " +
+                                        _vm._s(_vm.mobileTopbarHeight)
+                                    ),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("va-range", {
+                                      ref: "mobileTopbarHeightRange",
+                                      attrs: { min: 0, max: 150, step: 1 },
+                                      model: {
+                                        value: _vm.mobileTopbarHeight,
+                                        callback: function($$v) {
+                                          _vm.mobileTopbarHeight = $$v
+                                        },
+                                        expression: "mobileTopbarHeight"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ],
+                            1
+                          )
                         ],
                         1
                       ),
                       _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [
-                            _vm._v("Content margin and minimum width")
-                          ]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Desktop margin: " +
-                                    _vm._s(_vm.desktopMargin)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "desktopMarginRange",
-                                  attrs: { min: 0, max: 1000, step: 1 },
-                                  model: {
-                                    value: _vm.desktopMargin,
-                                    callback: function($$v) {
-                                      _vm.desktopMargin = $$v
-                                    },
-                                    expression: "desktopMargin"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Desktop minimum width: " +
-                                    _vm._s(_vm.desktopMinimumWidth)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "desktopMinimumWidthRange",
-                                  attrs: { min: 0, max: 1024, step: 1 },
-                                  model: {
-                                    value: _vm.desktopMinimumWidth,
-                                    callback: function($$v) {
-                                      _vm.desktopMinimumWidth = $$v
-                                    },
-                                    expression: "desktopMinimumWidth"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c("p", [
-                              _vm._v("\n                   \n                ")
+                      _c("va-tab", { attrs: { name: "Source" } }, [
+                        _c("code", [
+                          _c("pre", { staticClass: "back" }, [
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<template>")
+                            ]),
+                            _vm._v("\n  "),
+                            _c("span", { staticClass: "comment" }, [
+                              _vm._v(
+                                "<!-- https://vue-atlas.com/documentation/layoutmanager -->"
+                              )
+                            ]),
+                            _vm._v("\n  "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-layout-manager")
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("bg-color")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.bgColor) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("page-bg-color")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.pageBgColor) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("desktop-margin")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.desktopMargin) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("desktop-minimum-width")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v(
+                                '"' + _vm._s(_vm.desktopMinimumWidth) + '"'
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("desktop-sidebar-width")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v(
+                                '"' + _vm._s(_vm.desktopSidebarWidth) + '"'
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("desktop-minibar-width")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v(
+                                '"' + _vm._s(_vm.desktopMinibarWidth) + '"'
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("desktop-topbar-height")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v(
+                                '"' + _vm._s(_vm.desktopTopbarHeight) + '"'
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("mobile-sidebar-width")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.mobileSidebarWidth) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("mobile-minibar-width")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.mobileMinibarWidth) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("mobile-topbar-height")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.mobileTopbarHeight) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":rtl")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.rtl) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":reverse")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.reverse) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":split")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.split) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":sidebar-priority")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.sidebarPriority) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":minibar-priority")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.minibarPriority) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":topbar-priority")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.topbarPriority) + '"')
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":topbar-padded")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.topbarPadded) + '"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v("\n\n    "),
+                            _c("span", { staticClass: "comment" }, [
+                              _vm._v(
+                                "<!-- https://vue-atlas.com/documentation/topbar -->"
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-topbar")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("theme")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.topbarTheme) + '"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<div")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("slot")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"left"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v(" L "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</div>")
+                            ]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<div")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("slot")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"center"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v(" C "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</div>")
+                            ]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<div")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("slot")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"right"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v(" R "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</div>")
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</va-topbar>")
+                            ]),
+                            _vm._v("\n\n    "),
+                            _c("span", { staticClass: "comment" }, [
+                              _vm._v(
+                                "<!-- https://vue-atlas.com/documentation/minibar -->"
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-minibar")
+                            ]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":top-items")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v(
+                                "\"[{icon:'home'},{icon:'search'},{icon:'user'}]\""
+                              )
+                            ]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":bottom-items")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v("\"[{icon:'question'}]\"")
+                            ]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("theme")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.minibarTheme) + '"')
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "blue" }, [_vm._v("/>")]),
+                            _vm._v("\n\n    "),
+                            _c("span", { staticClass: "comment" }, [
+                              _vm._v(
+                                "<!-- https://vue-atlas.com/documentation/sidebar -->"
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-sidebar")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("theme")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.sidebarTheme) + '"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-sidebar-scrollarea>")
+                            ]),
+                            _vm._v("\n        "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-sidebar-group")
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":items")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v("\"[{name:'Item1'}]\"")
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("title")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"Category 1"')
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":show-toggle")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.showToggle) + '"')
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "blue" }, [_vm._v("/>")]),
+                            _vm._v("\n        "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-sidebar-group")
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":items")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v("\"[{name:'Item1'}]\"")
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("title")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"Category 2"')
+                            ]),
+                            _vm._v("\n          "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v(":show-toggle")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.showToggle) + '"')
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "blue" }, [_vm._v("/>")]),
+                            _vm._v("\n      "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</va-sidebar-scrollarea>")
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</va-sidebar>")
+                            ]),
+                            _vm._v("\n\n    "),
+                            _c("span", { staticClass: "comment" }, [
+                              _vm._v(
+                                "<!-- https://vue-atlas.com/documentation/page -->"
+                              )
+                            ]),
+                            _vm._v("\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("<va-page")
+                            ]),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "yellow" }, [
+                              _vm._v("size")
+                            ]),
+                            _vm._v("="),
+                            _c("span", { staticClass: "green" }, [
+                              _vm._v('"' + _vm._s(_vm.pageSize) + '"')
+                            ]),
+                            _c("span", { staticClass: "blue" }, [_vm._v(">")]),
+                            _vm._v("\n      Hello, world.\n    "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</va-page>")
+                            ]),
+                            _vm._v("\n\n  "),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</va-layout-manager>")
+                            ]),
+                            _vm._v("\n"),
+                            _c("span", { staticClass: "blue" }, [
+                              _vm._v("</template>")
                             ])
                           ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [_vm._v("Desktop bar dimensions")]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Sidebar width: " +
-                                    _vm._s(_vm.desktopSidebarWidth)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "desktopSidebarWidthRange",
-                                  attrs: { min: 0, max: 400, step: 1 },
-                                  model: {
-                                    value: _vm.desktopSidebarWidth,
-                                    callback: function($$v) {
-                                      _vm.desktopSidebarWidth = $$v
-                                    },
-                                    expression: "desktopSidebarWidth"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Minibar width: " +
-                                    _vm._s(_vm.desktopMinibarWidth)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "desktopMinibarWidthRange",
-                                  attrs: { min: 0, max: 150, step: 1 },
-                                  model: {
-                                    value: _vm.desktopMinibarWidth,
-                                    callback: function($$v) {
-                                      _vm.desktopMinibarWidth = $$v
-                                    },
-                                    expression: "desktopMinibarWidth"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Topbar height: " +
-                                    _vm._s(_vm.desktopTopbarHeight)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "desktopTopbarHeightRange",
-                                  attrs: { min: 0, max: 150, step: 1 },
-                                  model: {
-                                    value: _vm.desktopTopbarHeight,
-                                    callback: function($$v) {
-                                      _vm.desktopTopbarHeight = $$v
-                                    },
-                                    expression: "desktopTopbarHeight"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "va-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c("h3", [_vm._v("Mobile bar dimensions")]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Sidebar width: " +
-                                    _vm._s(_vm.mobileSidebarWidth)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "mobileSidebarWidthRange",
-                                  attrs: { min: 0, max: 400, step: 1 },
-                                  model: {
-                                    value: _vm.mobileSidebarWidth,
-                                    callback: function($$v) {
-                                      _vm.mobileSidebarWidth = $$v
-                                    },
-                                    expression: "mobileSidebarWidth"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Minibar width: " +
-                                    _vm._s(_vm.mobileMinibarWidth)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "mobileMinibarWidthRange",
-                                  attrs: { min: 0, max: 150, step: 1 },
-                                  model: {
-                                    value: _vm.mobileMinibarWidth,
-                                    callback: function($$v) {
-                                      _vm.mobileMinibarWidth = $$v
-                                    },
-                                    expression: "mobileMinibarWidth"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("va-column", { attrs: { xs: 4 } }, [
-                            _c(
-                              "p",
-                              [
-                                _vm._v(
-                                  "\n                  Topbar height: " +
-                                    _vm._s(_vm.mobileTopbarHeight)
-                                ),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("va-range", {
-                                  ref: "mobileTopbarHeightRange",
-                                  attrs: { min: 0, max: 150, step: 1 },
-                                  model: {
-                                    value: _vm.mobileTopbarHeight,
-                                    callback: function($$v) {
-                                      _vm.mobileTopbarHeight = $$v
-                                    },
-                                    expression: "mobileTopbarHeight"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ],
-                        1
-                      )
+                        ])
+                      ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("va-tab", { attrs: { name: "Source" } }, [
-                    _c("code", [
-                      _c(
-                        "pre",
-                        {
-                          staticStyle: {
-                            "font-size": "12px",
-                            "line-height": "14px"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            '<!-- https://vue-atlas.com/documentation/layoutmanager -->\n<va-layout-manager\n  bg-color="' +
-                              _vm._s(_vm.bgColor) +
-                              '"\n  page-bg-color="' +
-                              _vm._s(_vm.pageBgColor) +
-                              '"\n  desktop-margin="' +
-                              _vm._s(_vm.desktopMargin) +
-                              '"\n  desktop-minimum-width="' +
-                              _vm._s(_vm.desktopMinimumWidth) +
-                              '"\n  desktop-sidebar-width="' +
-                              _vm._s(_vm.desktopSidebarWidth) +
-                              '"\n  desktop-minibar-width="' +
-                              _vm._s(_vm.desktopMinibarWidth) +
-                              '"\n  desktop-topbar-height="' +
-                              _vm._s(_vm.desktopTopbarHeight) +
-                              '"\n  mobile-sidebar-width="' +
-                              _vm._s(_vm.mobileSidebarWidth) +
-                              '"\n  mobile-minibar-width="' +
-                              _vm._s(_vm.mobileMinibarWidth) +
-                              '"\n  mobile-topbar-height="' +
-                              _vm._s(_vm.mobileTopbarHeight) +
-                              '"\n  rtl="' +
-                              _vm._s(_vm.rtl) +
-                              '"\n  reverse="' +
-                              _vm._s(_vm.reverse) +
-                              '"\n  split="' +
-                              _vm._s(_vm.split) +
-                              '"\n  sidebar-priority="' +
-                              _vm._s(_vm.sidebarPriority) +
-                              '"\n  minibar-priority="' +
-                              _vm._s(_vm.minibarPriority) +
-                              '"\n  topbar-priority="' +
-                              _vm._s(_vm.topbarPriority) +
-                              '"\n  topbar-padded="' +
-                              _vm._s(_vm.topbarPadded) +
-                              '">\n\n  <!-- https://vue-atlas.com/documentation/topbar -->\n  <va-topbar theme="' +
-                              _vm._s(_vm.topbarTheme) +
-                              '">\n    <div slot="left">...</div>\n    <div slot="center">...</div>\n    <div slot="right">...</div>\n  </va-topbar>\n\n  <!-- https://vue-atlas.com/documentation/minibar -->\n  <va-minibar top-items="[{icon:\'user\'}]" bottom-items="[{icon:\'question\'}]" theme="' +
-                              _vm._s(_vm.minibarTheme) +
-                              '" />\n\n  <!-- https://vue-atlas.com/documentation/sidebar -->\n  <va-sidebar theme="' +
-                              _vm._s(_vm.sidebarTheme) +
-                              '">\n    <va-sidebar-scrollarea>\n      <va-sidebar-group items="[{name:\'Item1\'}]" title="Category 1" show-toggle="' +
-                              _vm._s(_vm.showToggle) +
-                              '" />\n      <va-sidebar-group items="[{name:\'Item1\'}]" title="Category 2" show-toggle="' +
-                              _vm._s(_vm.showToggle) +
-                              '" />\n    </va-sidebar-scrollarea>\n  </va-sidebar>\n\n  <!-- https://vue-atlas.com/documentation/page -->\n  <va-page size="' +
-                              _vm._s(_vm.pageSize) +
-                              '">\n    ...\n  <va-page>\n\n</va-layout-manager>'
-                          )
-                        ]
-                      )
-                    ])
-                  ])
+                  )
                 ],
                 1
               )
@@ -42816,7 +43244,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n            Close\n          ")]
+                  [_vm._v("\n          Close\n        ")]
                 )
               ],
               1
