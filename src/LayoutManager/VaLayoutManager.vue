@@ -104,6 +104,11 @@ export default {
       default: '#FFFFFF',
       required: false
     },
+    showToggle: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -125,6 +130,7 @@ export default {
     let dTopbarPadded = this.topbarPadded
     let dPageBgColor = this.pageBgColor
     let dReverse = this.reverse
+    let dShowToggle = this.showToggle
     let dBgColor = this.bgColor
     let dSplit = this.split
     let dRtl = this.rtl
@@ -153,7 +159,7 @@ export default {
       mTopbarTheme: 'blue',
       mReverse: dReverse,
       haveMinibar: false,
-      mShowToggle: false,
+      mShowToggle: dShowToggle,
       mBgColor: dBgColor,
       haveSidebar: false,
       haveTopbar: false,
@@ -239,6 +245,7 @@ export default {
     mTextLinks (val) {
       this.broadcastTextLinks(val)
     },
+    showToggle (val) { this.mShowToggle = val },
     mShowToggle (val) {
       this.broadcastShowToggle(val)
     },
@@ -298,18 +305,21 @@ export default {
       this.broadcast('VaMinibar', 'Va@sidebarWidthChange', val)
       this.broadcast('VaTopbar', 'Va@sidebarWidthChange', val)
       this.broadcast('VaPage', 'Va@sidebarWidthChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastMinibarWidth (val) {
       this.broadcast('VaSidebar', 'Va@minibarWidthChange', val)
       this.broadcast('VaMinibar', 'Va@minibarWidthChange', val)
       this.broadcast('VaTopbar', 'Va@minibarWidthChange', val)
       this.broadcast('VaPage', 'Va@minibarWidthChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastTopbarHeight (val) {
       this.broadcast('VaSidebar', 'Va@topbarHeightChange', val)
       this.broadcast('VaMinibar', 'Va@topbarHeightChange', val)
       this.broadcast('VaTopbar', 'Va@topbarHeightChange', val)
       this.broadcast('VaPage', 'Va@topbarHeightChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastIsMobile (val) {
       this.broadcast('VaSidebar', 'Va@sidebarIsMobile', val)
@@ -325,68 +335,82 @@ export default {
       this.broadcast('VaMinibar', 'Va@rtlChange', val)
       this.broadcast('VaTopbar', 'Va@rtlChange', val)
       this.broadcast('VaPage', 'Va@rtlChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastIsSplit (val) {
       this.broadcast('VaSidebar', 'Va@splitChange', val)
       this.broadcast('VaMinibar', 'Va@splitChange', val)
       this.broadcast('VaTopbar', 'Va@splitChange', val)
       this.broadcast('VaPage', 'Va@splitChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastCompact (val) {
       this.broadcast('VaSidebar', 'Va@compactChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastTextLinks (val) {
       this.broadcast('VaSidebar', 'Va@textLinksChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastShowToggle (val) {
       this.broadcast('VaSidebar', 'Va@showToggleChange', val)
       this.broadcast('VaSidebarGroupItem', 'Va@showToggleChange', val)
       this.broadcast('VaSidebarGroupLevel', 'Va@showToggleChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastBgColor (val) {
       /**
        * Nobody needs to know about BgColor.
        * Only relevant to this component.
        */
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastPageBgColor (val) {
       this.broadcast('VaPage', 'Va@pageBgColorChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastIsReverse (val) {
       this.broadcast('VaSidebar', 'Va@reverseChange', val)
       this.broadcast('VaMinibar', 'Va@reverseChange', val)
       this.broadcast('VaTopbar', 'Va@reverseChange', val)
       this.broadcast('VaPage', 'Va@reverseChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastSidebarPriority (val) {
       this.broadcast('VaSidebar', 'Va@sidebarPriorityChange', val)
       this.broadcast('VaMinibar', 'Va@sidebarPriorityChange', val)
       this.broadcast('VaTopbar', 'Va@sidebarPriorityChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastMinibarPriority (val) {
       this.broadcast('VaSidebar', 'Va@minibarPriorityChange', val)
       this.broadcast('VaMinibar', 'Va@minibarPriorityChange', val)
       this.broadcast('VaTopbar', 'Va@minibarPriorityChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastTopbarPriority (val) {
       this.broadcast('VaSidebar', 'Va@topbarPriorityChange', val)
       this.broadcast('VaMinibar', 'Va@topbarPriorityChange', val)
       this.broadcast('VaTopbar', 'Va@topbarPriorityChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastTopbarPadded (val) {
       this.broadcast('VaTopbar', 'Va@topbarPaddedChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastDesktopMargin (val) {
       this.broadcast('VaSidebar', 'Va@desktopMarginChange', val)
       this.broadcast('VaMinibar', 'Va@desktopMarginChange', val)
       this.broadcast('VaTopbar', 'Va@desktopMarginChange', val)
       this.broadcast('VaPage', 'Va@desktopMarginChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastDesktopMinimumWidth (val) {
       this.broadcast('VaSidebar', 'Va@desktopMinimumWidthChange', val)
       this.broadcast('VaMinibar', 'Va@desktopMinimumWidthChange', val)
       this.broadcast('VaTopbar', 'Va@desktopMinimumWidthChange', val)
       this.broadcast('VaPage', 'Va@desktopMinimumWidthChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastAllowMarginUpdates (val) {
     },
@@ -404,15 +428,19 @@ export default {
     },
     broadcastPageSize (val) {
       this.broadcast('VaPage', 'Va@pageSizeChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastTopbarTheme (val) {
       this.broadcast('VaTopbar', 'Va@topbarThemeChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastSidebarTheme (val) {
       this.broadcast('VaSidebar', 'Va@sidebarThemeChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     broadcastMinibarTheme (val) {
       this.broadcast('VaMinibar', 'Va@minibarThemeChange', val)
+      this.broadcastDefaultsToConfig(0)
     },
     checkForPresenceOfTopbar () {
       this.broadcast('VaTopbar', 'Va@topbarPresenceCheck', true)
@@ -450,12 +478,12 @@ export default {
        * LayoutManager.
        */
       this.$on('Va@configDesktopTopbarHeightChange', (val) => { this.mDesktopTopbarHeight = val })
-      this.$on('Va@configDesktopMinibarWidthChange', (val) => { this.mDesktopMinibarWidth = val })
-      this.$on('Va@configDesktopMinimumWidthChange', (val) => { this.mDesktopMinimumWidth = val })
       this.$on('Va@configDesktopSidebarWidthChange', (val) => { this.mDesktopSidebarWidth = val })
+      this.$on('Va@configDesktopMinimumWidthChange', (val) => { this.mDesktopMinimumWidth = val })
+      this.$on('Va@configDesktopMinibarWidthChange', (val) => { this.mDesktopMinibarWidth = val })
       this.$on('Va@configMobileTopbarHeightChange', (val) => { this.mMobileTopbarHeight = val })
-      this.$on('Va@configMobileSidebarWidth', (val) => { this.mMobileSidebarWidth = val })
-      this.$on('Va@configMobileMinibarWidth', (val) => { this.mMobileMinibarWidth = val })
+      this.$on('Va@configMobileSidebarWidthChange', (val) => { this.mMobileSidebarWidth = val })
+      this.$on('Va@configMobileMinibarWidthChange', (val) => { this.mMobileMinibarWidth = val })
       this.$on('Va@configSidebarPriorityChange', (val) => { this.mSidebarPriority = val })
       this.$on('Va@configMinibarPriorityChange', (val) => { this.mMinibarPriority = val })
       this.$on('Va@configTopbarPriorityChange', (val) => { this.mTopbarPriority = val })
@@ -466,22 +494,22 @@ export default {
       this.$on('Va@configTopbarThemeChange', (val) => { this.mTopbarTheme = val })
       this.$on('Va@configPageBgColorChange', (val) => { this.mPageBgColor = val })
       this.$on('Va@configShowToggleChange', (val) => { this.mShowToggle = val })
+      this.$on('Va@configTextLinksChange', (val) => { this.mTextLinks = val })
       this.$on('Va@configPageSizeChange', (val) => { this.mPageSize = val })
       this.$on('Va@configCompactChange', (val) => { this.mCompact = val })
       this.$on('Va@configReverseChange', (val) => { this.mReverse = val })
       this.$on('Va@configBgColorChange', (val) => { this.mBgColor = val })
       this.$on('Va@configSplitChange', (val) => { this.mSplit = val })
       this.$on('Va@configRtlChange', (val) => { this.mRtl = val })
-      this.$on('Va@configTextLinksChange', (val) => { this.mTextLinks = val })
     },
-    broadcastDefaultsToConfig () {
+    broadcastDefaultsToConfig (delay = 100) {
       setTimeout(() => {
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopTopbarHeight', this.mDesktopTopbarHeight)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinibarWidth', this.mDesktopMinibarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', this.mDesktopMinimumWidth)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopSidebarWidth', this.mDesktopSidebarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', this.mMobileSidebarWidth)
+        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', this.mDesktopMinimumWidth)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileMinibarWidth', this.mMobileMinibarWidth)
+        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', this.mMobileSidebarWidth)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileTopbarHeight', this.mMobileTopbarHeight)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarPriority', this.mSidebarPriority)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarPriority', this.mMinibarPriority)
@@ -493,14 +521,14 @@ export default {
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarTheme', this.mTopbarTheme)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageBgColor', this.mPageBgColor)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveShowToggle', this.mShowToggle)
+        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', this.mTextLinks)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', this.mPageSize)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', this.mCompact)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', this.mReverse)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', this.mTextLinks)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', this.mBgColor)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', this.mSplit)
         this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', this.mRtl)
-      }, 100)
+      }, delay)
     }
   },
   mounted () {
