@@ -4,8 +4,10 @@
  * Modified for use with vue-atlas
  */
 import { insertMetadataToItems, generateLevel } from './core'
+import events from '../utils/events'
 
 const VaSidebarGroup = {
+  mixins: [events],
   props: {
     items: {
       type: Array,
@@ -41,6 +43,16 @@ const VaSidebarGroup = {
 
       return false
     }
+  },
+  watch: {
+    showToggle (val) {
+      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val)
+    }
+  },
+  mounted () {
+    setTimeout(() => {
+      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', this.showToggle)
+    }, 10)
   },
   render (createElement) {
     let {prefixCls, title} = this
