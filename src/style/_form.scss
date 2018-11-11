@@ -31,7 +31,7 @@
 
 @mixin baseInputStyle () {
   align-items: center;
-  background-color: $N10;
+  background: $N10;
   color: $N900;
   display: block;
   width: 100%;
@@ -39,6 +39,16 @@
   border-style: solid;
   border-width: 2px;
   transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  // ::-webkit-datetime-edit { padding: 1em; }
+  // ::-webkit-datetime-edit-fields-wrapper { background: silver; }
+  // ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
+  // ::-webkit-datetime-edit-month-field { color: blue; }
+  // ::-webkit-datetime-edit-day-field { color: green; }
+  // ::-webkit-datetime-edit-year-field { color: purple; }
+  // ::-webkit-inner-spin-button { display: none; }
+  // ::-webkit-calendar-picker-indicator { background: orange; }
+
   &:focus {
     border-color: $B100;
     outline: none;
@@ -61,6 +71,16 @@
       cursor: default;
     }
   }
+}
+
+input[type="date"].#{$prefix-cls}-form-control,
+input[type="time"].#{$prefix-cls}-form-control  {
+  /**
+  For some reason, if this is anything other than 'transparent',
+  then iOS adopts a real ugly white>gray gradient, with an arrow
+  to the right to indicate that this is a dropdown. WHY?
+  */
+  background: transparent;
 }
 
 .#{$prefix-cls}-input-sm {

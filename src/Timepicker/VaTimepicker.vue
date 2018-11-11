@@ -1,6 +1,7 @@
 <template>
   <div :class="`${prefixCls}-timepicker`">
     <va-input
+      v-if="!isMobile"
       :width="width"
       :name="name"
       :rules="rules"
@@ -13,6 +14,19 @@
       :show-clean="true"
       icon="clock"
       icon-style="regular"
+      v-model="currentValue">
+    </va-input>
+    <va-input
+      v-if="isMobile"
+      :width="width"
+      :name="name"
+      :rules="rules"
+      :placeholder="placeholder"
+      :custom-validate="customValidate"
+      :disabled="disabled"
+      :readonly="readonly"
+      :show-clean="true"
+      type="time"
       v-model="currentValue">
     </va-input>
     <transition name="fadeDown">
@@ -86,6 +100,7 @@ export default {
   },
   data () {
     return {
+      isMobile: false,
       show: false,
       time: {
         hour: 0,
@@ -191,6 +206,13 @@ export default {
   },
   created () {
     this._format(this.currentValue)
+    this.$on('Va@timepickerIsMobile', (val) => { this.isMobile = val })
+
+    /**
+     * In case this component is instantiated after the LayoutManager
+     * has initially broadcasted isMobile, let's request it.
+     */
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
   },
   mounted () {
     this._closeEvent = EventListener.listen(window, 'click', (e) => {

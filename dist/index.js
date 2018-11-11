@@ -17506,6 +17506,20 @@ function transformArguments(arg) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17558,6 +17572,7 @@ function transformArguments(arg) {
   },
   data: function data() {
     return {
+      isMobile: false,
       show: false,
       time: {
         hour: 0,
@@ -17666,13 +17681,24 @@ function transformArguments(arg) {
     }
   },
   created: function created() {
-    this._format(this.currentValue);
-  },
-  mounted: function mounted() {
     var _this2 = this;
 
+    this._format(this.currentValue);
+    this.$on('Va@timepickerIsMobile', function (val) {
+      _this2.isMobile = val;
+    });
+
+    /**
+     * In case this component is instantiated after the LayoutManager
+     * has initially broadcasted isMobile, let's request it.
+     */
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
     this._closeEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(window, 'click', function (e) {
-      if (!_this2.$el.contains(e.target)) _this2.close();
+      if (!_this3.$el.contains(e.target)) _this3.close();
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -17689,6 +17715,20 @@ function transformArguments(arg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_format__ = __webpack_require__(413);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -17869,6 +17909,7 @@ function transformArguments(arg) {
       currentValue = null;
     }
     return {
+      isMobile: false,
       currentValue: currentValue,
       currMonth: 0,
       currYear: 0,
@@ -18159,14 +18200,25 @@ function transformArguments(arg) {
     }
   },
   created: function created() {
+    var _this = this;
+
     this.today = this.stringify(new Date());
+    this.$on('Va@datepickerIsMobile', function (val) {
+      _this.isMobile = val;
+    });
+
+    /**
+     * In case this component is instantiated after the LayoutManager
+     * has initially broadcasted isMobile, let's request it.
+     */
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     this.currDate = this.parse(this.currentValue) || this.parse(new Date());
     this._closeEvent = __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__["a" /* default */].listen(window, 'click', function (e) {
-      if (!_this.$el.contains(e.target)) _this.close();
+      if (!_this2.$el.contains(e.target)) _this2.close();
     });
   },
   beforeDestroy: function beforeDestroy() {
@@ -30719,6 +30771,8 @@ function transformArguments(arg) {
       this.broadcast('VaRange', 'Va@rangeIsMobile', val);
       this.broadcast('VaMobile', 'Va@mobileIsMobile', val);
       this.broadcast('VaDesktop', 'Va@desktopIsMobile', val);
+      this.broadcast('VaDatepicker', 'Va@datepickerIsMobile', val);
+      this.broadcast('VaTimepicker', 'Va@timepickerIsMobile', val);
     },
     broadcastIsRTL: function broadcastIsRTL(val) {
       this.broadcast('VaSidebar', 'Va@rtlChange', val);
@@ -39535,33 +39589,58 @@ var render = function() {
     "div",
     { class: _vm.prefixCls + "-timepicker" },
     [
-      _c("va-input", {
-        attrs: {
-          width: _vm.width,
-          name: _vm.name,
-          rules: _vm.rules,
-          placeholder: _vm.placeholder,
-          "custom-validate": _vm.customValidate,
-          disabled: _vm.disabled,
-          readonly: _vm.readonly,
-          "show-clean": true,
-          icon: "clock",
-          "icon-style": "regular"
-        },
-        on: { clean: _vm.clean },
-        nativeOn: {
-          click: function($event) {
-            return _vm.inputClick($event)
-          }
-        },
-        model: {
-          value: _vm.currentValue,
-          callback: function($$v) {
-            _vm.currentValue = $$v
-          },
-          expression: "currentValue"
-        }
-      }),
+      !_vm.isMobile
+        ? _c("va-input", {
+            attrs: {
+              width: _vm.width,
+              name: _vm.name,
+              rules: _vm.rules,
+              placeholder: _vm.placeholder,
+              "custom-validate": _vm.customValidate,
+              disabled: _vm.disabled,
+              readonly: _vm.readonly,
+              "show-clean": true,
+              icon: "clock",
+              "icon-style": "regular"
+            },
+            on: { clean: _vm.clean },
+            nativeOn: {
+              click: function($event) {
+                return _vm.inputClick($event)
+              }
+            },
+            model: {
+              value: _vm.currentValue,
+              callback: function($$v) {
+                _vm.currentValue = $$v
+              },
+              expression: "currentValue"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isMobile
+        ? _c("va-input", {
+            attrs: {
+              width: _vm.width,
+              name: _vm.name,
+              rules: _vm.rules,
+              placeholder: _vm.placeholder,
+              "custom-validate": _vm.customValidate,
+              disabled: _vm.disabled,
+              readonly: _vm.readonly,
+              "show-clean": true,
+              type: "time"
+            },
+            model: {
+              value: _vm.currentValue,
+              callback: function($$v) {
+                _vm.currentValue = $$v
+              },
+              expression: "currentValue"
+            }
+          })
+        : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fadeDown" } }, [
         _c(
@@ -40071,32 +40150,56 @@ var render = function() {
     "div",
     { class: _vm.prefixCls + "-datepicker" },
     [
-      _c("va-input", {
-        attrs: {
-          width: _vm.width,
-          name: _vm.name,
-          rules: _vm.rules,
-          placeholder: _vm.placeholder,
-          "custom-validate": _vm.customValidate,
-          disabled: _vm.disabled,
-          readonly: _vm.readonly,
-          "show-clean": true,
-          icon: "calendar-alt"
-        },
-        on: { clean: _vm.clean },
-        nativeOn: {
-          click: function($event) {
-            return _vm.inputClick($event)
-          }
-        },
-        model: {
-          value: _vm.currentValue,
-          callback: function($$v) {
-            _vm.currentValue = $$v
-          },
-          expression: "currentValue"
-        }
-      }),
+      !_vm.isMobile
+        ? _c("va-input", {
+            attrs: {
+              width: _vm.width,
+              name: _vm.name,
+              rules: _vm.rules,
+              placeholder: _vm.placeholder,
+              "custom-validate": _vm.customValidate,
+              disabled: _vm.disabled,
+              readonly: _vm.readonly,
+              "show-clean": true,
+              icon: "calendar-alt"
+            },
+            on: { clean: _vm.clean },
+            nativeOn: {
+              click: function($event) {
+                return _vm.inputClick($event)
+              }
+            },
+            model: {
+              value: _vm.currentValue,
+              callback: function($$v) {
+                _vm.currentValue = $$v
+              },
+              expression: "currentValue"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isMobile
+        ? _c("va-input", {
+            attrs: {
+              width: _vm.width,
+              name: _vm.name,
+              placeholder: _vm.placeholder,
+              disabled: _vm.disabled,
+              "custom-validate": _vm.customValidate,
+              readonly: false,
+              "show-clean": false,
+              type: "time"
+            },
+            model: {
+              value: _vm.currentValue,
+              callback: function($$v) {
+                _vm.currentValue = $$v
+              },
+              expression: "currentValue"
+            }
+          })
+        : _vm._e(),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fadeDown" } }, [
         _c(

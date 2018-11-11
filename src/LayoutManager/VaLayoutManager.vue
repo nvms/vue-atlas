@@ -329,6 +329,8 @@ export default {
       this.broadcast('VaRange', 'Va@rangeIsMobile', val)
       this.broadcast('VaMobile', 'Va@mobileIsMobile', val)
       this.broadcast('VaDesktop', 'Va@desktopIsMobile', val)
+      this.broadcast('VaDatepicker', 'Va@datepickerIsMobile', val)
+      this.broadcast('VaTimepicker', 'Va@timepickerIsMobile', val)
     },
     broadcastIsRTL (val) {
       this.broadcast('VaSidebar', 'Va@rtlChange', val)

@@ -2,6 +2,7 @@
   <div :class="`${prefixCls}-datepicker`">
 
     <va-input
+      v-if="!isMobile"
       :width="width"
       :name="name"
       :rules="rules"
@@ -13,6 +14,19 @@
       icon="calendar-alt"
       @clean="clean"
       @click.native="inputClick"
+      v-model="currentValue">
+    </va-input>
+
+    <va-input
+      v-if="isMobile"
+      :width="width"
+      :name="name"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :custom-validate="customValidate"
+      :readonly="false"
+      :show-clean="false"
+      type="time"
       v-model="currentValue">
     </va-input>
 
@@ -178,6 +192,7 @@ export default {
       currentValue = null
     }
     return {
+      isMobile: false,
       currentValue,
       currMonth: 0,
       currYear: 0,
@@ -487,6 +502,13 @@ export default {
   },
   created () {
     this.today = this.stringify(new Date())
+    this.$on('Va@datepickerIsMobile', (val) => { this.isMobile = val })
+
+    /**
+     * In case this component is instantiated after the LayoutManager
+     * has initially broadcasted isMobile, let's request it.
+     */
+    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
   },
   mounted () {
     this.currDate = this.parse(this.currentValue) || this.parse(new Date())
