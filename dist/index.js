@@ -6172,7 +6172,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       stl['height'] = 'calc(100% - ' + th + 'px)';
 
       // If past mobile breakpoint - set overflow to auto so that scrolling is more natural
-      stl['overflow'] = 'auto';
+      stl['overflow'] = 'scroll';
       // Otherwise... don't.
       // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
