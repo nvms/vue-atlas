@@ -2,7 +2,7 @@
   <div :class="`${prefixCls}-datepicker`">
 
     <va-input
-      v-if="!isMobile"
+      v-if="!isMobile || !isDateSupported"
       :width="width"
       :name="name"
       :rules="rules"
@@ -18,15 +18,16 @@
     </va-input>
 
     <va-input
-      v-if="isMobile"
+      v-if="isMobile && isDateSupported"
       :width="width"
       :name="name"
+      :rules="rules"
       :placeholder="placeholder"
       :disabled="disabled"
       :custom-validate="customValidate"
       :readonly="false"
       :show-clean="false"
-      type="time"
+      type="date"
       v-model="currentValue">
     </va-input>
 
@@ -154,10 +155,11 @@ import EventListener from '../utils/EventListener'
 import inputMixin from '../Mixin/inputMixin'
 import localeMixin from '../Mixin/localeMixin'
 import format from '../utils/format'
+import events from '../utils/events'
 
 export default {
   name: 'VaDatepicker',
-  mixins: [inputMixin, localeMixin('VaDatepicker')],
+  mixins: [inputMixin, localeMixin('VaDatepicker'), events],
   props: {
     value: {
       type: String
@@ -509,6 +511,15 @@ export default {
      * has initially broadcasted isMobile, let's request it.
      */
     this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
+  },
+  computed: {
+    isDateSupported () {
+      let input = document.createElement('input')
+      let value = 'a'
+      input.setAttribute('type', 'date')
+      input.setAttribute('value', value)
+      return (input.value !== value)
+    }
   },
   mounted () {
     this.currDate = this.parse(this.currentValue) || this.parse(new Date())

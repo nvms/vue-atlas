@@ -52,10 +52,11 @@
 import EventListener from '../utils/EventListener'
 import inputMixin from '../Mixin/inputMixin'
 import localeMixin from '../Mixin/localeMixin'
+import events from '../utils/events'
 
 export default {
   name: 'VaTimepicker',
-  mixins: [inputMixin, localeMixin('VaTimepicker')],
+  mixins: [inputMixin, localeMixin('VaTimepicker'), events],
   props: {
     value: {
       type: String
