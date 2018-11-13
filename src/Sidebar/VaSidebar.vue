@@ -21,20 +21,24 @@ export default {
       default: false,
       required: false
     },
+    /**
+    * The theme validator is being removed to allow you to
+    * create and use your own themes.
+    */
     theme: {
       type: String,
       default: 'default',
-      required: false,
-      validator (v) {
-        return [
-          'default',
-          'white',
-          'blue',
-          'dark',
-          'darker',
-          'purple'
-        ]
-      }
+      required: false
+      // validator (v) {
+      //   return [
+      //     'default',
+      //     'white',
+      //     'blue',
+      //     'dark',
+      //     'darker',
+      //     'purple'
+      //   ]
+      // }
     },
     showToggle: {
       type: Boolean,

@@ -119,7 +119,8 @@ export default {
       stl['height'] = 'calc(100% - ' + th + 'px)'
 
       // If past mobile breakpoint - set overflow to auto so that scrolling is more natural
-      stl['overflow'] = 'scroll'
+      stl['overflow-y'] = 'scroll'
+      stl['overflow-x'] = 'auto'
       // Otherwise... don't.
       // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'

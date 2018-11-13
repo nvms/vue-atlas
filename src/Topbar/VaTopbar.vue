@@ -21,20 +21,24 @@ export default {
   name: 'VaTopbar',
   mixins: [events],
   props: {
+    /**
+    * The theme validator is being removed to allow you to
+    * create and use your own themes.
+    */
     theme: {
       type: String,
       default: 'blue',
-      required: false,
-      validator (v) {
-        return [
-          'default',
-          'white',
-          'blue',
-          'dark',
-          'darker',
-          'purple'
-        ]
-      }
+      required: false
+      // validator (v) {
+      //   return [
+      //     'default',
+      //     'white',
+      //     'blue',
+      //     'dark',
+      //     'darker',
+      //     'purple'
+      //   ]
+      // }
     },
     prefixCls: {
       type: String,
