@@ -6172,7 +6172,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
       stl['height'] = 'calc(100% - ' + th + 'px)';
 
       // If past mobile breakpoint - set overflow to auto so that scrolling is more natural
-      stl['overflow'] = 'scroll';
+      stl['overflow-y'] = 'scroll';
+      stl['overflow-x'] = 'auto';
       // Otherwise... don't.
       // stl['overflow'] = 'auto'
       // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
@@ -8949,13 +8950,24 @@ if (false) {(function () {
   name: 'VaTopbar',
   mixins: [__WEBPACK_IMPORTED_MODULE_0__utils_events__["a" /* default */]],
   props: {
+    /**
+    * The theme validator is being removed to allow you to
+    * create and use your own themes.
+    */
     theme: {
       type: String,
       default: 'blue',
-      required: false,
-      validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'];
-      }
+      required: false
+      // validator (v) {
+      //   return [
+      //     'default',
+      //     'white',
+      //     'blue',
+      //     'dark',
+      //     'darker',
+      //     'purple'
+      //   ]
+      // }
     },
     prefixCls: {
       type: String,
@@ -9513,13 +9525,24 @@ if (false) {(function () {
       type: Array,
       required: false
     },
+    /**
+    * The theme validator is being removed to allow you to
+    * create and use your own themes.
+    */
     theme: {
       type: String,
       default: 'blue',
-      required: false,
-      validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'].includes(v);
-      }
+      required: false
+      // validator (v) {
+      //   return [
+      //     'default',
+      //     'white',
+      //     'blue',
+      //     'dark',
+      //     'darker',
+      //     'purple'
+      //   ].includes(v)
+      // }
     },
     prefixCls: {
       type: String,
@@ -9874,13 +9897,24 @@ if (false) {(function () {
       default: false,
       required: false
     },
+    /**
+    * The theme validator is being removed to allow you to
+    * create and use your own themes.
+    */
     theme: {
       type: String,
       default: 'default',
-      required: false,
-      validator: function validator(v) {
-        return ['default', 'white', 'blue', 'dark', 'darker', 'purple'];
-      }
+      required: false
+      // validator (v) {
+      //   return [
+      //     'default',
+      //     'white',
+      //     'blue',
+      //     'dark',
+      //     'darker',
+      //     'purple'
+      //   ]
+      // }
     },
     showToggle: {
       type: Boolean,
@@ -17470,6 +17504,7 @@ function transformArguments(arg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_EventListener__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_events__ = __webpack_require__(2);
 //
 //
 //
@@ -17520,6 +17555,7 @@ function transformArguments(arg) {
 //
 //
 //
+
 
 
 
@@ -17527,7 +17563,7 @@ function transformArguments(arg) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaTimepicker',
-  mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__["a" /* default */])('VaTimepicker')],
+  mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__["a" /* default */])('VaTimepicker'), __WEBPACK_IMPORTED_MODULE_3__utils_events__["a" /* default */]],
   props: {
     value: {
       type: String
@@ -17715,6 +17751,7 @@ function transformArguments(arg) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_format__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_events__ = __webpack_require__(2);
 //
 //
 //
@@ -17866,6 +17903,8 @@ function transformArguments(arg) {
 //
 //
 //
+//
+
 
 
 
@@ -17874,7 +17913,7 @@ function transformArguments(arg) {
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'VaDatepicker',
-  mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__["a" /* default */])('VaDatepicker')],
+  mixins: [__WEBPACK_IMPORTED_MODULE_1__Mixin_inputMixin__["a" /* default */], Object(__WEBPACK_IMPORTED_MODULE_2__Mixin_localeMixin__["a" /* default */])('VaDatepicker'), __WEBPACK_IMPORTED_MODULE_4__utils_events__["a" /* default */]],
   props: {
     value: {
       type: String
@@ -18212,6 +18251,16 @@ function transformArguments(arg) {
      * has initially broadcasted isMobile, let's request it.
      */
     this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+  },
+
+  computed: {
+    isDateSupported: function isDateSupported() {
+      var input = document.createElement('input');
+      var value = 'a';
+      input.setAttribute('type', 'date');
+      input.setAttribute('value', value);
+      return input.value !== value;
+    }
   },
   mounted: function mounted() {
     var _this2 = this;
@@ -40150,7 +40199,7 @@ var render = function() {
     "div",
     { class: _vm.prefixCls + "-datepicker" },
     [
-      !_vm.isMobile
+      !_vm.isMobile || !_vm.isDateSupported
         ? _c("va-input", {
             attrs: {
               width: _vm.width,
@@ -40179,17 +40228,18 @@ var render = function() {
           })
         : _vm._e(),
       _vm._v(" "),
-      _vm.isMobile
+      _vm.isMobile && _vm.isDateSupported
         ? _c("va-input", {
             attrs: {
               width: _vm.width,
               name: _vm.name,
+              rules: _vm.rules,
               placeholder: _vm.placeholder,
               disabled: _vm.disabled,
               "custom-validate": _vm.customValidate,
               readonly: false,
               "show-clean": false,
-              type: "time"
+              type: "date"
             },
             model: {
               value: _vm.currentValue,
@@ -43340,6 +43390,32 @@ var render = function() {
                 _c(
                   "va-button",
                   {
+                    attrs: { type: "default" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.localStorageClear($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Clear localStorage")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "va-button",
+                  {
+                    attrs: { type: "default" },
+                    nativeOn: {
+                      click: function($event) {
+                        return _vm.localStorageSave($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Save values to localStorage")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "va-button",
+                  {
                     attrs: { type: "primary" },
                     nativeOn: {
                       click: function($event) {
@@ -43347,7 +43423,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("\n          Close\n        ")]
+                  [_vm._v("Close")]
                 )
               ],
               1
