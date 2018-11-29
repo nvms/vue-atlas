@@ -23,7 +23,7 @@
     </div>
 
     <div :class="`${prefixCls}-page-header-bottom-wrapper`">
-      <slot name="bottom"></slot>
+      <slot name="bottom">&nbsp;</slot>
       <div :class="`${prefixCls}-page-header-actions-wrapper`">
         <slot name="actions"></slot>
       </div>
