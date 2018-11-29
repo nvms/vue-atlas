@@ -81,6 +81,21 @@ p {
   line-height: 24px;
 }
 
+.#{$prefix-cls}-sidebar {
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    text-decoration: none !important;
+  }
+  a:hover,
+  a:link:hover,
+  a:active:hover,
+  a:visited:hover {
+    text-decoration: none !important;
+  }
+}
+
 a:not(.#{$prefix-cls}-btn),
 a:active:not(.#{$prefix-cls}-btn),
 a:link:not(.#{$prefix-cls}-btn),
@@ -89,9 +104,17 @@ a:visited:not(.#{$prefix-cls}-btn) {
   text-decoration: none;
 }
 
-a:hover {
+a:hover:not(.#{$prefix-cls}-btn),
+a:link:hover:not(.#{$prefix-cls}-btn) {
   text-decoration: underline;
-  color: lighten($B400, 15%);
+  // color: lighten($B400, 15%);
+  color: $B300;
+}
+
+a:active:not(.#{$prefix-cls}-btn),
+a:link:active:not(.#{$prefix-cls}-btn) {
+  color: $B500;
+  text-decoration: none;
 }
 
 a:active {

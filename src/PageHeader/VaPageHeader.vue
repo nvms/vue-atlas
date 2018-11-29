@@ -14,9 +14,6 @@
         </h1>
       </div>
 
-      <div :class="`${prefixCls}-page-header-actions-wrapper`">
-        <slot name="actions"></slot>
-      </div>
     </div>
 
     <div :class="`${prefixCls}-page-header-subtitle-container`">
@@ -27,6 +24,9 @@
 
     <div :class="`${prefixCls}-page-header-bottom-wrapper`">
       <slot name="bottom"></slot>
+      <div :class="`${prefixCls}-page-header-actions-wrapper`">
+        <slot name="actions"></slot>
+      </div>
     </div>
 
   </div>

@@ -9,7 +9,7 @@
     align-items: flex-start;
     justify-content: space-between;
     // margin-bottom: 24px;
-    margin-top: 10px;
+    margin-top: 9px;
   }
 
   &-title-container {
@@ -37,7 +37,7 @@
       font-size: 1.25em;
       font-style: inherit;
       letter-spacing: -0.01em;
-      line-height: 32px;
+      line-height: 26px;
       margin-top: 0;
     }
   }
@@ -61,7 +61,9 @@
 
   /* BOTTOM BAR */
   &-bottom-wrapper {
-    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
     & > div {
       display: flex;
       flex-direction: row;

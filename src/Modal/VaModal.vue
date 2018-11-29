@@ -142,8 +142,53 @@ export default {
 
         let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
         this.numberOfParentModals = x.length
+
+        /**
+         * If any parent modals do exist, then let's stack them in a
+         * nicely fashion, by moving each over to the left a bit.
+         */
+        let distanceToMove = 30
+        if (this.numberOfParentModals > 0) {
+          for (let i = 0; i < this.numberOfParentModals; i++) {
+            let currentMarginLeft = x[i].style['margin-left']
+            if (currentMarginLeft && currentMarginLeft !== '0px') {
+              /**
+               * If this modal already has a margin-left applied,
+               * then we must have hit it already. If that's the case,
+               * then we simply double the value by whatever it
+               * already is.
+               */
+              // Slice 'px' off from the end.
+              let m = currentMarginLeft.slice(0, -2)
+              x[i].style['margin-left'] = (m * 2) + 'px'
+            } else {
+              /**
+               * If the modal does not already have a margin-left,
+               * then we just move it over by whatever value looks nice.
+               * 30 looks nice.
+               */
+              x[i].style['margin-left'] = (distanceToMove * -1) + 'px'
+              // x[i].style['opacity'] = '0%'
+            }
+          }
+        }
       } else {
         this.$emit('hide', { type: 'hide' })
+
+        let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
+        this.numberOfParentModals = x.length
+        let distanceToMove = 30
+        if (this.numberOfParentModals > 0) {
+          for (let i = 0; i < this.numberOfParentModals; i++) {
+            let currentMarginLeft = x[i].style['margin-left']
+            if (currentMarginLeft && currentMarginLeft !== '0px') {
+              let m = currentMarginLeft.slice(0, -2)
+              x[i].style['margin-left'] = (m - distanceToMove * -1) + 'px'
+            } else {
+              //
+            }
+          }
+        }
       }
 
       const el = this.$el

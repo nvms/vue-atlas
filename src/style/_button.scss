@@ -145,15 +145,17 @@ $lgBorderRadius: $borderRadius;
   }
 
   &-default {
-    @include btn-type($bgCol: $N20,
+    /* bgCol was $N20 */
+    /* bgColHover was $N30 */
+    @include btn-type($bgCol: rgba(9, 30, 66, 0.04),
       $fontCol: $N400,
-      $bgColHover: $N30,
+      $bgColHover: rgba(9, 30, 66, 0.08),
       $fontColHover: $N400,
       $bgColActive: $B50,
       $fontColActive: $B400,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($B100, 0.6);
+    @include button-focus-mixin($B100, 1);
   }
 
   &-primary {
@@ -211,7 +213,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($P100, 0.6);
+    @include button-focus-mixin($P100, 1);
   }
 
   &-purple-dark {
@@ -223,7 +225,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N0,
       $badgeBgCol: $N20,
       $badgeFontCol: $N400);
-    @include button-focus-mixin($P300, 0.6);
+    @include button-focus-mixin($P300, 1);
   }
 
   &-paleblue {
@@ -295,16 +297,16 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $B400,
       $badgeBgCol: $N50,
       $badgeFontCol: $N500);
-    @include button-focus-mixin($B200, 0.6);
+    @include button-focus-mixin($B200, 1);
   }
 
   &-link {
     @include btn-type($bgCol: transparent,
-      $fontCol: $B300,
+      $fontCol: $B400,
       $bgColHover: transparent,
-      $fontColHover: $B200,
+      $fontColHover: $B300,
       $bgColActive: transparent,
-      $fontColActive: $B400,
+      $fontColActive: $B500,
       $badgeBgCol: $N50,
       $badgeFontCol: $N500);
 
@@ -317,7 +319,7 @@ $lgBorderRadius: $borderRadius;
       text-decoration: none;
     }
 
-    @include button-focus-mixin($B200, 0.6);
+    @include button-focus-mixin($B200, 1);
   }
 
   &-subtle-link {
@@ -339,7 +341,7 @@ $lgBorderRadius: $borderRadius;
       text-decoration: none;
     }
 
-    @include button-focus-mixin($B200, 0.6);
+    @include button-focus-mixin($B200, 1);
   }
 
   &-dark {
@@ -351,7 +353,7 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N200,
       $badgeBgCol: $N500,
       $badgeFontCol: $N200);
-    @include button-focus-mixin($N100, 0.6);
+    @include button-focus-mixin($N100, 1);
   }
 
   &-darker {
@@ -363,18 +365,18 @@ $lgBorderRadius: $borderRadius;
       $fontColActive: $N200,
       $badgeBgCol: $N500,
       $badgeFontCol: $N200);
-    @include button-focus-mixin($N100, 0.6);
+    @include button-focus-mixin($N100, 1);
   }
 
   &-active {
     @include btn-type($bgCol: $N500,
-      $fontCol: $N40,
+      $fontCol: $N0,
       $bgColHover: $N600,
-      $fontColHover: $N40,
+      $fontColHover: $N0,
       $bgColActive: $N700,
-      $fontColActive: $N40,
+      $fontColActive: $N0,
       $badgeBgCol: $N700,
-      $badgeFontCol: $N40);
+      $badgeFontCol: $N0);
   }
 }
 
