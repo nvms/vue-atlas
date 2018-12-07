@@ -256,7 +256,10 @@
         <span class="yellow">theme</span>=<span class="green">"{{minibarTheme}}"</span> <span class="blue">/&gt;</span>
 
       <span class="comment">&lt;!-- https://vue-atlas.com/documentation/sidebar --&gt;</span>
-      <span class="blue">&lt;va-sidebar</span> <span class="yellow">theme</span>=<span class="green">"{{sidebarTheme}}"</span><span class="blue">&gt;</span>
+      <span class="blue">&lt;va-sidebar</span>
+        <span class="yellow">theme</span>=<span class="green">"{{sidebarTheme}}"</span>
+        <span class="yellow">:compact</span>=<span class="green">"{{compact}}"</span>
+        <span class="yellow">:text-links</span>=<span class="green">"{{textLinks}}"</span><span class="blue">&gt;</span>
         <span class="blue">&lt;va-sidebar-scrollarea&gt;</span>
           <span class="blue">&lt;va-sidebar-group</span>
             <span class="yellow">:items</span>=<span class="green">"[{name:'Item1'}]"</span>
@@ -271,7 +274,11 @@
 
       <span class="comment">&lt;!-- https://vue-atlas.com/documentation/page --&gt;</span>
       <span class="blue">&lt;va-page</span> <span class="yellow">size</span>=<span class="green">"{{pageSize}}"</span><span class="blue">&gt;</span>
-        Hello, world.
+        <span class="blue">&lt;transition&gt;</span>
+          <span class="blue">&lt;router-view&gt;</span>
+            ...
+          <span class="blue">&lt;/router-view&gt;</span>
+        <span class="blue">&lt;/transition&gt;</span>
       <span class="blue">&lt;/va-page&gt;</span>
 
     <span class="blue">&lt;/va-layout-manager&gt;</span>
