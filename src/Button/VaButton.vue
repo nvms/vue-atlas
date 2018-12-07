@@ -1,5 +1,5 @@
 <template>
-  <a :class="classObj" ref="btn" tabindex="0" v-on:keyup.enter="enterPressed">
+  <a :class="classObj" :style="styleObj" ref="btn" tabindex="0" v-on:keyup.enter="enterPressed">
     <div :class="fadeclassObj">
       <slot />
       <va-badge v-if="badge" :margin="badgeMargin">{{badge}}</va-badge>
@@ -102,6 +102,11 @@ export default {
       default: false,
       required: false
     },
+    tall: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -175,6 +180,17 @@ export default {
       loadingSpinner ? klass[prefixCls + '-btn-text-fade-out'] = true : ''
 
       return klass
+    },
+    styleObj () {
+      let {tall} = this
+      let style = {}
+
+      if (tall) {
+        style['height'] = '100%'
+        style['border-radius'] = '0px'
+      }
+
+      return style
     }
   },
   watch: {

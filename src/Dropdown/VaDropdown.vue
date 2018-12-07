@@ -52,6 +52,11 @@ export default {
       required: false,
       note: 'The effect to use.'
     },
+    tall: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -84,10 +89,11 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
+      let {prefixCls, tall} = this
       let klass = {}
 
       klass[prefixCls + '-dropdown-selected'] = this.isShow
+      klass[prefixCls + '-dropdown-con-tall'] = tall
 
       return klass
     }

@@ -611,3 +611,13 @@ All sizes defined here.
 //   }
 // }
 
+.#{$prefix-cls}-btn {
+  > div {
+    > a {
+      cursor: default;
+      &:hover {
+        text-decoration: none !important;
+      }
+    }
+  }
+}
