@@ -23,7 +23,7 @@ npm install vue-atlas --save-dev
 ``` javascript
 import Vue from 'vue'
 import Va from 'vue-atlas'
-import 'vue-atlas/dist/index.min.css'
+import 'vue-atlas/dist/vue-atlas.css'
 
 Vue.use(Va, 'en')
 ```
