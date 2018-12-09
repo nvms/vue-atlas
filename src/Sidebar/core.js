@@ -22,8 +22,7 @@ export const generateLevel = (
   items,
   level,
   defaultOpenLevel,
-  showToggle,
-  toggleType
+  showToggle
 ) => {
   const children = []
 
