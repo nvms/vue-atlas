@@ -180,27 +180,27 @@ export default {
       this.setAndBroadcastDimensions()
     },
     desktopSidebarWidth (val) { this.mDesktopSidebarWidth = val },
-    mDesktopSidebarWidth (val) {
+    mDesktopSidebarWidth () {
       this.setAndBroadcastDimensions()
     },
     desktopMinibarWidth (val) { this.mDesktopMinibarWidth = val },
-    mDesktopMinibarWidth (val) {
+    mDesktopMinibarWidth () {
       this.setAndBroadcastDimensions()
     },
     desktopTopbarHeight (val) { this.mDesktopTopbarHeight = val },
-    mDesktopTopbarHeight (val) {
+    mDesktopTopbarHeight () {
       this.setAndBroadcastDimensions()
     },
     mobileSidebarWidth (val) { this.mMobileSidebarWidth = val },
-    mMobileSidebarWidth (val) {
+    mMobileSidebarWidth () {
       this.setAndBroadcastDimensions()
     },
     mobileMinibarWidth (val) { this.mMobileMinibarWidth = val },
-    mMobileMinibarWidth (val) {
+    mMobileMinibarWidth () {
       this.setAndBroadcastDimensions()
     },
     mobileTopbarHeight (val) { this.mMobileTopbarHeight = val },
-    mMobileTopbarHeight (val) {
+    mMobileTopbarHeight () {
       this.setAndBroadcastDimensions()
     },
     rtl (val) { this.mRtl = val },
@@ -360,7 +360,7 @@ export default {
       this.broadcast('VaSidebarGroupLevel', 'Va@showToggleChange', val)
       this.broadcastDefaultsToConfig(0)
     },
-    broadcastBgColor (val) {
+    broadcastBgColor () {
       /**
        * Nobody needs to know about BgColor.
        * Only relevant to this component.
@@ -414,7 +414,7 @@ export default {
       this.broadcast('VaPage', 'Va@desktopMinimumWidthChange', val)
       this.broadcastDefaultsToConfig(0)
     },
-    broadcastAllowMarginUpdates (val) {
+    broadcastAllowMarginUpdates () {
     },
     broadcastWindowWidth (val) {
       this.broadcast('VaSidebar', 'Va@windowWidthChange', val)
