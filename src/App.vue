@@ -7,10 +7,10 @@
     desktop-minimum-width="0"
     desktop-sidebar-width="200"
     desktop-minibar-width="0"
-    desktop-topbar-height="42"
+    desktop-topbar-height="48"
     mobile-sidebar-width="0"
     mobile-minibar-width="0"
-    mobile-topbar-height="42"
+    mobile-topbar-height="48"
     :rtl="false"
     :reverse="false"
     :split="false"
@@ -65,29 +65,27 @@
 
     <!-- https://vue-atlas.com/documentation/minibar -->
     <va-minibar
-      :top-items="[{icon:'home'},{icon:'search'},{icon:'user'}]"
+      :top-items="[{icon:'vuejs',brand:true,iconStyle:'brands',size:'22px'},{icon:'search'},{icon:'user'}]"
       :bottom-items="[{icon:'question'}]"
-      theme="purple" />
+      theme="blue" />
 
     <!-- https://vue-atlas.com/documentation/sidebar -->
     <va-sidebar theme="default" compact>
         <va-sidebar-header>
           <router-link :to="'/'">
             <va-button block>
-              <va-icon type="align-left" size="1.25em" color="#fff" bg-color="rgb(234, 192, 72)" margin="0 10px 0 0" padding="14px 14px 12px"></va-icon>
+              <va-icon type="align-left" size="1.25em" color="#fff" bg-color="rgb(72, 128, 234)" margin="0 10px 0 0" padding="14px 14px 12px"></va-icon>
               Application
             </va-button>
           </router-link>
         </va-sidebar-header>
       <va-sidebar-scrollarea>
         <va-sidebar-group
-          :items="[{name:'Item1'}]"
-          title="Category 1"
-          :show-toggle="true" />
+          :items="[{name:'Item1'},{name:'Item2'},{name:'Item3'},{name:'Item4'}]"
+          title="Group 1" />
         <va-sidebar-group
-          :items="[{name:'Item1'}]"
-          title="Category 2"
-          :show-toggle="true" />
+          :items="groupTwoItems"
+          title="Group 2" />
       </va-sidebar-scrollarea>
     </va-sidebar>
 
@@ -103,7 +101,7 @@
       </div>
       
       <div slot="title">
-        <span>Page title</span>
+        <span>Page header</span>
       </div>
 
       <div slot="subtitle">
@@ -121,25 +119,29 @@
       </div>
 
       <div slot="bottom">
-        <va-input placeholder="Filter"></va-input>
+        <va-input
+          placeholder="Filter (change me)"
+          buttons
+          :loading="loading"
+          @confirm="doSomething"
+          @cancel="dontDoSomething"
+          v-model="inputText">
+        </va-input>
         <va-select placeholder="Additional filters">
           <va-option value="1">Filter 1</va-option>
           <va-option value="2">Filter 2</va-option>
         </va-select>
+        <va-button @click.native="showStackedOne">Modal</va-button>
       </div>
       
     </va-page-header>
 
     <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo commodi illum similique quisquam expedita quae quaerat reprehenderit debitis, pariatur deserunt?
+      Culture vanquish the impossible a billion trillion decipherment network of wormholes from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
     </p>
 
     <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequatur, odit. Ipsa harum aperiam reiciendis cupiditate quia quam aut mollitia quo sit dolorum consequuntur voluptate non quis excepturi optio modi, officiis corporis doloremque, vitae porro quasi odio, eum nihil? Omnis magni praesentium, officia sequi assumenda corrupti eos architecto autem minus magnam veniam quidem consequuntur, deserunt nihil odio. Eos optio facere, omnis rerum neque fugit aliquam autem, doloremque commodi dicta quae maxime sunt accusamus explicabo vel officia architecto reprehenderit quos soluta! Doloremque blanditiis, officiis praesentium necessitatibus velit, perspiciatis sit iure deleniti possimus quod repellat, asperiores rem ad a voluptas pariatur dicta! Nisi aspernatur dolores iure expedita nam eius, repellendus quas ab. Molestiae corporis quas, quos repellat ea repellendus vel sed aspernatur aperiam!
-    </p>
-
-    <p>
-      <va-button @click.native="showStackedOne">Open modal one</va-button>
+      Cambrian explosion science citizens of distant epochs encyclopaedia galactica brain is the seed of intelligence rich in mystery. Rings of Uranus made in the interiors of collapsing stars hundreds of thousands astonishment from which we spring laws of physics? The ash of stellar alchemy a very small stage in a vast cosmic arena network of wormholes another world concept of the number one the only home we've ever known and billions upon billions upon billions upon billions upon billions upon billions upon billions.
     </p>
 
     </va-page>
@@ -175,10 +177,36 @@ export default {
     name: 'app',
     data () {
         return {
-
+          inputText: '',
+          loading: false,
+          groupTwoItems: [
+            {
+              icon: 'user',
+              name: 'Account'
+            },
+            {
+              icon: 'inbox',
+              name: 'Messages'
+            },
+            {
+              icon: 'cog',
+              name: 'Settings'
+            }
+          ]
         }
     },
     methods: {
+      doSomething () {
+        this.loading = true
+        console.log('Doing something with the value: ', this.inputText)
+        setTimeout(() => {
+          this.loading = false
+          console.log('Finished doing something. Setting loading to false so that the input operations buttons know to disappear.')
+        }, 1000)
+      },
+      dontDoSomething () {
+        console.log('Cancelling')
+      },
       showStackedOne () {
         this.$refs.stackedOne.open()
       },
