@@ -21,24 +21,10 @@ export default {
   name: 'VaTopbar',
   mixins: [events],
   props: {
-    /**
-    * The theme validator is being removed to allow you to
-    * create and use your own themes.
-    */
     theme: {
       type: String,
       default: 'blue',
       required: false
-      // validator (v) {
-      //   return [
-      //     'default',
-      //     'white',
-      //     'blue',
-      //     'dark',
-      //     'darker',
-      //     'purple'
-      //   ]
-      // }
     },
     prefixCls: {
       type: String,
@@ -76,7 +62,7 @@ export default {
     }, 10)
   },
   created () {
-    this.$on('Va@topbarPresenceCheck', (val) => { this.dispatch('VaLayoutManager', 'Va@topbarPresenceReply', true) })
+    this.$on('Va@topbarPresenceCheck', () => { this.dispatch('VaLayoutManager', 'Va@topbarPresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@minibarWidthChange', (val) => { this.currentMinibarWidth = val })
