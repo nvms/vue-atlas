@@ -8,36 +8,37 @@ import VaIcon from './Icon/VaIcon.vue'
 import VaPage from './Page/VaPage.vue'
 import VaTabs from './Tabs/VaTabs.vue'
 import VaCard from './Card/VaCard.vue'
-import VaTable from './Table/VaTable.vue'
 import VaRange from './Range/VaRange.vue'
 import VaAside from './Aside/VaAside.vue'
 import VaAffix from './Affix/VaAffix.vue'
-import VaAlert from './Alert/VaAlert.vue'
+import VaTable from './Table/VaTable.vue'
 import VaModal from './Modal/VaModal.vue'
 import VaBadge from './Badge/VaBadge.vue'
 import VaRadio from './Radio/VaRadio.vue'
 import VaInput from './Input/VaInput.vue'
+import VaAlert from './Alert/VaAlert.vue'
+import VaOption from './Select/VaOption.vue'
 import VaSelect from './Select/VaSelect.vue'
 import VaTopbar from './Topbar/VaTopbar.vue'
 import VaMobile from './Mobile/VaMobile.vue'
 import VaButton from './Button/VaButton.vue'
 import VaColumn from './Layout/VaColumn.vue'
-import VaOption from './Select/VaOption.vue'
 import VaFormItem from './Form/VaFormItem.vue'
+import VaInputOps from './Input/VaInputOps.vue'
+import VaRadioBtn from './Radio/VaRadioBtn.vue'
 import VaMinibar from './Sidebar/VaMinibar.vue'
 import VaLoading from './Loading/VaLoading.vue'
 import VaTooltip from './Tooltip/VaTooltip.vue'
-import VaSidebar from './Sidebar/VaSidebar.vue'
-import VaLozenge from './Lozenge/VaLozenge.vue'
-import VaRadioBtn from './Radio/VaRadioBtn.vue'
 import VaDesktop from './Desktop/VaDesktop.vue'
-import VaCheckbox from './Checkbox/VaCheckbox.vue'
-import VaContainer from './Layout/VaContainer.vue'
+import VaLozenge from './Lozenge/VaLozenge.vue'
+import VaSidebar from './Sidebar/VaSidebar.vue'
 import VaDropdown from './Dropdown/VaDropdown.vue'
+import VaContainer from './Layout/VaContainer.vue'
 import VaTextarea from './Textarea/VaTextarea.vue'
+import VaCheckbox from './Checkbox/VaCheckbox.vue'
 import VaRadioGroup from './Radio/VaRadioGroup.vue'
-import VaModalMethod from './Modal/VaModalMethod.js'
 import VaToastMethod from './Toast/VaToastMethod.js'
+import VaModalMethod from './Modal/VaModalMethod.js'
 import VaTypeahead from './Typeahead/VaTypeahead.vue'
 import VaSidebarGroup from './Sidebar/VaSidebarGroup'
 import VaAnimQueue from './AnimQueue/VaAnimQueue.vue'
@@ -91,27 +92,28 @@ const Components = {
   VaColumn,
   VaOption,
   VaLozenge,
-  VaMinibar,
-  VaTooltip,
   VaLoading,
   VaSidebar,
   VaDesktop,
-  VaDropdown,
+  VaTooltip,
+  VaMinibar,
   VaTextarea,
-  VaFormItem,
+  VaInputOps,
   VaRadioBtn,
   VaCheckbox,
-  VaAnimQueue,
+  VaDropdown,
+  VaFormItem,
   VaContainer,
   VaTypeahead,
-  VaDatepicker,
+  VaAnimQueue,
   VaBreadcrumb,
   VaPageHeader,
   VaTimepicker,
   VaRadioGroup,
-  VaPlaceholder,
+  VaDatepicker,
   VaButtonGroup,
   VaCheckboxBtn,
+  VaPlaceholder,
   VaColorPicker,
   VaMinibarItem,
   VaSidebarGroup,
