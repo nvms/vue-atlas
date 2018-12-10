@@ -66,6 +66,8 @@ import VaPlaceholderImage from './Placeholder/VaPlaceholderImage.vue'
 import VaProgressTracker from './ProgressTracker/VaProgressTracker.vue'
 import VaPlaceholderHeading from './Placeholder/VaPlaceholderHeading.vue'
 import VaLayoutManagerConfig from './LayoutManager/VaLayoutManagerConfig.vue'
+import VaNotification from './Notification/VaNotification.vue'
+import VaNotificationMethod from './Notification/VaNotificationMethod.js'
 
 const Components = {
   // VaToast,
@@ -131,7 +133,8 @@ const Components = {
   VaSidebarGroupTitle,
   VaPlaceholderHeading,
   VaSidebarGroupToggle,
-  VaLayoutManagerConfig
+  VaLayoutManagerConfig,
+  VaNotification
 }
 
 const install = function (Vue, locale) {
@@ -142,6 +145,7 @@ const install = function (Vue, locale) {
   Vue.directive('VaPosition', position)
   Vue.prototype.VaToast = VaToastMethod
   Vue.prototype.VaModal = VaModalMethod
+  Vue.prototype.VaNotification = VaNotificationMethod
   Vue.prototype.VaLocale = locale || 'en'
   window.VaLocale = locale || 'en'
 }

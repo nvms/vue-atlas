@@ -47,6 +47,12 @@
     padding-left: 32px;
     min-width: 0%;
     flex-shrink: 0;
+
+    & > div {
+      & > * {
+        margin-left: 6px;
+      }
+    }
   }
 
   /* BREADCRUMBS */

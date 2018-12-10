@@ -118,7 +118,7 @@ export default {
         style['background'] = 'none !important'
       }
 
-      let topMargin = parseInt(numberOfParentModals) * 20
+      let topMargin = parseInt(numberOfParentModals) * 10
       style['padding-top'] = topMargin + 'px'
 
       return style
@@ -137,9 +137,11 @@ export default {
   },
   watch: {
     isShow (val) {
+     /**
+       * Stackable logic
+       */
       if (val) {
         this.$emit('show', { type: 'show' })
-
         let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
         this.numberOfParentModals = x.length
 
@@ -147,7 +149,7 @@ export default {
          * If any parent modals do exist, then let's stack them in a
          * nicely fashion, by moving each over to the left a bit.
          */
-        let distanceToMove = 30
+        let distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
             let currentMarginLeft = x[i].style['margin-left']
@@ -159,16 +161,15 @@ export default {
                * already is.
                */
               // Slice 'px' off from the end.
-              let m = currentMarginLeft.slice(0, -2)
-              x[i].style['margin-left'] = (m * 2) + 'px'
+              let m = Math.abs(currentMarginLeft.slice(0, -2))
+              let dist = parseInt(m + distanceToMove)
+              x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               /**
                * If the modal does not already have a margin-left,
-               * then we just move it over by whatever value looks nice.
-               * 30 looks nice.
+               * then we just move it over by distanceToMove.
                */
               x[i].style['margin-left'] = (distanceToMove * -1) + 'px'
-              // x[i].style['opacity'] = '0%'
             }
           }
         }
@@ -177,13 +178,14 @@ export default {
 
         let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
         this.numberOfParentModals = x.length
-        let distanceToMove = 30
+        let distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
             let currentMarginLeft = x[i].style['margin-left']
             if (currentMarginLeft && currentMarginLeft !== '0px') {
-              let m = currentMarginLeft.slice(0, -2)
-              x[i].style['margin-left'] = (m - distanceToMove * -1) + 'px'
+              let m = Math.abs(currentMarginLeft.slice(0, -2))
+              let dist = parseInt(m - distanceToMove)
+              x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               //
             }
@@ -191,6 +193,9 @@ export default {
         }
       }
 
+      /**
+       * Classes
+       */
       const el = this.$el
       const body = document.body
       const scrollBarWidth = getScrollBarWidth()

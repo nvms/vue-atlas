@@ -144,6 +144,10 @@
       Cambrian explosion science citizens of distant epochs encyclopaedia galactica brain is the seed of intelligence rich in mystery. Rings of Uranus made in the interiors of collapsing stars hundreds of thousands astonishment from which we spring laws of physics? The ash of stellar alchemy a very small stage in a vast cosmic arena network of wormholes another world concept of the number one the only home we've ever known and billions upon billions upon billions upon billions upon billions upon billions upon billions.
     </p>
 
+    <p>
+      <va-button @click.native="showNotification">Show notification</va-button>
+    </p>
+
     </va-page>
 
     <va-modal title="Modal One" ref="stackedOne">
@@ -195,7 +199,20 @@ export default {
           ]
         }
     },
+    mounted () {
+    },
     methods: {
+      showNotification () {
+        this.VaNotification.open({
+          title: `Change default MySQL password to something other than 'root'`,
+          message: `For security reasons, make sure you change the password of the MySQL
+          user 'root' to something other than 'root' when you publish this application.<br/>
+          <br/>
+          <br/>
+          <a href='#'>Instructions</a>`,
+          type: 'warning'
+        })
+      },
       doSomething () {
         this.loading = true
         console.log('Doing something with the value: ', this.inputText)

@@ -73,6 +73,9 @@
   }
   &-footer {
     text-align: right;
+    .#{$prefix-cls}-btn {
+      margin-left: 5px;
+    }
   }
   /*fade*
   &-fade &-dialog {
