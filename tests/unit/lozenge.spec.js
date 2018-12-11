@@ -2,22 +2,18 @@ import { mount } from '@vue/test-utils'
 import VaLozenge from '@/Lozenge/VaLozenge.vue'
 
 describe('VaLozenge.vue', () => {
+
   it('renders correctly', () => {
     const wrapper = mount(VaLozenge)
     expect(wrapper.element).toMatchSnapshot()
   })
 
-})
-
-describe('VaLozenge.vue', () => {
   it('renders a span', () => {
     const wrapper = mount(VaLozenge)
     expect(wrapper.contains('span')).toBe(true)
   })
-})
 
-describe('VaLozenge.vue', () => {
-  it('prop is type primary', () => {
+  it('accepts "primary" as prop "type"', () => {
     const wrapper = mount(VaLozenge, {
       propsData: {
         type: 'primary'
@@ -25,9 +21,7 @@ describe('VaLozenge.vue', () => {
     })
     expect(wrapper.props().type).toBe('primary')
   })
-})
 
-describe('VaLozenge.vue', () => {
   it('prop type of primary results in va-lozenge-primary class', () => {
     const wrapper = mount(VaLozenge, {
       propsData: {
@@ -36,9 +30,7 @@ describe('VaLozenge.vue', () => {
     })
     expect(wrapper.classes()).toContain('va-lozenge-primary')
   })
-})
 
-describe('VaLozenge.vue', () => {
   it('values passed to slots should render correctly', () => {
     const wrapper = mount(VaLozenge, {
       slots: {
@@ -47,4 +39,5 @@ describe('VaLozenge.vue', () => {
     })
     expect(wrapper.find('span').text()).toBe('Hello')
   })
+
 })
