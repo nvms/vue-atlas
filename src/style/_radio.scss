@@ -34,11 +34,12 @@
     display: inline-block;
     width: 16px;
     height: 16px;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
     border-radius: 14px;
-    border-color: rgba(9, 30, 66, 0.25);
-    background-color: $N40;
+    border-color: #DFE1E6;
+    background-color: #FAFBFC;
+    transition: all 0.3s;
     @include radio-focus-mixin($B200, 0.6);
   }
   &:active {
@@ -62,7 +63,7 @@
   &:hover {
     .#{$prefix-cls}-radio-span:not(.#{$prefix-cls}-radio-checked) {
       .#{$prefix-cls}-radio-inner {
-        background-color: #C3C7CF;
+        background-color: #EBECF0;
       }
     }
   }
@@ -95,8 +96,8 @@
     position: absolute;
     width: 4px;
     height: 4px;
-    left: (14px - 4px)/2;
-    top: (14px - 4px)/2;
+    left: 4px;
+    top: 4px;
     border-radius: 6px;
     display: table;
     border-top: 0;
