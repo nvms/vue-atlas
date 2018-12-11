@@ -145,6 +145,22 @@
     </p>
 
     <p>
+      <va-checkbox-group v-model="foods">
+        <va-checkbox label="pizza">Pizza</va-checkbox>
+        <va-checkbox label="tacos" checked>Tacos</va-checkbox>
+        <va-checkbox label="fries">Fries</va-checkbox>
+      </va-checkbox-group>
+    </p>
+
+    <p>
+      <va-radio-group v-model="foods">
+        <va-radio label="pizza">Pizza</va-radio>
+        <va-radio label="tacos" checked>Tacos</va-radio>
+        <va-radio label="fries">Fries</va-radio>
+      </va-radio-group>
+    </p>
+
+    <p>
       <va-button @click.native="showNotification">Show notification</va-button>
     </p>
 
@@ -182,6 +198,7 @@ export default {
     data () {
         return {
           inputText: '',
+          foods: ['tacos'],
           loading: false,
           groupTwoItems: [
             {

@@ -63,11 +63,10 @@
 .#{$prefix-cls}-checkbox-inner {
   position: relative;
   top: 0;
-  margin-top: 1px;
   left: 0;
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 17px;
+  height: 17px;
   border-width: 2px;
   border-style: solid;
   border-radius: 3px;
@@ -78,8 +77,8 @@
     color: #FAFBFC;
     font-size: 9px !important;
     position: relative;
-    top: -4px;
-    left: 1px;
+    top: -2px;
+    left: 2px;
     transition: all 0.3s;
   }
   @include checkbox-focus-mixin($B200, 0.6);

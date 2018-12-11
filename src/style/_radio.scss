@@ -31,8 +31,8 @@
     top: 0;
     left: 0;
     display: inline-block;
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-width: 1px;
     border-style: solid;
     border-radius: 14px;
@@ -94,8 +94,8 @@
     position: absolute;
     width: 4px;
     height: 4px;
-    left: (14px - 4px)/2-1;
-    top: (14px - 4px)/2-1;
+    left: (14px - 4px)/2;
+    top: (14px - 4px)/2;
     border-radius: 6px;
     display: table;
     border-top: 0;
