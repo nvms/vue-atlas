@@ -1,6 +1,5 @@
 <template>
   <div>
-    needToSave: {{needToSave}}
     <div ref="popup" v-show="show" :style="styleObj" :class="classObj">
       <va-button
         :loading="loading"
