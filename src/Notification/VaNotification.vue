@@ -13,7 +13,7 @@
           <div :class="`${prefixCls}-notification-content-inner-${type}-right`">
             <div :class="`${prefixCls}-notification-content-inner-${type}-right-close`">
               <va-button type="subtle" @click.native="close">
-                <va-icon type="times" size="20px"></va-icon>
+                <va-icon type="times" size="14px"></va-icon>
               </va-button>
             </div>
             <div :class="`${prefixCls}-notification-content-inner-${type}-right-title`">
