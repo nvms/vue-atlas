@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaButton.vue renders correctly 1`] = `
+<a
+  class="va-btn va-btn-md va-btn-default"
+  tabindex="0"
+>
+  <div
+    class="va-btn-text-fade"
+  >
+     
+    <!---->
+  </div>
+   
+  <!---->
+</a>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaLozenge.vue renders correctly 1`] = `
+<span
+  class="va-lozenge va-lozenge-default"
+/>
+`;
