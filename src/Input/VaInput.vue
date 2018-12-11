@@ -197,6 +197,9 @@ export default {
     update (val) {
       this.$emit('input', val)
       this.$emit('change', val)
+      if (this.buttons) {
+        this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue)
+      }
     },
     blur () {
       this.focused = false

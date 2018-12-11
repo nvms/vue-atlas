@@ -1,5 +1,6 @@
 <template>
   <div>
+    needToSave: {{needToSave}}
     <div ref="popup" v-show="show" :style="styleObj" :class="classObj">
       <va-button
         :loading="loading"
@@ -63,6 +64,13 @@ export default {
     this.$on('Va@inputLoading', (val) => {
       this.loading = val
     })
+    this.$on('Va@inputUpdate', (val) => {
+      if (val === this.initialValue) {
+        this.needToSave = false
+      } else {
+        this.needToSave = true
+      }
+    })
   },
   mounted () {
     const $body = document.querySelector('body')
@@ -75,7 +83,6 @@ export default {
   methods: {
     confirm () {
       this.$emit('confirm')
-      this.needToSave = false
       this.dispatch('VaInput', 'Va@inputOpsConfirm', true)
     },
     cancel () {
@@ -125,6 +132,7 @@ export default {
     loading (val) {
       if (val === false && this.show === true) {
         this.show = false
+        this.needToSave = false
       }
     }
   }
