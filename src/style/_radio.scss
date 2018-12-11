@@ -13,7 +13,8 @@
   -ms-user-select: none;
   user-select: none;
   .#{$prefix-cls}-label {
-    margin-left: 7px;
+    margin-left: 8px;
+    outline: none;
   }
   &:hover {
     cursor: default;
