@@ -72,6 +72,9 @@
 }
 
 .#{$prefix-cls}-input-ops {
+  position: absolute;
+  z-index: 99999;
+  background: #FFFFFF;
   .#{$prefix-cls}-btn {
     box-shadow: 0 4px 8px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
   }
