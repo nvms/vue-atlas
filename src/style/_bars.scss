@@ -6,6 +6,17 @@
   align-items: center;
   overflow: hidden;
 
+  &-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   @media only screen and (max-width: 1024px) {
     &-mobile-friendly {
       position: fixed;
@@ -49,8 +60,9 @@
     justify-content: space-around;
     border-radius: 50%;
     cursor: default;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
     padding: 0;
     line-height: 1;
 
@@ -178,7 +190,7 @@
       white-space: nowrap;
       margin-top: 3px;
       margin-bottom: 10px;
-      margin-left: 10px;
+      margin-left: 22px;
     }
   }
 }

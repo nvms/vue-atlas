@@ -1,28 +1,32 @@
 <template>
   <div :class="classObj" :style="styleObj">
 
-    <div :class="`${prefixCls}-minibar-top`">
+    <div :class="`${prefixCls}-minibar-inner`" :style="styleObjInner">
+      
+      <div :class="`${prefixCls}-minibar-top`">
 
-      <div v-for="(item, index) in topItems" :key="index">
-        <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
-          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
-        </va-minibar-item>
-        <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
-        </va-minibar-item>
+        <div v-for="(item, index) in topItems" :key="index">
+          <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
+            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          </va-minibar-item>
+          <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
+            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          </va-minibar-item>
+        </div>
+
       </div>
 
-    </div>
+      <div :class="`${prefixCls}-minibar-bottom`">
 
-    <div :class="`${prefixCls}-minibar-bottom`">
+        <div v-for="(item, index) in bottomItems" :key="index">
+          <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
+            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          </va-minibar-item>
+          <va-minibar-item v-else :tooltip="item.tooltip">
+            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          </va-minibar-item>
+        </div>
 
-      <div v-for="(item, index) in bottomItems" :key="index">
-        <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
-        </va-minibar-item>
-        <va-minibar-item v-else :tooltip="item.tooltip">
-          <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
-        </va-minibar-item>
       </div>
 
     </div>
@@ -118,6 +122,13 @@ export default {
       klass[prefixCls + '-minibar--theme-' + th] = true
 
       return klass
+    },
+    styleObjInner () {
+      let style = {}
+
+      // style['background'] = 'linear-gradient(to left, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.15) 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0) 40px)'
+
+      return style
     },
     styleObj () {
       let dmw = parseInt(this.currentDesktopMinimumWidth)
