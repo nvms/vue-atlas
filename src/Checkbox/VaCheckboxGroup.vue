@@ -20,7 +20,7 @@ export default {
   mixins: [validationMixin, events],
   props: {
     value: {
-      type: Array,
+      type: [Array, String],
       default () {
         return []
       }
