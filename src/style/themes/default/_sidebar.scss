@@ -1,7 +1,7 @@
 .#{$prefix-cls}-sidebar--theme-default {
   @include sidebar-theme-mixin(
     $mainBG: $N20,
-    $groupTitleColor: $N600,
+    $groupTitleColor: $N300,
     $headerColor: $N400,
     $headerBG: transparent,
     $headerHoverBG: $N30,
