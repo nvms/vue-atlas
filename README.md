@@ -54,7 +54,7 @@ Vue.use(VaDropdown)
 
 Please visit the documentation page linked above for more detailed examples of each component.
 
-### Contributors
+## Contributors
 
 Thanks to those of you who have taken an interest in this project and decided to make contributions.
 
