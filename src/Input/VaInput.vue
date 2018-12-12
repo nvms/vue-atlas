@@ -143,12 +143,9 @@ export default {
     }
   },
   created () {
-    this.$on('Va@inputOpsCancel', (val) => {
-      this.currentValue = val
-    })
-    this.$on('Va@inputOpsConfirm', (val) => {
-
-    })
+    this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
+    this.$on('Va@inputOpsConfirm', (val) => { })
+    this.$on('Va@inputOpsBlur', (val) => { this.focused = false })
   },
   mounted () {
     if (this.buttons && this.loading === undefined) {
@@ -187,6 +184,9 @@ export default {
   watch: {
     loading (val) {
       this.broadcast('VaInputOps', 'Va@inputLoading', val)
+    },
+    currentValue (val) {
+      this.broadcast('VaInputOps', 'Va@inputCurrentValueUpdate', val)
     }
   },
   methods: {
@@ -217,10 +217,9 @@ export default {
       }
     },
     enterPressed () {
-      let el = this.$refs.input
-      let evObj = document.createEvent('Events')
-      evObj.initEvent('click', true, false)
-      el.dispatchEvent(evObj)
+      if (this.buttons) {
+        this.broadcast('VaInputOps', 'Va@inputEnterPressed', this.currentValue)
+      }
     },
     getPosition () {
       let rect = this.$refs.input.getBoundingClientRect()

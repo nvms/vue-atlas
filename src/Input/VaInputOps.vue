@@ -2,13 +2,15 @@
   <div>
     <div ref="popup" v-show="show" :style="styleObj" :class="classObj">
       <va-button
+        ref="confirmButton"
         :loading="loading"
         type="default"
-        @click.native="confirm"
+        @click.native="confirmClicked"
         style="margin-right: 3px;">
         <va-icon type="check" size="10px"></va-icon>
       </va-button>
       <va-button
+        ref="cancelButton"
         type="default"
         @click.native="cancel">
         <va-icon type="times" size="10px"></va-icon>
@@ -36,40 +38,20 @@ export default {
     return {
       show: false,
       initialValue: '',
+      currentValue: '',
       needToSave: false,
       position: {},
+      shouldBlur: false,
       loading: false
     }
   },
   created () {
-    this.$on('Va@inputBlur', (val) => {
-      if (val === this.initialValue) {
-        this.show = false
-        this.needToSave = false
-      } else {
-        this.needToSave = true
-      }
-    })
-    this.$on('Va@inputFocus', (val) => {
-      if (!this.needToSave) {
-        this.initialValue = val
-        this.show = true
-        // the element needs to be on the DOM before we can get its position
-        setTimeout(() => {
-          this.position = this.getPosition()
-        }, 5)
-      }
-    })
-    this.$on('Va@inputLoading', (val) => {
-      this.loading = val
-    })
-    this.$on('Va@inputUpdate', (val) => {
-      if (val === this.initialValue) {
-        this.needToSave = false
-      } else {
-        this.needToSave = true
-      }
-    })
+    this.$on('Va@inputBlur', (val) => { this.handleBlur(val) })
+    this.$on('Va@inputFocus', (val) => { this.handleFocus(val) })
+    this.$on('Va@inputLoading', (val) => { this.handleInputLoading(val) })
+    this.$on('Va@inputUpdate', (val) => { this.handleInputUpdate(val) })
+    this.$on('Va@inputEnterPressed', (val) => { this.handleEnterPressed(val) })
+    this.$on('Va@inputCurrentValueUpdate', (val) => { this.handleCurrentValueUpdate(val) })
   },
   mounted () {
     const $body = document.querySelector('body')
@@ -80,6 +62,10 @@ export default {
     $body.removeChild(this.$refs.popup)
   },
   methods: {
+    confirmClicked () {
+      this.shouldBlur = true
+      this.confirm()
+    },
     confirm () {
       this.$emit('confirm')
       this.dispatch('VaInput', 'Va@inputOpsConfirm', true)
@@ -89,6 +75,42 @@ export default {
       this.needToSave = false
       this.dispatch('VaInput', 'Va@inputOpsCancel', this.initialValue)
       this.show = false
+    },
+    handleBlur (val) {
+      if (val === this.initialValue) {
+        this.show = false
+        this.needToSave = false
+        this.shouldBlur = true
+      } else {
+        this.needToSave = true
+      }
+    },
+    handleFocus (val) {
+      this.shouldBlur = false
+      if (!this.needToSave) {
+        this.initialValue = val
+        this.show = true
+        // the element needs to be on the DOM before we can get its position
+        setTimeout(() => {
+          this.position = this.getPosition()
+        }, 10)
+      }
+    },
+    handleInputLoading (val) {
+      this.loading = val
+    },
+    handleInputUpdate (val) {
+      if (val === this.initialValue) {
+        this.needToSave = false
+      } else {
+        this.needToSave = true
+      }
+    },
+    handleCurrentValueUpdate (val) {
+      this.currentValue = val
+    },
+    handleEnterPressed (val) {
+      this.confirm()
     },
     getPosition () {
       let rect = this.$refs.popup.getBoundingClientRect()
@@ -118,9 +140,6 @@ export default {
       let parentPosition = this.parentPosition
       let position = this.position
 
-      style['position'] = 'absolute'
-      style['z-index'] = '99999'
-      style['background'] = '#FFFFFF'
       style['top'] = (parentPosition.top + parentPosition.height + 3) + 'px'
       style['left'] = parentPosition.left + (parentPosition.width - position.width) + 'px'
 
@@ -130,8 +149,17 @@ export default {
   watch: {
     loading (val) {
       if (val === false && this.show === true) {
-        this.show = false
+        if (this.shouldBlur) {
+          this.show = false
+          this.shouldBlur = false
+        }
         this.needToSave = false
+        this.initialValue = this.currentValue
+      }
+    },
+    needToSave (val) {
+      if (val) {
+        this.show = true
       }
     }
   }
