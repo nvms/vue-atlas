@@ -2,12 +2,12 @@
   <div>
     <va-button
       :style="styleObj"
-      type="primary"
-      round
+      type="default"
       ref="cfgbtn"
       size="md"
       @click.native="showConfigModal">
-      <va-icon type="sliders-h" icon-style="solid"></va-icon>
+      Open LayoutManagerConfig
+      <va-icon type="sliders-h" icon-style="solid" margin="0 0 0 10px"></va-icon>
     </va-button>
     <va-modal ref="configModal" title="LayoutManagerConfig" :width="800" :backdrop="false">
       <div slot="body" class="themeModalBody">
@@ -468,9 +468,10 @@ export default {
       let position = this.btnPosition
 
       style['position'] = 'fixed'
-      style['right'] = '14px'
+      style['right'] = '20px'
       style['z-index'] = '99999'
-      style['top'] = (woh / 2) - (position.height * 1.5) + 'px'
+      // style['top'] = (woh / 2) - (position.height * 1.5) + 'px'
+      style['bottom'] = '20px'
       style['border-top-right-radius'] = '0px'
       style['border-bottom-right-radius'] = '0px'
 
