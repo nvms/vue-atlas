@@ -1,3 +1,4 @@
 .#{$prefix-cls}-affix {
-  position: fixed;
+  position: sticky;
+  z-index: 900;
 }
