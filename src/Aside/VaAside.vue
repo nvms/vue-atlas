@@ -47,7 +47,7 @@ export default {
       note: 'If true, header will be shown.'
     },
     width: {
-      type: 'String',
+      type: String,
       default: '304px',
       required: false,
       note: 'Width of the aside element.'

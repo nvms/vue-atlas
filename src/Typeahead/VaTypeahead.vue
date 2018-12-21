@@ -106,11 +106,11 @@ export default {
       default: false
     },
     dropdownWidth: {
-      type: 'String',
+      type: String,
       default: '220px'
     },
     dropdownHeight: {
-      type: 'String',
+      type: String,
       default: '300px'
     },
     async: {
