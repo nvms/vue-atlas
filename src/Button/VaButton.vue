@@ -39,7 +39,8 @@ export default {
           'darker',
           'purple',
           'purple-light',
-          'purple-dark'
+          'purple-dark',
+          'black'
         ].includes(v)
       }
     },
