@@ -266,8 +266,6 @@ export default {
         this.$refs.textareaContainer.style.height = (event.target.scrollHeight + 4) + 'px'
 
         this.position = this.getPosition()
-
-        console.log('this.position is', this.position)
       }
     }
   },

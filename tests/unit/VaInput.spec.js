@@ -37,8 +37,6 @@ describe('VaInput.vue', () => {
     expect(wrapper.classes()).toContain('va-input-sm')
   })
 
-  // console.log(window.document.getElementsByClassName('.va-input-ops'))
-
   it('should call update method when input event is triggered', () => {
     const wrapper = mount(VaInput)
     const updateMock = jest.fn()
