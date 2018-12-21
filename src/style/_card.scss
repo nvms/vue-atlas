@@ -1,61 +1,136 @@
-.#{$prefix-cls}-card {
-  border-radius: 3px;
-  transition: all 0.3s;
-  background: $N0;
-}
+@mixin card-theme-mixin($background,
+$headerBackground,
+$headerBorderBottom,
+$elevation0BoxShadow,
+$elevation0Border,
+$elevation1BoxShadow,
+$elevation1Border,
+$elevation2BoxShadow,
+$elevation2Border,
+$elevation3BoxShadow,
+$elevation3Border,
+$elevation4BoxShadow,
+$elevation4Border,
+$elevation5BoxShadow,
+$elevation5Border,
+$headerBtnDefaultBackgroundColor,
+$headerBtnDefaultHoverBackgroundColor,
+$headerBtnDefaultActiveBackgroundColor) {
+  background: $background;
 
-.#{$prefix-cls}-card-header {
-  background-color: #F4F5F7;
-  border-bottom: 1px solid #D5D9DF;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  display: flex;
-  flex-direction: column;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  &-header {
+    background: $headerBackground;
+    border-bottom: $headerBorderBottom;
 
-  &-inner {
-    &-left {
-      float: left;
-      * {
-        margin: 0;
-        padding: 0;
-        line-height: 32px;
+    .#{$prefix-cls}-btn-default {
+      background-color: $headerBtnDefaultBackgroundColor;
+
+      &:hover {
+        background-color: $headerBtnDefaultHoverBackgroundColor;
       }
-    }
-    &-right {
-      float: right;
-      * {
-        margin: 0;
-        padding: 0;
-        line-height: 32px;
+      &:active {
+        background-color: $headerBtnDefaultActiveBackgroundColor !important;
       }
     }
   }
+
+  &-elevation-0 {
+    box-shadow: $elevation0BoxShadow;
+    border: $elevation0Border;
+  }
+
+  &-elevation-1 {
+    box-shadow: $elevation1BoxShadow;
+    border: $elevation1Border;
+  }
+
+  &-elevation-2 {
+    box-shadow: $elevation2BoxShadow;
+    border: $elevation2Border;
+  }
+
+  &-elevation-3 {
+    box-shadow: $elevation3BoxShadow;
+    border: $elevation3Border;
+  }
+
+  &-elevation-4 {
+    box-shadow: $elevation4BoxShadow;
+    border: $elevation4Border;
+  }
+
+  &-elevation-5 {
+    box-shadow: $elevation5BoxShadow;
+    border: $elevation5Border;
+  }
+
+
 }
 
-.#{$prefix-cls}-card-elevation-0 {
-  // box-shadow: 0 0px 0px 0px rgba(9,30,66,0.31), 0 0 0px rgba(9,30,66,0.15);
-  box-shadow: none;
-  border: 1px solid #D5D9DF;
+.#{$prefix-cls}-card,
+.#{$prefix-cls}--theme-light .#{$prefix-cls}-card {
+  @include card-theme-mixin($background: $N0,
+    $headerBackground: $N20,
+    $headerBorderBottom: 1px solid #D5D9DF,
+    $elevation0BoxShadow: none,
+    $elevation0Border: 1px solid #D5D9DF,
+    $elevation1BoxShadow: (0 2px 6px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation1Border: none,
+    $elevation2BoxShadow: (0 4px 8px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation2Border: none,
+    $elevation3BoxShadow: (0 6px 10px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation3Border: none,
+    $elevation4BoxShadow: (0 8px 12px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation4Border: none,
+    $elevation5BoxShadow: (0 10px 14px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation5Border: none,
+    $headerBtnDefaultBackgroundColor: rgba(9, 30, 66, 0.04),
+    $headerBtnDefaultHoverBackgroundColor: rgba(9, 30, 66, 0.08),
+    $headerBtnDefaultActiveBackgroundColor: $B50);
 }
 
-.#{$prefix-cls}-card-elevation-1 {
-  box-shadow: 0 2px 6px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
-}
+.#{$prefix-cls}-card {
+  border-radius: 3px;
+  transition: all 0.3s;
 
-.#{$prefix-cls}-card-elevation-2 {
-  box-shadow: 0 4px 8px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
-}
+  &-header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 
-.#{$prefix-cls}-card-elevation-3 {
-  box-shadow: 0 6px 10px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
-}
+    .#{$prefix-cls}-btn-default {
+      &:hover {}
+    }
 
-.#{$prefix-cls}-card-elevation-4 {
-  box-shadow: 0 8px 12px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
-}
+    &-inner {
+      &-left {
+        float: left;
 
-.#{$prefix-cls}-card-elevation-5 {
-  box-shadow: 0 10px 14px -2px rgba(9,30,66,0.31), 0 0 1px rgba(9,30,66,0.31);
+        &>* {
+          margin: 0;
+          padding: 0;
+          line-height: 32px;
+        }
+      }
+
+      &-right {
+        float: right;
+
+        &>* {
+          margin: 0;
+          padding: 0;
+          line-height: 32px;
+        }
+      }
+    }
+  }
+
+  &-body {
+    p:first-child {
+      margin-top: 0;
+    }
+  }
 }

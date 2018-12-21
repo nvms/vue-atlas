@@ -2,7 +2,7 @@
   <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
     <div
       ref="aside"
-      :style="{width:width + 'px'}"
+      :style="{width:width}"
       :class="classObj"
       v-show="show">
       <div :class="`${prefixCls}-aside-dialog`">
@@ -47,8 +47,8 @@ export default {
       note: 'If true, header will be shown.'
     },
     width: {
-      type: Number,
-      default: 304,
+      type: 'String',
+      default: '304px',
       required: false,
       note: 'Width of the aside element.'
     },

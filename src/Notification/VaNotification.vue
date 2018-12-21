@@ -2,7 +2,7 @@
   <div :class="classObj" ref="notification" :style="styleObj" v-if="alive">
     <div
       :class="`${prefixCls}-notification-dialog`"
-      :style="{'width': width + 'px'}">
+      :style="{'width': width }">
       <div :class="`${prefixCls}-notification-content`">
         <div :class="`${prefixCls}-notification-content-inner-${type}`">
           <div :class="`${prefixCls}-notification-content-inner-${type}-left`">
@@ -55,8 +55,8 @@ export default {
       note: 'When false, the notification will not be shown'
     },
     width: {
-      type: Number,
-      default: 440,
+      type: String,
+      default: '440px',
       required: false,
       note: 'The width of the notification'
     },

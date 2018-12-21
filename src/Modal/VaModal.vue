@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj" ref="modal" :style="styleObj">
-    <div :class="`${prefixCls}-modal-dialog`" :style="{'width': width + 'px'}">
+    <div :class="`${prefixCls}-modal-dialog`" :style="{'width': width }">
 
       <div v-if="modalIsLoading" :class="`${prefixCls}-modal-loading`">
         <va-loading size="md" color="#888"></va-loading>
@@ -57,8 +57,8 @@ export default {
       note: 'When false, the modal will not be shown'
     },
     width: {
-      type: Number,
-      default: 600,
+      type: String,
+      default: '600px',
       required: false,
       note: 'The width of the modal.'
     },

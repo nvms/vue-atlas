@@ -27,7 +27,7 @@
       :class="`${prefixCls}-dropdown-menu`"
       v-show="show"
       v-va-position="show"
-      :style="{width: dropdownWidth + 'px', maxHeight: dropdownHeight + 'px'}">
+      :style="{width: dropdownWidth, maxHeight: dropdownHeight}">
       <li v-for="(item, index) in citems" :class="isActive(index)" :key="index">
         <a @mousedown.prevent="hit(index)">
           <render
@@ -106,12 +106,12 @@ export default {
       default: false
     },
     dropdownWidth: {
-      type: Number,
-      default: 220
+      type: 'String',
+      default: '220px'
     },
     dropdownHeight: {
-      type: Number,
-      default: 300
+      type: 'String',
+      default: '300px'
     },
     async: {
       type: Boolean,

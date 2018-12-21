@@ -86,14 +86,14 @@ export default {
       required: false
     },
     maxHeight: {
-      type: Number,
+      type: String,
       required: false,
       default: 200
     },
     minHeight: {
-      type: Number,
+      type: String,
       required: false,
-      default: 100
+      default: '100px'
     },
     value: {
       type: String
@@ -294,7 +294,7 @@ export default {
       let style = {}
 
       style['width'] = width
-      style['min-height'] = minHeight + 'px'
+      style['min-height'] = minHeight
 
       return style
     },

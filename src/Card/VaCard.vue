@@ -6,7 +6,7 @@
         <div :class="`${prefixCls}-card-header-inner-right`"><slot name="right" /></div>
       </div>
     </div>
-    <div :style="bodyStyleObj">
+    <div :style="bodyStyleObj" :class="`${prefixCls}-card-body`">
       <slot />
     </div>
   </div>
@@ -18,7 +18,7 @@ export default {
   props: {
     elevation: {
       type: [Number, String],
-      default: 1,
+      default: 0,
       validator (v) {
         v = v.toString()
         return ['0', '1', '2', '3', '4', '5'].includes(v)
@@ -27,7 +27,7 @@ export default {
     },
     padding: {
       type: [Number, String],
-      default: 10,
+      default: '1em',
       note: 'A convenience prop to help define the card\'s inner padding.'
     },
     prefixCls: {
@@ -49,7 +49,7 @@ export default {
       let {padding} = this
       let style = {}
 
-      style['padding'] = padding + 'px'
+      style['padding'] = padding
 
       return style
     },
@@ -65,8 +65,8 @@ export default {
       let {padding} = this
       let style = {}
 
-      style['padding-left'] = padding + 'px'
-      style['padding-right'] = padding + 'px'
+      style['padding-left'] = padding
+      style['padding-right'] = padding
 
       return style
     },

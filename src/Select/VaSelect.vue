@@ -2,7 +2,7 @@
   <div :class="classObj">
     <va-button
       :type="type"
-      :style="{width:width + 'px'}"
+      :style="{width:width}"
       :disabled="disabled"
       :size="size"
       :class="[`${prefixCls}-dropdown-toggle`,
@@ -35,7 +35,7 @@
     </va-button>
     <transition name="fadeDown">
       <ul
-        :style="{maxHeight: menuMaxHeight + 'px', width: menuWidth + 'px'}"
+        :style="{maxHeight: menuMaxHeight, width: menuWidth}"
         :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"
         ref="menu"
         v-va-position="show"
@@ -188,16 +188,16 @@ export default {
       note: 'Allows you to set a maximum number of selected items.'
     },
     width: {
-      type: Number
+      type: String
     },
     menuMaxHeight: {
-      type: Number,
-      default: 300,
+      type: String,
+      default: '300px',
       required: false,
       note: 'The maximum height of the dropdown menu.'
     },
     menuWidth: {
-      type: Number,
+      type: String,
       required: false
     },
     matchCase: {
