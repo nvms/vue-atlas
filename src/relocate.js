@@ -35,7 +35,7 @@ const relocate = (el) => {
   let pos1 = 'right'
   let pos2 = 'bottom'
 
-  if (pos.width + pos.left > win.width) {
+  if (pos.width + pos.left > win.width - 20) {
     pos1 = 'left'
   }
 
