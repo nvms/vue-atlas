@@ -21,6 +21,11 @@
     cursor: pointer;
     &:hover {
       text-decoration: underline;
+      color: $B300;
+    }
+    &:active {
+      color: $B500;
+      text-decoration: none;
     }
   }
 }
