@@ -95,8 +95,8 @@
         
       <div slot="breadcrumb">
         <va-breadcrumb separator="/">
-          <va-breadcrumb-item :to="{ path: '/documentation/pageheader' }">Index</va-breadcrumb-item>
-          <va-breadcrumb-item>Demo</va-breadcrumb-item>
+          <va-breadcrumb-item :to="{ path: '/' }">Index</va-breadcrumb-item>
+          <va-breadcrumb-item>Demonstration</va-breadcrumb-item>
         </va-breadcrumb>
       </div>
       
@@ -135,7 +135,7 @@
     </va-page-header>
 
     <p>
-      Culture vanquish the impossible a billion trillion decipherment network of wormholes from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
+      Culture vanquish the impossible a billion trillion decipherment <a href="#">network of wormholes</a> from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
     </p>
 
     <p>
@@ -143,42 +143,77 @@
     </p>
 
     <p>
-      <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+      <va-card :elevation="elevation">
+        <div slot="left">
+          <va-select size="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
+            <va-option value="0">0</va-option>
+            <va-option value="1">1</va-option>
+            <va-option value="2">2</va-option>
+            <va-option value="3">3</va-option>
+            <va-option value="4">4</va-option>
+            <va-option value="5">5</va-option>
+          </va-select>
+          &nbsp;
+          <a href="#">Action</a>
+        </div>
+        <div slot="right">
+          <a href="#">Action</a>
+          &nbsp;
+          <va-button @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})">
+            <va-icon type="cogs"></va-icon>
+          </va-button>
+        </div>
+        <p>
+          <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+        </p>
+        <p>
+          <va-textarea
+            width="100%"
+            :autosize="true"
+            buttons
+            :resize="false"
+            :loading="textareaLoading"
+            @confirm="textareaConfirm"
+            @cancel="textareaCancel"
+            v-model="textareaText"></va-textarea>
+        </p>
+        <p>
+          <va-button size="sm">Secondary action</va-button>
+          &nbsp;
+          <va-button size="sm" type="primary">Primary action</va-button>
+        </p>
+      </va-card>
     </p>
 
     <p>
-      <va-textarea
-        width="100%"
-        :autosize="true"
-        buttons
-        :resize="false"
-        :loading="textareaLoading"
-        @confirm="textareaConfirm"
-        @cancel="textareaCancel"
-        v-model="textareaText"></va-textarea>
-    </p>
-
-    <p>
-      <va-checkbox-group v-model="foods">
-        <va-checkbox label="pizza">Pizza</va-checkbox>
-        <va-checkbox label="tacos" checked>Tacos</va-checkbox>
-        <va-checkbox label="fries">Fries</va-checkbox>
-      </va-checkbox-group>
-    </p>
-
-    <p>
-      <va-radio-group v-model="foods">
-        <va-radio label="pizza">Pizza</va-radio>
-        <va-radio label="tacos" checked>Tacos</va-radio>
-        <va-radio label="fries">Fries</va-radio>
-      </va-radio-group>
-    </p>
-
-    <p>
-      <va-button @click.native="showNotification">Show notification</va-button>
+      <va-card>
+        <p>
+          <va-checkbox-group v-model="foods">
+            <va-checkbox label="pizza">Pizza</va-checkbox>
+            <va-checkbox label="tacos" checked>Tacos</va-checkbox>
+            <va-checkbox label="fries">Fries</va-checkbox>
+          </va-checkbox-group>
+        </p>
+        <p>
+          <va-radio-group v-model="foods">
+            <va-radio label="pizza">Pizza</va-radio>
+            <va-radio label="tacos" checked>Tacos</va-radio>
+            <va-radio label="fries">Fries</va-radio>
+          </va-radio-group>
+        </p>
+        <p>
+          <va-button @click.native="showNotification">Show notification</va-button>
+          &nbsp;
+          <va-button @click.native="$refs.aside.open()">Open aside</va-button>
+        </p>
+      </va-card>
     </p>
 
     </va-page>
+
+    <va-aside ref="aside">
+      Hello, world!
+    </va-aside>
 
     <va-modal title="Modal One" ref="stackedOne">
       <div slot="body">
@@ -221,6 +256,11 @@ export default {
            * Datepicker
            */
           dateValue: '',
+
+          /**
+           * Card
+           */
+          elevation: '0',
 
           /**
            * Textarea and InputOps
@@ -277,6 +317,9 @@ export default {
     mounted () {
     },
     methods: {
+      cardSelectFormat (item) {
+        return 'elevation: ' + item.label
+      },
       showNotification () {
         this.VaNotification.open({
           title: `Change default MySQL password to something other than 'root'`,
@@ -330,7 +373,7 @@ export default {
           this.VaNotification.open({
             title: 'Saved',
             message: 'Data published: ' + this.textareaText,
-            type: 'warning'
+            type: 'danger'
           })
         }, 2000)
       },
