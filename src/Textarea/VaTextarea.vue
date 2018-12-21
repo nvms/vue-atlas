@@ -88,7 +88,7 @@ export default {
     maxHeight: {
       type: String,
       required: false,
-      default: 200
+      default: '200px'
     },
     minHeight: {
       type: String,
