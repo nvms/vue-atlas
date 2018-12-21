@@ -8,7 +8,7 @@
 import events from '../utils/events'
 
 export default {
-  name: 'VaLayoutManager',
+  name: 'VaApp',
   mixins: [events],
   props: {
     desktopSidebarWidth: {
@@ -472,12 +472,12 @@ export default {
     },
     enableReceivers () {
       /**
-       * These exist for VaLayoutManagerConfig.
+       * These exist for VaAppConfig.
        *
        * Setting these values should trigger the 'watch' on each of them,
        * which in turn calls the value's respective broadcast function,
-       * broadcasting the new value to whatever has implemented a
-       * LayoutManager.
+       * broadcasting the new value to whatever has implemented an
+       * App.
        */
       this.$on('Va@configDesktopTopbarHeightChange', (val) => { this.mDesktopTopbarHeight = val })
       this.$on('Va@configDesktopSidebarWidthChange', (val) => { this.mDesktopSidebarWidth = val })
@@ -506,30 +506,30 @@ export default {
     },
     broadcastDefaultsToConfig (delay = 100) {
       setTimeout(() => {
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopTopbarHeight', this.mDesktopTopbarHeight)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinibarWidth', this.mDesktopMinibarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopSidebarWidth', this.mDesktopSidebarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', this.mDesktopMinimumWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileMinibarWidth', this.mMobileMinibarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', this.mMobileSidebarWidth)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileTopbarHeight', this.mMobileTopbarHeight)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarPriority', this.mSidebarPriority)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarPriority', this.mMinibarPriority)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarPriority', this.mTopbarPriority)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMargin', this.mDesktopMargin)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarPadded', this.mTopbarPadded)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarTheme', this.mMinibarTheme)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarTheme', this.mSidebarTheme)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarTheme', this.mTopbarTheme)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageBgColor', this.mPageBgColor)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveShowToggle', this.mShowToggle)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', this.mTextLinks)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', this.mPageSize)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', this.mCompact)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', this.mReverse)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', this.mBgColor)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', this.mSplit)
-        this.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', this.mRtl)
+        this.broadcast('VaAppConfig', 'Va@configReceiveDesktopTopbarHeight', this.mDesktopTopbarHeight)
+        this.broadcast('VaAppConfig', 'Va@configReceiveDesktopMinibarWidth', this.mDesktopMinibarWidth)
+        this.broadcast('VaAppConfig', 'Va@configReceiveDesktopSidebarWidth', this.mDesktopSidebarWidth)
+        this.broadcast('VaAppConfig', 'Va@configReceiveDesktopMinimumWidth', this.mDesktopMinimumWidth)
+        this.broadcast('VaAppConfig', 'Va@configReceiveMobileMinibarWidth', this.mMobileMinibarWidth)
+        this.broadcast('VaAppConfig', 'Va@configReceiveMobileSidebarWidth', this.mMobileSidebarWidth)
+        this.broadcast('VaAppConfig', 'Va@configReceiveMobileTopbarHeight', this.mMobileTopbarHeight)
+        this.broadcast('VaAppConfig', 'Va@configReceiveSidebarPriority', this.mSidebarPriority)
+        this.broadcast('VaAppConfig', 'Va@configReceiveMinibarPriority', this.mMinibarPriority)
+        this.broadcast('VaAppConfig', 'Va@configReceiveTopbarPriority', this.mTopbarPriority)
+        this.broadcast('VaAppConfig', 'Va@configReceiveDesktopMargin', this.mDesktopMargin)
+        this.broadcast('VaAppConfig', 'Va@configReceiveTopbarPadded', this.mTopbarPadded)
+        this.broadcast('VaAppConfig', 'Va@configReceiveMinibarTheme', this.mMinibarTheme)
+        this.broadcast('VaAppConfig', 'Va@configReceiveSidebarTheme', this.mSidebarTheme)
+        this.broadcast('VaAppConfig', 'Va@configReceiveTopbarTheme', this.mTopbarTheme)
+        this.broadcast('VaAppConfig', 'Va@configReceivePageBgColor', this.mPageBgColor)
+        this.broadcast('VaAppConfig', 'Va@configReceiveShowToggle', this.mShowToggle)
+        this.broadcast('VaAppConfig', 'Va@configReceiveTextLinks', this.mTextLinks)
+        this.broadcast('VaAppConfig', 'Va@configReceivePageSize', this.mPageSize)
+        this.broadcast('VaAppConfig', 'Va@configReceiveCompact', this.mCompact)
+        this.broadcast('VaAppConfig', 'Va@configReceiveReverse', this.mReverse)
+        this.broadcast('VaAppConfig', 'Va@configReceiveBgColor', this.mBgColor)
+        this.broadcast('VaAppConfig', 'Va@configReceiveSplit', this.mSplit)
+        this.broadcast('VaAppConfig', 'Va@configReceiveRtl', this.mRtl)
       }, delay)
     }
   },
@@ -575,16 +575,16 @@ export default {
 
     /**
      * --------------------------------------------------
-     * Methods related to VaLayoutManagerConfig
+     * Methods related to VaAppConfig
      *
-     * enableReceivers() exists so that VaLayoutManagerConfig
-     * can talk to VaLayoutManager.
+     * enableReceivers() exists so that VaAppConfig
+     * can talk to VaApp.
      */
     this.enableReceivers()
 
     /**
      * broadcastDefaultsToConfig() sends default values to
-     * VaLayoutManagerConfig, in case some values weren't specified.
+     * VaAppConfig, in case some values weren't specified.
      */
     this.broadcastDefaultsToConfig()
   },

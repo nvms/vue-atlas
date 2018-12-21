@@ -16,12 +16,14 @@
   $itemToggleIconColor,
   $itemTextIconColor,
   $itemActiveStateColor,
+  $itemActiveStateIconColor,
   $itemActiveStateBG,
   $itemHoverBG,
   $itemActiveFocusColor,
   $itemActiveFocusBG,
   $itemActiveFocusBoxShadow,
-  $itemFocusOutline
+  $itemFocusOutline,
+  $topDivBoxShadow
 ) {
   background: $mainBG;
   .#{$prefix-cls}-sidebar-group-title {
@@ -44,6 +46,9 @@
     }
   }
   .#{$prefix-cls}-sidebar-scrollarea {
+    &-topdiv {
+      box-shadow: $topDivBoxShadow;
+    }
     &::-webkit-scrollbar-thumb {
       background: $scrollareaThumbBG;
       &:hover {
@@ -71,6 +76,9 @@
     &.active {
       color: $itemActiveStateColor;
       background: $itemActiveStateBG;
+      .#{$prefix-cls}-sidebar-group-item-icon {
+        color: $itemActiveStateIconColor !important;
+      }
     }
     &:hover {
       background: $itemHoverBG;

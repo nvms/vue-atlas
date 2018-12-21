@@ -1,12 +1,12 @@
 $datepickerWidth: 250px;
 $datepickerSpanSize: 35px;
-$datepickerSpanRadius: 5px;
-$datepickerCtrlHeight: 35px;
+$datepickerSpanRadius: 3px;
 $datepickerRangeSize: 40px;
 
 .#{$prefix-cls}-datepicker {
   position: relative;
-  display: inline-block;
+  // display: inline-block;
+
   &-popup {
     position: absolute;
     background: $N0;
@@ -14,7 +14,7 @@ $datepickerRangeSize: 40px;
     margin-bottom: 6px;
     float: left;
     z-index: 1000;
-    padding: 10px;
+    // padding: 10px;
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
     border-radius: 3px;
     -webkit-user-select: none;
@@ -22,9 +22,11 @@ $datepickerRangeSize: 40px;
     -ms-user-select: none;
     user-select: none;
   }
+
   &-inner {
-    width: 245px;
+    width: 255px;
   }
+
   &-ctrl p,
   &-ctrl span,
   &-body span {
@@ -35,53 +37,74 @@ $datepickerRangeSize: 40px;
     border-radius: $datepickerSpanRadius;
     border: 2px solid transparent;
   }
+
   &-ctrl p {
     width: 65%;
     margin: 0;
   }
+
   &-ctrl span {
     position: absolute;
   }
+
   &-body span {
     text-align: center;
   }
+
   &-monthRange span {
     width: 88px;
     height: 30px;
     line-height: 26px;
     margin: 2px 12px;
+
+    &:focus {
+      outline: none;
+    }
   }
+
   &-item-disable {
-    background-color: white!important;
-    cursor: not-allowed!important;
+    background-color: white !important;
+    cursor: not-allowed !important;
   }
+
   .#{$prefix-cls}-datepicker-decadeRange span:first-child,
   .#{$prefix-cls}-datepicker-decadeRange span:last-child,
   &-item-disable,
-  &-item-gray{
-      color: $N60;
-      // opacity: 0;
-      visibility: hidden;
+  &-item-gray {
+    color: $N60;
+    opacity: 0.8;
   }
 
   &-dateRange-item-active {
-      background: $N400 !important;
-      color: white!important;
-      border: 2px solid $B100 !important;
-      &:hover {
-        background: $N30 !important;
-        color: $N900 !important;
-      }
+    background: $N400 !important;
+    color: white !important;
+    border: 2px solid $B100 !important;
+
+    &:hover {
+      background: $N30 !important;
+      color: $N900 !important;
+    }
   }
+
+  &-dateRange-item-today {
+    background: $B75 !important;
+    &:hover {
+      background: $N30 !important;
+      border: 2px solid $B100 !important;
+    }
+  }
+
   &-monthRange {
-    margin-bottom: 10px;
-    margin-left:10px;
+    background: $N20;
+    padding: 10px;
+
     span {
       &:active {
         background: $B75 !important;
       }
     }
   }
+
   &-monthRange span,
   &-ctrl span,
   &-ctrl p,
@@ -89,57 +112,87 @@ $datepickerRangeSize: 40px;
     // transition: all .3s ease;
     cursor: default;
   }
+
   &-monthRange span:hover,
   &-ctrl p:hover,
   &-ctrl i:hover,
   &-dateRange span:hover,
   &-dateRange-item-hover {
-      background-color : $N30;
-  }
-  &-weekRange{
-    // border-bottom: 1px solid $N50;
-    // border-top: 1px solid $N50;
+    background-color: $N30;
   }
 
-  &-weekRange span{
-      font-size: 9px;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: $N80;
+  &-weekRange {
+    // border-bottom: 1px solid $N50;
+    // border-top: 1px solid $N50;
+    background: $N20;
+    padding: 5px;
   }
-  &-ctrl{
-      position: relative;
-      height: $datepickerCtrlHeight;
-      line-height: $datepickerCtrlHeight;
-      font-weight: bold;
-      text-align: center;
+
+  &-weekRange span {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $N80;
   }
-  .#{$prefix-cls}-month-btn{
+
+  &-ctrl {
+    position: relative;
+    // line-height: 35px;
     font-weight: bold;
-    user-select:none;
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #e2e5e8;
+
+    * {
+      &:focus {
+        outline: none;
+      }
+    }
   }
-  &-preBtn{
-      left: 2px;
+
+  .#{$prefix-cls}-month-btn {
+    font-weight: bold;
+    user-select: none;
+
+    &:focus {
+      outline: none;
+    }
   }
-  &-nextBtn{
-      right: 2px;
+
+  &-preBtn {
+    float: left;
   }
+
+  &-nextBtn {
+    float: right;
+  }
+
   &-preBtn,
   &-nextBtn {
     color: $N80;
+
     &:hover {
       background: $N30;
     }
+
     &:active {
       background: $B75;
     }
   }
+
   &-dateRange {
+    background: $N20;
+    padding: 5px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+
     span {
       outline: none;
+
       &:hover {
         background: $N30;
       }
+
       &:active {
         background: $B75 !important;
         outline: none;

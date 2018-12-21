@@ -6,20 +6,20 @@
       ref="cfgbtn"
       size="md"
       @click.native="showConfigModal">
-      Open LayoutManagerConfig
+      Open AppConfig
       <va-icon type="sliders-h" icon-style="solid" margin="0 0 0 10px"></va-icon>
     </va-button>
-    <va-modal ref="configModal" title="LayoutManagerConfig" :width="800" :backdrop="false">
+    <va-modal ref="configModal" title="AppConfig" :width="800" :backdrop="false">
       <div slot="body" class="themeModalBody">
         <va-mobile>
           <p>
-            The LayoutManagerConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.
+            The AppConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.
           </p>
         </va-mobile>
         <va-desktop>
           <va-tabs>
             <va-tab name="Options">
-              <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager.</p>
+              <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build using the vue-atlas App.</p>
               <h3>Built-in themes</h3>
               <hr/>
               <va-row :gutter="10">
@@ -223,7 +223,7 @@
               <code>
               <pre class="back"><span class="blue">&lt;template&gt;</span>
     <span class="comment">&lt;!-- https://vue-atlas.com/documentation/layoutmanager --&gt;</span>
-    <span class="blue">&lt;va-layout-manager</span>
+    <span class="blue">&lt;va-app</span>
       <span class="yellow">bg-color</span>=<span class="green">"{{bgColor}}"</span>
       <span class="yellow">page-bg-color</span>=<span class="green">"{{pageBgColor}}"</span>
       <span class="yellow">desktop-margin</span>=<span class="green">"{{desktopMargin}}"</span>
@@ -281,7 +281,7 @@
         <span class="blue">&lt;/transition&gt;</span>
       <span class="blue">&lt;/va-page&gt;</span>
 
-    <span class="blue">&lt;/va-layout-manager&gt;</span>
+    <span class="blue">&lt;/va-app&gt;</span>
   <span class="blue">&lt;/template&gt;</span></pre>
               </code>
             </va-tab>
@@ -304,7 +304,7 @@
 import events from '../utils/events'
 
 export default {
-  name: 'VaLayoutManagerConfig',
+  name: 'VaAppConfig',
   mixins: [events],
   props: {
     prefixCls: {
@@ -315,13 +315,8 @@ export default {
   data () {
     return {
       /**
-       * Config button placement
-       */
-      btnPosition: {},
-
-      /**
        * Sensible defaults, but will be overwritten by
-       * VaLayoutManager when it broadcasts initial values.
+       * VaApp when it broadcasts initial values.
        * See broadcastDefaultsToConfig()
        */
       minibarTheme: 'default',
@@ -348,37 +343,37 @@ export default {
       reverse: false,
       split: false,
       pageSize: 'md',
-      bgColor: '#f4f5f7',
-      pageBgColor: '#ffffff'
+      bgColor: '#F4F5F7',
+      pageBgColor: '#FFFFFF'
     }
   },
   watch: {
-    desktopSidebarWidth (val) { this.dispatch('VaLayoutManager', 'Va@configDesktopSidebarWidthChange', val) },
-    desktopTopbarHeight (val) { this.dispatch('VaLayoutManager', 'Va@configDesktopTopbarHeightChange', val) },
-    desktopMinibarWidth (val) { this.dispatch('VaLayoutManager', 'Va@configDesktopMinibarWidthChange', val) },
-    desktopMargin (val) { this.dispatch('VaLayoutManager', 'Va@configDesktopMarginChange', val) },
-    desktopMinimumWidth (val) { this.dispatch('VaLayoutManager', 'Va@configDesktopMinimumWidthChange', val) },
-    mobileSidebarWidth (val) { this.dispatch('VaLayoutManager', 'Va@configMobileSidebarWidthChange', val) },
-    mobileTopbarHeight (val) { this.dispatch('VaLayoutManager', 'Va@configMobileTopbarHeightChange', val) },
-    mobileMinibarWidth (val) { this.dispatch('VaLayoutManager', 'Va@configMobileMinibarWidthChange', val) },
-    sidebarPriority (val) { this.dispatch('VaLayoutManager', 'Va@configSidebarPriorityChange', val) },
-    minibarPriority (val) { this.dispatch('VaLayoutManager', 'Va@configMinibarPriorityChange', val) },
-    topbarPriority (val) { this.dispatch('VaLayoutManager', 'Va@configTopbarPriorityChange', val) },
-    topbarPadded (val) { this.dispatch('VaLayoutManager', 'Va@configTopbarPaddedChange', val) },
-    rtl (val) { this.dispatch('VaLayoutManager', 'Va@configRtlChange', val) },
-    split (val) { this.dispatch('VaLayoutManager', 'Va@configSplitChange', val) },
-    reverse (val) { this.dispatch('VaLayoutManager', 'Va@configReverseChange', val) },
-    compact (val) { this.dispatch('VaLayoutManager', 'Va@configCompactChange', val) },
-    showToggle (val) { this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val) },
-    textLinks (val) { this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', val) },
-    pageSize (val) { this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', val) },
+    desktopSidebarWidth (val) { this.dispatch('VaApp', 'Va@configDesktopSidebarWidthChange', val) },
+    desktopTopbarHeight (val) { this.dispatch('VaApp', 'Va@configDesktopTopbarHeightChange', val) },
+    desktopMinibarWidth (val) { this.dispatch('VaApp', 'Va@configDesktopMinibarWidthChange', val) },
+    desktopMargin (val) { this.dispatch('VaApp', 'Va@configDesktopMarginChange', val) },
+    desktopMinimumWidth (val) { this.dispatch('VaApp', 'Va@configDesktopMinimumWidthChange', val) },
+    mobileSidebarWidth (val) { this.dispatch('VaApp', 'Va@configMobileSidebarWidthChange', val) },
+    mobileTopbarHeight (val) { this.dispatch('VaApp', 'Va@configMobileTopbarHeightChange', val) },
+    mobileMinibarWidth (val) { this.dispatch('VaApp', 'Va@configMobileMinibarWidthChange', val) },
+    sidebarPriority (val) { this.dispatch('VaApp', 'Va@configSidebarPriorityChange', val) },
+    minibarPriority (val) { this.dispatch('VaApp', 'Va@configMinibarPriorityChange', val) },
+    topbarPriority (val) { this.dispatch('VaApp', 'Va@configTopbarPriorityChange', val) },
+    topbarPadded (val) { this.dispatch('VaApp', 'Va@configTopbarPaddedChange', val) },
+    rtl (val) { this.dispatch('VaApp', 'Va@configRtlChange', val) },
+    split (val) { this.dispatch('VaApp', 'Va@configSplitChange', val) },
+    reverse (val) { this.dispatch('VaApp', 'Va@configReverseChange', val) },
+    compact (val) { this.dispatch('VaApp', 'Va@configCompactChange', val) },
+    showToggle (val) { this.dispatch('VaApp', 'Va@configShowToggleChange', val) },
+    textLinks (val) { this.dispatch('VaApp', 'Va@configTextLinksChange', val) },
+    pageSize (val) { this.dispatch('VaApp', 'Va@configPageSizeChange', val) },
 
-    topbarTheme (val) { this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', val) },
-    minibarTheme (val) { this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', val) },
-    sidebarTheme (val) { this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', val) },
+    topbarTheme (val) { this.dispatch('VaApp', 'Va@configTopbarThemeChange', val) },
+    minibarTheme (val) { this.dispatch('VaApp', 'Va@configMinibarThemeChange', val) },
+    sidebarTheme (val) { this.dispatch('VaApp', 'Va@configSidebarThemeChange', val) },
 
-    bgColor (val) { this.dispatch('VaLayoutManager', 'Va@configBgColorChange', val) },
-    pageBgColor (val) { this.dispatch('VaLayoutManager', 'Va@configPageBgColorChange', val) }
+    bgColor (val) { this.dispatch('VaApp', 'Va@configBgColorChange', val) },
+    pageBgColor (val) { this.dispatch('VaApp', 'Va@configPageBgColorChange', val) }
   },
   methods: {
     showConfigModal () {
@@ -407,25 +402,12 @@ export default {
         x: rect.x,
         y: rect.y
       }
-    },
-    _handleResize () {
-      this.btnPosition = this.getPosition(this.$refs.cfgbtn.$el)
     }
-  },
-  mounted () {
-    window.addEventListener('resize', this._handleResize, false)
-    /**
-     * Call the handler function directly instead of instantiating a resize
-     * event like so: window.dispatchEvent(new Event('resize'))
-     *
-     * Benefit is.. ?
-     */
-    this._handleResize()
   },
   created () {
     /**
-     * Here we set up receiver events so that if we pass defaults to a
-     * LayoutManager, we can send them over to the config component.
+     * Here we set up receiver events so that if we pass defaults to the
+     * App component, we can send them over to the config component.
      */
     this.$on('Va@configReceiveDesktopTopbarHeight', (val) => { this.desktopTopbarHeight = val })
     this.$on('Va@configReceiveDesktopMinibarWidth', (val) => { this.desktopMinibarWidth = val })
@@ -452,9 +434,6 @@ export default {
     this.$on('Va@configReceiveSplit', (val) => { this.split = val })
     this.$on('Va@configReceiveRtl', (val) => { this.rtl = val })
   },
-  beforeDestroy () {
-    window.removeEventListener('resize', this._handleResize, false)
-  },
   computed: {
     classObj () {
       // let prefixCls = this
@@ -464,8 +443,6 @@ export default {
     },
     styleObj () {
       let style = {}
-      let woh = window.outerHeight
-      let position = this.btnPosition
 
       style['position'] = 'fixed'
       style['right'] = '20px'

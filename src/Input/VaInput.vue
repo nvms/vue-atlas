@@ -1,6 +1,26 @@
 <template>
   <div :class="classObj" :style="{'width': width}" v-if="!showButtonsWarning">
     <input
+      v-if="noVModel"
+      ref="input"
+      auto-complete="off"
+      :name="name"
+      :class="inputClassObj"
+      :style="{'width': width}"
+      :readonly="readonly"
+      :disabled="disabled"
+      :placeholder="placeholder"
+      :autofocus="autofocus"
+      :type="type"
+      @blur="blur"
+      @focus="focus"
+      @input="update($event.target.value)"
+      tabindex="0"
+      v-on:keyup.enter="enterPressed"
+      :value="value" />
+
+    <input
+      v-else
       ref="input"
       auto-complete="off"
       :name="name"
@@ -25,18 +45,22 @@
       @confirm="opsConfirm"
       @cancel="opsCancel"/>
 
-    <va-icon
-      v-if="showClean"
-      type="times"
-      icon-style="solid"
-      :class="`${prefixCls}-input-show-clean`"
-      @click.native.stop="clean"/>
+    <div :class="`${prefixCls}-input-icon-wrapper`">
 
-    <va-icon
-      v-if="icon !== undefined"
-      :class="`${prefixCls}-input-show-icon`"
-      :type="icon"
-      :icon-style="iconStyle"/>
+      <va-icon
+        v-if="showClean"
+        type="times"
+        icon-style="solid"
+        :class="`${prefixCls}-input-show-clean`"
+        @click.native.stop="clean"/>
+
+      <va-icon
+        v-if="icon !== undefined"
+        :class="`${prefixCls}-input-show-icon`"
+        :type="icon"
+        :icon-style="iconStyle"/>
+
+    </div>
 
     <validate
       :name="name"
@@ -117,6 +141,11 @@ export default {
       type: Boolean,
       default: undefined
     },
+    noVModel: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
     theme: {
       type: String,
       default: 'primary',
@@ -131,6 +160,10 @@ export default {
           'purple'
         ]
       }
+    },
+    prefixCls: {
+      type: String,
+      default: 'va'
     }
   },
   data () {
@@ -146,11 +179,17 @@ export default {
     this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
     this.$on('Va@inputOpsConfirm', (val) => { })
     this.$on('Va@inputOpsBlur', (val) => { this.focused = false })
+    this.$on('Va@pageScroll', () => { this.setPosition() })
   },
   mounted () {
+    window.addEventListener('resize', this.setPosition, false)
+    window.addEventListener('scroll', this.setPosition, false)
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true
     }
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.setPosition, false)
   },
   components: {
     validate
@@ -209,17 +248,30 @@ export default {
       }
     },
     focus () {
-      this.focused = true
-      this.$emit('focus', this.value)
-      if (this.buttons) {
-        this.position = this.getPosition()
-        this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
-      }
+      /**
+       * This setTimeout exists because sometimes you'll want to call
+       * this.$refs.input.focus() when the input is inside of something
+       * like, say, a dropdown. We need to give the element time to be
+       * added to the DOM before we send a focus event to it.
+       * 
+       * This short timeout provides, what seems like, a fine amount of
+       * time for this to happen without being noticable by the human eye.
+       */
+      setTimeout(() => {
+        this.$refs.input.focus()
+        this.$emit('focus', this.value)
+        this.focused = true
+        if (this.buttons) {
+          this.position = this.getPosition()
+          this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
+        }
+      }, 20)
     },
     enterPressed () {
-      if (this.buttons) {
-        this.broadcast('VaInputOps', 'Va@inputEnterPressed', this.currentValue)
-      }
+      this.opsConfirm()
+    },
+    setPosition () {
+      this.position = this.getPosition()
     },
     getPosition () {
       let rect = this.$refs.input.getBoundingClientRect()
@@ -235,6 +287,9 @@ export default {
       }
     },
     opsConfirm () {
+      // if (this.buttons) {
+      //   this.broadcast('VaInputOps', 'Va@inputEnterPressed', this.currentValue)
+      // }
       this.$emit('confirm', this.value)
     },
     opsCancel () {

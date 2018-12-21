@@ -25,10 +25,10 @@ export default {
     this.$on('Va@desktopIsMobile', (val) => { this.isMobile = val })
 
     /**
-     * In case this component is instantiated after the LayoutManager
+     * In case this component is instantiated after the App
      * has initially broadcasted isMobile, let's request it.
      */
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
+    this.dispatch('VaApp', 'Va@requestIsMobile', true)
   }
 }
 </script>

@@ -345,10 +345,10 @@ exports.f = __webpack_require__("9e1e") ? gOPD : function getOwnPropertyDescript
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaLayoutManagerConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7ec4");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaLayoutManagerConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaLayoutManagerConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaAppConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("7ec4");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaAppConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaAppConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaLayoutManagerConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VaAppConfig_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -3178,14 +3178,14 @@ var VaPagevue_type_template_id_56fafb04_staticRenderFns = []
     var _this = this;
 
     setTimeout(function () {
-      _this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', _this.sz);
+      _this.dispatch('VaApp', 'Va@configPageSizeChange', _this.sz);
     }, 10);
   },
   created: function created() {
     var _this2 = this;
 
     this.$on('Va@pagePresenceCheck', function (val) {
-      _this2.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true);
+      _this2.dispatch('VaApp', 'Va@pagePresenceReply', true);
     });
     this.$on('Va@desktopMinimumWidthChange', function (val) {
       _this2.currentDesktopMinimumWidth = val;
@@ -3228,7 +3228,7 @@ var VaPagevue_type_template_id_56fafb04_staticRenderFns = []
     });
   },
   beforeDestroy: function beforeDestroy() {
-    this.dispatch('VaLayoutManager', 'Va@pageDisconnect', true);
+    this.dispatch('VaApp', 'Va@pageDisconnect', true);
   },
   computed: {
     pageClassObj: function pageClassObj() {
@@ -3899,7 +3899,7 @@ var EventListener = {
         _this2.isMobile = false;
       }
     });
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+    this.dispatch('VaApp', 'Va@requestIsMobile', true);
   },
   mounted: function mounted() {
     this.init();
@@ -6854,14 +6854,14 @@ var VaTopbarvue_type_template_id_80f701ec_staticRenderFns = []
      * LayoutManager time to call enableReceivers().
      */
     setTimeout(function () {
-      _this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', _this.th);
+      _this.dispatch('VaApp', 'Va@configTopbarThemeChange', _this.th);
     }, 10);
   },
   created: function created() {
     var _this2 = this;
 
     this.$on('Va@topbarPresenceCheck', function () {
-      _this2.dispatch('VaLayoutManager', 'Va@topbarPresenceReply', true);
+      _this2.dispatch('VaApp', 'Va@topbarPresenceReply', true);
     });
     this.$on('Va@desktopMinimumWidthChange', function (val) {
       _this2.currentDesktopMinimumWidth = val;
@@ -6913,12 +6913,12 @@ var VaTopbarvue_type_template_id_80f701ec_staticRenderFns = []
     });
   },
   beforeDestroy: function beforeDestroy() {
-    this.dispatch('VaLayoutManager', 'Va@topbarDisconnect', true);
+    this.dispatch('VaApp', 'Va@topbarDisconnect', true);
   },
   watch: {
     theme: function theme(val) {
       this.th = val;
-      this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', this.th);
+      this.dispatch('VaApp', 'Va@configTopbarThemeChange', this.th);
     }
   },
   computed: {
@@ -7186,7 +7186,7 @@ var VaMobilevue_type_template_id_56a9046e_staticRenderFns = []
      * has initially broadcasted isMobile, let's request it.
      */
 
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+    this.dispatch('VaApp', 'Va@requestIsMobile', true);
   }
 });
 // CONCATENATED MODULE: ./src/Mobile/VaMobile.vue?vue&type=script&lang=js&
@@ -7762,14 +7762,14 @@ var VaMinibarvue_type_template_id_60a8b81a_staticRenderFns = []
      * LayoutManager time to call enableReceivers().
      */
     setTimeout(function () {
-      _this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', _this.th);
+      _this.dispatch('VaApp', 'Va@configMinibarThemeChange', _this.th);
     }, 10);
   },
   created: function created() {
     var _this2 = this;
 
     this.$on('Va@minibarPresenceCheck', function (val) {
-      _this2.dispatch('VaLayoutManager', 'Va@minibarPresenceReply', true);
+      _this2.dispatch('VaApp', 'Va@minibarPresenceReply', true);
     });
     this.$on('Va@desktopMinimumWidthChange', function (val) {
       _this2.currentDesktopMinimumWidth = val;
@@ -7815,12 +7815,12 @@ var VaMinibarvue_type_template_id_60a8b81a_staticRenderFns = []
     });
   },
   beforeDestroy: function beforeDestroy() {
-    this.dispatch('VaLayoutManager', 'Va@minibarDisconnect', true);
+    this.dispatch('VaApp', 'Va@minibarDisconnect', true);
   },
   watch: {
     theme: function theme(val) {
       this.th = val;
-      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', this.th);
+      this.dispatch('VaApp', 'Va@configMinibarThemeChange', this.th);
     }
   },
   computed: {
@@ -8335,7 +8335,7 @@ var VaDesktopvue_type_template_id_6409733a_staticRenderFns = []
      * has initially broadcasted isMobile, let's request it.
      */
 
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+    this.dispatch('VaApp', 'Va@requestIsMobile', true);
   }
 });
 // CONCATENATED MODULE: ./src/Desktop/VaDesktop.vue?vue&type=script&lang=js&
@@ -8540,7 +8540,7 @@ var VaSidebarvue_type_template_id_6589def5_staticRenderFns = []
     var _this = this;
 
     this.$on('Va@sidebarPresenceCheck', function (val) {
-      _this.dispatch('VaLayoutManager', 'Va@sidebarPresenceReply', true);
+      _this.dispatch('VaApp', 'Va@sidebarPresenceReply', true);
     });
     this.$on('Va@desktopMinimumWidthChange', function (val) {
       _this.currentDesktopMinimumWidth = val;
@@ -8602,20 +8602,20 @@ var VaSidebarvue_type_template_id_6589def5_staticRenderFns = []
      * LayoutManager time to call enableReceivers().
      */
     setTimeout(function () {
-      _this2.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', _this2.th);
+      _this2.dispatch('VaApp', 'Va@configSidebarThemeChange', _this2.th);
 
-      _this2.dispatch('VaLayoutManager', 'Va@configCompactChange', _this2.comp);
+      _this2.dispatch('VaApp', 'Va@configCompactChange', _this2.comp);
 
-      _this2.dispatch('VaLayoutManager', 'Va@configTextLinksChange', _this2.tl);
+      _this2.dispatch('VaApp', 'Va@configTextLinksChange', _this2.tl);
     }, 10);
   },
   beforeDestroy: function beforeDestroy() {
-    this.dispatch('VaLayoutManager', 'Va@sidebarDisconnect', true);
+    this.dispatch('VaApp', 'Va@sidebarDisconnect', true);
   },
   watch: {
     theme: function theme(val) {
       this.th = val;
-      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th);
+      this.dispatch('VaApp', 'Va@configSidebarThemeChange', this.th);
     }
   },
   computed: {
@@ -8723,7 +8723,7 @@ var VaSidebarvue_type_template_id_6589def5_staticRenderFns = []
   //   },
   //   doResize (e) {
   //     let el = this.$refs.sidebar
-  //     this.dispatch('VaLayoutManager', 'Va@sidebarWidthChange', e.clientX - el.offsetLeft)
+  //     this.dispatch('VaApp', 'Va@sidebarWidthChange', e.clientX - el.offsetLeft)
   //   },
   //   stopResize () {
   //     window.removeEventListener('mouseup', this.stopResize, false)
@@ -10762,14 +10762,14 @@ var VaSidebarGroup = {
   },
   watch: {
     showToggle: function showToggle(val) {
-      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val);
+      this.dispatch('VaApp', 'Va@configShowToggleChange', val);
     }
   },
   mounted: function mounted() {
     var _this = this;
 
     setTimeout(function () {
-      _this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', _this.showToggle);
+      _this.dispatch('VaApp', 'Va@configShowToggleChange', _this.showToggle);
     }, 10);
   },
   render: function render(createElement) {
@@ -11924,7 +11924,7 @@ var VaTimepickervue_type_template_id_cf3d4348_staticRenderFns = []
      * has initially broadcasted isMobile, let's request it.
      */
 
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+    this.dispatch('VaApp', 'Va@requestIsMobile', true);
   },
   mounted: function mounted() {
     var _this3 = this;
@@ -12483,7 +12483,7 @@ var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment
      * has initially broadcasted isMobile, let's request it.
      */
 
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true);
+    this.dispatch('VaApp', 'Va@requestIsMobile', true);
   },
   computed: {
     isDateSupported: function isDateSupported() {
@@ -12955,14 +12955,14 @@ var VaBreadcrumbItem_component = normalizeComponent(
 
 VaBreadcrumbItem_component.options.__file = "VaBreadcrumbItem.vue"
 /* harmony default export */ var VaBreadcrumbItem = (VaBreadcrumbItem_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaLayoutManager.vue?vue&type=template&id=49c470db&
-var VaLayoutManagervue_type_template_id_49c470db_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{style:(_vm.styleObj)},[_vm._t("default")],2)}
-var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaApp.vue?vue&type=template&id=49c470db&
+var VaAppvue_type_template_id_49c470db_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{style:(_vm.styleObj)},[_vm._t("default")],2)}
+var VaAppvue_type_template_id_49c470db_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManager.vue?vue&type=template&id=49c470db&
+// CONCATENATED MODULE: ./src/LayoutManager/VaApp.vue?vue&type=template&id=49c470db&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaLayoutManager.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaApp.vue?vue&type=script&lang=js&
 
 
 //
@@ -12972,8 +12972,8 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
 //
 //
 
-/* harmony default export */ var VaLayoutManagervue_type_script_lang_js_ = ({
-  name: 'VaLayoutManager',
+/* harmony default export */ var VaAppvue_type_script_lang_js_ = ({
+  name: 'VaApp',
   mixins: [events],
   props: {
     desktopSidebarWidth: {
@@ -13482,7 +13482,7 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
       var _this = this;
 
       /**
-       * These exist for VaLayoutManagerConfig.
+       * These exist for VaAppConfig.
        *
        * Setting these values should trigger the 'watch' on each of them,
        * which in turn calls the value's respective broadcast function,
@@ -13567,53 +13567,53 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
 
       var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
       setTimeout(function () {
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopTopbarHeight', _this2.mDesktopTopbarHeight);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveDesktopTopbarHeight', _this2.mDesktopTopbarHeight);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinibarWidth', _this2.mDesktopMinibarWidth);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveDesktopMinibarWidth', _this2.mDesktopMinibarWidth);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopSidebarWidth', _this2.mDesktopSidebarWidth);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveDesktopSidebarWidth', _this2.mDesktopSidebarWidth);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMinimumWidth', _this2.mDesktopMinimumWidth);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveDesktopMinimumWidth', _this2.mDesktopMinimumWidth);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileMinibarWidth', _this2.mMobileMinibarWidth);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveMobileMinibarWidth', _this2.mMobileMinibarWidth);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileSidebarWidth', _this2.mMobileSidebarWidth);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveMobileSidebarWidth', _this2.mMobileSidebarWidth);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMobileTopbarHeight', _this2.mMobileTopbarHeight);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveMobileTopbarHeight', _this2.mMobileTopbarHeight);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarPriority', _this2.mSidebarPriority);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveSidebarPriority', _this2.mSidebarPriority);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarPriority', _this2.mMinibarPriority);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveMinibarPriority', _this2.mMinibarPriority);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarPriority', _this2.mTopbarPriority);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveTopbarPriority', _this2.mTopbarPriority);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveDesktopMargin', _this2.mDesktopMargin);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveDesktopMargin', _this2.mDesktopMargin);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarPadded', _this2.mTopbarPadded);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveTopbarPadded', _this2.mTopbarPadded);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveMinibarTheme', _this2.mMinibarTheme);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveMinibarTheme', _this2.mMinibarTheme);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSidebarTheme', _this2.mSidebarTheme);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveSidebarTheme', _this2.mSidebarTheme);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTopbarTheme', _this2.mTopbarTheme);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveTopbarTheme', _this2.mTopbarTheme);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageBgColor', _this2.mPageBgColor);
+        _this2.broadcast('VaAppConfig', 'Va@configReceivePageBgColor', _this2.mPageBgColor);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveShowToggle', _this2.mShowToggle);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveShowToggle', _this2.mShowToggle);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveTextLinks', _this2.mTextLinks);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveTextLinks', _this2.mTextLinks);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceivePageSize', _this2.mPageSize);
+        _this2.broadcast('VaAppConfig', 'Va@configReceivePageSize', _this2.mPageSize);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveCompact', _this2.mCompact);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveCompact', _this2.mCompact);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveReverse', _this2.mReverse);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveReverse', _this2.mReverse);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveBgColor', _this2.mBgColor);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveBgColor', _this2.mBgColor);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveSplit', _this2.mSplit);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveSplit', _this2.mSplit);
 
-        _this2.broadcast('VaLayoutManagerConfig', 'Va@configReceiveRtl', _this2.mRtl);
+        _this2.broadcast('VaAppConfig', 'Va@configReceiveRtl', _this2.mRtl);
       }, delay);
     }
   },
@@ -13660,16 +13660,16 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
     this.broadcastIsRTL(this.mRtl);
     /**
      * --------------------------------------------------
-     * Methods related to VaLayoutManagerConfig
+     * Methods related to VaAppConfig
      *
-     * enableReceivers() exists so that VaLayoutManagerConfig
-     * can talk to VaLayoutManager.
+     * enableReceivers() exists so that VaAppConfig
+     * can talk to VaApp.
      */
 
     this.enableReceivers();
     /**
      * broadcastDefaultsToConfig() sends default values to
-     * VaLayoutManagerConfig, in case some values weren't specified.
+     * VaAppConfig, in case some values weren't specified.
      */
 
     this.broadcastDefaultsToConfig();
@@ -13750,9 +13750,9 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
     }
   }
 });
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManager.vue?vue&type=script&lang=js&
- /* harmony default export */ var LayoutManager_VaLayoutManagervue_type_script_lang_js_ = (VaLayoutManagervue_type_script_lang_js_); 
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManager.vue
+// CONCATENATED MODULE: ./src/LayoutManager/VaApp.vue?vue&type=script&lang=js&
+ /* harmony default export */ var LayoutManager_VaAppvue_type_script_lang_js_ = (VaAppvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/LayoutManager/VaApp.vue
 
 
 
@@ -13760,10 +13760,10 @@ var VaLayoutManagervue_type_template_id_49c470db_staticRenderFns = []
 
 /* normalize component */
 
-var VaLayoutManager_component = normalizeComponent(
-  LayoutManager_VaLayoutManagervue_type_script_lang_js_,
-  VaLayoutManagervue_type_template_id_49c470db_render,
-  VaLayoutManagervue_type_template_id_49c470db_staticRenderFns,
+var VaApp_component = normalizeComponent(
+  LayoutManager_VaAppvue_type_script_lang_js_,
+  VaAppvue_type_template_id_49c470db_render,
+  VaAppvue_type_template_id_49c470db_staticRenderFns,
   false,
   null,
   null,
@@ -13771,8 +13771,8 @@ var VaLayoutManager_component = normalizeComponent(
   
 )
 
-VaLayoutManager_component.options.__file = "VaLayoutManager.vue"
-/* harmony default export */ var VaLayoutManager = (VaLayoutManager_component.exports);
+VaApp_component.options.__file = "VaApp.vue"
+/* harmony default export */ var VaApp = (VaApp_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Sidebar/VaSidebarScrollarea.vue?vue&type=template&id=dbe848c0&
 var VaSidebarScrollareavue_type_template_id_dbe848c0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"scrollArea",class:_vm.classObj,attrs:{"id":"vaSidebarScrollArea"},on:{"scroll":_vm.onScroll}},[_vm._t("default")],2)}
 var VaSidebarScrollareavue_type_template_id_dbe848c0_staticRenderFns = []
@@ -14295,14 +14295,14 @@ var VaPlaceholderHeading_component = normalizeComponent(
 
 VaPlaceholderHeading_component.options.__file = "VaPlaceholderHeading.vue"
 /* harmony default export */ var VaPlaceholderHeading = (VaPlaceholderHeading_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaLayoutManagerConfig.vue?vue&type=template&id=0bb92228&
-var VaLayoutManagerConfigvue_type_template_id_0bb92228_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('va-button',{ref:"cfgbtn",style:(_vm.styleObj),attrs:{"type":"primary","round":"","size":"md"},nativeOn:{"click":function($event){return _vm.showConfigModal($event)}}},[_c('va-icon',{attrs:{"type":"sliders-h","icon-style":"solid"}})],1),_c('va-modal',{ref:"configModal",attrs:{"title":"LayoutManagerConfig","width":800,"backdrop":false}},[_c('div',{staticClass:"themeModalBody",attrs:{"slot":"body"},slot:"body"},[_c('va-mobile',[_c('p',[_vm._v("\n            The LayoutManagerConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.\n          ")])]),_c('va-desktop',[_c('va-tabs',[_c('va-tab',{attrs:{"name":"Options"}},[_c('p',{staticStyle:{"margin-bottom":"10px"}},[_vm._v("There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager.")]),_c('h3',[_vm._v("Built-in themes")]),_c('hr'),_c('va-row',{attrs:{"gutter":10}},[_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.minibarTheme),callback:function ($$v) {_vm.minibarTheme=$$v},expression:"minibarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.sidebarTheme),callback:function ($$v) {_vm.sidebarTheme=$$v},expression:"sidebarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.topbarTheme),callback:function ($$v) {_vm.topbarTheme=$$v},expression:"topbarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Background colors")]),_c('hr'),_c('va-column',{attrs:{"xs":6}},[_c('p',[_vm._v("\n                    Document"),_c('br'),_c('va-input',{model:{value:(_vm.bgColor),callback:function ($$v) {_vm.bgColor=$$v},expression:"bgColor"}})],1)]),_c('va-column',{attrs:{"xs":6}},[_c('p',[_vm._v("\n                    Page (content)"),_c('br'),_c('va-input',{model:{value:(_vm.pageBgColor),callback:function ($$v) {_vm.pageBgColor=$$v},expression:"pageBgColor"}})],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Page")]),_c('hr'),_c('va-column',{attrs:{"xs":12}},[_c('p',[_vm._v("\n                    Page size"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.pageSize),callback:function ($$v) {_vm.pageSize=$$v},expression:"pageSize"}},[_c('va-option',{attrs:{"value":"sm"}},[_vm._v("Small")]),_c('va-option',{attrs:{"value":"md"}},[_vm._v("Medium")]),_c('va-option',{attrs:{"value":"lg"}},[_vm._v("Large")])],1)],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Misc. layout manager props")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.sidebarPriority),callback:function ($$v) {_vm.sidebarPriority=$$v},expression:"sidebarPriority"}},[_vm._v("sidebarPriority")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.minibarPriority),callback:function ($$v) {_vm.minibarPriority=$$v},expression:"minibarPriority"}},[_vm._v("minibarPriority")])],1),_c('p',[_c('va-tooltip',{attrs:{"trigger":"hover","content":"Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0","placement":"right","effect":"tooltip-fade-right"}},[_c('va-checkbox',{attrs:{"disabled":_vm.shouldTopbarPriorityBeDisabled},model:{value:(_vm.topbarPriority),callback:function ($$v) {_vm.topbarPriority=$$v},expression:"topbarPriority"}},[_vm._v("topbarPriority")])],1)],1),_c('p',[_c('va-tooltip',{attrs:{"trigger":"hover","content":"Disabled unless topbarPriority and desktopMargin !== 0","placement":"right","effect":"tooltip-fade-right"}},[_c('va-checkbox',{attrs:{"disabled":_vm.shouldTopbarPaddedBeDisabled},model:{value:(_vm.topbarPadded),callback:function ($$v) {_vm.topbarPadded=$$v},expression:"topbarPadded"}},[_vm._v("topbarPadded")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.rtl),callback:function ($$v) {_vm.rtl=$$v},expression:"rtl"}},[_vm._v("rtl")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.reverse),callback:function ($$v) {_vm.reverse=$$v},expression:"reverse"}},[_vm._v("reverse")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.split),callback:function ($$v) {_vm.split=$$v},expression:"split"}},[_vm._v("split")])],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.showToggle),callback:function ($$v) {_vm.showToggle=$$v},expression:"showToggle"}},[_vm._v("showToggle")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.compact),callback:function ($$v) {_vm.compact=$$v},expression:"compact"}},[_vm._v("compact")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.textLinks),callback:function ($$v) {_vm.textLinks=$$v},expression:"textLinks"}},[_vm._v("textLinks")])],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Content margin and minimum width")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Desktop margin: "+_vm._s(_vm.desktopMargin)),_c('br'),_c('va-range',{ref:"desktopMarginRange",attrs:{"min":0,"max":1000,"step":1},model:{value:(_vm.desktopMargin),callback:function ($$v) {_vm.desktopMargin=$$v},expression:"desktopMargin"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Desktop minimum width: "+_vm._s(_vm.desktopMinimumWidth)),_c('br'),_c('va-range',{ref:"desktopMinimumWidthRange",attrs:{"min":0,"max":1024,"step":1},model:{value:(_vm.desktopMinimumWidth),callback:function ($$v) {_vm.desktopMinimumWidth=$$v},expression:"desktopMinimumWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                     \n                  ")])])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Desktop bar dimensions")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar width: "+_vm._s(_vm.desktopSidebarWidth)),_c('br'),_c('va-range',{ref:"desktopSidebarWidthRange",attrs:{"min":0,"max":400,"step":1},model:{value:(_vm.desktopSidebarWidth),callback:function ($$v) {_vm.desktopSidebarWidth=$$v},expression:"desktopSidebarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar width: "+_vm._s(_vm.desktopMinibarWidth)),_c('br'),_c('va-range',{ref:"desktopMinibarWidthRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.desktopMinibarWidth),callback:function ($$v) {_vm.desktopMinibarWidth=$$v},expression:"desktopMinibarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar height: "+_vm._s(_vm.desktopTopbarHeight)),_c('br'),_c('va-range',{ref:"desktopTopbarHeightRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.desktopTopbarHeight),callback:function ($$v) {_vm.desktopTopbarHeight=$$v},expression:"desktopTopbarHeight"}})],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Mobile bar dimensions")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar width: "+_vm._s(_vm.mobileSidebarWidth)),_c('br'),_c('va-range',{ref:"mobileSidebarWidthRange",attrs:{"min":0,"max":400,"step":1},model:{value:(_vm.mobileSidebarWidth),callback:function ($$v) {_vm.mobileSidebarWidth=$$v},expression:"mobileSidebarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar width: "+_vm._s(_vm.mobileMinibarWidth)),_c('br'),_c('va-range',{ref:"mobileMinibarWidthRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.mobileMinibarWidth),callback:function ($$v) {_vm.mobileMinibarWidth=$$v},expression:"mobileMinibarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar height: "+_vm._s(_vm.mobileTopbarHeight)),_c('br'),_c('va-range',{ref:"mobileTopbarHeightRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.mobileTopbarHeight),callback:function ($$v) {_vm.mobileTopbarHeight=$$v},expression:"mobileTopbarHeight"}})],1)])],1)],1),_c('va-tab',{attrs:{"name":"Source"}},[_c('code',[_c('pre',{staticClass:"back"},[_c('span',{staticClass:"blue"},[_vm._v("<template>")]),_vm._v("\n    "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/layoutmanager -->")]),_vm._v("\n    "),_c('span',{staticClass:"blue"},[_vm._v("<va-layout-manager")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("bg-color")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.bgColor)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("page-bg-color")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.pageBgColor)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-margin")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMargin)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-minimum-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMinimumWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-sidebar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopSidebarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-minibar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMinibarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-topbar-height")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopTopbarHeight)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-sidebar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileSidebarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-minibar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileMinibarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-topbar-height")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileTopbarHeight)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":rtl")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.rtl)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":reverse")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.reverse)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":split")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.split)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":sidebar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.sidebarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":minibar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.minibarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":topbar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":topbar-padded")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarPadded)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/topbar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-topbar")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarTheme)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"left\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" L "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"center\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" C "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"right\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" R "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-topbar>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/minibar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-minibar")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":top-items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{icon:'home'},{icon:'search'},{icon:'user'}]\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":bottom-items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{icon:'question'}]\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.minibarTheme)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/sidebar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.sidebarTheme)+"\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":compact")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.compact)+"\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":text-links")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.textLinks)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-scrollarea>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-group")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{name:'Item1'}]\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v("title")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"Category 1\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":show-toggle")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.showToggle)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-group")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{name:'Item1'}]\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v("title")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"Category 2\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":show-toggle")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.showToggle)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("</va-sidebar-scrollarea>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-sidebar>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/page -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-page")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("size")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.pageSize)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<transition>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<router-view>")]),_vm._v("\n            ...\n          "),_c('span',{staticClass:"blue"},[_vm._v("</router-view>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("</transition>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-page>")]),_vm._v("\n\n    "),_c('span',{staticClass:"blue"},[_vm._v("</va-layout-manager>")]),_vm._v("\n  "),_c('span',{staticClass:"blue"},[_vm._v("</template>")])])])])],1)],1)],1),_c('div',{attrs:{"slot":"footer"},slot:"footer"},[_c('div',{staticStyle:{"text-align":"right"}},[_c('va-button',{attrs:{"type":"primary"},nativeOn:{"click":function($event){_vm.$refs.configModal.close()}}},[_vm._v("\n            Close\n          ")])],1)])])],1)}
-var VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaAppConfig.vue?vue&type=template&id=0bb92228&
+var VaAppConfigvue_type_template_id_0bb92228_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('va-button',{ref:"cfgbtn",style:(_vm.styleObj),attrs:{"type":"primary","round":"","size":"md"},nativeOn:{"click":function($event){return _vm.showConfigModal($event)}}},[_c('va-icon',{attrs:{"type":"sliders-h","icon-style":"solid"}})],1),_c('va-modal',{ref:"configModal",attrs:{"title":"LayoutManagerConfig","width":800,"backdrop":false}},[_c('div',{staticClass:"themeModalBody",attrs:{"slot":"body"},slot:"body"},[_c('va-mobile',[_c('p',[_vm._v("\n            The LayoutManagerConfig is meant to be used on a desktop. If you're on a desktop, try increasing your resolution.\n          ")])]),_c('va-desktop',[_c('va-tabs',[_c('va-tab',{attrs:{"name":"Options"}},[_c('p',{staticStyle:{"margin-bottom":"10px"}},[_vm._v("There are hundreds of combinations of layouts that you can build using the vue-atlas LayoutManager.")]),_c('h3',[_vm._v("Built-in themes")]),_c('hr'),_c('va-row',{attrs:{"gutter":10}},[_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.minibarTheme),callback:function ($$v) {_vm.minibarTheme=$$v},expression:"minibarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.sidebarTheme),callback:function ($$v) {_vm.sidebarTheme=$$v},expression:"sidebarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.topbarTheme),callback:function ($$v) {_vm.topbarTheme=$$v},expression:"topbarTheme"}},[_c('va-option',{attrs:{"value":"default"}},[_vm._v("Default")]),_c('va-option',{attrs:{"value":"white"}},[_vm._v("White")]),_c('va-option',{attrs:{"value":"blue"}},[_vm._v("Blue")]),_c('va-option',{attrs:{"value":"dark"}},[_vm._v("Dark")]),_c('va-option',{attrs:{"value":"darker"}},[_vm._v("Darker")]),_c('va-option',{attrs:{"value":"purple"}},[_vm._v("Purple")])],1)],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Background colors")]),_c('hr'),_c('va-column',{attrs:{"xs":6}},[_c('p',[_vm._v("\n                    Document"),_c('br'),_c('va-input',{model:{value:(_vm.bgColor),callback:function ($$v) {_vm.bgColor=$$v},expression:"bgColor"}})],1)]),_c('va-column',{attrs:{"xs":6}},[_c('p',[_vm._v("\n                    Page (content)"),_c('br'),_c('va-input',{model:{value:(_vm.pageBgColor),callback:function ($$v) {_vm.pageBgColor=$$v},expression:"pageBgColor"}})],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Page")]),_c('hr'),_c('va-column',{attrs:{"xs":12}},[_c('p',[_vm._v("\n                    Page size"),_c('br'),_c('va-select',{attrs:{"no-uncheck":""},model:{value:(_vm.pageSize),callback:function ($$v) {_vm.pageSize=$$v},expression:"pageSize"}},[_c('va-option',{attrs:{"value":"sm"}},[_vm._v("Small")]),_c('va-option',{attrs:{"value":"md"}},[_vm._v("Medium")]),_c('va-option',{attrs:{"value":"lg"}},[_vm._v("Large")])],1)],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Misc. layout manager props")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.sidebarPriority),callback:function ($$v) {_vm.sidebarPriority=$$v},expression:"sidebarPriority"}},[_vm._v("sidebarPriority")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.minibarPriority),callback:function ($$v) {_vm.minibarPriority=$$v},expression:"minibarPriority"}},[_vm._v("minibarPriority")])],1),_c('p',[_c('va-tooltip',{attrs:{"trigger":"hover","content":"Disabled unless !topbarPriority, !minibarPriority and desktopMargin !== 0","placement":"right","effect":"tooltip-fade-right"}},[_c('va-checkbox',{attrs:{"disabled":_vm.shouldTopbarPriorityBeDisabled},model:{value:(_vm.topbarPriority),callback:function ($$v) {_vm.topbarPriority=$$v},expression:"topbarPriority"}},[_vm._v("topbarPriority")])],1)],1),_c('p',[_c('va-tooltip',{attrs:{"trigger":"hover","content":"Disabled unless topbarPriority and desktopMargin !== 0","placement":"right","effect":"tooltip-fade-right"}},[_c('va-checkbox',{attrs:{"disabled":_vm.shouldTopbarPaddedBeDisabled},model:{value:(_vm.topbarPadded),callback:function ($$v) {_vm.topbarPadded=$$v},expression:"topbarPadded"}},[_vm._v("topbarPadded")])],1)],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.rtl),callback:function ($$v) {_vm.rtl=$$v},expression:"rtl"}},[_vm._v("rtl")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.reverse),callback:function ($$v) {_vm.reverse=$$v},expression:"reverse"}},[_vm._v("reverse")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.split),callback:function ($$v) {_vm.split=$$v},expression:"split"}},[_vm._v("split")])],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_c('va-checkbox',{model:{value:(_vm.showToggle),callback:function ($$v) {_vm.showToggle=$$v},expression:"showToggle"}},[_vm._v("showToggle")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.compact),callback:function ($$v) {_vm.compact=$$v},expression:"compact"}},[_vm._v("compact")])],1),_c('p',[_c('va-checkbox',{model:{value:(_vm.textLinks),callback:function ($$v) {_vm.textLinks=$$v},expression:"textLinks"}},[_vm._v("textLinks")])],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Content margin and minimum width")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Desktop margin: "+_vm._s(_vm.desktopMargin)),_c('br'),_c('va-range',{ref:"desktopMarginRange",attrs:{"min":0,"max":1000,"step":1},model:{value:(_vm.desktopMargin),callback:function ($$v) {_vm.desktopMargin=$$v},expression:"desktopMargin"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Desktop minimum width: "+_vm._s(_vm.desktopMinimumWidth)),_c('br'),_c('va-range',{ref:"desktopMinimumWidthRange",attrs:{"min":0,"max":1024,"step":1},model:{value:(_vm.desktopMinimumWidth),callback:function ($$v) {_vm.desktopMinimumWidth=$$v},expression:"desktopMinimumWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                     \n                  ")])])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Desktop bar dimensions")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar width: "+_vm._s(_vm.desktopSidebarWidth)),_c('br'),_c('va-range',{ref:"desktopSidebarWidthRange",attrs:{"min":0,"max":400,"step":1},model:{value:(_vm.desktopSidebarWidth),callback:function ($$v) {_vm.desktopSidebarWidth=$$v},expression:"desktopSidebarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar width: "+_vm._s(_vm.desktopMinibarWidth)),_c('br'),_c('va-range',{ref:"desktopMinibarWidthRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.desktopMinibarWidth),callback:function ($$v) {_vm.desktopMinibarWidth=$$v},expression:"desktopMinibarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar height: "+_vm._s(_vm.desktopTopbarHeight)),_c('br'),_c('va-range',{ref:"desktopTopbarHeightRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.desktopTopbarHeight),callback:function ($$v) {_vm.desktopTopbarHeight=$$v},expression:"desktopTopbarHeight"}})],1)])],1),_c('va-row',{attrs:{"gutter":10}},[_c('h3',[_vm._v("Mobile bar dimensions")]),_c('hr'),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Sidebar width: "+_vm._s(_vm.mobileSidebarWidth)),_c('br'),_c('va-range',{ref:"mobileSidebarWidthRange",attrs:{"min":0,"max":400,"step":1},model:{value:(_vm.mobileSidebarWidth),callback:function ($$v) {_vm.mobileSidebarWidth=$$v},expression:"mobileSidebarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Minibar width: "+_vm._s(_vm.mobileMinibarWidth)),_c('br'),_c('va-range',{ref:"mobileMinibarWidthRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.mobileMinibarWidth),callback:function ($$v) {_vm.mobileMinibarWidth=$$v},expression:"mobileMinibarWidth"}})],1)]),_c('va-column',{attrs:{"xs":4}},[_c('p',[_vm._v("\n                    Topbar height: "+_vm._s(_vm.mobileTopbarHeight)),_c('br'),_c('va-range',{ref:"mobileTopbarHeightRange",attrs:{"min":0,"max":150,"step":1},model:{value:(_vm.mobileTopbarHeight),callback:function ($$v) {_vm.mobileTopbarHeight=$$v},expression:"mobileTopbarHeight"}})],1)])],1)],1),_c('va-tab',{attrs:{"name":"Source"}},[_c('code',[_c('pre',{staticClass:"back"},[_c('span',{staticClass:"blue"},[_vm._v("<template>")]),_vm._v("\n    "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/layoutmanager -->")]),_vm._v("\n    "),_c('span',{staticClass:"blue"},[_vm._v("<va-app")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("bg-color")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.bgColor)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("page-bg-color")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.pageBgColor)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-margin")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMargin)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-minimum-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMinimumWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-sidebar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopSidebarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-minibar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopMinibarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("desktop-topbar-height")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.desktopTopbarHeight)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-sidebar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileSidebarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-minibar-width")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileMinibarWidth)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v("mobile-topbar-height")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.mobileTopbarHeight)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":rtl")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.rtl)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":reverse")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.reverse)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":split")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.split)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":sidebar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.sidebarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":minibar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.minibarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":topbar-priority")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarPriority)+"\"")]),_vm._v("\n      "),_c('span',{staticClass:"yellow"},[_vm._v(":topbar-padded")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarPadded)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/topbar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-topbar")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.topbarTheme)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"left\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" L "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"center\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" C "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<div")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("slot")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"right\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v(" R "),_c('span',{staticClass:"blue"},[_vm._v("</div>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-topbar>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/minibar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-minibar")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":top-items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{icon:'home'},{icon:'search'},{icon:'user'}]\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":bottom-items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{icon:'question'}]\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.minibarTheme)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/sidebar -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v("theme")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.sidebarTheme)+"\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":compact")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.compact)+"\"")]),_vm._v("\n        "),_c('span',{staticClass:"yellow"},[_vm._v(":text-links")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.textLinks)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-scrollarea>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-group")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{name:'Item1'}]\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v("title")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"Category 1\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":show-toggle")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.showToggle)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<va-sidebar-group")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":items")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"[{name:'Item1'}]\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v("title")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\"Category 2\"")]),_vm._v("\n            "),_c('span',{staticClass:"yellow"},[_vm._v(":show-toggle")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.showToggle)+"\"")]),_vm._v(" "),_c('span',{staticClass:"blue"},[_vm._v("/>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("</va-sidebar-scrollarea>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-sidebar>")]),_vm._v("\n\n      "),_c('span',{staticClass:"comment"},[_vm._v("<!-- https://vue-atlas.com/documentation/page -->")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("<va-page")]),_vm._v(" "),_c('span',{staticClass:"yellow"},[_vm._v("size")]),_vm._v("="),_c('span',{staticClass:"green"},[_vm._v("\""+_vm._s(_vm.pageSize)+"\"")]),_c('span',{staticClass:"blue"},[_vm._v(">")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("<transition>")]),_vm._v("\n          "),_c('span',{staticClass:"blue"},[_vm._v("<router-view>")]),_vm._v("\n            ...\n          "),_c('span',{staticClass:"blue"},[_vm._v("</router-view>")]),_vm._v("\n        "),_c('span',{staticClass:"blue"},[_vm._v("</transition>")]),_vm._v("\n      "),_c('span',{staticClass:"blue"},[_vm._v("</va-page>")]),_vm._v("\n\n    "),_c('span',{staticClass:"blue"},[_vm._v("</va-app>")]),_vm._v("\n  "),_c('span',{staticClass:"blue"},[_vm._v("</template>")])])])])],1)],1)],1),_c('div',{attrs:{"slot":"footer"},slot:"footer"},[_c('div',{staticStyle:{"text-align":"right"}},[_c('va-button',{attrs:{"type":"primary"},nativeOn:{"click":function($event){_vm.$refs.configModal.close()}}},[_vm._v("\n            Close\n          ")])],1)])])],1)}
+var VaAppConfigvue_type_template_id_0bb92228_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManagerConfig.vue?vue&type=template&id=0bb92228&
+// CONCATENATED MODULE: ./src/LayoutManager/VaAppConfig.vue?vue&type=template&id=0bb92228&
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaLayoutManagerConfig.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LayoutManager/VaAppConfig.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -14606,8 +14606,8 @@ var VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns = []
 //
 //
 
-/* harmony default export */ var VaLayoutManagerConfigvue_type_script_lang_js_ = ({
-  name: 'VaLayoutManagerConfig',
+/* harmony default export */ var VaAppConfigvue_type_script_lang_js_ = ({
+  name: 'VaAppConfig',
   mixins: [events],
   props: {
     prefixCls: {
@@ -14624,7 +14624,7 @@ var VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns = []
 
       /**
        * Sensible defaults, but will be overwritten by
-       * VaLayoutManager when it broadcasts initial values.
+       * VaApp when it broadcasts initial values.
        * See broadcastDefaultsToConfig()
        */
       minibarTheme: 'default',
@@ -14655,76 +14655,76 @@ var VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns = []
   },
   watch: {
     desktopSidebarWidth: function desktopSidebarWidth(val) {
-      this.dispatch('VaLayoutManager', 'Va@configDesktopSidebarWidthChange', val);
+      this.dispatch('VaApp', 'Va@configDesktopSidebarWidthChange', val);
     },
     desktopTopbarHeight: function desktopTopbarHeight(val) {
-      this.dispatch('VaLayoutManager', 'Va@configDesktopTopbarHeightChange', val);
+      this.dispatch('VaApp', 'Va@configDesktopTopbarHeightChange', val);
     },
     desktopMinibarWidth: function desktopMinibarWidth(val) {
-      this.dispatch('VaLayoutManager', 'Va@configDesktopMinibarWidthChange', val);
+      this.dispatch('VaApp', 'Va@configDesktopMinibarWidthChange', val);
     },
     desktopMargin: function desktopMargin(val) {
-      this.dispatch('VaLayoutManager', 'Va@configDesktopMarginChange', val);
+      this.dispatch('VaApp', 'Va@configDesktopMarginChange', val);
     },
     desktopMinimumWidth: function desktopMinimumWidth(val) {
-      this.dispatch('VaLayoutManager', 'Va@configDesktopMinimumWidthChange', val);
+      this.dispatch('VaApp', 'Va@configDesktopMinimumWidthChange', val);
     },
     mobileSidebarWidth: function mobileSidebarWidth(val) {
-      this.dispatch('VaLayoutManager', 'Va@configMobileSidebarWidthChange', val);
+      this.dispatch('VaApp', 'Va@configMobileSidebarWidthChange', val);
     },
     mobileTopbarHeight: function mobileTopbarHeight(val) {
-      this.dispatch('VaLayoutManager', 'Va@configMobileTopbarHeightChange', val);
+      this.dispatch('VaApp', 'Va@configMobileTopbarHeightChange', val);
     },
     mobileMinibarWidth: function mobileMinibarWidth(val) {
-      this.dispatch('VaLayoutManager', 'Va@configMobileMinibarWidthChange', val);
+      this.dispatch('VaApp', 'Va@configMobileMinibarWidthChange', val);
     },
     sidebarPriority: function sidebarPriority(val) {
-      this.dispatch('VaLayoutManager', 'Va@configSidebarPriorityChange', val);
+      this.dispatch('VaApp', 'Va@configSidebarPriorityChange', val);
     },
     minibarPriority: function minibarPriority(val) {
-      this.dispatch('VaLayoutManager', 'Va@configMinibarPriorityChange', val);
+      this.dispatch('VaApp', 'Va@configMinibarPriorityChange', val);
     },
     topbarPriority: function topbarPriority(val) {
-      this.dispatch('VaLayoutManager', 'Va@configTopbarPriorityChange', val);
+      this.dispatch('VaApp', 'Va@configTopbarPriorityChange', val);
     },
     topbarPadded: function topbarPadded(val) {
-      this.dispatch('VaLayoutManager', 'Va@configTopbarPaddedChange', val);
+      this.dispatch('VaApp', 'Va@configTopbarPaddedChange', val);
     },
     rtl: function rtl(val) {
-      this.dispatch('VaLayoutManager', 'Va@configRtlChange', val);
+      this.dispatch('VaApp', 'Va@configRtlChange', val);
     },
     split: function split(val) {
-      this.dispatch('VaLayoutManager', 'Va@configSplitChange', val);
+      this.dispatch('VaApp', 'Va@configSplitChange', val);
     },
     reverse: function reverse(val) {
-      this.dispatch('VaLayoutManager', 'Va@configReverseChange', val);
+      this.dispatch('VaApp', 'Va@configReverseChange', val);
     },
     compact: function compact(val) {
-      this.dispatch('VaLayoutManager', 'Va@configCompactChange', val);
+      this.dispatch('VaApp', 'Va@configCompactChange', val);
     },
     showToggle: function showToggle(val) {
-      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val);
+      this.dispatch('VaApp', 'Va@configShowToggleChange', val);
     },
     textLinks: function textLinks(val) {
-      this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', val);
+      this.dispatch('VaApp', 'Va@configTextLinksChange', val);
     },
     pageSize: function pageSize(val) {
-      this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', val);
+      this.dispatch('VaApp', 'Va@configPageSizeChange', val);
     },
     topbarTheme: function topbarTheme(val) {
-      this.dispatch('VaLayoutManager', 'Va@configTopbarThemeChange', val);
+      this.dispatch('VaApp', 'Va@configTopbarThemeChange', val);
     },
     minibarTheme: function minibarTheme(val) {
-      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', val);
+      this.dispatch('VaApp', 'Va@configMinibarThemeChange', val);
     },
     sidebarTheme: function sidebarTheme(val) {
-      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', val);
+      this.dispatch('VaApp', 'Va@configSidebarThemeChange', val);
     },
     bgColor: function bgColor(val) {
-      this.dispatch('VaLayoutManager', 'Va@configBgColorChange', val);
+      this.dispatch('VaApp', 'Va@configBgColorChange', val);
     },
     pageBgColor: function pageBgColor(val) {
-      this.dispatch('VaLayoutManager', 'Va@configPageBgColorChange', val);
+      this.dispatch('VaApp', 'Va@configPageBgColorChange', val);
     }
   },
   methods: {
@@ -14903,12 +14903,12 @@ var VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns = []
     }
   }
 });
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManagerConfig.vue?vue&type=script&lang=js&
- /* harmony default export */ var LayoutManager_VaLayoutManagerConfigvue_type_script_lang_js_ = (VaLayoutManagerConfigvue_type_script_lang_js_); 
-// EXTERNAL MODULE: ./src/LayoutManager/VaLayoutManagerConfig.vue?vue&type=style&index=0&lang=scss&
-var VaLayoutManagerConfigvue_type_style_index_0_lang_scss_ = __webpack_require__("13d1");
+// CONCATENATED MODULE: ./src/LayoutManager/VaAppConfig.vue?vue&type=script&lang=js&
+ /* harmony default export */ var LayoutManager_VaAppConfigvue_type_script_lang_js_ = (VaAppConfigvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/LayoutManager/VaAppConfig.vue?vue&type=style&index=0&lang=scss&
+var VaAppConfigvue_type_style_index_0_lang_scss_ = __webpack_require__("13d1");
 
-// CONCATENATED MODULE: ./src/LayoutManager/VaLayoutManagerConfig.vue
+// CONCATENATED MODULE: ./src/LayoutManager/VaAppConfig.vue
 
 
 
@@ -14917,10 +14917,10 @@ var VaLayoutManagerConfigvue_type_style_index_0_lang_scss_ = __webpack_require__
 
 /* normalize component */
 
-var VaLayoutManagerConfig_component = normalizeComponent(
-  LayoutManager_VaLayoutManagerConfigvue_type_script_lang_js_,
-  VaLayoutManagerConfigvue_type_template_id_0bb92228_render,
-  VaLayoutManagerConfigvue_type_template_id_0bb92228_staticRenderFns,
+var VaAppConfig_component = normalizeComponent(
+  LayoutManager_VaAppConfigvue_type_script_lang_js_,
+  VaAppConfigvue_type_template_id_0bb92228_render,
+  VaAppConfigvue_type_template_id_0bb92228_staticRenderFns,
   false,
   null,
   null,
@@ -14928,8 +14928,8 @@ var VaLayoutManagerConfig_component = normalizeComponent(
   
 )
 
-VaLayoutManagerConfig_component.options.__file = "VaLayoutManagerConfig.vue"
-/* harmony default export */ var VaLayoutManagerConfig = (VaLayoutManagerConfig_component.exports);
+VaAppConfig_component.options.__file = "VaAppConfig.vue"
+/* harmony default export */ var VaAppConfig = (VaAppConfig_component.exports);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5defd4ff-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Notification/VaNotification.vue?vue&type=template&id=cc22f11e&
 var VaNotificationvue_type_template_id_cc22f11e_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"notification",class:_vm.classObj,style:(_vm.styleObj)},[_c('div',{class:(_vm.prefixCls + "-notification-dialog"),style:({'width': _vm.width + 'px'})},[_c('div',{class:(_vm.prefixCls + "-notification-content")},[_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type)},[_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type + "-left")},[_c('va-icon',{attrs:{"type":_vm.notificationIconType}})],1),_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type + "-right")},[_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type + "-right-close")},[_c('va-button',{attrs:{"type":"subtle"},nativeOn:{"click":function($event){return _vm.close($event)}}},[_c('va-icon',{attrs:{"type":"times","size":"14px"}})],1)],1),_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type + "-right-title")},[_vm._v("\n              "+_vm._s(_vm.title)+"\n            ")]),_c('div',{class:(_vm.prefixCls + "-notification-content-inner-" + _vm.type + "-right-message"),domProps:{"innerHTML":_vm._s(_vm.message)}})])])])])])}
 var VaNotificationvue_type_template_id_cc22f11e_staticRenderFns = []
@@ -15390,7 +15390,7 @@ var Components = {
   VaSidebarGroup: Sidebar_VaSidebarGroup,
   VaSidebarHeader: VaSidebarHeader,
   VaCheckboxGroup: VaCheckboxGroup,
-  VaLayoutManager: VaLayoutManager,
+  VaApp: VaApp,
   VaBreadcrumbItem: VaBreadcrumbItem,
   VaProgressTracker: VaProgressTracker,
   VaPlaceholderText: VaPlaceholderText,
@@ -15402,7 +15402,7 @@ var Components = {
   VaSidebarGroupTitle: VaSidebarGroupTitle,
   VaPlaceholderHeading: VaPlaceholderHeading,
   VaSidebarGroupToggle: VaSidebarGroupToggle,
-  VaLayoutManagerConfig: VaLayoutManagerConfig,
+  VaAppConfig: VaAppConfig,
   VaNotification: VaNotification
 };
 

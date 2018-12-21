@@ -62,7 +62,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@sidebarPresenceCheck', (val) => { this.dispatch('VaLayoutManager', 'Va@sidebarPresenceReply', true) })
+    this.$on('Va@sidebarPresenceCheck', (val) => { this.dispatch('VaApp', 'Va@sidebarPresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@minibarWidthChange', (val) => { this.currentMinibarWidth = val })
@@ -84,21 +84,21 @@ export default {
   mounted () {
     /**
      * This needs to be wrapped in a short setTimeout to give
-     * LayoutManager time to call enableReceivers().
+     * App time to call enableReceivers().
      */
     setTimeout(() => {
-      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th)
-      this.dispatch('VaLayoutManager', 'Va@configCompactChange', this.comp)
-      this.dispatch('VaLayoutManager', 'Va@configTextLinksChange', this.tl)
+      this.dispatch('VaApp', 'Va@configSidebarThemeChange', this.th)
+      this.dispatch('VaApp', 'Va@configCompactChange', this.comp)
+      this.dispatch('VaApp', 'Va@configTextLinksChange', this.tl)
     }, 10)
   },
   beforeDestroy () {
-    this.dispatch('VaLayoutManager', 'Va@sidebarDisconnect', true)
+    this.dispatch('VaApp', 'Va@sidebarDisconnect', true)
   },
   watch: {
     theme (val) {
       this.th = val
-      this.dispatch('VaLayoutManager', 'Va@configSidebarThemeChange', this.th)
+      this.dispatch('VaApp', 'Va@configSidebarThemeChange', this.th)
     }
   },
   computed: {
@@ -207,7 +207,7 @@ export default {
   //   },
   //   doResize (e) {
   //     let el = this.$refs.sidebar
-  //     this.dispatch('VaLayoutManager', 'Va@sidebarWidthChange', e.clientX - el.offsetLeft)
+  //     this.dispatch('VaApp', 'Va@sidebarWidthChange', e.clientX - el.offsetLeft)
   //   },
   //   stopResize () {
   //     window.removeEventListener('mouseup', this.stopResize, false)

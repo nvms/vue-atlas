@@ -1,28 +1,30 @@
-.#{$prefix-cls}-sidebar--theme-darker {
+.#{$prefix-cls}-sidebar--theme-black {
   @include sidebar-theme-mixin(
-    $mainBG: $N800,
-    $groupTitleColor: $N70,
+    $mainBG: #18171B,
+    $groupTitleColor: #3f435f,
     $headerColor: $N0,
-    $headerBG: $N800,
-    $headerHoverBG: $N900,
+    $headerBG: #18171B,
+    $headerHoverBG: $GS400,
     $headerActiveColor: $B100 !important,
     $headerActiveBG: $N500,
     $headerActiveBoxShadow: inset 0px 0px 0px 2px $B200,
     $scrollareaThumbBG: rgba(141, 163, 202, 0.52),
     $scrollareaThumbHoverBG: rgba(141, 163, 202, 0.7),
-    $itemBG: $N800,
-    $itemColor: $N0 !important,
+    $itemBG: #18171B,
+    $itemColor: $N200 !important,
     $itemSubstringColor: $N70,
     $itemIconColor: $N0,
     $itemToggleIconColor: $N300 !important,
     $itemTextIconColor: $N0,
     $itemActiveStateColor: inherit,
-    $itemActiveStateBG: $N900,
-    $itemHoverBG: $N900,
+    $itemActiveStateBG: #21242d,
+    $itemActiveStateIconColor: inherit,
+    $itemHoverBG: #21242d,
     $itemActiveFocusColor: $B100,
-    $itemActiveFocusBG: $N700,
-    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $N700,
-    $itemFocusOutline: transparent
+    $itemActiveFocusBG: #21242d,
+    $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px #2d3748,
+    $itemFocusOutline: transparent,
+    $topDivBoxShadow: 10px -2px 0px 0px $N600
   );
   @include placeholder-theme-mixin(
     $textLineBG: $N600,

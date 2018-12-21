@@ -19,25 +19,25 @@
     </span>
 
     <!-- If this is just a label -->
-    <span v-if="showLabel" :class="`${prefixCls}-sidebar-group-item-label`">
+    <span v-if="showLabel" :class="`${prefixCls}-sidebar-group-item-label`" :style="styleObj">
       {{item.name}}
       <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
     </span>
 
     <!-- If this is a router link -->
-    <router-link v-if="showRouterLink" :to="item.meta.target" :class="`${prefixCls}-sidebar-group-item-router-link`">
+    <router-link v-if="showRouterLink" :to="item.meta.target" :class="`${prefixCls}-sidebar-group-item-router-link`" :style="styleObj">
       {{item.name}}
       <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
     </router-link>
 
     <!-- If this is a hyperlink -->
-    <a v-if="showHyperLink" :href="item.meta.target" :class="`${prefixCls}-sidebar-group-item-link`">
+    <a v-if="showHyperLink" :href="item.meta.target" :class="`${prefixCls}-sidebar-group-item-link`" :style="styleObj">
       {{item.name}}
       <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
     </a>
 
     <!-- If this is an external hyperlink -->
-    <a v-if="showExternalHyperLink" :href="item.meta.target" target="_blank" :class="`${prefixCls}-sidebar-group-item-external-link`">
+    <a v-if="showExternalHyperLink" :href="item.meta.target" target="_blank" :class="`${prefixCls}-sidebar-group-item-external-link`" :style="styleObj">
       {{item.name}}
       <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
     </a>
@@ -127,6 +127,14 @@ export default {
       klass[prefixCls + '-sidebar-group-item-minified'] = minified
 
       return klass
+    },
+    styleObj () {
+      let {showIcon} = this
+      let style = {}
+
+      style['padding-left'] = showIcon ? '30px' : '0px'
+
+      return style
     }
   },
   methods: {

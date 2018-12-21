@@ -124,20 +124,20 @@
 
   &-compact {
     .#{$prefix-cls}-sidebar-group-item {
-      min-height: 25px;
+      min-height: 26px;
       line-height: inherit;
     }
 
-    .#{$prefix-cls}-sidebar-group-item-text > .#{$prefix-cls}-sidebar-group-item-icon {
+    .#{$prefix-cls}-sidebar-group-item-text>.#{$prefix-cls}-sidebar-group-item-icon {
       font-size: 12px;
     }
 
     .#{$prefix-cls}-sidebar-group-item-text {
-      min-height: 25px;
+      min-height: 26px;
     }
 
     .#{$prefix-cls}-sidebar-group-item-text a {
-      min-height: 25px;
+      min-height: 26px;
     }
   }
 
@@ -227,6 +227,7 @@
     }
   }
 }
+
 /*
 sidebar item defaults
 */
@@ -247,10 +248,13 @@ sidebar item defaults
   font-weight: 400;
 
   &-icon {
-    font-size: 17px;
+    font-size: 16px;
     margin-right: 17px;
-    min-width: 18px;
+    width: 20px;
+    min-width: 20px;
     display: flex;
+    justify-content: space-around;
+    position: absolute;
   }
 
   &:active,
@@ -273,8 +277,6 @@ sidebar item defaults
     a {
       flex: 1;
       position: relative;
-      margin-left: -30px;
-      padding-left: 30px;
       min-height: 36px;
       justify-content: center;
       line-height: 1;
@@ -312,6 +314,11 @@ sidebar item defaults
   flex-direction: column;
   line-height: 2em;
   max-width: 100%;
+
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // padding-left: 30px;
 
   &:active {}
 
@@ -395,32 +402,36 @@ foundation
 /*
 placeholder theme mixin
 */
-@mixin placeholder-theme-mixin(
-  $textLineBG,
-  $textLineBeforeBorder,
-  $headingImageBG,
-  $headingContentTitleBG,
-  $animatedBeforeBG
-) {
+@mixin placeholder-theme-mixin($textLineBG,
+$textLineBeforeBorder,
+$headingImageBG,
+$headingContentTitleBG,
+$animatedBeforeBG) {
   .#{$prefix-cls}-placeholder {
     &-text {
       &-line {
         background: $textLineBG;
+
         &::before {
           border: $textLineBeforeBorder;
         }
       }
     }
+
     &-heading {
       &-image {
         background: $headingImageBG;
       }
+
       &-content {
-        &-title, &-subtitle {
+
+        &-title,
+        &-subtitle {
           background: $headingContentTitleBG;
         }
       }
     }
+
     &-animated {
       &::before {
         background: $animatedBeforeBG;
@@ -434,30 +445,17 @@ Disable box shadow on active/focus textLinks
 */
 .#{$prefix-cls}-sidebar.#{$prefix-cls}-sidebar-text-links {
   .#{$prefix-cls}-sidebar-group-item {
-    &:active, &:focus {
+
+    &:active,
+    &:focus {
       box-shadow: none;
     }
   }
 }
 
-/*
-This is personal preference, and a convenience style for when the sidebar
-is placed inside of an aside.
-*/
-.#{$prefix-cls}-aside-body {
-  .#{$prefix-cls}-sidebar {
-    padding-top: 12px;
-  }
-}
-
-/*
-  __,                                        _  _           
- (    o    /    /                           // // /         
-  `. ,  __/ _  /  __,  _     (   _, _   __ // // /  __,  _  
-(___)(_(_/_(/_/_)(_/(_/ (_  /_)_(__/ (_(_)(/_(/_/_)(_/(_/ (_
-*/
 .#{$prefix-cls}-sidebar-scrollarea {
   overflow-y: hidden;
+  overflow-x: hidden;
 
   &:hover {
     overflow-y: auto;
@@ -467,6 +465,22 @@ is placed inside of an aside.
 .#{$prefix-cls}-sidebar-mobile {
   .#{$prefix-cls}-sidebar-scrollarea {
     overflow-y: auto;
+  }
+}
+
+.#{$prefix-cls}-sidebar-grabber {
+  position: absolute;
+  width: 12px;
+  height: 100%;
+  background: transparent;
+  border-left: 2px solid transparent;
+  cursor: ew-resize;
+  transition: border 500ms ease-out;
+  transition-delay: 0s;
+
+  &:hover {
+    border-left: 2px solid $B200;
+    transition-delay: 0.5s;
   }
 }
 
@@ -483,17 +497,6 @@ is placed inside of an aside.
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
   }
-
-  &-scrolled {
-    &::before {
-      content: '';
-      background-color: $N40;
-      height: 2px;
-      position: fixed;
-      width: 200px;
-      z-index: 2000;
-    }
-  }
 }
 
 .#{$prefix-cls}-sidebar-text-links {
@@ -506,40 +509,5 @@ is placed inside of an aside.
       background: none !important;
       text-decoration: underline;
     }
-  }
-}
-
-.#{$prefix-cls}-page-wrapper {
-  overflow-y: hidden;
-  overflow-x: hidden;
-
-  &:hover {
-    overflow-y: auto;
-    overflow-x: auto;
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar {
-    width: 14px;
-    height: 18px;
-    // border-left: 1px solid $N40;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    // border-radius: 5px;
-    // background: rgba(9, 30, 66, 0.32);
-    &:hover {
-      background-color: rgba(9, 30, 66, 0.45);
-    }
-
-    height: 6px;
-    border: 4px solid rgba(0, 0, 0, 0);
-    background-clip: padding-box;
-    -webkit-border-radius: 7px;
-    background-color: rgba(9, 30, 66, 0.05);
-    // -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
   }
 }

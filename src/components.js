@@ -1,4 +1,4 @@
-import position from './position.js'
+import relocate from './relocate.js'
 
 import VaTab from './Tabs/VaTab.vue'
 import VaForm from './Form/VaForm.vue'
@@ -54,7 +54,7 @@ import VaColorPicker from './ColorPicker/VaColorPicker.vue'
 import VaCheckboxGroup from './Checkbox/VaCheckboxGroup.vue'
 import VaBreadcrumbItem from './Breadcrumb/VaBreadcrumbItem.vue'
 import VaSidebarGroupItem from './Sidebar/VaSidebarGroupItem.vue'
-import VaLayoutManager from './LayoutManager/VaLayoutManager.vue'
+import VaApp from './App/VaApp.vue'
 import VaSidebarScrollarea from './Sidebar/VaSidebarScrollarea.vue'
 import VaSidebarGroupLevel from './Sidebar/VaSidebarGroupLevel.vue'
 import VaPlaceholderText from './Placeholder/VaPlaceholderText.vue'
@@ -64,7 +64,7 @@ import VaSidebarGroupToggle from './Sidebar/VaSidebarGroupToggle.vue'
 import VaPlaceholderImage from './Placeholder/VaPlaceholderImage.vue'
 import VaProgressTracker from './ProgressTracker/VaProgressTracker.vue'
 import VaPlaceholderHeading from './Placeholder/VaPlaceholderHeading.vue'
-import VaLayoutManagerConfig from './LayoutManager/VaLayoutManagerConfig.vue'
+import VaAppConfig from './App/VaAppConfig.vue'
 import VaNotification from './Notification/VaNotification.vue'
 import VaNotificationMethod from './Notification/VaNotificationMethod.js'
 
@@ -119,7 +119,7 @@ const Components = {
   VaSidebarGroup,
   VaSidebarHeader,
   VaCheckboxGroup,
-  VaLayoutManager,
+  VaApp,
   VaBreadcrumbItem,
   VaProgressTracker,
   VaPlaceholderText,
@@ -131,7 +131,7 @@ const Components = {
   VaSidebarGroupTitle,
   VaPlaceholderHeading,
   VaSidebarGroupToggle,
-  VaLayoutManagerConfig,
+  VaAppConfig,
   VaNotification
 }
 
@@ -140,7 +140,7 @@ const install = function (Vue, locale) {
     Vue.component(i, Components[i])
   }
 
-  Vue.directive('VaPosition', position)
+  Vue.directive('VaPosition', relocate)
   Vue.prototype.VaToast = VaToastMethod
   Vue.prototype.VaModal = VaModalMethod
   Vue.prototype.VaNotification = VaNotificationMethod

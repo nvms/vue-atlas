@@ -213,7 +213,7 @@ export default {
      * In case this component is instantiated after the LayoutManager
      * has initially broadcasted isMobile, let's request it.
      */
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
+    this.dispatch('VaApp', 'Va@requestIsMobile', true)
   },
   mounted () {
     this._closeEvent = EventListener.listen(window, 'click', (e) => {

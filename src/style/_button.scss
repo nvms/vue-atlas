@@ -1,13 +1,24 @@
+@mixin btn-type-mixin($bgCol, $fontCol, $bgColHover, $fontColHover, $bgColActive, $fontColActive, $badgeBgCol, $badgeFontCol) {
+  background-color: $bgCol;
+  color: $fontCol;
 
-/**
- _ _ _                                         
-( / ) )o      o                 /)             
- / / /,  _., ,  _ _      o     // __ _, , , (  
-/ / (_(_/ /\_(_/ / /_         //_(_)(__(_/_/_)_
-                       o     /)                
-                            (/   
-*/
-@mixin button-focus-mixin($color, $opacity: 0.6) {
+  &:hover {
+    background-color: $bgColHover;
+    color: $fontColHover;
+  }
+
+  &:active {
+    background-color: $bgColActive;
+    color: $fontColActive;
+  }
+
+  .#{$prefix-cls}-badge {
+    color: $badgeFontCol;
+    background-color: $badgeBgCol;
+  }
+}
+
+@mixin button-focus-mixin($boxShadowColor, $boxShadowOpacity: 0.6) {
 
   // no ring on hover
   // &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
@@ -18,73 +29,321 @@
   // ring on hover
   &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
   &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
-    box-shadow: inset $color 0px 0px 0px 2px;
+    box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
     /* fallback */
-    box-shadow: inset rgba($color, $opacity) 0px 0px 0px 2px;
+    box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
     outline: none;
   }
 }
 
-/**
- _ _ _                                                           
-( / ) )o      o               /     _/__/_               o       
- / / /,  _., ,  _ _      o   /  , , /  /  __ _ _     (  ,  __, _ 
-/ / (_(_/ /\_(_/ / /_       /_)(_/_(__(__(_)/ / /_  /_)_(_/_/_(/_
-                       o                                  (/ 
-*/
-@mixin btn-size($padding, $fontSize, $lineHeight, $borderRadius) {
-  padding: $padding;
-  font-size: $fontSize;
-  line-height: $lineHeight;
-  border-radius: $borderRadius;
+@mixin button-outline-mixin(
+  $outlineColor,
+  $outlineWidth,
+  $activeOutlineColor
+  ) {
+  box-shadow: inset $outlineColor 0px 0px 0px $outlineWidth;
+  outline: none;
+
+  &:active {
+    box-shadow: inset $activeOutlineColor 0px 0px 0px $outlineWidth;
+  }
 }
 
-$borderRadius: 4px;
 
-$xsBorderRadius: $borderRadius;
-$smBorderRadius: $borderRadius;
-$mdBorderRadius: $borderRadius;
-$lgBorderRadius: $borderRadius;
 
-@mixin xsButtonSize() {
-  @include btn-size($padding: 4px 8px,
+.#{$prefix-cls}-btn {
+  &-default {
+    @include btn-type-mixin($bgCol: $N20,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary {
+    @include btn-type-mixin($bgCol: $B400,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B500,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary-light {
+    @include btn-type-mixin($bgCol: $B300,
+      $fontCol: $N0,
+      $bgColHover: $B200,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary-dark {
+    @include btn-type-mixin($bgCol: $B500,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-purple {
+    @include btn-type-mixin($bgCol: $P500,
+      $fontCol: $N0,
+      $bgColHover: $P400,
+      $fontColHover: $N0,
+      $bgColActive: $P600,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($P100, 1);
+  }
+
+  &-purple-light {
+    @include btn-type-mixin($bgCol: $P400,
+      $fontCol: $N0,
+      $bgColHover: $P300,
+      $fontColHover: $N0,
+      $bgColActive: $P300,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($P100, 1);
+  }
+
+  &-purple-dark {
+    @include btn-type-mixin($bgCol: darken($P600, 5%),
+      $fontCol: $N0,
+      $bgColHover: $P400,
+      $fontColHover: $N0,
+      $bgColActive: $P600,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($P300, 1);
+  }
+
+  &-paleblue {
+    @include btn-type-mixin($bgCol: $PB300,
+      $fontCol: $N0,
+      $bgColHover: $PB200,
+      $bgColActive: $PB400,
+      $fontColHover: $N0,
+      $fontColActive: $N0,
+      $badgeBgCol: $N20,
+      $badgeFontCol: $N400);
+    @include button-focus-mixin($PB100, 1);
+  }
+
+  &-success {
+    @include btn-type-mixin($bgCol: $G400,
+      $fontCol: $N0,
+      $bgColHover: $G300,
+      $fontColHover: $N0,
+      $bgColActive: $G500,
+      $fontColActive: $N0,
+      $badgeBgCol: $G300,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin($G300, 1);
+  }
+
+  &-info {
+    @include btn-type-mixin($bgCol: $T400,
+      $fontCol: $N0,
+      $bgColHover: $T300,
+      $fontColHover: $N0,
+      $bgColActive: $T500,
+      $fontColActive: $N0,
+      $badgeBgCol: $T400,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin($T200, 1);
+  }
+
+  &-warning {
+    @include btn-type-mixin($bgCol: $Y400,
+      $fontCol: $N500,
+      $bgColHover: $Y300,
+      $fontColHover: $N600,
+      $bgColActive: $Y500,
+      $fontColActive: $N600,
+      $badgeBgCol: $Y400,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin(darken($Y500, 7%), 1);
+  }
+
+  &-danger {
+    @include btn-type-mixin($bgCol: $R400,
+      $fontCol: $N0,
+      $bgColHover: $R300,
+      $fontColHover: $N0,
+      $bgColActive: $R500,
+      $fontColActive: $N0,
+      $badgeBgCol: $R400,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin($R100, 1);
+  }
+
+  &-subtle {
+    @include btn-type-mixin($bgCol: transparent,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500);
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-link {
+    @include btn-type-mixin($bgCol: transparent,
+      $fontCol: $B400,
+      $bgColHover: transparent,
+      $fontColHover: $B300,
+      $bgColActive: transparent,
+      $fontColActive: $B500,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-subtle-link {
+    @include btn-type-mixin($bgCol: transparent,
+      $fontCol: $N100,
+      $bgColHover: transparent,
+      $fontColHover: $N80,
+      $bgColActive: transparent,
+      $fontColActive: $N400,
+      $badgeBgCol: $N50,
+      $badgeFontCol: $N500);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-dark {
+    @include btn-type-mixin($bgCol: $N700,
+      $fontCol: $N50,
+      $bgColHover: $N500,
+      $fontColHover: $N40,
+      $bgColActive: $N800,
+      $fontColActive: $N200,
+      $badgeBgCol: $N500,
+      $badgeFontCol: $N200);
+    @include button-focus-mixin($N100, 1);
+  }
+
+  &-darker {
+    @include btn-type-mixin($bgCol: $N800,
+      $fontCol: $N50,
+      $bgColHover: $N500,
+      $fontColHover: $N40,
+      $bgColActive: $N700,
+      $fontColActive: $N200,
+      $badgeBgCol: $N500,
+      $badgeFontCol: $N200);
+    @include button-focus-mixin($N100, 1);
+  }
+
+  &-active {
+    @include btn-type-mixin($bgCol: $N500,
+      $fontCol: $N0,
+      $bgColHover: $N600,
+      $fontColHover: $N0,
+      $bgColActive: $N700,
+      $fontColActive: $N0,
+      $badgeBgCol: $N700,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-black {
+    @include btn-type-mixin($bgCol: #18171B,
+      $fontCol: $N200,
+      $bgColHover: #18171B,
+      $fontColHover: $N80,
+      $bgColActive: #18171B,
+      $fontColActive: $N400,
+      $badgeBgCol: $N700,
+      $badgeFontCol: $N0);
+    @include button-focus-mixin($B100, 1);
+  }
+}
+
+
+
+@mixin xs-button-size-mixin() {
+  @include btn-size-mixin($padding: 4px 8px,
     $fontSize: 12px,
     $lineHeight: 1.5em,
-    $borderRadius: $xsBorderRadius);
+    $borderRadius: 4px);
   min-width: 26px;
   min-height: 26px;
 }
-@mixin smButtonSize() {
-  @include btn-size($padding: 1px 8px,
+
+@mixin sm-button-size-mixin() {
+  @include btn-size-mixin($padding: 1px 8px,
     $fontSize: 13px,
     $lineHeight: 2.2em,
-    $borderRadius: $smBorderRadius);
+    $borderRadius: 4px);
   min-width: 30px;
   min-height: 30px;
 }
-@mixin mdButtonSize() {
-  @include btn-size($padding: 0px 9px,
+
+@mixin md-button-size-mixin() {
+  @include btn-size-mixin($padding: 0px 9px,
     $fontSize: 14px,
     $lineHeight: 2.3em,
-    $borderRadius: $mdBorderRadius);
+    $borderRadius: 4px);
   min-width: 34px;
   min-height: 34px;
 }
-@mixin lgButtonSize() {
-  @include btn-size($padding: 2px 15px,
+
+@mixin lg-button-size-mixin() {
+  @include btn-size-mixin($padding: 2px 15px,
     $fontSize: 17px,
     $lineHeight: 2.5em,
-    $borderRadius: $lgBorderRadius);
+    $borderRadius: 4px);
   min-width: 45px;
   min-height: 45px;
 }
 
-@mixin reapplyBorderRadius() {
-  .#{$prefix-cls}-btn { border-top-left-radius: $mdBorderRadius; border-top-right-radius: $mdBorderRadius; border-bottom-left-radius: $mdBorderRadius; border-bottom-right-radius: $mdBorderRadius; }
-  .#{$prefix-cls}-btn-xs { border-top-left-radius: $xsBorderRadius; border-top-right-radius: $xsBorderRadius; border-bottom-left-radius: $xsBorderRadius; border-bottom-right-radius: $xsBorderRadius; }
-  .#{$prefix-cls}-btn-sm { border-top-left-radius: $smBorderRadius; border-top-right-radius: $smBorderRadius; border-bottom-left-radius: $smBorderRadius; border-bottom-right-radius: $smBorderRadius; }
-  .#{$prefix-cls}-btn-md { border-top-left-radius: $mdBorderRadius; border-top-right-radius: $mdBorderRadius; border-bottom-left-radius: $mdBorderRadius; border-bottom-right-radius: $mdBorderRadius; }
-  .#{$prefix-cls}-btn-lg { border-top-left-radius: $lgBorderRadius; border-top-right-radius: $lgBorderRadius; border-bottom-left-radius: $lgBorderRadius; border-bottom-right-radius: $lgBorderRadius; }
+@mixin btn-size-mixin($padding, $fontSize, $lineHeight, $borderRadius) {
+  padding: $padding;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  border-radius: $borderRadius;
 }
 
 .#{$prefix-cls}-btn {
@@ -124,304 +383,101 @@ $lgBorderRadius: $borderRadius;
     transition-property: none;
   }
 
-  @mixin btn-type($bgCol, $fontCol, $bgColHover, $fontColHover, $bgColActive, $fontColActive, $badgeBgCol, $badgeFontCol) {
-    background-color: $bgCol;
-    color: $fontCol;
+  >div {
+    >a {
+      cursor: default;
 
-    &:hover {
-      background-color: $bgColHover;
-      color: $fontColHover;
-    }
-
-    &:active {
-      background-color: $bgColActive;
-      color: $fontColActive;
-    }
-
-    .#{$prefix-cls}-badge {
-      color: $badgeFontCol;
-      background-color: $badgeBgCol;
+      &:hover {
+        text-decoration: none !important;
+      }
     }
   }
 
-  &-default {
-    /* bgCol was $N20 */
-    /* bgColHover was $N30 */
-    @include btn-type($bgCol: rgba(9, 30, 66, 0.04),
-      $fontCol: $N400,
-      $bgColHover: rgba(9, 30, 66, 0.08),
-      $fontColHover: $N400,
-      $bgColActive: $B50,
-      $fontColActive: $B400,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($B100, 1);
+  &-round {
+    border-radius: 50% !important;
   }
 
-  &-primary {
-    @include btn-type($bgCol: $B400,
-      $fontCol: $N0,
-      $bgColHover: $B300,
-      $fontColHover: $N0,
-      $bgColActive: $B500,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($B100, 1);
+  &-block {
+    display: flex;
+    width: 100%;
   }
 
-  &-primary-light {
-    @include btn-type($bgCol: $B300,
-      $fontCol: $N0,
-      $bgColHover: $B200,
-      $fontColHover: $N0,
-      $bgColActive: $B400,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-  }
+  &-text-fade {
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s;
+    opacity: 1;
+    width: 100%;
+    justify-content: space-around;
 
-  &-primary-dark {
-    @include btn-type($bgCol: $B500,
-      $fontCol: $N0,
-      $bgColHover: $B300,
-      $fontColHover: $N0,
-      $bgColActive: $B400,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-  }
-
-  &-purple {
-    @include btn-type($bgCol: $P500,
-      $fontCol: $N0,
-      $bgColHover: $P400,
-      $fontColHover: $N0,
-      $bgColActive: $P600,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($P100, 1);
-  }
-
-  &-purple-light {
-    @include btn-type($bgCol: $P400,
-      $fontCol: $N0,
-      $bgColHover: $P300,
-      $fontColHover: $N0,
-      $bgColActive: $P300,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($P100, 1);
-  }
-
-  &-purple-dark {
-    @include btn-type($bgCol: darken($P600, 5%),
-      $fontCol: $N0,
-      $bgColHover: $P400,
-      $fontColHover: $N0,
-      $bgColActive: $P600,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($P300, 1);
-  }
-
-  &-paleblue {
-    @include btn-type($bgCol: $PB300,
-      $fontCol: $N0,
-      $bgColHover: $PB200,
-      $bgColActive: $PB400,
-      $fontColHover: $N0,
-      $fontColActive: $N0,
-      $badgeBgCol: $N20,
-      $badgeFontCol: $N400);
-    @include button-focus-mixin($PB100, 1);
-  }
-
-  &-success {
-    @include btn-type($bgCol: $G400,
-      $fontCol: $N0,
-      $bgColHover: $G300,
-      $fontColHover: $N0,
-      $bgColActive: $G500,
-      $fontColActive: $N0,
-      $badgeBgCol: $G300,
-      $badgeFontCol: $N0);
-    @include button-focus-mixin($G300, 1);
-  }
-
-  &-info {
-    @include btn-type($bgCol: $T400,
-      $fontCol: $N0,
-      $bgColHover: $T300,
-      $fontColHover: $N0,
-      $bgColActive: $T500,
-      $fontColActive: $N0,
-      $badgeBgCol: $T400,
-      $badgeFontCol: $N0);
-    @include button-focus-mixin($T200, 1);
-  }
-
-  &-warning {
-    @include btn-type($bgCol: $Y400,
-      $fontCol: $N500,
-      $bgColHover: $Y300,
-      $fontColHover: $N600,
-      $bgColActive: $Y500,
-      $fontColActive: $N600,
-      $badgeBgCol: $Y400,
-      $badgeFontCol: $N0);
-    @include button-focus-mixin(darken($Y500, 7%), 1);
-  }
-
-  &-danger {
-    @include btn-type($bgCol: $R400,
-      $fontCol: $N0,
-      $bgColHover: $R300,
-      $fontColHover: $N0,
-      $bgColActive: $R500,
-      $fontColActive: $N0,
-      $badgeBgCol: $R400,
-      $badgeFontCol: $N0);
-    @include button-focus-mixin($R100, 1);
-  }
-
-  &-subtle {
-    @include btn-type($bgCol: transparent,
-      $fontCol: $N400,
-      $bgColHover: $N30,
-      $fontColHover: $N400,
-      $bgColActive: $B50,
-      $fontColActive: $B400,
-      $badgeBgCol: $N50,
-      $badgeFontCol: $N500);
-    @include button-focus-mixin($B200, 1);
-  }
-
-  &-link {
-    @include btn-type($bgCol: transparent,
-      $fontCol: $B400,
-      $bgColHover: transparent,
-      $fontColHover: $B300,
-      $bgColActive: transparent,
-      $fontColActive: $B500,
-      $badgeBgCol: $N50,
-      $badgeFontCol: $N500);
-
-    &:hover {
-      text-decoration: underline;
+    &-out {
+      opacity: 0;
     }
+  }
 
-    &:active,
-    &:focus {
-      text-decoration: none;
+  &-xs {
+    @include xs-button-size-mixin()
+  }
+
+  &-sm {
+    @include sm-button-size-mixin()
+  }
+
+  &-md {
+    @include md-button-size-mixin()
+  }
+
+  &-lg {
+    @include lg-button-size-mixin()
+  }
+
+  /**
+  Styles applied to the loading spinner inside of the button element.
+  All sizes defined here.
+  */
+  .#{$prefix-cls}-page-loading-con {
+    position: absolute;
+  }
+
+  &-xs {
+    .#{$prefix-cls}-page-loading-con {
+      margin-top: 1px;
+
+      svg {
+        width: 16px !important;
+      }
     }
-
-    @include button-focus-mixin($B200, 1);
   }
 
-  &-subtle-link {
-    @include btn-type($bgCol: transparent,
-      $fontCol: $N100,
-      $bgColHover: transparent,
-      $fontColHover: $N80,
-      $bgColActive: transparent,
-      $fontColActive: $N400,
-      $badgeBgCol: $N50,
-      $badgeFontCol: $N500);
+  &-sm {
+    .#{$prefix-cls}-page-loading-con {
+      margin-top: 3px;
 
-    &:hover {
-      text-decoration: underline;
+      svg {
+        width: 18px !important;
+      }
     }
+  }
 
-    &:active,
-    &:focus {
-      text-decoration: none;
+  &-md {
+    .#{$prefix-cls}-page-loading-con {
+      margin-top: 4px;
+
+      svg {
+        width: 20px !important;
+      }
     }
-
-    @include button-focus-mixin($B200, 1);
   }
 
-  &-dark {
-    @include btn-type($bgCol: $N700,
-      $fontCol: $N50,
-      $bgColHover: $N500,
-      $fontColHover: $N40,
-      $bgColActive: $N800,
-      $fontColActive: $N200,
-      $badgeBgCol: $N500,
-      $badgeFontCol: $N200);
-    @include button-focus-mixin($N100, 1);
+  &-lg {
+    .#{$prefix-cls}-page-loading-con {
+      margin-top: 6px;
+
+      svg {
+        width: 25px !important;
+      }
+    }
   }
-
-  &-darker {
-    @include btn-type($bgCol: $N800,
-      $fontCol: $N50,
-      $bgColHover: $N500,
-      $fontColHover: $N40,
-      $bgColActive: $N700,
-      $fontColActive: $N200,
-      $badgeBgCol: $N500,
-      $badgeFontCol: $N200);
-    @include button-focus-mixin($N100, 1);
-  }
-
-  &-active {
-    @include btn-type($bgCol: $N500,
-      $fontCol: $N0,
-      $bgColHover: $N600,
-      $fontColHover: $N0,
-      $bgColActive: $N700,
-      $fontColActive: $N0,
-      $badgeBgCol: $N700,
-      $badgeFontCol: $N0);
-  }
-}
-
-.#{$prefix-cls}-btn-round {
-  border-radius: 50% !important;
-}
-
-/**
-The following styles apply to the text of a button as it transitions out as
-its loading prop becomes true.
-*/
-.#{$prefix-cls}-btn-text-fade {
-  display: flex;
-  align-items: center;
-  transition: opacity 0.2s;
-  opacity: 1;
-  width: 100%;
-  justify-content: space-around;
-}
-.#{$prefix-cls}-btn-text-fade-out {
-  opacity: 0;
-}
-
-.#{$prefix-cls}-btn-block {
-  display: flex;
-  width: 100%;
-}
-
-/**
-Button sizes xs, sm, md and lg are defined here.
-*/
-.#{$prefix-cls}-btn-xs,
-.#{$prefix-cls}-btn-group-xs>.#{$prefix-cls}-btn {
-  @include xsButtonSize()
-}
-.#{$prefix-cls}-btn-sm,
-.#{$prefix-cls}-btn-group-sm>.#{$prefix-cls}-btn {
-  @include smButtonSize()
-}
-.#{$prefix-cls}-btn-md {
-  @include mdButtonSize()
-}
-.#{$prefix-cls}-btn-lg,
-.#{$prefix-cls}-btn-group-lg>.#{$prefix-cls}-btn {
-  @include lgButtonSize()
 }
 
 /**
@@ -435,55 +491,68 @@ Ready to be confused?
   display: inline-block;
   vertical-align: middle;
 }
+
 .#{$prefix-cls}-btn-group>.#{$prefix-cls}-btn,
 .#{$prefix-cls}-btn-group>.#{$prefix-cls}-dropdown-con {
   position: relative;
   float: left;
 }
+
 .#{$prefix-cls}-btn-group {
+
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
     margin-right: 1px;
   }
+
   >.#{$prefix-cls}-btn:first-child {
     margin-left: 0;
   }
+
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
     margin-right: 1px;
   }
+
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 1px;
   }
+
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$prefix-cls}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   >.#{$prefix-cls}-btn:last-child:not(:first-child),
   >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   >.#{$prefix-cls}-dropdown-con:not(:first-child) {
     >span>div>.#{$prefix-cls}-btn {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
+
   >.#{$prefix-cls}-btn-group {
     float: left;
   }
+
   >.#{$prefix-cls}-btn-group:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
     border-radius: 0;
   }
+
   >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
   >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   >.#{$prefix-cls}-btn-group:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -491,7 +560,7 @@ Ready to be confused?
 }
 
 /**
-And, of course, when the button group is a vertical button group.
+And, of course, when the button group is a vertical button group arrangement.
 */
 
 .#{$prefix-cls}-btn-group-vertical {
@@ -501,108 +570,71 @@ And, of course, when the button group is a vertical button group.
   flex-direction: column;
   vertical-align: middle;
 }
+
 .#{$prefix-cls}-btn-group-vertical>.#{$prefix-cls}-btn {
   position: relative;
   float: left;
   width: 100%;
   display: flex;
-  
+
 }
+
 .#{$prefix-cls}-btn-group-vertical .#{$prefix-cls}-btn {
   width: 100%;
-  
+
 }
+
 .#{$prefix-cls}-btn-group-vertical {
+
   >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
   >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-radius: 0;
     margin-bottom: 1px;
     margin-right: 0px;
   }
+
   >.#{$prefix-cls}-btn:first-child {
     margin-top: 0;
   }
+
   >.#{$prefix-cls}-btn:first-child:not(:last-child) {
     margin-bottom: 1px;
   }
+
   >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-right-radius: $mdBorderRadius;
-    border-top-left-radius: $mdBorderRadius;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
   }
-  // >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$prefix-cls}-btn {
-  //   border-bottom-left-radius: 0;
-  //   border-bottom-right-radius: 0;
-  // }
+
   >.#{$prefix-cls}-btn:last-child:not(:first-child),
   >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: $mdBorderRadius;
-    border-bottom-right-radius: $mdBorderRadius;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
   }
+
   >.#{$prefix-cls}-btn-group-vertical {
     float: left;
   }
+
   >.#{$prefix-cls}-btn-group-vertical:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
     border-radius: 0;
   }
+
   >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
   >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
+
   >.#{$prefix-cls}-btn-group-vertical:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 }
-
-/**
-Styles applied to the loading spinner inside of the button element.
-All sizes defined here.
-*/
-.#{$prefix-cls}-btn {
-  .#{$prefix-cls}-page-loading-con {
-    position: absolute;
-  }
-}
-.#{$prefix-cls}-btn-xs {
-  .#{$prefix-cls}-page-loading-con {
-    margin-top: 1px;
-    svg {
-      width: 16px !important;
-    }
-  }
-}
-.#{$prefix-cls}-btn-sm {
-  .#{$prefix-cls}-page-loading-con {
-    margin-top: 3px;
-    svg {
-      width: 18px !important;
-    }
-  }
-}
-.#{$prefix-cls}-btn-md {
-  .#{$prefix-cls}-page-loading-con {
-    margin-top: 4px;
-    svg {
-      width: 20px !important;
-    }
-  }
-}
-.#{$prefix-cls}-btn-lg {
-  .#{$prefix-cls}-page-loading-con {
-    margin-top: 6px;
-    svg {
-      width: 25px !important;
-    }
-  }
-}
-
-// Active dropdown themes
-
 
 // .#{$prefix-cls}-dropdown-selected {
 //   >span>div>a.#{$prefix-cls}-btn-default {
@@ -610,14 +642,3 @@ All sizes defined here.
 //     color: $N400;
 //   }
 // }
-
-.#{$prefix-cls}-btn {
-  > div {
-    > a {
-      cursor: default;
-      &:hover {
-        text-decoration: none !important;
-      }
-    }
-  }
-}

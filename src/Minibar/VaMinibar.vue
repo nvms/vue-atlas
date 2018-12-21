@@ -81,14 +81,14 @@ export default {
   mounted () {
     /**
      * This needs to be wrapped in a short setTimeout to give
-     * LayoutManager time to call enableReceivers().
+     * App time to call enableReceivers().
      */
     setTimeout(() => {
-      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', this.th)
+      this.dispatch('VaApp', 'Va@configMinibarThemeChange', this.th)
     }, 10)
   },
   created () {
-    this.$on('Va@minibarPresenceCheck', (val) => { this.dispatch('VaLayoutManager', 'Va@minibarPresenceReply', true) })
+    this.$on('Va@minibarPresenceCheck', (val) => { this.dispatch('VaApp', 'Va@minibarPresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@contentWidthChange', (val) => { this.currentContentWidth = val })
@@ -105,12 +105,12 @@ export default {
     this.$on('Va@rtlChange', (val) => { this.isRTL = val })
   },
   beforeDestroy () {
-    this.dispatch('VaLayoutManager', 'Va@minibarDisconnect', true)
+    this.dispatch('VaApp', 'Va@minibarDisconnect', true)
   },
   watch: {
     theme (val) {
       this.th = val
-      this.dispatch('VaLayoutManager', 'Va@configMinibarThemeChange', this.th)
+      this.dispatch('VaApp', 'Va@configMinibarThemeChange', this.th)
     }
   },
   computed: {

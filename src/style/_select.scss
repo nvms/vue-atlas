@@ -1,14 +1,173 @@
-.#{$prefix-cls}-select-group {
-  &.#{$prefix-cls}-has-error {
-    .#{$prefix-cls}-btn {
+@mixin select-theme-mixin(
+  $hasErrorBtnBorder,
+  $btnOpenBackgroundColor,
+  $btnOpenColor,
+  $selectedTagBackground,
+  $selectedTagFocusOutline,
+  $selectedTagHoverColor,
+  $selectedTagHoverAfterColor,
+  $selectedTagAfterColor,
+  $selectedTagActiveColor,
+  $selectedTagActiveAfterColor,
+  $searchOutline,
+  $searchBorderBottom,
+  $dropdownMenuBackground,
+  $dropdownMenuBoxShadow,
+  $notifyBackground,
+  $notifyBorder,
+  $notifyBoxShadow,
+  $addButtonColor,
+  $selectAllBorderBottom,
+  $selectAllAnchorIconColor,
+  $dropdownPlaceholderColor,
+  $dropdownPlaceholderActiveColor,
+  $itemActiveBackground,
+  $itemActiveHoverBackground,
+  $selectOpenBtnFocusBoxShadow,
+  $searchWrapBackground,
+  $searchWrapBorderBottomColor
+) {
+  &-search {
+    outline: $searchOutline;
+    border-bottom: $searchBorderBottom;
+  }
+
+  &-btn-open {
+    background-color: $btnOpenBackgroundColor;
+    color: $btnOpenColor;
+  }
+  &-group {
+    &.#{$prefix-cls}-has-error {
+      .#{$prefix-cls}-btn {
+        &:after {
+          border: $hasErrorBtnBorder;
+        }
+      }
+    }
+
+    .#{$prefix-cls}-search-wrap {
+      background: $searchWrapBackground;
+      border-bottom: 1px solid $searchWrapBorderBottomColor;
+    }
+
+    .#{$prefix-cls}-selected-tag {
+      background: $selectedTagBackground;
+      &:focus {
+        outline: $selectedTagFocusOutline;
+      }
+      &:hover {
+        color: $selectedTagHoverColor;
+        &:after {
+          color: $selectedTagHoverAfterColor;
+        }
+      }
       &:after {
-        border: 2px solid $R400 !important;
+        color: $selectedTagAfterColor;
+      }
+      &:active {
+        color: $selectedTagActiveColor;
+        &:after {
+          color: $selectedTagActiveAfterColor;
+        }
+      }
+    }
+    &-btn.#{$prefix-cls}-btn {
+      // background-color: $N10;
+      &:after {
+        // border: 2px solid $N40;
+      }
+      &:hover {
+        // background: $N20;
+      }
+      &:active {
+        // color: $N400;
+      }
+    }
+    .#{$prefix-cls}-dropdown-menu {
+      background-color: $dropdownMenuBackground;
+      -webkit-box-shadow: $dropdownMenuBoxShadow;
+      box-shadow: $dropdownMenuBoxShadow;
+      .#{$prefix-cls}-notify {
+        background: $notifyBackground;
+        border: $notifyBorder;
+        box-shadow: $notifyBoxShadow;
+      }
+      .#{$prefix-cls}-fa-plus-square-o {
+        color: $addButtonColor;
+      }
+      .#{$prefix-cls}-select-all {
+        border-bottom: $selectAllBorderBottom;
+        a {
+          i {
+            color: $selectAllAnchorIconColor;
+          }
+        }
+      }
+    }
+    .#{$prefix-cls}-dropdown-toggle {
+      .#{$prefix-cls}-select-placeholder {
+        color: $dropdownPlaceholderColor;
+      }
+      &:active:not(.#{$prefix-cls}-select-btn-open) {
+        .#{$prefix-cls}-select-placeholder {
+          color: $dropdownPlaceholderActiveColor;
+        }
       }
     }
   }
+
+  &-item-active {
+    background: $itemActiveBackground;
+    &:hover {
+      background: $itemActiveHoverBackground !important;
+    }
+  }
+  
+  /**
+  No focus ring on an open Select
+  */
+  &-btn-open.#{$prefix-cls}-btn:focus,
+  &-btn-open.#{$prefix-cls}-btn-focused {
+    box-shadow: $selectOpenBtnFocusBoxShadow;
+  }
+}
+
+.#{$prefix-cls}-select,
+.#{$prefix-cls}--theme-light .#{$prefix-cls}-select {
+  @include select-theme-mixin(
+    $hasErrorBtnBorder: 2px solid $R400 !important,
+    $btnOpenBackgroundColor: $N500 !important,
+    $btnOpenColor: $N20 !important,
+    $selectedTagBackground: none,
+    $selectedTagFocusOutline: none,
+    $selectedTagHoverColor: $R300,
+    $selectedTagHoverAfterColor: $R300,
+    $selectedTagAfterColor: $N60,
+    $selectedTagActiveColor: $R500 !important,
+    $selectedTagActiveAfterColor: $R500 !important,
+    $searchOutline: none,
+    $searchBorderBottom: 0px solid $N40,
+    $dropdownMenuBackground: $N0,
+    $dropdownMenuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
+    $notifyBackground: $Y100,
+    $notifyBorder: 1px solid $N100,
+    $notifyBoxShadow: inset 0 1px 1px rgba(0, 0, 0, .05),
+    $addButtonColor: $N60,
+    $selectAllBorderBottom: 1px solid $N40,
+    $selectAllAnchorIconColor: $N60,
+    $dropdownPlaceholderColor: $N70,
+    $dropdownPlaceholderActiveColor: $B400,
+    $itemActiveBackground: $N20,
+    $itemActiveHoverBackground: $N20 !important,
+    $selectOpenBtnFocusBoxShadow: none,
+    $searchWrapBackground: #f4f5f7,
+    $searchWrapBorderBottomColor: #e0e0e0
+  )
+}
+
+
+.#{$prefix-cls}-select-group {
   .#{$prefix-cls}-select-btn-open {
-    background-color: $N500 !important;
-    color: $N20 !important;
     &:after {
       content: '';
       display: block;
@@ -18,39 +177,20 @@
       bottom: 0;
       left: 0;
       border-radius: 3px;
-      // border: 2px solid $N500 !important;
     }
   }
   .#{$prefix-cls}-selected-tag {
-    // background: $N40;
     display: flex;
     align-items: center;
     padding: 0 0 0 8px;
     margin-right: 3px;
     border-radius: 2px;
-    margin-bottom: 3px;
-    line-height: 2;
-    // font-size: 12px;
     position: relative;
     z-index: 20;
-    &:focus {
-      // box-shadow: $R300 0px 0px 0px 2px; /* fallback */
-      // box-shadow: rgba($R300, 0.6) 0px 0px 0px 2px;
-      outline: none;
-    }
-    &:hover {
-      // background: $N60;
-      // color: $N0;
-      color: $R300;
-      &:after {
-        color: $R300;
-      }
-    }
     &:after {
       border-top-right-radius: 3px;
       border-bottom-right-radius: 3px;
       margin-right: 5px;
-      min-height: 25px;
       min-width: 15px;
       align-items: center;
       display: flex;
@@ -58,29 +198,9 @@
       content: "\f00d";
       font: normal normal normal 11px/1 "Font Awesome 5 Free Solid";
       margin-left: 5px;
-      margin-top: 1px;
-      color: $N60;
-      :hover {
-        // background: blue;
-      }
-    }
-    &:active {
-      color: $R500 !important;
-      &:after {
-        color: $R500 !important;
-      }
-    }
-  }
-  .#{$prefix-cls}-select-multiple {
-    padding: 2px 9px 2px 6px;
-    .#{$prefix-cls}-btn-text-fade {
-      margin-top: 3px;
     }
   }
   .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn {
-    min-height: 34px;
-    max-height: 34px;
-    // background-color: $N10;
     cursor: default;
     &:after {
       content: '';
@@ -91,23 +211,20 @@
       bottom: 0;
       left: 0;
       border-radius: 3px;
-      // border: 2px solid $N40;
       z-index: 15;
     }
-    &:hover {
-      // background: $N20;
-    }
-    &:active {
-      // color: $N400;
-    }
+  }
+  .#{$prefix-cls}-search-wrap {
+    padding: 10px 10px 10px 10px;
+    z-index: 10;
+    margin-top: -4px;
   }
   .#{$prefix-cls}-select-search {
     border: 0px;
-    outline: none;
-    padding: 10px;
+    padding: 0;
     width: 100%;
-    border-bottom: 1px solid $N40;
     font-size: 14px;
+    z-index: 10;
   }
   .#{$prefix-cls}-dropdown-menu {
     display: block;
@@ -126,9 +243,6 @@
     padding: 4px 0;
     margin-top: 6px;
     margin-bottom: 6px;
-    background-color: #FFFFFF;
-    -webkit-box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
     border-radius: 3px;
     list-style-type: none;
     li {
@@ -138,12 +252,6 @@
           cursor: default;
         }
       }
-      i.fa, i.far, i.fas, i.fab {
-        // color: $N60; /* Default color unless otherwise specified */
-        position: relative;
-        top: 0px;
-        margin-left: -26px !important;
-      }
     }
     .#{$prefix-cls}-notify {
       position: absolute;
@@ -152,10 +260,7 @@
       margin: 0 2%;
       min-height: 26px;
       padding: 3px 5px;
-      background: $Y100;
-      border: 1px solid $N100;
       border-radius: 3px;
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
       pointer-events: none;
     }
     .#{$prefix-cls}-fa-check {
@@ -169,18 +274,15 @@
       position: absolute;
       top: 13px;
       right: 10px;
-      color: $N60;
     }
     .#{$prefix-cls}-select-all {
       position: relative;
-      border-bottom: 1px solid $N40;
       cursor: default;
-      a {
-        i {
-          color: $N60;
-        }
-      }
     }
+  }
+  .#{$prefix-cls}-has-search {
+    width: 230px;
+    padding-top: 40px;
   }
   .#{$prefix-cls}-dropdown-toggle {
     text-align: left;
@@ -188,9 +290,6 @@
     align-items: center;
     min-width: 80px;
     justify-content: space-evenly;
-    .#{$prefix-cls}-select-placeholder {
-      color: $N70;
-    }
     .#{$prefix-cls}-btn-text-fade {
       justify-content: space-between !important;
       i {
@@ -209,17 +308,6 @@
   }
 }
 
-.#{$prefix-cls}-select-item-active {
-  background: $N30;
-  &:hover {
-    background: $N30 !important;
-  }
-}
-
-/**
-No focus ring on an open Select
-*/
-.#{$prefix-cls}-select-btn-open.#{$prefix-cls}-btn:focus,
-.#{$prefix-cls}-select-btn-open.#{$prefix-cls}-btn-focused {
-  box-shadow: none;
+.#{$prefix-cls}-select-items-wrapper {
+  overflow-y: auto;
 }

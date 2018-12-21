@@ -92,7 +92,7 @@ export default {
 
       /**
       *  I wonder if there's a way to figure out the width of the runnable track..
-      *  Right now, we listen for isMobile from LayoutManager.
+      *  Right now, we listen for isMobile from App.
       *  Width is 16px on desktop, 28px on mobile.
       */
 
@@ -163,7 +163,7 @@ export default {
         this.isMobile = false
       }
     })
-    this.dispatch('VaLayoutManager', 'Va@requestIsMobile', true)
+    this.dispatch('VaApp', 'Va@requestIsMobile', true)
   },
   mounted () {
     this.init()

@@ -18,11 +18,13 @@
     $itemTextIconColor: $N300,
     $itemActiveStateColor: $N400 !important,
     $itemActiveStateBG: $N20,
+    $itemActiveStateIconColor: $N400,
     $itemHoverBG: $N20,
     $itemActiveFocusColor: $N400,
     $itemActiveFocusBG: $B50,
     $itemActiveFocusBoxShadow: none,
-    $itemFocusOutline: transparent
+    $itemFocusOutline: transparent,
+    $topDivBoxShadow: 10px -2px 0px 0px #eaedf2
   );
   @include placeholder-theme-mixin(
     $textLineBG: $N30,

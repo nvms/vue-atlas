@@ -16,14 +16,16 @@
     $itemIconColor: $N400,
     $itemToggleIconColor: $N80 !important,
     $itemTextIconColor: $N300,
-    $itemActiveStateColor: $B300 !important,
+    $itemActiveStateColor: $B400 !important,
     $itemActiveStateBG: $N30,
+    $itemActiveStateIconColor: $B400,
     $itemHoverBG: $N30,
     $itemActiveFocusColor: $N400,
     $itemActiveFocusBG: $B50,
     // $itemActiveFocusBoxShadow: inset 0px 0px 0px 2px $B100,
     $itemActiveFocusBoxShadow: none,
-    $itemFocusOutline: none
+    $itemFocusOutline: none,
+    $topDivBoxShadow: 10px -2px 0px 0px #d9dce4
   );
   @include placeholder-theme-mixin(
     $textLineBG: $N40,

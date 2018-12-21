@@ -7,11 +7,13 @@
       :size="size"
       :class="[`${prefixCls}-dropdown-toggle`,
                `${prefixCls}-select-btn`,
+
                showSelected && multiple && value.length ? `${prefixCls}-select-multiple` : '',
                show ? `${prefixCls}-select-btn-open` : '']"
       @click.native="toggleDropdown">
       <span v-if="showPlaceholder || !showSelected" :class="`${prefixCls}-select-placeholder`">{{placeholder}}</span>
         <span v-if="showSelected" style="display: flex;">
+          <!-- eslint-disable-next-line -->
           <template v-for="(item, index) in selectedItems" v-if="multiple">
             <!-- eslint-disable-next-line -->
             <render
@@ -34,18 +36,27 @@
     <transition name="fadeDown">
       <ul
         :style="{maxHeight: menuMaxHeight + 'px', width: menuWidth + 'px'}"
-        :class="`${prefixCls}-dropdown-menu`"
+        :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"
         ref="menu"
         v-va-position="show"
         v-show="show">
           <li v-if="search">
-            <input
-              :class="`${prefixCls}-select-search`"
-              :placeholder="inputPlaceholder"
-              v-model="searchText"
-              @keydown.enter="addExtra" />
+            <div :class="`${prefixCls}-search-wrap`">
+              <va-input
+                ref="searchInput"
+                :class="`${prefixCls}-select-search`"
+                :placeholder="inputPlaceholder"
+                v-model="searchText"
+                width="210px"
+                icon="search"
+                icon-style="solid"
+                size="xs"
+                show-clean
+                no-v-model
+                @confirm="addExtra" />
+            </div>
 
-            <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon>
+            <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
           </li>
           <li v-if="multiple" :class="`${prefixCls}-select-all`">
             <a @click.prevent="selectAll">
@@ -54,21 +65,23 @@
             </a>
           </li>
 
-          <template v-if="currentOptions.length">
-            <!-- eslint-disable-next-line -->
-            <li v-for="(option, index) in filterOptions"
-                :key="index"
-                :value="option.value"
-                style="position:relative">
-              <a @click.prevent="select(option)" v-if="findIndex(option.value) !== -1" :class="`${prefixCls}-select-item-active`">
-                <span v-html="option.label"></span>
-                <!-- <va-icon type="check" color="#0052CC" v-show="findIndex(option.value) !== -1"></va-icon> -->
-              </a>
-              <a @click.prevent="select(option)" v-else>
-                <span v-html="option.label"></span>
-              </a>
-            </li>
-          </template>
+          <div v-if="currentOptions.length" :class="`${prefixCls}-select-items-wrapper`">
+            <template>
+              <!-- eslint-disable-next-line -->
+              <li v-for="(option, index) in filterOptions"
+                  :key="index"
+                  :value="option.value"
+                  style="position:relative">
+                <a @click.prevent="select(option)" v-if="findIndex(option.value) !== -1" :class="`${prefixCls}-select-item-active`">
+                  <span v-html="option.label"></span>
+                  <!-- <va-icon type="check" color="#0052CC" v-show="findIndex(option.value) !== -1"></va-icon> -->
+                </a>
+                <a @click.prevent="select(option)" v-else>
+                  <span v-html="option.label"></span>
+                </a>
+              </li>
+            </template>
+          </div>
           <slot v-else ></slot>
         <div :class="`${prefixCls}-notify`" v-show="showNotify" transition="fadeDown">Limit: {{limit}}</div>
       </ul>
@@ -255,11 +268,21 @@ export default {
           this.value = this.value[0]
         }
       }
+    },
+    show (val) {
+      if (val) {
+        if (this.search) {
+          this.$refs.searchInput.focus()
+        }
+      }
     }
   },
   components: {
     render,
     validate
+  },
+  created () {
+    document.addEventListener('keyup', this.keyup)
   },
   computed: {
     classObj () {
@@ -366,8 +389,14 @@ export default {
   },
   beforeDestroy () {
     if (this._closeEvent) this._closeEvent.remove()
+    document.removeEventListener('keyup', this.keyup)
   },
   methods: {
+    keyup (e) {
+      if (e.keyCode === 27) {
+        this.show = false
+      }
+    },
     filter (value, search) {
       if (search === '') return value
       var ret = []

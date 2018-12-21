@@ -63,11 +63,11 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      this.dispatch('VaLayoutManager', 'Va@configPageSizeChange', this.sz)
+      this.dispatch('VaApp', 'Va@configPageSizeChange', this.sz)
     }, 10)
   },
   created () {
-    this.$on('Va@pagePresenceCheck', (val) => { this.dispatch('VaLayoutManager', 'Va@pagePresenceReply', true) })
+    this.$on('Va@pagePresenceCheck', (val) => { this.dispatch('VaApp', 'Va@pagePresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@sidebarWidthChange', (val) => { this.currentSidebarWidth = val })
@@ -83,7 +83,7 @@ export default {
     this.$on('Va@rtlChange', (val) => { this.isRTL = val })
   },
   beforeDestroy () {
-    this.dispatch('VaLayoutManager', 'Va@pageDisconnect', true)
+    this.dispatch('VaApp', 'Va@pageDisconnect', true)
   },
   computed: {
     pageClassObj () {

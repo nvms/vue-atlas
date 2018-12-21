@@ -1,3 +1,69 @@
+@mixin form-theme-mixin(
+  $background,
+  $color,
+  $borderColor,
+  $focusBorderColor,
+  $focusBackground,
+  $hoverBackground,
+  $labelWeight,
+  $labelColor,
+  $requiredWeight,
+  $requiredColor,
+  $errorBorderColor,
+  $placeholderColor
+) {
+  .#{$prefix-cls}-form-need {
+    font-weight: $requiredWeight;
+    color: $requiredColor;
+  }
+
+  .#{$prefix-cls}-form-control {
+    background: $background;
+    color: $color;
+    border-color: $borderColor;
+
+    &::placeholder {
+      color: $placeholderColor;
+    }
+  
+    &:focus {
+      border-color: $focusBorderColor;
+      background: $focusBackground;
+    }
+  
+    &:hover {
+      background: $hoverBackground;
+    }
+  
+    .#{$prefix-cls}-has-error {
+      .#{$prefix-cls}-form-control {
+        border-color: $errorBorderColor;
+      }
+    }
+  }
+
+  .#{$prefix-cls}-control-label {
+    font-weight: $labelWeight;
+    color: $labelColor;
+  }
+}
+
+
+@include form-theme-mixin(
+  $background: $N10,
+  $color: $N900,
+  $borderColor: $N40,
+  $focusBorderColor: $B200,
+  $focusBackground: $N0 !important,
+  $hoverBackground: $N30,
+  $labelWeight: 600,
+  $labelColor: $N300,
+  $requiredWeight: bold,
+  $requiredColor: $R300,
+  $errorBorderColor: $R400 !important,
+  $placeholderColor: $N80
+);
+
 @mixin input-size($padding, $fontSize, $lineHeight, $borderRadius, $minHeight, $maxHeight) {
   padding: $padding;
   font-size: $fontSize;
@@ -22,48 +88,30 @@
 }
 
 @mixin smallInputSize() {
-  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 4px, $minHeight: 32px, $maxHeight: 32px);
+  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 4px, $minHeight: 30px, $maxHeight: 30px);
 }
 
 @mixin extraSmallInputSize() {
-  @include input-size( $padding: 5px, $fontSize: 11px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
+  @include input-size( $padding: 5px, $fontSize: 12px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
 }
 
-@mixin baseInputStyle () {
-  align-items: center;
-  background: $N10;
-  color: $N900;
-  display: block;
-  width: 100%;
-  border-color: $N40;
-  border-style: solid;
-  border-width: 2px;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-
-  // ::-webkit-datetime-edit { padding: 1em; }
-  // ::-webkit-datetime-edit-fields-wrapper { background: silver; }
-  // ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
-  // ::-webkit-datetime-edit-month-field { color: blue; }
-  // ::-webkit-datetime-edit-day-field { color: green; }
-  // ::-webkit-datetime-edit-year-field { color: purple; }
-  // ::-webkit-inner-spin-button { display: none; }
-  // ::-webkit-calendar-picker-indicator { background: orange; }
-
-  &:focus {
-    border-color: $B100;
-    outline: none;
-    background-color: $N0 !important;
-  }
-  &:hover {
-    background-color: $N30;
-  }
-  // @include input-focus-mixin($B100, 0.2);
-}
 
 /*sizes*/
 
 .#{$prefix-cls}-form-control {
-  @include baseInputStyle();
+
+  align-items: center;
+  display: block;
+  width: 100%;
+  border-style: solid;
+  border-width: 2px;
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+  // @include input-focus-mixin($B100, 0.2);
+
   @include defaultInputSize();
   &[readonly] {
     cursor: default;
@@ -73,11 +121,16 @@
   }
 }
 
+textarea.#{$prefix-cls}-form-control {
+  max-height: unset;
+  min-height: unset;
+}
+
 input[type="date"].#{$prefix-cls}-form-control,
 input[type="time"].#{$prefix-cls}-form-control  {
   /**
   For some reason, if this is anything other than 'transparent',
-  then iOS adopts a real ugly white>gray gradient, with an arrow
+  then Safari on iOS adopts a real ugly white>gray gradient, with an arrow
   to the right to indicate that this is a dropdown. WHY?
   */
   background: transparent;
@@ -98,19 +151,15 @@ input[type="time"].#{$prefix-cls}-form-control  {
 
 .#{$prefix-cls}-form-horizontal .#{$prefix-cls}-control-label {
   font-size: 12px;
-  font-weight: 600;
-  color: $N300;
   margin-bottom: 8px;
   text-align: left;
 }
 
 .#{$prefix-cls}-form-need {
-  color: $R300;
   position: relative;
   top: 3px;
   left: 1px;
   font-size: 16px;
-  font-weight: bold;
   line-height: 1;
 }
 
@@ -137,9 +186,7 @@ input[type="time"].#{$prefix-cls}-form-control  {
     .#{$prefix-cls}-control-label {
       margin-bottom: 0;
       vertical-align: top;
-      font-weight: 600;
       font-size: 0.86em;
-      color: $N300;
     }
   }
 }
@@ -174,12 +221,6 @@ input[type="time"].#{$prefix-cls}-form-control  {
   color: $R400;
 }
 
-.#{$prefix-cls}-has-error {
-  .#{$prefix-cls}-form-control {
-    border-color: $R400 !important;
-  }
-}
-
 /**
 Input theme mixin.
 */
@@ -208,7 +249,7 @@ Input theme mixin.
 Input themes. Default is 'primary' in VaInput.vue.
 */
 @include form-control-input-theme('default', revert, revert, $N100, revert, revert);
-@include form-control-input-theme('primary', revert, revert, $B100, revert, revert);
+@include form-control-input-theme('primary', revert, revert, $B200, revert, revert);
 @include form-control-input-theme('purple', revert, revert, $P100, revert, revert);
 @include form-control-input-theme('success', revert, revert, $G200, revert, revert);
 @include form-control-input-theme('warning', revert, revert, $Y200, revert, revert);

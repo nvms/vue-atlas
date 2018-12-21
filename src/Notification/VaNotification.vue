@@ -1,5 +1,5 @@
 <template>
-  <div :class="classObj" ref="notification" :style="styleObj">
+  <div :class="classObj" ref="notification" :style="styleObj" v-if="alive">
     <div
       :class="`${prefixCls}-notification-dialog`"
       :style="{'width': width + 'px'}">
@@ -72,6 +72,12 @@ export default {
       required: false,
       note: 'The type of notification to display'
     },
+    duration: {
+      type: Number,
+      default: 0,
+      required: false,
+      note: 'Notification TTL'
+    },
     prefixCls: {
       type: String,
       default: 'va'
@@ -80,7 +86,15 @@ export default {
   data () {
     let show = this.show
     return {
-      isShow: show
+      isShow: show,
+      alive: true
+    }
+  },
+  mounted () {
+    if (this.duration) {
+      setTimeout(() => {
+        this.close()
+      }, this.duration)
     }
   },
   watch: {
@@ -152,6 +166,9 @@ export default {
   methods: {
     close () {
       this.isShow = false
+      setTimeout(() => {
+        this.alive = false
+      }, 500)
     },
     open () {
       this.isShow = true

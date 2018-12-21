@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <transition name="fadeUp">
     <div ref="popup" v-show="show" :style="styleObj" :class="classObj">
       <va-button
+        size="sm"
         ref="confirmButton"
         :loading="loading"
         type="default"
@@ -10,13 +11,15 @@
         <va-icon type="check" size="10px"></va-icon>
       </va-button>
       <va-button
+        size="sm"
+        :style="{ visibility: loading ? 'hidden' : 'visible' }"
         ref="cancelButton"
         type="default"
         @click.native="cancel">
         <va-icon type="times" size="10px"></va-icon>
       </va-button>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -42,7 +45,8 @@ export default {
       needToSave: false,
       position: {},
       shouldBlur: false,
-      loading: false
+      loading: false,
+      opacity: false, /* exists to hide element until getPosition finishes to prevent flicker */
     }
   },
   created () {
@@ -67,32 +71,42 @@ export default {
       this.confirm()
     },
     confirm () {
-      this.$emit('confirm')
-      this.dispatch('VaInput', 'Va@inputOpsConfirm', true)
+      if (this.initialValue !== this.currentValue) {
+        this.$emit('confirm')
+        this.dispatch('VaInput', 'Va@inputOpsConfirm', true)
+        this.dispatch('VaTextarea', 'Va@inputOpsConfirm', true)
+      }
     },
     cancel () {
       this.$emit('cancel')
       this.needToSave = false
       this.dispatch('VaInput', 'Va@inputOpsCancel', this.initialValue)
+      this.dispatch('VaTextarea', 'Va@inputOpsCancel', this.initialValue)
       this.show = false
     },
     handleBlur (val) {
       if (val === this.initialValue) {
         this.show = false
         this.needToSave = false
-        this.shouldBlur = true
       } else {
         this.needToSave = true
       }
+      this.shouldBlur = true
     },
     handleFocus (val) {
       this.shouldBlur = false
       if (!this.needToSave) {
         this.initialValue = val
+        this.currentValue = val
         this.show = true
-        // the element needs to be on the DOM before we can get its position
+        /**
+         * This short timeout provides, what seems like, a fine amount of
+         * time for this element to be inserted into the DOM. When it's not
+         * on the DOM, there's no position to get.
+         */
         setTimeout(() => {
-          this.position = this.getPosition()
+          this.setPosition()
+          this.opacity = true
         }, 10)
       }
     },
@@ -109,8 +123,11 @@ export default {
     handleCurrentValueUpdate (val) {
       this.currentValue = val
     },
-    handleEnterPressed (val) {
+    handleEnterPressed () {
       this.confirm()
+    },
+    setPosition () {
+      this.position = this.getPosition()
     },
     getPosition () {
       let rect = this.$refs.popup.getBoundingClientRect()
@@ -137,11 +154,14 @@ export default {
     },
     styleObj () {
       let style = {}
+      let opacity = this.opacity
       let parentPosition = this.parentPosition
       let position = this.position
 
+      style['position'] = 'fixed'
       style['top'] = (parentPosition.top + parentPosition.height + 3) + 'px'
       style['left'] = parentPosition.left + (parentPosition.width - position.width) + 'px'
+      style['opacity'] = opacity ? '1' : '0'
 
       return style
     }
@@ -161,7 +181,13 @@ export default {
       if (val) {
         this.show = true
       }
+    },
+    show (val) {
+      if (!val) {
+        this.opacity = false
+      }
     }
   }
 }
 </script>
+

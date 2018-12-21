@@ -1,0 +1,12 @@
+.#{$prefix-cls}-topbar--theme-black {
+  @include topbar-theme-mixin(
+    $mainBG: #18171B,
+    $mainColor: $N80,
+    $inputPlaceholderColor: $N80,
+    $formControlBG: $N500,
+    $formControlBorder: 2px solid $N500,
+    $formControlColor: $N0,
+    $formControlFocusBorder: 2px solid $N300,
+    $formControlFocusBG: $N600 !important
+  );
+}

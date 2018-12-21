@@ -46,12 +46,12 @@ const VaSidebarGroup = {
   },
   watch: {
     showToggle (val) {
-      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', val)
+      this.dispatch('VaApp', 'Va@configShowToggleChange', val)
     }
   },
   mounted () {
     setTimeout(() => {
-      this.dispatch('VaLayoutManager', 'Va@configShowToggleChange', this.showToggle)
+      this.dispatch('VaApp', 'Va@configShowToggleChange', this.showToggle)
     }, 10)
   },
   render (createElement) {

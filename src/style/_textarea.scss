@@ -1,5 +1,13 @@
+
 .#{$prefix-cls}-textarea-con {
+  overflow-y: hidden;
   .#{$prefix-cls}-form-control {
     line-height: 16px;
   }
+}
+
+.#{$prefix-cls}-textarea {
+  overflow-y: hidden;
+  min-height: 50px;
+  height: 100%;
 }

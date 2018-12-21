@@ -1,13 +1,13 @@
 <template>
-  <!-- https://vue-atlas.com/documentation/layoutmanager -->
-  <va-layout-manager
+  <!-- https://vue-atlas.com/documentation/app -->
+  <va-app
     bg-color="#F4F5F7"
     page-bg-color="#FFFFFF"
     desktop-margin="0"
     desktop-minimum-width="0"
-    desktop-sidebar-width="200"
-    desktop-minibar-width="0"
-    desktop-topbar-height="48"
+    desktop-sidebar-width="0"
+    desktop-minibar-width="50"
+    desktop-topbar-height="0"
     mobile-sidebar-width="0"
     mobile-minibar-width="0"
     mobile-topbar-height="48"
@@ -19,7 +19,7 @@
     :topbar-priority="false"
     :topbar-padded="false">
 
-    <va-layout-manager-config />
+    <va-app-config />
 
     <!-- https://vue-atlas.com/documentation/topbar -->
     <va-topbar theme="blue">
@@ -81,7 +81,7 @@
         </va-sidebar-header>
       <va-sidebar-scrollarea>
         <va-sidebar-group
-          :items="[{name:'Item1'},{name:'Item2'},{name:'Item3'},{name:'Item4'}]"
+          :items="[{name:'Home', route: '/', icon: 'home'},{name:'Item2'},{name:'Item3'},{name:'Item4'}]"
           title="Group 1" />
         <va-sidebar-group
           :items="groupTwoItems"
@@ -90,7 +90,7 @@
     </va-sidebar>
 
     <!-- https://vue-atlas.com/documentation/page -->
-    <va-page size="md">
+    <va-page size="lg">
       <va-page-header>
         
       <div slot="breadcrumb">
@@ -120,18 +120,16 @@
 
       <div slot="bottom">
         <va-input
+          size="sm"
           placeholder="Filter (change me)"
           buttons
-          :loading="loading"
-          @confirm="doSomething"
-          @cancel="dontDoSomething"
+          :loading="inputLoading"
+          @confirm="inputConfirm"
+          @cancel="inputCancel"
           v-model="inputText">
         </va-input>
-        <va-select placeholder="Additional filters">
-          <va-option value="1">Filter 1</va-option>
-          <va-option value="2">Filter 2</va-option>
-        </va-select>
-        <va-button @click.native="showStackedOne">Modal</va-button>
+        <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
+        <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
       </div>
       
     </va-page-header>
@@ -142,6 +140,22 @@
 
     <p>
       Cambrian explosion science citizens of distant epochs encyclopaedia galactica brain is the seed of intelligence rich in mystery. Rings of Uranus made in the interiors of collapsing stars hundreds of thousands astonishment from which we spring laws of physics? The ash of stellar alchemy a very small stage in a vast cosmic arena network of wormholes another world concept of the number one the only home we've ever known and billions upon billions upon billions upon billions upon billions upon billions upon billions.
+    </p>
+
+    <p>
+      <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+    </p>
+
+    <p>
+      <va-textarea
+        width="100%"
+        :autosize="true"
+        buttons
+        :resize="false"
+        :loading="textareaLoading"
+        @confirm="textareaConfirm"
+        @cancel="textareaCancel"
+        v-model="textareaText"></va-textarea>
     </p>
 
     <p>
@@ -189,7 +203,7 @@
       </div>
     </va-modal>
 
-  </va-layout-manager>
+  </va-app>
 </template>
 
 <script>
@@ -197,9 +211,43 @@ export default {
     name: 'app',
     data () {
         return {
+          /**
+           * Input and InputOps
+           */
           inputText: '',
+          inputLoading: false,
+
+          /**
+           * Datepicker
+           */
+          dateValue: '',
+
+          /**
+           * Textarea and InputOps
+           */
+          textareaText: `This textarea will automatically grow as it is filled with content because we passed the 'autosize' prop to it.`,
+          textareaLoading: false,
+
+          /**
+           * Select
+           */
+          options: [
+            { value: 'cat', label: 'Cat' },
+            { value: 'dog', label: 'Dog' },
+            { value: 'wallaby', label: 'Wallaby' },
+            { value: 'bear', label: 'Bear' },
+            { value: 'kangaroo', label: 'Kangaroo' }
+          ],
+          filters: [],
+
+          /**
+           * Checkbox and radio
+           */
           foods: ['tacos'],
-          loading: false,
+          
+          /**
+           * Sidebar
+           */
           groupTwoItems: [
             {
               icon: 'user',
@@ -207,7 +255,17 @@ export default {
             },
             {
               icon: 'inbox',
-              name: 'Messages'
+              name: 'Messages',
+              children: [
+                {
+                  icon: 'inbox',
+                  name: 'Inbox'
+                },
+                {
+                  icon: 'envelope-open',
+                  name: 'Read'
+                }
+              ]
             },
             {
               icon: 'cog',
@@ -230,17 +288,56 @@ export default {
           type: 'warning'
         })
       },
-      doSomething () {
-        this.loading = true
+      /**
+       * Input InputOps
+       */
+      inputConfirm (e) {
+        this.inputLoading = true
         console.log('Doing something with the value: ', this.inputText)
         setTimeout(() => {
-          this.loading = false
+          this.inputLoading = false
           console.log('Finished doing something. Setting loading to false so that the input operations buttons know to disappear.')
-        }, 1000)
+          this.VaToast({
+            text: 'Data published: ' + this.inputText,
+            type: 'success',
+            placement: 'top'
+          })
+          this.VaNotification.open({
+            title: 'Saved',
+            message: 'Data published: ' + this.inputText,
+            type: 'warning'
+          })
+        }, 2000)
       },
-      dontDoSomething () {
+      inputCancel () {
         console.log('Cancelling')
       },
+
+      /**
+       * Textarea InputOps
+       */
+      textareaConfirm (e) {
+        this.textareaLoading = true
+        console.log('Doing something with the value: ', this.textareaText)
+        setTimeout(() => {
+          this.textareaLoading = false
+          console.log('Finished doing something. Setting loading to false so that the input operations buttons know to disappear.')
+          this.VaToast({
+            text: 'Data published: ' + this.textareaText,
+            type: 'success',
+            placement: 'top'
+          })
+          this.VaNotification.open({
+            title: 'Saved',
+            message: 'Data published: ' + this.textareaText,
+            type: 'warning'
+          })
+        }, 2000)
+      },
+      textareaCancel () {
+        console.log('Cancelling')
+      },
+
       showStackedOne () {
         this.$refs.stackedOne.open()
       },

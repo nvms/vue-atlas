@@ -1,3 +1,86 @@
+@mixin dropdown-theme-mixin (
+  $menuBackground,
+  $menuBoxShadow,
+  $menuScrollbarThumbBackground,
+  $menuScrollbarThumbBackgroundHover,
+  $liAnchorColor,
+  $liAnchorColorHoverBackground,
+  $liAnchorColorActiveBackground,
+  $liAnchorColorActiveColor,
+  $selectedBackground,
+  $selectedColor,
+  $selectedHoverBackground,
+  $selectedHoverColor
+  ) {
+  &-con {
+    .#{$prefix-cls}-dropdown-menu {
+      background: $menuBackground;
+      box-shadow: $menuBoxShadow;
+      &::-webkit-scrollbar-thumb {
+        background: $menuScrollbarThumbBackground;
+        &:hover {
+          background: $menuScrollbarThumbBackgroundHover;
+        }
+      }
+      >li>a, >div>li>a {
+        color: $liAnchorColor;
+        &:hover {
+          background: $liAnchorColorHoverBackground
+        }
+        &:active {
+          color: $liAnchorColorActiveColor;
+          background: $liAnchorColorActiveBackground;
+        }
+      }
+    }
+  }
+  /*
+  The following styles apply to a button that exists as a dropdown
+  trigger that is currently active, meaning the dropdown is opened.
+  */
+  &-selected {
+    >span>div>a.#{$prefix-cls}-btn {
+      background: $selectedBackground;
+      color: $selectedColor;
+      &:hover {
+        background: $selectedHoverBackground;
+        color: $selectedHoverColor;
+      }
+    }
+  }
+  /*
+  If we want, we can apply different styles to different types of buttons,
+  doing something like this:
+
+  &-selected {
+    >span>div>a.#{$prefix-cls}-btn-primary {
+      background: $B300;
+      color: $N20;
+    }
+  }
+
+  For now, though, we just use one style for all types of buttons.
+  */
+}
+
+.#{$prefix-cls}-dropdown,
+.#{$prefix-cls}--theme-light.#{$prefix-cls}-dropdown {
+  @include dropdown-theme-mixin(
+    $menuBackground: $N0,
+    $menuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
+    $menuScrollbarThumbBackground: rgba(23, 47, 87, 0.22),
+    $menuScrollbarThumbBackgroundHover: rgba(9, 30, 66, 0.45),
+    $liAnchorColor: $N800,
+    $liAnchorColorHoverBackground: #e8eaef,
+    $liAnchorColorActiveBackground: $B75,
+    $liAnchorColorActiveColor: inherit,
+    $selectedBackground: $N500,
+    $selectedColor: $N20,
+    $selectedHoverBackground: $N500,
+    $selectedHoverColor: $N20
+  );
+}
+
 .#{$prefix-cls}-dropdown-con>span>div>a.#{$prefix-cls}-btn,
 .#{$prefix-cls}-dropdown-con>span>div>a.#{$prefix-cls}-btn:hover {
   cursor: default;
@@ -19,8 +102,6 @@
     padding: 4px 0;
     margin-top: 6px;
     margin-bottom: 6px;
-    background-color: $N0;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
     border-radius: 4px;
     list-style-type: none;
     -webkit-user-select: none;
@@ -32,14 +113,6 @@
     hr {
       margin: 5px 0;
       border-bottom-width: 1px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(23, 47, 87, 0.22);
-
-      &:hover {
-        background-color: rgba(9, 30, 66, 0.45);
-      }
     }
 
     &::-webkit-scrollbar-track {
@@ -63,7 +136,7 @@
       // overflow-y: auto;
     }
 
-    >li {
+    >li, >div>li {
       white-space: nowrap;
       display: block;
 
@@ -76,11 +149,10 @@
       }
     }
 
-    >li>a {
+    >li>a, >div>li>a {
       display: flex;
       justify-content: space-between;
       padding: 5px 12px;
-      color: $N800;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -88,12 +160,9 @@
 
       &:hover {
         text-decoration: none;
-        background-color: $N20;
       }
 
       &:active {
-        // background-color: $B75;
-        background-color: $N60;
         text-decoration: none;
         outline: none;
       }
@@ -122,63 +191,10 @@ Dropdowns, while active, don't need a focus ring. It shows focus state by changi
 }
 
 /**
-
-|    |                        
-|--- |---.,---.,-.-.,---.,---.
-|    |   ||---'| | ||---'`---.
-`---'`   '`---'` ' '`---'`---'
-
-*/
-/**
-The following styles apply to a button that exists as a dropdown trigger
-and is currently active (dropdown is toggled on).
-*/
-
-
-// Base style
-.#{$prefix-cls}-dropdown-selected {
-  >span>div>a.#{$prefix-cls}-btn {
-    background-color: $N500;
-    color: $N20;
-  }
-}
-
-// // Primary
-// .#{$prefix-cls}-dropdown-selected {
-//   >span>div>a.#{$prefix-cls}-btn-primary {
-//     background-color: $B300;
-//     color: $N20;
-//   }
-// }
-
-// // Paleblue
-// .#{$prefix-cls}-dropdown-selected {
-//   >span>div>a.#{$prefix-cls}-btn-paleblue {
-//     background: $PB200;
-//     color: $N20;
-//   }
-// }
-
-// // Subtle
-// .#{$prefix-cls}-dropdown-selected {
-//   >span>div>a.#{$prefix-cls}-btn-subtle {
-//     background-color: $B50;
-//     color: $N200;
-//   }
-// }
-
-// // Purple
-// .#{$prefix-cls}-dropdown-selected {
-//   >span>div>a.#{$prefix-cls}-btn-purple {
-//     background-color: $P400;
-//     color: $N20;
-//   }
-// }
-
-/**
 The following styles apply to a button that exists as a dropdown trigger
 that resides inside of the va-topbar element.
 */
+
 .#{$prefix-cls}-topbar--theme-blue {
   .#{$prefix-cls}-dropdown-selected {
     >span>div>a.#{$prefix-cls}-btn {
@@ -204,8 +220,6 @@ that resides inside of the va-topbar element.
     }
   }
 }
-
-
 
 .#{$prefix-cls}-topbar {
   .#{$prefix-cls}-dropdown-con-tall {
