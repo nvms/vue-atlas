@@ -232,6 +232,7 @@ export default {
     clean () {
       this.$emit('input', '')
       this.$emit('clean')
+      this.$refs.input.focus()
     },
     update (val) {
       this.$emit('input', val)
