@@ -16,7 +16,7 @@
       @focus="focus"
       @input="update($event.target.value)"
       tabindex="0"
-      v-on:keyup.enter="enterPressed"
+      @keyup.enter="enterPressed"
       :value="value" />
 
     <input
@@ -35,7 +35,7 @@
       @focus="focus"
       @input="update($event.target.value)"
       tabindex="0"
-      v-on:keyup.enter="enterPressed"
+      @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
 
@@ -186,6 +186,9 @@ export default {
     window.addEventListener('scroll', this.setPosition, false)
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true
+    }
+    if (this.autofocus) {
+      this.focused = true
     }
   },
   beforeDestroy () {
