@@ -33,6 +33,7 @@
                       <va-option value="dark">Dark</va-option>
                       <va-option value="darker">Darker</va-option>
                       <va-option value="purple">Purple</va-option>
+                      <va-option value="black">Black</va-option>
                     </va-select>
                   </p>
                 </va-column>
@@ -46,6 +47,7 @@
                       <va-option value="dark">Dark</va-option>
                       <va-option value="darker">Darker</va-option>
                       <va-option value="purple">Purple</va-option>
+                      <va-option value="black">Black</va-option>
                     </va-select>
                   </p>
                 </va-column>
@@ -59,6 +61,7 @@
                       <va-option value="dark">Dark</va-option>
                       <va-option value="darker">Darker</va-option>
                       <va-option value="purple">Purple</va-option>
+                      <va-option value="black">Black</va-option>
                     </va-select>
                   </p>
                 </va-column>
