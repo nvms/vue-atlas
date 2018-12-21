@@ -62,7 +62,9 @@ const PopoverMixin = {
     },
     resize () {
       let popover = this.$refs.popover
+      if (!popover) return
       let triger = this.$refs.trigger.children[0]
+      if (!triger) return
       popover.style.display = 'block'
       triger.style.position = 'relative'
 
@@ -95,7 +97,9 @@ const PopoverMixin = {
 
     this.$nextTick(() => {
       let popover = this.$refs.popover
+      if (!popover) return
       let triger = this.$refs.trigger.children[0]
+      if (!triger) return
 
       if (this.trigger === 'hover') {
         this._mouseenterEvent = EventListener.listen(triger, 'mouseenter', () => {

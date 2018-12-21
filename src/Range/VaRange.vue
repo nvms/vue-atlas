@@ -85,6 +85,7 @@ export default {
       this.$emit('input', parseInt(e.target.value))
     },
     getVal () {
+      if (!this.$refs.range) return
       var w = parseInt(this.$refs.range.clientWidth, 10)
       let cv = parseInt(this.currentValue, 10)
       let min = parseInt(this.min, 10)

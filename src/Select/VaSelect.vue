@@ -371,6 +371,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       if (!this.currentOptions.length) {
+        if (!this.$refs.menu) return
         var options = this.$refs.menu.querySelectorAll('.' + this.prefixCls + '-option')
         var ret = []
 
