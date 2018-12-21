@@ -10,7 +10,7 @@ describe('VaButton.vue', () => {
 
   it('renders without warnings', () => {
     let spy = jest.spyOn(console, "error")
-    const wrapper = mount(VaButton)
+    mount(VaButton)
     expect(spy).toBeCalledTimes(0)
     spy.mockReset()
   })

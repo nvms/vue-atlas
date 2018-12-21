@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaPageHeader.vue renders correctly 1`] = `
+<div
+  class="va-page-header"
+>
+  <!---->
+   
+  <div
+    class="va-page-header-title-wrapper"
+  >
+    <div
+      class="va-page-header-title-container"
+    >
+      <h1 />
+       
+      <!---->
+    </div>
+     
+    <!---->
+  </div>
+   
+  <!---->
+</div>
+`;
