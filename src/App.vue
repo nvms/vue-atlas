@@ -7,7 +7,7 @@
     desktop-minimum-width="0"
     desktop-sidebar-width="0"
     desktop-minibar-width="50"
-    desktop-topbar-height="0"
+    desktop-topbar-height="46"
     mobile-sidebar-width="0"
     mobile-minibar-width="0"
     mobile-topbar-height="48"
@@ -15,51 +15,77 @@
     :reverse="false"
     :split="false"
     :sidebar-priority="false"
-    :minibar-priority="false"
+    :minibar-priority="true"
     :topbar-priority="false"
     :topbar-padded="false">
 
     <va-app-config />
 
     <!-- https://vue-atlas.com/documentation/topbar -->
-    <va-topbar theme="blue">
+    <va-topbar theme="white">
       <div slot="left">
+
         <span style="font-weight:700;margin:0 20px 0 10px;">
           Application
         </span>
+
         <va-dropdown tall>
           <div slot="trigger">
             <va-button
               size="sm"
-              type="primary-dark">
+              type="subtle">
               File
               <va-icon icon-style="solid" type="angle-down" margin="0 2px 0 10px"></va-icon>
             </va-button>
           </div>
-          <li><router-link :to="'/'">Router link</router-link></li>
-          <li><router-link :to="'/'">Router link</router-link></li>
+          <li><router-link to="/">Router link</router-link></li>
+          <li><router-link to="/">Router link</router-link></li>
           <li><a href="#">Standard hyperlink</a></li>
           <li><a href="#">Standard hyperlink</a></li>
           <hr/>
           <li><a href="#">Standard hyperlink</a></li>
         </va-dropdown>
+
+        <va-dropdown tall>
+          <div slot="trigger">
+            <va-button
+              size="sm"
+              type="subtle">
+              Preferences
+              <va-icon icon-style="solid" type="angle-down" margin="0 2px 0 10px"></va-icon>
+            </va-button>
+          </div>
+          <li><router-link to="/">Router link</router-link></li>
+          <li><router-link to="/">Router link</router-link></li>
+          <li><a href="#">Standard hyperlink</a></li>
+          <li><a href="#">Standard hyperlink</a></li>
+          <hr/>
+          <li><a href="#">Standard hyperlink</a></li>
+        </va-dropdown>
+
         <va-button-group>
-          <va-button type="primary-light" style="margin-left:10px;">Edit</va-button>
+          <va-button style="margin-left:10px;">Edit</va-button>
           <va-dropdown>
             <div slot="trigger">
-              <va-button type="primary-light">
+              <va-button>
                 <va-icon type="ellipsis-h"></va-icon>
               </va-button>
             </div>
             <li><a href="#">...</a></li>
           </va-dropdown>
         </va-button-group>
+
       </div>
       <div slot="center"> &nbsp; </div>
       <div slot="right">
-        <va-button type="primary-dark" tall>
-          <va-icon type="user"/>
-        </va-button>
+        <va-dropdown tall>
+          <div slot="trigger">
+            <va-button type="subtle">
+              <va-icon type="user"/>
+            </va-button>
+          </div>
+          <li><a href="#">...</a></li>
+        </va-dropdown>
       </div>
     </va-topbar>
 
@@ -160,7 +186,13 @@
             <va-button size="sm"><va-icon type="trash-alt" icon-style="regular"/></va-button>
           </va-button-group>
           &nbsp;
-          <a href="#">Action</a>
+          <va-tooltip
+            content="Important tooltip"
+            placement="right"
+            trigger="hover"
+            effect="tooltip-fade-right">
+            <va-button>Hover me</va-button>
+          </va-tooltip>
         </div>
         <div slot="right">
           <a href="#">Action</a>
