@@ -14,8 +14,7 @@
   ],
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib ./src/index.js",
+    "build": "vue-cli-service build --target lib ./src/index.js",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
