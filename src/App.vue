@@ -154,6 +154,12 @@
             <va-option value="5">5</va-option>
           </va-select>
           &nbsp;
+          <va-button-group>
+            <va-button size="sm"><va-icon type="file" icon-style="regular"/></va-button>
+            <va-button size="sm"><va-icon type="folder-open" icon-style="regular"/></va-button>
+            <va-button size="sm"><va-icon type="trash-alt" icon-style="regular"/></va-button>
+          </va-button-group>
+          &nbsp;
           <a href="#">Action</a>
         </div>
         <div slot="right">

@@ -9,7 +9,7 @@
       Open AppConfig
       <va-icon type="sliders-h" icon-style="solid" margin="0 0 0 10px"></va-icon>
     </va-button>
-    <va-modal ref="configModal" title="AppConfig" :width="800" :backdrop="false">
+    <va-modal ref="configModal" title="AppConfig" width="800px" :backdrop="false">
       <div slot="body" class="themeModalBody">
         <va-mobile>
           <p>
