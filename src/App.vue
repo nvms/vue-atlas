@@ -227,6 +227,7 @@
         </p>
         <p>
           <va-textarea
+            ref="textarea"
             width="100%"
             :autosize="true"
             buttons
@@ -234,7 +235,8 @@
             :loading="textareaLoading"
             @confirm="textareaConfirm"
             @cancel="textareaCancel"
-            v-model="textareaText"></va-textarea>
+            v-model="textareaText">
+          </va-textarea>
         </p>
         <p>
           <va-button size="sm">Secondary action</va-button>
@@ -420,8 +422,7 @@ export default {
         xhr.send()
       },
       gitCallback (item) {
-        console.log('You selected:', item)
-        this.result = item
+        this.textareaText = JSON.stringify(item)
         return item.login
       },
       cardSelectFormat (item) {
