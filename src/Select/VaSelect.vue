@@ -62,7 +62,6 @@
                                 width="210px"/>
                     </div>
 
-                    <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
                 </li>
                 <li :class="`${prefixCls}-select-all`" v-if="multiple">
                     <a @click.prevent="selectAll">
@@ -74,7 +73,6 @@
 
                 <div :class="`${prefixCls}-select-items-wrapper`" v-if="currentOptions.length">
                     <template>
-                        <!-- eslint-disable-next-line -->
                         <li :key="index"
                             :value="option.value"
                             style="position:relative"
@@ -82,7 +80,6 @@
                             <a :class="`${prefixCls}-select-item-active`" @click.prevent="select(option)"
                                v-if="findIndex(option.value) !== -1">
                                 <span v-html="option.label"></span>
-                                <!-- <va-icon type="check" color="#0052CC" v-show="findIndex(option.value) !== -1"></va-icon> -->
                             </a>
                             <a @click.prevent="select(option)" v-else>
                                 <span v-html="option.label"></span>
@@ -380,7 +377,7 @@
 
           for (var i = 0, l = options.length; i < l; i++) {
             var value = options[i].getAttribute('value')
-            var label = options[i].innerHTML
+            var label = options[i].innerText
 
             ret.push({value: value, label: label})
           }

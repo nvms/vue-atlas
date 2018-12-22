@@ -18,6 +18,7 @@
                 @keydown.native.enter="hit"
                 @keydown.native.esc="onReset"
                 @keydown.native.up="up"
+                no-v-model
                 ref="input"
                 v-model="query">
         </va-input>
