@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import VaButton from '../Button/VaButton'
+import VaIcon from '../Icon/VaIcon'
 import VaModal from './VaModal.vue'
 import localeMixin from '../Mixin/localeMixin'
 
@@ -9,10 +11,6 @@ const createNode = () => {
   $body.appendChild($node)
   return $node
 }
-
-// const removeNode = $node => {
-//   $body.removeChild($node)
-// }
 
 const typeMap = {
   success: {
@@ -34,173 +32,156 @@ const typeMap = {
 }
 
 const confirm = (options) => {
-  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow, backdropClickable} = options
+  const {title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable} = options
   new Vue({
     el: createNode(),
-    data () {
-      return {
-        show: false,
-        pc: 'va'
-      }
-    },
-    components: {
-      VaModal
-    },
-    template: `<VaModal ref="modal" title="${title}"
-      effect="${effect || 'fade-up'}"
-      ${width ? 'width="' + width + '"' : ''}
-      :backdrop-clickable="${backdropClickable || 'false'}"
-      @confirm="handleConfirm"
-      @hide="handleHide"
-      @show="handleShow"
-      @closed="destroy">
-      <div slot="header" :class="headerCls">
-        <va-button type="subtle" :class="btnCls" @click.native="handleClose">
-          <va-icon type="times" style="solid"></va-icon>
-        </va-button>
-        <div :class="titleCls" v-if="!${!title}"> <!-- lol.. this means.. if has title -->
-          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>
-          <span v-if="!${!title}">${title}</span>
-        </div>
-      </div>
-      <div slot="body">
-        ${message}
-      </div>
-    </VaModal>`,
-    mounted () {
-      if (prefixCls) {
-        this.pc = prefixCls
-      }
-      this.$nextTick(() => {
-        this.$refs.modal.open()
-      })
-    },
-    destroyed () {
-      // removeNode(this.$el)
+    mounted() {
+      this.$refs.modal.open()
     },
     computed: {
-      iconType () {
-        if (type) {
-          return typeMap[type]
-        } else {
-          return typeMap['info']
-        }
-      },
-      headerCls () {
-        return this.pc + '-modal-header'
-      },
-      btnCls () {
-        return this.pc + '-close'
-      },
-      titleCls () {
-        return this.pc + '-modal-title'
+      iconType() {
+        return typeMap[type || 'info']
       }
     },
     methods: {
-      handleShow () {
+      handleShow() {
         onShow && onShow()
       },
-      handleConfirm () {
+      handleConfirm() {
         onConfirm && onConfirm()
         this.$refs.modal.close()
       },
-      handleClose () {
+      handleClose() {
         this.$refs.modal.close()
       },
-      handleHide () {
+      handleHide() {
         onHide && onHide()
       },
-      destroy () {
+      destroy() {
         this.$destroy()
       }
+    },
+    render(createElement) {
+      let iconElement = createElement(VaIcon, {
+        props: {
+          type: this.iconType.name,
+          margin: "0 10px 0 0"
+        },
+        style: {
+          color: this.iconType.color
+        }
+      }, [])
+      let titleElement = ''
+      if (title) {
+        titleElement = createElement('div', {slot: 'title'}, [
+          iconElement,
+          title,
+        ])
+      }
+      let bodyElement = createElement('div', {slot: 'body', domProps: {innerHTML: message}})
+      return createElement(VaModal, {
+        ref: 'modal',
+        props: {
+          title: title,
+          effect: effect || 'fade-up',
+          width: width || '600px',
+          backdropClickable: backdropClickable || false
+        },
+        on: {
+          confirm: this.handleConfirm,
+          hide: this.handleHide,
+          show: this.handleShow,
+          closed: this.destroy
+        }
+      }, [
+        titleElement,
+        bodyElement
+      ])
     }
   })
 }
 
 const alert = (options) => {
-  const {title, message, effect, type, prefixCls, width, onConfirm, onHide, onShow, backdropClickable} = options
+  const {title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable} = options
   new Vue({
     el: createNode(),
     mixins: [localeMixin('VaModal')],
-    data () {
-      return {
-        show: false,
-        pc: 'va'
-      }
-    },
-    components: {
-      VaModal
-    },
-    template: `<VaModal title="${title}"
-      effect="${effect || 'fade-up'}"
-      ref="modal"
-      ${width ? 'width="' + width + '"' : ''}
-      :backdrop-clickable="${backdropClickable || 'false'}"
-      @hide="handleHide"
-      @show="handleShow"
-      @closed="destroy">
-      <div slot="header" :class="headerCls">
-        <va-button type="subtle" :class="btnCls" @click.native="handleClose">
-          <va-icon type="times" style="solid"></va-icon>
-        </va-button>
-        <div :class="titleCls" v-if="!${!title}"> <!-- TODO: there has to be a better way -->
-          <va-icon :style="{color:iconType.color}" :type="iconType.name" margin="0 10px 0 0"></va-icon>
-          <span v-if="!${!title}">${title}</span>
-        </div>
-      </div>
-      <div slot="body">
-        ${message}
-      </div>
-      <div slot="footer" class="va-modal-footer">
-        <va-button @click.native="handleConfirm">{{getL('confirm')}}</va-button>
-      </div>
-    </VaModal>`,
-    mounted () {
-      if (prefixCls) {
-        this.pc = prefixCls
-      }
-      this.$nextTick(() => {
-        this.$refs.modal.open()
-      })
-    },
-    destroyed () {
-      // removeNode(this.$el)
+    mounted() {
+      this.$refs.modal.open()
     },
     computed: {
-      iconType () {
-        if (type) {
-          return typeMap[type]
-        } else {
-          return typeMap['info']
-        }
-      },
-      headerCls () {
-        return this.pc + '-modal-header'
-      },
-      btnCls () {
-        return this.pc + '-close'
-      },
-      titleCls () {
-        return this.pc + '-modal-title'
+      iconType() {
+        return typeMap[type || 'info']
       }
     },
     methods: {
-      handleShow () {
+      handleShow() {
         onShow && onShow()
       },
-      handleConfirm () {
+      handleConfirm() {
         onConfirm && onConfirm()
         this.$refs.modal.close()
       },
-      handleHide () {
-        onHide && onHide()
-      },
-      handleClose () {
+      handleClose() {
         this.$refs.modal.close()
       },
-      destroy () {
+      handleHide() {
+        onHide && onHide()
+      },
+      destroy() {
         this.$destroy()
       }
+    },
+    render(createElement) {
+      let iconElement = createElement(VaIcon, {
+        props: {
+          type: this.iconType.name,
+          margin: "0 10px 0 0"
+        },
+        style: {
+          color: this.iconType.color
+        }
+      }, [])
+
+      let titleElement = ''
+      if (title) {
+        titleElement = createElement('div', {slot: 'title'}, [
+          iconElement,
+          title,
+        ])
+      }
+
+      let bodyElement = createElement('div', {slot: 'body', domProps: {innerHTML: message}})
+
+      let footerElement = createElement(VaButton, {
+        slot: 'footer',
+        props: {
+          type: 'primary',
+        },
+        on: {
+          click: this.handleConfirm
+        }
+      }, [this.getL('confirm')])
+
+      return createElement(VaModal, {
+        ref: 'modal',
+        props: {
+          title: title,
+          effect: effect || 'fade-up',
+          width: width || '600px',
+          backdropClickable: backdropClickable || false
+        },
+        on: {
+          confirm: this.handleConfirm,
+          hide: this.handleHide,
+          show: this.handleShow,
+          closed: this.destroy
+        }
+      }, [
+        titleElement,
+        bodyElement,
+        footerElement
+      ])
     }
   })
 }

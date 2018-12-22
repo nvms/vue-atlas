@@ -5,10 +5,10 @@
   $selectedTagBackground,
   $selectedTagFocusOutline,
   $selectedTagHoverColor,
-  $selectedTagHoverAfterColor,
-  $selectedTagAfterColor,
+  $selectedTagHoverIconColor,
+  $selectedTagIconColor,
   $selectedTagActiveColor,
-  $selectedTagActiveAfterColor,
+  $selectedTagActiveIconColor,
   $searchOutline,
   $searchBorderBottom,
   $dropdownMenuBackground,
@@ -51,52 +51,52 @@
     }
 
     .#{$prefix-cls}-selected-tag {
+      $self: &;
       background: $selectedTagBackground;
+
       &:focus {
         outline: $selectedTagFocusOutline;
       }
+
+      &__icon {
+        color: $selectedTagIconColor;
+      }
+
       &:hover {
         color: $selectedTagHoverColor;
-        &:after {
-          color: $selectedTagHoverAfterColor;
+
+        .#{$prefix-cls}-selected-tag__icon {
+          color: $selectedTagHoverIconColor !important;
         }
       }
-      &:after {
-        color: $selectedTagAfterColor;
-      }
+
       &:active {
         color: $selectedTagActiveColor;
-        &:after {
-          color: $selectedTagActiveAfterColor;
+
+        .#{$prefix-cls}-selected-tag__icon {
+          color: $selectedTagActiveIconColor !important;
         }
       }
     }
-    &-btn.#{$prefix-cls}-btn {
-      // background-color: $N10;
-      &:after {
-        // border: 2px solid $N40;
-      }
-      &:hover {
-        // background: $N20;
-      }
-      &:active {
-        // color: $N400;
-      }
-    }
+
     .#{$prefix-cls}-dropdown-menu {
       background-color: $dropdownMenuBackground;
       -webkit-box-shadow: $dropdownMenuBoxShadow;
       box-shadow: $dropdownMenuBoxShadow;
+
       .#{$prefix-cls}-notify {
         background: $notifyBackground;
         border: $notifyBorder;
         box-shadow: $notifyBoxShadow;
       }
+
       .#{$prefix-cls}-fa-plus-square-o {
         color: $addButtonColor;
       }
+
       .#{$prefix-cls}-select-all {
         border-bottom: $selectAllBorderBottom;
+
         a {
           i {
             color: $selectAllAnchorIconColor;
@@ -104,10 +104,12 @@
         }
       }
     }
+
     .#{$prefix-cls}-dropdown-toggle {
       .#{$prefix-cls}-select-placeholder {
         color: $dropdownPlaceholderColor;
       }
+
       &:active:not(.#{$prefix-cls}-select-btn-open) {
         .#{$prefix-cls}-select-placeholder {
           color: $dropdownPlaceholderActiveColor;
@@ -118,6 +120,7 @@
 
   &-item-active {
     background: $itemActiveBackground;
+
     &:hover {
       background: $itemActiveHoverBackground !important;
     }
@@ -135,33 +138,33 @@
 .#{$prefix-cls}-select,
 .#{$prefix-cls}--theme-light .#{$prefix-cls}-select {
   @include select-theme-mixin(
-    $hasErrorBtnBorder: 2px solid $R400 !important,
-    $btnOpenBackgroundColor: $N500 !important,
-    $btnOpenColor: $N20 !important,
-    $selectedTagBackground: none,
-    $selectedTagFocusOutline: none,
-    $selectedTagHoverColor: $R300,
-    $selectedTagHoverAfterColor: $R300,
-    $selectedTagAfterColor: $N60,
-    $selectedTagActiveColor: $R500 !important,
-    $selectedTagActiveAfterColor: $R500 !important,
-    $searchOutline: none,
-    $searchBorderBottom: 0px solid $N40,
-    $dropdownMenuBackground: $N0,
-    $dropdownMenuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
-    $notifyBackground: $Y100,
-    $notifyBorder: 1px solid $N100,
-    $notifyBoxShadow: inset 0 1px 1px rgba(0, 0, 0, .05),
-    $addButtonColor: $N60,
-    $selectAllBorderBottom: 1px solid $N40,
-    $selectAllAnchorIconColor: $N60,
-    $dropdownPlaceholderColor: $N70,
-    $dropdownPlaceholderActiveColor: $B400,
-    $itemActiveBackground: $N20,
-    $itemActiveHoverBackground: $N20 !important,
-    $selectOpenBtnFocusBoxShadow: none,
-    $searchWrapBackground: #f4f5f7,
-    $searchWrapBorderBottomColor: #e0e0e0
+          $hasErrorBtnBorder: 2px solid $R400 !important,
+          $btnOpenBackgroundColor: $N500 !important,
+          $btnOpenColor: $N20 !important,
+          $selectedTagBackground: none,
+          $selectedTagFocusOutline: none,
+          $selectedTagHoverColor: $R300,
+          $selectedTagHoverIconColor: $R300,
+          $selectedTagIconColor: $N60,
+          $selectedTagActiveColor: $R500 !important,
+          $selectedTagActiveIconColor: $R500 !important,
+          $searchOutline: none,
+          $searchBorderBottom: 0px solid $N40,
+          $dropdownMenuBackground: $N0,
+          $dropdownMenuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
+          $notifyBackground: $Y100,
+          $notifyBorder: 1px solid $N100,
+          $notifyBoxShadow: inset 0 1px 1px rgba(0, 0, 0, .05),
+          $addButtonColor: $N60,
+          $selectAllBorderBottom: 1px solid $N40,
+          $selectAllAnchorIconColor: $N60,
+          $dropdownPlaceholderColor: $N70,
+          $dropdownPlaceholderActiveColor: $B400,
+          $itemActiveBackground: $N20,
+          $itemActiveHoverBackground: $N20 !important,
+          $selectOpenBtnFocusBoxShadow: none,
+          $searchWrapBackground: #f4f5f7,
+          $searchWrapBorderBottomColor: #e0e0e0
   )
 }
 
@@ -179,29 +182,30 @@
       border-radius: 3px;
     }
   }
+
   .#{$prefix-cls}-selected-tag {
+    $self: &;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     padding: 0 0 0 8px;
     margin-right: 3px;
     border-radius: 2px;
+    line-height: 2;
     position: relative;
     z-index: 20;
-    &:after {
-      border-top-right-radius: 3px;
-      border-bottom-right-radius: 3px;
-      margin-right: 5px;
-      min-width: 15px;
-      align-items: center;
-      display: flex;
-      justify-content: space-around;
-      content: "\f00d";
-      font: normal normal normal 11px/1 "Font Awesome 5 Free Solid";
-      margin-left: 5px;
+
+    &__label {
+      margin-right: .5em;
+    }
+
+    &__icon {
+      font-size: .8em;
     }
   }
+
   .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn {
     cursor: default;
+
     &:after {
       content: '';
       display: block;
@@ -214,11 +218,13 @@
       z-index: 15;
     }
   }
+
   .#{$prefix-cls}-search-wrap {
     padding: 10px 10px 10px 10px;
     z-index: 10;
     margin-top: -4px;
   }
+
   .#{$prefix-cls}-select-search {
     border: 0px;
     padding: 0;
@@ -226,6 +232,7 @@
     font-size: 14px;
     z-index: 10;
   }
+
   .#{$prefix-cls}-dropdown-menu {
     display: block;
     overflow-y: auto;
@@ -245,14 +252,17 @@
     margin-bottom: 6px;
     border-radius: 3px;
     list-style-type: none;
+
     li {
       a {
         padding: 8px 34px 8px 12px;
+
         span {
           cursor: default;
         }
       }
     }
+
     .#{$prefix-cls}-notify {
       position: absolute;
       bottom: 5px;
@@ -263,23 +273,28 @@
       border-radius: 3px;
       pointer-events: none;
     }
+
     .#{$prefix-cls}-select-all {
       position: relative;
       cursor: default;
     }
   }
+
   .#{$prefix-cls}-has-search {
     width: 230px;
     padding-top: 40px;
   }
+
   .#{$prefix-cls}-dropdown-toggle {
     text-align: left;
     display: flex;
     align-items: center;
     min-width: 80px;
     justify-content: space-evenly;
+
     .#{$prefix-cls}-btn-text-fade {
       justify-content: space-between !important;
+
       i {
         position: inherit;
         right: 7px;
@@ -288,7 +303,8 @@
         margin-right: 3px;
       }
     }
-    &>span {
+
+    & > span {
       display: flex;
       flex-wrap: wrap;
       align-items: flex-start;
