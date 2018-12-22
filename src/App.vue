@@ -209,6 +209,23 @@
           <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
         </p>
         <p>
+          <va-typeahead
+            show-clean
+            :debounce="400"
+            placeholder="Username"
+            @change="getGitResults"
+            :items="gitItems"
+            :add-format="gitCallback"
+            icon="github"
+            icon-style="brands"
+            :limit="10">
+            <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
+              <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
+              <span>{{ item.login }}</span>
+            </div>
+          </va-typeahead>
+        </p>
+        <p>
           <va-textarea
             width="100%"
             :autosize="true"
@@ -379,13 +396,36 @@ export default {
               icon: 'cog',
               name: 'Settings'
             }
-          ]
+          ],
+
+          /**
+           * Typeahead
+           */
+          gitItems: []
         }
     },
     mounted () {
     },
     methods: {
+      getGitResults (query) {
+        let self = this
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'https://api.github.com/search/users?q=' + query)
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            let results = JSON.parse(xhr.responseText)
+            self.gitItems = results.items
+          }
+        }
+        xhr.send()
+      },
+      gitCallback (item) {
+        console.log('You selected:', item)
+        this.result = item
+        return item.login
+      },
       cardSelectFormat (item) {
+        if (!item) return
         return 'elevation: ' + item.label
       },
       showNotification () {
