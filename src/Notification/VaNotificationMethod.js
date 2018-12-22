@@ -9,85 +9,58 @@ const createNode = () => {
   return $node
 }
 
-const typeMap = {
-  default: {
-    name: 'default'
-  },
-  success: {
-    name: 'success'
-  },
-  warning: {
-    name: 'warning'
-  },
-  danger: {
-    name: 'danger'
-  },
-  info: {
-    name: 'info'
-  }
-}
-
-const alert = (options) => {
-
-}
-
 const open = (options) => {
-  let {title, message, effect, type, prefixCls, width, onShow, onHide, onConfirm} = options
+  let {title, message, effect, type, width, onShow, onHide, onConfirm} = options
   new Vue({
     el: createNode(),
-    data () {
+    data() {
       return {
         show: false,
         pc: 'va'
       }
     },
-    components: {
-      VaNotification
-    },
-    template: `<VaNotification title="${title}"
-      message="${message}"
-      type="${type ? type : 'default'}"
-      effect="${effect || 'fade-right'}"
-      ref="notification"
-      ${width ? 'width="' + width + '"' : ''}
-      @hide="handleHide"
-      @confirm="handleConfirm"
-      @show="handleShow"
-      @closed="destroy">
-      </VaNotification>`,
-    mounted () {
-      if (prefixCls) {
-        this.pc = prefixCls
-      }
-      this.$nextTick(() => {
-        this.$refs.notification.open()
-      })
-    },
-    destroyed () {},
-    computed: {
+    mounted() {
+      this.$refs.notification.open()
     },
     methods: {
-      handleShow () {
+      handleShow() {
         onShow && onShow()
       },
-      handleConfirm () {
+      handleConfirm() {
         onConfirm && onConfirm()
         this.$refs.notification.close()
       },
-      handleHide () {
+      handleHide() {
         onHide && onHide()
       },
-      handleClose () {
+      handleClose() {
         this.$refs.notification.close()
       },
-      destroy () {
+      destroy() {
         this.$destroy()
       }
-    }
+    },
+    render(createElement) {
+      return createElement(VaNotification, {
+        ref: 'notification',
+        props: {
+          title,
+          message,
+          type: type ? type : 'default',
+          effect: effect || 'fade-right',
+          width: width || '440px'
+        },
+        on: {
+          hide: this.handleHide,
+          confirm: this.handleConfirm,
+          show: this.handleShow,
+          closed: this.destroy
+        }
+      }, [])
+    },
   })
 }
 
 export default {
-  alert,
   open
 }
