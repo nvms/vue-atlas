@@ -11,7 +11,7 @@
   &__slide {
     box-sizing: initial;
     background-clip: content-box;
-    background-color: rgb(107, 119, 140);
+    background-color: $N200;
     display: block;
     height: 16px;
     position: relative;
@@ -25,12 +25,12 @@
     transition: all 0.2s ease 0s;
 
     &:focus {
-      border-color: rgb(76, 154, 255);
+      border-color: $B100;
       outline: none;
     }
 
     &:hover {
-      background-color: rgb(165, 173, 186);
+      background-color: $N70;
       cursor: pointer;
     }
   }
@@ -38,7 +38,7 @@
   &__inner {
     font-size: 14px;
     line-height: 24px;
-    color: rgb(255, 255, 255);
+    color: $N0;
     display: flex;
     flex-direction: row-reverse;
     height: 100%;
@@ -47,7 +47,7 @@
   }
 
   &__handle {
-    background-color: rgb(255, 255, 255);
+    background-color: $N0;
     bottom: 4px;
     content: "";
     height: 12px;
@@ -72,10 +72,10 @@
 
   &--checked {
     #{$self}__slide {
-      background-color: rgb(0, 135, 90);
+      background-color: $G400;
 
       &:hover {
-        background-color: rgb(54, 179, 126);
+        background-color: $G300;
       }
     }
 
@@ -121,10 +121,10 @@
   &--disabled {
     #{$self}__slide {
       cursor: not-allowed;
-      background-color: rgb(244, 245, 247);
+      background-color: $N20;
 
       &:hover {
-        background-color: rgb(244, 245, 247);
+        background-color: $N20;
       }
 
       &:focus {
@@ -133,7 +133,7 @@
     }
 
     #{$self}__inner {
-      color: rgb(165, 173, 186);
+      color: $N70;
     }
   }
 }
