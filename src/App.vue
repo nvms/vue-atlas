@@ -273,7 +273,25 @@
     </va-page>
 
     <va-aside ref="aside">
-      Hello, world!
+      <va-form ref="form" type="horizontal" style="margin-top: 20px">
+        <va-form-item label="Name">
+          <va-input
+                  name="name"
+                  placeholder="Your name"
+                  :rules="[{type:'required'}]"
+                  show-clean />
+        </va-form-item>
+        <va-form-item label="Food">
+          <va-select placeholder="Choose one" :rules="[{type:'required'}]">
+            <va-option value="pizza" label="Pizza"></va-option>
+            <va-option value="taco" label="Taco"></va-option>
+            <va-option value="fries" label="Fries"></va-option>
+          </va-select>
+        </va-form-item>
+        <va-form-item :label-col="2">
+          <va-button type="primary">Submit</va-button>
+        </va-form-item>
+      </va-form>
     </va-aside>
 
     <va-modal title="Modal One" ref="stackedOne">
