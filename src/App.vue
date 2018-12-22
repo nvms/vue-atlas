@@ -91,7 +91,7 @@
 
     <!-- https://vue-atlas.com/documentation/minibar -->
     <va-minibar
-      :top-items="[{icon:'vuejs',brand:true,iconStyle:'brands',size:'22px'},{icon:'search'},{icon:'user'}]"
+      :top-items="minibarTopItems"
       :bottom-items="[{icon:'question'}]"
       theme="blue" />
 
@@ -322,6 +322,27 @@ export default {
            * Checkbox and radio
            */
           foods: ['tacos'],
+
+          /**
+           * Minibar
+           */
+          minibarTopItems: [
+            {
+              icon:'vuejs',
+              brand:true,
+              iconStyle:'brands',
+              size:'22px',
+              tooltip:'Proudly made with Vue.js'
+            },
+            {
+              icon:'search',
+              tooltip: 'Search'
+            },
+            {
+              icon:'user',
+              tooltip: 'Account'
+            }
+          ],
           
           /**
            * Sidebar

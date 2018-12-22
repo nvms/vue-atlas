@@ -1,5 +1,5 @@
 <template>
-  <span>
+  <span ref="tooltip">
     <span ref="trigger">
       <slot />
     </span>
