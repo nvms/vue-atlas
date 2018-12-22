@@ -92,6 +92,7 @@
 
   .#{$prefix-cls}-dropdown-menu {
     position: absolute;
+    overflow: auto;
     top: 100%;
     left: 0;
     z-index: 1000;
