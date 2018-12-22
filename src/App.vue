@@ -195,13 +195,15 @@
             placement="right"
             trigger="hover"
             effect="tooltip-fade-right">
-            <va-button>Hover me</va-button>
+            <va-button size="sm">Hover me</va-button>
           </va-tooltip>
         </div>
         <div slot="right">
           <a href="#">Action</a>
           &nbsp;
-          <va-button @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})">
+          <va-button
+            @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})"
+            size="sm">
             <va-icon type="cogs"></va-icon>
           </va-button>
         </div>
