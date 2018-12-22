@@ -122,7 +122,7 @@
       background: $itemActiveHoverBackground !important;
     }
   }
-  
+
   /**
   No focus ring on an open Select
   */
@@ -262,18 +262,6 @@
       padding: 3px 5px;
       border-radius: 3px;
       pointer-events: none;
-    }
-    .#{$prefix-cls}-fa-check {
-      position: absolute;
-      display: inline-block;
-      right: 10px;
-      top: 10px;
-    }
-    .#{$prefix-cls}-fa-plus-square-o {
-      font-size: 16px;
-      position: absolute;
-      top: 13px;
-      right: 10px;
     }
     .#{$prefix-cls}-select-all {
       position: relative;
