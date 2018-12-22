@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import EventListener from '../utils/EventListener'
-import VaCollapseTransition from '../VaCollapseTransition'
+  import EventListener from '../utils/EventListener'
+  import VaCollapseTransition from '../VaCollapseTransition'
 
-export default {
+  export default {
   name: 'VaDropdown',
   props: {
     show: {
@@ -105,7 +105,7 @@ export default {
       if (this.triggerEvent === 'click') {
         this._clickEvent = EventListener.listen(trig, 'click', this.toggle)
         this._closeEvent = EventListener.listen(window, 'click', (e) => {
-          if (!this.clickClose && !el.contains(e.target)) {
+          if (!this.clickClose && !el.contains(e.target) && this.show) {
             this.close()
           }
         })
