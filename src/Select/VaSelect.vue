@@ -355,7 +355,7 @@
         if (type.isArray(this.currentValue)) {
           return this.currentValue.length <= 0
         } else {
-          return type.isNullOrUndefined(this.currentValue) || this.currentValue === ''
+          return !this.currentValue
         }
       }
     },
@@ -449,7 +449,6 @@
           value, label
         }
         if (this.optionExists(option)) {
-          console.log(option)
           return
         }
         this.currentOptions.push(option)
