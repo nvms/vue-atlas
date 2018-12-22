@@ -2,6 +2,7 @@
     <label :class="classObj" @click.prevent>
         <input :checked="value"
                :class="`${prefixCls}-toggle__input`"
+               :name="name"
                @keypress.space.prevent="toggle"
                tabindex="-1"
                type="checkbox">
@@ -24,6 +25,9 @@
   export default {
     name: 'VaToggle',
     props: {
+      name: {
+        type: String
+      },
       label: {
         type: String
       },
