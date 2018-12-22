@@ -229,6 +229,9 @@ export default {
     },
     currentValue (val) {
       this.broadcast('VaInputOps', 'Va@inputCurrentValueUpdate', val)
+    },
+    value (val) {
+      this.currentValue = val
     }
   },
   methods: {
