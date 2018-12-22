@@ -1,8 +1,12 @@
 <template>
-  <div :style="styleObj" :class="`${prefixCls}-page-wrapper`">
-    <div :class="`${prefixCls}-page-container`">
+  <div
+    @scroll="onScroll"
+    :style="wrapperStyleObj"
+    :class="[classObj,`${prefixCls}-page-wrapper`]">
+    <div :style="containerStyleObj" :class="`${prefixCls}-page-container`">
       <div :class="pageClassObj">
         <slot/>
+        <div style="height:100px;">&nbsp;</div>
       </div>
     </div>
   </div>
@@ -34,7 +38,7 @@ export default {
     },
     bgColor: {
       type: String,
-      default: '#fff',
+      default: '#FFFFFF',
       required: false
     },
     prefixCls: {
@@ -67,7 +71,7 @@ export default {
     }, 10)
   },
   created () {
-    this.$on('Va@pagePresenceCheck', (val) => { this.dispatch('VaApp', 'Va@pagePresenceReply', true) })
+    this.$on('Va@pagePresenceCheck', () => { this.dispatch('VaApp', 'Va@pagePresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@sidebarWidthChange', (val) => { this.currentSidebarWidth = val })
@@ -85,23 +89,58 @@ export default {
   beforeDestroy () {
     this.dispatch('VaApp', 'Va@pageDisconnect', true)
   },
+  methods: {
+    onScroll () {
+      // this.broadcast('VaTextarea', 'Va@pageScroll', true)
+      // this.broadcast('VaInput', 'Va@pageScroll', true)
+      /**
+       * This is probably faster than my broadcast method, and I'd
+       * like for this to happen as fast as possible.
+       * 
+       * We're dispatching this scroll event when this element
+       * is scrolled so that the VaInputOps (and other fixed
+       * position elements) know to reposition themselves.
+       * 
+       * When a VaPage is not used, VaInput and VaTextarea
+       * listen to window events, so they still work even when
+       * used by themselves.
+       */
+      window.dispatchEvent(new Event('scroll'))
+    }
+  },
   computed: {
+    classObj () {
+      let klass = {}
+
+      klass[this.globalThemeClass] = true
+
+      return klass
+    },
     pageClassObj () {
       let {prefixCls, sz, article, isMobile} = this
       let klass = {}
-
+      
       isMobile ? klass[prefixCls + '-page-container-lg'] = true : klass[prefixCls + '-page-container-' + sz] = true
       klass[prefixCls + '-page-container-article'] = article
 
       return klass
     },
-    styleObj () {
-      // let {prefixCls, sidebarWidth} = this
+    containerStyleObj () {
+      // let bg = this.bg
+      let style = {}
+
+      // if (!this.dark) {
+      //   style['background'] = bg
+      // }
+      
+      return style
+    },
+    wrapperStyleObj () {
       let split = this.isSplit
       let rtl = this.isRTL
       let reverse = this.isReverse
       let bg = this.bg
-      let stl = {}
+      let style = {}
 
       let sw = parseInt(this.currentSidebarWidth)
       let mw = parseInt(this.currentMinibarWidth)
@@ -111,19 +150,19 @@ export default {
       let cw = parseInt(this.currentContentWidth)
       let mobile = this.isMobile
 
-      // let possibleWidth = mw + sw + (dm * 2)
-
-      stl['background'] = bg
-      stl['position'] = 'fixed'
-      stl['top'] = th + 'px'
-      stl['height'] = 'calc(100% - ' + th + 'px)'
-
-      // If past mobile breakpoint - set overflow to auto so that scrolling is more natural
-      stl['overflow-y'] = 'scroll'
-      stl['overflow-x'] = 'auto'
-      // Otherwise... don't.
-      // stl['overflow'] = 'auto'
-      // stl['width'] = 'calc(100% - ' + sw + mw + 'px)'
+      /**
+       * Only apply a custom background
+       * if it's been changed from the default.
+       */
+      if (bg !== '#FFFFFF') {
+        style['background'] = bg
+      }
+      
+      style['position'] = 'fixed'
+      style['top'] = th + 'px'
+      style['height'] = 'calc(100% - ' + th + 'px)'
+      style['overflow-y'] = 'scroll'
+      style['overflow-x'] = 'auto'
 
       /**
        * Adjust the margins if content width is smaller than
@@ -140,40 +179,37 @@ export default {
       }
 
       /**
-       * If a minimum desktop width is set
+       * If a minimum desktop width is set...
        */
       if (dmw !== 0) {
-        stl['min-width'] = (dmw - mw - sw) + 'px'
+        style['min-width'] = (dmw - mw - sw) + 'px'
       } else {
-        stl['min-width'] = '0px'
+        style['min-width'] = '0px'
       }
 
-      // The layout isn't split, so Page is only
-      // concerned with total width of bars
+      /**
+       * If it's not a split layout, then Page is only
+       * concerned with the total width of the bars.
+       */
       if (!split) {
         if (rtl) {
-          stl['left'] = dm + 'px'
-          stl['right'] = (sw + mw + dm) + 'px'
+          style['left'] = dm + 'px'
+          style['right'] = (sw + mw + dm) + 'px'
         } else {
-          stl['left'] = (sw + mw + dm) + 'px'
-          stl['right'] = dm + 'px'
+          style['left'] = (sw + mw + dm) + 'px'
+          style['right'] = dm + 'px'
         }
       } else {
-        // So it's a split layout
-        // If reverse is also true, that means that the
-        // sidebar will be moved to the left,
-        // and the minibar is moved to the right
-        // SO.. our 'left' distance should be equal to the width of the minibar
         if (reverse) {
-          stl['left'] = (dm + sw) + 'px'
-          stl['right'] = (dm + mw) + 'px'
+          style['left'] = (dm + sw) + 'px'
+          style['right'] = (dm + mw) + 'px'
         } else {
-          stl['left'] = (dm + mw) + 'px'
-          stl['right'] = (dm + sw) + 'px'
+          style['left'] = (dm + mw) + 'px'
+          style['right'] = (dm + sw) + 'px'
         }
       }
 
-      return stl
+      return style
     }
   }
 }
