@@ -48,7 +48,7 @@ const open = (options) => {
           message,
           type: type ? type : 'default',
           effect: effect || 'fade-right',
-          width: width ? 'width="' + width + '"' : ''
+          width: width || '440px'
         },
         on: {
           hide: this.handleHide,
