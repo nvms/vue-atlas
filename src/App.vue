@@ -118,14 +118,14 @@
     <!-- https://vue-atlas.com/documentation/page -->
     <va-page size="lg">
       <va-page-header>
-        
+
       <div slot="breadcrumb">
         <va-breadcrumb separator="/">
           <va-breadcrumb-item :to="{ path: '/' }">Index</va-breadcrumb-item>
           <va-breadcrumb-item>Demonstration</va-breadcrumb-item>
         </va-breadcrumb>
       </div>
-      
+
       <div slot="title">
         <span>Page header</span>
       </div>
@@ -156,9 +156,13 @@
         </va-input>
         <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
         <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
+        <va-toggle :value="!toggled"></va-toggle>
+        <va-toggle size="lg" v-model="toggled"></va-toggle>
+        <va-toggle :disabled="true" :value="false"></va-toggle>
+        <va-toggle :disabled="true" :value="true" size="lg"></va-toggle>
       </div>
-      
-    </va-page-header>
+
+      </va-page-header>
 
     <p>
       Culture vanquish the impossible a billion trillion decipherment <a href="#">network of wormholes</a> from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
@@ -291,6 +295,11 @@ export default {
           inputLoading: false,
 
           /**
+           * Toggle
+           */
+          toggled: false,
+
+          /**
            * Datepicker
            */
           dateValue: '',
@@ -343,7 +352,7 @@ export default {
               tooltip: 'Account'
             }
           ],
-          
+
           /**
            * Sidebar
            */
