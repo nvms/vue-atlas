@@ -20,7 +20,7 @@
                  v-for="(item, index) in selectedItems">
                 <span :class="`${prefixCls}-selected-tag__label`">
                   <slot :item="item" name="item">
-                    {{ format(item) }}
+                      <span v-html="format(item)"></span>
                   </slot>
                 </span>
                 <span :class="`${prefixCls}-selected-tag__icon`">
@@ -31,7 +31,7 @@
           <template v-else>
             <div class="inline">
               <slot :item="selectedItems[0]" name="item">
-                {{ format(selectedItems[0]) }}
+                  <span v-html="format(selectedItems[0])"></span>
               </slot>
             </div>
           </template>
@@ -40,28 +40,27 @@
             <va-icon :type="show ? 'angle-up' : 'angle-down'"></va-icon>
         </va-button>
         <transition name="fadeDown">
-            <ul
-                    :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"
-                    :style="{maxHeight: menuMaxHeight, width: menuWidth}"
-                    ref="menu"
-                    v-show="show"
-                    v-va-position="show">
+            <ul :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"
+                :style="{maxHeight: menuMaxHeight, width: menuWidth}"
+                ref="menu"
+                v-show="show"
+                v-va-position="show">
                 <li v-if="search">
                     <div :class="`${prefixCls}-search-wrap`">
-                        <va-input
-                                :class="`${prefixCls}-select-search`"
-                                :placeholder="inputPlaceholder"
-                                @confirm="addExtra"
-                                icon="search"
-                                icon-style="solid"
-                                no-v-model
-                                ref="searchInput"
-                                show-clean
-                                size="xs"
-                                v-model="searchText"
-                                width="210px"/>
+                        <va-input :class="`${prefixCls}-select-search`"
+                                  :placeholder="inputPlaceholder"
+                                  @confirm="addExtra"
+                                  icon="search"
+                                  icon-style="solid"
+                                  no-v-model
+                                  ref="searchInput"
+                                  show-clean
+                                  size="xs"
+                                  v-model="searchText"
+                                  width="210px"/>
                     </div>
 
+                    <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
                 </li>
                 <li :class="`${prefixCls}-select-all`" v-if="multiple">
                     <a @click.prevent="selectAll">
@@ -71,23 +70,17 @@
                     </a>
                 </li>
 
-                <div :class="`${prefixCls}-select-items-wrapper`" v-if="currentOptions.length">
-                    <template>
-                        <li :key="index"
-                            :value="option.value"
-                            style="position:relative"
-                            v-for="(option, index) in filterOptions">
-                            <a :class="`${prefixCls}-select-item-active`" @click.prevent="select(option)"
-                               v-if="findIndex(option.value) !== -1">
-                                <span v-html="option.label"></span>
-                            </a>
-                            <a @click.prevent="select(option)" v-else>
-                                <span v-html="option.label"></span>
-                            </a>
-                        </li>
-                    </template>
+                <div :class="`${prefixCls}-select-items-wrapper`">
+                    <slot>
+                        <va-option
+                                :key="option.value"
+                                :label="option.label"
+                                :value="option.value"
+                                v-for="option in filterOptions">
+                        </va-option>
+                    </slot>
                 </div>
-                <slot v-else></slot>
+
                 <div :class="`${prefixCls}-notify`" transition="fadeDown" v-show="showNotify">Limit: {{limit}}</div>
             </ul>
         </transition>
@@ -242,6 +235,13 @@
         activeItemClass: this.prefixCls + '-select-item-active'
       }
     },
+    provide() {
+      return {
+        addSelectOption: this.addOption,
+        selectOption: this.select,
+        isOptionSelected: this.isSelected
+      }
+    },
     watch: {
       value(val) {
         if (this.inner) {
@@ -302,7 +302,7 @@
       filterOptions() {
         return this.filter(this.currentOptions, this.searchText)
       },
-      valueArray: {
+      selectedItems: {
         get() {
           var a
           if (type.isArray(this.currentValue)) {
@@ -351,38 +351,16 @@
         }
         return true
       },
-      selectedItems() {
-        var ret = []
-        var a = this.valueArray
-
-        for (var i = 0; i < a.length; i++) {
-          ret.push(a[i])
-        }
-        return ret
-      },
       showPlaceholder() {
         if (type.isArray(this.currentValue)) {
           return this.currentValue.length <= 0
         } else {
-          return type.isNullOrUndefined(this.currentValue) || this.currentValue === ''
+          return !this.currentValue
         }
       }
     },
     mounted() {
       this.$nextTick(() => {
-        if (!this.currentOptions.length) {
-          if (!this.$refs.menu) return
-          var options = this.$refs.menu.querySelectorAll('.' + this.prefixCls + '-option')
-          var ret = []
-
-          for (var i = 0, l = options.length; i < l; i++) {
-            var value = options[i].getAttribute('value')
-            var label = options[i].innerText
-
-            ret.push({value: value, label: label})
-          }
-          this.currentOptions = ret
-        }
         this._closeEvent = EventListener.listen(window, 'click', (e) => {
           if (!this.$el.contains(e.target)) this.show = false
         })
@@ -393,16 +371,19 @@
       document.removeEventListener('keyup', this.keyup)
     },
     methods: {
+      isSelected(option) {
+        return this.findIndex(option.value) !== -1
+      },
       keyup(e) {
         if (e.keyCode === 27) {
           this.show = false
         }
       },
-      filter(value, search) {
-        if (search === '') return value
+      filter(options, search) {
+        if (search === '') return options
         var ret = []
-        for (var i = 0, l = value.length; i < l; i++) {
-          var v = value[i] && String(value[i].label).replace(/<.*?>/g, '')
+        for (var i = 0, l = options.length; i < l; i++) {
+          var v = options[i] && String(options[i].label).replace(/<.*?>/g, '')
           var s = search
 
           if (!this.matchCase) {
@@ -411,21 +392,21 @@
           }
 
           if (v !== '' && v.indexOf(s) > -1) {
-            ret.push(value[i])
+            ret.push(options[i])
           }
         }
         return ret
       },
       selectAll() {
         if (this.allSelected) {
-          this.valueArray = []
+          this.selectedItems = []
         } else {
-          this.valueArray = this.filter(this.currentOptions, this.searchText)
+          this.selectedItems = this.filter(this.currentOptions, this.searchText)
         }
       },
       addExtra() {
         if (this.extra && this.searchText.replace(/\s+$|^\s+/g, '')) {
-          this.currentOptions.push({value: this.searchText, label: this.searchText})
+          this.addOption(this.searchText, this.searchText)
           this.add({value: this.searchText, label: this.searchText})
           this.searchText = ''
         }
@@ -441,7 +422,7 @@
         return ret
       },
       find(v, array) {
-        var a = array || this.valueArray
+        var a = array || this.selectedItems
         for (var i = 0; i < a.length; i++) {
           if (v === a[i].value) {
             return a[i]
@@ -450,7 +431,7 @@
         return null
       },
       findIndex(v, array) {
-        var a = array || this.valueArray
+        var a = array || this.selectedItems
         for (var i = 0; i < a.length; i++) {
           if (v === a[i].value) {
             return i
@@ -458,30 +439,44 @@
         }
         return -1
       },
+      optionExists(option) {
+        return this.currentOptions
+          .map((option) => option.value)
+          .indexOf(option.value) !== -1
+      },
+      addOption(value, label) {
+        let option = {
+          value, label
+        }
+        if (this.optionExists(option)) {
+          return
+        }
+        this.currentOptions.push(option)
+      },
       add(option) {
-        var a = this.valueArray.slice(0)
+        var a = this.selectedItems.slice(0)
         if (this.multiple) {
           a.push(option)
         } else {
           a = [option]
         }
-        this.valueArray = a
+        this.selectedItems = a
       },
       del(item) {
         var index = this.findIndex(item.value)
-        this.remove(this.valueArray, index, 1)
+        this.remove(this.selectedItems, index, 1)
       },
       remove(array, index, num) {
         var a = array.slice(0)
         num ? a.splice(index, num) : a.splice(index)
-        this.valueArray = a
+        this.selectedItems = a
       },
       select(option) {
         var index = this.findIndex(option.value)
         if (this.multiple) {
-          index === -1 ? this.add(option) : this.remove(this.valueArray, index, 1)
+          index === -1 ? this.add(option) : this.remove(this.selectedItems, index, 1)
         } else {
-          index === -1 ? this.valueArray = [option] : this.noUncheck ? this.valueArray = [option] : this.valueArray = []
+          index === -1 ? this.selectedItems = [option] : this.noUncheck ? this.selectedItems = [option] : this.selectedItems = []
           this.show = false
           this.$refs.button.focus()
         }
