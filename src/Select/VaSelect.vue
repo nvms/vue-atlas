@@ -1,6 +1,7 @@
 <template>
   <div :class="classObj">
     <va-button
+      ref="button"
       :type="type"
       :style="{width:width}"
       :disabled="disabled"
@@ -483,6 +484,7 @@ export default {
       } else {
         index === -1 ? this.valueArray = [option] : this.noUncheck ? this.valueArray = [option] : this.valueArray = []
         this.show = false
+        this.$refs.button.focus()
       }
     },
     toggleDropdown () {

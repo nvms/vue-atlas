@@ -218,6 +218,9 @@ export default {
       let evObj = document.createEvent('Events')
       evObj.initEvent('click', true, false)
       el.dispatchEvent(evObj)
+    },
+    focus () {
+      this.$refs.btn.focus()
     }
   },
   mounted () {
