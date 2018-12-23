@@ -7,7 +7,7 @@
     desktop-minimum-width="0"
     desktop-sidebar-width="0"
     desktop-minibar-width="50"
-    desktop-topbar-height="46"
+    desktop-topbar-height="0"
     mobile-sidebar-width="0"
     mobile-minibar-width="0"
     mobile-topbar-height="48"
@@ -22,7 +22,7 @@
     <va-app-config />
 
     <!-- https://vue-atlas.com/documentation/topbar -->
-    <va-topbar theme="white">
+    <va-topbar theme="default">
       <div slot="left">
 
         <span style="font-weight:700;margin:0 20px 0 10px;">
@@ -285,9 +285,12 @@
         </va-form-item>
         <va-form-item label="Food">
           <va-select placeholder="Choose one" :rules="[{type:'required'}]">
-            <va-option value="pizza" label="Pizza"></va-option>
-            <va-option value="taco" label="Taco"></va-option>
-            <va-option value="fries" label="Fries"></va-option>
+            <va-option value="pizza" label="Pizza">
+              Pizza is life
+              <va-icon type="heart" color="#FF5630"/>
+            </va-option>
+            <va-option value="taco" label="Taco">Twelve tacos</va-option>
+            <va-option value="fries" label="Fries">Hm, fries?</va-option>
           </va-select>
         </va-form-item>
         <va-form-item :label-col="2">
