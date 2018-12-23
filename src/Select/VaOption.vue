@@ -19,10 +19,6 @@
         type: String,
         required: false
       },
-      icon: {
-        type: String,
-        default: ''
-      },
       prefixCls: {
         type: String,
         default: 'va'
