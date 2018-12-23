@@ -204,6 +204,17 @@ export default {
         style['top'] = '0px'
       }
 
+      /**
+       * Less than 20 and we don't want overflow.
+       * Greater than 20 and we do, because we don't want
+       * to hide tooltips.
+       */
+      if (mw < 20) {
+        style['overflow'] = 'hidden'
+      } else {
+        style['overflow'] = 'visible'
+      }
+
       return style
     }
   }
