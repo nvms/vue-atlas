@@ -27,13 +27,13 @@
                   <p>
                     Minibar<br/>
                     <va-select v-model="minibarTheme" no-uncheck>
-                      <va-option value="default">Default</va-option>
-                      <va-option value="white">White</va-option>
-                      <va-option value="blue">Blue</va-option>
-                      <va-option value="dark">Dark</va-option>
-                      <va-option value="darker">Darker</va-option>
-                      <va-option value="purple">Purple</va-option>
-                      <va-option value="black">Black</va-option>
+                      <va-option value="default" label="Default"/>
+                      <va-option value="white" label="White"/>
+                      <va-option value="blue" label="Blue"/>
+                      <va-option value="dark" label="Dark"/>
+                      <va-option value="darker" label="Darker"/>
+                      <va-option value="purple" label="Purple"/>
+                      <va-option value="black" label="Black"/>
                     </va-select>
                   </p>
                 </va-column>
@@ -41,13 +41,13 @@
                   <p>
                     Sidebar<br/>
                     <va-select v-model="sidebarTheme" no-uncheck>
-                      <va-option value="default">Default</va-option>
-                      <va-option value="white">White</va-option>
-                      <va-option value="blue">Blue</va-option>
-                      <va-option value="dark">Dark</va-option>
-                      <va-option value="darker">Darker</va-option>
-                      <va-option value="purple">Purple</va-option>
-                      <va-option value="black">Black</va-option>
+                      <va-option value="default" label="Default"/>
+                      <va-option value="white" label="White"/>
+                      <va-option value="blue" label="Blue"/>
+                      <va-option value="dark" label="Dark"/>
+                      <va-option value="darker" label="Darker"/>
+                      <va-option value="purple" label="Purple"/>
+                      <va-option value="black" label="Black"/>
                     </va-select>
                   </p>
                 </va-column>
@@ -55,13 +55,13 @@
                   <p>
                     Topbar<br/>
                     <va-select v-model="topbarTheme" no-uncheck>
-                      <va-option value="default">Default</va-option>
-                      <va-option value="white">White</va-option>
-                      <va-option value="blue">Blue</va-option>
-                      <va-option value="dark">Dark</va-option>
-                      <va-option value="darker">Darker</va-option>
-                      <va-option value="purple">Purple</va-option>
-                      <va-option value="black">Black</va-option>
+                      <va-option value="default" label="Default"/>
+                      <va-option value="white" label="White"/>
+                      <va-option value="blue" label="Blue"/>
+                      <va-option value="dark" label="Dark"/>
+                      <va-option value="darker" label="Darker"/>
+                      <va-option value="purple" label="Purple"/>
+                      <va-option value="black" label="Black"/>
                     </va-select>
                   </p>
                 </va-column>
@@ -91,9 +91,9 @@
                   <p>
                     Page size<br/>
                     <va-select v-model="pageSize" no-uncheck>
-                      <va-option value="sm">Small</va-option>
-                      <va-option value="md">Medium</va-option>
-                      <va-option value="lg">Large</va-option>
+                      <va-option value="sm" label="Small"/>
+                      <va-option value="md" label="Medium"/>
+                      <va-option value="lg" label="Large"/>
                     </va-select>
                   </p>
                 </va-column>
