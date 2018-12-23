@@ -5,13 +5,13 @@
     </span>
 
     <transition :name="effect" v-if="effect != 'collapse'">
-      <ul v-va-position="isShow" :class="`${prefixCls}-dropdown-menu`" v-show="isShow">
+      <ul v-va-position="show" :class="`${prefixCls}-dropdown-menu`" v-show="show">
         <slot />
       </ul>
     </transition>
 
     <va-collapse-transition v-if="effect=='collapse'">
-      <ul :class="`${prefixCls}-dropdown-menu`" v-show="isShow">
+      <ul :class="`${prefixCls}-dropdown-menu`" v-show="show">
         <slot />
       </ul>
     </va-collapse-transition>
@@ -26,12 +26,6 @@
   export default {
   name: 'VaDropdown',
   props: {
-    show: {
-      type: Boolean,
-      default: false,
-      required: false,
-      note: 'If true, the dropdown content is visible.'
-    },
     triggerEvent: {
       type: String,
       default: 'click',
@@ -63,22 +57,21 @@
     }
   },
   data () {
-    let show = this.show
     return {
-      isShow: show
+      show: false
     }
   },
   methods: {
     open () {
-      this.isShow = true
+      this.show = true
       this.$emit('show')
     },
     close () {
-      this.isShow = false
+      this.show = false
       this.$emit('hide')
     },
     toggle () {
-      this.isShow ? this.close() : this.open()
+      this.show ? this.close() : this.open()
       this.$emit('toggle')
     },
     onFocus () {
@@ -92,7 +85,7 @@
       let {prefixCls, tall} = this
       let klass = {}
 
-      klass[prefixCls + '-dropdown-selected'] = this.isShow
+      klass[prefixCls + '-dropdown-selected'] = this.show
       klass[prefixCls + '-dropdown-con-tall'] = tall
 
       return klass
