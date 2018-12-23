@@ -310,6 +310,7 @@
     $borderRadius: 4px);
   min-width: 26px;
   min-height: 26px;
+  max-height: 26px;
 }
 
 @mixin sm-button-size-mixin() {
@@ -319,6 +320,7 @@
     $borderRadius: 4px);
   min-width: 30px;
   min-height: 30px;
+  max-height: 30px;
 }
 
 @mixin md-button-size-mixin() {
@@ -328,6 +330,7 @@
     $borderRadius: 4px);
   min-width: 34px;
   min-height: 34px;
+  max-height: 34px;
 }
 
 @mixin lg-button-size-mixin() {
@@ -337,6 +340,7 @@
     $borderRadius: 4px);
   min-width: 45px;
   min-height: 45px;
+  max-height: 45px;
 }
 
 @mixin btn-size-mixin($padding, $fontSize, $lineHeight, $borderRadius) {
@@ -357,7 +361,7 @@
   cursor: default;
   font-family: inherit;
   text-decoration: none;
-  vertical-align: baseline;
+  vertical-align: middle;
   white-space: nowrap;
   -webkit-user-select: none;
   -moz-user-select: none;

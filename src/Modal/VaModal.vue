@@ -1,7 +1,6 @@
 <template>
     <div :class="classObj" :style="styleObj" ref="modal">
         <div :class="`${prefixCls}-modal-dialog`" :style="{'width': width }">
-
             <div :class="`${prefixCls}-modal-loading`" v-if="modalIsLoading">
                 <va-loading color="#888" size="md"></va-loading>
             </div>
@@ -10,7 +9,7 @@
 
                 <slot name="header">
                     <div :class="`${prefixCls}-modal-header`">
-                        <va-button :class="`${prefixCls}-close`" @click="close" type="subtle">
+                        <va-button tabindex="-1" :class="`${prefixCls}-close`" @click="close" type="subtle">
                             <va-icon type="times"></va-icon>
                         </va-button>
                         <div :class="`${prefixCls}-modal-title`">
@@ -27,24 +26,23 @@
 
                 <div :class="`${prefixCls}-modal-footer`">
                     <slot name="footer">
-                        <va-button @click.native="close" type="subtle">
-                            {{getL('cancel')}}
-                        </va-button>
                         <va-button :focused="focused" @click.native="confirm" type="primary">
                             {{getL('confirm')}}
                         </va-button>
+                        <va-button @click.native="close" type="subtle">
+                            {{getL('cancel')}}
+                        </va-button>
                     </slot>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
+  import createFocusTrap from 'focus-trap'
   import getScrollBarWidth from '../utils/getScrollBarWidth'
   import EventListener from '../utils/EventListener'
-  import VaButton from '../Button/VaButton'
   import element from '../utils/element'
   import localeMixin from '../Mixin/localeMixin'
 
@@ -97,16 +95,14 @@
         default: 'va'
       }
     },
-    components: {
-      VaButton
-    },
-    mounted() {
-      const $body = document.querySelector('body')
-      $body.appendChild(this.$refs.modal)
-    },
-    beforeDestroy() {
-      const $body = document.querySelector('body')
-      $body.removeChild(this.$refs.modal)
+    data() {
+      let show = this.show
+      return {
+        isShow: show,
+        focused: false,
+        numberOfParentModals: 0,
+        focusTrap: null
+      }
     },
     computed: {
       classObj() {
@@ -135,13 +131,28 @@
         return this.loading
       }
     },
-    data() {
-      let show = this.show
-      return {
-        isShow: show,
-        focused: false,
-        numberOfParentModals: 0
+    created() {
+      const escapeHandler = e => {
+        if (e.key === 'Escape' && this.isTop()) {
+          this.close()
+        }
       }
+      document.addEventListener('keydown', escapeHandler)
+      this.$once('hook:destroyed', () => {
+        document.removeEventListener('keydown', escapeHandler)
+      })
+    },
+    mounted() {
+      this.focusTrap = createFocusTrap(this.$refs.modal, {
+        clickOutsideDeactivates: true,
+        returnFocusOnDeactivate: true,
+        fallbackFocus: this.$refs.modal
+      })
+
+      document.querySelector('body').appendChild(this.$refs.modal)
+      this.$once('hook:beforeDestroy', () => {
+        document.querySelector('body').removeChild(this.$refs.modal)
+      })
     },
     watch: {
       isShow(val) {
@@ -223,6 +234,8 @@
               if (e.target === el) this.isShow = false
             })
           }
+
+          this.focusTrap.activate()
         } else {
           if (this._blurModalContentEvent) this._blurModalContentEvent.remove()
           element.removeClass(el, this.prefixCls + '-modal-in')
@@ -235,15 +248,21 @@
             body.style.paddingRight = '0'
             this.$emit('closed', {type: 'closed'})
           }, 300)
+
+          this.focusTrap.deactivate()
         }
       }
     },
     methods: {
+      isTop() {
+        return this.isShow && (!this.$refs.modal.style['margin-left'] || this.$refs.modal.style['margin-left'] === '0px')
+      },
       close() {
         this.isShow = false
       },
       open() {
         this.isShow = true
+
       },
       confirm() {
         this.$emit('confirm', {type: 'confirm'})

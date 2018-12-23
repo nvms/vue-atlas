@@ -118,14 +118,14 @@
     <!-- https://vue-atlas.com/documentation/page -->
     <va-page size="lg">
       <va-page-header>
-        
+
       <div slot="breadcrumb">
         <va-breadcrumb separator="/">
           <va-breadcrumb-item :to="{ path: '/' }">Index</va-breadcrumb-item>
           <va-breadcrumb-item>Demonstration</va-breadcrumb-item>
         </va-breadcrumb>
       </div>
-      
+
       <div slot="title">
         <span>Page header</span>
       </div>
@@ -156,9 +156,13 @@
         </va-input>
         <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
         <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
+        <va-toggle :value="!toggled"></va-toggle>
+        <va-toggle size="lg" v-model="toggled"></va-toggle>
+        <va-toggle :disabled="true" :value="false"></va-toggle>
+        <va-toggle :disabled="true" :value="true" size="lg"></va-toggle>
       </div>
-      
-    </va-page-header>
+
+      </va-page-header>
 
     <p>
       Culture vanquish the impossible a billion trillion decipherment <a href="#">network of wormholes</a> from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
@@ -191,13 +195,15 @@
             placement="right"
             trigger="hover"
             effect="tooltip-fade-right">
-            <va-button>Hover me</va-button>
+            <va-button size="sm">Hover me</va-button>
           </va-tooltip>
         </div>
         <div slot="right">
           <a href="#">Action</a>
           &nbsp;
-          <va-button @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})">
+          <va-button
+            @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})"
+            size="sm">
             <va-icon type="cogs"></va-icon>
           </va-button>
         </div>
@@ -205,7 +211,25 @@
           <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
         </p>
         <p>
+          <va-typeahead
+            show-clean
+            :debounce="400"
+            placeholder="Username"
+            @change="getGitResults"
+            :items="gitItems"
+            :add-format="gitCallback"
+            icon="github"
+            icon-style="brands"
+            :limit="10">
+            <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
+              <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
+              <span>{{ item.login }}</span>
+            </div>
+          </va-typeahead>
+        </p>
+        <p>
           <va-textarea
+            ref="textarea"
             width="100%"
             :autosize="true"
             buttons
@@ -213,7 +237,8 @@
             :loading="textareaLoading"
             @confirm="textareaConfirm"
             @cancel="textareaCancel"
-            v-model="textareaText"></va-textarea>
+            v-model="textareaText">
+          </va-textarea>
         </p>
         <p>
           <va-button size="sm">Secondary action</va-button>
@@ -250,7 +275,25 @@
     </va-page>
 
     <va-aside ref="aside">
-      Hello, world!
+      <va-form ref="form" type="horizontal" style="margin-top: 20px">
+        <va-form-item label="Name">
+          <va-input
+                  name="name"
+                  placeholder="Your name"
+                  :rules="[{type:'required'}]"
+                  show-clean />
+        </va-form-item>
+        <va-form-item label="Food">
+          <va-select placeholder="Choose one" :rules="[{type:'required'}]">
+            <va-option value="pizza" label="Pizza"></va-option>
+            <va-option value="taco" label="Taco"></va-option>
+            <va-option value="fries" label="Fries"></va-option>
+          </va-select>
+        </va-form-item>
+        <va-form-item :label-col="2">
+          <va-button type="primary">Submit</va-button>
+        </va-form-item>
+      </va-form>
     </va-aside>
 
     <va-modal title="Modal One" ref="stackedOne">
@@ -289,6 +332,11 @@ export default {
            */
           inputText: '',
           inputLoading: false,
+
+          /**
+           * Toggle
+           */
+          toggled: false,
 
           /**
            * Datepicker
@@ -343,7 +391,7 @@ export default {
               tooltip: 'Account'
             }
           ],
-          
+
           /**
            * Sidebar
            */
@@ -370,13 +418,35 @@ export default {
               icon: 'cog',
               name: 'Settings'
             }
-          ]
+          ],
+
+          /**
+           * Typeahead
+           */
+          gitItems: []
         }
     },
     mounted () {
     },
     methods: {
+      getGitResults (query) {
+        let self = this
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', 'https://api.github.com/search/users?q=' + query)
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            let results = JSON.parse(xhr.responseText)
+            self.gitItems = results.items
+          }
+        }
+        xhr.send()
+      },
+      gitCallback (item) {
+        this.textareaText = JSON.stringify(item)
+        return item.login
+      },
       cardSelectFormat (item) {
+        if (!item) return
         return 'elevation: ' + item.label
       },
       showNotification () {

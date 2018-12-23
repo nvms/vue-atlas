@@ -6,6 +6,7 @@ import VaRow from './Grid/VaRow.vue'
 import VaIcon from './Icon/VaIcon.vue'
 import VaPage from './Page/VaPage.vue'
 import VaTabs from './Tabs/VaTabs.vue'
+import VaToggle from './Toggle/VaToggle'
 import VaCard from './Card/VaCard.vue'
 import VaRange from './Range/VaRange.vue'
 import VaAside from './Aside/VaAside.vue'
@@ -91,6 +92,7 @@ const Components = {
   VaButton,
   VaColumn,
   VaOption,
+  VaToggle,
   VaLozenge,
   VaLoading,
   VaSidebar,

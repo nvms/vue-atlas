@@ -20,6 +20,7 @@
                 @keydown.native.up="up"
                 no-v-model
                 ref="input"
+                no-v-model
                 v-model="query">
         </va-input>
 

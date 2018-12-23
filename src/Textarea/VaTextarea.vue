@@ -172,6 +172,9 @@ export default {
     loading (val) {
       this.broadcast('VaInputOps', 'Va@inputLoading', val)
     },
+    value (val) {
+      this.currentValue = val
+    },
     currentValue (val) {
       this.broadcast('VaInputOps', 'Va@inputCurrentValueUpdate', val)
     }
