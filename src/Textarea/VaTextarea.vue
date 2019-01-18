@@ -142,9 +142,9 @@ export default {
   },
   created () {
     this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
-    this.$on('Va@inputOpsConfirm', (val) => { })
-    this.$on('Va@inputOpsBlur', (val) => { this.focused = false })
-    this.$on('Va@pageScroll', (val) => { this.setPosition() })
+    this.$on('Va@inputOpsConfirm', () => { })
+    this.$on('Va@inputOpsBlur', () => { this.focused = false })
+    this.$on('Va@pageScroll', () => { this.setPosition() })
     // document.addEventListener('keyup', this.keyup)
   },
   beforeDestroy () {
