@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yarn run build-bundle
+yarn run build
 rm -rf ~/vue-atlas-npm
 mkdir ~/vue-atlas-npm
 cp -r src ~/vue-atlas-npm
