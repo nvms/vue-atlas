@@ -116,7 +116,7 @@
     </va-sidebar>
 
     <!-- https://vue-atlas.com/documentation/page -->
-    <va-page size="lg">
+    <va-page size="md">
       <va-page-header>
 
       <div slot="breadcrumb">
@@ -280,11 +280,10 @@
           <va-input
                   name="name"
                   placeholder="Your name"
-                  :rules="[{type:'required'}]"
-                  show-clean />
+                  :rules="[{type:'required'}]" />
         </va-form-item>
         <va-form-item label="Food">
-          <va-select placeholder="Choose one" :rules="[{type:'required'}]">
+          <va-select v-model="food" placeholder="Choose one" :rules="[{type:'required'}]">
             <va-option value="pizza" label="Pizza">
               Pizza is life
               <va-icon type="heart" color="#FF5630"/>
@@ -295,6 +294,9 @@
         </va-form-item>
         <va-form-item :label-col="2">
           <va-button type="primary">Submit</va-button>
+        </va-form-item>
+        <va-form-item :label-col="2">
+          {{food}}
         </va-form-item>
       </va-form>
     </va-aside>
@@ -373,6 +375,11 @@ export default {
            * Checkbox and radio
            */
           foods: ['tacos'],
+
+          /**
+           * The select dropdown in the Aside
+           */
+          food: '',
 
           /**
            * Minibar
