@@ -36,18 +36,12 @@ export default {
       default: false,
       note: 'When true, applies some additional CSS to header elements for more comfortable spacing.'
     },
-    bgColor: {
-      type: String,
-      default: '#FFFFFF',
-      required: false
-    },
     prefixCls: {
       type: String,
       default: 'va'
     }
   },
   data () {
-    let bgColor = this.bgColor
     let s = this.size
     return {
       currentDesktopMinimumWidth: 0,
@@ -61,7 +55,7 @@ export default {
       isMobile: false,
       isSplit: false,
       isRTL: false,
-      bg: bgColor,
+      bg: '#ffffff',
       sz: s
     }
   },
@@ -126,13 +120,8 @@ export default {
       return klass
     },
     containerStyleObj () {
-      // let bg = this.bg
       let style = {}
 
-      // if (!this.dark) {
-      //   style['background'] = bg
-      // }
-      
       return style
     },
     wrapperStyleObj () {
@@ -150,14 +139,7 @@ export default {
       let cw = parseInt(this.currentContentWidth)
       let mobile = this.isMobile
 
-      /**
-       * Only apply a custom background
-       * if it's been changed from the default.
-       */
-      if (bg !== '#FFFFFF') {
-        style['background'] = bg
-      }
-      
+      style['background'] = bg
       style['position'] = 'fixed'
       style['top'] = th + 'px'
       style['height'] = 'calc(100% - ' + th + 'px)'
