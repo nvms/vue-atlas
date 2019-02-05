@@ -110,6 +110,7 @@
     -ms-user-select: none;
     user-select: none;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     hr {
       margin: 5px 0;

@@ -100,7 +100,7 @@
               </va-row>
 
               <va-row :gutter="10">
-                <h3>Misc. layout manager props</h3>
+                <h3>Misc. App props</h3>
                 <hr/>
                 <va-column :xs="4">
                   <p>
@@ -225,7 +225,7 @@
             <va-tab name="Source">
               <code>
               <pre class="back"><span class="blue">&lt;template&gt;</span>
-    <span class="comment">&lt;!-- https://vue-atlas.com/documentation/layoutmanager --&gt;</span>
+    <span class="comment">&lt;!-- https://vue-atlas.com/documentation/app --&gt;</span>
     <span class="blue">&lt;va-app</span>
       <span class="yellow">bg-color</span>=<span class="green">"{{bgColor}}"</span>
       <span class="yellow">page-bg-color</span>=<span class="green">"{{pageBgColor}}"</span>

@@ -210,7 +210,7 @@ export default {
     this.$on('Va@timepickerIsMobile', (val) => { this.isMobile = val })
 
     /**
-     * In case this component is instantiated after the LayoutManager
+     * In case this component is instantiated after the App
      * has initially broadcasted isMobile, let's request it.
      */
     this.dispatch('VaApp', 'Va@requestIsMobile', true)

@@ -107,10 +107,6 @@ export default {
     onChange: {
       type: Function
     },
-    prefixCls: {
-      type: String,
-      default: 'va'
-    },
     type: {
       type: String,
       default: 'text'
@@ -158,7 +154,7 @@ export default {
           'warning',
           'danger',
           'purple'
-        ]
+        ].includes(v)
       }
     },
     prefixCls: {
@@ -177,8 +173,8 @@ export default {
   },
   created () {
     this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
-    this.$on('Va@inputOpsConfirm', (val) => { })
-    this.$on('Va@inputOpsBlur', (val) => { this.focused = false })
+    this.$on('Va@inputOpsConfirm', () => { })
+    this.$on('Va@inputOpsBlur', () => { this.focused = false })
     this.$on('Va@pageScroll', () => { this.setPosition() })
   },
   mounted () {

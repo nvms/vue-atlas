@@ -117,13 +117,13 @@
 .#{$prefix-cls}-sidebar {
   position: fixed;
   z-index: 2;
-  overflow-y: none;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
   padding: 0 0 10px 0;
   justify-content: flex-start;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 
   &-compact {
     .#{$prefix-cls}-sidebar-group-item {
