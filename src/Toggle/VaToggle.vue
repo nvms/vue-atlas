@@ -70,7 +70,7 @@
     },
     methods: {
       toggle() {
-        if (this.disable) {
+        if (this.disabled) {
           return
         }
         let newState = !this.value
