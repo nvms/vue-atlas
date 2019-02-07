@@ -10,7 +10,7 @@
     desktop-topbar-height="0"
     mobile-sidebar-width="0"
     mobile-minibar-width="0"
-    mobile-topbar-height="48"
+    mobile-topbar-height="50"
     :rtl="false"
     :reverse="false"
     :split="false"
@@ -22,7 +22,7 @@
     <va-app-config />
 
     <!-- https://vue-atlas.com/documentation/topbar -->
-    <va-topbar theme="default">
+    <va-topbar theme="blue">
       <div slot="left">
 
         <span style="font-weight:700;margin:0 20px 0 10px;">
@@ -33,7 +33,7 @@
           <div slot="trigger">
             <va-button
               size="sm"
-              type="subtle">
+              type="primary-dark">
               File
               <va-icon icon-style="solid" type="angle-down" margin="0 2px 0 10px"></va-icon>
             </va-button>
@@ -50,7 +50,7 @@
           <div slot="trigger">
             <va-button
               size="sm"
-              type="subtle">
+              type="primary-dark">
               Preferences
               <va-icon icon-style="solid" type="angle-down" margin="0 2px 0 10px"></va-icon>
             </va-button>
@@ -64,10 +64,10 @@
         </va-dropdown>
 
         <va-button-group>
-          <va-button style="margin-left:10px;">Edit</va-button>
+          <va-button type="primary-light" style="margin-left:10px;">Edit</va-button>
           <va-dropdown>
             <div slot="trigger">
-              <va-button>
+              <va-button type="primary-light">
                 <va-icon type="ellipsis-h"></va-icon>
               </va-button>
             </div>
@@ -80,7 +80,7 @@
       <div slot="right">
         <va-dropdown tall>
           <div slot="trigger">
-            <va-button type="subtle">
+            <va-button type="primary-dark">
               <va-icon type="user"/>
             </va-button>
           </div>
@@ -107,170 +107,194 @@
         </va-sidebar-header>
       <va-sidebar-scrollarea>
         <va-sidebar-group
-          :items="[{name:'Home', route: '/', icon: 'home'},{name:'Item2'},{name:'Item3'},{name:'Item4'}]"
-          title="Group 1" />
+          :items="groupOneItems"
+          title="Without icons" />
         <va-sidebar-group
           :items="groupTwoItems"
-          title="Group 2" />
+          title="With icons" />
       </va-sidebar-scrollarea>
     </va-sidebar>
 
     <!-- https://vue-atlas.com/documentation/page -->
-    <va-page size="md">
+    <va-page size="lg">
       <va-page-header>
 
-      <div slot="breadcrumb">
-        <va-breadcrumb separator="/">
-          <va-breadcrumb-item :to="{ path: '/' }">Index</va-breadcrumb-item>
-          <va-breadcrumb-item>Demonstration</va-breadcrumb-item>
-        </va-breadcrumb>
-      </div>
+        <div slot="breadcrumb">
+          <va-breadcrumb separator="/">
+            <va-breadcrumb-item :to="{ path: '/' }">Index</va-breadcrumb-item>
+            <va-breadcrumb-item>Demonstration</va-breadcrumb-item>
+          </va-breadcrumb>
+        </div>
 
-      <div slot="title">
-        <span>Page header</span>
-      </div>
+        <div slot="title">
+          <span>Page header</span>
+        </div>
 
-      <div slot="subtitle">
-        <span>Subtitle</span>
-      </div>
+        <div slot="subtitle">
+          <span>Subtitle</span>
+        </div>
 
-      <div slot="actions">
-        <va-button type="subtle">
-          <va-icon type="edit" icon-style="regular" margin="0 7px 0 0"></va-icon>
-          Edit
-        </va-button>
-        <va-button type="subtle" round>
-          <va-icon type="star"></va-icon>
-        </va-button>
-      </div>
+        <div slot="actions">
+          <va-button type="subtle">
+            <va-icon type="edit" icon-style="regular" margin="0 7px 0 0"></va-icon>
+            Edit
+          </va-button>
+          <va-button type="subtle" round>
+            <va-icon type="star"></va-icon>
+          </va-button>
+        </div>
 
-      <div slot="bottom">
-        <va-input
-          size="sm"
-          placeholder="Filter (change me)"
-          buttons
-          :loading="inputLoading"
-          @confirm="inputConfirm"
-          @cancel="inputCancel"
-          v-model="inputText">
-        </va-input>
-        <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
-        <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
-        <va-toggle :value="!toggled"></va-toggle>
-        <va-toggle size="lg" v-model="toggled"></va-toggle>
-        <va-toggle :disabled="true" :value="false"></va-toggle>
-        <va-toggle :disabled="true" :value="true" size="lg"></va-toggle>
-      </div>
+        <div slot="bottom">
+          <va-input
+            size="sm"
+            placeholder="Filter (change me)"
+            buttons
+            :loading="inputLoading"
+            @confirm="inputConfirm"
+            @cancel="inputCancel"
+            v-model="inputText">
+          </va-input>
+          <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
+          <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
+          <va-toggle :value="!toggled"></va-toggle>
+          <va-toggle size="lg" v-model="toggled"></va-toggle>
+          <va-toggle :disabled="true" :value="false"></va-toggle>
+          <va-toggle :disabled="true" :value="true" size="lg"></va-toggle>
+        </div>
 
       </va-page-header>
 
-    <p>
-      Culture vanquish the impossible a billion trillion decipherment <a href="#">network of wormholes</a> from which we spring. Billions upon billions brain is the seed of intelligence the ash of stellar alchemy astonishment with pretty stories for which there's little good evidence tendrils of gossamer clouds. Tingling of the spine emerged into consciousness the carbon in our apple pies a mote of dust suspended in a sunbeam the carbon in our apple pies astonishment.
-    </p>
+      <va-row :gutter="20">
+        <va-column :xs="12" :sm="12" :md="8">
+          <p>
+            If you're new here, you may want to begin by launching the AppConfig
+            modal (bottom right) and playing with those settings. Try increasing
+            the width of the Sidebar and the height of the Topbar. With both the
+            Sidebar and Minibar shown, try toggling the values for `rtl`, `split`
+            and `reverse` to get a feel for how they work.
+          </p>
+          <p>
+            Culture vanquish the impossible a billion trillion decipherment
+            <a href="#">network of wormholes</a> from which we spring. Billions
+            upon billions brain is the seed of intelligence the ash of stellar
+            alchemy astonishment with pretty stories for which there's little good
+            evidence tendrils of gossamer clouds. Tingling of the spine emerged
+            into consciousness the carbon in our apple pies a mote of dust
+            suspended in a sunbeam the carbon in our apple pies astonishment.
+          </p>
 
-    <p>
-      Cambrian explosion science citizens of distant epochs encyclopaedia galactica brain is the seed of intelligence rich in mystery. Rings of Uranus made in the interiors of collapsing stars hundreds of thousands astonishment from which we spring laws of physics? The ash of stellar alchemy a very small stage in a vast cosmic arena network of wormholes another world concept of the number one the only home we've ever known and billions upon billions upon billions upon billions upon billions upon billions upon billions.
-    </p>
+          <p>
+            Cambrian explosion science citizens of distant epochs encyclopaedia
+            galactica brain is the seed of intelligence rich in mystery. Rings
+            of Uranus made in the interiors of collapsing stars hundreds of
+            thousands astonishment from which we spring laws of physics? The ash
+            of stellar alchemy a very small stage in a vast cosmic arena network
+            of wormholes another world concept of the number one the only home
+            we've ever known and billions upon billions upon billions upon
+            billions upon billions upon billions upon billions.
+          </p>
 
-    <p>
-      <va-card :elevation="elevation">
-        <div slot="left">
-          <va-select size="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
-            <va-option value="0">0</va-option>
-            <va-option value="1">1</va-option>
-            <va-option value="2">2</va-option>
-            <va-option value="3">3</va-option>
-            <va-option value="4">4</va-option>
-            <va-option value="5">5</va-option>
-          </va-select>
-          &nbsp;
-          <va-button-group>
-            <va-button size="sm"><va-icon type="file" icon-style="regular"/></va-button>
-            <va-button size="sm"><va-icon type="folder-open" icon-style="regular"/></va-button>
-            <va-button size="sm"><va-icon type="trash-alt" icon-style="regular"/></va-button>
-          </va-button-group>
-          &nbsp;
-          <va-tooltip
-            content="Important tooltip"
-            placement="right"
-            trigger="hover"
-            effect="tooltip-fade-right">
-            <va-button size="sm">Hover me</va-button>
-          </va-tooltip>
-        </div>
-        <div slot="right">
-          <a href="#">Action</a>
-          &nbsp;
-          <va-button
-            @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})"
-            size="sm">
-            <va-icon type="cogs"></va-icon>
-          </va-button>
-        </div>
-        <p>
-          <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
-        </p>
-        <p>
-          <va-typeahead
-            show-clean
-            :debounce="400"
-            placeholder="Username"
-            @change="getGitResults"
-            :items="gitItems"
-            :add-format="gitCallback"
-            icon="github"
-            icon-style="brands"
-            :limit="10">
-            <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
-              <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
-              <span>{{ item.login }}</span>
-            </div>
-          </va-typeahead>
-        </p>
-        <p>
-          <va-textarea
-            ref="textarea"
-            width="100%"
-            :autosize="true"
-            buttons
-            :resize="false"
-            :loading="textareaLoading"
-            @confirm="textareaConfirm"
-            @cancel="textareaCancel"
-            v-model="textareaText">
-          </va-textarea>
-        </p>
-        <p>
-          <va-button size="sm">Secondary action</va-button>
-          &nbsp;
-          <va-button size="sm" type="primary">Primary action</va-button>
-        </p>
-      </va-card>
-    </p>
+          <p>
+            <va-card :elevation="elevation">
+              <div slot="left">
+                <va-select size="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
+                  <va-option value="0">0</va-option>
+                  <va-option value="1">1</va-option>
+                  <va-option value="2">2</va-option>
+                  <va-option value="3">3</va-option>
+                  <va-option value="4">4</va-option>
+                  <va-option value="5">5</va-option>
+                </va-select>
+                &nbsp;
+                <va-button-group>
+                  <va-button size="sm"><va-icon type="file" icon-style="regular"/></va-button>
+                  <va-button size="sm"><va-icon type="folder-open" icon-style="regular"/></va-button>
+                  <va-button size="sm"><va-icon type="trash-alt" icon-style="regular"/></va-button>
+                </va-button-group>
+                &nbsp;
+                <va-tooltip
+                  content="Important tooltip"
+                  placement="right"
+                  trigger="hover"
+                  effect="tooltip-fade-right">
+                  <va-button size="sm">Hover me</va-button>
+                </va-tooltip>
+              </div>
+              <div slot="right">
+                <a href="#">Action</a>
+                &nbsp;
+                <va-button
+                  @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})"
+                  size="sm">
+                  <va-icon type="cogs"></va-icon>
+                </va-button>
+              </div>
+              <p>
+                <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+              </p>
+              <p>
+                <va-typeahead
+                  show-clean
+                  :debounce="400"
+                  placeholder="Provide a GitHub username"
+                  @change="getGitResults"
+                  :items="gitItems"
+                  :add-format="gitCallback"
+                  icon="github"
+                  icon-style="brands"
+                  :limit="10">
+                  <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
+                    <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
+                    <span>{{ item.login }}</span>
+                  </div>
+                </va-typeahead>
+              </p>
+              <p>
+                <va-textarea
+                  ref="textarea"
+                  width="100%"
+                  :autosize="true"
+                  buttons
+                  :resize="false"
+                  :loading="textareaLoading"
+                  @confirm="textareaConfirm"
+                  @cancel="textareaCancel"
+                  v-model="textareaText">
+                </va-textarea>
+              </p>
+              <p>
+                <va-button size="sm">Secondary action</va-button>
+                &nbsp;
+                <va-button size="sm" type="primary">Primary action</va-button>
+              </p>
+            </va-card>
+          </p>
+        </va-column>
 
-    <p>
-      <va-card>
-        <p>
-          <va-checkbox-group v-model="foods">
-            <va-checkbox label="pizza">Pizza</va-checkbox>
-            <va-checkbox label="tacos" checked>Tacos</va-checkbox>
-            <va-checkbox label="fries">Fries</va-checkbox>
-          </va-checkbox-group>
-        </p>
-        <p>
-          <va-radio-group v-model="foods">
-            <va-radio label="pizza">Pizza</va-radio>
-            <va-radio label="tacos" checked>Tacos</va-radio>
-            <va-radio label="fries">Fries</va-radio>
-          </va-radio-group>
-        </p>
-        <p>
-          <va-button @click.native="showNotification">Show notification</va-button>
-          &nbsp;
-          <va-button @click.native="$refs.aside.open()">Open aside</va-button>
-        </p>
-      </va-card>
-    </p>
+        <va-column :xs="12" :sm="12" :md="4">
+          <va-card>
+            <p>
+              <va-checkbox-group v-model="foods">
+                <va-checkbox label="pizza">Pizza</va-checkbox>
+                <va-checkbox label="tacos" checked>Tacos</va-checkbox>
+                <va-checkbox label="fries">Fries</va-checkbox>
+              </va-checkbox-group>
+            </p>
+            <p>
+              <va-radio-group v-model="foods">
+                <va-radio label="pizza">Pizza</va-radio>
+                <va-radio label="tacos" checked>Tacos</va-radio>
+                <va-radio label="fries">Fries</va-radio>
+              </va-radio-group>
+            </p>
+            <p>
+              <va-button @click.native="showNotification">Show notification</va-button>
+              &nbsp;
+              <va-button @click.native="$refs.aside.open()">Open aside</va-button>
+            </p>
+          </va-card>
+        </va-column>
+      </va-row>
 
     </va-page>
 
@@ -390,7 +414,7 @@ export default {
               brand:true,
               iconStyle:'brands',
               size:'22px',
-              tooltip:'Proudly made with Vue.js'
+              tooltip:'Made with Vue.js'
             },
             {
               icon:'search',
@@ -405,6 +429,18 @@ export default {
           /**
            * Sidebar
            */
+          groupOneItems: [
+            {
+              name: 'Home',
+              route: '/'
+            },
+            {
+              name: 'Item 2'
+            },
+            {
+              name: 'Item 3'
+            }
+          ],
           groupTwoItems: [
             {
               icon: 'user',
@@ -413,6 +449,7 @@ export default {
             {
               icon: 'inbox',
               name: 'Messages',
+              sub: '5 unread',
               children: [
                 {
                   icon: 'inbox',
@@ -467,7 +504,8 @@ export default {
           <br/>
           <br/>
           <a href='#'>Instructions</a>`,
-          type: 'warning'
+          type: 'warning',
+          duration: 3000
         })
       },
       /**
