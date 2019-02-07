@@ -10,7 +10,7 @@ const createNode = () => {
 }
 
 const open = (options) => {
-  let {title, message, effect, type, width, onShow, onHide, onConfirm} = options
+  let {title, message, effect, type, width, duration, onShow, onHide, onConfirm} = options
   new Vue({
     el: createNode(),
     data() {
@@ -48,7 +48,8 @@ const open = (options) => {
           message,
           type: type ? type : 'default',
           effect: effect || 'fade-right',
-          width: width || '440px'
+          width: width || '440px',
+          duration: duration
         },
         on: {
           hide: this.handleHide,
