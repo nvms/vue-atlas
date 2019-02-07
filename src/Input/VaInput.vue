@@ -76,9 +76,9 @@
         If you're going to use <b>buttons</b> with this input component, you need
         to also use the <b>loading</b> prop.
 
-        Handle the <b>@confirm</b> event emitted by the input component, set the
-        <b>loading</b> prop to true, <i>do some task</i>, and finally set the <b>loading</b>
-        prop back to false.
+        Handle the <b>@confirm</b> event emitted by the input component by setting the
+        <b>loading</b> prop to true, <i>doing some task</i>, and finally setting the
+        <b>loading</b> prop back to false.
 
         It is important that events happen in that order, because the input component
         is watching the <b>loading</b> prop for those changes. That's how it knows to hide
