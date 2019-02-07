@@ -2,9 +2,9 @@
   <div
     @scroll="onScroll"
     :style="wrapperStyleObj"
-    :class="[classObj,`${prefixCls}-page-wrapper`]">
+    :class="`${prefixCls}-page-wrapper`">
     <div :style="containerStyleObj" :class="`${prefixCls}-page-container`">
-      <div :class="pageClassObj">
+      <div :class="classObj">
         <slot/>
         <div style="height:100px;">&nbsp;</div>
       </div>
@@ -104,13 +104,6 @@ export default {
   },
   computed: {
     classObj () {
-      let klass = {}
-
-      klass[this.globalThemeClass] = true
-
-      return klass
-    },
-    pageClassObj () {
       let {prefixCls, sz, article, isMobile} = this
       let klass = {}
       
