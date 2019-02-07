@@ -6,10 +6,10 @@
       ref="cfgbtn"
       size="md"
       @click.native="showConfigModal">
-      Open AppConfig
+      AppConfig
       <va-icon type="sliders-h" icon-style="solid" margin="0 0 0 10px"></va-icon>
     </va-button>
-    <va-modal ref="configModal" title="AppConfig" width="800px" :backdrop="false">
+    <va-modal ref="configModal" title="AppConfig" width="800px" :backdrop="true">
       <div slot="body" class="themeModalBody">
         <va-mobile>
           <p>
@@ -450,10 +450,7 @@ export default {
       style['position'] = 'fixed'
       style['right'] = '20px'
       style['z-index'] = '99999'
-      // style['top'] = (woh / 2) - (position.height * 1.5) + 'px'
       style['bottom'] = '20px'
-      style['border-top-right-radius'] = '0px'
-      style['border-bottom-right-radius'] = '0px'
 
       return style
     },
@@ -488,7 +485,7 @@ export default {
     margin-bottom: 5px;
   }
 }
-.va-col {
+.themeModalBody .va-col {
   p {
     margin-top: 0em;
   }
