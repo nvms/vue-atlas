@@ -63,7 +63,7 @@
     height: 32px;
     margin-bottom: 8px;
     padding: 0;
-    line-height: 1;
+    line-height: 2;
 
     &-brand {
       margin-bottom: 20px;
@@ -282,7 +282,7 @@ sidebar item defaults
       position: relative;
       min-height: 36px;
       justify-content: center;
-      line-height: 1;
+      line-height: 2;
     }
 
     &-icon {
@@ -334,11 +334,11 @@ sidebar item defaults
 
 .#{$prefix-cls}-sidebar-group-item-substring {
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-bottom: 5px;
+  white-space: pre-wrap;
+  margin-bottom: 7px;
 }
 
 /*
