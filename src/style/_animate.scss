@@ -264,22 +264,22 @@
 
 @keyframes slideleft-in {
   0% {
-    transform: translateX(-100%);
+    transform: translate3D(-100%,0,0);
     opacity: 0;
   }
   100% {
-    transform: translateX(0);
+    transform: translate3D(0,0,0);
     opacity: 1;
   }
 }
 
 @keyframes slideleft-out {
   0% {
-    transform: translateX(0);
+    transform: translate3D(0,0,0);
     opacity: 1;
   }
   100% {
-    transform: translateX(-100%);
+    transform: translate3D(-100%,0,0);
     opacity: 0;
   }
 }
