@@ -180,19 +180,19 @@
                 <va-column :xs="4">
                   <p>
                     Sidebar width: {{desktopSidebarWidth}}<br/>
-                    <va-range :min="0" :max="400" :step="1" v-model="desktopSidebarWidth" ref="desktopSidebarWidthRange"></va-range>
+                    <va-range :min="0" :max="400" :step="5" v-model="desktopSidebarWidth" ref="desktopSidebarWidthRange"></va-range>
                   </p>
                 </va-column>
                 <va-column :xs="4">
                   <p>
                     Minibar width: {{desktopMinibarWidth}}<br/>
-                    <va-range :min="0" :max="150" :step="1" v-model="desktopMinibarWidth" ref="desktopMinibarWidthRange"></va-range>
+                    <va-range :min="0" :max="150" :step="5" v-model="desktopMinibarWidth" ref="desktopMinibarWidthRange"></va-range>
                   </p>
                 </va-column>
                 <va-column :xs="4">
                   <p>
                     Topbar height: {{desktopTopbarHeight}}<br/>
-                    <va-range :min="0" :max="150" :step="1" v-model="desktopTopbarHeight" ref="desktopTopbarHeightRange"></va-range>
+                    <va-range :min="0" :max="150" :step="5" v-model="desktopTopbarHeight" ref="desktopTopbarHeightRange"></va-range>
                   </p>
                 </va-column>
               </va-row>
@@ -203,19 +203,19 @@
                 <va-column :xs="4">
                   <p>
                     Sidebar width: {{mobileSidebarWidth}}<br/>
-                    <va-range :min="0" :max="400" :step="1" v-model="mobileSidebarWidth" ref="mobileSidebarWidthRange"></va-range>
+                    <va-range :min="0" :max="400" :step="5" v-model="mobileSidebarWidth" ref="mobileSidebarWidthRange"></va-range>
                   </p>
                 </va-column>
                 <va-column :xs="4">
                   <p>
                     Minibar width: {{mobileMinibarWidth}}<br/>
-                    <va-range :min="0" :max="150" :step="1" v-model="mobileMinibarWidth" ref="mobileMinibarWidthRange"></va-range>
+                    <va-range :min="0" :max="150" :step="5" v-model="mobileMinibarWidth" ref="mobileMinibarWidthRange"></va-range>
                   </p>
                 </va-column>
                 <va-column :xs="4">
                   <p>
                     Topbar height: {{mobileTopbarHeight}}<br/>
-                    <va-range :min="0" :max="150" :step="1" v-model="mobileTopbarHeight" ref="mobileTopbarHeightRange"></va-range>
+                    <va-range :min="0" :max="150" :step="5" v-model="mobileTopbarHeight" ref="mobileTopbarHeightRange"></va-range>
                   </p>
                 </va-column>
               </va-row>
