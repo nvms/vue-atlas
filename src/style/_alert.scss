@@ -2,9 +2,11 @@
   padding: 0 15px 15px 55px;
   border-radius: 4px;
 
+  *:first-child {
+    margin-top: -5px;
+  }
+
   &-warning {
-    // border-left: 4px solid $Y100;
-    // border: 1px solid $Y75;
     background: $Y50;
     &:before {
       position: relative;
@@ -17,7 +19,6 @@
     }
   }
   &-success {
-    // border-left: 4px solid $G300;
     background: $G50;
     &:before {
       position: relative;
@@ -30,12 +31,11 @@
     }
   }
   &-info {
-    // border-left: 4px solid $B300;
     background: $B50;
     &:before {
       position: relative;
       top: 20px;
-      left: -28px;
+      left: -30px;
       font-family: 'Font Awesome 5 Free Solid';
       content: "\f129";
       color: $B500;
@@ -43,23 +43,32 @@
     }
   }
   &-danger {
-    // border-left: 4px solid $R300;
     background: $R50;
     &:before {
       position: relative;
       top: 20px;
-      left: -28px;
+      left: -30px;
       font-family: 'Font Awesome 5 Free Solid';
       content: "\f12a";
       color: $R500;
       font-size: 1.1em;
     }
   }
+  &-change {
+    background: $P50;
+    &:before {
+      position: relative;
+      top: 20px;
+      left: -35px;
+      font-family: 'Font Awesome 5 Free Solid';
+      content: "\f059";
+      color: $P500;
+      font-size: 1.3em;
+    }
+  }
   h1, h2, h3, h4, h5, h6 {
-    margin-top :0;
     font-weight: 700;
   }
   p {
-    margin: 0;
   }
 }

@@ -22,7 +22,8 @@ export default {
           'success',
           'info',
           'warning',
-          'danger'
+          'danger',
+          'change'
         ].includes(v)
       },
       note: 'The type of alert to render.'
