@@ -1,12 +1,19 @@
 <template>
-  <div :class="classObj" :style="{'width': width}" v-if="!showButtonsWarning">
+  <div :class="classObj" :style="{'width': actualWidth}" v-if="!showButtonsWarning">
+
+    <span
+      v-if="prefix !== ''"
+      :class="`${prefixCls}-input-prefix`">
+    {{prefix}}
+    </span>
+
     <input
       v-if="noVModel"
       ref="input"
       v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
-      :style="{'width': width}"
+      :style="{'width': actualWidth}"
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -25,7 +32,7 @@
       v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
-      :style="{'width': width}"
+      :style="{'width': actualWidth}"
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -38,6 +45,12 @@
       @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
+
+    <span
+      v-if="postfix !== ''"
+      :class="`${prefixCls}-input-postfix`">
+    {{postfix}}
+    </span>
 
     <va-input-ops
       v-if="buttons"
@@ -137,6 +150,16 @@ export default {
       type: Boolean,
       default: undefined
     },
+    prefix: {
+      type: String,
+      default: '',
+      required: false
+    },
+    postfix: {
+      type: String,
+      default: '',
+      required: false
+    },
     noVModel: {
       type: Boolean,
       default: false,
@@ -195,7 +218,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, validStatus, showClean, size, icon} = this
+      let {prefixCls, validStatus, showClean, size, icon, prefix, postfix} = this
       let klass = {}
 
       klass[prefixCls + '-has-error'] = validStatus === 'error'
@@ -205,6 +228,8 @@ export default {
       klass[prefixCls + '-show-clean'] = showClean
       klass[prefixCls + '-show-icon'] = icon ? true : false
       size ? klass[prefixCls + '-input-' + size] = true : ''
+      klass[prefixCls + '-input-has-prefix'] = prefix !== '' ? true : false
+      klass[prefixCls + '-input-has-postfix'] = postfix !== '' ? true : false
       klass['inline'] = true
 
       return klass

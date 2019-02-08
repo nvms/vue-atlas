@@ -12,7 +12,7 @@ export default {
     },
     width: {
       type: String,
-      default: '220px'
+      default: '100%'
     },
     customValidate: {
       type: Function
@@ -28,6 +28,26 @@ export default {
   data () {
     return {
       validStatus: ''
+    }
+  },
+  computed: {
+    actualWidth () {
+      let {width} = this
+
+      switch (width) {
+        case 'xs':
+          return '80px'
+        case 'sm':
+          return '160px'
+        case 'md':
+          return '255px'
+        case 'lg':
+          return '320px'
+        case 'xl':
+          return '480px'
+      }
+
+      return width
     }
   }
 }
