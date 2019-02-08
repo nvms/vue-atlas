@@ -37,7 +37,7 @@
           </template>
         </span>
             &nbsp;&nbsp;
-            <va-icon :type="show ? 'angle-up' : 'angle-down'"></va-icon>
+            <va-icon :type="show ? 'angle-up' : 'angle-down'" color="#A5ADBA"></va-icon>
         </va-button>
         <transition name="fadeDown">
             <ul :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"

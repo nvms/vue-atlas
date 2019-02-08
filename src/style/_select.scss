@@ -114,6 +114,9 @@
         .#{$prefix-cls}-select-placeholder {
           color: $dropdownPlaceholderActiveColor;
         }
+        i {
+          color: $dropdownPlaceholderActiveColor !important;
+        }
       }
     }
   }
