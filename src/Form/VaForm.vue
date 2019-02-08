@@ -1,5 +1,5 @@
 <template>
-  <form :class="classObj" @submit.prevent="noop" :id="id" :name="name">
+  <form :class="classObj" @submit.prevent="noop" :id="id" :name="name" v-bind="$attrs">
     <slot />
   </form>
 </template>
@@ -11,6 +11,7 @@ import events from '../utils/events'
 export default {
   name: 'VaForm',
   mixins: [events],
+  inheritAttrs: false,
   props: {
     id: {
       type: String
