@@ -88,7 +88,6 @@
 
 .#{$prefix-cls}-dropdown-con {
   position: relative;
-  display: inline-block;
 
   .#{$prefix-cls}-dropdown-menu {
     position: absolute;
@@ -97,7 +96,7 @@
     left: 0;
     z-index: 1000;
     float: left;
-    min-width: 155px;
+    min-width: 200px;
     max-height: 300px;
     box-sizing: border-box;
     padding: 4px 0;

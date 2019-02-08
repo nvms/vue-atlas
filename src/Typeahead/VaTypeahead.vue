@@ -18,14 +18,14 @@
                 @keydown.native.enter="hit"
                 @keydown.native.esc="onReset"
                 @keydown.native.up="up"
-                no-v-model
+                v-bind="$attrs"
                 ref="input"
                 no-v-model
                 v-model="query">
         </va-input>
 
         <ul :class="`${prefixCls}-dropdown-menu`"
-            :style="{width: dropdownWidth, maxHeight: dropdownHeight}"
+            :style="{minWidth: actualWidth, maxHeight: dropdownHeight}"
             v-show="show"
             v-va-position="show">
             <li :class="isActive(index)" :key="index" v-for="(item, index) in citems">
@@ -47,6 +47,7 @@
   export default {
     name: 'VaTypeahead',
     mixins: [inputMixin],
+    inheritAttrs: false,
     props: {
       value: {
         type: String,
@@ -96,7 +97,7 @@
       },
       dropdownWidth: {
         type: String,
-        default: '220px'
+        default: '100%'
       },
       dropdownHeight: {
         type: String,
