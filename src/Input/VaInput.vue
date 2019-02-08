@@ -3,7 +3,7 @@
     <input
       v-if="noVModel"
       ref="input"
-      auto-complete="off"
+      v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
       :style="{'width': width}"
@@ -22,7 +22,7 @@
     <input
       v-else
       ref="input"
-      auto-complete="off"
+      v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
       :style="{'width': width}"
@@ -92,11 +92,11 @@
 import inputMixin from '../Mixin/inputMixin'
 import validate from '../validate.vue'
 import events from '../utils/events'
-// import { focus } from 'vue-focus'
 
 export default {
   name: 'VaInput',
   mixins: [inputMixin, events],
+  inheritAttrs: false,
   props: {
     value: {
       type: [String, Number]
@@ -290,9 +290,6 @@ export default {
       }
     },
     opsConfirm () {
-      // if (this.buttons) {
-      //   this.broadcast('VaInputOps', 'Va@inputEnterPressed', this.currentValue)
-      // }
       this.$emit('confirm', this.value)
     },
     opsCancel () {
