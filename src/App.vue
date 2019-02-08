@@ -147,6 +147,7 @@
         <div slot="bottom">
           <va-input
             size="sm"
+            width="md"
             placeholder="Filter (change me)"
             buttons
             :loading="inputLoading"
@@ -230,11 +231,21 @@
                 </va-button>
               </div>
               <p>
-                <va-datepicker size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+                <va-input prefix="https://vue-atlas.com/" />
+              </p>
+              <p>
+                <va-input prefix="$" postfix="USD" />
+              </p>
+              <p>
+                <va-input postfix="@gmail.com" />
+              </p>
+              <p>
+                <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
               </p>
               <p>
                 <va-typeahead
                   show-clean
+                  width="lg"
                   :debounce="400"
                   placeholder="Provide a GitHub username"
                   @change="getGitResults"
