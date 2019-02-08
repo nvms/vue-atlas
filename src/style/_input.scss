@@ -72,6 +72,10 @@ $opsBtnBoxShadow) {
   width: 30px;
 }
 
+.#{$prefix-cls}-input-file {
+  overflow: hidden;
+}
+
 .#{$prefix-cls}-input-show-clean,
 .#{$prefix-cls}-input-show-icon {
   position: absolute;
@@ -151,5 +155,14 @@ $opsBtnBoxShadow) {
   .#{$prefix-cls}-form-control {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+  }
+}
+
+.#{$prefix-cls}-input-has-postfix {
+  .#{$prefix-cls}-input-icon-wrapper {
+    position: relative;
+    width: initial;
+    left: initial;
+    right: initial;
   }
 }

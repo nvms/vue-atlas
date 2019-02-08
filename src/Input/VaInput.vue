@@ -1,19 +1,17 @@
 <template>
   <div :class="classObj" :style="{'width': actualWidth}" v-if="!showButtonsWarning">
-
     <span
       v-if="prefix !== ''"
       :class="`${prefixCls}-input-prefix`">
     {{prefix}}
     </span>
-
     <input
       v-if="noVModel"
       ref="input"
       v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
-      :style="{'width': actualWidth}"
+      :style="inputStyleObj"
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -25,14 +23,13 @@
       tabindex="0"
       @keyup.enter="enterPressed"
       :value="value" />
-
     <input
       v-else
       ref="input"
       v-bind="$attrs"
       :name="name"
       :class="inputClassObj"
-      :style="{'width': actualWidth}"
+      :style="inputStyleObj"
       :readonly="readonly"
       :disabled="disabled"
       :placeholder="placeholder"
@@ -45,36 +42,28 @@
       @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
-
-    <span
-      v-if="postfix !== ''"
-      :class="`${prefixCls}-input-postfix`">
-    {{postfix}}
-    </span>
-
-    <va-input-ops
-      v-if="buttons"
-      :parent-position="position"
-      @confirm="opsConfirm"
-      @cancel="opsCancel"/>
-
-    <div :class="`${prefixCls}-input-icon-wrapper`">
-
+    <div :class="`${prefixCls}-input-icon-wrapper`" v-if="icon !== undefined">
       <va-icon
         v-if="showClean"
         type="times"
         icon-style="solid"
         :class="`${prefixCls}-input-show-clean`"
         @click.native.stop="clean"/>
-
       <va-icon
-        v-if="icon !== undefined"
         :class="`${prefixCls}-input-show-icon`"
         :type="icon"
         :icon-style="iconStyle"/>
-
     </div>
-
+    <span
+      v-if="postfix !== ''"
+      :class="`${prefixCls}-input-postfix`">
+    {{postfix}}
+    </span>
+    <va-input-ops
+      v-if="buttons"
+      :parent-position="position"
+      @confirm="opsConfirm"
+      @cancel="opsCancel"/>
     <validate
       :name="name"
       v-model="validStatus"
@@ -217,8 +206,21 @@ export default {
     validate
   },
   computed: {
+    inputStyleObj () {
+      let {type} = this
+      let style = {}
+
+      if (type === 'file') {
+        style['opacity'] = '0.2'
+        style['z-index'] = '1'
+        style['position'] = 'absolute'
+      }
+      style['width'] = this.actualWidth
+
+      return style
+    },
     classObj () {
-      let {prefixCls, validStatus, showClean, size, icon, prefix, postfix} = this
+      let {prefixCls, validStatus, showClean, size, icon, prefix, postfix, type} = this
       let klass = {}
 
       klass[prefixCls + '-has-error'] = validStatus === 'error'
@@ -230,6 +232,7 @@ export default {
       size ? klass[prefixCls + '-input-' + size] = true : ''
       klass[prefixCls + '-input-has-prefix'] = prefix !== '' ? true : false
       klass[prefixCls + '-input-has-postfix'] = postfix !== '' ? true : false
+      klass[prefixCls + '-input-file'] = type === 'file' ? true : false
       klass['inline'] = true
 
       return klass

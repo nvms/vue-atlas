@@ -136,6 +136,14 @@ input[type="time"].#{$prefix-cls}-form-control  {
   background: transparent;
 }
 
+input[type="file"].#{$prefix-cls}-form-control {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .#{$prefix-cls}-input-sm {
   .#{$prefix-cls}-form-control {
     @include smallInputSize();
