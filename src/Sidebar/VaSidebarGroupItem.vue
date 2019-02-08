@@ -12,39 +12,43 @@
       <va-icon type="circle"></va-icon>
     </span>
 
-    <!-- The item's FontAwesome icon, if any -->
-    <span v-if="showIcon" :class="`${prefixCls}-sidebar-group-item-icon`">
-      <va-icon v-if="item.iconColor" :type="item.icon" :color="item.iconColor" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
-      <va-icon v-else :type="item.icon" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
-    </span>
+    <span :class="`${prefixCls}-sidebar-group-item-text`">
 
-    <!-- If this is just a label -->
-    <span v-if="showLabel" :class="`${prefixCls}-sidebar-group-item-label`" :style="styleObj">
-      {{item.name}}
-      <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
-    </span>
+      <!-- The item's FontAwesome icon, if any -->
+      <span v-if="showIcon" :class="`${prefixCls}-sidebar-group-item-icon`">
+        <va-icon v-if="item.iconColor" :type="item.icon" :color="item.iconColor" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
+        <va-icon v-else :type="item.icon" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
+      </span>
 
-    <!-- If this is a router link -->
-    <router-link v-if="showRouterLink" :to="item.meta.target" :class="`${prefixCls}-sidebar-group-item-router-link`" :style="styleObj">
-      {{item.name}}
-      <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
-    </router-link>
+      <!-- If this is just a label -->
+      <span v-if="showLabel" :class="`${prefixCls}-sidebar-group-item-label`" :style="styleObj">
+        {{item.name}}
+        <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
+      </span>
 
-    <!-- If this is a hyperlink -->
-    <a v-if="showHyperLink" :href="item.meta.target" :class="`${prefixCls}-sidebar-group-item-link`" :style="styleObj">
-      {{item.name}}
-      <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
-    </a>
+      <!-- If this is a router link -->
+      <router-link v-if="showRouterLink" :to="item.meta.target" :class="`${prefixCls}-sidebar-group-item-router-link`" :style="styleObj">
+        {{item.name}}
+        <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
+      </router-link>
 
-    <!-- If this is an external hyperlink -->
-    <a v-if="showExternalHyperLink" :href="item.meta.target" target="_blank" :class="`${prefixCls}-sidebar-group-item-external-link`" :style="styleObj">
-      {{item.name}}
-      <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
-    </a>
+      <!-- If this is a hyperlink -->
+      <a v-if="showHyperLink" :href="item.meta.target" :class="`${prefixCls}-sidebar-group-item-link`" :style="styleObj">
+        {{item.name}}
+        <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
+      </a>
 
-    <!-- If there's a lozenge -->
-    <span v-if="item.lozenge" style="display: flex;">
-      <va-lozenge uppercase :type="item.lozenge.type">{{item.lozenge.text}}</va-lozenge>
+      <!-- If this is an external hyperlink -->
+      <a v-if="showExternalHyperLink" :href="item.meta.target" target="_blank" :class="`${prefixCls}-sidebar-group-item-external-link`" :style="styleObj">
+        {{item.name}}
+        <span v-if="item.sub" :class="`${prefixCls}-sidebar-group-item-substring`">{{item.sub}}</span>
+      </a>
+
+      <!-- If there's a lozenge -->
+      <span v-if="item.lozenge" style="display: flex;">
+        <va-lozenge uppercase :type="item.lozenge.type">{{item.lozenge.text}}</va-lozenge>
+      </span>
+
     </span>
 
   </span>
