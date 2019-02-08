@@ -17,6 +17,7 @@
       @blur="blur"
       :placeholder="placeholder"
       @keydown.tab="kd_tab"
+      v-bind="$attrs"
       v-model="currentValue">
     </textarea>
 
@@ -62,6 +63,7 @@ import events from '../utils/events'
 export default {
   name: 'VaTextarea',
   mixins: [validationMixin, events],
+  inheritAttrs: false,
   props: {
     name: {
       type: String
