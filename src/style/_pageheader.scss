@@ -62,11 +62,11 @@
   /* BOTTOM BAR */
   &-bottom-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     margin-top: 16px;
 
     & > div {
-      display: flex;
+      display: contents;
       flex-direction: row;
       & > * {
         margin-right: 6px;
