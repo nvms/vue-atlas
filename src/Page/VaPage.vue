@@ -45,8 +45,8 @@ export default {
     let s = this.size
     return {
       currentDesktopMinimumWidth: 0,
-      currentSidebarWidth: 240,
-      currentMinibarWidth: 64,
+      currentSidebarWidth: 0,
+      currentMinibarWidth: 0,
       currentDesktopMargin: 0,
       currentTopbarHeight: 0,
       currentContentWidth: 0,
