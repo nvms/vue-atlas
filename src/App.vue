@@ -234,10 +234,10 @@
                 <va-input prefix="https://vue-atlas.com/" />
               </p>
               <p>
-                <va-input prefix="$" postfix="USD" />
+                <va-input prefix="$" postfix=".00 USD" width="xs" />
               </p>
               <p>
-                <va-input postfix="@gmail.com" />
+                <va-input postfix="@gmail.com" icon="envelope-open" />
               </p>
               <p>
                 <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
@@ -263,7 +263,7 @@
               <p>
                 <va-textarea
                   ref="textarea"
-                  width="100%"
+                  width="lg"
                   :autosize="true"
                   buttons
                   :resize="false"
