@@ -58,11 +58,12 @@
 <script>
 import validate from '../validate.vue'
 import validationMixin from '../Mixin/validationMixin'
+import inputMixin from '../Mixin/inputMixin'
 import events from '../utils/events'
 
 export default {
   name: 'VaTextarea',
-  mixins: [validationMixin, events],
+  mixins: [validationMixin, events, inputMixin],
   inheritAttrs: false,
   props: {
     name: {
@@ -80,11 +81,6 @@ export default {
     },
     maxLength: {
       type: Number,
-      required: false
-    },
-    width: {
-      type: String,
-      default: '220px',
       required: false
     },
     maxHeight: {
@@ -276,10 +272,11 @@ export default {
   },
   computed: {
     styleObj () {
-      let {resize} = this
+      let {resize, actualWidth} = this
       let style = {}
 
       style['resize'] = resize ? 'both' : 'none'
+      style['width'] = actualWidth
 
       return style
     },
