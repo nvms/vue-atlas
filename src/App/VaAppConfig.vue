@@ -18,8 +18,8 @@
         </va-mobile>
         <va-desktop>
           <va-tabs>
-            <va-tab name="Options">
-              <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build using the vue-atlas App.</p>
+            <va-tab name="Colors and themes">
+              <p style="margin-bottom: 10px;">There are hundreds of combinations of layouts that you can build when using the atlas App component.</p>
               <h3>Built-in themes</h3>
               <hr/>
               <va-row :gutter="10">
@@ -83,13 +83,14 @@
                   </p>
                 </va-column>
               </va-row>
-
+            </va-tab>
+            <va-tab name="Dimensions and positioning">
+              <h3>Page</h3>
+              <hr/>
               <va-row :gutter="10">
-                <h3>Page</h3>
-                <hr/>
                 <va-column :xs="12">
                   <p>
-                    Page size<br/>
+                  Size<br/>
                     <va-select v-model="pageSize" no-uncheck>
                       <va-option value="sm" label="Small"/>
                       <va-option value="md" label="Medium"/>
@@ -98,7 +99,6 @@
                   </p>
                 </va-column>
               </va-row>
-
               <va-row :gutter="10">
                 <h3>Misc. App props</h3>
                 <hr/>
@@ -219,7 +219,6 @@
                   </p>
                 </va-column>
               </va-row>
-
             </va-tab>
             <!-- This is a test -->
             <va-tab name="Source">
@@ -310,7 +309,7 @@ export default {
   name: 'VaAppConfig',
   mixins: [events],
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -439,7 +438,7 @@ export default {
   },
   computed: {
     classObj () {
-      // let prefixCls = this
+      // let classPrefix = this
       let klass = {}
 
       return klass
