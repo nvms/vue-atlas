@@ -308,7 +308,9 @@
     $fontSize: 12px,
     $lineHeight: 1.5em,
     $borderRadius: 4px);
-  min-width: 26px;
+  > div {
+    min-width: 13px;
+  }
   min-height: 26px;
   max-height: 26px;
 }
@@ -318,7 +320,9 @@
     $fontSize: 13px,
     $lineHeight: 2.2em,
     $borderRadius: 4px);
-  min-width: 30px;
+  > div {
+    min-width: 15px;
+  }
   min-height: 30px;
   max-height: 30px;
 }
@@ -328,7 +332,9 @@
     $fontSize: 14px,
     $lineHeight: 2.3em,
     $borderRadius: 4px);
-  min-width: 34px;
+  > div {
+    min-width: 17px;
+  }
   min-height: 34px;
   max-height: 34px;
 }
@@ -338,7 +344,9 @@
     $fontSize: 17px,
     $lineHeight: 2.5em,
     $borderRadius: 4px);
-  min-width: 45px;
+  > div {
+    min-width: 23px;
+  }
   min-height: 45px;
   max-height: 45px;
 }
