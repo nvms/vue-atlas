@@ -26,10 +26,6 @@ export default {
       default: 0,
       required: false
     },
-    mobileFriendly: {
-      type: Boolean,
-      default: true
-    },
     mobileBreakpoint: {
       type: Number,
       default: 768,
@@ -503,6 +499,14 @@ export default {
       this.$on('Va@configBgColorChange', (val) => { this.mBgColor = val })
       this.$on('Va@configSplitChange', (val) => { this.mSplit = val })
       this.$on('Va@configRtlChange', (val) => { this.mRtl = val })
+
+      /**
+       * These receives are for when certain components are unmounted
+       * and remounted at runtime (during HMR usually).
+       */
+      this.$on('Va@pageConnected', () => { this.setAndBroadcastDimensions() })
+      this.$on('Va@minibarConnected', () => { this.setAndBroadcastDimensions() })
+      this.$on('Va@sidebarConnected', () => { this.setAndBroadcastDimensions() })
     },
     broadcastDefaultsToConfig (delay = 100) {
       setTimeout(() => {

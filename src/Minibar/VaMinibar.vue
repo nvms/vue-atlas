@@ -79,6 +79,7 @@ export default {
     }
   },
   mounted () {
+    this.dispatch('VaApp', 'Va@minibarConnected', true)
     /**
      * This needs to be wrapped in a short setTimeout to give
      * App time to call enableReceivers().

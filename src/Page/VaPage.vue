@@ -60,6 +60,7 @@ export default {
     }
   },
   mounted () {
+    this.dispatch('VaApp', 'Va@pageConnected', true)
     setTimeout(() => {
       this.dispatch('VaApp', 'Va@configPageSizeChange', this.sz)
     }, 10)

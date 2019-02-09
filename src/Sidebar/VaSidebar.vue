@@ -82,6 +82,7 @@ export default {
     this.$on('Va@rtlChange', (val) => { this.isRTL = val })
   },
   mounted () {
+    this.dispatch('VaApp', 'Va@sidebarConnected', true)
     /**
      * This needs to be wrapped in a short setTimeout to give
      * App time to call enableReceivers().
