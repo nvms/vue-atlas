@@ -3,6 +3,7 @@
     <va-button
       ref="button"
       :active="active"
+      :disabled="disabled"
       type="subtle"
       @click.native="handleClick">
       <slot/>
