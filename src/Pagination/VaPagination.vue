@@ -145,14 +145,16 @@ export default {
       this.currentValue = index
       this.countPage(this.end, this.start)
       this.checkStartOrEnd(index)
-      this.$emit('change', this.currentValue)
+      this.$emit('change', {
+        pageNumber: this.currentValue,
+        perPage: this.perPage
+      })
     },
     initCount (total, value) {
       this.pageCount = Math.ceil(total / this.perPage)
       this.countPage(this.max)
       this.checkStartOrEnd(value)
       this.changePage(value)
-      console.log(total, value)
     }
   },
   computed: {
