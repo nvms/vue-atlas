@@ -5,8 +5,8 @@
     </span>
     <transition :name="effect">
       <div :class="classObj" ref="popover" v-show="isShow">
-        <div v-if="arrow" :class="`${prefixCls}-tooltip-arrow`"></div>
-        <div :class="`${prefixCls}-tooltip-inner`">
+        <div v-if="arrow" :class="`${classPrefix}-tooltip-arrow`"></div>
+        <div :class="`${classPrefix}-tooltip-inner`">
           <span v-html="content"></span>
         </div>
       </div>
@@ -28,7 +28,7 @@ export default {
       type: String,
       default: 'tooltip-fade-top' // tooltip-fade-top, -left, -right, -bottom
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -36,16 +36,16 @@ export default {
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let {prefixCls, placement} = this
-      let klass = {}
+      let {classPrefix, placement} = this
+      let classes = {}
 
-      klass[prefixCls + '-tooltip'] = true
-      klass[prefixCls + '-tooltip-top'] = placement === 'top'
-      klass[prefixCls + '-tooltip-right'] = placement === 'right'
-      klass[prefixCls + '-tooltip-bottom'] = placement === 'bottom'
-      klass[prefixCls + '-tooltip-left'] = placement === 'left'
+      classes[classPrefix + '-tooltip'] = true
+      classes[classPrefix + '-tooltip-top'] = placement === 'top'
+      classes[classPrefix + '-tooltip-right'] = placement === 'right'
+      classes[classPrefix + '-tooltip-bottom'] = placement === 'bottom'
+      classes[classPrefix + '-tooltip-left'] = placement === 'left'
 
-      return klass
+      return classes
     }
   }
 }

@@ -2,8 +2,8 @@
   <div
     @scroll="onScroll"
     :style="wrapperStyleObj"
-    :class="`${prefixCls}-page-wrapper`">
-    <div :style="containerStyleObj" :class="`${prefixCls}-page-container`">
+    :class="`${classPrefix}-page-wrapper`">
+    <div :style="containerStyleObj" :class="`${classPrefix}-page-container`">
       <div :class="classObj">
         <slot/>
         <div style="height:100px;">&nbsp;</div>
@@ -36,7 +36,7 @@ export default {
       default: false,
       note: 'When true, applies some additional CSS to header elements for more comfortable spacing.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -105,13 +105,13 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, sz, article, isMobile} = this
-      let klass = {}
+      let {classPrefix, sz, article, isMobile} = this
+      let classes = {}
       
-      isMobile ? klass[prefixCls + '-page-container-lg'] = true : klass[prefixCls + '-page-container-' + sz] = true
-      klass[prefixCls + '-page-container-article'] = article
+      isMobile ? classes[classPrefix + '-page-container-lg'] = true : classes[classPrefix + '-page-container-' + sz] = true
+      classes[classPrefix + '-page-container-article'] = article
 
-      return klass
+      return classes
     },
     containerStyleObj () {
       let style = {}

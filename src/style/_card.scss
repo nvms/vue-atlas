@@ -22,7 +22,7 @@ $headerBtnDefaultActiveBackgroundColor) {
     background: $headerBackground;
     border-bottom: $headerBorderBottom;
 
-    .#{$prefix-cls}-btn-default {
+    .#{$class-prefix}-btn-default {
       background-color: $headerBtnDefaultBackgroundColor;
 
       &:hover {
@@ -67,8 +67,8 @@ $headerBtnDefaultActiveBackgroundColor) {
 
 }
 
-.#{$prefix-cls}-card,
-.#{$prefix-cls}--theme-light .#{$prefix-cls}-card {
+.#{$class-prefix}-card,
+.#{$class-prefix}--theme-light .#{$class-prefix}-card {
   @include card-theme-mixin($background: $N0,
     $headerBackground: $N20,
     $headerBorderBottom: 1px solid #D5D9DF,
@@ -89,7 +89,7 @@ $headerBtnDefaultActiveBackgroundColor) {
     $headerBtnDefaultActiveBackgroundColor: $B50);
 }
 
-.#{$prefix-cls}-card {
+.#{$class-prefix}-card {
   border-radius: 3px;
 
   &-header {
@@ -100,7 +100,7 @@ $headerBtnDefaultActiveBackgroundColor) {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 
-    .#{$prefix-cls}-btn-default {
+    .#{$class-prefix}-btn-default {
       &:hover {}
     }
 

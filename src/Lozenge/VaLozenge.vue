@@ -54,7 +54,7 @@ export default {
         ].includes(v)
       }
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       required: false,
       default: 'va'
@@ -62,17 +62,17 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, bold, type, size, uppercase, truncate} = this
-      let klass = {}
+      let {classPrefix, bold, type, size, uppercase, truncate} = this
+      let classes = {}
 
-      klass[prefixCls + '-lozenge'] = true
-      klass[prefixCls + '-lozenge-bold'] = bold
-      type ? klass[prefixCls + '-lozenge-' + type] = true : ''
-      size ? klass[prefixCls + '-lozenge-' + size] = true : ''
-      uppercase ? klass[prefixCls + '-lozenge-uppercase'] = true : ''
-      truncate ? klass[prefixCls + '-lozenge-truncate'] = true : ''
+      classes[classPrefix + '-lozenge'] = true
+      classes[classPrefix + '-lozenge-bold'] = bold
+      type ? classes[classPrefix + '-lozenge-' + type] = true : ''
+      size ? classes[classPrefix + '-lozenge-' + size] = true : ''
+      uppercase ? classes[classPrefix + '-lozenge-uppercase'] = true : ''
+      truncate ? classes[classPrefix + '-lozenge-truncate'] = true : ''
 
-      return klass
+      return classes
     }
   }
 }

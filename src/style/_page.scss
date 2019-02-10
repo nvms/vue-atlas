@@ -2,14 +2,14 @@
 $color,
 $scrollbarBackground) {
 
-  &.#{$prefix-cls}-page-wrapper {
+  &.#{$class-prefix}-page-wrapper {
     background: $background;
     &::-webkit-scrollbar {
       background: $scrollbarBackground;
     }
   }
 
-  .#{$prefix-cls}-page {
+  .#{$class-prefix}-page {
     &-wrapper {}
 
     &-container {
@@ -35,7 +35,7 @@ $scrollbarBackground) {
 $color: black,
 $scrollbarBackground: #FFFFFF);
 
-.#{$prefix-cls}-page {
+.#{$class-prefix}-page {
   &-wrapper {
     z-index: 1;
     height: 100%;
@@ -169,6 +169,6 @@ $scrollbarBackground: #FFFFFF);
 }
 
 // Disables scrolling when a modal is open.
-.#{$prefix-cls}-modal-open .#{$prefix-cls}-page-wrapper {
+.#{$class-prefix}-modal-open .#{$class-prefix}-page-wrapper {
   overflow: hidden !important;
 }

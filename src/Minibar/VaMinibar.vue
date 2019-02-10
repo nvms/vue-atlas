@@ -1,9 +1,9 @@
 <template>
   <div :class="classObj" :style="styleObj">
 
-    <div :class="`${prefixCls}-minibar-inner`" :style="styleObjInner">
+    <div :class="`${classPrefix}-minibar-inner`" :style="styleObjInner">
       
-      <div :class="`${prefixCls}-minibar-top`">
+      <div :class="`${classPrefix}-minibar-top`">
 
         <div v-for="(item, index) in topItems" :key="index">
           <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
@@ -16,7 +16,7 @@
 
       </div>
 
-      <div :class="`${prefixCls}-minibar-bottom`">
+      <div :class="`${classPrefix}-minibar-bottom`">
 
         <div v-for="(item, index) in bottomItems" :key="index">
           <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
@@ -54,7 +54,7 @@ export default {
       default: 'blue',
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -116,13 +116,13 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, th} = this
-      let klass = {}
+      let {classPrefix, th} = this
+      let classes = {}
 
-      klass[prefixCls + '-minibar'] = true
-      klass[prefixCls + '-minibar--theme-' + th] = true
+      classes[classPrefix + '-minibar'] = true
+      classes[classPrefix + '-minibar--theme-' + th] = true
 
-      return klass
+      return classes
     },
     styleObjInner () {
       let style = {}

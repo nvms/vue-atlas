@@ -1,4 +1,4 @@
-.#{$prefix-cls}-tooltip {
+.#{$class-prefix}-tooltip {
   position: absolute;
   z-index: 1010;
   display: block;
@@ -33,7 +33,7 @@
   }
   &-left {
     margin-left: -5px;
-    .#{$prefix-cls}-tooltip-arrow {
+    .#{$class-prefix}-tooltip-arrow {
       top: 50%;
       right: -5px;
       margin-top: -5px;
@@ -43,7 +43,7 @@
   }
   &-right {
     margin-left: 5px;
-    .#{$prefix-cls}-tooltip-arrow {
+    .#{$class-prefix}-tooltip-arrow {
       top: 50%;
       left: -5px;
       margin-top: -5px;

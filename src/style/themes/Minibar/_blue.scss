@@ -1,4 +1,4 @@
-.#{$prefix-cls}-minibar--theme-blue {
+.#{$class-prefix}-minibar--theme-blue {
   @include minibar-theme-mixin($mainBG: $B500,
     $itemBG: transparent,
     $iconColor: $N0,

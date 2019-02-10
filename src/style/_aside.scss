@@ -1,8 +1,8 @@
-.#{$prefix-cls}-aside-open {
+.#{$class-prefix}-aside-open {
   transition: transform 0.3s;
 }
 
-.#{$prefix-cls}-aside {
+.#{$class-prefix}-aside {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -21,12 +21,12 @@
     outline: 0;
   }
   &-dialog {
-    .#{$prefix-cls}-aside-header {
-      .#{$prefix-cls}-close {
+    .#{$class-prefix}-aside-header {
+      .#{$class-prefix}-close {
         font-size: 24px;
         color: $N300;
       }
-      .#{$prefix-cls}-aside-title {
+      .#{$class-prefix}-aside-title {
         padding-top: 8px;
         font-size: 24px;
         color: $N300;

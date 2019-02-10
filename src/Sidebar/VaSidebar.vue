@@ -31,7 +31,7 @@ export default {
       default: false,
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -104,16 +104,16 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, th, isMobile, comp, tl} = this
-      let klass = {}
+      let {classPrefix, th, isMobile, comp, tl} = this
+      let classes = {}
 
-      klass[prefixCls + '-sidebar'] = true
-      klass[prefixCls + '-sidebar--theme-' + th] = true
-      klass[prefixCls + '-sidebar-mobile'] = isMobile
-      klass[prefixCls + '-sidebar-compact'] = comp
-      klass[prefixCls + '-sidebar-text-links'] = tl
+      classes[classPrefix + '-sidebar'] = true
+      classes[classPrefix + '-sidebar--theme-' + th] = true
+      classes[classPrefix + '-sidebar-mobile'] = isMobile
+      classes[classPrefix + '-sidebar-compact'] = comp
+      classes[classPrefix + '-sidebar-text-links'] = tl
 
-      return klass
+      return classes
     },
     styleObj () {
       let dmw = parseInt(this.currentDesktopMinimumWidth)

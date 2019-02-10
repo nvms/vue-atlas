@@ -1,19 +1,19 @@
 <template>
-    <label :class="`${prefixCls}-radio-con`">
+    <label :class="`${classPrefix}-radio-con`">
         <span :class="objClass">
-          <span :class="`${prefixCls}-radio-inner`"
+          <span :class="`${classPrefix}-radio-inner`"
                 :tabindex="disabled ? -1 : 0"
                 @keypress.space.prevent="handleClick"
                 @keyup.enter="handleClick"></span>
           <input :checked="currentChecked"
-                 :class="`${prefixCls}-radio-input`"
+                 :class="`${classPrefix}-radio-input`"
                  :disabled="disabled"
                  :name="name"
                  @click.prevent="handleClick"
                  tabindex="-1"
                  type="radio">
         </span>
-        <span :class="`${prefixCls}-label`" tabindex="-1">
+        <span :class="`${classPrefix}-label`" tabindex="-1">
             <slot/>
         </span>
         <validate :current="checked"
@@ -50,7 +50,7 @@
         type: Boolean,
         default: false
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -72,14 +72,14 @@
     },
     computed: {
       objClass() {
-        let {prefixCls, currentChecked, disabled} = this
-        let klass = {}
+        let {classPrefix, currentChecked, disabled} = this
+        let classes = {}
 
-        klass[prefixCls + '-radio-span'] = true
-        klass[prefixCls + '-radio-checked'] = currentChecked
-        klass[prefixCls + '-radio-disabled'] = disabled
+        classes[classPrefix + '-radio-span'] = true
+        classes[classPrefix + '-radio-checked'] = currentChecked
+        classes[classPrefix + '-radio-disabled'] = disabled
 
-        return klass
+        return classes
       }
     },
     watch: {

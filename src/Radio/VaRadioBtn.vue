@@ -30,7 +30,7 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -60,12 +60,12 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-radio-btn'] = true
+      classes[classPrefix + '-radio-btn'] = true
 
-      return klass
+      return classes
     }
   },
   created () {

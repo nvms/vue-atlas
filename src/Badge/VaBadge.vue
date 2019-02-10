@@ -30,20 +30,20 @@ export default {
       required: false,
       note: 'Margin to be applied to the outside of the badge element.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, type} = this
-      let klass = {}
+      let {classPrefix, type} = this
+      let classes = {}
 
-      klass[prefixCls + '-badge'] = true
-      klass[prefixCls + '-badge-' + type] = true
+      classes[classPrefix + '-badge'] = true
+      classes[classPrefix + '-badge-' + type] = true
 
-      return klass
+      return classes
     }
   }
 }

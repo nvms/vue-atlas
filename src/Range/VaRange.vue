@@ -1,6 +1,6 @@
 <template>
   <div class="wrap" :style="{width: width || '100%'}">
-    <input ref="range" :class="`${prefixCls}-range`" :value="currentValue" type="range" :name="name" :min="min" :max="max" :step="step" @input="onInput" />
+    <input ref="range" :class="`${classPrefix}-range`" :value="currentValue" type="range" :name="name" :min="min" :max="max" :step="step" @input="onInput" />
     <transition name="fade">
       <div v-if="showoutput" class="output_position">
         <output for="r" ></output>
@@ -43,7 +43,7 @@ export default {
     width: {
       type: String
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -115,12 +115,12 @@ export default {
       }
     },
     init () {
-      let {prefixCls} = this
+      let {classPrefix} = this
       var wrp = document.createElement('div')
       var preBar = document.createElement('p')
 
-      wrp.className = prefixCls + '-range-barCnt'
-      preBar.className = prefixCls + '-range-preBar'
+      wrp.className = classPrefix + '-range-barCnt'
+      preBar.className = classPrefix + '-range-preBar'
 
       this.$refs.range.className = this.$refs.range.className.length ? (this.$refs.range.className + ' colorized') : 'colorized'
       this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range)

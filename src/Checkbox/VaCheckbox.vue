@@ -1,21 +1,21 @@
 <template>
     <label :class="classObj">
         <span>
-          <span :class="`${prefixCls}-checkbox-inner`"
+          <span :class="`${classPrefix}-checkbox-inner`"
                 :tabindex="disabled ? -1 : 0"
                 @keypress.space.prevent="handleClick"
                 @keyup.enter="enterPressed">
-            <va-icon :class="`${prefixCls}-checkbox-inner-check`" type="check"></va-icon>
+            <va-icon :class="`${classPrefix}-checkbox-inner-check`" type="check"></va-icon>
           </span>
           <input :checked="currentChecked"
-                 :class="`${prefixCls}-checkbox-input`"
+                 :class="`${classPrefix}-checkbox-input`"
                  :disabled="disabled"
                  :name="name"
                  @click="handleClick"
                  tabindex="-1"
                  type="checkbox"/>
         </span>
-        <span :class="`${prefixCls}-label`">
+        <span :class="`${classPrefix}-label`">
           <slot/>
         </span>
         <validate
@@ -53,7 +53,7 @@
         type: Boolean,
         default: false
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -86,14 +86,14 @@
     },
     computed: {
       classObj() {
-        let {prefixCls, currentChecked, disabled} = this
-        let klass = {}
+        let {classPrefix, currentChecked, disabled} = this
+        let classes = {}
 
-        klass[prefixCls + '-checkbox-label'] = true
-        klass[prefixCls + '-checkbox-checked'] = currentChecked
-        klass[prefixCls + '-checkbox-disabled'] = disabled
+        classes[classPrefix + '-checkbox-label'] = true
+        classes[classPrefix + '-checkbox-checked'] = currentChecked
+        classes[classPrefix + '-checkbox-disabled'] = disabled
 
-        return klass
+        return classes
       }
     },
     created() {

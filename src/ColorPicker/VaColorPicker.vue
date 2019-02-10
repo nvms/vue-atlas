@@ -20,7 +20,7 @@ export default {
       default: '#ffff00',
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -55,12 +55,12 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-color-picker'] = true
+      classes[classPrefix + '-color-picker'] = true
 
-      return klass
+      return classes
     }
   }
 }

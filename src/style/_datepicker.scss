@@ -3,7 +3,7 @@ $datepickerSpanSize: 35px;
 $datepickerSpanRadius: 3px;
 $datepickerRangeSize: 40px;
 
-.#{$prefix-cls}-datepicker {
+.#{$class-prefix}-datepicker {
   position: relative;
   // display: inline-block;
 
@@ -67,8 +67,8 @@ $datepickerRangeSize: 40px;
     cursor: not-allowed !important;
   }
 
-  .#{$prefix-cls}-datepicker-decadeRange span:first-child,
-  .#{$prefix-cls}-datepicker-decadeRange span:last-child,
+  .#{$class-prefix}-datepicker-decadeRange span:first-child,
+  .#{$class-prefix}-datepicker-decadeRange span:last-child,
   &-item-disable,
   &-item-gray {
     color: $N60;
@@ -150,7 +150,7 @@ $datepickerRangeSize: 40px;
     }
   }
 
-  .#{$prefix-cls}-month-btn {
+  .#{$class-prefix}-month-btn {
     font-weight: bold;
     user-select: none;
 

@@ -2,8 +2,8 @@
   <span :class="classObj">
     <i :class="iclassObj" />
     <slot />
-    <svg viewBox="0 0 50 50" :class="`${prefixCls}-spinner`">
-      <circle :class="`${prefixCls}-path`" :style="{ stroke: color }" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    <svg viewBox="0 0 50 50" :class="`${classPrefix}-spinner`">
+      <circle :class="`${classPrefix}-path`" :style="{ stroke: color }" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
     </svg>
   </span>
 </template>
@@ -40,32 +40,32 @@ export default {
       required: false,
       note: 'The color of the svg path.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, center, fixed} = this
-      let klass = {}
+      let {classPrefix, center, fixed} = this
+      let classes = {}
 
-      klass['affix'] = fixed
-      klass[prefixCls + '-page-loading-con'] = true
-      klass[prefixCls + '-loading-center'] = center
+      classes['affix'] = fixed
+      classes[classPrefix + '-page-loading-con'] = true
+      classes[classPrefix + '-loading-center'] = center
 
-      return klass
+      return classes
     },
     iclassObj () {
-      let {prefixCls, type, size, color} = this
-      let klass = {}
+      let {classPrefix, type, size, color} = this
+      let classes = {}
 
-      klass[prefixCls + '-page-loading'] = true
-      type ? klass[prefixCls + '-loading-' + type] = true : ''
-      size ? klass[prefixCls + '-loading-' + size] = true : ''
-      color ? klass['text-' + color] = true : ''
+      classes[classPrefix + '-page-loading'] = true
+      type ? classes[classPrefix + '-loading-' + type] = true : ''
+      size ? classes[classPrefix + '-loading-' + size] = true : ''
+      color ? classes['text-' + color] = true : ''
 
-      return klass
+      return classes
     }
   }
 }

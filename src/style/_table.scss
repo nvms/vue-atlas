@@ -1,4 +1,4 @@
-.#{$prefix-cls}-table {
+.#{$class-prefix}-table {
   margin: 1em 0;
   &-fullwidth {
     table {
@@ -55,8 +55,8 @@
 }
 
 
-.#{$prefix-cls}-page-container-article {
-  .#{$prefix-cls}-table {
+.#{$class-prefix}-page-container-article {
+  .#{$class-prefix}-table {
     margin: 3em 0 4em 0;
   }
 }

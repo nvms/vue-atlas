@@ -2,7 +2,7 @@
   <div :class="classObj" :style="{'width': actualWidth}" v-if="!showButtonsWarning">
     <span
       v-if="prefix !== ''"
-      :class="`${prefixCls}-input-prefix`">
+      :class="`${classPrefix}-input-prefix`">
     {{prefix}}
     </span>
     <input
@@ -42,21 +42,21 @@
       @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
-    <div :class="`${prefixCls}-input-icon-wrapper`" v-if="icon !== undefined">
+    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== undefined">
       <va-icon
         v-if="showClean"
         type="times"
         icon-style="solid"
-        :class="`${prefixCls}-input-show-clean`"
+        :class="`${classPrefix}-input-show-clean`"
         @click.native.stop="clean"/>
       <va-icon
-        :class="`${prefixCls}-input-show-icon`"
+        :class="`${classPrefix}-input-show-icon`"
         :type="icon"
         :icon-style="iconStyle"/>
     </div>
     <span
       v-if="postfix !== ''"
-      :class="`${prefixCls}-input-postfix`">
+      :class="`${classPrefix}-input-postfix`">
     {{postfix}}
     </span>
     <va-input-ops
@@ -169,7 +169,7 @@ export default {
         ].includes(v)
       }
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -220,31 +220,31 @@ export default {
       return style
     },
     classObj () {
-      let {prefixCls, validStatus, showClean, size, icon, prefix, postfix, type} = this
-      let klass = {}
+      let {classPrefix, validStatus, showClean, size, icon, prefix, postfix, type} = this
+      let classes = {}
 
-      klass[prefixCls + '-has-error'] = validStatus === 'error'
-      klass[prefixCls + '-has-success'] = validStatus === 'success'
-      klass[prefixCls + '-has-warn'] = validStatus === 'warn'
-      klass[prefixCls + '-input-con'] = true
-      klass[prefixCls + '-show-clean'] = showClean
-      klass[prefixCls + '-show-icon'] = icon ? true : false
-      size ? klass[prefixCls + '-input-' + size] = true : ''
-      klass[prefixCls + '-input-has-prefix'] = prefix !== '' ? true : false
-      klass[prefixCls + '-input-has-postfix'] = postfix !== '' ? true : false
-      klass[prefixCls + '-input-file'] = type === 'file' ? true : false
-      klass['inline'] = true
+      classes[classPrefix + '-has-error'] = validStatus === 'error'
+      classes[classPrefix + '-has-success'] = validStatus === 'success'
+      classes[classPrefix + '-has-warn'] = validStatus === 'warn'
+      classes[classPrefix + '-input-con'] = true
+      classes[classPrefix + '-show-clean'] = showClean
+      classes[classPrefix + '-show-icon'] = icon ? true : false
+      size ? classes[classPrefix + '-input-' + size] = true : ''
+      classes[classPrefix + '-input-has-prefix'] = prefix !== '' ? true : false
+      classes[classPrefix + '-input-has-postfix'] = postfix !== '' ? true : false
+      classes[classPrefix + '-input-file'] = type === 'file' ? true : false
+      classes['inline'] = true
 
-      return klass
+      return classes
     },
     inputClassObj () {
-      let {prefixCls, theme} = this
-      let klass = {}
+      let {classPrefix, theme} = this
+      let classes = {}
 
-      klass[prefixCls + '-form-control'] = true
-      klass[prefixCls + '-form-control-' + theme] = true
+      classes[classPrefix + '-form-control'] = true
+      classes[classPrefix + '-form-control-' + theme] = true
 
-      return klass
+      return classes
     }
   },
   watch: {

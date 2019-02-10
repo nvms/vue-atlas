@@ -28,7 +28,7 @@ $outer-margin: rem(16px, $context);
 $half-gutter-width: $gutter-width / 2;
 
 @mixin column($name, $num) {
-  .#{$prefix-cls}-col-#{$name}-#{$num} {
+  .#{$class-prefix}-col-#{$name}-#{$num} {
         box-sizing: border-box;
         flex: 0 0 auto;
         padding-right: $gutter-width * .5;
@@ -39,13 +39,13 @@ $half-gutter-width: $gutter-width / 2;
 }
 
 @mixin offset($name, $num) {
-  .#{$prefix-cls}-col-#{$name}-offset-#{$num} {
+  .#{$class-prefix}-col-#{$name}-offset-#{$num} {
         margin-left: 100% / $num-columns * $num;
     }
 }
 
 @mixin container($width) {
-  .#{$prefix-cls}-container {
+  .#{$class-prefix}-container {
         box-sizing: border-box;
         width: $width;
         margin-right: auto;
@@ -56,46 +56,46 @@ $half-gutter-width: $gutter-width / 2;
 }
 
 @mixin positions($size) {
-    .#{$prefix-cls}-start-#{$size} {
+    .#{$class-prefix}-start-#{$size} {
         justify-content: flex-start;
         text-align: start;
     }
 
-    .#{$prefix-cls}-center-#{$size} {
+    .#{$class-prefix}-center-#{$size} {
         justify-content: center;
         text-align: center;
     }
 
-    .#{$prefix-cls}-end-#{$size} {
+    .#{$class-prefix}-end-#{$size} {
         justify-content: flex-end;
         text-align: end;
     }
 
-    .#{$prefix-cls}-top-#{$size} {
+    .#{$class-prefix}-top-#{$size} {
         align-items: flex-start;
     }
 
-    .#{$prefix-cls}-middle-#{$size} {
+    .#{$class-prefix}-middle-#{$size} {
         align-items: center;
     }
 
-    .#{$prefix-cls}-bottom-#{$size} {
+    .#{$class-prefix}-bottom-#{$size} {
         align-items: flex-end;
     }
 
-    .#{$prefix-cls}-around-#{$size} {
+    .#{$class-prefix}-around-#{$size} {
         justify-content: space-around;
     }
 
-    .#{$prefix-cls}-between-#{$size} {
+    .#{$class-prefix}-between-#{$size} {
         justify-content: space-between;
     }
 
-    .#{$prefix-cls}-first-#{$size} {
+    .#{$class-prefix}-first-#{$size} {
         order: -1;
     }
 
-    .#{$prefix-cls}-last-#{$size} {
+    .#{$class-prefix}-last-#{$size} {
         order: 1;
     }
 }
@@ -119,7 +119,7 @@ $half-gutter-width: $gutter-width / 2;
     }
 }
 
-.#{$prefix-cls}-row {
+.#{$class-prefix}-row {
     display: flex;
     flex-flow: row wrap;
     flex: 0 1 auto;

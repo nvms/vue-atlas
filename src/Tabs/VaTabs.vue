@@ -13,7 +13,7 @@
         </a>
       </li>
     </ul>
-    <div :class="`${prefixCls}-tab-content`">
+    <div :class="`${classPrefix}-tab-content`">
       <slot />
     </div>
   </div>
@@ -37,7 +37,7 @@ export default {
         useUrlFragment: false
       })
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -50,13 +50,13 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass['clearfix'] = true
-      klass[prefixCls + '-nav-tabs'] = true
+      classes['clearfix'] = true
+      classes[classPrefix + '-nav-tabs'] = true
 
-      return klass
+      return classes
     },
     storageKey () {
       return `va-tabs.cache.${window.location.host}${window.location.pathname}`
@@ -135,17 +135,17 @@ export default {
       }
     },
     liclassObj (tab) {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-nav-tab'] = true
-      klass[prefixCls + '-nav-tab-active'] = tab.isActive
+      classes[classPrefix + '-nav-tab'] = true
+      classes[classPrefix + '-nav-tab-active'] = tab.isActive
 
-      return klass
+      return classes
     },
     disabledTabClass (tab) {
       if (tab.isDisabled) {
-        return this.prefixCls + '-nav-tab-disabled'
+        return this.classPrefix + '-nav-tab-disabled'
       } else {
         return ''
       }

@@ -9,14 +9,14 @@
   $formControlFocusBG
 ) {
   background: $mainBG;
-  .#{$prefix-cls}-topbar-inner {
+  .#{$class-prefix}-topbar-inner {
     color: $mainColor;
   }
-  .#{$prefix-cls}-input-con {
-    input[type=text].#{$prefix-cls}-form-control::-webkit-input-placeholder {
+  .#{$class-prefix}-input-con {
+    input[type=text].#{$class-prefix}-form-control::-webkit-input-placeholder {
       color: $inputPlaceholderColor;
     }
-    .#{$prefix-cls}-form-control {
+    .#{$class-prefix}-form-control {
       background: $formControlBG;
       border: $formControlBorder;
       color: $formControlColor;

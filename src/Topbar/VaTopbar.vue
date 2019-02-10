@@ -1,13 +1,13 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`${prefixCls}-topbar-inner`">
-      <div :class="`${prefixCls}-topbar-left`">
+    <div :class="`${classPrefix}-topbar-inner`">
+      <div :class="`${classPrefix}-topbar-left`">
         <slot name="left"/>
       </div>
-      <div :class="`${prefixCls}-topbar-center`">
+      <div :class="`${classPrefix}-topbar-center`">
         <slot name="center"/>
       </div>
-      <div :class="`${prefixCls}-topbar-right`">
+      <div :class="`${classPrefix}-topbar-right`">
         <slot name="right"/>
       </div>
     </div>
@@ -26,7 +26,7 @@ export default {
       default: 'blue',
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -91,13 +91,13 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, th} = this
-      let klass = {}
+      let {classPrefix, th} = this
+      let classes = {}
 
-      klass[prefixCls + '-topbar'] = true
-      klass[prefixCls + '-topbar--theme-' + th] = true
+      classes[classPrefix + '-topbar'] = true
+      classes[classPrefix + '-topbar--theme-' + th] = true
 
-      return klass
+      return classes
     },
     styleObj () {
       let dmw = parseInt(this.currentDesktopMinimumWidth)

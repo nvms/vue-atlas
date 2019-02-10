@@ -1,22 +1,22 @@
 <template>
     <div :class="classObj" :style="styleObj" ref="notification" v-if="alive">
-        <div :class="`${prefixCls}-notification-dialog`"
+        <div :class="`${classPrefix}-notification-dialog`"
              :style="{'width': width }">
-            <div :class="`${prefixCls}-notification-content`">
-                <div :class="`${prefixCls}-notification-content-inner-${type}`">
-                    <div :class="`${prefixCls}-notification-content-inner-${type}-left`">
+            <div :class="`${classPrefix}-notification-content`">
+                <div :class="`${classPrefix}-notification-content-inner-${type}`">
+                    <div :class="`${classPrefix}-notification-content-inner-${type}-left`">
                         <va-icon :type="notificationIconType"></va-icon>
                     </div>
-                    <div :class="`${prefixCls}-notification-content-inner-${type}-right`">
-                        <div :class="`${prefixCls}-notification-content-inner-${type}-right-close`">
+                    <div :class="`${classPrefix}-notification-content-inner-${type}-right`">
+                        <div :class="`${classPrefix}-notification-content-inner-${type}-right-close`">
                             <va-button @click="close" type="subtle">
                                 <va-icon size="14px" type="times"></va-icon>
                             </va-button>
                         </div>
-                        <div :class="`${prefixCls}-notification-content-inner-${type}-right-title`">
+                        <div :class="`${classPrefix}-notification-content-inner-${type}-right-title`">
                             {{title}}
                         </div>
-                        <div :class="`${prefixCls}-notification-content-inner-${type}-right-message`"
+                        <div :class="`${classPrefix}-notification-content-inner-${type}-right-message`"
                              v-html="message">
                         </div>
                     </div>
@@ -74,7 +74,7 @@
         required: false,
         note: 'Notification TTL'
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -99,7 +99,7 @@
          * Stackable logic
          */
         if (val) {
-          let x = document.getElementsByClassName(this.prefixCls + '-notification-in')
+          let x = document.getElementsByClassName(this.classPrefix + '-notification-in')
           this.numberOfParentModals = x.length
           let distanceToMove = 5
           if (this.numberOfParentModals > 0) {
@@ -117,7 +117,7 @@
             }
           }
         } else {
-          let x = document.getElementsByClassName(this.prefixCls + '-notification-in')
+          let x = document.getElementsByClassName(this.classPrefix + '-notification-in')
           this.numberOfParentModals = x.length
           let distanceToMove = 5
           if (this.numberOfParentModals > 0) {
@@ -140,21 +140,21 @@
         const body = document.body
         if (val) {
           this.$emit('show', {type: 'show'})
-          el.querySelector('.' + this.prefixCls + '-notification')
+          el.querySelector('.' + this.classPrefix + '-notification')
           el.style.display = 'block'
           // timeout required for opacity transition
           setTimeout(() => {
-            element.addClass(el, this.prefixCls + '-notification-in')
+            element.addClass(el, this.classPrefix + '-notification-in')
           }, 20)
-          element.addClass(body, this.prefixCls + '-notification-open')
+          element.addClass(body, this.classPrefix + '-notification-open')
         } else {
           this.$emit('hide', {type: 'hide'})
-          element.removeClass(el, this.prefixCls + '-notification-in')
-          element.addClass(el, this.prefixCls + '-notification-out')
+          element.removeClass(el, this.classPrefix + '-notification-in')
+          element.addClass(el, this.classPrefix + '-notification-out')
           setTimeout(() => {
             el.style.display = 'none'
-            element.removeClass(body, this.prefixCls + '-notification-open')
-            element.removeClass(el, this.prefixCls + '-notification-out')
+            element.removeClass(body, this.classPrefix + '-notification-open')
+            element.removeClass(el, this.classPrefix + '-notification-out')
             this.$emit('closed', {type: 'closed'})
           }, 300)
         }
@@ -177,14 +177,14 @@
     },
     computed: {
       classObj() {
-        let {prefixCls, effect, type} = this
-        let klass = {}
+        let {classPrefix, effect, type} = this
+        let classes = {}
 
-        klass[prefixCls + '-notification'] = true
-        klass[prefixCls + '-notification-' + type] = true
-        klass[prefixCls + '-notification-' + effect] = true
+        classes[classPrefix + '-notification'] = true
+        classes[classPrefix + '-notification-' + type] = true
+        classes[classPrefix + '-notification-' + effect] = true
 
-        return klass
+        return classes
       },
       styleObj() {
         return {}

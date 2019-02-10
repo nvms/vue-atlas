@@ -3,7 +3,7 @@
   color: $fontCol;
 }
 
-.#{$prefix-cls}-lozenge {
+.#{$class-prefix}-lozenge {
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -30,45 +30,45 @@
     font-size: 14px;
     font-weight: 500;
   }
-  &.#{$prefix-cls}-lozenge-default {
+  &.#{$class-prefix}-lozenge-default {
     @include lozengeType( $bgCol: $N20, $fontCol: $N300);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $N500, $fontCol: $N20);
     }
   }
-  &.#{$prefix-cls}-lozenge-primary {
+  &.#{$class-prefix}-lozenge-primary {
     @include lozengeType( $bgCol: $B50, $fontCol: $B500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $B400, $fontCol: $N20);
     }
   }
-  &.#{$prefix-cls}-lozenge-success {
+  &.#{$class-prefix}-lozenge-success {
     @include lozengeType( $bgCol: $G50, $fontCol: $G500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $G400, $fontCol: $N20);
     }
   }
-  &.#{$prefix-cls}-lozenge-warning {
+  &.#{$class-prefix}-lozenge-warning {
     @include lozengeType( $bgCol: $Y75, $fontCol: $N500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $Y400, $fontCol: $N600);
     }
   }
-  &.#{$prefix-cls}-lozenge-purple {
+  &.#{$class-prefix}-lozenge-purple {
     @include lozengeType( $bgCol: $P50, $fontCol: $P500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $P400, $fontCol: $N20);
     }
   }
-  &.#{$prefix-cls}-lozenge-danger {
+  &.#{$class-prefix}-lozenge-danger {
     @include lozengeType( $bgCol: $R50, $fontCol: $R500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $R400, $fontCol: $N20);
     }
   }
-  &.#{$prefix-cls}-lozenge-subtle {
+  &.#{$class-prefix}-lozenge-subtle {
     @include lozengeType( $bgCol: $N0, $fontCol: $N500);
-    &.#{$prefix-cls}-lozenge-bold {
+    &.#{$class-prefix}-lozenge-bold {
       @include lozengeType( $bgCol: $N0, $fontCol: $N90);
     }
   }

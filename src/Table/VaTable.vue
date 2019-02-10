@@ -26,21 +26,21 @@ export default {
       },
       note: 'The size of the table.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, size, hover} = this
-      let klass = {}
+      let {classPrefix, size, hover} = this
+      let classes = {}
 
-      klass[prefixCls + '-table'] = true
-      klass[prefixCls + '-table-' + size] = true
-      klass[prefixCls + '-table-hover'] = hover
+      classes[classPrefix + '-table'] = true
+      classes[classPrefix + '-table-' + size] = true
+      classes[classPrefix + '-table-hover'] = hover
 
-      return klass
+      return classes
     }
   }
 }

@@ -12,22 +12,22 @@ export default {
     sm: Number,
     md: Number,
     lg: Number,
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
+      let {classPrefix} = this
 
       return [
-        `${prefixCls}-col`,
+        `${classPrefix}-col`,
         {
-          [`${prefixCls}-col-xs-${this.xs}`]: this.xs,
-          [`${prefixCls}-col-sm-${this.sm}`]: this.sm,
-          [`${prefixCls}-col-md-${this.md}`]: this.md,
-          [`${prefixCls}-col-lg-${this.lg}`]: this.lg
+          [`${classPrefix}-col-xs-${this.xs}`]: this.xs,
+          [`${classPrefix}-col-sm-${this.sm}`]: this.sm,
+          [`${classPrefix}-col-md-${this.md}`]: this.md,
+          [`${classPrefix}-col-lg-${this.lg}`]: this.lg
         }
       ]
     }

@@ -27,7 +27,7 @@ const VaSidebarGroup = {
       default: '',
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -55,7 +55,7 @@ const VaSidebarGroup = {
     }, 10)
   },
   render (createElement) {
-    let {prefixCls, title} = this
+    let {classPrefix, title} = this
     const self = this
     const level = 1
     const tree = createElement(
@@ -71,21 +71,21 @@ const VaSidebarGroup = {
     const level0 = createElement(
       'div',
       {
-        class: [prefixCls + '-sidebar-navigationlevel', prefixCls + '-sidebar-navigationlevel-level-0']
+        class: [classPrefix + '-sidebar-navigationlevel', classPrefix + '-sidebar-navigationlevel-level-0']
       },
       [tree]
     )
     const treeNavigation = createElement(
       'div',
       {
-        class: prefixCls + '-sidebar-treenavigation'
+        class: classPrefix + '-sidebar-treenavigation'
       },
       [level0]
     )
     const headerItem = createElement(
       'div',
       {
-        class: prefixCls + '-sidebar-group-title'
+        class: classPrefix + '-sidebar-group-title'
       },
       [
         createElement('span', title)

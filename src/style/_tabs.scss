@@ -1,4 +1,4 @@
-.#{$prefix-cls}-nav-tabs {
+.#{$class-prefix}-nav-tabs {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: flex-start;
   border-bottom: 2px solid $N30;
-  .#{$prefix-cls}-nav-tab {
+  .#{$class-prefix}-nav-tab {
     padding-bottom: 4px;
     margin-right: 15px;
     line-height: 20px !important;

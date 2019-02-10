@@ -1,4 +1,4 @@
-.#{$prefix-cls}-badge {
+.#{$class-prefix}-badge {
   display: inline-block;
   text-align: center;
   font-weight: normal;
@@ -34,6 +34,6 @@
   }
 }
 
-.#{$prefix-cls}-btn .#{$prefix-cls}-badge {}
+.#{$class-prefix}-btn .#{$class-prefix}-badge {}
 
-.#{$prefix-cls}-btn-xs .#{$prefix-cls}-badge {}
+.#{$class-prefix}-btn-xs .#{$class-prefix}-badge {}

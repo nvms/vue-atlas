@@ -1,4 +1,4 @@
-.#{$prefix-cls}-sidebar--theme-black {
+.#{$class-prefix}-sidebar--theme-black {
   @include sidebar-theme-mixin(
     $mainBG: #18171B,
     $groupTitleColor: #3f435f,

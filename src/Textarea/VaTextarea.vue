@@ -119,7 +119,7 @@ export default {
       type: Boolean,
       default: true
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -281,13 +281,13 @@ export default {
       return style
     },
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-form-control'] = true
-      klass[prefixCls + '-textarea'] = true
+      classes[classPrefix + '-form-control'] = true
+      classes[classPrefix + '-textarea'] = true
 
-      return klass
+      return classes
     },
     styleObjContainer () {
       let {minHeight, width} = this
@@ -299,13 +299,13 @@ export default {
       return style
     },
     classObjContainer () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-textarea-con'] = true
-      // klass['inline'] = true
+      classes[classPrefix + '-textarea-con'] = true
+      // classes['inline'] = true
 
-      return klass
+      return classes
     }
   }
 }

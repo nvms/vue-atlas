@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj">
-    <div :class="`${prefixCls}-sidebar-navigationlevel-parent`">
-      <div :class="`${prefixCls}-sidebar-group-item`">
+    <div :class="`${classPrefix}-sidebar-navigationlevel-parent`">
+      <div :class="`${classPrefix}-sidebar-group-item`">
         <va-sidebar-group-toggle :open="isOpen" @click.native="onToggleClick" v-if="st"/>
         <va-sidebar-group-item
           :item="parentItem"
@@ -10,7 +10,7 @@
           :show-toggle="st" />
       </div>
     </div>
-    <ul :class="`${prefixCls}-sidebar-navigationlevel-children`">
+    <ul :class="`${classPrefix}-sidebar-navigationlevel-children`">
       <slot/>
     </ul>
   </div>
@@ -47,7 +47,7 @@ export default {
         ].includes(v)
       }
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -66,15 +66,15 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, isOpen, level} = this
-      let klass = {}
+      let {classPrefix, isOpen, level} = this
+      let classes = {}
 
-      klass[prefixCls + '-sidebar-navigationlevel'] = true
-      klass[prefixCls + '-sidebar-navigationlevel-closed'] = !isOpen
-      klass[prefixCls + '-sidebar-navigationlevel-open'] = isOpen
-      klass[prefixCls + '-sidebar-navigationlevel-level-' + level] = true
+      classes[classPrefix + '-sidebar-navigationlevel'] = true
+      classes[classPrefix + '-sidebar-navigationlevel-closed'] = !isOpen
+      classes[classPrefix + '-sidebar-navigationlevel-open'] = isOpen
+      classes[classPrefix + '-sidebar-navigationlevel-level-' + level] = true
 
-      return klass
+      return classes
     }
   },
   methods: {

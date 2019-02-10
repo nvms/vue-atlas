@@ -5,30 +5,30 @@ $modalLoadingBackground,
 $modalTitleColor,
 $modalBoxShadow) {
 
-  .#{$prefix-cls}-modal-dialog {
+  .#{$class-prefix}-modal-dialog {
     box-shadow: $modalBoxShadow;
   }
 
-  &.#{$prefix-cls}-modal-in {
+  &.#{$class-prefix}-modal-in {
     background: $modalInBackground;
   }
 
-  .#{$prefix-cls}-modal-content {
+  .#{$class-prefix}-modal-content {
     background-color: $modalContentBackground;
     color: $modalContentColor;
   }
 
-  .#{$prefix-cls}-modal-loading {
+  .#{$class-prefix}-modal-loading {
     background-color: $modalLoadingBackground;
   }
 
-  .#{$prefix-cls}-modal-title {
+  .#{$class-prefix}-modal-title {
     color: $modalTitleColor;
   }
 }
 
-.#{$prefix-cls}-modal,
-.#{$prefix-cls}--theme-light.#{$prefix-cls}-modal {
+.#{$class-prefix}-modal,
+.#{$class-prefix}--theme-light.#{$class-prefix}-modal {
   @include modal-theme-mixin($modalInBackground: rgba(9, 30, 66, 0.55),
     $modalContentBackground: $N0,
     $modalContentColor: inherit,
@@ -38,7 +38,7 @@ $modalBoxShadow) {
     );
 }
 
-.#{$prefix-cls}-modal {
+.#{$class-prefix}-modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -103,7 +103,7 @@ $modalBoxShadow) {
     display: flex;
     align-items: center;
 
-    .#{$prefix-cls}-fa {
+    .#{$class-prefix}-fa {
       font-size: 14px;
       margin-right: 10px;
     }
@@ -116,7 +116,7 @@ $modalBoxShadow) {
   &-footer {
     text-align: right;
 
-    .#{$prefix-cls}-btn {
+    .#{$class-prefix}-btn {
       margin-left: 5px;
     }
   }

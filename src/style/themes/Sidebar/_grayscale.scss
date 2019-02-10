@@ -1,4 +1,4 @@
-.#{$prefix-cls}-sidebar--theme-grayscale {
+.#{$class-prefix}-sidebar--theme-grayscale {
   @include sidebar-theme-mixin(
     $mainBG: #252525,
     $groupTitleColor: #ccc,

@@ -32,7 +32,7 @@ export default {
       },
       note: 'The type of form to render. See documentation example.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -72,14 +72,14 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, type} = this
-      let klass = {}
+      let {classPrefix, type} = this
+      let classes = {}
 
-      klass[prefixCls + '-form-horizontal'] = type === 'horizontal'
-      klass[prefixCls + '-form-inline'] = type === 'inline'
-      klass['clearfix'] = true
+      classes[classPrefix + '-form-horizontal'] = type === 'horizontal'
+      classes[classPrefix + '-form-inline'] = type === 'inline'
+      classes['clearfix'] = true
 
-      return klass
+      return classes
     }
   },
   created () {

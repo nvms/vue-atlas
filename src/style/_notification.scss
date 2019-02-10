@@ -1,4 +1,4 @@
-.#{$prefix-cls}-notification {
+.#{$class-prefix}-notification {
   position: fixed;
   top: 0px;
   right: 0px;
@@ -57,7 +57,7 @@
   }
 
   @mixin notification-content-inner-mixin($type, $borderColor, $iconColor) {
-    .#{$prefix-cls}-notification-content-inner-#{$type} {
+    .#{$class-prefix}-notification-content-inner-#{$type} {
       display: flex;
       flex-direction: row;
       &-left {
@@ -93,7 +93,7 @@
   }
 
   @mixin notification-content-mixin($type, $borderSize, $borderColor, $iconColor) {
-    .#{$prefix-cls}-notification-content {
+    .#{$class-prefix}-notification-content {
       border-top: $borderSize solid $borderColor;
       border-right: $borderSize solid $borderColor;
       border-bottom: $borderSize solid $borderColor;

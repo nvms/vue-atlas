@@ -24,7 +24,7 @@ export default {
     disabled: {
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       required: false,
       default: 'va'
@@ -40,10 +40,10 @@ export default {
   },
   computed: {
     classObj () {
-      let {index, active, disabled, prefixCls} = this
+      let {index, active, disabled, classPrefix} = this
       let classes = {}
 
-      classes[prefixCls + '-pagination-item-disabled'] = disabled
+      classes[classPrefix + '-pagination-item-disabled'] = disabled
 
       return classes
     }

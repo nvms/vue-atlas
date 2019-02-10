@@ -1,66 +1,66 @@
-.#{$prefix-cls}-page-loading-con {
+.#{$class-prefix}-page-loading-con {
   display: inline-block;
   z-index: 1000;
   position: relative;
   /*see _button.scss for more position information related to*/
   /*-page-loading-con being inside of a button*/
 }
-.#{$prefix-cls}-path {
+.#{$class-prefix}-path {
   stroke: #dcdcdc;
   stroke-linecap: round;
   stroke-width: 5px;
   transform-origin: center center 0px;
   animation: newdash 1s ease-in-out forwards;
 }
-.#{$prefix-cls}-spinner {
+.#{$class-prefix}-spinner {
   transform-origin: center center 0px;
   animation: rotate 1s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
 }
-.#{$prefix-cls}-page-loading {
+.#{$class-prefix}-page-loading {
   animation: rotate 2s linear infinite;
   font-size: 28px;
   float: left;
   width: 20px;
 
-  &.#{$prefix-cls}-loading-lg {
+  &.#{$class-prefix}-loading-lg {
     width: 40px;
     + svg {
       width: 40px;
     }
   }
-  &.#{$prefix-cls}-loading-lg.#{$prefix-cls}-loading-center {
+  &.#{$class-prefix}-loading-lg.#{$class-prefix}-loading-center {
     margin: -20px 0 0 -20px;
   }
-  &.#{$prefix-cls}-loading-md {
+  &.#{$class-prefix}-loading-md {
     width: 30px;
     + svg {
       width: 30px;
       transform-origin: center center 0px;
     }
   }
-  &.#{$prefix-cls}-loading-md.#{$prefix-cls}-loading-center {
+  &.#{$class-prefix}-loading-md.#{$class-prefix}-loading-center {
     margin: -15px 0 0 -15px;
   }
-  &.#{$prefix-cls}-loading-sm {
+  &.#{$class-prefix}-loading-sm {
     width: 18px;
     + svg {
       width: 18px;
     }
   }
-  &.#{$prefix-cls}-loading-sm.#{$prefix-cls}-loading-center {
+  &.#{$class-prefix}-loading-sm.#{$class-prefix}-loading-center {
     margin: -9px 0 0 -9px;
   }
-  &.#{$prefix-cls}-loading-xs {
+  &.#{$class-prefix}-loading-xs {
     width: 12px;
     + svg {
       width: 12px;
     }
   }
-  &.#{$prefix-cls}-loading-xs.#{$prefix-cls}-loading-center {
+  &.#{$class-prefix}-loading-xs.#{$class-prefix}-loading-center {
     margin: -6px 0 0 -6px;
   }
 }
-.#{$prefix-cls}-loading-center {
+.#{$class-prefix}-loading-center {
   position: fixed;
   left: 50%;
   top: 50%;

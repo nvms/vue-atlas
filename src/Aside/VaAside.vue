@@ -4,14 +4,14 @@
              :style="{width:width}"
              ref="aside"
              v-show="show">
-            <div :class="`${prefixCls}-aside-dialog`">
-                <div :class="`${prefixCls}-aside-content`">
-                    <div :class="`${prefixCls}-aside-header`" v-if="header">
-                        <button :class="`${prefixCls}-close`" @click="close" type="button"><span>&times;</span>
+            <div :class="`${classPrefix}-aside-dialog`">
+                <div :class="`${classPrefix}-aside-content`">
+                    <div :class="`${classPrefix}-aside-header`" v-if="header">
+                        <button :class="`${classPrefix}-close`" @click="close" type="button"><span>&times;</span>
                         </button>
-                        <div :class="`${prefixCls}-aside-title`">{{title}}</div>
+                        <div :class="`${classPrefix}-aside-title`">{{title}}</div>
                     </div>
-                    <div :class="`${prefixCls}-aside-body`">
+                    <div :class="`${classPrefix}-aside-body`">
                         <slot/>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
         required: false,
         note: 'Width of the aside element.'
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va',
         required: false
@@ -67,14 +67,14 @@
     },
     computed: {
       classObj() {
-        let {prefixCls, placement} = this
-        let klass = {}
+        let {classPrefix, placement} = this
+        let classes = {}
 
-        klass[prefixCls + '-aside'] = true
-        klass[prefixCls + '-aside-left'] = placement === 'left'
-        klass[prefixCls + '-aside-right'] = placement === 'right'
+        classes[classPrefix + '-aside'] = true
+        classes[classPrefix + '-aside-left'] = placement === 'left'
+        classes[classPrefix + '-aside-right'] = placement === 'right'
 
-        return klass
+        return classes
       }
     },
     created() {
@@ -106,17 +106,17 @@
     watch: {
       show(val) {
         let backdrop = document.createElement('div')
-        let prefixCls = this.prefixCls
+        let classPrefix = this.classPrefix
         const body = document.body
-        backdrop.className = prefixCls + '-aside-backdrop'
+        backdrop.className = classPrefix + '-aside-backdrop'
 
         if (val) {
           body.appendChild(backdrop)
-          element.addClass(body, prefixCls + '-modal-open')
+          element.addClass(body, classPrefix + '-modal-open')
 
           // This timeout is included to allow for opacity transition.
           setTimeout(() => {
-            backdrop.className += ' ' + prefixCls + '-aside-in'
+            backdrop.className += ' ' + classPrefix + '-aside-in'
             this._clickEvent = EventListener.listen(backdrop, 'click', this.close)
             this.$emit('show')
           }, 20)
@@ -139,13 +139,13 @@
         if (this._clickEvent) this._clickEvent.remove()
 
         const body = document.body
-        let prefixCls = this.prefixCls
-        let backdrop = document.querySelector('.' + prefixCls + '-aside-backdrop')
+        let classPrefix = this.classPrefix
+        let backdrop = document.querySelector('.' + classPrefix + '-aside-backdrop')
 
         if (backdrop) {
-          backdrop.className = prefixCls + '-aside-backdrop'
+          backdrop.className = classPrefix + '-aside-backdrop'
           setTimeout(() => {
-            element.removeClass(body, prefixCls + '-modal-open')
+            element.removeClass(body, classPrefix + '-modal-open')
             body.removeChild(backdrop)
           }, 300)
           this.$emit('hide')

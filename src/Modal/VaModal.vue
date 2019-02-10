@@ -1,18 +1,18 @@
 <template>
     <div :class="classObj" :style="styleObj" ref="modal">
-        <div :class="`${prefixCls}-modal-dialog`" :style="{'width': width }">
-            <div :class="`${prefixCls}-modal-loading`" v-if="modalIsLoading">
+        <div :class="`${classPrefix}-modal-dialog`" :style="{'width': width }">
+            <div :class="`${classPrefix}-modal-loading`" v-if="modalIsLoading">
                 <va-loading color="#888" size="md"></va-loading>
             </div>
 
-            <div :class="`${prefixCls}-modal-content`" v-else>
+            <div :class="`${classPrefix}-modal-content`" v-else>
 
                 <slot name="header">
-                    <div :class="`${prefixCls}-modal-header`">
-                        <va-button tabindex="-1" :class="`${prefixCls}-close`" @click="close" type="subtle">
+                    <div :class="`${classPrefix}-modal-header`">
+                        <va-button tabindex="-1" :class="`${classPrefix}-close`" @click="close" type="subtle">
                             <va-icon type="times"></va-icon>
                         </va-button>
-                        <div :class="`${prefixCls}-modal-title`">
+                        <div :class="`${classPrefix}-modal-title`">
                             <slot name="title">
                                 {{title}}
                             </slot>
@@ -20,11 +20,11 @@
                     </div>
                 </slot>
 
-                <div :class="`${prefixCls}-modal-body`">
+                <div :class="`${classPrefix}-modal-body`">
                     <slot name="body"/>
                 </div>
 
-                <div :class="`${prefixCls}-modal-footer`">
+                <div :class="`${classPrefix}-modal-footer`">
                     <slot name="footer">
                         <va-button :focused="focused" @click.native="confirm" type="primary">
                             {{getL('confirm')}}
@@ -90,7 +90,7 @@
         required: false,
         note: 'When true, clicking the backdrop in a standard or custom modal will close the modal. This prop has no effect on alert or confirm modals.'
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -106,13 +106,13 @@
     },
     computed: {
       classObj() {
-        let {prefixCls, effect} = this
-        let klass = {}
+        let {classPrefix, effect} = this
+        let classes = {}
 
-        klass[prefixCls + '-modal'] = true
-        klass[prefixCls + '-modal-' + effect] = true
+        classes[classPrefix + '-modal'] = true
+        classes[classPrefix + '-modal-' + effect] = true
 
-        return klass
+        return classes
       },
       styleObj() {
         let {backdrop, numberOfParentModals} = this
@@ -161,7 +161,7 @@
          */
         if (val) {
           this.$emit('show', {type: 'show'})
-          let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
+          let x = document.getElementsByClassName(this.classPrefix + '-modal-in')
           this.numberOfParentModals = x.length
 
           /**
@@ -195,7 +195,7 @@
         } else {
           this.$emit('hide', {type: 'hide'})
 
-          let x = document.getElementsByClassName(this.prefixCls + '-modal-in')
+          let x = document.getElementsByClassName(this.classPrefix + '-modal-in')
           this.numberOfParentModals = x.length
           let distanceToMove = 20
           if (this.numberOfParentModals > 0) {
@@ -219,15 +219,15 @@
         const body = document.body
         const scrollBarWidth = getScrollBarWidth()
         if (val) {
-          el.querySelector('.' + this.prefixCls + '-modal-content').focus()
+          el.querySelector('.' + this.classPrefix + '-modal-content').focus()
           el.style.display = 'block'
           // this timeout is required for opacity transition
           setTimeout(() => {
-            element.addClass(el, this.prefixCls + '-modal-in')
+            element.addClass(el, this.classPrefix + '-modal-in')
           }, 20)
-          element.addClass(body, this.prefixCls + '-modal-open')
+          element.addClass(body, this.classPrefix + '-modal-open')
           if (!scrollBarWidth) {
-            element.addClass(body, this.prefixCls + '-modal-hide-y')
+            element.addClass(body, this.classPrefix + '-modal-hide-y')
           }
           if (this.backdropClickable) {
             this._blurModalContentEvent = EventListener.listen(this.$el, 'click', (e) => {
@@ -238,13 +238,13 @@
           this.focusTrap.activate()
         } else {
           if (this._blurModalContentEvent) this._blurModalContentEvent.remove()
-          element.removeClass(el, this.prefixCls + '-modal-in')
-          element.addClass(el, this.prefixCls + '-modal-out')
+          element.removeClass(el, this.classPrefix + '-modal-in')
+          element.addClass(el, this.classPrefix + '-modal-out')
           setTimeout(() => {
             el.style.display = 'none'
-            element.removeClass(body, this.prefixCls + '-modal-open')
-            element.removeClass(body, this.prefixCls + '-modal-hide-y')
-            element.removeClass(el, this.prefixCls + '-modal-out')
+            element.removeClass(body, this.classPrefix + '-modal-open')
+            element.removeClass(body, this.classPrefix + '-modal-hide-y')
+            element.removeClass(el, this.classPrefix + '-modal-out')
             body.style.paddingRight = '0'
             this.$emit('closed', {type: 'closed'})
           }, 300)

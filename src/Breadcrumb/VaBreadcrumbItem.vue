@@ -1,14 +1,14 @@
 <template>
-  <span :class="`${prefixCls}-breadcrumb-item`">
+  <span :class="`${classPrefix}-breadcrumb-item`">
 
     <span
-      :class="[prefixCls + '-breadcrumb-item-inner', to ? prefixCls + '-breadcrumb-link' : '']"
+      :class="[classPrefix + '-breadcrumb-item-inner', to ? classPrefix + '-breadcrumb-link' : '']"
       ref="link">
       <slot/>
     </span>
 
-    <va-icon v-if="separatorIcon" :type="separatorIcon" :class="`${prefixCls}-breadcrumb-item-icon`"></va-icon>
-    <span v-else :class="`${prefixCls}-breadcrumb-item-separator`">{{separator}}</span>
+    <va-icon v-if="separatorIcon" :type="separatorIcon" :class="`${classPrefix}-breadcrumb-item-icon`"></va-icon>
+    <span v-else :class="`${classPrefix}-breadcrumb-item-separator`">{{separator}}</span>
   </span>
 </template>
 
@@ -23,7 +23,7 @@ export default {
       required: false,
       note: 'When true, the router method used is replace() instead of push(), which does not leave a history trail.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

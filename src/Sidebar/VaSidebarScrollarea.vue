@@ -8,7 +8,7 @@
 export default {
   name: 'VaSidebarScrollarea',
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -31,14 +31,14 @@ export default {
   },
   computed: {
     classObj () {
-      // let {prefixCls, scrolled} = this
-      let {prefixCls} = this
-      let klass = {}
+      // let {classPrefix, scrolled} = this
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-sidebar-scrollarea'] = true
-      // scrolled ? klass[prefixCls + '-sidebar-scrollarea-scrolled'] = true : ''
+      classes[classPrefix + '-sidebar-scrollarea'] = true
+      // scrolled ? classes[classPrefix + '-sidebar-scrollarea-scrolled'] = true : ''
 
-      return klass
+      return classes
     }
   }
 }

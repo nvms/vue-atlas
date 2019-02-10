@@ -1,4 +1,4 @@
-.#{$prefix-cls}-topbar--theme-default {
+.#{$class-prefix}-topbar--theme-default {
   @include topbar-theme-mixin(
     $mainBG: $N20,
     $mainColor: $N500,

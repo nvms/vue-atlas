@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-sidebar-header`">
+  <div :class="`${classPrefix}-sidebar-header`">
     <slot />
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   name: 'VaSidebarHeader',
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

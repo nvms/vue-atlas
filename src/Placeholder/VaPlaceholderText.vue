@@ -1,6 +1,6 @@
 <template>
-  <div :class="`${prefixCls}-placeholder-text`">
-    <div v-for="line in lines" :key="line" :class="`${prefixCls}-placeholder-text-line`" />
+  <div :class="`${classPrefix}-placeholder-text`">
+    <div v-for="line in lines" :key="line" :class="`${classPrefix}-placeholder-text-line`" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
       type: Number,
       default: 4
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

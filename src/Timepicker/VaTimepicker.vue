@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-timepicker`">
+  <div :class="`${classPrefix}-timepicker`">
     <va-input
       v-if="!isMobile"
       :width="width"
@@ -30,18 +30,18 @@
       v-model="currentValue">
     </va-input>
     <transition name="fadeDown">
-      <div v-show="show" v-va-position="show" :class="`${prefixCls}-timepicker-popup`">
-        <div v-if="hour" data-role="hour" :class="`${prefixCls}-timepicker-range-wrap`">
+      <div v-show="show" v-va-position="show" :class="`${classPrefix}-timepicker-popup`">
+        <div v-if="hour" data-role="hour" :class="`${classPrefix}-timepicker-range-wrap`">
           <span>{{getL('hour')}}</span>
-          <va-range :width="190" v-model="time.hour" :min="hourRange[0]" :max="hourRange[1]" :class="`${prefixCls}-timepicker-range`"></va-range>
+          <va-range :width="190" v-model="time.hour" :min="hourRange[0]" :max="hourRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
         </div>
-        <div v-if="minute" data-role="minute" :class="`${prefixCls}-timepicker-range-wrap`">
+        <div v-if="minute" data-role="minute" :class="`${classPrefix}-timepicker-range-wrap`">
           <span>{{getL('minute')}}</span>
-          <va-range :width="190" v-model="time.minute" :min="minuteRange[0]" :max="minuteRange[1]" :class="`${prefixCls}-timepicker-range`"></va-range>
+          <va-range :width="190" v-model="time.minute" :min="minuteRange[0]" :max="minuteRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
         </div>
-        <div v-if="second" data-role="second" :class="`${prefixCls}-timepicker-range-wrap`">
+        <div v-if="second" data-role="second" :class="`${classPrefix}-timepicker-range-wrap`">
           <span>{{getL('second')}}</span>
-          <va-range :width="190" v-model="time.second" :min="secondRange[0]" :max="secondRange[1]" :class="`${prefixCls}-timepicker-range`"></va-range>
+          <va-range :width="190" v-model="time.second" :min="secondRange[0]" :max="secondRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
         </div>
       </div>
     </transition>
@@ -94,7 +94,7 @@ export default {
       default: false,
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

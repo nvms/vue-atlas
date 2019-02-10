@@ -1,9 +1,9 @@
 <template>
-  <ul v-if="round" :class="`${prefixCls}-steps-round-con`">
+  <ul v-if="round" :class="`${classPrefix}-steps-round-con`">
     <template v-for="(label, index) in labels">
       <li :class="[getClassFromIndex(index)]" :key="index">
-        <div :class="`${prefixCls}-steps-wrap`">
-          <div :class="`${prefixCls}-steps-round`">
+        <div :class="`${classPrefix}-steps-wrap`">
+          <div :class="`${classPrefix}-steps-round`">
             <!-- {{index + 1}} -->
           </div>
         </div>
@@ -12,19 +12,19 @@
     </template>
   </ul>
 
-  <div v-else :class="`${prefixCls}-steps clearfix`">
+  <div v-else :class="`${classPrefix}-steps clearfix`">
     <template v-for="(label, index) in labels">
-      <div :class="`${prefixCls}-steps-wrap`" :key="index">
+      <div :class="`${classPrefix}-steps-wrap`" :key="index">
         <div :class="getClassFromIndex(index)">
           <label>
-            <span :class="`${prefixCls}-steps-round`">
+            <span :class="`${classPrefix}-steps-round`">
               <!-- {{index + 1}} -->
             </span>
             <span>{{label}}</span>
           </label>
           <template v-if="index < labels.length - 1">
-            <i :class="`${prefixCls}-steps-triangle-right-bg`"></i>
-            <i :class="`${prefixCls}-steps-triangle-right`"></i>
+            <i :class="`${classPrefix}-steps-triangle-right-bg`"></i>
+            <i :class="`${classPrefix}-steps-triangle-right`"></i>
           </template>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -65,7 +65,7 @@ export default {
         ret = 'todo'
       }
 
-      return this.prefixCls + '-steps-' + ret
+      return this.classPrefix + '-steps-' + ret
     }
   }
 }

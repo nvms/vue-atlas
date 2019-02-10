@@ -18,7 +18,7 @@ export default {
     pickerPosition: {
       type: Object
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

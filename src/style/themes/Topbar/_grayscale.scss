@@ -1,4 +1,4 @@
-.#{$prefix-cls}-topbar--theme-grayscale {
+.#{$class-prefix}-topbar--theme-grayscale {
   @include topbar-theme-mixin(
     $mainBG: #252525,
     $mainColor: #999,

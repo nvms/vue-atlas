@@ -81,7 +81,7 @@ p {
   line-height: 24px;
 }
 
-.#{$prefix-cls}-sidebar {
+.#{$class-prefix}-sidebar {
   a,
   a:link,
   a:active,
@@ -96,23 +96,23 @@ p {
   }
 }
 
-a:not(.#{$prefix-cls}-btn),
-a:active:not(.#{$prefix-cls}-btn),
-a:link:not(.#{$prefix-cls}-btn),
-a:visited:not(.#{$prefix-cls}-btn) {
+a:not(.#{$class-prefix}-btn),
+a:active:not(.#{$class-prefix}-btn),
+a:link:not(.#{$class-prefix}-btn),
+a:visited:not(.#{$class-prefix}-btn) {
   color: $B400;
   text-decoration: none;
 }
 
-a:hover:not(.#{$prefix-cls}-btn),
-a:link:hover:not(.#{$prefix-cls}-btn) {
+a:hover:not(.#{$class-prefix}-btn),
+a:link:hover:not(.#{$class-prefix}-btn) {
   text-decoration: underline;
   // color: lighten($B400, 15%);
   color: $B300;
 }
 
-a:active:not(.#{$prefix-cls}-btn),
-a:link:active:not(.#{$prefix-cls}-btn) {
+a:active:not(.#{$class-prefix}-btn),
+a:link:active:not(.#{$class-prefix}-btn) {
   color: $B500;
   text-decoration: none;
 }
@@ -121,8 +121,8 @@ a:active {
   color: darken($B400, 3%);
 }
 
-a:focus:not(.#{$prefix-cls}-dropdown-menu>li>a),
-a:focus:not(.#{$prefix-cls}-btn) {
+a:focus:not(.#{$class-prefix}-dropdown-menu>li>a),
+a:focus:not(.#{$class-prefix}-btn) {
   outline: 2px solid $B100;
   // outline-offset: 2px;
   outline: -webkit-focus-ring-color auto 4px;
@@ -133,8 +133,8 @@ a:focus:not(.#{$prefix-cls}-btn) {
   // box-shadow: rgba($PB200, 0.6) 0px 0px 0px 2px;
 }
 
-a:active:not(.#{$prefix-cls}-dropdown-menu>li>a),
-a:active:not(.#{$prefix-cls}-btn) {
+a:active:not(.#{$class-prefix}-dropdown-menu>li>a),
+a:active:not(.#{$class-prefix}-btn) {
   border-bottom: 2px solid $B100;
 }
 
@@ -2170,10 +2170,10 @@ code * {
  .fa-object-ungroup:before {
    content: "\f248"; }
  
- .fa-odnoklassniki:before {
+ .fa-odnoclassesniki:before {
    content: "\f263"; }
  
- .fa-odnoklassniki-square:before {
+ .fa-odnoclassesniki-square:before {
    content: "\f264"; }
  
  .fa-old-republic:before {

@@ -11,7 +11,7 @@ export default {
   name: 'VaDesktop',
   mixins: [events],
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

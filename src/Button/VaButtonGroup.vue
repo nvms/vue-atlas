@@ -13,20 +13,20 @@ export default {
       default: false,
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, vertical} = this
-      let klass = {}
+      let {classPrefix, vertical} = this
+      let classes = {}
 
-      klass[prefixCls + '-btn-group'] = true
-      klass[prefixCls + '-btn-group-vertical'] = vertical
+      classes[classPrefix + '-btn-group'] = true
+      classes[classPrefix + '-btn-group-vertical'] = vertical
 
-      return klass
+      return classes
     }
   }
 }

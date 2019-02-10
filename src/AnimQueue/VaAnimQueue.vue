@@ -99,7 +99,7 @@ When passing an array, the first item is the enter animation and the second is t
       required: false,
       note: 'When true, during the leave animation the nodes will be transitioned out from last to first, instead of from first to last.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -113,8 +113,8 @@ When passing an array, the first item is the enter animation and the second is t
     }
   },
   mounted () {
-    let {prefixCls} = this
-    this.animatingClassName = [prefixCls + '-anim-queue-entering', prefixCls + '-anim-queue-leaving']
+    let {classPrefix} = this
+    this.animatingClassName = [classPrefix + '-anim-queue-entering', classPrefix + '-anim-queue-leaving']
 
     // this.$nextTick(() => {
     this.keysAnimating = []

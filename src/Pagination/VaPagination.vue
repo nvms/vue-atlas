@@ -67,7 +67,7 @@ export default {
       type: Number,
       default: 10
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       required: false,
       default: 'va'
@@ -157,10 +157,10 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
+      let {classPrefix} = this
       let classes = {}
 
-      classes[prefixCls + '-pagination'] = true
+      classes[classPrefix + '-pagination'] = true
 
       return classes
     }

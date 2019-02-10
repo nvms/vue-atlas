@@ -1,5 +1,5 @@
 <template>
-    <div :class="[show ? prefixCls + '-dropdown-con' : '']">
+    <div :class="[show ? classPrefix + '-dropdown-con' : '']">
         <va-input
                 :custom-validate="customValidate"
                 :disabled="disabled"
@@ -24,7 +24,7 @@
                 v-model="query">
         </va-input>
 
-        <ul :class="`${prefixCls}-dropdown-menu`"
+        <ul :class="`${classPrefix}-dropdown-menu`"
             :style="{minWidth: actualWidth, maxHeight: dropdownHeight}"
             v-show="show"
             v-va-position="show">
@@ -110,7 +110,7 @@
       items: {
         type: Array
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -182,8 +182,8 @@
         this.show = false
       },
       isActive(index) {
-        let klass = this.prefixCls + '-dropdown-active'
-        return this.current === index ? klass : ''
+        let classes = this.classPrefix + '-dropdown-active'
+        return this.current === index ? classes : ''
       },
       hit(index) {
         if (this.citems && this.citems.length) {

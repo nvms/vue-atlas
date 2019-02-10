@@ -15,29 +15,29 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, open} = this
-      let klass = {}
+      let {classPrefix, open} = this
+      let classes = {}
 
-      klass[prefixCls + '-sidebar-group-item-toggle'] = true
-      klass[prefixCls + '-sidebar-group-item-toggle-closed'] = !open
+      classes[classPrefix + '-sidebar-group-item-toggle'] = true
+      classes[classPrefix + '-sidebar-group-item-toggle-closed'] = !open
 
-      return klass
+      return classes
     },
     iconObj () {
-      let {prefixCls, open} = this
-      let klass = {}
+      let {classPrefix, open} = this
+      let classes = {}
 
-      klass[prefixCls + '-sidebar-group-item-toggle-icon'] = true
-      klass[prefixCls + '-sidebar-group-item-toggle-icon-closed'] = !open
+      classes[classPrefix + '-sidebar-group-item-toggle-icon'] = true
+      classes[classPrefix + '-sidebar-group-item-toggle-icon-closed'] = !open
 
-      return klass
+      return classes
     }
   }
 }

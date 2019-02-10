@@ -20,22 +20,22 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, rounded, centered, animated} = this
-      let klass = {}
+      let {classPrefix, rounded, centered, animated} = this
+      let classes = {}
 
-      klass[prefixCls + '-placeholder'] = true
-      klass[prefixCls + '-placeholder-rounded'] = rounded
-      klass[prefixCls + '-placeholder-centered'] = centered
-      klass[prefixCls + '-placeholder-animated'] = animated
+      classes[classPrefix + '-placeholder'] = true
+      classes[classPrefix + '-placeholder-rounded'] = rounded
+      classes[classPrefix + '-placeholder-centered'] = centered
+      classes[classPrefix + '-placeholder-animated'] = animated
 
-      return klass
+      return classes
     }
   }
 }

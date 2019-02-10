@@ -1,4 +1,4 @@
-.#{$prefix-cls}-close {
+.#{$class-prefix}-close {
   float: right;
   font-size: 21px;
   font-weight: bold;
@@ -16,7 +16,7 @@
   }
 }
 
-button.#{$prefix-cls}-close {
+button.#{$class-prefix}-close {
   -webkit-appearance: none;
   padding: 0;
   cursor: default;

@@ -1,4 +1,4 @@
-.#{$prefix-cls}-breadcrumb {
+.#{$class-prefix}-breadcrumb {
   cursor: default;
   &-item {
     color: $N200;
@@ -9,10 +9,10 @@
       margin:0 5px !important;
     }
     &:last-child {
-      .#{$prefix-cls}-breadcrumb-item-icon {
+      .#{$class-prefix}-breadcrumb-item-icon {
         display: none;
       }
-      .#{$prefix-cls}-breadcrumb-item-separator {
+      .#{$class-prefix}-breadcrumb-item-separator {
         display: none !important;
       }
     }

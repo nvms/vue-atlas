@@ -1,12 +1,12 @@
 
-.#{$prefix-cls}-textarea-con {
+.#{$class-prefix}-textarea-con {
   overflow-y: hidden;
-  .#{$prefix-cls}-form-control {
+  .#{$class-prefix}-form-control {
     line-height: 16px;
   }
 }
 
-.#{$prefix-cls}-textarea {
+.#{$class-prefix}-textarea {
   overflow-y: hidden;
   min-height: 50px;
   height: 100%;

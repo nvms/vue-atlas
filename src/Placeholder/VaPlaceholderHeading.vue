@@ -1,9 +1,9 @@
 <template>
-  <div :class="`${prefixCls}-placeholder-heading`">
-    <div v-if="image" :class="`${prefixCls}-placeholder-heading-image`" />
-    <div :class="`${prefixCls}-placeholder-heading-content`">
-      <div :class="`${prefixCls}-placeholder-heading-content-title`" />
-      <div :class="`${prefixCls}-placeholder-heading-content-subtitle`" />
+  <div :class="`${classPrefix}-placeholder-heading`">
+    <div v-if="image" :class="`${classPrefix}-placeholder-heading-image`" />
+    <div :class="`${classPrefix}-placeholder-heading-content`">
+      <div :class="`${classPrefix}-placeholder-heading-content-title`" />
+      <div :class="`${classPrefix}-placeholder-heading-content-subtitle`" />
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

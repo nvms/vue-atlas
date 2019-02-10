@@ -10,21 +10,21 @@ export default {
     fluid: {
       type: Boolean
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, fluid} = this
-      let klass = {}
+      let {classPrefix, fluid} = this
+      let classes = {}
 
-      klass[prefixCls + '-container-fluid'] = fluid
-      klass[prefixCls + '-container'] = !fluid
-      klass['clearfix'] = true
+      classes[classPrefix + '-container-fluid'] = fluid
+      classes[classPrefix + '-container'] = !fluid
+      classes['clearfix'] = true
 
-      return klass
+      return classes
     }
   }
 }

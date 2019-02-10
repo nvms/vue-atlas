@@ -1,17 +1,17 @@
 <template>
-  <div :class="[`${prefixCls}-dropdown-con`, classObj]">
+  <div :class="[`${classPrefix}-dropdown-con`, classObj]">
     <span ref="trigger" :focus="onFocus">
       <slot name="trigger" />
     </span>
 
     <transition :name="effect" v-if="effect != 'collapse'">
-      <ul v-va-position="show" :class="`${prefixCls}-dropdown-menu`" v-show="show">
+      <ul v-va-position="show" :class="`${classPrefix}-dropdown-menu`" v-show="show">
         <slot />
       </ul>
     </transition>
 
     <va-collapse-transition v-if="effect=='collapse'">
-      <ul :class="`${prefixCls}-dropdown-menu`" v-show="show">
+      <ul :class="`${classPrefix}-dropdown-menu`" v-show="show">
         <slot />
       </ul>
     </va-collapse-transition>
@@ -51,7 +51,7 @@
       default: false,
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -82,13 +82,13 @@
   },
   computed: {
     classObj () {
-      let {prefixCls, tall} = this
-      let klass = {}
+      let {classPrefix, tall} = this
+      let classes = {}
 
-      klass[prefixCls + '-dropdown-selected'] = this.show
-      klass[prefixCls + '-dropdown-con-tall'] = tall
+      classes[classPrefix + '-dropdown-selected'] = this.show
+      classes[classPrefix + '-dropdown-con-tall'] = tall
 
-      return klass
+      return classes
     }
   },
   mounted () {

@@ -2,17 +2,17 @@
   background-color: $bgCol;
   color: $fontCol;
 
-  &:hover:not(.#{$prefix-cls}-btn-disabled) {
+  &:hover:not(.#{$class-prefix}-btn-disabled) {
     background-color: $bgColHover;
     color: $fontColHover;
   }
 
-  &:active:not(.#{$prefix-cls}-btn-disabled) {
+  &:active:not(.#{$class-prefix}-btn-disabled) {
     background-color: $bgColActive;
     color: $fontColActive;
   }
 
-  .#{$prefix-cls}-badge {
+  .#{$class-prefix}-badge {
     color: $badgeFontCol;
     background-color: $badgeBgCol;
   }
@@ -27,8 +27,8 @@
   //   outline: none;
   // }
   // ring on hover
-  &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open):not(.#{$prefix-cls}-btn-disabled),
-  &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open):not(.#{$prefix-cls}-btn-disabled) {
+  &:focus:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled),
+  &-focused:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled) {
     box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
     /* fallback */
     box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
@@ -51,7 +51,7 @@
 
 
 
-.#{$prefix-cls}-btn {
+.#{$class-prefix}-btn {
   &-default {
     @include btn-type-mixin($bgCol: $N20,
       $fontCol: $N400,
@@ -358,7 +358,7 @@
   border-radius: $borderRadius;
 }
 
-.#{$prefix-cls}-btn {
+.#{$class-prefix}-btn {
   border: none;
   outline: 0;
   margin: 0;
@@ -451,12 +451,12 @@
   Styles applied to the loading spinner inside of the button element.
   All sizes defined here.
   */
-  .#{$prefix-cls}-page-loading-con {
+  .#{$class-prefix}-page-loading-con {
     position: absolute;
   }
 
   &-xs {
-    .#{$prefix-cls}-page-loading-con {
+    .#{$class-prefix}-page-loading-con {
       margin-top: 1px;
 
       svg {
@@ -466,7 +466,7 @@
   }
 
   &-sm {
-    .#{$prefix-cls}-page-loading-con {
+    .#{$class-prefix}-page-loading-con {
       margin-top: 3px;
 
       svg {
@@ -476,7 +476,7 @@
   }
 
   &-md {
-    .#{$prefix-cls}-page-loading-con {
+    .#{$class-prefix}-page-loading-con {
       margin-top: 4px;
 
       svg {
@@ -486,7 +486,7 @@
   }
 
   &-lg {
-    .#{$prefix-cls}-page-loading-con {
+    .#{$class-prefix}-page-loading-con {
       margin-top: 6px;
 
       svg {
@@ -502,74 +502,74 @@ are defined here.
 
 Ready to be confused?
 */
-.#{$prefix-cls}-btn-group {
+.#{$class-prefix}-btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
-.#{$prefix-cls}-btn-group>.#{$prefix-cls}-btn,
-.#{$prefix-cls}-btn-group>.#{$prefix-cls}-dropdown-con {
+.#{$class-prefix}-btn-group>.#{$class-prefix}-btn,
+.#{$class-prefix}-btn-group>.#{$class-prefix}-dropdown-con {
   position: relative;
   float: left;
 }
 
-.#{$prefix-cls}-btn-group {
+.#{$class-prefix}-btn-group {
 
-  >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
-  >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+  >.#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-radius: 0;
     margin-right: 1px;
   }
 
-  >.#{$prefix-cls}-btn:first-child {
+  >.#{$class-prefix}-btn:first-child {
     margin-left: 0;
   }
 
-  >.#{$prefix-cls}-btn:first-child:not(:last-child) {
+  >.#{$class-prefix}-btn:first-child:not(:last-child) {
     margin-right: 1px;
   }
 
-  >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
-  >.#{$prefix-cls}-dropdown-con:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle)>span>div>.#{$prefix-cls}-btn {
+  >.#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  >.#{$class-prefix}-dropdown-con:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle)>span>div>.#{$class-prefix}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 1px;
   }
 
-  >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$prefix-cls}-btn {
+  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$class-prefix}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$prefix-cls}-btn:last-child:not(:first-child),
-  >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
+  >.#{$class-prefix}-btn:last-child:not(:first-child),
+  >.#{$class-prefix}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  >.#{$prefix-cls}-dropdown-con:not(:first-child) {
-    >span>div>.#{$prefix-cls}-btn {
+  >.#{$class-prefix}-dropdown-con:not(:first-child) {
+    >span>div>.#{$class-prefix}-btn {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
 
-  >.#{$prefix-cls}-btn-group {
+  >.#{$class-prefix}-btn-group {
     float: left;
   }
 
-  >.#{$prefix-cls}-btn-group:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
+  >.#{$class-prefix}-btn-group:not(:first-child):not(:last-child)>.#{$class-prefix}-btn {
     border-radius: 0;
   }
 
-  >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
-  >.#{$prefix-cls}-btn-group:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
+  >.#{$class-prefix}-btn-group:first-child:not(:last-child)>.#{$class-prefix}-btn:last-child,
+  >.#{$class-prefix}-btn-group:first-child:not(:last-child)>.#{$class-prefix}-dropdown-toggle {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$prefix-cls}-btn-group:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
+  >.#{$class-prefix}-btn-group:last-child:not(:first-child)>.#{$class-prefix}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -579,7 +579,7 @@ Ready to be confused?
 And, of course, when the button group is a vertical button group arrangement.
 */
 
-.#{$prefix-cls}-btn-group-vertical {
+.#{$class-prefix}-btn-group-vertical {
   position: relative;
   display: inline-flex !important;
   // display: flex;
@@ -587,7 +587,7 @@ And, of course, when the button group is a vertical button group arrangement.
   vertical-align: middle;
 }
 
-.#{$prefix-cls}-btn-group-vertical>.#{$prefix-cls}-btn {
+.#{$class-prefix}-btn-group-vertical>.#{$class-prefix}-btn {
   position: relative;
   float: left;
   width: 100%;
@@ -595,65 +595,65 @@ And, of course, when the button group is a vertical button group arrangement.
 
 }
 
-.#{$prefix-cls}-btn-group-vertical .#{$prefix-cls}-btn {
+.#{$class-prefix}-btn-group-vertical .#{$class-prefix}-btn {
   width: 100%;
 
 }
 
-.#{$prefix-cls}-btn-group-vertical {
+.#{$class-prefix}-btn-group-vertical {
 
-  >.#{$prefix-cls}-btn:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle),
-  >.#{$prefix-cls}-dropdown-con:not(:first-child):not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+  >.#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-radius: 0;
     margin-bottom: 1px;
     margin-right: 0px;
   }
 
-  >.#{$prefix-cls}-btn:first-child {
+  >.#{$class-prefix}-btn:first-child {
     margin-top: 0;
   }
 
-  >.#{$prefix-cls}-btn:first-child:not(:last-child) {
+  >.#{$class-prefix}-btn:first-child:not(:last-child) {
     margin-bottom: 1px;
   }
 
-  >.#{$prefix-cls}-btn:first-child:not(:last-child):not(.#{$prefix-cls}-dropdown-toggle) {
+  >.#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
   }
 
-  >.#{$prefix-cls}-btn:last-child:not(:first-child),
-  >.#{$prefix-cls}-dropdown-toggle:not(:first-child) {
+  >.#{$class-prefix}-btn:last-child:not(:first-child),
+  >.#{$class-prefix}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
   }
 
-  >.#{$prefix-cls}-btn-group-vertical {
+  >.#{$class-prefix}-btn-group-vertical {
     float: left;
   }
 
-  >.#{$prefix-cls}-btn-group-vertical:not(:first-child):not(:last-child)>.#{$prefix-cls}-btn {
+  >.#{$class-prefix}-btn-group-vertical:not(:first-child):not(:last-child)>.#{$class-prefix}-btn {
     border-radius: 0;
   }
 
-  >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-btn:last-child,
-  >.#{$prefix-cls}-btn-group-vertical:first-child:not(:last-child)>.#{$prefix-cls}-dropdown-toggle {
+  >.#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)>.#{$class-prefix}-btn:last-child,
+  >.#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)>.#{$class-prefix}-dropdown-toggle {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$prefix-cls}-btn-group-vertical:last-child:not(:first-child)>.#{$prefix-cls}-btn:first-child {
+  >.#{$class-prefix}-btn-group-vertical:last-child:not(:first-child)>.#{$class-prefix}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 }
 
-// .#{$prefix-cls}-dropdown-selected {
-//   >span>div>a.#{$prefix-cls}-btn-default {
+// .#{$class-prefix}-dropdown-selected {
+//   >span>div>a.#{$class-prefix}-btn-default {
 //     background-color: $N30;
 //     color: $N400;
 //   }

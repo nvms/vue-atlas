@@ -2,13 +2,13 @@
 $iconHoverColor,
 $iconActiveColor) {
 
-  .#{$prefix-cls}-input-show-clean,
-  .#{$prefix-cls}-input-show-icon,
+  .#{$class-prefix}-input-show-clean,
+  .#{$class-prefix}-input-show-icon,
     {
     color: $iconColor;
   }
 
-  .#{$prefix-cls}-input-show-clean {
+  .#{$class-prefix}-input-show-clean {
     &:hover {
       color: $iconHoverColor;
     }
@@ -25,13 +25,13 @@ $opsBtnBoxShadow) {
 
   background: $opsBackground;
 
-  .#{$prefix-cls}-btn {
+  .#{$class-prefix}-btn {
     box-shadow: $opsBtnBoxShadow;
   }
 }
 
-.#{$prefix-cls}-input,
-.#{$prefix-cls}--theme-light.#{$prefix-cls}-input {
+.#{$class-prefix}-input,
+.#{$class-prefix}--theme-light.#{$class-prefix}-input {
     &-con {
       @include input-theme-mixin(
         $iconColor: $N80,
@@ -47,24 +47,24 @@ $opsBtnBoxShadow) {
     }
 }
 
-.#{$prefix-cls}-input-con {
+.#{$class-prefix}-input-con {
   position: relative;
   display: flex;
 
   &:hover {
-    .#{$prefix-cls}-input-show-clean {
+    .#{$class-prefix}-input-show-clean {
       opacity: 1;
     }
   }
 }
 
-.#{$prefix-cls}-show-clean:hover .#{$prefix-cls}-input-show-icon {
+.#{$class-prefix}-show-clean:hover .#{$class-prefix}-input-show-icon {
   display: none;
 }
 
 /*the icon*/
 
-.#{$prefix-cls}-input-icon-wrapper {
+.#{$class-prefix}-input-icon-wrapper {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -72,12 +72,12 @@ $opsBtnBoxShadow) {
   width: 30px;
 }
 
-.#{$prefix-cls}-input-file {
+.#{$class-prefix}-input-file {
   overflow: hidden;
 }
 
-.#{$prefix-cls}-input-show-clean,
-.#{$prefix-cls}-input-show-icon {
+.#{$class-prefix}-input-show-clean,
+.#{$class-prefix}-input-show-icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -87,12 +87,12 @@ $opsBtnBoxShadow) {
   transition: opacity .1s linear;
 }
 
-.#{$prefix-cls}-input-show-clean {
+.#{$class-prefix}-input-show-clean {
   opacity: 0;
   cursor: default;
 }
 
-.#{$prefix-cls}-input-show-icon {
+.#{$class-prefix}-input-show-icon {
   opacity: 1;
 }
 
@@ -100,8 +100,8 @@ $opsBtnBoxShadow) {
 
 /*sm*/
 
-.#{$prefix-cls}-input-sm {
-  .#{$prefix-cls}-input-icon-wrapper {
+.#{$class-prefix}-input-sm {
+  .#{$class-prefix}-input-icon-wrapper {
     i {
       top: 8px;
     }
@@ -110,8 +110,8 @@ $opsBtnBoxShadow) {
 
 /*xs*/
 
-.#{$prefix-cls}-input-xs {
-  .#{$prefix-cls}-input-icon-wrapper {
+.#{$class-prefix}-input-xs {
+  .#{$class-prefix}-input-icon-wrapper {
     i {
       font-size: 12px !important;
       top: 8px;
@@ -119,13 +119,13 @@ $opsBtnBoxShadow) {
   }
 }
 
-.#{$prefix-cls}-input-ops {
+.#{$class-prefix}-input-ops {
   position: absolute;
   z-index: 4;
 }
 
-.#{$prefix-cls}-input-prefix,
-.#{$prefix-cls}-input-postfix {
+.#{$class-prefix}-input-prefix,
+.#{$class-prefix}-input-postfix {
   display: flex;
   background: #f4f5f7;
   border: 2px solid $N40;
@@ -134,32 +134,32 @@ $opsBtnBoxShadow) {
   color: $N300;
   white-space: nowrap;
 }
-.#{$prefix-cls}-input-prefix {
+.#{$class-prefix}-input-prefix {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border-right: 0;
 }
-.#{$prefix-cls}-input-postfix {
+.#{$class-prefix}-input-postfix {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border-left: 0;
 }
 
-.#{$prefix-cls}-input-has-prefix {
-  .#{$prefix-cls}-form-control {
+.#{$class-prefix}-input-has-prefix {
+  .#{$class-prefix}-form-control {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
   }
 }
-.#{$prefix-cls}-input-has-postfix {
-  .#{$prefix-cls}-form-control {
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-form-control {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
 }
 
-.#{$prefix-cls}-input-has-postfix {
-  .#{$prefix-cls}-input-icon-wrapper {
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-input-icon-wrapper {
     position: relative;
     width: initial;
     left: initial;

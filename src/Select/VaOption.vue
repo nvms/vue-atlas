@@ -19,7 +19,7 @@
         type: String,
         required: false
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -34,7 +34,7 @@
       classes() {
         let classes = {}
 
-        classes[`${this.prefixCls}-select-item-active`] = this.isOptionSelected(this.option)
+        classes[`${this.classPrefix}-select-item-active`] = this.isOptionSelected(this.option)
 
         return classes
       }

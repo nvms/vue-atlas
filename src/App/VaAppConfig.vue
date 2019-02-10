@@ -439,9 +439,9 @@ export default {
   computed: {
     classObj () {
       // let classPrefix = this
-      let klass = {}
+      let classes = {}
 
-      return klass
+      return classes
     },
     styleObj () {
       let style = {}

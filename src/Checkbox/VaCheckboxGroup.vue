@@ -33,7 +33,7 @@ export default {
       type: String,
       default: 'checkbox'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -81,15 +81,15 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, vertical} = this
-      let klass = {}
+      let {classPrefix, vertical} = this
+      let classes = {}
 
-      klass[prefixCls + '-btn-group'] = !vertical
-      klass[prefixCls + '-btn-group-vertical'] = vertical
-      klass[prefixCls + '-checkbox-group'] = true
-      klass[prefixCls + '-checkbox-group-vertical'] = vertical
+      classes[classPrefix + '-btn-group'] = !vertical
+      classes[classPrefix + '-btn-group-vertical'] = vertical
+      classes[classPrefix + '-checkbox-group'] = true
+      classes[classPrefix + '-checkbox-group-vertical'] = vertical
 
-      return klass
+      return classes
     }
 
   }

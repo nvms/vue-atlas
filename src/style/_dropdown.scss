@@ -13,7 +13,7 @@
   $selectedHoverColor
   ) {
   &-con {
-    .#{$prefix-cls}-dropdown-menu {
+    .#{$class-prefix}-dropdown-menu {
       background: $menuBackground;
       box-shadow: $menuBoxShadow;
       &::-webkit-scrollbar-thumb {
@@ -39,7 +39,7 @@
   trigger that is currently active, meaning the dropdown is opened.
   */
   &-selected {
-    >span>div>a.#{$prefix-cls}-btn {
+    >span>div>a.#{$class-prefix}-btn {
       background: $selectedBackground;
       color: $selectedColor;
       &:hover {
@@ -53,7 +53,7 @@
   doing something like this:
 
   &-selected {
-    >span>div>a.#{$prefix-cls}-btn-primary {
+    >span>div>a.#{$class-prefix}-btn-primary {
       background: $B300;
       color: $N20;
     }
@@ -63,8 +63,8 @@
   */
 }
 
-.#{$prefix-cls}-dropdown,
-.#{$prefix-cls}--theme-light.#{$prefix-cls}-dropdown {
+.#{$class-prefix}-dropdown,
+.#{$class-prefix}--theme-light.#{$class-prefix}-dropdown {
   @include dropdown-theme-mixin(
     $menuBackground: $N0,
     $menuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
@@ -81,15 +81,15 @@
   );
 }
 
-.#{$prefix-cls}-dropdown-con>span>div>a.#{$prefix-cls}-btn,
-.#{$prefix-cls}-dropdown-con>span>div>a.#{$prefix-cls}-btn:hover {
+.#{$class-prefix}-dropdown-con>span>div>a.#{$class-prefix}-btn,
+.#{$class-prefix}-dropdown-con>span>div>a.#{$class-prefix}-btn:hover {
   cursor: default;
 }
 
-.#{$prefix-cls}-dropdown-con {
+.#{$class-prefix}-dropdown-con {
   position: relative;
 
-  .#{$prefix-cls}-dropdown-menu {
+  .#{$class-prefix}-dropdown-menu {
     position: absolute;
     overflow: auto;
     top: 100%;
@@ -175,19 +175,19 @@
   }
 }
 
-.#{$prefix-cls}-dropdown {
+.#{$class-prefix}-dropdown {
   position: relative;
 }
 
-.#{$prefix-cls}-dropdown-toggle:focus {
+.#{$class-prefix}-dropdown-toggle:focus {
   outline: 0;
 }
 
 /**
 Dropdowns, while active, don't need a focus ring. It shows focus state by changing the background color.
 */
-.#{$prefix-cls}-dropdown-con.#{$prefix-cls}-dropdown-selected>span>div>.#{$prefix-cls}-btn:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
-.#{$prefix-cls}-dropdown-con.#{$prefix-cls}-dropdown-selected>span>div>.#{$prefix-cls}-btn-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
+.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected>span>div>.#{$class-prefix}-btn:focus:not(:active):not(.#{$class-prefix}-select-btn-open),
+.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected>span>div>.#{$class-prefix}-btn-focused:not(:active):not(.#{$class-prefix}-select-btn-open) {
   box-shadow: none !important;
 }
 
@@ -196,34 +196,34 @@ The following styles apply to a button that exists as a dropdown trigger
 that resides inside of the va-topbar element.
 */
 
-.#{$prefix-cls}-topbar--theme-blue {
-  .#{$prefix-cls}-dropdown-selected {
-    >span>div>a.#{$prefix-cls}-btn {
+.#{$class-prefix}-topbar--theme-blue {
+  .#{$class-prefix}-dropdown-selected {
+    >span>div>a.#{$class-prefix}-btn {
       background-color: $B500;
       color: $N20;
     }
 
-    >span>div>a.#{$prefix-cls}-btn-primary-dark {
+    >span>div>a.#{$class-prefix}-btn-primary-dark {
       background: $B400;
     }
   }
 }
 
-.#{$prefix-cls}-topbar--theme-purple {
-  .#{$prefix-cls}-dropdown-selected {
-    >span>div>a.#{$prefix-cls}-btn {
+.#{$class-prefix}-topbar--theme-purple {
+  .#{$class-prefix}-dropdown-selected {
+    >span>div>a.#{$class-prefix}-btn {
       background-color: $P400;
       color: $N20;
     }
 
-    >span>div>a.#{$prefix-cls}-btn-purple-dark {
+    >span>div>a.#{$class-prefix}-btn-purple-dark {
       background: $P400;
     }
   }
 }
 
-.#{$prefix-cls}-topbar {
-  .#{$prefix-cls}-dropdown-con-tall {
+.#{$class-prefix}-topbar {
+  .#{$class-prefix}-dropdown-con-tall {
     height: 100%;
     > span {
       height: 100%;

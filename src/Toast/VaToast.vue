@@ -61,7 +61,7 @@ export default {
       default: true,
       note: 'When true, clicking the toast will dismiss it immediately.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -73,14 +73,14 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls, placement, type} = this
-      let klass = {}
+      let {classPrefix, placement, type} = this
+      let classes = {}
 
-      klass[prefixCls + '-toast'] = true
-      klass[prefixCls + '-toast-' + type] = true
-      klass[prefixCls + '-toast-' + placement] = true
+      classes[classPrefix + '-toast'] = true
+      classes[classPrefix + '-toast-' + type] = true
+      classes[classPrefix + '-toast-' + placement] = true
 
-      return klass
+      return classes
     }
   },
   methods: {

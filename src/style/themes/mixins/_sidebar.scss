@@ -26,11 +26,11 @@
   $topDivBoxShadow
 ) {
   background: $mainBG;
-  .#{$prefix-cls}-sidebar-group-title {
+  .#{$class-prefix}-sidebar-group-title {
     color: $groupTitleColor;
   }
-  .#{$prefix-cls}-sidebar-header {
-    .#{$prefix-cls}-btn {
+  .#{$class-prefix}-sidebar-header {
+    .#{$class-prefix}-btn {
       color: $headerColor;
       background: $headerBG;
       &:hover {
@@ -45,7 +45,7 @@
       }
     }
   }
-  .#{$prefix-cls}-sidebar-scrollarea {
+  .#{$class-prefix}-sidebar-scrollarea {
     &-topdiv {
       box-shadow: $topDivBoxShadow;
     }
@@ -56,7 +56,7 @@
       }
     }
   }
-  .#{$prefix-cls}-sidebar-group-item {
+  .#{$class-prefix}-sidebar-group-item {
     background: $itemBG;
     color: $itemColor;
     &-substring {
@@ -76,7 +76,7 @@
     &.active {
       color: $itemActiveStateColor;
       background: $itemActiveStateBG;
-      .#{$prefix-cls}-sidebar-group-item-icon {
+      .#{$class-prefix}-sidebar-group-item-icon {
         color: $itemActiveStateIconColor !important;
       }
     }

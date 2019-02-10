@@ -1,12 +1,12 @@
 <template>
-  <div :class="`${prefixCls}-placeholder-image`" />
+  <div :class="`${classPrefix}-placeholder-image`" />
 </template>
 
 <script>
 export default {
   name: 'VaPlaceholderImage',
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

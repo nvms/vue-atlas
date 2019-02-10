@@ -1,5 +1,5 @@
 <template>
-    <div :class="`${prefixCls}-affix`" :style="affixStyle">
+    <div :class="`${classPrefix}-affix`" :style="affixStyle">
         <slot/>
     </div>
 </template>
@@ -15,7 +15,7 @@
         required: false,
         note: 'Vertical offset distance to affix to'
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }

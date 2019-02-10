@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-sidebar-group-title`">
+  <div :class="`${classPrefix}-sidebar-group-title`">
     <slot />
   </div>
 </template>
@@ -8,7 +8,7 @@
 export default {
   name: 'VaSidebarGroupTitle',
   props: {
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

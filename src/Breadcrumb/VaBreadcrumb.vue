@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-breadcrumb`">
+  <div :class="`${classPrefix}-breadcrumb`">
     <slot/>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
       required: false,
       note: 'The separator icon to be rendered between breadcrumb items. It\'s a va-icon component, so a valid icon type must be passed.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

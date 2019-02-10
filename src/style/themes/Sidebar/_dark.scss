@@ -1,4 +1,4 @@
-.#{$prefix-cls}-sidebar--theme-dark {
+.#{$class-prefix}-sidebar--theme-dark {
   @include sidebar-theme-mixin(
     $mainBG: $N700,
     $groupTitleColor: $N70,

@@ -6,20 +6,20 @@
   }
 }
 
-.#{$prefix-cls}-radio-con {
+.#{$class-prefix}-radio-con {
   margin-right: 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  .#{$prefix-cls}-label {
+  .#{$class-prefix}-label {
     margin-left: 8px;
     outline: none;
   }
   &:hover {
     cursor: default;
   }
-  .#{$prefix-cls}-radio-span {
+  .#{$class-prefix}-radio-span {
     white-space: nowrap;
     outline: none;
     display: inline-block;
@@ -27,7 +27,7 @@
     line-height: 1;
     vertical-align: middle;
   }
-  .#{$prefix-cls}-radio-inner {
+  .#{$class-prefix}-radio-inner {
     position: relative;
     top: 0;
     left: 0;
@@ -43,12 +43,12 @@
     @include radio-focus-mixin($B200, 0.6);
   }
   &:active {
-    .#{$prefix-cls}-radio-inner {
+    .#{$class-prefix}-radio-inner {
       background-color: $B75 !important;
       border-color: $B75 !important;
     }
   }
-  .#{$prefix-cls}-radio-input {
+  .#{$class-prefix}-radio-input {
     position: absolute !important;
     left: 0;
     z-index: 1;
@@ -61,38 +61,38 @@
     height: 100%;
   }
   &:hover {
-    .#{$prefix-cls}-radio-span:not(.#{$prefix-cls}-radio-checked) {
-      .#{$prefix-cls}-radio-inner {
+    .#{$class-prefix}-radio-span:not(.#{$class-prefix}-radio-checked) {
+      .#{$class-prefix}-radio-inner {
         background-color: #EBECF0;
       }
     }
   }
-  .#{$prefix-cls}-radio-checked {
+  .#{$class-prefix}-radio-checked {
     &:hover {
-      .#{$prefix-cls}-radio-inner {
+      .#{$class-prefix}-radio-inner {
         background-color: $B300;
         border-color: $B300;
       }
     }
   }
   &:active {
-    .#{$prefix-cls}-radio-checked {
-      .#{$prefix-cls}-radio-inner {
+    .#{$class-prefix}-radio-checked {
+      .#{$class-prefix}-radio-inner {
         &:after {
           background-color: $B500;
         }
       }
     }
   }
-  .#{$prefix-cls}-radio-checked .#{$prefix-cls}-radio-inner:after {
+  .#{$class-prefix}-radio-checked .#{$class-prefix}-radio-inner:after {
     transform: scale(1);
     opacity: 1;
   }
-  .#{$prefix-cls}-radio-checked .#{$prefix-cls}-radio-inner {
+  .#{$class-prefix}-radio-checked .#{$class-prefix}-radio-inner {
     background-color: $B400;
     border-color: $B400;
   }
-  .#{$prefix-cls}-radio-inner:after {
+  .#{$class-prefix}-radio-inner:after {
     position: absolute;
     width: 4px;
     height: 4px;
@@ -107,19 +107,19 @@
     transform: scale(0);
     opacity: 0;
   }
-  .#{$prefix-cls}-radio-disabled .#{$prefix-cls}-radio-inner {
+  .#{$class-prefix}-radio-disabled .#{$class-prefix}-radio-inner {
     border-color: $N40;
     background-color: $N100;
   }
 }
 
-.#{$prefix-cls}-radio-btn input[type=radio] {
+.#{$class-prefix}-radio-btn input[type=radio] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
 
-.#{$prefix-cls}-radio-group {
+.#{$class-prefix}-radio-group {
   display: flex !important;
   flex-direction: row;
   &-vertical {

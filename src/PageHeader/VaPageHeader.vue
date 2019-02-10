@@ -1,14 +1,14 @@
 <template>
-    <div :class="`${prefixCls}-page-header`">
+    <div :class="`${classPrefix}-page-header`">
 
-        <div v-if="hasBreadcrumb" :class="`${prefixCls}-page-header-breadcrumb-wrapper`">
-            <div :class="`${prefixCls}-page-header-breadcrumb-container`">
+        <div v-if="hasBreadcrumb" :class="`${classPrefix}-page-header-breadcrumb-wrapper`">
+            <div :class="`${classPrefix}-page-header-breadcrumb-container`">
                 <slot name="breadcrumb">&nbsp;</slot>
             </div>
         </div>
 
-        <div :class="`${prefixCls}-page-header-title-wrapper`">
-            <div :class="`${prefixCls}-page-header-title-container`">
+        <div :class="`${classPrefix}-page-header-title-wrapper`">
+            <div :class="`${classPrefix}-page-header-title-container`">
                 <h1>
                     <slot name="title"></slot>
                 </h1>
@@ -17,12 +17,12 @@
                 </h2>
             </div>
 
-            <div v-if="hasActions" :class="`${prefixCls}-page-header-actions-wrapper`">
+            <div v-if="hasActions" :class="`${classPrefix}-page-header-actions-wrapper`">
                 <slot name="actions"></slot>
             </div>
         </div>
 
-        <div v-if="hasBottom" :class="`${prefixCls}-page-header-bottom-wrapper`">
+        <div v-if="hasBottom" :class="`${classPrefix}-page-header-bottom-wrapper`">
             <slot name="bottom">&nbsp;</slot>
         </div>
 
@@ -33,7 +33,7 @@
   export default {
     name: 'VaPageHeader',
     props: {
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }

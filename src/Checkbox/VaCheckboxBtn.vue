@@ -29,19 +29,19 @@ export default {
       type: Boolean,
       default: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-checked-btn'] = true
+      classes[classPrefix + '-checked-btn'] = true
 
-      return klass
+      return classes
     }
   },
   watch: {

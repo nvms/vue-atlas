@@ -78,25 +78,25 @@
         type: Boolean,
         default: false,
         required: false,
-        note: 'If true, applies the .${prefixCls}-btn-active class.'
+        note: 'If true, applies the .${classPrefix}-btn-active class.'
       },
       disabled: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'If true, applies the .${prefixCls}-btn-disabled class.'
+        note: 'If true, applies the .${classPrefix}-btn-disabled class.'
       },
       block: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'If true, applies the .${prefixCls}-btn-block class.'
+        note: 'If true, applies the .${classPrefix}-btn-block class.'
       },
       loading: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'If true, hides text and shows prefixCls-loading spinner.'
+        note: 'If true, hides text and shows classPrefix-loading spinner.'
       },
       round: {
         type: Boolean,
@@ -113,7 +113,7 @@
         default: false,
         required: false
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -163,29 +163,29 @@
         return white
       },
       classObj() {
-        let {prefixCls, type, size, block, active, disabled, round, isFocused} = this
-        let klass = {}
+        let {classPrefix, type, size, block, active, disabled, round, isFocused} = this
+        let classes = {}
 
-        klass[prefixCls + '-btn'] = true
-        klass[prefixCls + '-btn-block'] = block
-        klass[prefixCls + '-btn-active'] = active
-        klass[prefixCls + '-btn-disabled'] = disabled
-        size ? klass[prefixCls + '-btn-' + size] = true : ''
-        type ? klass[prefixCls + '-btn-' + type] = true : ''
-        klass[prefixCls + '-btn-round'] = round
+        classes[classPrefix + '-btn'] = true
+        classes[classPrefix + '-btn-block'] = block
+        classes[classPrefix + '-btn-active'] = active
+        classes[classPrefix + '-btn-disabled'] = disabled
+        size ? classes[classPrefix + '-btn-' + size] = true : ''
+        type ? classes[classPrefix + '-btn-' + type] = true : ''
+        classes[classPrefix + '-btn-round'] = round
 
-        klass[prefixCls + '-btn-' + type + '-focused'] = isFocused
+        classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
 
-        return klass
+        return classes
       },
       fadeclassObj() {
-        let {prefixCls, loadingSpinner} = this
-        let klass = {}
+        let {classPrefix, loadingSpinner} = this
+        let classes = {}
 
-        klass[prefixCls + '-btn-text-fade'] = true
-        loadingSpinner ? klass[prefixCls + '-btn-text-fade-out'] = true : ''
+        classes[classPrefix + '-btn-text-fade'] = true
+        loadingSpinner ? classes[classPrefix + '-btn-text-fade-out'] = true : ''
 
-        return klass
+        return classes
       },
       styleObj() {
         let {tall} = this

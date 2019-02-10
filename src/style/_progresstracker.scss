@@ -9,7 +9,7 @@ $lightGrayColor: $N80;
 $stepRoundLineHeight: 8px;
 $stepRoundLineMargin: 7px;
 
-.#{$prefix-cls}-steps {
+.#{$class-prefix}-steps {
   font-size: 0px;
   overflow: hidden;
   line-height: 0px;
@@ -109,50 +109,50 @@ $stepRoundLineMargin: 7px;
   }
 }
 
-.#{$prefix-cls}-steps-round-con {
+.#{$class-prefix}-steps-round-con {
   list-style-type: none;
   margin: 18px 0px;
   padding: 0px;
   display: flex;
   line-height:1em !important;
 
-  .#{$prefix-cls}-steps-finished,
-  .#{$prefix-cls}-steps-current {
-    .#{$prefix-cls}-steps-wrap {
-      .#{$prefix-cls}-steps-round {
+  .#{$class-prefix}-steps-finished,
+  .#{$class-prefix}-steps-current {
+    .#{$class-prefix}-steps-wrap {
+      .#{$class-prefix}-steps-round {
         display: none !important;
       }
     }
   }
 
-  > li .#{$prefix-cls}-steps-round {
+  > li .#{$class-prefix}-steps-round {
     color: $N0;
     background-color: $lightGrayColor;
   }
-  > .#{$prefix-cls}-steps-finished:before {
+  > .#{$class-prefix}-steps-finished:before {
     background-color: $primaryColorHover;
   }
-  > .#{$prefix-cls}-steps-finished .#{$prefix-cls}-steps-round {
+  > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
     // background-color: $primaryColorHover;
     // border: 4px $primaryColorHover solid;
   }
-  > .#{$prefix-cls}-steps-finished label {
+  > .#{$class-prefix}-steps-finished label {
     // color: $primaryColorHover;
     color: $N600 !important;
     font-weight: 600;
   }
-  > .#{$prefix-cls}-steps-current:before {
+  > .#{$class-prefix}-steps-current:before {
     background-color: $primaryColor;
     width: 50%;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
   }
-  > .#{$prefix-cls}-steps-current .#{$prefix-cls}-steps-round {
+  > .#{$class-prefix}-steps-current .#{$class-prefix}-steps-round {
     background-color: $B300;
     border: 4px $B300 solid;
     color:$N0;
   }
-  > .#{$prefix-cls}-steps-current label {
+  > .#{$class-prefix}-steps-current label {
     color: $B300 !important;
     font-weight: 700;
   }
@@ -187,7 +187,7 @@ $stepRoundLineMargin: 7px;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
   }
-  > li .#{$prefix-cls}-steps-wrap {
+  > li .#{$class-prefix}-steps-wrap {
     position: absolute;
     left: 50%;
     margin-left: -25px;
@@ -195,7 +195,7 @@ $stepRoundLineMargin: 7px;
     text-align: center;
     top: 0px;
   }
-  > li .#{$prefix-cls}-steps-round {
+  > li .#{$class-prefix}-steps-round {
     width: $stepRoundSize;
     height: $stepRoundSize;
     border-radius: 50%;
@@ -208,7 +208,7 @@ $stepRoundLineMargin: 7px;
     border: 4px $lightGrayColor solid;
     color: $weightGrayColor;
   }
-  > li .#{$prefix-cls}-steps-round > i {
+  > li .#{$class-prefix}-steps-round > i {
     color: $primaryColorHover;
     font-size: 12px;
   }
@@ -224,19 +224,19 @@ $stepRoundLineMargin: 7px;
     display: inline-block;
   }
 
-  > .#{$prefix-cls}-steps-finished:before,
-  .#{$prefix-cls}-steps-current:before {
+  > .#{$class-prefix}-steps-finished:before,
+  .#{$class-prefix}-steps-current:before {
     background-color: $primaryColorHover;
   }
 
-  > .#{$prefix-cls}-steps-finished .#{$prefix-cls}-steps-round {
+  > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
     border: 4px $primaryColorHover solid;
     background-color: $primaryColorHover;
     color: $N0;
   }
 
-  > .#{$prefix-cls}-steps-finished label,
-  .#{$prefix-cls}-steps-current label {
+  > .#{$class-prefix}-steps-finished label,
+  .#{$class-prefix}-steps-current label {
     color: $primaryColorHover;
   }
 }

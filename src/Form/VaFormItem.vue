@@ -1,10 +1,10 @@
 <template>
   <div :class="classObj">
-    <label :class="`${prefixCls}-col-sm-${label_col} ${prefixCls}-control-label`">
+    <label :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
       {{label}}
-      <em :class="`${prefixCls}-form-need`" v-if="need">*</em>
+      <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
-    <div :class="`${prefixCls}-col-sm-${col} inline`">
+    <div :class="`${classPrefix}-col-sm-${col} inline`">
       <slot />
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
       required: false,
       note: 'When true, all this does is render a red asterisk next to the label. This has nothing to do with validation.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -61,15 +61,15 @@ export default {
       return wrapCol - this.label_col
     },
     classObj () {
-      let {prefixCls, wrapCol} = this
-      let klass = {}
+      let {classPrefix, wrapCol} = this
+      let classes = {}
       let defaultCol = this.inline ? (wrapCol || 0) : 12
 
-      klass['clearfix'] = true
-      klass[prefixCls + '-form-group'] = true
-      klass[prefixCls + '-col-sm-' + defaultCol] = true
+      classes['clearfix'] = true
+      classes[classPrefix + '-form-group'] = true
+      classes[classPrefix + '-col-sm-' + defaultCol] = true
 
-      return klass
+      return classes
     }
   }
 }

@@ -32,7 +32,7 @@ export default {
     parentPosition: {
       type: Object
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
@@ -145,12 +145,12 @@ export default {
   },
   computed: {
     classObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-input-ops'] = true
+      classes[classPrefix + '-input-ops'] = true
 
-      return klass
+      return classes
     },
     styleObj () {
       let style = {}

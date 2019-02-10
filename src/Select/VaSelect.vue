@@ -1,29 +1,29 @@
 <template>
     <div :class="classObj">
         <va-button
-                :class="[`${prefixCls}-dropdown-toggle`, `${prefixCls}-select-btn`, showSelected && multiple && value.length ? `${prefixCls}-select-multiple` : '', show ? `${prefixCls}-select-btn-open` : '']"
+                :class="[`${classPrefix}-dropdown-toggle`, `${classPrefix}-select-btn`, showSelected && multiple && value.length ? `${classPrefix}-select-multiple` : '', show ? `${classPrefix}-select-btn-open` : '']"
                 :disabled="disabled"
                 :size="size"
                 :style="{width:width}"
                 :type="type"
                 @click.native="toggleDropdown"
                 ref="button">
-            <span :class="`${prefixCls}-select-placeholder`"
+            <span :class="`${classPrefix}-select-placeholder`"
                   v-if="showPlaceholder || !showSelected">{{placeholder}}</span>
             <span style="display: flex;" v-if="showSelected">
           <template v-if="multiple">
-            <div :class="`${prefixCls}-selected-tag`"
+            <div :class="`${classPrefix}-selected-tag`"
                  :key="index"
                  @click.stop="del(item)"
                  class="inline"
                  tabindex="0"
                  v-for="(item, index) in selectedItems">
-                <span :class="`${prefixCls}-selected-tag__label`">
+                <span :class="`${classPrefix}-selected-tag__label`">
                   <slot :item="item" name="item">
                       <span v-html="format(item)"></span>
                   </slot>
                 </span>
-                <span :class="`${prefixCls}-selected-tag__icon`">
+                <span :class="`${classPrefix}-selected-tag__icon`">
                     <va-icon type="times"></va-icon>
                 </span>
             </div>
@@ -40,14 +40,14 @@
             <va-icon :type="show ? 'angle-up' : 'angle-down'" color="#A5ADBA"></va-icon>
         </va-button>
         <transition name="fadeDown">
-            <ul :class="[`${prefixCls}-dropdown-menu`, search ? `${prefixCls}-has-search` : ``]"
+            <ul :class="[`${classPrefix}-dropdown-menu`, search ? `${classPrefix}-has-search` : ``]"
                 :style="{maxHeight: menuMaxHeight, width: menuWidth}"
                 ref="menu"
                 v-show="show"
                 v-va-position="show">
                 <li v-if="search">
-                    <div :class="`${prefixCls}-search-wrap`">
-                        <va-input :class="`${prefixCls}-select-search`"
+                    <div :class="`${classPrefix}-search-wrap`">
+                        <va-input :class="`${classPrefix}-select-search`"
                                   :placeholder="inputPlaceholder"
                                   @confirm="addExtra"
                                   icon="search"
@@ -62,7 +62,7 @@
 
                     <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
                 </li>
-                <li :class="`${prefixCls}-select-all`" v-if="multiple">
+                <li :class="`${classPrefix}-select-all`" v-if="multiple">
                     <a @click.prevent="selectAll">
                         {{getL('all')}}
                         <va-icon color="#0052CC" margin="5px 0 0 0" size="10px" type="check"
@@ -70,7 +70,7 @@
                     </a>
                 </li>
 
-                <div :class="`${prefixCls}-select-items-wrapper`">
+                <div :class="`${classPrefix}-select-items-wrapper`">
                     <slot>
                         <va-option
                                 :key="option.value"
@@ -81,7 +81,7 @@
                     </slot>
                 </div>
 
-                <div :class="`${prefixCls}-notify`" transition="fadeDown" v-show="showNotify">Limit: {{limit}}</div>
+                <div :class="`${classPrefix}-notify`" transition="fadeDown" v-show="showNotify">Limit: {{limit}}</div>
             </ul>
         </transition>
         <div class="clearfix"></div>
@@ -219,7 +219,7 @@
       rules: {
         type: Array
       },
-      prefixCls: {
+      classPrefix: {
         type: String,
         default: 'va'
       }
@@ -232,7 +232,7 @@
         showNotify: false,
         currentValue: this.value,
         currentOptions: this.options,
-        activeItemClass: this.prefixCls + '-select-item-active'
+        activeItemClass: this.classPrefix + '-select-item-active'
       }
     },
     provide() {
@@ -286,18 +286,18 @@
     },
     computed: {
       classObj() {
-        let {prefixCls, validStatus} = this
-        let klass = {}
+        let {classPrefix, validStatus} = this
+        let classes = {}
 
-        klass[prefixCls + '-has-error'] = validStatus === 'error'
-        klass[prefixCls + '-has-success'] = validStatus === 'success'
-        klass[prefixCls + '-has-warn'] = validStatus === 'warn'
+        classes[classPrefix + '-has-error'] = validStatus === 'error'
+        classes[classPrefix + '-has-success'] = validStatus === 'success'
+        classes[classPrefix + '-has-warn'] = validStatus === 'warn'
 
-        klass[prefixCls + '-btn-group'] = true
-        klass[prefixCls + '-select-group'] = true
-        klass[prefixCls + '-dropdown-con'] = true
+        classes[classPrefix + '-btn-group'] = true
+        classes[classPrefix + '-select-group'] = true
+        classes[classPrefix + '-dropdown-con'] = true
 
-        return klass
+        return classes
       },
       filterOptions() {
         return this.filter(this.currentOptions, this.searchText)

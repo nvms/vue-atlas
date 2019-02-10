@@ -37,20 +37,20 @@
     color: $btnOpenColor;
   }
   &-group {
-    &.#{$prefix-cls}-has-error {
-      .#{$prefix-cls}-btn {
+    &.#{$class-prefix}-has-error {
+      .#{$class-prefix}-btn {
         &:after {
           border: $hasErrorBtnBorder;
         }
       }
     }
 
-    .#{$prefix-cls}-search-wrap {
+    .#{$class-prefix}-search-wrap {
       background: $searchWrapBackground;
       border-bottom: 1px solid $searchWrapBorderBottomColor;
     }
 
-    .#{$prefix-cls}-selected-tag {
+    .#{$class-prefix}-selected-tag {
       $self: &;
       background: $selectedTagBackground;
 
@@ -65,7 +65,7 @@
       &:hover {
         color: $selectedTagHoverColor;
 
-        .#{$prefix-cls}-selected-tag__icon {
+        .#{$class-prefix}-selected-tag__icon {
           color: $selectedTagHoverIconColor !important;
         }
       }
@@ -73,28 +73,28 @@
       &:active {
         color: $selectedTagActiveColor;
 
-        .#{$prefix-cls}-selected-tag__icon {
+        .#{$class-prefix}-selected-tag__icon {
           color: $selectedTagActiveIconColor !important;
         }
       }
     }
 
-    .#{$prefix-cls}-dropdown-menu {
+    .#{$class-prefix}-dropdown-menu {
       background-color: $dropdownMenuBackground;
       -webkit-box-shadow: $dropdownMenuBoxShadow;
       box-shadow: $dropdownMenuBoxShadow;
 
-      .#{$prefix-cls}-notify {
+      .#{$class-prefix}-notify {
         background: $notifyBackground;
         border: $notifyBorder;
         box-shadow: $notifyBoxShadow;
       }
 
-      .#{$prefix-cls}-fa-plus-square-o {
+      .#{$class-prefix}-fa-plus-square-o {
         color: $addButtonColor;
       }
 
-      .#{$prefix-cls}-select-all {
+      .#{$class-prefix}-select-all {
         border-bottom: $selectAllBorderBottom;
 
         a {
@@ -105,13 +105,13 @@
       }
     }
 
-    .#{$prefix-cls}-dropdown-toggle {
-      .#{$prefix-cls}-select-placeholder {
+    .#{$class-prefix}-dropdown-toggle {
+      .#{$class-prefix}-select-placeholder {
         color: $dropdownPlaceholderColor;
       }
 
-      &:active:not(.#{$prefix-cls}-select-btn-open) {
-        .#{$prefix-cls}-select-placeholder {
+      &:active:not(.#{$class-prefix}-select-btn-open) {
+        .#{$class-prefix}-select-placeholder {
           color: $dropdownPlaceholderActiveColor;
         }
         i {
@@ -132,14 +132,14 @@
   /**
   No focus ring on an open Select
   */
-  &-btn-open.#{$prefix-cls}-btn:focus,
-  &-btn-open.#{$prefix-cls}-btn-focused {
+  &-btn-open.#{$class-prefix}-btn:focus,
+  &-btn-open.#{$class-prefix}-btn-focused {
     box-shadow: $selectOpenBtnFocusBoxShadow;
   }
 }
 
-.#{$prefix-cls}-select,
-.#{$prefix-cls}--theme-light .#{$prefix-cls}-select {
+.#{$class-prefix}-select,
+.#{$class-prefix}--theme-light .#{$class-prefix}-select {
   @include select-theme-mixin(
           $hasErrorBtnBorder: 2px solid $R400 !important,
           $btnOpenBackgroundColor: $N500 !important,
@@ -172,8 +172,8 @@
 }
 
 
-.#{$prefix-cls}-select-group {
-  .#{$prefix-cls}-select-btn-open {
+.#{$class-prefix}-select-group {
+  .#{$class-prefix}-select-btn-open {
     &:after {
       content: '';
       display: block;
@@ -186,7 +186,7 @@
     }
   }
 
-  .#{$prefix-cls}-selected-tag {
+  .#{$class-prefix}-selected-tag {
     $self: &;
     display: flex;
     align-items: baseline;
@@ -206,7 +206,7 @@
     }
   }
 
-  .#{$prefix-cls}-select-btn.#{$prefix-cls}-btn {
+  .#{$class-prefix}-select-btn.#{$class-prefix}-btn {
     cursor: default;
 
     &:after {
@@ -222,13 +222,13 @@
     }
   }
 
-  .#{$prefix-cls}-search-wrap {
+  .#{$class-prefix}-search-wrap {
     padding: 10px 10px 10px 10px;
     z-index: 10;
     margin-top: -4px;
   }
 
-  .#{$prefix-cls}-select-search {
+  .#{$class-prefix}-select-search {
     border: 0px;
     padding: 0;
     width: 100%;
@@ -236,7 +236,7 @@
     z-index: 10;
   }
 
-  .#{$prefix-cls}-dropdown-menu {
+  .#{$class-prefix}-dropdown-menu {
     display: block;
     overflow-y: auto;
     list-style-type: none;
@@ -266,7 +266,7 @@
       }
     }
 
-    .#{$prefix-cls}-notify {
+    .#{$class-prefix}-notify {
       position: absolute;
       bottom: 5px;
       width: 96%;
@@ -277,25 +277,25 @@
       pointer-events: none;
     }
 
-    .#{$prefix-cls}-select-all {
+    .#{$class-prefix}-select-all {
       position: relative;
       cursor: default;
     }
   }
 
-  .#{$prefix-cls}-has-search {
+  .#{$class-prefix}-has-search {
     width: 230px;
     padding-top: 40px;
   }
 
-  .#{$prefix-cls}-dropdown-toggle {
+  .#{$class-prefix}-dropdown-toggle {
     text-align: left;
     display: flex;
     align-items: center;
     min-width: 80px;
     justify-content: space-evenly;
 
-    .#{$prefix-cls}-btn-text-fade {
+    .#{$class-prefix}-btn-text-fade {
       justify-content: space-between !important;
 
       i {
@@ -315,6 +315,6 @@
   }
 }
 
-.#{$prefix-cls}-select-items-wrapper {
+.#{$class-prefix}-select-items-wrapper {
   overflow-y: auto;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${prefixCls}-row`" :style="styles">
+  <div :class="`${classPrefix}-row`" :style="styles">
     <slot />
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
       type: Number,
       default: 0
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

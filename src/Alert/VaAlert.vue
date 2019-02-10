@@ -28,20 +28,20 @@ export default {
       },
       note: 'The type of alert to render.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, type} = this
-      let klass = {}
+      let {classPrefix, type} = this
+      let classes = {}
 
-      klass[prefixCls + '-alert'] = true
-      klass[prefixCls + '-alert-' + type] = true
+      classes[classPrefix + '-alert'] = true
+      classes[classPrefix + '-alert-' + type] = true
 
-      return klass
+      return classes
     }
   }
 }

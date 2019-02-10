@@ -55,7 +55,7 @@ export default {
       required: false,
       note: 'Convenience prop: padding to be applied to the icon. Useful for when you need to assign a custom bgColor to an icon.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }

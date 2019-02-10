@@ -1,12 +1,12 @@
 <template>
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
-      <div :class="`${prefixCls}-card-header-inner`">
-        <div :class="`${prefixCls}-card-header-inner-left`"><slot name="left" /></div>
-        <div :class="`${prefixCls}-card-header-inner-right`"><slot name="right" /></div>
+      <div :class="`${classPrefix}-card-header-inner`">
+        <div :class="`${classPrefix}-card-header-inner-left`"><slot name="left" /></div>
+        <div :class="`${classPrefix}-card-header-inner-right`"><slot name="right" /></div>
       </div>
     </div>
-    <div :style="bodyStyleObj" :class="`${prefixCls}-card-body`">
+    <div :style="bodyStyleObj" :class="`${classPrefix}-card-body`">
       <slot />
     </div>
   </div>
@@ -30,20 +30,20 @@ export default {
       default: '1em',
       note: 'A convenience prop to help define the card\'s inner padding.'
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, elevation} = this
-      let klass = {}
+      let {classPrefix, elevation} = this
+      let classes = {}
 
-      klass[prefixCls + '-card'] = true
-      klass[prefixCls + '-card-elevation-' + elevation] = true
+      classes[classPrefix + '-card'] = true
+      classes[classPrefix + '-card-elevation-' + elevation] = true
 
-      return klass
+      return classes
     },
     bodyStyleObj () {
       let {padding} = this
@@ -54,12 +54,12 @@ export default {
       return style
     },
     headerClassObj () {
-      let {prefixCls} = this
-      let klass = {}
+      let {classPrefix} = this
+      let classes = {}
 
-      klass[prefixCls + '-card-header'] = true
+      classes[classPrefix + '-card-header'] = true
 
-      return klass
+      return classes
     },
     headerStyleObj () {
       let {padding} = this

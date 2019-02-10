@@ -26,20 +26,20 @@ export default {
       default: '',
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
   },
   computed: {
     classObj () {
-      let {prefixCls, brand} = this
-      let klass = {}
+      let {classPrefix, brand} = this
+      let classes = {}
 
-      klass[prefixCls + '-minibar-item'] = true
-      klass[prefixCls + '-minibar-item-brand'] = brand
+      classes[classPrefix + '-minibar-item'] = true
+      classes[classPrefix + '-minibar-item-brand'] = brand
 
-      return klass
+      return classes
     }
   }
 }

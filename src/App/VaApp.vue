@@ -105,7 +105,7 @@ export default {
       default: false,
       required: false
     },
-    prefixCls: {
+    classPrefix: {
       type: String,
       default: 'va'
     }
