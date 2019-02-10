@@ -11,7 +11,7 @@
       :readonly="readonly"
       @clean="clean"
       @click.native="inputClick"
-      :show-clean="true"
+      :clearable="true"
       icon="clock"
       icon-style="regular"
       v-model="currentValue">
@@ -25,7 +25,7 @@
       :custom-validate="customValidate"
       :disabled="disabled"
       :readonly="readonly"
-      :show-clean="true"
+      :clearable="true"
       type="time"
       v-model="currentValue">
     </va-input>

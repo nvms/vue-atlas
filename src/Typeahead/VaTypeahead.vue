@@ -9,7 +9,7 @@
                 :placeholder="placeholder"
                 :readonly="readonly"
                 :rules="rules"
-                :show-clean="showClean"
+                :clearable="clearable"
                 :width="width"
                 @blur="blur"
                 @focus="focus"
@@ -91,7 +91,7 @@
           this.query = this.addFormat(item)
         }
       },
-      showClean: {
+      clearable: {
         type: Boolean,
         default: false
       },

@@ -57,10 +57,10 @@ describe('VaInput.vue', () => {
     expect(enterMock.mock.calls.length).toBe(1)
   })
 
-  it('should include a va-icon when showClean prop is true', () => {
+  it('should include a va-icon when clearable prop is true', () => {
     const wrapper = mount(VaInput, {
       propsData: {
-        showClean: true
+        clearable: true
       }
     })
     expect(wrapper.find('va-icon').exists()).toBeTruthy()

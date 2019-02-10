@@ -2,13 +2,13 @@
 $iconHoverColor,
 $iconActiveColor) {
 
-  .#{$class-prefix}-input-show-clean,
+  .#{$class-prefix}-input-clearable,
   .#{$class-prefix}-input-show-icon,
     {
     color: $iconColor;
   }
 
-  .#{$class-prefix}-input-show-clean {
+  .#{$class-prefix}-input-clearable {
     &:hover {
       color: $iconHoverColor;
     }
@@ -52,13 +52,13 @@ $opsBtnBoxShadow) {
   display: flex;
 
   &:hover {
-    .#{$class-prefix}-input-show-clean {
+    .#{$class-prefix}-input-clearable {
       opacity: 1;
     }
   }
 }
 
-.#{$class-prefix}-show-clean:hover .#{$class-prefix}-input-show-icon {
+.#{$class-prefix}-clearable:hover .#{$class-prefix}-input-show-icon {
   display: none;
 }
 
@@ -76,7 +76,7 @@ $opsBtnBoxShadow) {
   overflow: hidden;
 }
 
-.#{$class-prefix}-input-show-clean,
+.#{$class-prefix}-input-clearable,
 .#{$class-prefix}-input-show-icon {
   position: absolute;
   top: 10px;
@@ -87,7 +87,7 @@ $opsBtnBoxShadow) {
   transition: opacity .1s linear;
 }
 
-.#{$class-prefix}-input-show-clean {
+.#{$class-prefix}-input-clearable {
   opacity: 0;
   cursor: default;
 }

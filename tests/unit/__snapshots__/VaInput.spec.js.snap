@@ -3,26 +3,23 @@
 exports[`VaInput.vue renders correctly 1`] = `
 <div
   class="va-input-con inline"
-  style="width: 220px;"
+  style="width: 100%;"
 >
+  <!---->
+   
   <input
-    auto-complete="off"
     class="va-form-control va-form-control-primary"
     placeholder=""
-    style="width: 220px;"
+    style="width: 100%;"
     tabindex="0"
     type="text"
   />
    
   <!---->
    
-  <div
-    class="va-input-icon-wrapper"
-  >
-    <!---->
-     
-    <!---->
-  </div>
+  <!---->
+   
+  <!---->
    
   <!---->
 </div>

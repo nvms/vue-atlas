@@ -42,12 +42,12 @@
       @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
-    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== undefined">
+    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== undefined || clearable">
       <va-icon
-        v-if="showClean"
+        v-if="clearable"
         type="times"
         icon-style="solid"
-        :class="`${classPrefix}-input-show-clean`"
+        :class="`${classPrefix}-input-clearable`"
         @click.native.stop="clean"/>
       <va-icon
         :class="`${classPrefix}-input-show-icon`"
@@ -121,7 +121,7 @@ export default {
       default: 'regular',
       required: false
     },
-    showClean: {
+    clearable: {
       type: Boolean,
       default: false
     },
@@ -220,14 +220,14 @@ export default {
       return style
     },
     classObj () {
-      let {classPrefix, validStatus, showClean, size, icon, prefix, postfix, type} = this
+      let {classPrefix, validStatus, clearable, size, icon, prefix, postfix, type} = this
       let classes = {}
 
       classes[classPrefix + '-has-error'] = validStatus === 'error'
       classes[classPrefix + '-has-success'] = validStatus === 'success'
       classes[classPrefix + '-has-warn'] = validStatus === 'warn'
       classes[classPrefix + '-input-con'] = true
-      classes[classPrefix + '-show-clean'] = showClean
+      classes[classPrefix + '-clearable'] = clearable
       classes[classPrefix + '-show-icon'] = icon ? true : false
       size ? classes[classPrefix + '-input-' + size] = true : ''
       classes[classPrefix + '-input-has-prefix'] = prefix !== '' ? true : false
@@ -262,6 +262,7 @@ export default {
     clean () {
       this.$emit('input', '')
       this.$emit('clean')
+      this.$refs.input.value = ''
       this.$refs.input.focus()
     },
     update (val) {

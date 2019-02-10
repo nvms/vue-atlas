@@ -54,7 +54,7 @@
                                   icon-style="solid"
                                   no-v-model
                                   ref="searchInput"
-                                  show-clean
+                                  clearable
                                   size="xs"
                                   v-model="searchText"
                                   width="210px"/>
