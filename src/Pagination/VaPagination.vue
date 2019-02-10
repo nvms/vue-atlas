@@ -118,8 +118,6 @@ export default {
       if (this.max < this.pageCount && !this.onFirstPage && this.currentValue >= this.max) {
         this.startEllipsis = true
       }
-
-      // if (3 < 12 && true && 3 >= 3)
     },
     changePage (index) {
       let {max} = this
