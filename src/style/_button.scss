@@ -2,12 +2,12 @@
   background-color: $bgCol;
   color: $fontCol;
 
-  &:hover {
+  &:hover:not(.#{$prefix-cls}-btn-disabled) {
     background-color: $bgColHover;
     color: $fontColHover;
   }
 
-  &:active {
+  &:active:not(.#{$prefix-cls}-btn-disabled) {
     background-color: $bgColActive;
     color: $fontColActive;
   }
@@ -27,8 +27,8 @@
   //   outline: none;
   // }
   // ring on hover
-  &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open),
-  &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open) {
+  &:focus:not(:active):not(.#{$prefix-cls}-select-btn-open):not(.#{$prefix-cls}-btn-disabled),
+  &-focused:not(:active):not(.#{$prefix-cls}-select-btn-open):not(.#{$prefix-cls}-btn-disabled) {
     box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
     /* fallback */
     box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
@@ -393,6 +393,10 @@
     -moz-transition-property: none;
     -ms-transition-property: none;
     transition-property: none;
+  }
+
+  &-disabled {
+    color: $N50 !important;
   }
 
   >div {
