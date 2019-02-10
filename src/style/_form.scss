@@ -161,6 +161,7 @@ input[type="file"].#{$class-prefix}-form-control {
 
 .#{$class-prefix}-control-label {
   font-size: 12px;
+  align-self: flex-start;
 }
 
 .#{$class-prefix}-form-horizontal .#{$class-prefix}-control-label {
