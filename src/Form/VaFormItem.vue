@@ -4,7 +4,7 @@
       {{label || '&nbsp;'}}
       <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
-    <div :class="`${classPrefix}-col-sm-${col} inline`">
+    <div :class="`${classPrefix}-col-sm-${col} ${classPrefix}-flex`">
       <slot />
     </div>
   </div>

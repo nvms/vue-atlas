@@ -41,7 +41,6 @@
       background: $hoverBackground;
     }
   
-
   }
 
   .#{$class-prefix}-control-label {
@@ -49,7 +48,6 @@
     color: $labelColor;
   }
 }
-
 
 @include form-theme-mixin(
   $background: $N10,
