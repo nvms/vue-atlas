@@ -175,27 +175,6 @@
             and `reverse` to get a feel for how they work.
           </p>
           <p>
-            Culture vanquish the impossible a billion trillion decipherment
-            <a href="#">network of wormholes</a> from which we spring. Billions
-            upon billions brain is the seed of intelligence the ash of stellar
-            alchemy astonishment with pretty stories for which there's little good
-            evidence tendrils of gossamer clouds. Tingling of the spine emerged
-            into consciousness the carbon in our apple pies a mote of dust
-            suspended in a sunbeam the carbon in our apple pies astonishment.
-          </p>
-
-          <p>
-            Cambrian explosion science citizens of distant epochs encyclopaedia
-            galactica brain is the seed of intelligence rich in mystery. Rings
-            of Uranus made in the interiors of collapsing stars hundreds of
-            thousands astonishment from which we spring laws of physics? The ash
-            of stellar alchemy a very small stage in a vast cosmic arena network
-            of wormholes another world concept of the number one the only home
-            we've ever known and billions upon billions upon billions upon
-            billions upon billions upon billions upon billions.
-          </p>
-
-          <p>
             <va-card :elevation="elevation">
               <div slot="left">
                 <va-select size="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
@@ -231,52 +210,32 @@
                 </va-button>
               </div>
               <p>
-                <va-input prefix="https://vue-atlas.com/" />
+                Culture vanquish the impossible a billion trillion decipherment
+                <a href="#">network of wormholes</a> from which we spring. Billions
+                upon billions brain is the seed of intelligence the ash of stellar
+                alchemy astonishment with pretty stories for which there's little good
+                evidence tendrils of gossamer clouds. Tingling of the spine emerged
+                into consciousness the carbon in our apple pies a mote of dust
+                suspended in a sunbeam the carbon in our apple pies astonishment.
               </p>
               <p>
-                <va-input prefix="$" postfix=".00 USD" width="xs" />
+                Cambrian explosion science citizens of distant epochs encyclopaedia
+                galactica brain is the seed of intelligence rich in mystery. Rings
+                of Uranus made in the interiors of collapsing stars hundreds of
+                thousands astonishment from which we spring laws of physics? The ash
+                of stellar alchemy a very small stage in a vast cosmic arena network
+                of wormholes another world concept of the number one the only home
+                we've ever known and billions upon billions upon billions upon
+                billions upon billions upon billions upon billions.
               </p>
               <p>
-                <va-input postfix="@gmail.com" icon="envelope-open" />
-              </p>
-              <p>
-                <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
-              </p>
-              <p>
-                <va-typeahead
-                  show-clean
-                  width="lg"
-                  :debounce="400"
-                  placeholder="Provide a GitHub username"
-                  @change="getGitResults"
-                  :items="gitItems"
-                  :add-format="gitCallback"
-                  icon="github"
-                  icon-style="brands"
-                  :limit="10">
-                  <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
-                    <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
-                    <span>{{ item.login }}</span>
-                  </div>
-                </va-typeahead>
-              </p>
-              <p>
-                <va-textarea
-                  ref="textarea"
-                  width="lg"
-                  :autosize="true"
-                  buttons
-                  :resize="false"
-                  :loading="textareaLoading"
-                  @confirm="textareaConfirm"
-                  @cancel="textareaCancel"
-                  v-model="textareaText">
-                </va-textarea>
-              </p>
-              <p>
-                <va-button size="sm">Secondary action</va-button>
-                &nbsp;
-                <va-button size="sm" type="primary">Primary action</va-button>
+                <va-pagination
+                  :value="3"
+                  :total="150"
+                  :max="5"
+                  :per-page="10">
+                  
+                </va-pagination>
               </p>
             </va-card>
           </p>
@@ -302,6 +261,52 @@
               <va-button @click.native="showNotification">Show notification</va-button>
               &nbsp;
               <va-button @click.native="$refs.aside.open()">Open aside</va-button>
+            </p>
+            <p>
+              <va-input prefix="https://vue-atlas.com/" />
+            </p>
+            <p>
+              <va-input prefix="$" postfix=".00 USD" width="xs" />
+            </p>
+            <p>
+              <va-input postfix="@gmail.com" icon="envelope-open" />
+            </p>
+            <p>
+              <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
+            </p>
+            <p>
+              <va-typeahead
+                show-clean
+                :debounce="400"
+                placeholder="Provide a GitHub username"
+                @change="getGitResults"
+                :items="gitItems"
+                :add-format="gitCallback"
+                icon="github"
+                icon-style="brands"
+                :limit="10">
+                <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
+                  <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
+                  <span>{{ item.login }}</span>
+                </div>
+              </va-typeahead>
+            </p>
+            <p>
+              <va-textarea
+                ref="textarea"
+                :autosize="true"
+                buttons
+                :resize="false"
+                :loading="textareaLoading"
+                @confirm="textareaConfirm"
+                @cancel="textareaCancel"
+                v-model="textareaText">
+              </va-textarea>
+            </p>
+            <p>
+              <va-button size="sm">Secondary action</va-button>
+              &nbsp;
+              <va-button size="sm" type="primary">Primary action</va-button>
             </p>
           </va-card>
         </va-column>
