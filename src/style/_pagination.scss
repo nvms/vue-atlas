@@ -1,0 +1,11 @@
+.#{$prefix-cls}-pagination {
+  display: flex;
+  justify-content: space-around;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+}
