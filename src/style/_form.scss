@@ -17,6 +17,12 @@
     color: $requiredColor;
   }
 
+  .#{$class-prefix}-has-error {
+    .#{$class-prefix}-form-control {
+      border-color: $errorBorderColor;
+    }
+  }
+
   .#{$class-prefix}-form-control {
     background: $background;
     color: $color;
@@ -35,11 +41,7 @@
       background: $hoverBackground;
     }
   
-    .#{$class-prefix}-has-error {
-      .#{$class-prefix}-form-control {
-        border-color: $errorBorderColor;
-      }
-    }
+
   }
 
   .#{$class-prefix}-control-label {
@@ -157,8 +159,11 @@ input[type="file"].#{$class-prefix}-form-control {
   }
 }
 
-.#{$class-prefix}-form-horizontal .#{$class-prefix}-control-label {
+.#{$class-prefix}-control-label {
   font-size: 12px;
+}
+
+.#{$class-prefix}-form-horizontal .#{$class-prefix}-control-label {
   margin-bottom: 8px;
   text-align: left;
 }
