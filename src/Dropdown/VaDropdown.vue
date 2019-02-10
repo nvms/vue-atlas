@@ -4,24 +4,17 @@
       <slot name="trigger" />
     </span>
 
-    <transition :name="effect" v-if="effect != 'collapse'">
+    <transition :name="effect">
       <ul v-va-position="show" :class="`${classPrefix}-dropdown-menu`" v-show="show">
         <slot />
       </ul>
     </transition>
-
-    <va-collapse-transition v-if="effect=='collapse'">
-      <ul :class="`${classPrefix}-dropdown-menu`" v-show="show">
-        <slot />
-      </ul>
-    </va-collapse-transition>
 
   </div>
 </template>
 
 <script>
   import EventListener from '../utils/EventListener'
-  import VaCollapseTransition from '../VaCollapseTransition'
 
   export default {
   name: 'VaDropdown',
@@ -76,9 +69,6 @@
     },
     onFocus () {
     }
-  },
-  components: {
-    VaCollapseTransition
   },
   computed: {
     classObj () {
