@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj">
     <label :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
-      {{label}}
+      {{label || '&nbsp;'}}
       <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
     <div :class="`${classPrefix}-col-sm-${col} inline`">
@@ -44,8 +44,12 @@ export default {
     inline () {
       return this.$parent.type === 'inline'
     },
+    vertical () {
+      return this.$parent.type == 'vertical'
+    },
     label_col () {
       let defaultCol = this.inline ? 0 : 2
+      defaultCol = this.vertical ? 12 : defaultCol
       return this.labelCol ? this.labelCol : defaultCol
     },
     col () {
@@ -58,16 +62,14 @@ export default {
       }
 
       let wrapCol = this.wrapCol ? this.wrapCol : 12
-      return wrapCol - this.label_col
+      return this.label_col == 12 ? 12 : wrapCol - this.label_col
     },
     classObj () {
       let {classPrefix, wrapCol} = this
       let classes = {}
       let defaultCol = this.inline ? (wrapCol || 0) : 12
 
-      classes['clearfix'] = true
       classes[classPrefix + '-form-group'] = true
-      classes[classPrefix + '-col-sm-' + defaultCol] = true
 
       return classes
     }
