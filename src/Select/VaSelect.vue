@@ -1,10 +1,10 @@
 <template>
-    <div :class="classObj">
+    <div :class="classObj" :style="{width:actualWidth}">
         <va-button
                 :class="[`${classPrefix}-dropdown-toggle`, `${classPrefix}-select-btn`, showSelected && multiple && value.length ? `${classPrefix}-select-multiple` : '', show ? `${classPrefix}-select-btn-open` : '']"
                 :disabled="disabled"
                 :size="size"
-                :style="{width:width}"
+                :style="{width:actualWidth}"
                 :type="type"
                 @click.native="toggleDropdown"
                 ref="button">
@@ -41,7 +41,7 @@
         </va-button>
         <transition name="fadeDown">
             <ul :class="[`${classPrefix}-dropdown-menu`, search ? `${classPrefix}-has-search` : ``]"
-                :style="{maxHeight: menuMaxHeight, width: menuWidth}"
+                :style="{minWidth: actualWidth, maxHeight: menuMaxHeight}"
                 ref="menu"
                 v-show="show"
                 v-va-position="show">
@@ -56,8 +56,7 @@
                                   ref="searchInput"
                                   clearable
                                   size="xs"
-                                  v-model="searchText"
-                                  width="210px"/>
+                                  v-model="searchText" />
                     </div>
 
                     <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
@@ -101,46 +100,31 @@
   import validate from '../validate.vue'
   import type from '../utils/type'
   import localeMixin from '../Mixin/localeMixin.js'
+  import inputMixin from '../Mixin/inputMixin'
 
   export default {
     name: 'VaSelect',
-    mixins: [validationMixin, localeMixin('VaSelect')],
+    mixins: [validationMixin, inputMixin, localeMixin('VaSelect')],
     props: {
-      readonly: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'Whether or not the select dropdown is readonly.'
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'Whether or not the select dropdown is disabled.'
-      },
       showSelected: {
         type: Boolean,
         default: true,
         required: false,
-        note: 'When this is false, selected items do not appear in the main select input element.'
       },
       inputPlaceholder: {
         type: String,
         default: '',
         required: false,
-        note: 'If the \'search\' prop is passed, the inputPlaceholder prop allows you to specify a placeholder for the input that appears at the top of the dropdown list.'
       },
       size: {
         type: String,
         required: false,
-        note: 'The size of the select input.'
       },
       context: {},
       type: {
         type: String,
         default: 'default',
         required: false,
-        note: 'The type of button to render as the Select button. See VaButton for possible values.'
       },
       options: {
         type: Array,
@@ -148,47 +132,32 @@
           return []
         },
         required: false,
-        note: 'Accepts an array of objects with value and label keys: { value: \'apple\', label: \'Apple\' }'
       },
       value: {},
-      placeholder: {
-        type: String,
-        default: '',
-        required: false,
-        note: 'The placeholder for the select input.'
-      },
       multiple: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'When true, multiple items can be selected at the same time.'
       },
       search: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'When true, a search input appears at the top of the item list. Items can be filtered using this search input.'
       },
       extra: {
         type: Boolean,
         default: false,
         required: false,
-        note: 'When true, an input element will appear at the top of the item list. New items can be created using this input.'
       },
       limit: {
         type: Number,
         default: 1024,
         required: false,
-        note: 'Allows you to set a maximum number of selected items.'
-      },
-      width: {
-        type: String
       },
       menuMaxHeight: {
         type: String,
         default: '300px',
         required: false,
-        note: 'The maximum height of the dropdown menu.'
       },
       menuWidth: {
         type: String,
@@ -198,7 +167,6 @@
         type: Boolean,
         default: false,
         required: false,
-        note: 'When true, searches are case-sensitive.'
       },
       format: {
         type: Function,
@@ -211,13 +179,6 @@
         type: Boolean,
         default: false,
         required: false,
-        note: 'When true, you cannot uncheck a checked element in a single select component.'
-      },
-      customValidate: {
-        type: Function
-      },
-      rules: {
-        type: Array
       },
       classPrefix: {
         type: String,

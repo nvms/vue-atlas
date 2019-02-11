@@ -318,3 +318,9 @@
 .#{$class-prefix}-select-items-wrapper {
   overflow-y: auto;
 }
+
+.#{$class-prefix}-select-group {
+  .#{$class-prefix}-dropdown-toggle {
+    width: 100%;
+  }
+}
