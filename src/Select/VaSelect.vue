@@ -11,31 +11,31 @@
             <span :class="`${classPrefix}-select-placeholder`"
                   v-if="showPlaceholder || !showSelected">{{placeholder}}</span>
             <span style="display: flex;" v-if="showSelected">
-          <template v-if="multiple">
-            <div :class="`${classPrefix}-selected-tag`"
-                 :key="index"
-                 @click.stop="del(item)"
-                 class="inline"
-                 tabindex="0"
-                 v-for="(item, index) in selectedItems">
-                <span :class="`${classPrefix}-selected-tag__label`">
-                  <slot :item="item" name="item">
-                      <span v-html="format(item)"></span>
+              <template v-if="multiple">
+                <div :class="`${classPrefix}-selected-tag`"
+                    :key="index"
+                    @click.stop="del(item)"
+                    class="inline"
+                    tabindex="0"
+                    v-for="(item, index) in selectedItems">
+                    <span :class="`${classPrefix}-selected-tag__label`">
+                      <slot :item="item" name="item">
+                          <span v-html="format(item)"></span>
+                      </slot>
+                    </span>
+                    <span :class="`${classPrefix}-selected-tag__icon`">
+                        <va-icon type="times"></va-icon>
+                    </span>
+                </div>
+              </template>
+              <template v-else>
+                <div class="inline">
+                  <slot :item="selectedItems[0]" name="item">
+                      <span v-html="format(selectedItems[0])"></span>
                   </slot>
-                </span>
-                <span :class="`${classPrefix}-selected-tag__icon`">
-                    <va-icon type="times"></va-icon>
-                </span>
-            </div>
-          </template>
-          <template v-else>
-            <div class="inline">
-              <slot :item="selectedItems[0]" name="item">
-                  <span v-html="format(selectedItems[0])"></span>
-              </slot>
-            </div>
-          </template>
-        </span>
+                </div>
+              </template>
+            </span>
             &nbsp;&nbsp;
             <va-icon :type="show ? 'angle-up' : 'angle-down'" color="#A5ADBA"></va-icon>
         </va-button>
