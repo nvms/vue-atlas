@@ -155,7 +155,7 @@
             @cancel="inputCancel"
             v-model="inputText">
           </va-input>
-          <va-select size="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
+          <va-select size="sm" width="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
           <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
           <va-toggle :value="!toggled"></va-toggle>
           <va-toggle size="lg" v-model="toggled"></va-toggle>
@@ -177,7 +177,7 @@
           <p>
             <va-card :elevation="elevation">
               <div slot="left">
-                <va-select size="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
+                <va-select size="sm" width="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
                   <va-option value="0">0</va-option>
                   <va-option value="1">1</va-option>
                   <va-option value="2">2</va-option>
@@ -239,6 +239,41 @@
               </p>
             </va-card>
           </p>
+          <p>
+            <va-card>
+              <va-form type="horizontal">
+                <va-form-item label="Name">
+                  <va-input />
+                </va-form-item>
+                <va-form-item label="Select">
+                  <va-select placeholder="Stuff">
+                    <va-option value="taco" label="Taco">Twelve tacos</va-option>
+                  </va-select>
+                  &nbsp;
+                  <va-button><va-icon type="circle" size="9px"/></va-button>
+                </va-form-item>
+                <va-form-item label="Typeahead">
+                  <va-typeahead
+                    show-clean
+                    :debounce="400"
+                    placeholder="Provide a GitHub username"
+                    @change="getGitResults"
+                    :items="gitItems"
+                    :add-format="gitCallback"
+                    icon="github"
+                    icon-style="brands"
+                    :limit="10">
+                    <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
+                      <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
+                      <span>{{ item.login }}</span>
+                    </div>
+                  </va-typeahead>
+                  &nbsp;
+                  <va-button><va-icon type="circle" size="9px"/></va-button>
+                </va-form-item>
+              </va-form>
+            </va-card>
+          </p>
         </va-column>
 
         <va-column :xs="12" :sm="12" :md="4">
@@ -272,24 +307,7 @@
               <va-input postfix="@gmail.com" icon="envelope-open" />
             </p>
             <p>
-              <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'"></va-datepicker>
-            </p>
-            <p>
-              <va-typeahead
-                show-clean
-                :debounce="400"
-                placeholder="Provide a GitHub username"
-                @change="getGitResults"
-                :items="gitItems"
-                :add-format="gitCallback"
-                icon="github"
-                icon-style="brands"
-                :limit="10">
-                <div slot="item" slot-scope="{item}" style="display:flex;align-items:center;justify-content:center;align-content:center;cursor:default;">
-                  <img width="26px" height="26px" :src="item.avatar_url" style="margin-right: 10px;"/>
-                  <span>{{ item.login }}</span>
-                </div>
-              </va-typeahead>
+              <va-datepicker width="md" size="sm" v-model="dateValue" :readonly="true" :format="'MM/dd/yyyy'" />
             </p>
             <p>
               <va-textarea
@@ -300,8 +318,7 @@
                 :loading="textareaLoading"
                 @confirm="textareaConfirm"
                 @cancel="textareaCancel"
-                v-model="textareaText">
-              </va-textarea>
+                v-model="textareaText" />
             </p>
             <p>
               <va-button size="sm">Secondary action</va-button>

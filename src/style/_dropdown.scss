@@ -89,6 +89,7 @@
 .#{$class-prefix}-dropdown-con {
   position: relative;
   display: inline-block;
+  vertical-align: middle;
 
   .#{$class-prefix}-dropdown-menu {
     position: absolute;

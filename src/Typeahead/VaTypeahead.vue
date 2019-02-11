@@ -1,5 +1,7 @@
 <template>
-    <div :class="[show ? classPrefix + '-dropdown-con' : '']">
+    <div
+    :class="[classPrefix + '-dropdown-con']"
+    :style="styleObj">
         <va-input
                 :custom-validate="customValidate"
                 :disabled="disabled"
@@ -139,6 +141,14 @@
       }
     },
     computed: {
+      styleObj () {
+        let style = {}
+        let {actualWidth} = this
+
+        actualWidth.slice(-1) === '%' ? style['width'] = actualWidth : style['min-width'] = actualWidth
+
+        return style
+      },
       citems() {
         return this.items.slice(0, this.limit)
       },
