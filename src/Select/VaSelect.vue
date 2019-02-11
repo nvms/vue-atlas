@@ -55,10 +55,8 @@
                                   no-v-model
                                   ref="searchInput"
                                   clearable
-                                  size="xs"
                                   v-model="searchText" />
                     </div>
-
                     <!-- <va-icon type="plus-square" icon-style="solid" v-if="extra" @click.native="addExtra"></va-icon> -->
                 </li>
                 <li :class="`${classPrefix}-select-all`" v-if="multiple">
@@ -158,10 +156,6 @@
         type: String,
         default: '300px',
         required: false,
-      },
-      menuWidth: {
-        type: String,
-        required: false
       },
       matchCase: {
         type: Boolean,
