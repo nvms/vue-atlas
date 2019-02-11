@@ -1,10 +1,10 @@
 <template>
-    <div :class="classObj" :style="{width:actualWidth}">
+    <div :class="classObj" :style="styleObj">
         <va-button
                 :class="[`${classPrefix}-dropdown-toggle`, `${classPrefix}-select-btn`, showSelected && multiple && value.length ? `${classPrefix}-select-multiple` : '', show ? `${classPrefix}-select-btn-open` : '']"
                 :disabled="disabled"
                 :size="size"
-                :style="{width:actualWidth}"
+                :style="{minWidth:'100%'}"
                 :type="type"
                 @click.native="toggleDropdown"
                 ref="button">
@@ -41,7 +41,7 @@
         </va-button>
         <transition name="fadeDown">
             <ul :class="[`${classPrefix}-dropdown-menu`, search ? `${classPrefix}-has-search` : ``]"
-                :style="{minWidth: actualWidth, maxHeight: menuMaxHeight}"
+                :style="{minWidth: '100%', maxHeight: menuMaxHeight}"
                 ref="menu"
                 v-show="show"
                 v-va-position="show">
@@ -240,6 +240,14 @@
       document.addEventListener('keyup', this.keyup)
     },
     computed: {
+      styleObj () {
+        let style = {}
+        let {actualWidth} = this
+
+        actualWidth.slice(-1) === '%' ? style['width'] = actualWidth : style['min-width'] = actualWidth
+
+        return style
+      },
       classObj() {
         let {classPrefix, validStatus} = this
         let classes = {}
