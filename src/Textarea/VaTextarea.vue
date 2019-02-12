@@ -271,14 +271,9 @@ export default {
       this.$emit('cancel')
     },
     resizeTextarea (event) {
-      console.log('resizeTextarea called')
-      console.log('event:', event)
       if (this.autosize) {
-        // event.target.style.height = 'auto'
-        // event.target.style.height = (event.target.scrollHeight + 4) + 'px'
         this.$refs.textareaContainer.style.height = 'auto'
         this.$refs.textareaContainer.style.height = (event.target.scrollHeight + 4) + 'px'
-
         this.position = this.getPosition()
       }
     }
