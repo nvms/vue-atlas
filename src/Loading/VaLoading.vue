@@ -1,16 +1,16 @@
 <template>
-  <span :class="classObj" ref="load">
-    <i :class="iclassObj" />
-    <slot />
-    <svg viewBox="0 0 50 50" :class="`${classPrefix}-spinner`">
-      <circle :class="`${classPrefix}-path`" :style="{ stroke: color }" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-    </svg>
-  </span>
+  <transition name="fade">
+    <span :class="classObj" ref="load">
+      <i :class="iclassObj" />
+      <slot />
+      <svg viewBox="0 0 50 50" :class="`${classPrefix}-spinner`">
+        <circle :class="`${classPrefix}-path`" :style="{ stroke: color }" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+      </svg>
+    </span>
+  </transition>
 </template>
 
 <script>
-import { randomID } from '../utils/randomId'
-
 export default {
   name: 'VaLoading',
   props: {
@@ -22,6 +22,7 @@ export default {
       default: 'md',
       validator (v) {
         return [
+          'xl',
           'lg',
           'md',
           'sm',
@@ -31,10 +32,6 @@ export default {
     },
     center: {
       type: Boolean
-    },
-    fixed: {
-      type: Boolean,
-      default: false
     },
     color: {
       type: String,
@@ -46,50 +43,33 @@ export default {
       default: 'va'
     }
   },
-  data () {
-    return {
-      originalParentID: null
-    }
-  },
   mounted () {
-    if (!this.center) {
-      this.originalParentID = randomID()
-      this.$refs.load.parentElement.setAttribute('data-atlas-' + this.originalParentID, 'true')
+    if (this.center) {
+      document.querySelector('body').appendChild(this.$refs.load)
+      this.$once('hook:beforeDestroy', () => {
+        document.querySelector('body').removeChild(this.$refs.load)
+      })
     }
   },
   computed: {
     classObj () {
-      let {classPrefix, center, fixed} = this
+      let {classPrefix, center} = this
       let classes = {}
 
-      classes['affix'] = fixed
       classes[classPrefix + '-page-loading-con'] = true
       classes[classPrefix + '-loading-center'] = center
 
       return classes
     },
     iclassObj () {
-      let {classPrefix, type, size, color} = this
+      let {classPrefix, type, size} = this
       let classes = {}
 
       classes[classPrefix + '-page-loading'] = true
       type ? classes[classPrefix + '-loading-' + type] = true : ''
       size ? classes[classPrefix + '-loading-' + size] = true : ''
-      color ? classes['text-' + color] = true : ''
 
       return classes
-    }
-  },
-  watch: {
-    center (val) {
-      if (val) {
-        document.querySelector('body').appendChild(this.$refs.load)
-        this.$once('hook:beforeDestroy', () => {
-          document.querySelector('body').removeChild(this.$refs.load)
-        })
-      } else {
-        document.querySelector('[data-atlas-' + this.originalParentID + '="true"]').appendChild(this.$refs.load)
-      }
     }
   }
 }

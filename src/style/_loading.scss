@@ -4,6 +4,8 @@
   position: relative;
   /*see _button.scss for more position information related to*/
   /*-page-loading-con being inside of a button*/
+  transition: opacity .3s ease-in-out;
+  // opacity: 0;
 }
 .#{$class-prefix}-path {
   stroke: #dcdcdc;
@@ -16,49 +18,73 @@
   transform-origin: center center 0px;
   animation: rotate 1s cubic-bezier(0.4, 0.15, 0.6, 0.85) infinite;
 }
+
+.#{$class-prefix}-loading-center {
+  .#{$class-prefix}-loading-xl {
+    margin: -35px 0 0 -35px;
+  }
+}
+.#{$class-prefix}-loading-xl {
+  width: 60px;
+  + svg {
+    width: 60px;
+  }
+}
+
+.#{$class-prefix}-loading-center {
+  .#{$class-prefix}-loading-lg {
+    margin: -20px 0 0 -20px;
+  }
+}
+.#{$class-prefix}-loading-lg {
+  width: 40px;
+  + svg {
+    width: 40px;
+  }
+}
+
+.#{$class-prefix}-loading-center {
+  .#{$class-prefix}-loading-md {
+    margin: -15px 0 0 -15px;
+  }
+}
+.#{$class-prefix}-loading-md {
+  width: 30px;
+  + svg {
+    width: 30px;
+    transform-origin: center center 0px;
+  }
+}
+
+.#{$class-prefix}-loading-center {
+  .#{$class-prefix}-loading-sm {
+    margin: -9px 0 0 -9px;
+  }
+}
+.#{$class-prefix}-loading-sm {
+  width: 18px;
+  + svg {
+    width: 18px;
+  }
+}
+
+.#{$class-prefix}-loading-center {
+  .#{$class-prefix}-loading-xs {
+    margin: -6px 0 0 -6px;
+  }
+}
+.#{$class-prefix}-loading-xs {
+  width: 12px;
+  + svg {
+    width: 12px;
+  }
+}
+
 .#{$class-prefix}-page-loading {
   animation: rotate 2s linear infinite;
   font-size: 28px;
   float: left;
   width: 20px;
-
-  &.#{$class-prefix}-loading-lg {
-    width: 40px;
-    + svg {
-      width: 40px;
-    }
-  }
-  &.#{$class-prefix}-loading-lg.#{$class-prefix}-loading-center {
-    margin: -20px 0 0 -20px;
-  }
-  &.#{$class-prefix}-loading-md {
-    width: 30px;
-    + svg {
-      width: 30px;
-      transform-origin: center center 0px;
-    }
-  }
-  &.#{$class-prefix}-loading-md.#{$class-prefix}-loading-center {
-    margin: -15px 0 0 -15px;
-  }
-  &.#{$class-prefix}-loading-sm {
-    width: 18px;
-    + svg {
-      width: 18px;
-    }
-  }
-  &.#{$class-prefix}-loading-sm.#{$class-prefix}-loading-center {
-    margin: -9px 0 0 -9px;
-  }
-  &.#{$class-prefix}-loading-xs {
-    width: 12px;
-    + svg {
-      width: 12px;
-    }
-  }
-  &.#{$class-prefix}-loading-xs.#{$class-prefix}-loading-center {
-    margin: -6px 0 0 -6px;
-  }
 }
 .#{$class-prefix}-loading-center {
   position: fixed;
