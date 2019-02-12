@@ -172,6 +172,17 @@ export default {
     },
     value (val) {
       this.currentValue = val
+
+      /**
+       * Sometimes the Textarea will have its value updated
+       * using v-model, which won't trigger an input event,
+       * which means resizeTextarea won't get called. We
+       * manually trigger an input event so that this happens
+       * after a very short wait.
+       */
+      setTimeout(() => {
+        this.$refs.textarea.dispatchEvent(new Event('input'))
+      }, 20)
     },
     currentValue (val) {
       this.broadcast('VaInputOps', 'Va@inputCurrentValueUpdate', val)
@@ -260,6 +271,8 @@ export default {
       this.$emit('cancel')
     },
     resizeTextarea (event) {
+      console.log('resizeTextarea called')
+      console.log('event:', event)
       if (this.autosize) {
         // event.target.style.height = 'auto'
         // event.target.style.height = (event.target.scrollHeight + 4) + 'px'
