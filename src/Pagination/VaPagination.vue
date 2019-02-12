@@ -6,17 +6,17 @@
         <va-icon type="angle-left"></va-icon>
       </va-pagination-item>
 
+      <div v-if="!startEllipsis" style="width: 70px;">
+        &nbsp;
+      </div>
+
       <va-pagination-item v-if="startEllipsis" :index="1">
         1
       </va-pagination-item>
 
-      <va-pagination-item v-if="startEllipsis" :index="1" :disabled="true">
+      <va-pagination-item v-if="startEllipsis" :index="2" :disabled="true">
         <va-icon type="ellipsis-h" size="10px"></va-icon>
       </va-pagination-item>
-
-      <div v-else style="width: 70px;">
-        &nbsp;
-      </div>
 
       <va-pagination-item
         v-for="(page, index) in pages"
@@ -26,19 +26,26 @@
         {{page}}
       </va-pagination-item>
 
+      <template v-if="!endEllipsis && pageCount - 1 >= end">
+        <va-pagination-item>
+          {{pageCount}}
+        </va-pagination-item>
+      </template>
+
       <va-pagination-item v-if="endEllipsis" :index="pageCount - 1" :disabled="true">
         <va-icon type="ellipsis-h" size="10px"></va-icon>
       </va-pagination-item>
 
-      <div v-else style="width: 70px;">
-        &nbsp;
-      </div>
-
-      <va-pagination-item
-        v-if="pageCount > max && !onLastPage && endEllipsis"
-        :index="pageCount">
+      <va-pagination-item v-if="endEllipsis" :index="pageCount">
         {{pageCount}}
       </va-pagination-item>
+
+      <div v-if="!endEllipsis" style="width: 35px;">
+        &nbsp;
+      </div>
+      <div v-if="pageCount - end === 0" style="width: 35px;">
+        &nbsp;
+      </div>
 
       <va-pagination-item :disabled="onLastPage" :index="currentValue + 1">
         <va-icon type="angle-right"></va-icon>
@@ -112,7 +119,10 @@ export default {
       if (index === this.pageCount) {
         this.onLastPage = true
       }
-      if (this.max < this.pageCount && !this.onLastPage && this.end !== this.pageCount) {
+      let s = this.currentValue - Math.floor(this.max / 2)
+      let e = this.currentValue + Math.floor(this.max / 2)
+
+      if (this.max < this.pageCount && !this.onLastPage && e < this.pageCount-1) {
         this.endEllipsis = true
       }
       if (this.max < this.pageCount && !this.onFirstPage && this.currentValue >= this.max) {
