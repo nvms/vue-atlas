@@ -1,5 +1,5 @@
 <template>
-  <span :class="classObj">
+  <span :class="classObj" ref="load">
     <i :class="iclassObj" />
     <slot />
     <svg viewBox="0 0 50 50" :class="`${classPrefix}-spinner`">
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { randomID } from '../utils/randomId'
+
 export default {
   name: 'VaLoading',
   props: {
@@ -36,13 +38,23 @@ export default {
     },
     color: {
       type: String,
-      default: '#DCDCDC',
-      required: false,
-      note: 'The color of the svg path.'
+      default: '#6C798F',
+      required: false
     },
     classPrefix: {
       type: String,
       default: 'va'
+    }
+  },
+  data () {
+    return {
+      originalParentID: null
+    }
+  },
+  mounted () {
+    if (!this.center) {
+      this.originalParentID = randomID()
+      this.$refs.load.parentElement.setAttribute('data-atlas-' + this.originalParentID, 'true')
     }
   },
   computed: {
@@ -66,6 +78,18 @@ export default {
       color ? classes['text-' + color] = true : ''
 
       return classes
+    }
+  },
+  watch: {
+    center (val) {
+      if (val) {
+        document.querySelector('body').appendChild(this.$refs.load)
+        this.$once('hook:beforeDestroy', () => {
+          document.querySelector('body').removeChild(this.$refs.load)
+        })
+      } else {
+        document.querySelector('[data-atlas-' + this.originalParentID + '="true"]').appendChild(this.$refs.load)
+      }
     }
   }
 }
