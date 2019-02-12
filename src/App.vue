@@ -165,6 +165,8 @@
 
       </va-page-header>
 
+      <va-loading v-show="toggled" center />
+
       <va-row :gutter="20">
         <va-column :xs="12" :sm="12" :md="8">
           <p>
@@ -218,23 +220,18 @@
                 into consciousness the carbon in our apple pies a mote of dust
                 suspended in a sunbeam the carbon in our apple pies astonishment.
               </p>
-              <p>
-                Cambrian explosion science citizens of distant epochs encyclopaedia
-                galactica brain is the seed of intelligence rich in mystery. Rings
-                of Uranus made in the interiors of collapsing stars hundreds of
-                thousands astonishment from which we spring laws of physics? The ash
-                of stellar alchemy a very small stage in a vast cosmic arena network
-                of wormholes another world concept of the number one the only home
-                we've ever known and billions upon billions upon billions upon
-                billions upon billions upon billions upon billions.
-              </p>
+              <div style="display:flex;justify-content:space-between;">
+                <div v-for="(item, index) in paginatedItemsShown" :key="index">
+                  {{item}}
+                </div>
+              </div>
               <p>
                 <va-pagination
                   :value="3"
-                  :total="150"
+                  :total="paginatedItems.length"
                   :max="5"
+                  @change="doPaginate"
                   :per-page="10">
-                  
                 </va-pagination>
               </p>
             </va-card>
@@ -411,6 +408,12 @@ export default {
           elevation: '0',
 
           /**
+           * Pagination
+           */
+          paginatedItems: [],
+          paginatedItemsShown: [],
+
+          /**
            * Textarea and InputOps
            */
           textareaText: `This textarea will automatically grow as it is filled with content because we passed the 'autosize' prop to it.`,
@@ -507,8 +510,14 @@ export default {
         }
     },
     mounted () {
+      for (let i = 0; i < 170; i++) {
+        this.paginatedItems.push(i)
+      }
     },
     methods: {
+      doPaginate (e) {
+        this.paginatedItemsShown = this.paginatedItems.slice((e.pageNumber * e.perPage) - e.perPage, e.pageNumber  * e.perPage)
+      },
       getGitResults (query) {
         let self = this
         let xhr = new XMLHttpRequest()
@@ -606,6 +615,15 @@ export default {
             console.log('Can\'t say we didn\'t warn you...')
           }
         })
+      }
+    },
+    watch: {
+      toggled (val) {
+        if (val) {
+          setTimeout(() => {
+            this.toggled = false
+          }, 600)
+        }
       }
     }
 }
