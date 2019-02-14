@@ -1,12 +1,14 @@
 <template>
   <va-button
-    :class="classObj"
     ref="colorpicker"
     @click.native="toggleColorPicker">
-    <va-icon type="square" :color="color" icon-style="solid" size="21px"></va-icon>
+    <div :class="`${classPrefix}-color-picker-button-inner`">
+      <va-icon type="square" :color="col" icon-style="solid" size="23px"></va-icon>
+    </div>
     <va-color-picker-popup
       :color="color"
       :show="show"
+      @change="onChange"
       :picker-position="position"></va-color-picker-popup>
   </va-button>
 </template>
@@ -17,7 +19,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#009688',
+      default: '#b52525',
       required: false
     },
     classPrefix: {
@@ -26,7 +28,9 @@ export default {
     }
   },
   data () {
+    let c = this.color
     return {
+      col: c,
       show: false,
       position: {}
     }
@@ -51,6 +55,9 @@ export default {
     toggleColorPicker () {
       this.getPosition()
       this.show = !this.show
+    },
+    onChange (e) {
+      this.col = 'rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
     }
   },
   computed: {

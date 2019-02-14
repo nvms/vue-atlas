@@ -44,53 +44,98 @@ export const rgbToHsb = (rgb) => {
 }
 
 export const hsbToRgb = (hsb) => {
-  let rgb = {}
-  let h = hsb.h
-  let s = hsb.s * 255 / 100
-  let b = hsb.b * 255 / 100
-
+  let rgb = {};
+  let h = hsb.h;
+  let s = hsb.s * 255 / 100;
+  let b = hsb.b * 255 / 100;
+  
   if (s == 0) {
-    // achromatic (grey)
-    rgb.r = rgb.g = rgb.b = b
-    return
-  }
-
-  let p = b
-  let q = (255 - s) * b / 255
-  let t = (p - q) * (h % 60) / 60
-
-  if (h == 360) h = 0
-  if (h < 60) {
-    rgb.r = p
-    rgb.g = q + t
-    rgb.b = q
-  } else if (h < 120) {
-    rgb.r = p - t
-    rgb.g = p
-    rgb.b = q
-  } else if (h < 180) {
-    rgb.r = q
-    rgb.g = p
-    rgb.b = q + t
-  } else if (h < 240) {
-    rgb.r = q
-    rgb.g = p - t
-    rgb.b = p
-  } else if (h < 300) {
-    rgb.r = q + t
-    rgb.g = q
-    rgb.b = p
-  } else if (h < 360) {
-    rgb.r = p
-    rgb.g = q
-    rgb.b = p - t
+    rgb.r = rgb.g = rgb.b = b;
   } else {
-    rgb.r = 0
-    rgb.g = 0
-    rgb.b = 0
+    let p = b;
+    let q = (255 - s) * b / 255;
+    let t = (p - q) * (h % 60) / 60;
+    if (h == 360) h = 0;
+  
+    if (h < 60) {
+      rgb.r = p;
+      rgb.b = q;
+      rgb.g = q + t;
+    } else if (h < 120) {
+      rgb.g = p;
+      rgb.b = q;
+      rgb.r = p - t;
+    } else if (h < 180) {
+      rgb.g = p;
+      rgb.r = q;
+      rgb.b = q + t;
+    } else if (h < 240) {
+      rgb.b = p;
+      rgb.r = q;
+      rgb.g = p - t;
+    } else if (h < 300) {
+      rgb.b = p;
+      rgb.g = q;
+      rgb.r = q + t;
+    } else if (h < 360) {
+      rgb.r = p;
+      rgb.g = q;
+      rgb.b = p - t;
+    } else {
+      rgb.r = 0;
+      rgb.g = 0;
+      rgb.b = 0;
+    }
   }
+  return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)};
 
-  return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)}
+  // let rgb = {}
+  // let h = hsb.h
+  // let s = hsb.s * 255 / 100
+  // let b = hsb.b * 255 / 100
+
+  // if (s == 0) {
+  //   // achromatic (grey)
+  //   rgb.r = rgb.g = rgb.b = b
+  //   return
+  // }
+
+  // let p = b
+  // let q = (255 - s) * b / 255
+  // let t = (p - q) * (h % 60) / 60
+
+  // if (h == 360) h = 0
+  // if (h < 60) {
+  //   rgb.r = p
+  //   rgb.g = q + t
+  //   rgb.b = q
+  // } else if (h < 120) {
+  //   rgb.r = p - t
+  //   rgb.g = p
+  //   rgb.b = q
+  // } else if (h < 180) {
+  //   rgb.r = q
+  //   rgb.g = p
+  //   rgb.b = q + t
+  // } else if (h < 240) {
+  //   rgb.r = q
+  //   rgb.g = p - t
+  //   rgb.b = p
+  // } else if (h < 300) {
+  //   rgb.r = q + t
+  //   rgb.g = q
+  //   rgb.b = p
+  // } else if (h < 360) {
+  //   rgb.r = p
+  //   rgb.g = q
+  //   rgb.b = p - t
+  // } else {
+  //   rgb.r = 0
+  //   rgb.g = 0
+  //   rgb.b = 0
+  // }
+
+  // return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)}
 }
 
 export const hexToHsb = (h) => {

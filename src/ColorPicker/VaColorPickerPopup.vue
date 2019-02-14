@@ -9,6 +9,7 @@
         :class="`${classPrefix}-color-picker-upper`">
         <div
           ref="gradient"
+          :style="gradientStyleObj"
           @mousedown="gradientOnMousedown"
           :class="`${classPrefix}-color-picker-gradient`">
           <div
@@ -18,41 +19,91 @@
           <div
             :class="`${classPrefix}-color-picker-border`" />
           <div
-            ref="cursor"
+            ref="gradientCursor"
             :class="`${classPrefix}-color-picker-gradient-cursor`" />
         </div>
         <div
           ref="hue"
-          :class="`${classPrefix}-color-picker-hue-slider`">
+          @mousedown="hueSliderOnMousedown"
+          :class="`${classPrefix}-color-picker-hue-track`">
           <div
             :class="`${classPrefix}-color-picker-border`" />
+          <div
+            ref="hueCursor"
+            :class="`${classPrefix}-color-picker-hue-cursor`" />
         </div>
         <div
           ref="alpha"
-          :class="`${classPrefix}-color-picker-alpha-slider`">
+          @mousedown="alphaSliderOnMousedown"
+          :class="`${classPrefix}-color-picker-alpha-track`">
           <div
-            :class="`${classPrefix}-color-picker-alpha-slider-color`" />
+            :style="alphaStyleObj"
+            :class="`${classPrefix}-color-picker-alpha-track-color`" />
           <div
             :class="`${classPrefix}-color-picker-border`" />
+          <div
+            ref="alphaCursor"
+            :class="`${classPrefix}-color-picker-alpha-cursor`" />
         </div>
       </div>
       <div
         :class="`${classPrefix}-color-picker-lower`">
         <va-input
           size="xs"
-          width="70px" />
+          v-model="hex"
+          @change="hexChange"
+          width="68px" />
         <va-input
           size="xs"
+          v-model="rgb.r"
+          @change="rChange"
           width="38px" />
         <va-input
           size="xs"
+          v-model="rgb.g"
+          @change="gChange"
           width="38px" />
         <va-input
           size="xs"
+          v-model="rgb.b"
+          @change="bChange"
           width="38px" />
         <va-input
           size="xs"
+          v-model="alpha"
+          @change="aChange"
+          width="40px" />
+      </div>
+      <div
+        :class="`${classPrefix}-color-picker-lower`" style="margin:0;color:#999;">
+        <span style="text-align:center;width:68px;font-size:10px;">HEX</span>
+        <span style="text-align:center;width:38px;font-size:10px;">R</span>
+        <span style="text-align:center;width:38px;font-size:10px;">G</span>
+        <span style="text-align:center;width:38px;font-size:10px;">B</span>
+        <span style="text-align:center;width:38px;font-size:10px;">A</span>
+      </div>
+
+      <!-- the rest of this is for debugging purposes -->
+      <div
+        :class="`${classPrefix}-color-picker-lower`">
+        <va-input
+          size="xs"
+          v-model="hsb.h"
           width="38px" />
+        <va-input
+          size="xs"
+          v-model="hsb.s"
+          width="38px" />
+        <va-input
+          size="xs"
+          v-model="hsb.b"
+          width="38px" />
+      </div>
+      <div
+        :class="`${classPrefix}-color-picker-lower`" style="margin:0;color:#999;">
+        <span style="text-align:center;font-size:10px;">H</span>
+        <span style="text-align:center;font-size:10px;">S</span>
+        <span style="text-align:center;font-size:10px;">A</span>
       </div>
     </div>
   </transition>
@@ -88,25 +139,34 @@ export default {
   },
   data () {
     return {
-      gradientPosition: {}
+      gradientPosition: {},
+      hueSliderPosition: {},
+      alphaSliderPosition: {},
+      cursorOffsetLeft: 5,
+      cursorOffsetTop: 5,
+      alpha: 1,
+      hsb: {
+        h: 0,
+        s: 0,
+        b: 0
+      },
+      rgb: {
+        r: 255,
+        g: 255,
+        b: 255
+      },
+      hex: '',
+      x: 0,
+      y: 0
     }
   },
   mounted () {
     const $body = document.querySelector('body')
     $body.appendChild(this.$refs.popup)
 
-    console.log('rgbStringToObject(\'rgb(250, 132, 14)\')', rgbStringToObject('rgb(250, 132, 14)'))
-    console.log('hex should be #fa840e')
-    console.log('hex to hsb: ', hexToHsb('#fa840e'))
-
-    let hsb = rgbToHsb({r:250, g:132, b:14})
-    console.log('hsb: ', hsb)
-    console.log('hsb to hex: ', hsbToHex(hsb))
-
-    let rgb = hsbToRgb(hsb)
-    console.log('rgb: ', rgb)
-
-    console.log('rgb to hex: ', rgbToHex(rgb))
+    this.hex = this.color
+    this.hsb = hexToHsb(this.hex)
+    this.rgb = hsbToRgb(this.hsb)
   },
   beforeDestroy () {
     const $body = document.querySelector('body')
@@ -114,6 +174,7 @@ export default {
   },
   computed: {
     styleObj () {
+      let {hsb} = this
       let style = {}
       let pos = this.pickerPosition
 
@@ -121,9 +182,61 @@ export default {
       style['left'] = (pos.left - 30) + 'px'
 
       return style
+    },
+    gradientStyleObj () {
+      let {hsb, alpha} = this
+      let style = {}
+
+      style['background'] = 'hsl('+ hsb.h + ', 100%, 50%, ' + alpha + ')'
+
+      return style
+    },
+    alphaStyleObj () {
+      let {hsb} = this
+      let style = {}
+
+      style['background'] = 'linear-gradient(180deg, hsl('+ hsb.h + ', 100%, 50%, 0), hsl('+ hsb.h + ', 100%, 50%, 1))'
+
+      return style
+    }
+  },
+  watch: {
+    show (val) {
+      if (val) {
+        setTimeout(() => {
+          this.hsb = hexToHsb(this.hex)
+          this.updateControls()
+        }, 50)
+      }
     }
   },
   methods: {
+    rChange (e) {
+      let rgb = {r:e, g:this.rgb.g, b:this.rgb.b}
+      this.hsb = rgbToHsb(rgb)
+      this.hex = rgbToHex(rgb)
+      this.updateControls()
+    },
+    gChange (e) {
+      let rgb = {r:this.rgb.r, g:e, b:this.rgb.b}
+      this.hsb = rgbToHsb(rgb)
+      this.hex = rgbToHex(rgb)
+      this.updateControls()
+    },
+    bChange (e) {
+      let rgb = {r:this.rgb.r, g:this.rgb.g, b:e}
+      this.hsb = rgbToHsb(rgb)
+      this.hex = rgbToHex(rgb)
+      this.updateControls()
+    },
+    aChange (e) {
+      this.updateControls()
+    },
+    hexChange (e) {
+      this.hsb = hexToHsb(e)
+      this.rgb = hsbToRgb(this.hsb)
+      this.updateControls()
+    },
     prevent (e) {
       if (e.stopPropagation) {
         e.stopPropagation()
@@ -147,31 +260,74 @@ export default {
         y: rect.y
       }
     },
+    selectGradientColor () {
+      this.hsb.s = (this.x / this.gradientPosition.width * 100)
+      this.hsb.b = 100 - (this.y / this.gradientPosition.height) * 100
+
+      this.rgb = hsbToRgb(this.hsb)
+      this.hex = rgbToHex(this.rgb)
+
+      let colorsToEmit = {
+        rgb: this.rgb,
+        rgba: {
+          r: this.rgb.r,
+          g: this.rgb.g,
+          b: this.rgb.b,
+          a: this.alpha
+        },
+        hex: this.hex,
+        hsb: this.hsb
+      }
+
+      this.$emit('change', colorsToEmit)
+    },
     makeGradientSelection (e) {
-      let cursorOffsetLeft = 3
-      let cursorOffsetTop = 4
-
-      let t = e.clientY - this.gradientPosition.top - cursorOffsetTop
-      let l = e.clientX - this.gradientPosition.left - cursorOffsetLeft
-
-      let x = l - cursorOffsetLeft
-      let y = t - cursorOffsetTop
 
       /**
-       * clamp x and y
+       * the offset for where the cursor appears in
+       * relation to the system cursor.
        */
-      if (x < 0 - cursorOffsetLeft) x = 0 - cursorOffsetLeft
-      if (x > this.gradientPosition.width - cursorOffsetLeft) x = this.gradientPosition.width - cursorOffsetLeft
-
-      if (y < 0 - cursorOffsetTop) y = 0 - cursorOffsetTop
-      if (y > this.gradientPosition.height - cursorOffsetTop) y = this.gradientPosition.height - cursorOffsetTop
+      let cursorOffsetArrowLeft = 1
+      let cursorOffsetArrowTop = 2
 
       /**
-       * x and y are clamped between 0 and the width/height of the gradient
-       * l(eft) and t(op) are the actual position of the cursor in relation to the gradient
+       * absolute x and y position of the system cursor
+       * in relation to the gradient
        */
-      this.$refs.cursor.style.top = y + 'px'
-      this.$refs.cursor.style.left = x + 'px'
+      let arrowx = e.clientX - this.gradientPosition.left - cursorOffsetArrowLeft
+      let arrowy = e.clientY - this.gradientPosition.top - cursorOffsetArrowTop
+
+      /**
+       * absolute x and y position of the system cursor
+       * in relation to the gradient, clamped within gradient bounds
+       */
+      let x = arrowx - this.cursorOffsetLeft
+      let y = arrowy - this.cursorOffsetTop
+
+      /**
+       * clamp
+       */
+      if (x < 0 - this.cursorOffsetLeft) x = 0 - this.cursorOffsetLeft
+      if (x > this.gradientPosition.width - this.cursorOffsetLeft) x = this.gradientPosition.width - this.cursorOffsetLeft
+
+      if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
+      if (y > this.gradientPosition.height - this.cursorOffsetTop) y = this.gradientPosition.height - this.cursorOffsetTop
+
+      /**
+       * place the cursor, taking note that x and y are still affected
+       * by cursorOffsetLeft and cursorOffsetTop.. we need to adjust before
+       * actually figuring out the color
+       */
+      this.$refs.gradientCursor.style.top = y + 'px'
+      this.$refs.gradientCursor.style.left = x + 'px'
+
+      x += this.cursorOffsetLeft
+      y += this.cursorOffsetTop
+
+      this.x = x
+      this.y = y
+
+      this.selectGradientColor()
     },
     gradientOnMousedown (e) {
       this.prevent(e)
@@ -189,6 +345,144 @@ export default {
       // remove hooks
       window.removeEventListener('mouseup', this.gradientOnMouseup, false)
       window.removeEventListener('mousemove', this.gradientOnMousemove, false)
+    },
+
+    updateControls () {
+      this.setHueSliderPositionFromHsb()
+      this.setAlphaSliderPositionFromAlpha()
+      this.setGradientCursorPositionFromHsb()
+    },
+
+    makeHueSelection (e) {
+      let cursorOffsetArrowTop = 2
+      /**
+       * absolute y position of the system cursor
+       * in relation to the hue track
+       */
+      let arrowy = e.clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
+
+      /**
+       * absolute y position of the system cursor
+       * in relation to the hue track, clamped within the track
+       */
+      let y = arrowy - this.cursorOffsetTop
+
+      /**
+       * clamp
+       */
+      if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
+      if (y > this.hueSliderPosition.height - this.cursorOffsetTop) y = this.hueSliderPosition.height - this.cursorOffsetTop
+
+      /**
+       * place the cursor, taking note that y is still affected
+       * by cursorOffsetTop.. we need to adjust before
+       * actually figuring out the color
+       */
+      this.$refs.hueCursor.style.top = y + 'px'
+
+      y += this.cursorOffsetTop
+
+      this.hsb.h = (y / this.hueSliderPosition.height) * 360
+
+      this.selectGradientColor()
+    },
+    setAlphaSliderPositionFromAlpha () {
+      this.alphaSliderPosition = this.getElementRect(this.$refs.alpha)
+      this.$refs.alphaCursor.style.top = (this.alpha * this.alphaSliderPosition.height - this.cursorOffsetTop) + 'px'
+    },
+    setHueSliderPositionFromHsb () {
+      this.$refs.hueCursor.style.top = this.hsb.h / 2 + 'px'
+    },
+    setGradientCursorPositionFromHsb () {
+      this.gradientPosition = this.getElementRect(this.$refs.gradient)
+
+      /**
+       * find where it needs to be in the x
+       */
+      let left = (((this.hsb.s * this.gradientPosition.width) / 100) - this.cursorOffsetLeft)
+      this.x = left
+      this.$refs.gradientCursor.style.left = left + 'px'
+      this.x += this.cursorOffsetLeft
+
+      /**
+       * find where it needs to be in the y
+       */
+      let top = (((this.hsb.b * this.gradientPosition.height) / 100) - this.cursorOffsetTop)
+
+      let yp = 100 - (top * 100 / this.gradientPosition.height)
+      let ypp = (yp * 100) / this.gradientPosition.height
+      
+      this.y = yp
+      this.$refs.gradientCursor.style.top = (ypp - this.cursorOffsetTop) + 'px'
+      this.y += this.cursorOffsetTop
+    },
+    hueSliderOnMousedown (e) {
+      this.prevent(e)
+      this.hueSliderPosition = this.getElementRect(this.$refs.hue)
+      this.makeHueSelection(e)
+
+      // set hooks
+      window.addEventListener('mousemove', this.hueSliderOnMousemove, false)
+      window.addEventListener('mouseup', this.hueSliderOnMouseup, false)
+    },
+    hueSliderOnMousemove (e) {
+      this.makeHueSelection(e)
+    },
+    hueSliderOnMouseup (e) {
+      // remove hooks
+      window.removeEventListener('mouseup', this.hueSliderOnMouseup, false)
+      window.removeEventListener('mousemove', this.hueSliderOnMousemove, false)
+    },
+
+
+    makeAlphaSelection (e) {
+      let cursorOffsetArrowTop = 2
+      /**
+       * absolute y position of the system cursor
+       * in relation to the alpha track
+       */
+      let arrowy = e.clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
+
+      /**
+       * absolute y position of the system cursor
+       * in relation to the alpha track, clamped within the track
+       */
+      let y = arrowy - this.cursorOffsetTop
+
+      /**
+       * clamp
+       */
+      if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
+      if (y > this.alphaSliderPosition.height - this.cursorOffsetTop) y = this.alphaSliderPosition.height - this.cursorOffsetTop
+      /**
+       * place the cursor, taking note that x and y are still affected
+       * by cursorOffsetLeft and cursorOffsetTop.. we need to adjust before
+       * actually figuring out the color
+       */
+      this.$refs.alphaCursor.style.top = y + 'px'
+
+      y += this.cursorOffsetTop
+
+      this.alpha = ((y / this.alphaSliderPosition.height) * 100) / 100
+
+      this.selectGradientColor()
+    },
+    alphaSliderOnMousedown (e) {
+      this.prevent(e)
+      this.alphaSliderPosition = this.getElementRect(this.$refs.alpha)
+      this.makeAlphaSelection(e)
+
+      // set hooks
+      window.addEventListener('mousemove', this.alphaSliderOnMousemove, false)
+      window.addEventListener('mouseup', this.alphaSliderOnMouseup, false)
+    },
+    alphaSliderOnMousemove (e) {
+      this.makeAlphaSelection(e)
+    },
+    alphaSliderOnMouseup (e) {
+      // remove hooks
+      window.removeEventListener('mouseup', this.alphaSliderOnMouseup, false)
+      window.removeEventListener('mousemove', this.alphaSliderOnMousemove, false)
     }
   }
 }
