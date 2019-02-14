@@ -3,7 +3,7 @@
     :class="classObj"
     ref="colorpicker"
     @click.native="toggleColorPicker">
-    <va-icon type="palette" color="#7591C2" icon-style="solid"></va-icon>
+    <va-icon type="square" :color="color" icon-style="solid" size="21px"></va-icon>
     <va-color-picker-popup
       :color="color"
       :show="show"
@@ -17,7 +17,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#ffff00',
+      default: '#009688',
       required: false
     },
     classPrefix: {

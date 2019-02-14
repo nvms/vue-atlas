@@ -1,0 +1,100 @@
+.#{$class-prefix}-color-picker-popup {
+  position: absolute;
+  z-index: 999;
+  background: $N0;
+  box-shadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px);
+  border-radius: 3px;
+  padding: 10px;
+}
+
+.#{$class-prefix}-color-picker-upper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.#{$class-prefix}-color-picker-gradient {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 3px;
+  // box-shadow: inset rgba(223, 225, 229, 0.72) 0px 0px 0px 2px;
+  background: #009688;
+
+  &-white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg,#FFF,hsla(0,0%,100%,0));
+  }
+
+  &-black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(0deg,#000,transparent);
+  }
+
+  &-cursor {
+    position: absolute;
+    cursor: default;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    top: 50px;
+    left: 50px;
+  }
+}
+
+.#{$class-prefix}-color-picker-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  box-shadow: inset rgba(223, 225, 229, 0.5) 0px 0px 0px 2px;
+}
+
+.#{$class-prefix}-color-picker-hue-slider {
+  position: relative;
+  width: 16px;
+  height: 190px;
+  border-radius: 3px;
+  // box-shadow: inset rgba(223, 225, 229, 0.72) 0px 0px 0px 2px;
+  margin-left: 10px;
+  background: linear-gradient(180deg, red, #F0F, #00F, #0FF, #0F0, #FF0, orange, red);
+}
+
+.#{$class-prefix}-color-picker-alpha-slider {
+  position: relative;
+  width: 16px;
+  height: 190px;
+  border-radius: 3px;
+  // box-shadow: inset rgba(223, 225, 229, 0.72) 0px 0px 0px 2px;
+  margin-left: 10px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
+  &-color {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(180deg, rgba(0, 150, 136, 0), rgb(0, 150, 136));  
+  }
+}
+
+.#{$class-prefix}-color-picker-lower {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
