@@ -101,9 +101,9 @@
       </div>
       <div
         :class="`${classPrefix}-color-picker-lower`" style="margin:0;color:#999;">
-        <span style="text-align:center;font-size:10px;">H</span>
-        <span style="text-align:center;font-size:10px;">S</span>
-        <span style="text-align:center;font-size:10px;">A</span>
+        <span style="text-align:center;width:38px;font-size:10px;">H</span>
+        <span style="text-align:center;width:38px;font-size:10px;">S</span>
+        <span style="text-align:center;width:38px;font-size:10px;">B</span>
       </div>
     </div>
   </transition>
@@ -214,19 +214,19 @@ export default {
     rChange (e) {
       let rgb = {r:e, g:this.rgb.g, b:this.rgb.b}
       this.hsb = rgbToHsb(rgb)
-      this.hex = rgbToHex(rgb)
+      this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     gChange (e) {
       let rgb = {r:this.rgb.r, g:e, b:this.rgb.b}
       this.hsb = rgbToHsb(rgb)
-      this.hex = rgbToHex(rgb)
+      this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     bChange (e) {
       let rgb = {r:this.rgb.r, g:this.rgb.g, b:e}
       this.hsb = rgbToHsb(rgb)
-      this.hex = rgbToHex(rgb)
+      this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     aChange (e) {
@@ -407,13 +407,16 @@ export default {
       /**
        * find where it needs to be in the y
        */
-      let top = (((this.hsb.b * this.gradientPosition.height) / 100) - this.cursorOffsetTop)
-
-      let yp = 100 - (top * 100 / this.gradientPosition.height)
-      let ypp = (yp * 100) / this.gradientPosition.height
+      let top = this.hsb.b - 100
       
-      this.y = yp
-      this.$refs.gradientCursor.style.top = (ypp - this.cursorOffsetTop) + 'px'
+      if (top < 0) {
+        top *= -1
+      }
+
+      top = ((top * this.gradientPosition.height) / 100) - this.cursorOffsetTop
+
+      this.y = top
+      this.$refs.gradientCursor.style.top = top + 'px'
       this.y += this.cursorOffsetTop
     },
     hueSliderOnMousedown (e) {

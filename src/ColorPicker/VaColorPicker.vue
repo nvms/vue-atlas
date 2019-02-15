@@ -19,7 +19,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#b52525',
+      default: '#9d00ff',
       required: false
     },
     classPrefix: {
