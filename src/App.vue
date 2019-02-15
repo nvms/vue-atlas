@@ -415,7 +415,7 @@ export default {
           /**
            * ColorPicker
            */
-          color: {},
+          color: '',
 
           /**
            * Pagination
