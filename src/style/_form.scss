@@ -83,6 +83,14 @@
   }
 }
 
+@mixin extraLargeInputSize() {
+  @include input-size( $padding: 9px, $fontSize: 14px, $lineHeight: 1.75em, $borderRadius: 4px, $minHeight: 44px, $maxHeight: 44px);
+}
+
+@mixin largeInputSize() {
+  @include input-size( $padding: 8px, $fontSize: 14px, $lineHeight: 1.7em, $borderRadius: 4px, $minHeight: 40px, $maxHeight: 40px);
+}
+
 @mixin defaultInputSize() {
   @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 4px, $minHeight: 34px, $maxHeight: 34px);
 }
@@ -94,7 +102,6 @@
 @mixin extraSmallInputSize() {
   @include input-size( $padding: 5px, $fontSize: 12px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
 }
-
 
 /*sizes*/
 
@@ -141,6 +148,18 @@ input[type="file"].#{$class-prefix}-form-control {
 
   &:focus {
     outline: none;
+  }
+}
+
+.#{$class-prefix}-input-xl {
+  .#{$class-prefix}-form-control {
+    @include extraLargeInputSize();
+  }
+}
+
+.#{$class-prefix}-input-lg {
+  .#{$class-prefix}-form-control {
+    @include largeInputSize();
   }
 }
 
