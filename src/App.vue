@@ -268,6 +268,11 @@
                   &nbsp;
                   <va-button><va-icon type="circle" size="9px"/></va-button>
                 </va-form-item>
+                <va-form-item label="Pick a color">
+                  <va-input v-model="color"/>
+                  &nbsp;
+                  <va-color-picker @change="colorPickerOnChange"/>
+                </va-form-item>
               </va-form>
             </va-card>
           </p>
@@ -408,6 +413,11 @@ export default {
           elevation: '0',
 
           /**
+           * ColorPicker
+           */
+          color: {},
+
+          /**
            * Pagination
            */
           paginatedItems: [],
@@ -515,6 +525,9 @@ export default {
       }
     },
     methods: {
+      colorPickerOnChange (e) {
+        this.color = e.hex + ', rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
+      },
       doPaginate (e) {
         this.paginatedItemsShown = this.paginatedItems.slice((e.pageNumber * e.perPage) - e.perPage, e.pageNumber  * e.perPage)
       },
