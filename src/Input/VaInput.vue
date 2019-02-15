@@ -42,7 +42,7 @@
       @keyup.enter="enterPressed"
       v-model="currentValue"
       :value="value" />
-    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== undefined || clearable">
+    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== 'undefined' || clearable">
       <va-icon
         v-if="clearable"
         type="times"
@@ -114,7 +114,8 @@ export default {
       default: 'text'
     },
     icon: {
-      type: String
+      type: String,
+      default: 'undefined'
     },
     iconStyle: {
       type: String,
