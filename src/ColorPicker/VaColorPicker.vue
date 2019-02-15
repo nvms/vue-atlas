@@ -58,7 +58,7 @@ export default {
     buttonStyleObj () {
       let style = {}
 
-      style['width'] = '18px'
+      style['width'] = '15px'
       style['height'] = '100%'
       style['border-radius'] = '50%'
       style['box-shadow'] = this.rgb + ' 0px 0px 0px 1px'

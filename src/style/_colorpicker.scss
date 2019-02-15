@@ -1,20 +1,8 @@
 .#{$class-prefix}-color-picker-button-inner {
-  height: 18px;
+  height: 15px;
   line-height: 1;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
   border-radius: 50%;
-
-  i {
-    font-size: 23px;
-    margin: 0px;
-    background-color: transparent;
-    border-radius: 4px;
-    padding: 0px;
-    width: 20px;
-    height: 14px;
-    position: relative;
-    top: -1px;
-  }
 }
 
 .#{$class-prefix}-color-picker-popup {
