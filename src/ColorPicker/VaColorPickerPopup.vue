@@ -2,8 +2,6 @@
   <transition name="fadeDown">
     <div
       ref="popup"
-      v-show="show"
-      :style="styleObj"
       :class="`${classPrefix}-color-picker-popup`">
       <div
         :class="`${classPrefix}-color-picker-upper`">
@@ -82,29 +80,6 @@
         <span style="text-align:center;width:38px;font-size:10px;">B</span>
         <span style="text-align:center;width:38px;font-size:10px;">A</span>
       </div>
-
-      <!-- the rest of this is for debugging purposes -->
-      <div
-        :class="`${classPrefix}-color-picker-lower`">
-        <va-input
-          size="xs"
-          v-model="hsb.h"
-          width="38px" />
-        <va-input
-          size="xs"
-          v-model="hsb.s"
-          width="38px" />
-        <va-input
-          size="xs"
-          v-model="hsb.b"
-          width="38px" />
-      </div>
-      <div
-        :class="`${classPrefix}-color-picker-lower`" style="margin:0;color:#999;">
-        <span style="text-align:center;width:38px;font-size:10px;">H</span>
-        <span style="text-align:center;width:38px;font-size:10px;">S</span>
-        <span style="text-align:center;width:38px;font-size:10px;">B</span>
-      </div>
     </div>
   </transition>
 </template>
@@ -124,13 +99,6 @@ export default {
   props: {
     color: {
       type: String
-    },
-    show: {
-      type: Boolean,
-      default: false
-    },
-    pickerPosition: {
-      type: Object
     },
     classPrefix: {
       type: String,
@@ -161,28 +129,13 @@ export default {
     }
   },
   mounted () {
-    const $body = document.querySelector('body')
-    $body.appendChild(this.$refs.popup)
-
     this.hex = this.color
     this.hsb = hexToHsb(this.hex)
     this.rgb = hsbToRgb(this.hsb)
-  },
-  beforeDestroy () {
-    const $body = document.querySelector('body')
-    $body.removeChild(this.$refs.popup)
+
+    this.emitColors()
   },
   computed: {
-    styleObj () {
-      let {hsb} = this
-      let style = {}
-      let pos = this.pickerPosition
-
-      style['top'] = (pos.top + pos.height) + 3 + 'px'
-      style['left'] = (pos.left - 30) + 'px'
-
-      return style
-    },
     gradientStyleObj () {
       let {hsb, alpha} = this
       let style = {}
@@ -200,17 +153,28 @@ export default {
       return style
     }
   },
-  watch: {
-    show (val) {
-      if (val) {
-        setTimeout(() => {
-          this.hsb = hexToHsb(this.hex)
-          this.updateControls()
-        }, 50)
-      }
-    }
-  },
   methods: {
+    doShow () {
+      setTimeout(() => {
+        this.hsb = hexToHsb(this.hex)
+        this.updateControls()
+      }, 50)
+    },
+    emitColors () {
+      let colorsToEmit = {
+        rgb: this.rgb,
+        rgba: {
+          r: this.rgb.r,
+          g: this.rgb.g,
+          b: this.rgb.b,
+          a: this.alpha
+        },
+        hex: this.hex,
+        hsb: this.hsb
+      }
+
+      this.$emit('change', colorsToEmit)
+    },
     rChange (e) {
       let rgb = {r:e, g:this.rgb.g, b:this.rgb.b}
       this.hsb = rgbToHsb(rgb)
@@ -267,19 +231,7 @@ export default {
       this.rgb = hsbToRgb(this.hsb)
       this.hex = rgbToHex(this.rgb)
 
-      let colorsToEmit = {
-        rgb: this.rgb,
-        rgba: {
-          r: this.rgb.r,
-          g: this.rgb.g,
-          b: this.rgb.b,
-          a: this.alpha
-        },
-        hex: this.hex,
-        hsb: this.hsb
-      }
-
-      this.$emit('change', colorsToEmit)
+      this.emitColors()
     },
     makeGradientSelection (e) {
 

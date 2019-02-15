@@ -1,16 +1,20 @@
 <template>
-  <va-button
-    ref="colorpicker"
-    @click.native="toggleColorPicker">
-    <div :class="`${classPrefix}-color-picker-button-inner`">
-      <va-icon type="square" :color="col" icon-style="solid" size="23px"></va-icon>
+  <va-dropdown>
+    <div slot="trigger">
+      <va-button
+        ref="colorpicker"
+        @click.native="toggleColorPicker">
+        <div :class="`${classPrefix}-color-picker-button-inner`">
+          <div :style="buttonStyleObj" />
+        </div>
+      </va-button>
     </div>
     <va-color-picker-popup
+      ref="colorpickerpopup"
       :color="color"
       :show="show"
-      @change="onChange"
-      :picker-position="position"></va-color-picker-popup>
-  </va-button>
+      @change="onChange"/>
+  </va-dropdown>
 </template>
 
 <script>
@@ -19,7 +23,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: '#9d00ff',
+      default: '#ff6900',
       required: false
     },
     classPrefix: {
@@ -31,36 +35,37 @@ export default {
     let c = this.color
     return {
       col: c,
+      colors: {},
       show: false,
-      position: {}
+      rgba: '',
+      rgb: ''
     }
   },
-  mounted () {
-    this.getPosition()
-  },
   methods: {
-    getPosition () {
-      let rect = this.$refs.colorpicker.$el.getBoundingClientRect()
-      this.position = {
-        top: rect.top,
-        right: rect.right,
-        bottom: rect.bottom,
-        left: rect.left,
-        width: rect.width,
-        height: rect.height,
-        x: rect.x,
-        y: rect.y
-      }
-    },
     toggleColorPicker () {
-      this.getPosition()
-      this.show = !this.show
+      this.$refs.colorpickerpopup.doShow()
     },
     onChange (e) {
+      this.colors = e
       this.col = 'rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
+      this.rgba = 'rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
+      this.rgb = 'rgb(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ')'
+
+      this.$emit('change', e)
     }
   },
   computed: {
+    buttonStyleObj () {
+      let style = {}
+
+      style['width'] = '18px'
+      style['height'] = '100%'
+      style['border-radius'] = '50%'
+      style['box-shadow'] = this.rgb + ' 0px 0px 0px 1px'
+      style['background'] = this.rgba
+
+      return style
+    },
     classObj () {
       let {classPrefix} = this
       let classes = {}
