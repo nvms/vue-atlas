@@ -186,6 +186,9 @@ export default {
     },
     value (val) {
       this.initCount(this.total, val)
+    },
+    perPage (val) {
+      this.initCount(this.total, this.currentValue)
     }
   }
 }
