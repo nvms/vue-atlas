@@ -303,6 +303,7 @@ export default {
       this.setHueSliderPositionFromHsb()
       this.setAlphaSliderPositionFromAlpha()
       this.setGradientCursorPositionFromHsb()
+      this.emitColors()
     },
 
     makeHueSelection (e) {
