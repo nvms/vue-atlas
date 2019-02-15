@@ -21,4 +21,7 @@ cp README.md ~/vue-atlas-npm
 # remove the example component
 rm ~/vue-atlas-npm/src/App.vue
 
+# remove the generated demo.html
+rm ~/vue-atlas-npm/dist/demo.html
+
 exit 0
