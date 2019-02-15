@@ -244,7 +244,11 @@ input[type="file"].#{$class-prefix}-form-control {
 @mixin validationDefaults() {
   font-size: 12px;
   font-weight: 500;
-  margin-top: 6px;
+  position: absolute;
+  top: -19px !important;
+  right: 0px !important;
+  bottom: initial !important;
+  left: initial !important;
 }
 
 .#{$class-prefix}-err-tip {

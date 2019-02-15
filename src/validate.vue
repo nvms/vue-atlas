@@ -1,6 +1,6 @@
 <template>
   <div :class="`${classPrefix}-err-tip`" v-if="validate && tips">
-    <va-icon type="exclamation-triangle" color="#DE350B"></va-icon>
+    <!-- <va-icon type="exclamation-triangle" color="#DE350B"></va-icon> -->
     {{tips}}
   </div>
 </template>
