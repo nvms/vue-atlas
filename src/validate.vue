@@ -51,7 +51,7 @@ export default {
   computed: {
     _results: {
       get () {
-        return this.resuts
+        return this.results
       },
       set (val, oldVal) {
         let self = this
@@ -281,7 +281,7 @@ export default {
     },
     telValid (value, tip) {
       // eslint-disable-next-line
-      let rule = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/
+      let rule = /^[2-9]\d{2}-\d{3}-\d{4}$/
 
       if (rule.test(value) || value === '') {
         this.setResult('isTelValid', {
