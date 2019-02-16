@@ -4518,12 +4518,12 @@ var VaPage_component = normalizeComponent(
 
 VaPage_component.options.__file = "VaPage.vue"
 /* harmony default export */ var VaPage = (VaPage_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Form/VaForm.vue?vue&type=template&id=563728d1&
-var VaFormvue_type_template_id_563728d1_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',_vm._b({class:_vm.classObj,attrs:{"id":_vm.id,"name":_vm.name},on:{"submit":function($event){$event.preventDefault();return _vm.noop($event)}}},'form',_vm.$attrs,false),[_vm._t("default")],2)}
-var VaFormvue_type_template_id_563728d1_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Form/VaForm.vue?vue&type=template&id=611d1f9a&
+var VaFormvue_type_template_id_611d1f9a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',_vm._b({class:_vm.classObj,attrs:{"id":_vm.id,"name":_vm.name},on:{"submit":function($event){$event.preventDefault();return _vm.noop($event)}}},'form',_vm.$attrs,false),[_vm._t("default")],2)}
+var VaFormvue_type_template_id_611d1f9a_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Form/VaForm.vue?vue&type=template&id=563728d1&
+// CONCATENATED MODULE: ./src/Form/VaForm.vue?vue&type=template&id=611d1f9a&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -4676,6 +4676,9 @@ function _typeof(obj) {
           cb(_this.result);
         }
       });
+    },
+    resetValidation: function resetValidation(cb) {
+      this.validate = false;
     }
   },
   watch: {
@@ -4777,8 +4780,8 @@ function _typeof(obj) {
 
 var VaForm_component = normalizeComponent(
   Form_VaFormvue_type_script_lang_js_,
-  VaFormvue_type_template_id_563728d1_render,
-  VaFormvue_type_template_id_563728d1_staticRenderFns,
+  VaFormvue_type_template_id_611d1f9a_render,
+  VaFormvue_type_template_id_611d1f9a_staticRenderFns,
   false,
   null,
   null,
