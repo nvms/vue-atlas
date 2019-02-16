@@ -47,6 +47,9 @@ export default {
           cb(this.result)
         }
       })
+    },
+    resetValidation (cb) {
+      this.validate = false
     }
   },
   watch: {
