@@ -156,7 +156,7 @@
             v-model="inputText">
           </va-input>
           <va-select size="sm" width="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
-          <va-button size="sm" @click.native="showStackedOne">Modal</va-button>
+          <va-button size="sm" @click="showStackedOne" :disabled="true">Modal</va-button>
           <va-toggle :value="!toggled"></va-toggle>
           <va-toggle size="lg" v-model="toggled"></va-toggle>
           <va-toggle :disabled="true" :value="false"></va-toggle>
@@ -197,7 +197,6 @@
                 <va-tooltip
                   content="Important tooltip"
                   placement="right"
-                  trigger="hover"
                   effect="tooltip-fade-right">
                   <va-button size="sm">Hover me</va-button>
                 </va-tooltip>
@@ -238,9 +237,9 @@
           </p>
           <p>
             <va-card>
-              <va-form type="horizontal">
+              <va-form type="vertical" ref="form">
                 <va-form-item label="Name">
-                  <va-input />
+                  <va-input v-model="form.name" :rules="[{type:'required'}]"/>
                 </va-form-item>
                 <va-form-item label="Select">
                   <va-select placeholder="Stuff">
@@ -272,6 +271,10 @@
                   <va-input v-model="color"/>
                   &nbsp;
                   <va-color-picker @change="colorPickerOnChange"/>
+                </va-form-item>
+                <va-form-item>
+                  <va-button type="primary" @click="submitForm">Submit</va-button>&nbsp;
+                  <va-button @click="resetForm">Reset</va-button>
                 </va-form-item>
               </va-form>
             </va-card>
@@ -334,7 +337,7 @@
     </va-page>
 
     <va-aside ref="aside">
-      <va-form ref="form" type="horizontal" style="margin-top: 20px">
+      <va-form ref="formtwo" type="horizontal" style="margin-top: 20px">
         <va-form-item label="Name">
           <va-input
                   name="name"
@@ -406,6 +409,10 @@ export default {
            * Datepicker
            */
           dateValue: '',
+
+          form: {
+            name: ''
+          },
 
           /**
            * Card
@@ -525,6 +532,16 @@ export default {
       }
     },
     methods: {
+      submitForm () {
+        this.$refs.form.validateFields((result) => {
+          console.log(result)
+        })
+      },
+      resetForm () {
+        this.$refs.form.resetValidation((result) => {
+          console.log(result)
+        })
+      },
       colorPickerOnChange (e) {
         this.color = e.hex + ', rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
       },
