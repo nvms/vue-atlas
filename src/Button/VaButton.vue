@@ -1,7 +1,7 @@
 <template>
     <a :class="classObj"
        :style="styleObj"
-       @click="$emit('click')"
+       @click="onClick"
        @keyup.enter="enterPressed"
        ref="btn"
        tabindex="0">
@@ -219,6 +219,9 @@
     },
     methods: {
       enterPressed() {
+        if (this.disabled) {
+          return
+        }
         this.$emit('click')
         let el = this.$refs.btn
         let evObj = document.createEvent('Events')
@@ -227,6 +230,12 @@
       },
       focus() {
         this.$refs.btn.focus()
+      },
+      onClick () {
+        if (this.disabled) {
+          return
+        }
+        this.$emit('click')
       }
     },
     mounted() {
