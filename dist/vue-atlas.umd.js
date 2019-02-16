@@ -7817,12 +7817,12 @@ var VaOption_component = normalizeComponent(
 
 VaOption_component.options.__file = "VaOption.vue"
 /* harmony default export */ var VaOption = (VaOption_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Button/VaButton.vue?vue&type=template&id=10e419a4&
-var VaButtonvue_type_template_id_10e419a4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{ref:"btn",class:_vm.classObj,style:(_vm.styleObj),attrs:{"tabindex":"0"},on:{"click":function($event){return _vm.$emit('click')},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},[_c('div',{class:_vm.fadeclassObj},[_vm._t("default"),(_vm.badge)?_c('va-badge',{attrs:{"margin":_vm.badgeMargin}},[_vm._v(_vm._s(_vm.badge))]):_vm._e()],2),(_vm.loadingSpinner)?_c('va-loading',{attrs:{"color":_vm.spinColor,"size":_vm.size}}):_vm._e()],1)}
-var VaButtonvue_type_template_id_10e419a4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Button/VaButton.vue?vue&type=template&id=40fdb02b&
+var VaButtonvue_type_template_id_40fdb02b_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{ref:"btn",class:_vm.classObj,style:(_vm.styleObj),attrs:{"tabindex":"0"},on:{"click":_vm.onClick,"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},[_c('div',{class:_vm.fadeclassObj},[_vm._t("default"),(_vm.badge)?_c('va-badge',{attrs:{"margin":_vm.badgeMargin}},[_vm._v(_vm._s(_vm.badge))]):_vm._e()],2),(_vm.loadingSpinner)?_c('va-loading',{attrs:{"color":_vm.spinColor,"size":_vm.size}}):_vm._e()],1)}
+var VaButtonvue_type_template_id_40fdb02b_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Button/VaButton.vue?vue&type=template&id=10e419a4&
+// CONCATENATED MODULE: ./src/Button/VaButton.vue?vue&type=template&id=40fdb02b&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Button/VaButton.vue?vue&type=script&lang=js&
 
@@ -8037,6 +8037,10 @@ var VaButtonvue_type_template_id_10e419a4_staticRenderFns = []
   },
   methods: {
     enterPressed: function enterPressed() {
+      if (this.disabled) {
+        return;
+      }
+
       this.$emit('click');
       var el = this.$refs.btn;
       var evObj = document.createEvent('Events');
@@ -8045,6 +8049,13 @@ var VaButtonvue_type_template_id_10e419a4_staticRenderFns = []
     },
     focus: function focus() {
       this.$refs.btn.focus();
+    },
+    onClick: function onClick() {
+      if (this.disabled) {
+        return;
+      }
+
+      this.$emit('click');
     }
   },
   mounted: function mounted() {
@@ -8075,8 +8086,8 @@ var VaButtonvue_type_template_id_10e419a4_staticRenderFns = []
 
 var VaButton_component = normalizeComponent(
   Button_VaButtonvue_type_script_lang_js_,
-  VaButtonvue_type_template_id_10e419a4_render,
-  VaButtonvue_type_template_id_10e419a4_staticRenderFns,
+  VaButtonvue_type_template_id_40fdb02b_render,
+  VaButtonvue_type_template_id_40fdb02b_staticRenderFns,
   false,
   null,
   null,
@@ -9535,7 +9546,7 @@ var PopoverMixin = {
   props: {
     trigger: {
       type: String,
-      default: 'click'
+      default: 'hover'
     },
     effect: {
       type: String,
