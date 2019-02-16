@@ -5,7 +5,7 @@ const PopoverMixin = {
   props: {
     trigger: {
       type: String,
-      default: 'click'
+      default: 'hover'
     },
     effect: {
       type: String,
