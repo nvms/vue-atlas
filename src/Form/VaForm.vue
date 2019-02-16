@@ -48,7 +48,7 @@ export default {
         }
       })
     },
-    resetValidation (cb) {
+    resetValidation () {
       this.validate = false
     }
   },
