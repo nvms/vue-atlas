@@ -167,8 +167,3 @@ $scrollbarBackground: #FFFFFF);
     }
   }
 }
-
-// Disables scrolling when a modal is open.
-.#{$class-prefix}-modal-open .#{$class-prefix}-page-wrapper {
-  overflow: hidden !important;
-}
