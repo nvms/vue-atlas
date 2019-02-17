@@ -1,9 +1,11 @@
 <template>
-  <div :class="`${classPrefix}-datepicker`">
+  <div
+    :class="`${classPrefix}-datepicker`"
+    :style="styleObj">
 
     <va-input
-      v-if="!isMobile || !isDateSupported"
-      :width="width"
+      v-if="!mobileDatepicker"
+      v-bind="$attrs"
       :name="name"
       :rules="rules"
       :placeholder="placeholder"
@@ -20,8 +22,8 @@
     </va-input>
 
     <va-input
-      v-if="isMobile && isDateSupported"
-      :width="width"
+      v-else
+      v-bind="$attrs"
       :name="name"
       :rules="rules"
       :placeholder="placeholder"
@@ -171,6 +173,7 @@ import events from '../utils/events'
 
 export default {
   name: 'VaDatepicker',
+  inheritAttrs: false,
   mixins: [inputMixin, localeMixin('VaDatepicker'), events],
   props: {
     value: {
@@ -550,6 +553,21 @@ export default {
       input.setAttribute('type', 'date')
       input.setAttribute('value', value)
       return (input.value !== value)
+    },
+    mobileDatepicker () {
+      if (!this.isMobile || !this.isDateSupported) {
+        return false
+      }
+
+      return true
+    },
+    styleObj () {
+      let style = {}
+      let {actualWidth} = this
+
+      actualWidth.slice(-1) === '%' ? style['width'] = actualWidth : style['min-width'] = actualWidth
+
+      return style
     }
   },
   mounted () {
