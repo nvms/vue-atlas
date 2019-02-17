@@ -70,10 +70,10 @@
                 <div :class="`${classPrefix}-select-items-wrapper`">
                     <slot>
                         <va-option
-                                :key="option.value"
+                                :key="index"
                                 :label="option.label"
                                 :value="option.value"
-                                v-for="option in filterOptions">
+                                v-for="(option, index) in filterOptions">
                         </va-option>
                     </slot>
                 </div>

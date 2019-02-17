@@ -12,9 +12,7 @@
     name: 'VaOption',
     inject: ['addSelectOption', 'isOptionSelected', 'selectOption'],
     props: {
-      value: {
-        type: String
-      },
+      value: {},
       label: {
         type: String,
         required: false
