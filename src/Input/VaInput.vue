@@ -308,7 +308,7 @@ export default {
             this.position = this.getPosition()
             this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
           }
-        }, 20)
+        }, 50)
       }
     },
     enterPressed () {
@@ -343,7 +343,7 @@ export default {
         case 'onAutofillEnd':
           setTimeout(() => {
             this.autofilled = false
-          }, 100)
+          }, 150)
           return
       }
     }
