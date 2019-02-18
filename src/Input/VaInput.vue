@@ -297,7 +297,8 @@ export default {
         this.$refs.input.focus()
       }, 50)
     },
-    enterPressed () {
+    enterPressed (e) {
+      this.$emit('keyup', e)
       this.opsConfirm()
     },
     setPosition () {
