@@ -1,6 +1,8 @@
 <template>
   <div :class="classObj">
-    <label :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
+    <label
+      v-bind="$attrs"
+      :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
       {{label || '&nbsp;'}}
       <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
@@ -13,6 +15,7 @@
 <script>
 export default {
   name: 'VaFormItem',
+  inheritAttrs: false,
   props: {
     label: {
       type: String
