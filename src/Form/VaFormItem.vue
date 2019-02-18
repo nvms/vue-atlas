@@ -21,7 +21,7 @@ export default {
       type: String
     },
     labelCol: {
-      type: Number,
+      type: [Number, String],
       default: 0,
       required: false,
       note: 'Used in horizontal and vertical type forms to allow you to assign a number of columns to the item label.'
@@ -51,9 +51,10 @@ export default {
       return this.$parent.type == 'vertical'
     },
     label_col () {
+      let lc = parseInt(this.labelCol)
       let defaultCol = this.inline ? 0 : 2
       defaultCol = this.vertical ? 12 : defaultCol
-      return this.labelCol ? this.labelCol : defaultCol
+      return lc ? lc : defaultCol
     },
     col () {
       if (this.inline && !this.formCol) {
