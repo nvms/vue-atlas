@@ -4518,12 +4518,12 @@ var VaPage_component = normalizeComponent(
 
 VaPage_component.options.__file = "VaPage.vue"
 /* harmony default export */ var VaPage = (VaPage_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Form/VaForm.vue?vue&type=template&id=611d1f9a&
-var VaFormvue_type_template_id_611d1f9a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',_vm._b({class:_vm.classObj,attrs:{"id":_vm.id,"name":_vm.name},on:{"submit":function($event){$event.preventDefault();return _vm.noop($event)}}},'form',_vm.$attrs,false),[_vm._t("default")],2)}
-var VaFormvue_type_template_id_611d1f9a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Form/VaForm.vue?vue&type=template&id=3be5c332&
+var VaFormvue_type_template_id_3be5c332_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('form',_vm._b({class:_vm.classObj,attrs:{"id":_vm.id,"name":_vm.name},on:{"submit":function($event){$event.preventDefault();return _vm.noop($event)}}},'form',_vm.$attrs,false),[_vm._t("default")],2)}
+var VaFormvue_type_template_id_3be5c332_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Form/VaForm.vue?vue&type=template&id=611d1f9a&
+// CONCATENATED MODULE: ./src/Form/VaForm.vue?vue&type=template&id=3be5c332&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -4677,7 +4677,7 @@ function _typeof(obj) {
         }
       });
     },
-    resetValidation: function resetValidation(cb) {
+    resetValidation: function resetValidation() {
       this.validate = false;
     }
   },
@@ -4780,8 +4780,8 @@ function _typeof(obj) {
 
 var VaForm_component = normalizeComponent(
   Form_VaFormvue_type_script_lang_js_,
-  VaFormvue_type_template_id_611d1f9a_render,
-  VaFormvue_type_template_id_611d1f9a_staticRenderFns,
+  VaFormvue_type_template_id_3be5c332_render,
+  VaFormvue_type_template_id_3be5c332_staticRenderFns,
   false,
   null,
   null,
@@ -5373,12 +5373,12 @@ var VaToggle_component = normalizeComponent(
 
 VaToggle_component.options.__file = "VaToggle.vue"
 /* harmony default export */ var VaToggle = (VaToggle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Input/VaInput.vue?vue&type=template&id=bef4fada&
-var VaInputvue_type_template_id_bef4fada_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!_vm.showButtonsWarning)?_c('div',{class:_vm.classObj,style:({'width': _vm.actualWidth})},[(_vm.prefix !== '')?_c('span',{class:(_vm.classPrefix + "-input-prefix")},[_vm._v("\n  "+_vm._s(_vm.prefix)+"\n  ")]):_vm._e(),(_vm.noVModel)?_c('input',_vm._b({ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"type":_vm.type,"tabindex":"0"},domProps:{"value":_vm.value},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)):((_vm.type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"checkbox"},domProps:{"value":_vm.value,"checked":Array.isArray(_vm.currentValue)?_vm._i(_vm.currentValue,_vm.value)>-1:(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){var $$a=_vm.currentValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.value,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.currentValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.currentValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.currentValue=$$c}}}},'input',_vm.$attrs,false)):((_vm.type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"radio"},domProps:{"value":_vm.value,"checked":_vm._q(_vm.currentValue,_vm.value)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){_vm.currentValue=_vm.value}}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":_vm.type},domProps:{"value":_vm.value,"value":(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":[function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value},function($event){return _vm.update($event.target.value)}],"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)),(_vm.icon !== 'undefined' || _vm.clearable)?_c('div',{class:(_vm.classPrefix + "-input-icon-wrapper")},[(_vm.clearable)?_c('va-icon',{class:(_vm.classPrefix + "-input-clearable"),attrs:{"type":"times","icon-style":"solid"},nativeOn:{"click":function($event){$event.stopPropagation();return _vm.clean($event)}}}):_vm._e(),_c('va-icon',{class:(_vm.classPrefix + "-input-show-icon"),attrs:{"type":_vm.icon,"icon-style":_vm.iconStyle}})],1):_vm._e(),(_vm.postfix !== '')?_c('span',{class:(_vm.classPrefix + "-input-postfix")},[_vm._v("\n  "+_vm._s(_vm.postfix)+"\n  ")]):_vm._e(),(_vm.buttons)?_c('va-input-ops',{attrs:{"parent-position":_vm.position},on:{"confirm":_vm.opsConfirm,"cancel":_vm.opsCancel}}):_vm._e(),_c('validate',{attrs:{"name":_vm.name,"rules":_vm.rules,"custom-validate":_vm.customValidate,"current":_vm.value},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1):_c('div',[_c('va-alert',{attrs:{"type":"warning"}},[_c('h4',[_vm._v("Hold on")]),_c('p',[_vm._v("\n      If you're going to use "),_c('b',[_vm._v("buttons")]),_vm._v(" with this input component, you need\n      to also use the "),_c('b',[_vm._v("loading")]),_vm._v(" prop.\n\n      Handle the "),_c('b',[_vm._v("@confirm")]),_vm._v(" event emitted by the input component by setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop to true, "),_c('i',[_vm._v("doing some task")]),_vm._v(", and finally setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop back to false.\n\n      It is important that events happen in that order, because the input component\n      is watching the "),_c('b',[_vm._v("loading")]),_vm._v(" prop for those changes. That's how it knows to hide\n      the confirm and cancel buttons.\n    ")])])],1)}
-var VaInputvue_type_template_id_bef4fada_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Input/VaInput.vue?vue&type=template&id=0c770416&
+var VaInputvue_type_template_id_0c770416_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!_vm.showButtonsWarning)?_c('div',{class:_vm.classObj,style:({'width': _vm.actualWidth})},[(_vm.prefix !== '')?_c('span',{class:(_vm.classPrefix + "-input-prefix")},[_vm._v("\n  "+_vm._s(_vm.prefix)+"\n  ")]):_vm._e(),(_vm.noVModel)?_c('input',_vm._b({ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"type":_vm.type,"tabindex":"0"},domProps:{"value":_vm.value},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)):((_vm.type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"checkbox"},domProps:{"value":_vm.value,"checked":Array.isArray(_vm.currentValue)?_vm._i(_vm.currentValue,_vm.value)>-1:(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){var $$a=_vm.currentValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.value,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.currentValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.currentValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.currentValue=$$c}}}},'input',_vm.$attrs,false)):((_vm.type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"radio"},domProps:{"value":_vm.value,"checked":_vm._q(_vm.currentValue,_vm.value)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){_vm.currentValue=_vm.value}}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":_vm.type},domProps:{"value":_vm.value,"value":(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":[function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value},function($event){return _vm.update($event.target.value)}],"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)),(_vm.icon !== 'undefined' || _vm.clearable)?_c('div',{class:(_vm.classPrefix + "-input-icon-wrapper")},[(_vm.clearable)?_c('va-icon',{class:(_vm.classPrefix + "-input-clearable"),attrs:{"type":"times","icon-style":"solid"},nativeOn:{"click":function($event){$event.stopPropagation();return _vm.clean($event)}}}):_vm._e(),_c('va-icon',{class:(_vm.classPrefix + "-input-show-icon"),attrs:{"type":_vm.icon,"icon-style":_vm.iconStyle}})],1):_vm._e(),(_vm.postfix !== '')?_c('span',{class:(_vm.classPrefix + "-input-postfix")},[_vm._v("\n  "+_vm._s(_vm.postfix)+"\n  ")]):_vm._e(),(_vm.buttons)?_c('va-input-ops',{attrs:{"parent-position":_vm.position},on:{"confirm":_vm.opsConfirm,"cancel":_vm.opsCancel}}):_vm._e(),_c('validate',{attrs:{"name":_vm.name,"rules":_vm.rules,"custom-validate":_vm.customValidate,"current":_vm.value},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1):_c('div',[_c('va-alert',{attrs:{"type":"warning"}},[_c('h4',[_vm._v("Hold on")]),_c('p',[_vm._v("\n      If you're going to use "),_c('b',[_vm._v("buttons")]),_vm._v(" with this input component, you need\n      to also use the "),_c('b',[_vm._v("loading")]),_vm._v(" prop.\n\n      Handle the "),_c('b',[_vm._v("@confirm")]),_vm._v(" event emitted by the input component by setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop to true, "),_c('i',[_vm._v("doing some task")]),_vm._v(", and finally setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop back to false.\n\n      It is important that events happen in that order, because the input component\n      is watching the "),_c('b',[_vm._v("loading")]),_vm._v(" prop for those changes. That's how it knows to hide\n      the confirm and cancel buttons.\n    ")])])],1)}
+var VaInputvue_type_template_id_0c770416_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Input/VaInput.vue?vue&type=template&id=bef4fada&
+// CONCATENATED MODULE: ./src/Input/VaInput.vue?vue&type=template&id=0c770416&
 
 // CONCATENATED MODULE: ./src/Mixin/inputMixin.js
 /* harmony default export */ var inputMixin = ({
@@ -5438,12 +5438,12 @@ var VaInputvue_type_template_id_bef4fada_staticRenderFns = []
     }
   }
 });
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/validate.vue?vue&type=template&id=4252f722&
-var validatevue_type_template_id_4252f722_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.validate && _vm.tips)?_c('div',{class:(_vm.classPrefix + "-err-tip")},[_vm._v("\n  "+_vm._s(_vm.tips)+"\n")]):_vm._e()}
-var validatevue_type_template_id_4252f722_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/validate.vue?vue&type=template&id=006b8ffb&
+var validatevue_type_template_id_006b8ffb_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (_vm.validate && _vm.tips)?_c('div',{class:(_vm.classPrefix + "-err-tip")},[_vm._v("\n  "+_vm._s(_vm.tips)+"\n")]):_vm._e()}
+var validatevue_type_template_id_006b8ffb_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/validate.vue?vue&type=template&id=4252f722&
+// CONCATENATED MODULE: ./src/validate.vue?vue&type=template&id=006b8ffb&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.iterator.js
 var es6_array_iterator = __webpack_require__("cadf");
@@ -5710,7 +5710,7 @@ var es6_object_keys = __webpack_require__("456d");
   computed: {
     _results: {
       get: function get() {
-        return this.resuts;
+        return this.results;
       },
       set: function set(val, oldVal) {
         var self = this;
@@ -5940,7 +5940,7 @@ var es6_object_keys = __webpack_require__("456d");
     },
     telValid: function telValid(value, tip) {
       // eslint-disable-next-line
-      var rule = /^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+      var rule = /^[2-9]\d{2}-\d{3}-\d{4}$/;
 
       if (rule.test(value) || value === '') {
         this.setResult('isTelValid', {
@@ -5983,8 +5983,8 @@ var es6_object_keys = __webpack_require__("456d");
 
 var validate_component = normalizeComponent(
   src_validatevue_type_script_lang_js_,
-  validatevue_type_template_id_4252f722_render,
-  validatevue_type_template_id_4252f722_staticRenderFns,
+  validatevue_type_template_id_006b8ffb_render,
+  validatevue_type_template_id_006b8ffb_staticRenderFns,
   false,
   null,
   null,
@@ -6172,7 +6172,8 @@ validate_component.options.__file = "validate.vue"
       focused: false,
       currentValue: cv,
       position: {},
-      showButtonsWarning: false
+      showButtonsWarning: false,
+      autofilled: false
     };
   },
   created: function created() {
@@ -6192,6 +6193,7 @@ validate_component.options.__file = "validate.vue"
   mounted: function mounted() {
     window.addEventListener('resize', this.setPosition, false);
     window.addEventListener('scroll', this.setPosition, false);
+    this.$refs.input.addEventListener && this.$refs.input.addEventListener('animationstart', this.detectAutofill, false);
 
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true;
@@ -6203,6 +6205,7 @@ validate_component.options.__file = "validate.vue"
   },
   beforeDestroy: function beforeDestroy() {
     window.removeEventListener('scroll', this.setPosition, false);
+    this.$refs.input.removeEventListener('animationstart', this.detectAutofill, false);
   },
   components: {
     validate: validate
@@ -6262,6 +6265,7 @@ validate_component.options.__file = "validate.vue"
     },
     value: function value(val) {
       this.currentValue = val;
+      this.$refs.input.value = val;
     }
   },
   methods: {
@@ -6279,7 +6283,7 @@ validate_component.options.__file = "validate.vue"
         this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue);
       }
     },
-    blur: function blur() {
+    blur: function blur(e) {
       this.focused = false;
       this.$emit('blur', this.value);
 
@@ -6287,7 +6291,7 @@ validate_component.options.__file = "validate.vue"
         this.broadcast('VaInputOps', 'Va@inputBlur', this.currentValue);
       }
     },
-    focus: function focus() {
+    focus: function focus(e) {
       var _this2 = this;
 
       /**
@@ -6299,19 +6303,25 @@ validate_component.options.__file = "validate.vue"
        * This short timeout provides, what seems like, a fine amount of
        * time for this to happen without being noticable by the human eye.
        */
-      setTimeout(function () {
-        _this2.$refs.input.focus();
+      if (this.autofilled) {
+        return;
+      }
 
-        _this2.$emit('focus', _this2.value);
+      if (!this.focused) {
+        setTimeout(function () {
+          _this2.$refs.input.focus();
 
-        _this2.focused = true;
+          _this2.$emit('focus', _this2.value);
 
-        if (_this2.buttons) {
-          _this2.position = _this2.getPosition();
+          _this2.focused = true;
 
-          _this2.broadcast('VaInputOps', 'Va@inputFocus', _this2.currentValue);
-        }
-      }, 20);
+          if (_this2.buttons) {
+            _this2.position = _this2.getPosition();
+
+            _this2.broadcast('VaInputOps', 'Va@inputFocus', _this2.currentValue);
+          }
+        }, 20);
+      }
     },
     enterPressed: function enterPressed() {
       this.opsConfirm();
@@ -6337,6 +6347,20 @@ validate_component.options.__file = "validate.vue"
     },
     opsCancel: function opsCancel() {
       this.$emit('cancel');
+    },
+    detectAutofill: function detectAutofill(e) {
+      var _this3 = this;
+
+      switch (e.animationName) {
+        case 'onAutofillBegin':
+          this.autofilled = true;
+
+        case 'onAutofillEnd':
+          setTimeout(function () {
+            _this3.autofilled = false;
+          }, 100);
+          return;
+      }
     }
   }
 });
@@ -6352,8 +6376,8 @@ validate_component.options.__file = "validate.vue"
 
 var VaInput_component = normalizeComponent(
   Input_VaInputvue_type_script_lang_js_,
-  VaInputvue_type_template_id_bef4fada_render,
-  VaInputvue_type_template_id_bef4fada_staticRenderFns,
+  VaInputvue_type_template_id_0c770416_render,
+  VaInputvue_type_template_id_0c770416_staticRenderFns,
   false,
   null,
   null,
@@ -7744,12 +7768,12 @@ var VaColumn_component = normalizeComponent(
 
 VaColumn_component.options.__file = "VaColumn.vue"
 /* harmony default export */ var VaColumn = (VaColumn_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Select/VaOption.vue?vue&type=template&id=08e79611&
-var VaOptionvue_type_template_id_08e79611_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticStyle:{"position":"relative"}},[_c('a',{class:_vm.classes,on:{"click":function($event){$event.preventDefault();return _vm.selectOption(_vm.option)}}},[_vm._t("default",[_vm._v(_vm._s(_vm.fullLabel))])],2)])}
-var VaOptionvue_type_template_id_08e79611_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Select/VaOption.vue?vue&type=template&id=03d9aa00&
+var VaOptionvue_type_template_id_03d9aa00_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('li',{staticStyle:{"position":"relative"}},[_c('a',{class:_vm.classes,on:{"click":function($event){$event.preventDefault();return _vm.selectOption(_vm.option)}}},[_vm._t("default",[_vm._v(_vm._s(_vm.fullLabel))])],2)])}
+var VaOptionvue_type_template_id_03d9aa00_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Select/VaOption.vue?vue&type=template&id=08e79611&
+// CONCATENATED MODULE: ./src/Select/VaOption.vue?vue&type=template&id=03d9aa00&
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Select/VaOption.vue?vue&type=script&lang=js&
 //
@@ -7765,9 +7789,7 @@ var VaOptionvue_type_template_id_08e79611_staticRenderFns = []
   name: 'VaOption',
   inject: ['addSelectOption', 'isOptionSelected', 'selectOption'],
   props: {
-    value: {
-      type: String
-    },
+    value: {},
     label: {
       type: String,
       required: false
@@ -7809,8 +7831,8 @@ var VaOptionvue_type_template_id_08e79611_staticRenderFns = []
 
 var VaOption_component = normalizeComponent(
   Select_VaOptionvue_type_script_lang_js_,
-  VaOptionvue_type_template_id_08e79611_render,
-  VaOptionvue_type_template_id_08e79611_staticRenderFns,
+  VaOptionvue_type_template_id_03d9aa00_render,
+  VaOptionvue_type_template_id_03d9aa00_staticRenderFns,
   false,
   null,
   null,
@@ -8100,12 +8122,12 @@ var VaButton_component = normalizeComponent(
 
 VaButton_component.options.__file = "VaButton.vue"
 /* harmony default export */ var VaButton = (VaButton_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Select/VaSelect.vue?vue&type=template&id=5e3772c2&
-var VaSelectvue_type_template_id_5e3772c2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.classObj,style:(_vm.styleObj)},[_c('va-button',{ref:"button",class:[(_vm.classPrefix + "-dropdown-toggle"), (_vm.classPrefix + "-select-btn"), _vm.showSelected && _vm.multiple && _vm.value.length ? (_vm.classPrefix + "-select-multiple") : '', _vm.show ? (_vm.classPrefix + "-select-btn-open") : ''],style:({minWidth:'100%'}),attrs:{"disabled":_vm.disabled,"size":_vm.size,"type":_vm.type},nativeOn:{"click":function($event){return _vm.toggleDropdown($event)}}},[(_vm.showPlaceholder || !_vm.showSelected)?_c('span',{class:(_vm.classPrefix + "-select-placeholder")},[_vm._v(_vm._s(_vm.placeholder))]):_vm._e(),(_vm.showSelected)?_c('span',{staticStyle:{"display":"flex"}},[(_vm.multiple)?_vm._l((_vm.selectedItems),function(item,index){return _c('div',{key:index,staticClass:"inline",class:(_vm.classPrefix + "-selected-tag"),attrs:{"tabindex":"0"},on:{"click":function($event){$event.stopPropagation();return _vm.del(item)}}},[_c('span',{class:(_vm.classPrefix + "-selected-tag__label")},[_vm._t("item",[_c('span',{domProps:{"innerHTML":_vm._s(_vm.format(item))}})],{"item":item})],2),_c('span',{class:(_vm.classPrefix + "-selected-tag__icon")},[_c('va-icon',{attrs:{"type":"times"}})],1)])}):[_c('div',{staticClass:"inline"},[_vm._t("item",[_c('span',{domProps:{"innerHTML":_vm._s(_vm.format(_vm.selectedItems[0]))}})],{"item":_vm.selectedItems[0]})],2)]],2):_vm._e(),_vm._v("\n          \n        "),_c('va-icon',{attrs:{"type":_vm.show ? 'angle-up' : 'angle-down',"color":"#A5ADBA"}})],1),_c('transition',{attrs:{"name":"fadeDown"}},[_c('ul',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"},{name:"va-position",rawName:"v-va-position",value:(_vm.show),expression:"show"}],ref:"menu",class:[(_vm.classPrefix + "-dropdown-menu"), _vm.search ? (_vm.classPrefix + "-has-search") : ""],style:({minWidth: '100%', maxHeight: _vm.menuMaxHeight})},[(_vm.search)?_c('li',[_c('div',{class:(_vm.classPrefix + "-search-wrap")},[_c('va-input',{ref:"searchInput",class:(_vm.classPrefix + "-select-search"),attrs:{"placeholder":_vm.inputPlaceholder,"icon":"search","icon-style":"solid","no-v-model":"","clearable":""},on:{"confirm":_vm.addExtra},model:{value:(_vm.searchText),callback:function ($$v) {_vm.searchText=$$v},expression:"searchText"}})],1)]):_vm._e(),(_vm.multiple)?_c('li',{class:(_vm.classPrefix + "-select-all")},[_c('a',{on:{"click":function($event){$event.preventDefault();return _vm.selectAll($event)}}},[_vm._v("\n                    "+_vm._s(_vm.getL('all'))+"\n                    "),_c('va-icon',{directives:[{name:"show",rawName:"v-show",value:(_vm.allSelected),expression:"allSelected"}],attrs:{"color":"#0052CC","margin":"5px 0 0 0","size":"10px","type":"check"}})],1)]):_vm._e(),_c('div',{class:(_vm.classPrefix + "-select-items-wrapper")},[_vm._t("default",_vm._l((_vm.filterOptions),function(option){return _c('va-option',{key:option.value,attrs:{"label":option.label,"value":option.value}})}))],2),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showNotify),expression:"showNotify"}],class:(_vm.classPrefix + "-notify"),attrs:{"transition":"fadeDown"}},[_vm._v("Limit: "+_vm._s(_vm.limit))])])]),_c('div',{staticClass:"clearfix"}),_c('validate',{attrs:{"current":_vm.value,"custom-validate":_vm.customValidate,"name":_vm.name,"rules":_vm.rules},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1)}
-var VaSelectvue_type_template_id_5e3772c2_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Select/VaSelect.vue?vue&type=template&id=3d1e98c4&
+var VaSelectvue_type_template_id_3d1e98c4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:_vm.classObj,style:(_vm.styleObj)},[_c('va-button',{ref:"button",class:[(_vm.classPrefix + "-dropdown-toggle"), (_vm.classPrefix + "-select-btn"), _vm.showSelected && _vm.multiple && _vm.value.length ? (_vm.classPrefix + "-select-multiple") : '', _vm.show ? (_vm.classPrefix + "-select-btn-open") : ''],style:({minWidth:'100%'}),attrs:{"disabled":_vm.disabled,"size":_vm.size,"type":_vm.type},nativeOn:{"click":function($event){return _vm.toggleDropdown($event)}}},[(_vm.showPlaceholder || !_vm.showSelected)?_c('span',{class:(_vm.classPrefix + "-select-placeholder")},[_vm._v(_vm._s(_vm.placeholder))]):_vm._e(),(_vm.showSelected)?_c('span',{staticStyle:{"display":"flex"}},[(_vm.multiple)?_vm._l((_vm.selectedItems),function(item,index){return _c('div',{key:index,staticClass:"inline",class:(_vm.classPrefix + "-selected-tag"),attrs:{"tabindex":"0"},on:{"click":function($event){$event.stopPropagation();return _vm.del(item)}}},[_c('span',{class:(_vm.classPrefix + "-selected-tag__label")},[_vm._t("item",[_c('span',{domProps:{"innerHTML":_vm._s(_vm.format(item))}})],{"item":item})],2),_c('span',{class:(_vm.classPrefix + "-selected-tag__icon")},[_c('va-icon',{attrs:{"type":"times"}})],1)])}):[_c('div',{staticClass:"inline"},[_vm._t("item",[_c('span',{domProps:{"innerHTML":_vm._s(_vm.format(_vm.selectedItems[0]))}})],{"item":_vm.selectedItems[0]})],2)]],2):_vm._e(),_vm._v("\n          \n        "),_c('va-icon',{attrs:{"type":_vm.show ? 'angle-up' : 'angle-down',"color":"#A5ADBA"}})],1),_c('transition',{attrs:{"name":"fadeDown"}},[_c('ul',{directives:[{name:"show",rawName:"v-show",value:(_vm.show),expression:"show"},{name:"va-position",rawName:"v-va-position",value:(_vm.show),expression:"show"}],ref:"menu",class:[(_vm.classPrefix + "-dropdown-menu"), _vm.search ? (_vm.classPrefix + "-has-search") : ""],style:({minWidth: '100%', maxHeight: _vm.menuMaxHeight})},[(_vm.search)?_c('li',[_c('div',{class:(_vm.classPrefix + "-search-wrap")},[_c('va-input',{ref:"searchInput",class:(_vm.classPrefix + "-select-search"),attrs:{"placeholder":_vm.inputPlaceholder,"icon":"search","icon-style":"solid","no-v-model":"","clearable":""},on:{"confirm":_vm.addExtra},model:{value:(_vm.searchText),callback:function ($$v) {_vm.searchText=$$v},expression:"searchText"}})],1)]):_vm._e(),(_vm.multiple)?_c('li',{class:(_vm.classPrefix + "-select-all")},[_c('a',{on:{"click":function($event){$event.preventDefault();return _vm.selectAll($event)}}},[_vm._v("\n                    "+_vm._s(_vm.getL('all'))+"\n                    "),_c('va-icon',{directives:[{name:"show",rawName:"v-show",value:(_vm.allSelected),expression:"allSelected"}],attrs:{"color":"#0052CC","margin":"5px 0 0 0","size":"10px","type":"check"}})],1)]):_vm._e(),_c('div',{class:(_vm.classPrefix + "-select-items-wrapper")},[_vm._t("default",_vm._l((_vm.filterOptions),function(option,index){return _c('va-option',{key:index,attrs:{"label":option.label,"value":option.value}})}))],2),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showNotify),expression:"showNotify"}],class:(_vm.classPrefix + "-notify"),attrs:{"transition":"fadeDown"}},[_vm._v("Limit: "+_vm._s(_vm.limit))])])]),_c('div',{staticClass:"clearfix"}),_c('validate',{attrs:{"current":_vm.value,"custom-validate":_vm.customValidate,"name":_vm.name,"rules":_vm.rules},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1)}
+var VaSelectvue_type_template_id_3d1e98c4_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Select/VaSelect.vue?vue&type=template&id=5e3772c2&
+// CONCATENATED MODULE: ./src/Select/VaSelect.vue?vue&type=template&id=3d1e98c4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.array.find-index.js
 var es6_array_find_index = __webpack_require__("20d6");
@@ -8606,8 +8628,8 @@ var es6_regexp_search = __webpack_require__("386d");
 
 var VaSelect_component = normalizeComponent(
   Select_VaSelectvue_type_script_lang_js_,
-  VaSelectvue_type_template_id_5e3772c2_render,
-  VaSelectvue_type_template_id_5e3772c2_staticRenderFns,
+  VaSelectvue_type_template_id_3d1e98c4_render,
+  VaSelectvue_type_template_id_3d1e98c4_staticRenderFns,
   false,
   null,
   null,
@@ -14323,12 +14345,12 @@ var VaTimepicker_component = normalizeComponent(
 
 VaTimepicker_component.options.__file = "VaTimepicker.vue"
 /* harmony default export */ var Timepicker_VaTimepicker = (VaTimepicker_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Datepicker/VaDatepicker.vue?vue&type=template&id=aaa63c7a&
-var VaDatepickervue_type_template_id_aaa63c7a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:(_vm.classPrefix + "-datepicker")},[(!_vm.isMobile || !_vm.isDateSupported)?_c('va-input',{attrs:{"width":_vm.width,"name":_vm.name,"rules":_vm.rules,"placeholder":_vm.placeholder,"custom-validate":_vm.customValidate,"disabled":_vm.disabled,"readonly":_vm.readonly,"clearable":true,"size":_vm.size !== 'md' ? _vm.size : null,"icon":"calendar-alt","no-v-model":true},on:{"clean":_vm.clean},nativeOn:{"click":function($event){return _vm.inputClick($event)}},model:{value:(_vm.currentValue),callback:function ($$v) {_vm.currentValue=$$v},expression:"currentValue"}}):_vm._e(),(_vm.isMobile && _vm.isDateSupported)?_c('va-input',{attrs:{"width":_vm.width,"name":_vm.name,"rules":_vm.rules,"placeholder":_vm.placeholder,"disabled":_vm.disabled,"custom-validate":_vm.customValidate,"readonly":false,"clearable":false,"size":_vm.size !== 'md' ? _vm.size : null,"type":"date","no-v-model":true},model:{value:(_vm.currentValue),callback:function ($$v) {_vm.currentValue=$$v},expression:"currentValue"}}):_vm._e(),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayDayView),expression:"displayDayView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayDayView),expression:"displayDayView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"tabindex":"0","type":"subtle"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextMonthClick(0)}},nativeOn:{"click":function($event){return _vm.preNextMonthClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.switchMonthView($event)}},nativeOn:{"click":function($event){return _vm.switchMonthView($event)}}},[_vm._v(_vm._s(_vm.stringifyDayHeader(_vm.currDate)))]),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"tabindex":"0","type":"subtle"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextMonthClick(1)}},nativeOn:{"click":function($event){return _vm.preNextMonthClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1)],1),_c('div',{class:(_vm.classPrefix + "-datepicker-weekRange")},_vm._l((_vm.weekRange),function(w,index){return _c('span',{key:index},[_vm._v(_vm._s(w))])}),0),_c('div',{class:(_vm.classPrefix + "-datepicker-dateRange")},_vm._l((_vm.dateRange),function(d,index){return _c('span',{key:index,class:d.sclass,attrs:{"tabindex":"0"},on:{"click":function($event){return _vm.daySelect(d.date, d.text, d.sclass)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.daySelect(d.date, d.text, d.sclass)}}},[_vm._v(_vm._s(d.text))])}),0)])])])]),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayMonthView),expression:"displayMonthView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayMonthView),expression:"displayMonthView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextYearClick(0)}},nativeOn:{"click":function($event){return _vm.preNextYearClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.switchDecadeView($event)}},nativeOn:{"click":function($event){return _vm.switchDecadeView($event)}}},[_vm._v(_vm._s(_vm.stringifyYearHeader(_vm.currDate)))]),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextYearClick(1)}},nativeOn:{"click":function($event){return _vm.preNextYearClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1)],1),_c('div',{class:(_vm.classPrefix + "-datepicker-monthRange")},[_vm._l((_vm.monthNames),function(m,index){return [_c('span',{key:index,class:_vm.monthClassObj(m),attrs:{"tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.monthSelect(index)},"click":function($event){return _vm.monthSelect(index)}}},[_vm._v(_vm._s(m))])]})],2)])])])]),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayYearView),expression:"displayYearView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayYearView),expression:"displayYearView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextDecadeClick(0)}},nativeOn:{"click":function($event){return _vm.preNextDecadeClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextDecadeClick(1)}},nativeOn:{"click":function($event){return _vm.preNextDecadeClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1),_c('p',[_vm._v("\n            "+_vm._s(_vm.stringifyDecadeHeader(_vm.currDate))+"\n            ")])],1),_c('div',{class:(_vm.classPrefix + "-datepicker-monthRange " + _vm.classPrefix + "-datepicker-decadeRange")},[_vm._l((_vm.decadeRange),function(decade,index){return [_c('span',{key:index,class:_vm.yearClassObj(decade),attrs:{"tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.yearSelect(decade.text)},"click":function($event){$event.stopPropagation();return _vm.yearSelect(decade.text)}}},[_vm._v("\n                "+_vm._s(decade.text)+"\n              ")])]})],2)])])])])],1)}
-var VaDatepickervue_type_template_id_aaa63c7a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Datepicker/VaDatepicker.vue?vue&type=template&id=3ea85bf2&
+var VaDatepickervue_type_template_id_3ea85bf2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{class:(_vm.classPrefix + "-datepicker"),style:(_vm.styleObj)},[(!_vm.mobileDatepicker)?_c('va-input',_vm._b({attrs:{"name":_vm.name,"rules":_vm.rules,"placeholder":_vm.placeholder,"custom-validate":_vm.customValidate,"disabled":_vm.disabled,"readonly":_vm.readonly,"clearable":true,"size":_vm.size !== 'md' ? _vm.size : null,"icon":"calendar-alt","no-v-model":true},on:{"clean":_vm.clean},nativeOn:{"click":function($event){return _vm.inputClick($event)}},model:{value:(_vm.currentValue),callback:function ($$v) {_vm.currentValue=$$v},expression:"currentValue"}},'va-input',_vm.$attrs,false)):_c('va-input',_vm._b({attrs:{"name":_vm.name,"rules":_vm.rules,"placeholder":_vm.placeholder,"disabled":_vm.disabled,"custom-validate":_vm.customValidate,"readonly":false,"clearable":false,"size":_vm.size !== 'md' ? _vm.size : null,"type":"date","no-v-model":true},model:{value:(_vm.currentValue),callback:function ($$v) {_vm.currentValue=$$v},expression:"currentValue"}},'va-input',_vm.$attrs,false)),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayDayView),expression:"displayDayView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayDayView),expression:"displayDayView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"tabindex":"0","type":"subtle"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextMonthClick(0)}},nativeOn:{"click":function($event){return _vm.preNextMonthClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.switchMonthView($event)}},nativeOn:{"click":function($event){return _vm.switchMonthView($event)}}},[_vm._v(_vm._s(_vm.stringifyDayHeader(_vm.currDate)))]),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"tabindex":"0","type":"subtle"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextMonthClick(1)}},nativeOn:{"click":function($event){return _vm.preNextMonthClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1)],1),_c('div',{class:(_vm.classPrefix + "-datepicker-weekRange")},_vm._l((_vm.weekRange),function(w,index){return _c('span',{key:index},[_vm._v(_vm._s(w))])}),0),_c('div',{class:(_vm.classPrefix + "-datepicker-dateRange")},_vm._l((_vm.dateRange),function(d,index){return _c('span',{key:index,class:d.sclass,attrs:{"tabindex":"0"},on:{"click":function($event){return _vm.daySelect(d.date, d.text, d.sclass)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.daySelect(d.date, d.text, d.sclass)}}},[_vm._v(_vm._s(d.text))])}),0)])])])]),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayMonthView),expression:"displayMonthView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayMonthView),expression:"displayMonthView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextYearClick(0)}},nativeOn:{"click":function($event){return _vm.preNextYearClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.switchDecadeView($event)}},nativeOn:{"click":function($event){return _vm.switchDecadeView($event)}}},[_vm._v(_vm._s(_vm.stringifyYearHeader(_vm.currDate)))]),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextYearClick(1)}},nativeOn:{"click":function($event){return _vm.preNextYearClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1)],1),_c('div',{class:(_vm.classPrefix + "-datepicker-monthRange")},[_vm._l((_vm.monthNames),function(m,index){return [_c('span',{key:index,class:_vm.monthClassObj(m),attrs:{"tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.monthSelect(index)},"click":function($event){return _vm.monthSelect(index)}}},[_vm._v(_vm._s(m))])]})],2)])])])]),_c('transition',{attrs:{"name":"fadeDown"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.displayYearView),expression:"displayYearView"},{name:"va-position",rawName:"v-va-position",value:(_vm.displayYearView),expression:"displayYearView"}],class:(_vm.classPrefix + "-datepicker-popup")},[_c('div',{class:(_vm.classPrefix + "-datepicker-inner")},[_c('div',{class:(_vm.classPrefix + "-datepicker-body")},[_c('div',{class:(_vm.classPrefix + "-datepicker-ctrl")},[_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-preBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextDecadeClick(0)}},nativeOn:{"click":function($event){return _vm.preNextDecadeClick(0)}}},[_c('va-icon',{attrs:{"type":"arrow-left","size":"10px"}})],1),_c('va-button',{class:(_vm.classPrefix + "-month-btn " + _vm.classPrefix + "-datepicker-nextBtn"),attrs:{"type":"subtle","tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.preNextDecadeClick(1)}},nativeOn:{"click":function($event){return _vm.preNextDecadeClick(1)}}},[_c('va-icon',{attrs:{"type":"arrow-right","size":"10px"}})],1),_c('p',[_vm._v("\n            "+_vm._s(_vm.stringifyDecadeHeader(_vm.currDate))+"\n            ")])],1),_c('div',{class:(_vm.classPrefix + "-datepicker-monthRange " + _vm.classPrefix + "-datepicker-decadeRange")},[_vm._l((_vm.decadeRange),function(decade,index){return [_c('span',{key:index,class:_vm.yearClassObj(decade),attrs:{"tabindex":"0"},on:{"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.yearSelect(decade.text)},"click":function($event){$event.stopPropagation();return _vm.yearSelect(decade.text)}}},[_vm._v("\n                "+_vm._s(decade.text)+"\n              ")])]})],2)])])])])],1)}
+var VaDatepickervue_type_template_id_3ea85bf2_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Datepicker/VaDatepicker.vue?vue&type=template&id=aaa63c7a&
+// CONCATENATED MODULE: ./src/Datepicker/VaDatepicker.vue?vue&type=template&id=3ea85bf2&
 
 // EXTERNAL MODULE: external "moment"
 var external_moment_ = __webpack_require__("c32d");
@@ -14514,6 +14536,8 @@ var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment
 //
 //
 //
+//
+//
 
 
 
@@ -14521,6 +14545,7 @@ var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment
 
 /* harmony default export */ var VaDatepickervue_type_script_lang_js_ = ({
   name: 'VaDatepicker',
+  inheritAttrs: false,
   mixins: [inputMixin, localeMixin('VaDatepicker'), events],
   props: {
     value: {
@@ -14887,6 +14912,19 @@ var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment
       input.setAttribute('type', 'date');
       input.setAttribute('value', value);
       return input.value !== value;
+    },
+    mobileDatepicker: function mobileDatepicker() {
+      if (!this.isMobile || !this.isDateSupported) {
+        return false;
+      }
+
+      return true;
+    },
+    styleObj: function styleObj() {
+      var style = {};
+      var actualWidth = this.actualWidth;
+      actualWidth.slice(-1) === '%' ? style['width'] = actualWidth : style['min-width'] = actualWidth;
+      return style;
     }
   },
   mounted: function mounted() {
@@ -14914,8 +14952,8 @@ var external_moment_default = /*#__PURE__*/__webpack_require__.n(external_moment
 
 var VaDatepicker_component = normalizeComponent(
   Datepicker_VaDatepickervue_type_script_lang_js_,
-  VaDatepickervue_type_template_id_aaa63c7a_render,
-  VaDatepickervue_type_template_id_aaa63c7a_staticRenderFns,
+  VaDatepickervue_type_template_id_3ea85bf2_render,
+  VaDatepickervue_type_template_id_3ea85bf2_staticRenderFns,
   false,
   null,
   null,
