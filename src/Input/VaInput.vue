@@ -100,9 +100,7 @@ export default {
   mixins: [inputMixin, events],
   inheritAttrs: false,
   props: {
-    value: {
-      type: [String, Number]
-    },
+    value: {},
     size: {
       type: String
     },

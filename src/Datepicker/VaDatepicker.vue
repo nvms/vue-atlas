@@ -176,9 +176,7 @@ export default {
   inheritAttrs: false,
   mixins: [inputMixin, localeMixin('VaDatepicker'), events],
   props: {
-    value: {
-      type: String
-    },
+    value: {},
     size: {
       type: String,
       default: "md"
@@ -255,7 +253,10 @@ export default {
     }
   },
   watch: {
-    currDate () {
+    currDate (val) {
+      if (val instanceof(Date)) {
+        this.currentValue = this.stringify(val)
+      }
       this.getDateRange()
     },
     value (val) {
