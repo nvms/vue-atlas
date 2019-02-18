@@ -126,6 +126,25 @@
       cursor: default;
     }
   }
+
+  &:-webkit-autofill {
+    animation-name: onAutofillBegin;
+    transition: background-color 9999s linear 5s;
+  }
+
+  &:not(:-webkit-autofill) {
+    animation-name: onAutofillEnd;
+  }
+}
+
+@keyframes onAutofillBegin {
+  from {/**/}
+  to {/**/}
+}
+
+@keyframes onAutofillEnd {
+  from {/**/}
+  to {/**/}
 }
 
 textarea.#{$class-prefix}-form-control {

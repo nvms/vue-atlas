@@ -181,7 +181,8 @@ export default {
       focused: false,
       currentValue: cv,
       position: {},
-      showButtonsWarning: false
+      showButtonsWarning: false,
+      autofilled: false
     }
   },
   created () {
@@ -193,6 +194,21 @@ export default {
   mounted () {
     window.addEventListener('resize', this.setPosition, false)
     window.addEventListener('scroll', this.setPosition, false)
+
+    this.$refs.input.addEventListener &&
+    this.$refs.input.addEventListener('animationstart', (e) => {
+      switch (e.animationName) {
+        case 'onAutofillBegin':
+          this.autofilled = true
+        case 'onAutofillEnd':
+          setTimeout(() => {
+            this.autofilled = false
+          }, 100)
+          return
+      }
+    })
+
+
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true
     }
@@ -202,6 +218,7 @@ export default {
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.setPosition, false)
+    this.$refs.input.removeEventListener('animationstart')
   },
   components: {
     validate
@@ -257,6 +274,7 @@ export default {
     },
     value (val) {
       this.currentValue = val
+      this.$refs.input.value = val
     }
   },
   methods: {
@@ -273,14 +291,14 @@ export default {
         this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue)
       }
     },
-    blur () {
+    blur (e) {
       this.focused = false
       this.$emit('blur', this.value)
       if (this.buttons) {
         this.broadcast('VaInputOps', 'Va@inputBlur', this.currentValue)
       }
     },
-    focus () {
+    focus (e) {
       /**
        * This setTimeout exists because sometimes you'll want to call
        * this.$refs.input.focus() when the input is inside of something
@@ -290,15 +308,21 @@ export default {
        * This short timeout provides, what seems like, a fine amount of
        * time for this to happen without being noticable by the human eye.
        */
-      setTimeout(() => {
-        this.$refs.input.focus()
-        this.$emit('focus', this.value)
-        this.focused = true
-        if (this.buttons) {
-          this.position = this.getPosition()
-          this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
-        }
-      }, 20)
+      if (this.autofilled) {
+        return
+      }
+
+      if (!this.focused) {
+        setTimeout(() => {
+          this.$refs.input.focus()
+          this.$emit('focus', this.value)
+          this.focused = true
+          if (this.buttons) {
+            this.position = this.getPosition()
+            this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
+          }
+        }, 20)
+      }
     },
     enterPressed () {
       this.opsConfirm()
