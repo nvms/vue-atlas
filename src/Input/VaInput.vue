@@ -17,8 +17,8 @@
       :placeholder="placeholder"
       :autofocus="autofocus"
       :type="type"
-      @blur="blur"
-      @focus="focus"
+      @blur="onBlur"
+      @focus="onFocus"
       @input="update($event.target.value)"
       tabindex="0"
       @keyup.enter="enterPressed"
@@ -35,8 +35,8 @@
       :placeholder="placeholder"
       :autofocus="autofocus"
       :type="type"
-      @blur="blur"
-      @focus="focus"
+      @blur="onBlur"
+      @focus="onFocus"
       @input="update($event.target.value)"
       tabindex="0"
       @keyup.enter="enterPressed"
@@ -193,19 +193,16 @@ export default {
     window.addEventListener('resize', this.setPosition, false)
     window.addEventListener('scroll', this.setPosition, false)
 
-    this.$refs.input.addEventListener &&
-    this.$refs.input.addEventListener('animationstart', this.detectAutofill, false)
-
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true
     }
+
     if (this.autofocus) {
-      this.focused = true
+      this.focused = false
     }
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.setPosition, false)
-    this.$refs.input.removeEventListener('animationstart', this.detectAutofill, false)
   },
   components: {
     validate
@@ -278,38 +275,27 @@ export default {
         this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue)
       }
     },
-    blur (e) {
-      this.focused = false
+    onBlur (e) {
       this.$emit('blur', this.value)
       if (this.buttons) {
         this.broadcast('VaInputOps', 'Va@inputBlur', this.currentValue)
       }
     },
+    blur (e) {
+      this.focused = false
+    },
+    onFocus (e) {
+      this.$emit('focus', this.value)
+      if (this.buttons) {
+        this.position = this.getPosition()
+        this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
+      }
+    },
     focus (e) {
-      /**
-       * This setTimeout exists because sometimes you'll want to call
-       * this.$refs.input.focus() when the input is inside of something
-       * like, say, a dropdown. We need to give the element time to be
-       * added to the DOM before we send a focus event to it.
-       * 
-       * This short timeout provides, what seems like, a fine amount of
-       * time for this to happen without being noticable by the human eye.
-       */
-      if (this.autofilled) {
-        return
-      }
-
-      if (!this.focused) {
-        setTimeout(() => {
-          this.$refs.input.focus()
-          this.$emit('focus', this.value)
-          this.focused = true
-          if (this.buttons) {
-            this.position = this.getPosition()
-            this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
-          }
-        }, 50)
-      }
+      setTimeout(() => {
+        this.focused = true
+        this.$refs.input.focus()
+      }, 50)
     },
     enterPressed () {
       this.opsConfirm()
@@ -335,17 +321,6 @@ export default {
     },
     opsCancel () {
       this.$emit('cancel')
-    },
-    detectAutofill (e) {
-      switch (e.animationName) {
-        case 'onAutofillBegin':
-          this.autofilled = true
-        case 'onAutofillEnd':
-          setTimeout(() => {
-            this.autofilled = false
-          }, 150)
-          return
-      }
     }
   }
 }

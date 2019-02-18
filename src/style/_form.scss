@@ -129,7 +129,7 @@
 
   &:-webkit-autofill {
     animation-name: onAutofillBegin;
-    transition: background-color 1s ease-in-out 0s;
+    transition: background-color 0.5s ease-in-out 0s;
   }
 
   &:not(:-webkit-autofill) {
