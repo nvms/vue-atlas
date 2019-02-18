@@ -287,7 +287,8 @@ export default {
       this.currDate = new Date()
       this.currYear = this.currDate.getFullYear()
       this.currMonth = this.currDate.getMonth()
-      // this.currentValue = this.stringify(new Date())
+      this.currentValue = this.stringify(new Date())
+      this.$emit('input', null)
     },
     monthClassObj (m) {
       let {classPrefix, currentValue, monthNames, parse, currDate} = this
