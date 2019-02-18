@@ -572,7 +572,11 @@ export default {
     }
   },
   mounted () {
-    this.currDate = this.parse(this.currentValue) || this.parse(new Date())
+    if (this.currentValue === null || this.currentValue === '') {
+      this.getDateRange()
+    } else {
+      this.currDate = this.parse(this.currentValue)
+    }
     this._closeEvent = EventListener.listen(window, 'click', (e) => {
       if (!this.$el.contains(e.target)) this.close()
     })
