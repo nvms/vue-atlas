@@ -5364,12 +5364,12 @@ var VaToggle_component = normalizeComponent(
 
 VaToggle_component.options.__file = "VaToggle.vue"
 /* harmony default export */ var VaToggle = (VaToggle_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Input/VaInput.vue?vue&type=template&id=23f62b6a&
-var VaInputvue_type_template_id_23f62b6a_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!_vm.showButtonsWarning)?_c('div',{class:_vm.classObj,style:({'width': _vm.actualWidth})},[(_vm.prefix !== '')?_c('span',{class:(_vm.classPrefix + "-input-prefix")},[_vm._v("\n  "+_vm._s(_vm.prefix)+"\n  ")]):_vm._e(),(_vm.noVModel)?_c('input',_vm._b({ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"type":_vm.type,"tabindex":"0"},domProps:{"value":_vm.value},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)):((_vm.type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"checkbox"},domProps:{"value":_vm.value,"checked":Array.isArray(_vm.currentValue)?_vm._i(_vm.currentValue,_vm.value)>-1:(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){var $$a=_vm.currentValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.value,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.currentValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.currentValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.currentValue=$$c}}}},'input',_vm.$attrs,false)):((_vm.type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"radio"},domProps:{"value":_vm.value,"checked":_vm._q(_vm.currentValue,_vm.value)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){_vm.currentValue=_vm.value}}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":_vm.type},domProps:{"value":_vm.value,"value":(_vm.currentValue)},on:{"blur":_vm.blur,"focus":_vm.focus,"input":[function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value},function($event){return _vm.update($event.target.value)}],"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)),(_vm.icon !== 'undefined' || _vm.clearable)?_c('div',{class:(_vm.classPrefix + "-input-icon-wrapper")},[(_vm.clearable)?_c('va-icon',{class:(_vm.classPrefix + "-input-clearable"),attrs:{"type":"times","icon-style":"solid"},nativeOn:{"click":function($event){$event.stopPropagation();return _vm.clean($event)}}}):_vm._e(),_c('va-icon',{class:(_vm.classPrefix + "-input-show-icon"),attrs:{"type":_vm.icon,"icon-style":_vm.iconStyle}})],1):_vm._e(),(_vm.postfix !== '')?_c('span',{class:(_vm.classPrefix + "-input-postfix")},[_vm._v("\n  "+_vm._s(_vm.postfix)+"\n  ")]):_vm._e(),(_vm.buttons)?_c('va-input-ops',{attrs:{"parent-position":_vm.position},on:{"confirm":_vm.opsConfirm,"cancel":_vm.opsCancel}}):_vm._e(),_c('validate',{attrs:{"name":_vm.name,"rules":_vm.rules,"custom-validate":_vm.customValidate,"current":_vm.value},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1):_c('div',[_c('va-alert',{attrs:{"type":"warning"}},[_c('h4',[_vm._v("Hold on")]),_c('p',[_vm._v("\n      If you're going to use "),_c('b',[_vm._v("buttons")]),_vm._v(" with this input component, you need\n      to also use the "),_c('b',[_vm._v("loading")]),_vm._v(" prop.\n\n      Handle the "),_c('b',[_vm._v("@confirm")]),_vm._v(" event emitted by the input component by setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop to true, "),_c('i',[_vm._v("doing some task")]),_vm._v(", and finally setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop back to false.\n\n      It is important that events happen in that order, because the input component\n      is watching the "),_c('b',[_vm._v("loading")]),_vm._v(" prop for those changes. That's how it knows to hide\n      the confirm and cancel buttons.\n    ")])])],1)}
-var VaInputvue_type_template_id_23f62b6a_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09b2bc08-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Input/VaInput.vue?vue&type=template&id=a1dc6cc0&
+var VaInputvue_type_template_id_a1dc6cc0_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (!_vm.showButtonsWarning)?_c('div',{class:_vm.classObj,style:({'width': _vm.actualWidth})},[(_vm.prefix !== '')?_c('span',{class:(_vm.classPrefix + "-input-prefix")},[_vm._v("\n  "+_vm._s(_vm.prefix)+"\n  ")]):_vm._e(),(_vm.noVModel)?_c('input',_vm._b({ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"type":_vm.type,"tabindex":"0"},domProps:{"value":_vm.value},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)):((_vm.type)==='checkbox')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"checkbox"},domProps:{"value":_vm.value,"checked":Array.isArray(_vm.currentValue)?_vm._i(_vm.currentValue,_vm.value)>-1:(_vm.currentValue)},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){var $$a=_vm.currentValue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=_vm.value,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.currentValue=$$a.concat([$$v]))}else{$$i>-1&&(_vm.currentValue=$$a.slice(0,$$i).concat($$a.slice($$i+1)))}}else{_vm.currentValue=$$c}}}},'input',_vm.$attrs,false)):((_vm.type)==='radio')?_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":"radio"},domProps:{"value":_vm.value,"checked":_vm._q(_vm.currentValue,_vm.value)},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"input":function($event){return _vm.update($event.target.value)},"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)},"change":function($event){_vm.currentValue=_vm.value}}},'input',_vm.$attrs,false)):_c('input',_vm._b({directives:[{name:"model",rawName:"v-model",value:(_vm.currentValue),expression:"currentValue"}],ref:"input",class:_vm.inputClassObj,style:(_vm.inputStyleObj),attrs:{"name":_vm.name,"readonly":_vm.readonly,"disabled":_vm.disabled,"placeholder":_vm.placeholder,"autofocus":_vm.autofocus,"tabindex":"0","type":_vm.type},domProps:{"value":_vm.value,"value":(_vm.currentValue)},on:{"blur":_vm.onBlur,"focus":_vm.onFocus,"input":[function($event){if($event.target.composing){ return; }_vm.currentValue=$event.target.value},function($event){return _vm.update($event.target.value)}],"keyup":function($event){if(('keyCode' in $event)&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.enterPressed($event)}}},'input',_vm.$attrs,false)),(_vm.icon !== 'undefined' || _vm.clearable)?_c('div',{class:(_vm.classPrefix + "-input-icon-wrapper")},[(_vm.clearable)?_c('va-icon',{class:(_vm.classPrefix + "-input-clearable"),attrs:{"type":"times","icon-style":"solid"},nativeOn:{"click":function($event){$event.stopPropagation();return _vm.clean($event)}}}):_vm._e(),_c('va-icon',{class:(_vm.classPrefix + "-input-show-icon"),attrs:{"type":_vm.icon,"icon-style":_vm.iconStyle}})],1):_vm._e(),(_vm.postfix !== '')?_c('span',{class:(_vm.classPrefix + "-input-postfix")},[_vm._v("\n  "+_vm._s(_vm.postfix)+"\n  ")]):_vm._e(),(_vm.buttons)?_c('va-input-ops',{attrs:{"parent-position":_vm.position},on:{"confirm":_vm.opsConfirm,"cancel":_vm.opsCancel}}):_vm._e(),_c('validate',{attrs:{"name":_vm.name,"rules":_vm.rules,"custom-validate":_vm.customValidate,"current":_vm.value},model:{value:(_vm.validStatus),callback:function ($$v) {_vm.validStatus=$$v},expression:"validStatus"}})],1):_c('div',[_c('va-alert',{attrs:{"type":"warning"}},[_c('h4',[_vm._v("Hold on")]),_c('p',[_vm._v("\n      If you're going to use "),_c('b',[_vm._v("buttons")]),_vm._v(" with this input component, you need\n      to also use the "),_c('b',[_vm._v("loading")]),_vm._v(" prop.\n\n      Handle the "),_c('b',[_vm._v("@confirm")]),_vm._v(" event emitted by the input component by setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop to true, "),_c('i',[_vm._v("doing some task")]),_vm._v(", and finally setting the\n      "),_c('b',[_vm._v("loading")]),_vm._v(" prop back to false.\n\n      It is important that events happen in that order, because the input component\n      is watching the "),_c('b',[_vm._v("loading")]),_vm._v(" prop for those changes. That's how it knows to hide\n      the confirm and cancel buttons.\n    ")])])],1)}
+var VaInputvue_type_template_id_a1dc6cc0_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Input/VaInput.vue?vue&type=template&id=23f62b6a&
+// CONCATENATED MODULE: ./src/Input/VaInput.vue?vue&type=template&id=a1dc6cc0&
 
 // CONCATENATED MODULE: ./src/Mixin/inputMixin.js
 /* harmony default export */ var inputMixin = ({
@@ -6181,19 +6181,17 @@ validate_component.options.__file = "validate.vue"
   mounted: function mounted() {
     window.addEventListener('resize', this.setPosition, false);
     window.addEventListener('scroll', this.setPosition, false);
-    this.$refs.input.addEventListener && this.$refs.input.addEventListener('animationstart', this.detectAutofill, false);
 
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true;
     }
 
     if (this.autofocus) {
-      this.focused = true;
+      this.focused = false;
     }
   },
   beforeDestroy: function beforeDestroy() {
     window.removeEventListener('scroll', this.setPosition, false);
-    this.$refs.input.removeEventListener('animationstart', this.detectAutofill, false);
   },
   components: {
     validate: validate
@@ -6271,45 +6269,32 @@ validate_component.options.__file = "validate.vue"
         this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue);
       }
     },
-    blur: function blur(e) {
-      this.focused = false;
+    onBlur: function onBlur(e) {
       this.$emit('blur', this.value);
 
       if (this.buttons) {
         this.broadcast('VaInputOps', 'Va@inputBlur', this.currentValue);
       }
     },
+    blur: function blur(e) {
+      this.focused = false;
+    },
+    onFocus: function onFocus(e) {
+      this.$emit('focus', this.value);
+
+      if (this.buttons) {
+        this.position = this.getPosition();
+        this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue);
+      }
+    },
     focus: function focus(e) {
       var _this2 = this;
 
-      /**
-       * This setTimeout exists because sometimes you'll want to call
-       * this.$refs.input.focus() when the input is inside of something
-       * like, say, a dropdown. We need to give the element time to be
-       * added to the DOM before we send a focus event to it.
-       * 
-       * This short timeout provides, what seems like, a fine amount of
-       * time for this to happen without being noticable by the human eye.
-       */
-      if (this.autofilled) {
-        return;
-      }
+      setTimeout(function () {
+        _this2.focused = true;
 
-      if (!this.focused) {
-        setTimeout(function () {
-          _this2.$refs.input.focus();
-
-          _this2.$emit('focus', _this2.value);
-
-          _this2.focused = true;
-
-          if (_this2.buttons) {
-            _this2.position = _this2.getPosition();
-
-            _this2.broadcast('VaInputOps', 'Va@inputFocus', _this2.currentValue);
-          }
-        }, 50);
-      }
+        _this2.$refs.input.focus();
+      }, 50);
     },
     enterPressed: function enterPressed() {
       this.opsConfirm();
@@ -6335,20 +6320,6 @@ validate_component.options.__file = "validate.vue"
     },
     opsCancel: function opsCancel() {
       this.$emit('cancel');
-    },
-    detectAutofill: function detectAutofill(e) {
-      var _this3 = this;
-
-      switch (e.animationName) {
-        case 'onAutofillBegin':
-          this.autofilled = true;
-
-        case 'onAutofillEnd':
-          setTimeout(function () {
-            _this3.autofilled = false;
-          }, 150);
-          return;
-      }
     }
   }
 });
@@ -6364,8 +6335,8 @@ validate_component.options.__file = "validate.vue"
 
 var VaInput_component = normalizeComponent(
   Input_VaInputvue_type_script_lang_js_,
-  VaInputvue_type_template_id_23f62b6a_render,
-  VaInputvue_type_template_id_23f62b6a_staticRenderFns,
+  VaInputvue_type_template_id_a1dc6cc0_render,
+  VaInputvue_type_template_id_a1dc6cc0_staticRenderFns,
   false,
   null,
   null,
