@@ -196,18 +196,7 @@ export default {
     window.addEventListener('scroll', this.setPosition, false)
 
     this.$refs.input.addEventListener &&
-    this.$refs.input.addEventListener('animationstart', (e) => {
-      switch (e.animationName) {
-        case 'onAutofillBegin':
-          this.autofilled = true
-        case 'onAutofillEnd':
-          setTimeout(() => {
-            this.autofilled = false
-          }, 100)
-          return
-      }
-    })
-
+    this.$refs.input.addEventListener('animationstart', this.detectAutofill, false)
 
     if (this.buttons && this.loading === undefined) {
       this.showButtonsWarning = true
@@ -218,7 +207,7 @@ export default {
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.setPosition, false)
-    this.$refs.input.removeEventListener('animationstart')
+    this.$refs.input.removeEventListener('animationstart', this.detectAutofill, false)
   },
   components: {
     validate
@@ -348,6 +337,17 @@ export default {
     },
     opsCancel () {
       this.$emit('cancel')
+    },
+    detectAutofill (e) {
+      switch (e.animationName) {
+        case 'onAutofillBegin':
+          this.autofilled = true
+        case 'onAutofillEnd':
+          setTimeout(() => {
+            this.autofilled = false
+          }, 100)
+          return
+      }
     }
   }
 }
