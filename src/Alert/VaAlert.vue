@@ -1,6 +1,12 @@
 <template>
-  <div :class="classObj">
-    <slot/>
+  <div :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]">
+    <div :class="`${classPrefix}-alert-${type}-icon`">
+      <va-icon :type="iconType" :icon-style="iconStyle" />
+    </div>
+    <div>
+      <h1 v-if="title">{{title}}</h1>
+      <div><slot/></div>
+    </div>
   </div>
 </template>
 
@@ -34,14 +40,37 @@ export default {
     }
   },
   computed: {
-    classObj () {
-      let {classPrefix, type} = this
-      let classes = {}
+    iconType () {
+      let {type} = this
 
-      classes[classPrefix + '-alert'] = true
-      classes[classPrefix + '-alert-' + type] = true
+      switch (type) {
+        case 'success':
+          return 'check-circle'
+        case 'info':
+          return 'info-circle'
+        case 'warning':
+          return 'exclamation-circle'
+        case 'change':
+          return 'question-circle'
+        case 'danger':
+          return 'exclamation-circle'
+      }
+    },
+    iconStyle () {
+      let {type} = this
 
-      return classes
+      switch (type) {
+        case 'success':
+          return 'solid'
+        case 'info':
+          return 'solid'
+        case 'warning':
+          return 'solid'
+        case 'change':
+          return 'solid'
+        case 'danger':
+          return 'solid'
+      }
     }
   }
 }

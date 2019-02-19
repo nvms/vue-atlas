@@ -1,74 +1,75 @@
 .#{$class-prefix}-alert {
-  padding: 0 15px 15px 55px;
-  border-radius: 4px;
+  display: flex;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  padding: 15px;
+  border-radius: 3px;
 
-  *:first-child {
-    margin-top: -5px;
+  /*
+  when not using a title, we want to make sure that
+  whatever element comes first, is aligned with the icon.
+  typically a p
+  */
+  *:first-child:not(h1) {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    overflow-wrap: break-word;
+  }
+
+  &-warning-icon,
+  &-success-icon,
+  &-info-icon,
+  &-danger-icon,
+  &-change-icon {
+    display: block;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    width: 34px;
+    font-size: 18px;
   }
 
   &-warning {
     background: $Y50;
-    &:before {
-      position: relative;
-      top: 18px;
-      left: -35px;
-      font-family: 'Font Awesome 5 Free Solid';
-      content: "\f071";
+    &-icon {
       color: $Y500;
-      font-size: 1em;
     }
   }
   &-success {
     background: $G50;
-    &:before {
-      position: relative;
-      top: 20px;
-      left: -35px;
-      font-family: 'Font Awesome 5 Free Regular';
-      content: "\f164";
+    &-icon {
       color: $G500;
-      font-size: 1.3em;
     }
   }
   &-info {
     background: $B50;
-    &:before {
-      position: relative;
-      top: 20px;
-      left: -30px;
-      font-family: 'Font Awesome 5 Free Solid';
-      content: "\f129";
+    &-icon {
       color: $B500;
-      font-size: 1.1em;
     }
   }
   &-danger {
     background: $R50;
-    &:before {
-      position: relative;
-      top: 20px;
-      left: -30px;
-      font-family: 'Font Awesome 5 Free Solid';
-      content: "\f12a";
+    &-icon {
       color: $R500;
-      font-size: 1.1em;
     }
   }
   &-change {
     background: $P50;
-    &:before {
-      position: relative;
-      top: 20px;
-      left: -35px;
-      font-family: 'Font Awesome 5 Free Solid';
-      content: "\f059";
+    &-icon {
       color: $P500;
-      font-size: 1.3em;
     }
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-  }
-  p {
   }
 }
