@@ -156,11 +156,9 @@
             v-model="inputText">
           </va-input>
           <va-select size="sm" width="sm" multiple search extra placeholder="Additional filters" v-model="filters" :options="options" />
-          <va-button size="sm" @click="showStackedOne" :disabled="true">Modal</va-button>
+          <va-button size="sm" @click="showStackedOne">Modal</va-button>
           <va-toggle :value="!toggled"></va-toggle>
           <va-toggle size="lg" v-model="toggled"></va-toggle>
-          <va-toggle :disabled="true" :value="false"></va-toggle>
-          <va-toggle :disabled="true" :value="true" size="lg"></va-toggle>
         </div>
 
       </va-page-header>
@@ -178,7 +176,7 @@
           </p>
           <p>
             <va-card :elevation="elevation">
-              <div slot="left">
+              <div slot="topLeft">
                 <va-select size="sm" width="sm" v-model="elevation" :format="cardSelectFormat" no-uncheck>
                   <va-option value="0">0</va-option>
                   <va-option value="1">1</va-option>
@@ -201,7 +199,7 @@
                   <va-button size="sm">Hover me</va-button>
                 </va-tooltip>
               </div>
-              <div slot="right">
+              <div slot="topRight">
                 <a href="#">Action</a>
                 &nbsp;
                 <va-button
