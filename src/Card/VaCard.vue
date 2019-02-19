@@ -2,8 +2,8 @@
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
       <div :class="`${classPrefix}-card-header-inner`">
-        <div :class="`${classPrefix}-card-header-inner-left`"><slot name="left" /></div>
-        <div :class="`${classPrefix}-card-header-inner-right`"><slot name="right" /></div>
+        <div :class="`${classPrefix}-card-header-inner-left`"><slot name="top-left" /></div>
+        <div :class="`${classPrefix}-card-header-inner-right`"><slot name="top-right" /></div>
       </div>
     </div>
     <div :style="bodyStyleObj" :class="`${classPrefix}-card-body`">
