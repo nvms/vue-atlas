@@ -1,6 +1,7 @@
 <template>
   <div :class="classObj">
     <label
+      v-if="label || inline || horizontal"
       v-bind="$attrs"
       :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
       {{label || '&nbsp;'}}
@@ -49,6 +50,9 @@ export default {
     },
     vertical () {
       return this.$parent.type == 'vertical'
+    },
+    horizontal () {
+      return this.$parent.type == 'horizontal'
     },
     label_col () {
       let lc = parseInt(this.labelCol)
