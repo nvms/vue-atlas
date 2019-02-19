@@ -66,21 +66,26 @@
                   </p>
                 </va-column>
               </va-row>
-
               <va-row :gutter="10">
                 <h3>Background colors</h3>
                 <hr/>
                 <va-column :xs="6">
-                  <p>
-                    Document<br/>
-                    <va-input v-model="bgColor"></va-input>
-                  </p>
+                  <va-form type="vertical">
+                    <va-form-item label="Document">
+                      <va-input v-model="bgColor"/>
+                      &nbsp;
+                      <va-color-picker :color="bgColor" @change="onBgColorChange" />
+                    </va-form-item>
+                  </va-form>
                 </va-column>
                 <va-column :xs="6">
-                  <p>
-                    Page (content)<br/>
-                    <va-input v-model="pageBgColor"></va-input>
-                  </p>
+                  <va-form type="vertical">
+                    <va-form-item label="Page (content)">
+                      <va-input v-model="pageBgColor"/>
+                      &nbsp;
+                      <va-color-picker :color="pageBgColor" @change="onPageBgColorChange" />
+                    </va-form-item>
+                  </va-form>
                 </va-column>
               </va-row>
             </va-tab>
@@ -151,7 +156,6 @@
                   </p>
                 </va-column>
               </va-row>
-
               <va-row :gutter="10">
                 <h3>Content margin and minimum width</h3>
                 <hr/>
@@ -173,7 +177,6 @@
                   </p>
                 </va-column>
               </va-row>
-
               <va-row :gutter="10">
                 <h3>Desktop bar dimensions</h3>
                 <hr/>
@@ -196,7 +199,6 @@
                   </p>
                 </va-column>
               </va-row>
-
               <va-row :gutter="10">
                 <h3>Mobile bar dimensions</h3>
                 <hr/>
@@ -404,6 +406,12 @@ export default {
         x: rect.x,
         y: rect.y
       }
+    },
+    onBgColorChange (e) {
+      this.bgColor = e.hex
+    },
+    onPageBgColorChange (e) {
+      this.pageBgColor = e.hex
     }
   },
   created () {
