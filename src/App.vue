@@ -1,8 +1,6 @@
 <template>
   <!-- https://vue-atlas.com/documentation/app -->
   <va-app
-    bg-color="#F4F5F7"
-    page-bg-color="#FFFFFF"
     desktop-margin="0"
     desktop-minimum-width="0"
     desktop-sidebar-width="0"
@@ -92,7 +90,7 @@
     <!-- https://vue-atlas.com/documentation/minibar -->
     <va-minibar
       :top-items="minibarTopItems"
-      :bottom-items="[{icon:'question'}]"
+      :bottom-items="[{icon:'question-circle'}]"
       theme="blue" />
 
     <!-- https://vue-atlas.com/documentation/sidebar -->
@@ -200,10 +198,8 @@
                 </va-tooltip>
               </div>
               <div slot="topRight">
-                <a href="#">Action</a>
-                &nbsp;
                 <va-button
-                  @click.native="VaNotification.open({title:'Hello',message:'World',type:'info'})"
+                  @click="VaNotification.open({title:'Hello',message:'World',type:'info'})"
                   size="sm">
                   <va-icon type="cogs"></va-icon>
                 </va-button>
@@ -284,21 +280,14 @@
             <p>
               <va-checkbox-group v-model="foods">
                 <va-checkbox label="pizza">Pizza</va-checkbox>
-                <va-checkbox label="tacos" checked>Tacos</va-checkbox>
+                <va-checkbox label="tacos">Tacos</va-checkbox>
                 <va-checkbox label="fries">Fries</va-checkbox>
               </va-checkbox-group>
             </p>
             <p>
-              <va-radio-group v-model="foods">
-                <va-radio label="pizza">Pizza</va-radio>
-                <va-radio label="tacos" checked>Tacos</va-radio>
-                <va-radio label="fries">Fries</va-radio>
-              </va-radio-group>
-            </p>
-            <p>
-              <va-button @click.native="showNotification">Show notification</va-button>
+              <va-button @click="showNotification">Show notification</va-button>
               &nbsp;
-              <va-button @click.native="$refs.aside.open()">Open aside</va-button>
+              <va-button @click="$refs.aside.open()">Open aside</va-button>
             </p>
             <p>
               <va-input prefix="https://vue-atlas.com/" />
@@ -368,7 +357,7 @@
           minus aspernatur maiores totam.
         </p>
         <p>
-          <va-button @click.native="showStackedTwo">Open modal two</va-button>
+          <va-button @click="showStackedTwo">Open modal two</va-button>
         </p>
       </div>
     </va-modal>
@@ -379,7 +368,7 @@
           minus aspernatur maiores totam.
         </p>
         <p>
-          <va-button @click.native="showStackedThree">Open modal three</va-button>
+          <va-button @click="showStackedThree">Open modal three</va-button>
         </p>
       </div>
     </va-modal>
