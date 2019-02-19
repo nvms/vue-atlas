@@ -15,7 +15,6 @@
                 <div :class="`${classPrefix}-selected-tag`"
                     :key="index"
                     @click.stop="del(item)"
-                    class="inline"
                     tabindex="0"
                     v-for="(item, index) in selectedItems">
                     <span :class="`${classPrefix}-selected-tag__label`">
@@ -29,7 +28,7 @@
                 </div>
               </template>
               <template v-else>
-                <div class="inline">
+                <div>
                   <slot :item="selectedItems[0]" name="item">
                       <span v-html="format(selectedItems[0])"></span>
                   </slot>
