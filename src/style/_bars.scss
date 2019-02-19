@@ -374,7 +374,7 @@ foundation
       margin-top: 10px;
       margin-bottom: 26px;
       display: flex;
-      aign-items: center;
+      align-items: center;
 
       &-image {
         width: 40px;
@@ -444,14 +444,14 @@ $animatedBeforeBG) {
 }
 
 /**
-Disable box shadow on active/focus textLinks
+Disable box shadow and background on active/focus textLinks
 */
 .#{$class-prefix}-sidebar.#{$class-prefix}-sidebar-text-links {
   .#{$class-prefix}-sidebar-group-item {
-
     &:active,
     &:focus {
       box-shadow: none;
+      background: none !important;
     }
   }
 }
@@ -507,10 +507,13 @@ Disable box shadow on active/focus textLinks
     &.active {
       background: none !important;
     }
+    &:active {
+      background: none !important;
+    }
 
     &:hover {
       background: none !important;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
 }
