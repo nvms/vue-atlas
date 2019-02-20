@@ -100,6 +100,8 @@ export default {
           click: this.item.method
         }
       }
+
+      return false
     },
     showIcon () {
       return this.item.icon !== undefined

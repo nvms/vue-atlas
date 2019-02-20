@@ -60,18 +60,18 @@ const PopoverMixin = {
         case 'hover':
           return {
             mouseenter: this.showHandler,
-            mouseleave: this.hide,
+            mouseleave: this.hide
           }
         case 'focus':
           return {}
         case 'mouse':
           return {
             mousedown: this.showHandler,
-            mouseup: this.hide,
+            mouseup: this.hide
           }
         default:
           return {
-            click: this.click,
+            click: this.click
           }
       }
     },

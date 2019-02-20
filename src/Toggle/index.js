@@ -1,1 +1,1 @@
-export {default as VaToggle} from './install'
+export { default as VaToggle } from './install'

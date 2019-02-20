@@ -55,6 +55,8 @@ export default {
         case 'danger':
           return 'exclamation-circle'
       }
+
+      return 'info-circle'
     },
     iconStyle () {
       let {type} = this
@@ -71,6 +73,8 @@ export default {
         case 'danger':
           return 'solid'
       }
+
+      return 'solid'
     }
   }
 }

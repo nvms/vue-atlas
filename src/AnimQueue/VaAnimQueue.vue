@@ -177,7 +177,8 @@ When passing an array, the first item is the enter animation and the second is t
         })
       }
     },
-    watchValue (newValue, oldValue) {
+    // watchValue (newValue, oldValue) {
+    watchValue () {
       this.$nextTick(() => {
         let shouldEnterChild = []
         let shouldLeaveChild = []
@@ -300,7 +301,7 @@ When passing an array, the first item is the enter animation and the second is t
       })
     },
     _hiddenVelocityNode () {
-      this.children.forEach((item, i) => {
+      this.children.forEach((item) => {
         const node = item.el
         if (!node) {
           return

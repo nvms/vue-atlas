@@ -60,7 +60,7 @@ export const generateLevel = (
           }
         })
 
-        children.push(createElement('li', {class: 'va-sidebar-group-item'}, [navItem]))
+        children.push(createElement('li', { class: 'va-sidebar-group-item' }, [navItem]))
       }
     })
   }

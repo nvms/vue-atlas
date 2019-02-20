@@ -32,40 +32,40 @@ const typeMap = {
 }
 
 const confirm = (options) => {
-  const {title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable} = options
+  const { title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable } = options
   new Vue({
     el: createNode(),
-    mounted() {
+    mounted () {
       this.$refs.modal.open()
     },
     computed: {
-      iconType() {
+      iconType () {
         return typeMap[type || 'info']
       }
     },
     methods: {
-      handleShow() {
+      handleShow () {
         onShow && onShow()
       },
-      handleConfirm() {
+      handleConfirm () {
         onConfirm && onConfirm()
         this.$refs.modal.close()
       },
-      handleClose() {
+      handleClose () {
         this.$refs.modal.close()
       },
-      handleHide() {
+      handleHide () {
         onHide && onHide()
       },
-      destroy() {
+      destroy () {
         this.$destroy()
       }
     },
-    render(createElement) {
+    render (createElement) {
       let iconElement = createElement(VaIcon, {
         props: {
           type: this.iconType.name,
-          margin: "0 10px 0 0"
+          margin: '0 10px 0 0'
         },
         style: {
           color: this.iconType.color
@@ -73,12 +73,12 @@ const confirm = (options) => {
       }, [])
       let titleElement = ''
       if (title) {
-        titleElement = createElement('div', {slot: 'title'}, [
+        titleElement = createElement('div', { slot: 'title' }, [
           iconElement,
-          title,
+          title
         ])
       }
-      let bodyElement = createElement('div', {slot: 'body', domProps: {innerHTML: message}})
+      let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
       return createElement(VaModal, {
         ref: 'modal',
         props: {
@@ -102,41 +102,41 @@ const confirm = (options) => {
 }
 
 const alert = (options) => {
-  const {title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable} = options
+  const { title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable } = options
   new Vue({
     el: createNode(),
     mixins: [localeMixin('VaModal')],
-    mounted() {
+    mounted () {
       this.$refs.modal.open()
     },
     computed: {
-      iconType() {
+      iconType () {
         return typeMap[type || 'info']
       }
     },
     methods: {
-      handleShow() {
+      handleShow () {
         onShow && onShow()
       },
-      handleConfirm() {
+      handleConfirm () {
         onConfirm && onConfirm()
         this.$refs.modal.close()
       },
-      handleClose() {
+      handleClose () {
         this.$refs.modal.close()
       },
-      handleHide() {
+      handleHide () {
         onHide && onHide()
       },
-      destroy() {
+      destroy () {
         this.$destroy()
       }
     },
-    render(createElement) {
+    render (createElement) {
       let iconElement = createElement(VaIcon, {
         props: {
           type: this.iconType.name,
-          margin: "0 10px 0 0"
+          margin: '0 10px 0 0'
         },
         style: {
           color: this.iconType.color
@@ -145,18 +145,18 @@ const alert = (options) => {
 
       let titleElement = ''
       if (title) {
-        titleElement = createElement('div', {slot: 'title'}, [
+        titleElement = createElement('div', { slot: 'title' }, [
           iconElement,
-          title,
+          title
         ])
       }
 
-      let bodyElement = createElement('div', {slot: 'body', domProps: {innerHTML: message}})
+      let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
 
       let footerElement = createElement(VaButton, {
         slot: 'footer',
         props: {
-          type: 'primary',
+          type: 'primary'
         },
         on: {
           click: this.handleConfirm

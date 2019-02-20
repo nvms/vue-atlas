@@ -90,8 +90,7 @@ import {
   rgbToHex,
   hsbToRgb,
   hexToHsb,
-  hsbToHex,
-  rgbStringToObject
+  hsbToHex
 } from './conversions'
 
 export default {
@@ -193,7 +192,7 @@ export default {
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
-    aChange (e) {
+    aChange () {
       this.updateControls()
     },
     hexChange (e) {
@@ -293,7 +292,7 @@ export default {
     gradientOnMousemove (e) {
       this.makeGradientSelection(e)
     },
-    gradientOnMouseup (e) {
+    gradientOnMouseup () {
       // remove hooks
       window.removeEventListener('mouseup', this.gradientOnMouseup, false)
       window.removeEventListener('mousemove', this.gradientOnMousemove, false)
@@ -384,7 +383,7 @@ export default {
     hueSliderOnMousemove (e) {
       this.makeHueSelection(e)
     },
-    hueSliderOnMouseup (e) {
+    hueSliderOnMouseup () {
       // remove hooks
       window.removeEventListener('mouseup', this.hueSliderOnMouseup, false)
       window.removeEventListener('mousemove', this.hueSliderOnMousemove, false)
@@ -435,7 +434,7 @@ export default {
     alphaSliderOnMousemove (e) {
       this.makeAlphaSelection(e)
     },
-    alphaSliderOnMouseup (e) {
+    alphaSliderOnMouseup () {
       // remove hooks
       window.removeEventListener('mouseup', this.alphaSliderOnMouseup, false)
       window.removeEventListener('mousemove', this.alphaSliderOnMousemove, false)

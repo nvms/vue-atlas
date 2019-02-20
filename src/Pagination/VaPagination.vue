@@ -119,7 +119,7 @@ export default {
       if (index === this.pageCount) {
         this.onLastPage = true
       }
-      let s = this.currentValue - Math.floor(this.max / 2)
+      // let s = this.currentValue - Math.floor(this.max / 2)
       let e = this.currentValue + Math.floor(this.max / 2)
 
       if (this.max < this.pageCount && !this.onLastPage && e < this.pageCount-1) {
@@ -187,10 +187,10 @@ export default {
     value (val) {
       this.initCount(this.total, val)
     },
-    perPage (val) {
+    perPage () {
       this.initCount(this.total, this.currentValue)
     },
-    max (val) {
+    max () {
       this.initCount(this.total, this.currentValue)
     }
   }

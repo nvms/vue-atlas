@@ -205,6 +205,8 @@
             return 'info-circle'
 
         }
+
+        return 'info-circle'
       }
     }
   }

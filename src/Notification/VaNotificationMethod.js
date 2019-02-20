@@ -10,43 +10,43 @@ const createNode = () => {
 }
 
 const open = (options) => {
-  let {title, message, effect, type, width, duration, onShow, onHide, onConfirm} = options
+  let { title, message, effect, type, width, duration, onShow, onHide, onConfirm } = options
   new Vue({
     el: createNode(),
-    data() {
+    data () {
       return {
         show: false,
         pc: 'va'
       }
     },
-    mounted() {
+    mounted () {
       this.$refs.notification.open()
     },
     methods: {
-      handleShow() {
+      handleShow () {
         onShow && onShow()
       },
-      handleConfirm() {
+      handleConfirm () {
         onConfirm && onConfirm()
         this.$refs.notification.close()
       },
-      handleHide() {
+      handleHide () {
         onHide && onHide()
       },
-      handleClose() {
+      handleClose () {
         this.$refs.notification.close()
       },
-      destroy() {
+      destroy () {
         this.$destroy()
       }
     },
-    render(createElement) {
+    render (createElement) {
       return createElement(VaNotification, {
         ref: 'notification',
         props: {
           title,
           message,
-          type: type ? type : 'default',
+          type: type || 'default',
           effect: effect || 'fade-right',
           width: width || '440px',
           duration: duration
@@ -58,7 +58,7 @@ const open = (options) => {
           closed: this.destroy
         }
       }, [])
-    },
+    }
   })
 }
 

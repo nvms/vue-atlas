@@ -53,7 +53,7 @@ export default {
       get () {
         return this.results
       },
-      set (val, oldVal) {
+      set (val) {
         let self = this
         let tips = ''
         let status = ''
@@ -105,7 +105,7 @@ export default {
   },
   watch: {
     current: {
-      handler (newVal, oldVal) {
+      handler (newVal) {
         this.valid(newVal)
       },
       immediate: true
@@ -241,7 +241,7 @@ export default {
     rulesValid (value) {
       let self = this
 
-      self.rules.forEach((val, index) => {
+      self.rules.forEach((val) => {
         self.rulesItemValid(val, value)
       })
 

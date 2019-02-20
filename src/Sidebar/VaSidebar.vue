@@ -62,7 +62,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@sidebarPresenceCheck', (val) => { this.dispatch('VaApp', 'Va@sidebarPresenceReply', true) })
+    this.$on('Va@sidebarPresenceCheck', () => { this.dispatch('VaApp', 'Va@sidebarPresenceReply', true) })
     this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
     this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
     this.$on('Va@minibarWidthChange', (val) => { this.currentMinibarWidth = val })

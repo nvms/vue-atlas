@@ -572,6 +572,7 @@ export default {
        */
       inputConfirm (e) {
         this.inputLoading = true
+        console.log('inputConfirm event: ', e)
         console.log('Doing something with the value: ', this.inputText)
         setTimeout(() => {
           this.inputLoading = false
@@ -597,6 +598,7 @@ export default {
        */
       textareaConfirm (e) {
         this.textareaLoading = true
+        console.log('textareaConfirm event: ', e)
         console.log('Doing something with the value: ', this.textareaText)
         setTimeout(() => {
           this.textareaLoading = false

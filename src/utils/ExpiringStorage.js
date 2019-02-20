@@ -1,13 +1,13 @@
 class ExpiringStorage {
   get (key) {
-    const cached = JSON.parse(localStorage.getItem(key))
+    const cached = JSON.parse(window.localStorage.getItem(key))
     if (!cached) {
       return null
     }
 
     const expires = new Date(cached.expires)
     if (expires < new Date()) {
-      localStorage.removeItem(key)
+      window.localStorage.removeItem(key)
       return null
     }
 
@@ -18,7 +18,7 @@ class ExpiringStorage {
     const currentTime = new Date().getTime()
     const expires = new Date(currentTime + lifetimeInMinutes * 60000)
 
-    localStorage.setItem(key, JSON.stringify({ value, expires }))
+    window.localStorage.setItem(key, JSON.stringify({ value, expires }))
   }
 }
 

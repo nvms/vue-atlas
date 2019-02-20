@@ -275,23 +275,23 @@ export default {
         this.broadcast('VaInputOps', 'Va@inputUpdate', this.currentValue)
       }
     },
-    onBlur (e) {
+    onBlur () {
       this.$emit('blur', this.value)
       if (this.buttons) {
         this.broadcast('VaInputOps', 'Va@inputBlur', this.currentValue)
       }
     },
-    blur (e) {
+    blur () {
       this.focused = false
     },
-    onFocus (e) {
+    onFocus () {
       this.$emit('focus', this.value)
       if (this.buttons) {
         this.position = this.getPosition()
         this.broadcast('VaInputOps', 'Va@inputFocus', this.currentValue)
       }
     },
-    focus (e) {
+    focus () {
       setTimeout(() => {
         this.focused = true
         this.$refs.input.focus()

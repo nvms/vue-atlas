@@ -66,13 +66,13 @@ export default {
     value (val) {
       this.currentValue = parseInt(val)
     },
-    min (val) {
+    min () {
       this.update()
     },
-    max (val) {
+    max () {
       this.update()
     },
-    step (val) {
+    step () {
       this.update()
     }
   },

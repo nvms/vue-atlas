@@ -149,30 +149,32 @@
 
         return style
       },
-      citems() {
+      citems () {
         return this.items.slice(0, this.limit)
       },
-      primitiveData() {
+      primitiveData () {
         if (this.data && this.query) {
           return this.data.filter((value) => {
             value = this.matchCase ? value : value.toLowerCase()
             return value.indexOf(this.query) !== -1
           }).slice(0, this.limit)
         }
+
+        return false
       }
     },
     methods: {
-      focusInput() {
+      focusInput () {
         this.$refs.input.focus()
       },
-      focus() {
+      focus () {
         this.$emit('focus')
       },
-      blur() {
+      blur () {
         this.show = false
         this.$emit('blur')
       },
-      update() {
+      update () {
         clearTimeout(this.timeoutID)
         let self = this
         if (this.readonly || this.disabled) return
@@ -186,24 +188,24 @@
           }
         }, this.debounce)
       },
-      reset() {
+      reset () {
         this.query = ''
         this.loading = false
         this.show = false
       },
-      isActive(index) {
+      isActive (index) {
         let classes = this.classPrefix + '-dropdown-active'
         return this.current === index ? classes : ''
       },
-      hit(index) {
+      hit (index) {
         if (this.citems && this.citems.length) {
           this.onHit(this.citems[index], this)
         }
       },
-      up() {
+      up () {
         if (this.current > 0) this.current--
       },
-      down() {
+      down () {
         if (this.current < this.citems.length - 1) this.current++
       }
     }
