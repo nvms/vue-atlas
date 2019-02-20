@@ -1,2 +1,81 @@
+############################
+# Misc
+############################
+
+.env
+dist
+*.patch
+**/*scsslint_tmp*.*
+
+
+############################
+# IDE
+############################
+
+.idea
+.vscode
+
+
+############################
+# OS X
+############################
+
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+
+############################
+# Linux
+############################
+
+*~
+
+
+############################
+# Windows
+############################
+
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+
+############################
+# Node.js
+############################
+
+lib-cov
+lcov.info
+pids
+results
 node_modules
+.node_history
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+
+############################
+# Tests
+############################
+
+coverage
+.nyc_output
+
+
+############################
+# Exceptions
+############################
+
