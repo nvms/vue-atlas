@@ -1,4 +1,4 @@
-import {mount, shallowMount} from '@vue/test-utils'
+import { mount, shallowMount } from '@vue/test-utils'
 import VaInput from '@/Input/VaInput.vue'
 
 describe('VaInput.vue', () => {
@@ -8,7 +8,7 @@ describe('VaInput.vue', () => {
   })
 
   it('renders without warnings', () => {
-    let spy = jest.spyOn(console, "error")
+    let spy = jest.spyOn(console, 'error')
     mount(VaInput)
     expect(spy).toBeCalledTimes(0)
     spy.mockReset()
@@ -65,5 +65,4 @@ describe('VaInput.vue', () => {
     })
     expect(wrapper.find('va-icon').exists()).toBeTruthy()
   })
-
 })

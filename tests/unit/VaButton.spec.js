@@ -1,15 +1,16 @@
 import { mount } from '@vue/test-utils'
 import VaButton from '@/Button/VaButton.vue'
+import VaIcon from '@/Icon/VaIcon.vue'
+import Vue from 'vue'
 
 describe('VaButton.vue', () => {
-
   it('renders correctly', () => {
     const wrapper = mount(VaButton)
     expect(wrapper.element).toMatchSnapshot()
   })
 
   it('renders without warnings', () => {
-    let spy = jest.spyOn(console, "error")
+    let spy = jest.spyOn(console, 'error')
     mount(VaButton)
     expect(spy).toBeCalledTimes(0)
     spy.mockReset()
@@ -27,6 +28,15 @@ describe('VaButton.vue', () => {
       }
     })
     expect(wrapper.props().type).toBe('primary')
+  })
+
+  it('should support disabled', () => {
+    const wrapper = mount(VaButton, {
+      propsData: {
+        disabled: true
+      }
+    })
+    expect(wrapper.classes()).toContain('va-btn-disabled')
   })
 
   it('prop "type" with value primary results in element with va-btn-primary class', () => {
@@ -52,4 +62,43 @@ describe('VaButton.vue', () => {
     expect(wrapper.find('span').text()).toBe('Hello')
   })
 
+  it('icon passed to slot should render correctly', () => {
+    const wrapper = mount({
+      render () {
+        return (
+          <VaButton>
+            <VaIcon type='home' />
+          </VaButton>
+        )
+      }
+    })
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('should change loading state on click', done => {
+    // prevent timeout
+    Vue.config.errorHandler = done
+    const AButton = {
+      data () {
+        return {
+          loading: false
+        }
+      },
+      methods: {
+        enableLoading () {
+          this.loading = true
+        }
+      },
+      render () {
+        return <VaButton loading={this.loading} onClick={this.enableLoading}>Hello</VaButton>
+      }
+    }
+    const wrapper = mount(AButton)
+    wrapper.trigger('click')
+    Vue.nextTick(() => {
+      expect(wrapper.findAll('va-loading').length).toBe(1)
+      done()
+    })
+    expect(wrapper).toMatchSnapshot()
+  })
 })

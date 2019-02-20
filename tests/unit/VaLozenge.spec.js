@@ -2,7 +2,6 @@ import { mount } from '@vue/test-utils'
 import VaLozenge from '@/Lozenge/VaLozenge.vue'
 
 describe('VaLozenge.vue', () => {
-
   it('renders correctly', () => {
     const wrapper = mount(VaLozenge)
     expect(wrapper.element).toMatchSnapshot()
@@ -39,5 +38,4 @@ describe('VaLozenge.vue', () => {
     })
     expect(wrapper.find('span').text()).toBe('Hello')
   })
-
 })

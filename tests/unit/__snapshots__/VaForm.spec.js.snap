@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaForm.vue renders correctly 1`] = `
+<form
+  class="va-form-horizontal clearfix"
+/>
+`;
+
+exports[`VaForm.vue should render label correctly 1`] = `
+<form
+  class="va-form-horizontal clearfix"
+>
+  <div
+    class="va-form-group"
+  >
+    <label
+      class="va-col-sm-2 va-control-label"
+    >
+      
+    label
+    
+      <!---->
+    </label>
+     
+    <div
+      class="va-col-sm-10 va-flex"
+    >
+      Hello
+    </div>
+  </div>
+</form>
+`;
+
+exports[`VaForm.vue supports vertical 1`] = `
+<form
+  class="clearfix"
+/>
+`;
