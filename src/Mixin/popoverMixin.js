@@ -77,7 +77,9 @@ const PopoverMixin = {
     },
     click () {
       this.toggle()
-      this.onClick()
+      if (this.onClick) {
+        this.onClick()
+      }
     },
     showHandler () {
       setTimeout(() => {
