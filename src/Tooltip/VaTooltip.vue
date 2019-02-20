@@ -1,6 +1,6 @@
 <template>
-  <span ref="tooltip">
-    <span ref="trigger">
+  <span ref="tooltip" class="va-tooltip_wrapper">
+    <span ref="trigger" class="va-tooltip_trigger" v-on="listeners">
       <slot />
     </span>
     <transition :name="effect">
@@ -50,3 +50,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+    .va-tooltip_wrapper, .va-tooltip_trigger {
+        display: inline-block;
+        width: auto;
+        height: auto;
+    }
+</style>
