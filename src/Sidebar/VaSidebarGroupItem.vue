@@ -46,7 +46,7 @@
 
       <!-- If there's a lozenge -->
       <span v-if="item.lozenge" style="display: flex;">
-        <va-lozenge uppercase :type="item.lozenge.type">{{item.lozenge.text}}</va-lozenge>
+        <va-lozenge :bold="item.lozenge.bold" uppercase :type="item.lozenge.type">{{item.lozenge.text}}</va-lozenge>
       </span>
 
     </span>
