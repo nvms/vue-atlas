@@ -1,6 +1,3 @@
-import EventListener from '../utils/EventListener'
-import type from '../utils/type'
-
 const PopoverMixin = {
   props: {
     trigger: {
@@ -41,6 +38,7 @@ const PopoverMixin = {
     let show = this.show
     return {
       isShow: show,
+      listeners: this.getListeners(),
       position: {
         top: 0,
         left: 0
@@ -57,16 +55,49 @@ const PopoverMixin = {
     }
   },
   methods: {
+    getListeners () {
+      switch (this.trigger) {
+        case 'hover':
+          return {
+            mouseenter: this.showHandler,
+            mouseleave: this.hide,
+          }
+        case 'focus':
+          return {}
+        case 'mouse':
+          return {
+            mousedown: this.showHandler,
+            mouseup: this.hide,
+          }
+        default:
+          return {
+            click: this.click,
+          }
+      }
+    },
+    click () {
+      this.toggle()
+      this.onClick()
+    },
+    showHandler () {
+      setTimeout(() => {
+        this.isShow = true
+      }, 200)
+    },
+    hide () {
+      setTimeout(() => {
+        this.isShow = false
+      }, 200)
+    },
     toggle () {
       this.isShow = !this.isShow
     },
     resize () {
       let popover = this.$refs.popover
       if (!popover) return
-      let triger = this.$refs.trigger.children[0]
+      let triger = this.$refs.trigger
       if (!triger) return
       popover.style.display = 'block'
-      triger.style.position = 'relative'
 
       switch (this.placement) {
         case 'top':
@@ -86,7 +117,7 @@ const PopoverMixin = {
           this.position.top = triger.offsetTop + triger.offsetHeight
           break
         default:
-          console.log('Wrong placement group')
+          console.error('Wrong placement group')
       }
       popover.style.top = this.position.top + 'px'
       popover.style.left = this.position.left + 'px'
@@ -94,71 +125,18 @@ const PopoverMixin = {
   },
   mounted () {
     if (!this.$refs.popover) return
+    this.resize()
+    this.$refs.popover.style.display = 'none'
+    this.isShow = false
+    if (this.trigger === 'focus') {
+      const input = this.$refs.trigger.querySelector('input')
+      if (input) {
+        input.removeEventListener('focus', this.showHandler)
+        input.removeEventListener('blur', this.hide)
 
-    this.$nextTick(() => {
-      let popover = this.$refs.popover
-      if (!popover) return
-      let triger = this.$refs.trigger.children[0]
-      if (!triger) return
-
-      if (this.trigger === 'hover') {
-        this._mouseenterEvent = EventListener.listen(triger, 'mouseenter', () => {
-          setTimeout(() => {
-            this.isShow = true
-          }, 200)
-        })
-        this._mouseleaveEvent = EventListener.listen(triger, 'mouseleave', () => {
-          setTimeout(() => {
-            this.isShow = false
-          }, 200)
-        })
-      } else if (this.trigger === 'focus') {
-        let input = this.$refs.trigger.querySelector('input')
-        if (input) {
-          this._focusEvent = EventListener.listen(input, 'focus', () => {
-            this.isShow = true
-          })
-          this._blurEvent = EventListener.listen(input, 'blur', () => {
-            this.isShow = false
-          })
-        }
-      } else if (this.trigger === 'mouse') {
-        this._mousedownEvent = EventListener.listen(triger, 'mousedown', () => {
-          this.isShow = true
-        })
-        this._mouseupEvent = EventListener.listen(window, 'mouseup', () => {
-          this.isShow = false
-        })
-      } else {
-        this._clickEvent = EventListener.listen(triger, 'click', this.toggle)
-        this._closeEvent = EventListener.listen(window, 'click', (e) => {
-          if (!this.$el.contains(e.target)) this.isShow = false
-          if (this.$refs.content && this.$refs.content.contains(e.target) && type.isFunction(this.onClick)) {
-            this.onClick(e, this)
-          }
-        })
+        input.addEventListener('focus', this.showHandler)
+        input.addEventListener('blur', this.hide)
       }
-      this.resize()
-      popover.style.display = 'none'
-      this.isShow = false
-    })
-  },
-  beforeDestroy () {
-    if (this._blurEvent) {
-      this._blurEvent.remove()
-      this._focusEvent.remove()
-    }
-    if (this._mouseenterEvent) {
-      this._mouseenterEvent.remove()
-      this._mouseleaveEvent.remove()
-    }
-    if (this._clickEvent) {
-      this._clickEvent.remove()
-      this._closeEvent.remove()
-    }
-    if (this._mousedownEvent) {
-      this._mousedownEvent.remove()
-      this._mouseupEvent.remove()
     }
   }
 }
