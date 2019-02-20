@@ -51,7 +51,6 @@
                                   @confirm="addExtra"
                                   icon="search"
                                   icon-style="solid"
-                                  no-v-model
                                   ref="searchInput"
                                   clearable
                                   v-model="searchText" />
@@ -68,13 +67,17 @@
 
                 <div :class="`${classPrefix}-select-items-wrapper`">
                     <slot>
-                        <va-option
-                                :key="index"
-                                :label="option.label"
-                                :value="option.value"
-                                v-for="(option, index) in filterOptions">
-                        </va-option>
+                      In the slot
+                      <va-option
+                        :key="index"
+                        :label="option.label"
+                        :value="option.value"
+                        v-for="(option, index) in filterOptions">
+                      </va-option>
                     </slot>
+                    <div v-if="defaultSlotWasUsed">
+                      defaultSlotWasUsed
+                    </div>
                 </div>
 
                 <div :class="`${classPrefix}-notify`" transition="fadeDown" v-show="showNotify">Limit: {{limit}}</div>
@@ -239,6 +242,9 @@
       document.addEventListener('keyup', this.keyup)
     },
     computed: {
+      defaultSlotWasUsed () {
+        return !!this.$slots.default
+      },
       styleObj () {
         let style = {}
         let {actualWidth} = this
@@ -342,18 +348,24 @@
         }
       },
       filter(options, search) {
+        console.log('filter called, search:', search)
         if (search === '') return options
         var ret = []
         for (var i = 0, l = options.length; i < l; i++) {
           var v = options[i] && String(options[i].label).replace(/<.*?>/g, '')
           var s = search
 
+          console.log('v', v)
+          console.log('s', s)
+
           if (!this.matchCase) {
             v = v.toLocaleLowerCase()
             s = s.toLocaleLowerCase()
           }
 
-          if (v !== '' && v.indexOf(s) > -1) {
+          // if (v !== '' && v.indexOf(s) > -1) {
+          if (v !== '' && v.includes(s)) {
+            console.log('pushing', v)
             ret.push(options[i])
           }
         }

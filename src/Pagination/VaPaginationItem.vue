@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {index, active, disabled, classPrefix} = this
+      let {disabled, classPrefix} = this
       let classes = {}
 
       classes[classPrefix + '-pagination-item-disabled'] = disabled

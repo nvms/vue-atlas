@@ -134,7 +134,7 @@ export default {
     },
     time: {
       deep: true,
-      handler (val) {
+      handler () {
         var ret = ''
         this.time.hour > this.hourRange[1] ? this.time.hour = this.hourRange[1] : 0
         this.time.minute > this.minuteRange[1] ? this.time.minute = this.minuteRange[1] : 0

@@ -125,7 +125,7 @@ export default {
       if (tab.isActive) {
         tab.isActive = visible
 
-        this.tabs.every((tab, index, array) => {
+        this.tabs.every((tab) => {
           if (tab.isVisible) {
             tab.isActive = true
             return false

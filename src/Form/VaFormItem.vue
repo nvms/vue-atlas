@@ -73,9 +73,8 @@ export default {
       return this.label_col == 12 ? 12 : wrapCol - this.label_col
     },
     classObj () {
-      let {classPrefix, wrapCol} = this
+      let {classPrefix} = this
       let classes = {}
-      let defaultCol = this.inline ? (wrapCol || 0) : 12
 
       classes[classPrefix + '-form-group'] = true
 

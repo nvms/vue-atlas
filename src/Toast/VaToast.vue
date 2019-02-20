@@ -92,7 +92,7 @@ export default {
   },
   watch: {
     show: {
-      handler (val, newVal) {
+      handler (val) {
         this.setT = window.clearTimeout(this.setT)
         if (val) {
           this.$nextTick(() => {
