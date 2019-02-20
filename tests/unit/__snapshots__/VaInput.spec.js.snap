@@ -2,7 +2,7 @@
 
 exports[`VaInput.vue renders correctly 1`] = `
 <div
-  class="va-input-con inline"
+  class="va-input-con va-show-icon inline"
   style="width: 100%;"
 >
   <!---->

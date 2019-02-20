@@ -198,7 +198,7 @@ export default {
     }
 
     if (this.autofocus) {
-      this.focused = false
+      this.focused = true
     }
   },
   beforeDestroy () {
