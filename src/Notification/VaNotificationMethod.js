@@ -11,6 +11,7 @@ const createNode = () => {
 
 const open = (options) => {
   let { title, message, effect, type, width, duration, onShow, onHide, onConfirm } = options
+  /* eslint-disable no-new */
   new Vue({
     el: createNode(),
     data () {

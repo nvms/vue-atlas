@@ -33,6 +33,7 @@ const typeMap = {
 
 const confirm = (options) => {
   const { title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable } = options
+  /* eslint-disable no-new */
   new Vue({
     el: createNode(),
     mounted () {
@@ -103,6 +104,7 @@ const confirm = (options) => {
 
 const alert = (options) => {
   const { title, message, effect, type, width, onConfirm, onHide, onShow, backdropClickable } = options
+  /* eslint-disable no-new */
   new Vue({
     el: createNode(),
     mixins: [localeMixin('VaModal')],
