@@ -11,6 +11,8 @@
   padding: 3px 4px 3px;
   border-radius: 3px;
   overflow: hidden;
+  vertical-align: sub;
+  
   &-truncate {
     max-width: 180px;
     text-overflow: ellipsis;
