@@ -49,6 +49,10 @@ export default {
     })
   },
   beforeDestroy () {
+    this.dispatch('VaForm', 'Va@validateChange', {
+      name: this.name,
+      result: {results: {}, isvalid: true}
+    })
     this.dispatch('VaForm', 'Va@validateDestroy', {
       name: this.name,
       result: this.results

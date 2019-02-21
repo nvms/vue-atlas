@@ -130,6 +130,7 @@ export default {
 
     this.$on('Va@validateDestroy', (val) => {
       delete this.result.results[val.name]
+      delete this._result.results[val.name]
     })
   },
 
