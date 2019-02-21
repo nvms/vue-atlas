@@ -252,12 +252,12 @@ sidebar item defaults
 
   &-icon {
     font-size: 16px;
-    margin-right: 17px;
+    margin-right: 5px;
     width: 20px;
     min-width: 20px;
     display: flex;
     justify-content: space-around;
-    position: absolute;
+    // position: absolute;
   }
 
   &:active,

@@ -138,7 +138,7 @@ export default {
       let {showIcon} = this
       let style = {}
 
-      style['padding-left'] = showIcon ? '30px' : '0px'
+      style['padding-left'] = showIcon ? '0px' : '0px'
 
       return style
     }
