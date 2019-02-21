@@ -76,9 +76,9 @@
 @mixin input-focus-mixin($color, $opacity: 0.6) {
 
   &:focus {
-    box-shadow: $color 0px 0px 0px 2px;
+    box-shadow: $color 0 0 0 2px;
     /* fallback */
-    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+    box-shadow: rgba($color, $opacity) 0 0 0 2px;
     outline: none;
   }
 }
@@ -230,7 +230,7 @@ input[type="file"].#{$class-prefix}-form-control {
 }
 
 .#{$class-prefix}-form-group {
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
 }
 
 .#{$class-prefix}-form-horizontal .#{$class-prefix}-form-group {
@@ -253,7 +253,7 @@ input[type="file"].#{$class-prefix}-form-control {
   font-weight: 500;
   position: absolute;
   top: -19px !important;
-  right: 0px !important;
+  right: 0 !important;
   bottom: initial !important;
   left: initial !important;
 }
