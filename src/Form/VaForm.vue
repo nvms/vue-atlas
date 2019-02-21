@@ -44,9 +44,11 @@ export default {
       this.validate = false
       this.$nextTick(() => {
         this.validate = true
-        if (type.isFunction(cb)) {
-          cb(this.result)
-        }
+        this.$nextTick(() => {
+          if (type.isFunction(cb)) {
+            cb(this.result)
+          }
+        })
       })
     },
     resetValidation (cb) {
@@ -104,7 +106,7 @@ export default {
 
     this.$on('Va@validateChange', (val) => {
       let name = val.name
-      let validateResult = {}
+      let validateResult = Object.assign({}, this._result)
 
       if (!validateResult.results) validateResult.results = {}
       validateResult.results[name] = val.result
