@@ -41,15 +41,23 @@ export default {
     noop () {
     },
     validateFields (cb) {
-      this.validate = true
+      this.validate = false
       this.$nextTick(() => {
+        this.validate = true
         if (type.isFunction(cb)) {
           cb(this.result)
         }
       })
     },
-    resetValidation () {
+    resetValidation (cb) {
       this.validate = false
+      this.$nextTick(() => {
+        this.result = {results: {}, isvalid: true}
+        this.$emit('validateChange', this.result)
+        if (type.isFunction(cb)) {
+          cb(this.result)
+        }
+      })
     }
   },
   watch: {
@@ -63,7 +71,7 @@ export default {
     },
     result (val) {
       if (this.validate) {
-        this.$emit('change', val)
+        this.$emit('validateChange', val)
       }
     }
   },
@@ -96,7 +104,7 @@ export default {
 
     this.$on('Va@validateChange', (val) => {
       let name = val.name
-      let validateResult = Object.assign({}, this._result)
+      let validateResult = {}
 
       if (!validateResult.results) validateResult.results = {}
       validateResult.results[name] = val.result
