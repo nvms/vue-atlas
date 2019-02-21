@@ -1,0 +1,23 @@
+.#{$class-prefix}-collapse {
+  &__panel {
+    &__header {
+      color: $N400;
+      padding: 2px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s ease-out;
+
+      i {
+        width: 15px;
+      }
+
+      &:hover {
+        background: $N30;
+      }
+    }
+
+    &__body {
+      padding: 0 0 0 30px;
+    }
+  }
+}

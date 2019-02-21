@@ -25,6 +25,9 @@ import VaSelect from './Select/VaSelect.vue'
 import VaTopbar from './Topbar/VaTopbar.vue'
 import VaMobile from './Mobile/VaMobile.vue'
 import VaFormItem from './Form/VaFormItem.vue'
+import VaCollapse from './Collapse/VaCollapse.vue'
+import VaCollapsePanel from './Collapse/VaCollapsePanel.vue'
+import VaCollapseTransition from './Collapse/VaCollapseTransition.vue'
 import VaMinibar from './Minibar/VaMinibar.vue'
 import VaLoading from './Loading/VaLoading.vue'
 import VaTooltip from './Tooltip/VaTooltip.vue'
@@ -109,6 +112,8 @@ const Components = {
   VaFormItem,
   VaTextarea,
   VaTypeahead,
+  VaCollapse,
+  VaCollapsePanel,
   VaAnimQueue,
   VaAppConfig,
   VaContainer,
@@ -138,6 +143,7 @@ const Components = {
   VaSidebarScrollarea,
   VaSidebarGroupLevel,
   VaPlaceholderHeading,
+  VaCollapseTransition,
   VaSidebarGroupToggle
 }
 
