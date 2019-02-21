@@ -48,6 +48,12 @@ export default {
       val ? this.vStatus = this.status : this.vStatus = ''
     })
   },
+  beforeDestroy () {
+    this.dispatch('VaForm', 'Va@validateDestroy', {
+      name: this.name,
+      result: this.results
+    })
+  },
   computed: {
     _results: {
       get () {

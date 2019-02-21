@@ -127,6 +127,10 @@ export default {
         this.$emit('validateChange', this.result)
       }
     })
+
+    this.$on('Va@validateDestroy', (val) => {
+      delete this.result.results[val.name]
+    })
   },
 
   data () {
