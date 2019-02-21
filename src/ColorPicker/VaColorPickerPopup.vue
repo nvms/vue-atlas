@@ -9,6 +9,7 @@
           ref="gradient"
           :style="gradientStyleObj"
           @mousedown="gradientOnMousedown"
+          @touchstart="gradientOnMousedown"
           :class="`${classPrefix}-color-picker-gradient`">
           <div
             :class="`${classPrefix}-color-picker-gradient-white`" />
@@ -23,6 +24,7 @@
         <div
           ref="hue"
           @mousedown="hueSliderOnMousedown"
+          @touchstart="hueSliderOnMousedown"
           :class="`${classPrefix}-color-picker-hue-track`">
           <div
             :class="`${classPrefix}-color-picker-border`" />
@@ -33,6 +35,7 @@
         <div
           ref="alpha"
           @mousedown="alphaSliderOnMousedown"
+          @touchstart="alphaSliderOnMousedown"
           :class="`${classPrefix}-color-picker-alpha-track`">
           <div
             :style="alphaStyleObj"
@@ -245,8 +248,16 @@ export default {
        * absolute x and y position of the system cursor
        * in relation to the gradient
        */
-      let arrowx = e.clientX - this.gradientPosition.left - cursorOffsetArrowLeft
-      let arrowy = e.clientY - this.gradientPosition.top - cursorOffsetArrowTop
+      var arrowx = ''
+      var arrowy = ''
+
+      if (e.clientX && e.clientY) {
+        arrowx = e.clientX - this.gradientPosition.left - cursorOffsetArrowLeft
+        arrowy = e.clientY - this.gradientPosition.top - cursorOffsetArrowTop
+      } else if (e.changedTouches !== undefined) {
+        arrowx = e.changedTouches[0].clientX - this.gradientPosition.left - cursorOffsetArrowLeft
+        arrowy = e.changedTouches[0].clientY - this.gradientPosition.top - cursorOffsetArrowTop
+      }
 
       /**
        * absolute x and y position of the system cursor
@@ -280,6 +291,9 @@ export default {
 
       this.selectGradientColor()
     },
+
+
+
     gradientOnMousedown (e) {
       this.prevent(e)
       this.gradientPosition = this.getElementRect(this.$refs.gradient)
@@ -288,6 +302,9 @@ export default {
       // set hooks
       window.addEventListener('mousemove', this.gradientOnMousemove, false)
       window.addEventListener('mouseup', this.gradientOnMouseup, false)
+
+      window.addEventListener('touchmove', this.gradientOnMousemove, false)
+      window.addEventListener('touchend', this.gradientOnMouseup, false)
     },
     gradientOnMousemove (e) {
       this.makeGradientSelection(e)
@@ -296,7 +313,12 @@ export default {
       // remove hooks
       window.removeEventListener('mouseup', this.gradientOnMouseup, false)
       window.removeEventListener('mousemove', this.gradientOnMousemove, false)
+
+      window.removeEventListener('touchend', this.gradientOnMouseup, false)
+      window.removeEventListener('touchmove', this.gradientOnMousemove, false)
     },
+
+
 
     updateControls () {
       this.setHueSliderPositionFromHsb()
@@ -311,7 +333,13 @@ export default {
        * absolute y position of the system cursor
        * in relation to the hue track
        */
-      let arrowy = e.clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
+      var arrowy = ''
+
+      if (e.clientY) {
+        arrowy = e.clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
+      } else if (e.changedTouches !== undefined) {
+        arrowy = e.changedTouches[0].clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
+      }
 
       /**
        * absolute y position of the system cursor
@@ -379,6 +407,9 @@ export default {
       // set hooks
       window.addEventListener('mousemove', this.hueSliderOnMousemove, false)
       window.addEventListener('mouseup', this.hueSliderOnMouseup, false)
+      
+      window.addEventListener('touchmove', this.hueSliderOnMousemove, false)
+      window.addEventListener('touchend', this.hueSliderOnMouseup, false)
     },
     hueSliderOnMousemove (e) {
       this.makeHueSelection(e)
@@ -387,6 +418,9 @@ export default {
       // remove hooks
       window.removeEventListener('mouseup', this.hueSliderOnMouseup, false)
       window.removeEventListener('mousemove', this.hueSliderOnMousemove, false)
+
+      window.removeEventListener('touchend', this.hueSliderOnMouseup, false)
+      window.removeEventListener('touchmove', this.hueSliderOnMousemove, false)
     },
 
 
@@ -396,7 +430,13 @@ export default {
        * absolute y position of the system cursor
        * in relation to the alpha track
        */
-      let arrowy = e.clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
+      var arrowy = ''
+
+      if (e.clientY) {
+        arrowy = e.clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
+      } else if (e.changedTouches !== undefined) {
+        arrowy = e.changedTouches[0].clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
+      }
 
       /**
        * absolute y position of the system cursor
@@ -430,6 +470,9 @@ export default {
       // set hooks
       window.addEventListener('mousemove', this.alphaSliderOnMousemove, false)
       window.addEventListener('mouseup', this.alphaSliderOnMouseup, false)
+
+      window.addEventListener('touchmove', this.alphaSliderOnMousemove, false)
+      window.addEventListener('touchend', this.alphaSliderOnMouseup, false)
     },
     alphaSliderOnMousemove (e) {
       this.makeAlphaSelection(e)
@@ -438,6 +481,9 @@ export default {
       // remove hooks
       window.removeEventListener('mouseup', this.alphaSliderOnMouseup, false)
       window.removeEventListener('mousemove', this.alphaSliderOnMousemove, false)
+
+      window.removeEventListener('touchend', this.alphaSliderOnMouseup, false)
+      window.removeEventListener('touchmove', this.alphaSliderOnMousemove, false)
     }
   }
 }
