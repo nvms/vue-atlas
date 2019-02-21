@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaCollapse.vue renders correctly 1`] = `
+<div class="va-collapse">
+  <div class="va-collapse__panel">
+    <div class="va-collapse__panel__header">
+      <va-icon-stub type="angle-right"></va-icon-stub>
+      header
+    </div>
+    <va-collapse-transition-stub>
+      <!---->
+    </va-collapse-transition-stub>
+  </div>
+  <div class="va-collapse__panel">
+    <div class="va-collapse__panel__header">
+      <va-icon-stub type="angle-right"></va-icon-stub>
+      header
+    </div>
+    <va-collapse-transition-stub>
+      <!---->
+    </va-collapse-transition-stub>
+  </div>
+  <div class="va-collapse__panel">
+    <div class="va-collapse__panel__header">
+      <va-icon-stub type="angle-right"></va-icon-stub>
+      header
+    </div>
+    <va-collapse-transition-stub>
+      <!---->
+    </va-collapse-transition-stub>
+  </div>
+</div>
+`;
