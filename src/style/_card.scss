@@ -25,7 +25,7 @@ $headerBtnDefaultActiveBackgroundColor) {
     .#{$class-prefix}-btn-default {
       background-color: $headerBtnDefaultBackgroundColor;
 
-      &:hover {
+      &:hover:not(.#{$class-prefix}-va-select-btn-open) {
         background-color: $headerBtnDefaultHoverBackgroundColor;
       }
       &:active {
