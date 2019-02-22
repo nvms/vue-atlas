@@ -34,7 +34,7 @@
 
   &-btn-open {
     background-color: $btnOpenBackgroundColor;
-    color: $btnOpenColor;
+    color: $btnOpenColor !important;
   }
   &-group {
     &.#{$class-prefix}-has-error {
@@ -107,16 +107,25 @@
 
     .#{$class-prefix}-dropdown-toggle {
       .#{$class-prefix}-select-placeholder {
-        color: $dropdownPlaceholderColor;
+        color: $dropdownPlaceholderColor !important;
       }
 
       &:active:not(.#{$class-prefix}-select-btn-open) {
         .#{$class-prefix}-select-placeholder {
-          color: $dropdownPlaceholderActiveColor;
+          color: $dropdownPlaceholderActiveColor !important;
         }
         i {
           color: $dropdownPlaceholderActiveColor !important;
         }
+      }
+    }
+
+    .#{$class-prefix}-select-btn-open {
+      .#{$class-prefix}-select-placeholder {
+        color: $dropdownPlaceholderActiveColor !important;
+      }
+      i {
+        color: $dropdownPlaceholderActiveColor !important;
       }
     }
   }
@@ -142,8 +151,8 @@
 .#{$class-prefix}--theme-light .#{$class-prefix}-select {
   @include select-theme-mixin(
           $hasErrorBtnBorder: 2px solid $R400 !important,
-          $btnOpenBackgroundColor: $N500 !important,
-          $btnOpenColor: $N20 !important,
+          $btnOpenBackgroundColor: $B50 !important,
+          $btnOpenColor: $B400 !important,
           $selectedTagBackground: none,
           $selectedTagFocusOutline: none,
           $selectedTagHoverColor: $R300,

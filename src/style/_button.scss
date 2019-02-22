@@ -277,12 +277,12 @@
   }
 
   &-active {
-    @include btn-type-mixin($bgCol: $N500,
-      $fontCol: $N0,
-      $bgColHover: $N600,
-      $fontColHover: $N0,
-      $bgColActive: $N700,
-      $fontColActive: $N0,
+    @include btn-type-mixin($bgCol: $B50,
+      $fontCol: $B400,
+      $bgColHover: $B50,
+      $fontColHover: $B400,
+      $bgColActive: $B50,
+      $fontColActive: $B400,
       $badgeBgCol: $N700,
       $badgeFontCol: $N0);
     @include button-focus-mixin($B100, 1);
