@@ -96,12 +96,4 @@
         top: 0;
         bottom: 0;
     }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .2s;
-    }
-
-    .fade-enter, .fade-leave-to {
-        opacity: 0;
-    }
 </style>
