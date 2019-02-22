@@ -75,6 +75,28 @@ describe('VaButton.vue', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
+  it('value passed to iconBefore should render correctly', () => {
+    const wrapper = mount({
+      render () {
+        return (
+          <VaButton iconBefore="home">Hello</VaButton>
+        )
+      }
+    })
+    expect(wrapper).toMatchSnapshot()
+  })
+
+  it('value passed to iconAfter should render correctly', () => {
+    const wrapper = mount({
+      render () {
+        return (
+          <VaButton iconAfter="home">Hello</VaButton>
+        )
+      }
+    })
+    expect(wrapper).toMatchSnapshot()
+  })
+
   it('should change loading state on click', done => {
     // prevent timeout
     Vue.config.errorHandler = done
