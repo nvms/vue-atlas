@@ -1,9 +1,12 @@
 <template>
-    <span class="wrapper" v-on="listeners" :style="style">
+    <span class="va-toggle-icon_wrapper" v-on="$listeners" :style="style">
+        <div class="va-toggle-icon_container" v-on="listeners">
         <transition-group name="fade">
-            <va-icon class="icon" v-if="isActive" v-bind="$attrs" :type="typeActive" :size="size" :key="1"/>
-            <va-icon class="icon" v-else v-bind="$attrs" :type="type" :size="size" :key="2"/>
+            <va-icon class="va-toggle-icon_icon" v-if="isActive" v-bind="$attrs" :type="typeActive" :size="size"
+                     key="1"/>
+            <va-icon class="va-toggle-icon_icon" v-else v-bind="$attrs" :type="type" :size="size" key="2"/>
         </transition-group>
+        </div>
     </span>
 </template>
 
@@ -89,11 +92,12 @@
 </script>
 
 <style scoped>
-    .icon {
+    .va-toggle-icon_icon {
         position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
+        text-align: center;
     }
 </style>
