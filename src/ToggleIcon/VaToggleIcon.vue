@@ -1,15 +1,16 @@
 <template>
     <span class="wrapper" v-on="listeners" :style="style">
-        <transition name="fade">
-            <va-icon v-if="actived" :type="typeActive"/>
-            <va-icon v-else :type="type"/>
-        </transition>
+        <transition-group name="fade">
+            <va-icon class="icon" v-if="isActive" v-bind="$attrs" :type="typeActive" :key="1"/>
+            <va-icon class="icon" v-else v-bind="$attrs" :type="type" :key="2"/>
+        </transition-group>
     </span>
 </template>
 
 <script>
   export default {
     name: 'VaToggleIcon',
+    inheritAttrs: false,
     props: {
       active: {
         type: Boolean,
@@ -17,7 +18,13 @@
       },
       trigger: {
         type: String,
-        default: 'hover'
+        default: 'hover',
+        validator (v) {
+          return [
+            'hover',
+            'click'
+          ].includes(v)
+        },
       },
       type: {
         type: String,
@@ -27,16 +34,10 @@
         type: String,
         required: true
       },
-      size: {
-        type: String,
-        required: false,
-        default: '1em',
-        note: 'The size, in px or em, of the icon.'
-      },
     },
     watch: {
       active (val) {
-        this.actived = val
+        this.isActive = val
       }
     },
     computed: {
@@ -44,8 +45,8 @@
         switch (this.trigger) {
           case 'hover':
             return {
-              mouseenter: this.show,
-              mouseleave: this.hide
+              mouseenter: this.onActivate,
+              mouseleave: this.onDeactivate
             }
           case 'click':
             return {
@@ -58,24 +59,40 @@
     },
     data () {
       return {
-        actived: this.active,
+        isActive: this.active,
         style: {
           display: 'inline-block',
-          width: this.size,
-          height: this.size
+          width: this.$attrs.size,
+          height: this.$attrs.size,
+          position: 'relative'
         }
       }
     },
     methods: {
       toggle () {
-        this.actived = !this.actived
+        this.isActive = !this.isActive
       },
-      show () {
-        this.actived = true
+      onActivate () {
+        this.isActive = true
       },
-      hide () {
-        this.actived = false
+      onDeactivate () {
+        this.isActive = false
       }
     }
   }
 </script>
+
+<style>
+    .icon {
+        position: absolute;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
+    }
+</style>
