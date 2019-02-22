@@ -242,6 +242,12 @@
                   &nbsp;
                   <va-button><va-icon type="circle" size="9px"/></va-button>
                 </va-form-item>
+                <va-form-item label="Photos">
+                  <va-file-picker multiple />
+                </va-form-item>
+                <va-form-item label="Photo">
+                  <va-file-picker />
+                </va-form-item>
                 <va-form-item label="Typeahead">
                   <va-typeahead
                     show-clean
