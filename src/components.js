@@ -8,6 +8,7 @@ import VaForm from './Form/VaForm.vue'
 import VaCard from './Card/VaCard.vue'
 import VaTabs from './Tabs/VaTabs.vue'
 import VaIcon from './Icon/VaIcon.vue'
+import VaToggleIcon from './ToggleIcon/VaToggleIcon.vue'
 import VaToggle from './Toggle/VaToggle'
 import VaInput from './Input/VaInput.vue'
 import VaModal from './Modal/VaModal.vue'
@@ -81,6 +82,7 @@ const Components = {
   VaPage,
   VaTabs,
   VaIcon,
+  VaToggleIcon,
   VaForm,
   VaCard,
   VaAffix,
