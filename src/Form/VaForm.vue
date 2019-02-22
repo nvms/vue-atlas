@@ -75,6 +75,9 @@ export default {
       if (this.validate) {
         this.$emit('validateChange', val)
       }
+    },
+    type (val) {
+      this.broadcast('VaFormItem', 'Va@formTypeChange', val)
     }
   },
   mounted () {
@@ -82,6 +85,7 @@ export default {
       this.result = {results: {}, isvalid: true}
     }
     this.broadcast('VaValidate', 'Va@openValidate', this.validate)
+    this.broadcast('VaFormItem', 'Va@formTypeChange', this.type)
   },
   computed: {
     classObj () {
