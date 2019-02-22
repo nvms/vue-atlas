@@ -1,16 +1,31 @@
 <template>
-    <a :class="classObj"
-       :style="styleObj"
-       @click="onClick"
-       @keyup.enter="enterPressed"
-       ref="btn"
-       tabindex="0">
-        <div :class="fadeclassObj">
-            <slot/>
-            <va-badge :margin="badgeMargin" v-if="badge">{{badge}}</va-badge>
-        </div>
-        <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
-    </a>
+  <a
+    :class="classObj"
+    :style="styleObj"
+    @click="onClick"
+    @keyup.enter="enterPressed"
+    ref="btn"
+    tabindex="0">
+    <div
+      :class="innerClassObj"
+      :style="innerStyleObj">
+      <va-icon
+        v-if="iconBefore !== undefined"
+        :type="iconBefore"
+        :style="iconBeforeStyleObj" />
+        <slot/>
+        <va-badge
+          :margin="badgeMargin"
+          v-if="badge">
+          {{badge}}
+        </va-badge>
+        <va-icon
+          v-if="iconAfter !== undefined"
+          :type="iconAfter"
+          :style="iconAfterStyleObj" />
+    </div>
+    <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
+  </a>
 </template>
 
 <script>
@@ -25,7 +40,7 @@
         required: false,
         values: ['default', 'primary'],
         note: 'The style of button to render.',
-        validator(v) {
+        validator (v) {
           return [
             'default',
             'primary',
@@ -54,7 +69,7 @@
         default: 'md',
         required: false,
         note: 'The size of button to render.',
-        validator(v) {
+        validator (v) {
           return [
             'xs',
             'sm',
@@ -113,20 +128,29 @@
         default: false,
         required: false
       },
+      iconBefore: {
+        type: String,
+        required: false
+      },
+      iconAfter: {
+        type: String,
+        required: false
+      },
       classPrefix: {
         type: String,
         default: 'va'
       }
     },
-    data() {
+    data () {
       let loading = this.loading
       return {
         loadingSpinner: loading,
-        isFocused: this.focused
+        isFocused: this.focused,
+        componentWasMounted: false
       }
     },
     computed: {
-      spinColor() {
+      spinColor () {
         let {type} = this
         let white = '#FFFFFF'
         let darker = '#45526B'
@@ -162,7 +186,7 @@
 
         return white
       },
-      classObj() {
+      classObj () {
         let {classPrefix, type, size, block, active, disabled, round, isFocused} = this
         let classes = {}
 
@@ -178,7 +202,7 @@
 
         return classes
       },
-      fadeclassObj() {
+      innerClassObj () {
         let {classPrefix, loadingSpinner} = this
         let classes = {}
 
@@ -187,7 +211,38 @@
 
         return classes
       },
-      styleObj() {
+      innerStyleObj () {
+        let {iconBefore, iconAfter} = this
+        let style = {}
+
+        if (this.componentWasMounted) {
+          let rect
+          let adjust = 0
+          let l = iconBefore !== undefined ? true : false
+          let r = iconAfter !== undefined ? true : false
+
+          if (l || r) {
+            rect = this.$el.getBoundingClientRect()
+            adjust = rect.width
+          }
+          if (this.$el.style.width !== '100%') {
+            if (l) {
+              adjust += 20
+              style['padding-left'] = '20px'
+            }
+            if (r) {
+              adjust += 20
+              style['padding-right'] = '20px'
+            }
+          }
+          if (rect && adjust > rect.width) {
+            style['min-width'] = adjust + 'px'
+          }
+        }
+
+        return style
+      },
+      styleObj () {
         let {tall} = this
         let style = {}
 
@@ -197,10 +252,26 @@
         }
 
         return style
+      },
+      iconBeforeStyleObj () {
+        let style = {}
+
+        style['position'] = 'absolute'
+        style['left'] = '3px'
+
+        return style
+      },
+      iconAfterStyleObj () {
+        let style = {}
+
+        style['position'] = 'absolute'
+        style['right'] = '3px'
+
+        return style
       }
     },
     watch: {
-      loading(val) {
+      loading (val) {
         if (val) {
           let rect = this.$el.getBoundingClientRect()
 
@@ -218,7 +289,7 @@
       }
     },
     methods: {
-      enterPressed() {
+      enterPressed () {
         if (this.disabled) {
           return
         }
@@ -228,7 +299,7 @@
         evObj.initEvent('click', true, false)
         el.dispatchEvent(evObj)
       },
-      focus() {
+      focus () {
         this.$refs.btn.focus()
       },
       onClick () {
@@ -238,9 +309,11 @@
         this.$emit('click')
       }
     },
-    mounted() {
+    mounted () {
       this.$nextTick(() => {
         let el = this.$el
+
+        this.componentWasMounted = true
 
         this._clickEvent = EventListener.listen(window, 'click', (e) => {
           if (!el.contains(e.target)) {
@@ -249,7 +322,7 @@
         })
       })
     },
-    beforeDestroy() {
+    beforeDestroy () {
       if (this._clickEvent) this._clickEvent.remove()
     }
   }

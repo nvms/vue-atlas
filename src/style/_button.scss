@@ -420,6 +420,7 @@
   }
 
   &-text-fade {
+    position: relative;
     display: flex;
     align-items: center;
     transition: opacity 0.2s;
