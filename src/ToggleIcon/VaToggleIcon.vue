@@ -1,8 +1,8 @@
 <template>
     <span class="wrapper" v-on="listeners" :style="style">
         <transition-group name="fade">
-            <va-icon class="icon" v-if="isActive" v-bind="$attrs" :type="typeActive" :key="1"/>
-            <va-icon class="icon" v-else v-bind="$attrs" :type="type" :key="2"/>
+            <va-icon class="icon" v-if="isActive" v-bind="$attrs" :type="typeActive" :size="size" :key="1"/>
+            <va-icon class="icon" v-else v-bind="$attrs" :type="type" :size="size" :key="2"/>
         </transition-group>
     </span>
 </template>
@@ -34,6 +34,12 @@
         type: String,
         required: true
       },
+      size: {
+        type: String,
+        required: false,
+        default: '1em',
+        note: 'The size, in px or em, of the icon.'
+      },
     },
     watch: {
       active (val) {
@@ -62,8 +68,8 @@
         isActive: this.active,
         style: {
           display: 'inline-block',
-          width: this.$attrs.size,
-          height: this.$attrs.size,
+          width: this.$props.size,
+          height: this.$props.size,
           position: 'relative'
         }
       }
@@ -82,17 +88,20 @@
   }
 </script>
 
-<style>
+<style scoped>
     .icon {
         position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
     }
 
     .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
+        transition: opacity .2s;
     }
 
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
-    {
+    .fade-enter, .fade-leave-to {
         opacity: 0;
     }
 </style>
