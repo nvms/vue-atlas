@@ -44,16 +44,21 @@ export default {
       default: 'va'
     }
   },
+  data () {
+    return {
+      inline: false,
+      vertical: false,
+      horizontal: true
+    }
+  },
+  created () {
+    this.$on('Va@formTypeChange', (val) => {
+      this.inline = (val === 'inline' ? true : false)
+      this.vertical = (val === 'vertical' ? true : false)
+      this.horizontal = (val === 'horizontal' ? true : false)
+    })
+  },
   computed: {
-    inline () {
-      return this.$parent.type === 'inline'
-    },
-    vertical () {
-      return this.$parent.type == 'vertical'
-    },
-    horizontal () {
-      return this.$parent.type == 'horizontal'
-    },
     label_col () {
       let lc = parseInt(this.labelCol)
       let defaultCol = this.inline ? 0 : 2
