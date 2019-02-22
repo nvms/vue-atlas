@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VaMenu.vue renders correctly with children 1`] = `
+<nav role="menu" outline="none" class="va-menu">
+  <div class="va-menu__group">
+    <div role="menuitem" class="va-menu__item"><span>Item</span></div>
+    <div role="menuitem" class="va-menu__item"><span>Item</span></div>
+  </div>
+  <div class="va-menu__divider"></div>
+  <div class="va-menu__group">
+    <div role="menuitem" class="va-menu__item"><span>Item</span></div>
+  </div>
+</nav>
+`;

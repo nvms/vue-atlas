@@ -74,6 +74,10 @@ import VaSidebarGroupToggle from './Sidebar/VaSidebarGroupToggle.vue'
 import VaProgressTracker from './ProgressTracker/VaProgressTracker.vue'
 import VaPlaceholderHeading from './Placeholder/VaPlaceholderHeading.vue'
 import VaNotificationMethod from './Notification/VaNotificationMethod.js'
+import VaMenu from './Menu/VaMenu.vue'
+import VaMenuDivider from './Menu/VaMenuDivider.vue'
+import VaMenuGroup from './Menu/VaMenuGroup.vue'
+import VaMenuItem from './Menu/VaMenuItem.vue'
 
 const Components = {
   VaRow,
@@ -146,7 +150,11 @@ const Components = {
   VaSidebarGroupLevel,
   VaPlaceholderHeading,
   VaCollapseTransition,
-  VaSidebarGroupToggle
+  VaSidebarGroupToggle,
+  VaMenu,
+  VaMenuDivider,
+  VaMenuGroup,
+  VaMenuItem
 }
 
 const install = function (Vue, locale) {

@@ -1,0 +1,43 @@
+.#{$class-prefix}-menu {
+  &__group {
+    // padding: 8px 0;
+  }
+
+  &__divider {
+    height: 1px;
+    border-bottom: 1px solid $N20;
+    margin: 8px 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    height: 32px;
+    border-radius: 3px;
+    color: $N400;
+
+    &:hover {
+      background-color: $N10;
+    }
+
+    &:active {
+      background-color: lighten($B50, 3%);
+      color: $N500;
+    }
+
+    &:focus {
+      background-color: lighten($B50, 3%);
+    }
+
+    span {
+      margin-left: 16px;
+      margin-right: 16px;
+      line-height: 20px;
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 0%;
+      display: block;
+    }
+  }
+}
