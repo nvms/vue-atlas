@@ -1,42 +1,43 @@
 <template>
-    <div :class="classObj" :style="styleObj" ref="modal">
-        <div :class="`${classPrefix}-modal-dialog`" :style="{'width': width }">
-            <div :class="`${classPrefix}-modal-loading`" v-if="modalIsLoading">
-                <va-loading color="#888" size="md"></va-loading>
-            </div>
+  <div :class="classObj" :style="styleObj" ref="modal">
+    <div :class="`${classPrefix}-modal-dialog`" :style="{'width': width }">
 
-            <div :class="`${classPrefix}-modal-content`" v-else>
-
-                <slot name="header">
-                    <div :class="`${classPrefix}-modal-header`">
-                        <va-button tabindex="-1" :class="`${classPrefix}-close`" @click="close" type="subtle">
-                            <va-icon type="times"></va-icon>
-                        </va-button>
-                        <div :class="`${classPrefix}-modal-title`">
-                            <slot name="title">
-                                {{title}}
-                            </slot>
-                        </div>
-                    </div>
-                </slot>
-
-                <div :class="`${classPrefix}-modal-body`">
-                    <slot name="body"/>
-                </div>
-
-                <div :class="`${classPrefix}-modal-footer`">
-                    <slot name="footer">
-                        <va-button :focused="focused" @click.native="confirm" type="primary">
-                            {{getL('confirm')}}
-                        </va-button>
-                        <va-button @click.native="close" type="subtle">
-                            {{getL('cancel')}}
-                        </va-button>
-                    </slot>
-                </div>
-            </div>
+      <va-collapse-transition>
+        <div :class="`${classPrefix}-modal-loading`" v-show="modalIsLoading">
+          <va-loading color="#888" size="md"></va-loading>
         </div>
+      </va-collapse-transition>
+
+      <div :class="`${classPrefix}-modal-content`" v-show="!modalIsLoading">
+        <slot name="header">
+          <div :class="`${classPrefix}-modal-header`">
+            <va-button tabindex="-1" :class="`${classPrefix}-close`" @click="close" type="subtle">
+              <va-icon type="times"></va-icon>
+            </va-button>
+            <div :class="`${classPrefix}-modal-title`">
+              <slot name="title">
+                {{title}}
+              </slot>
+            </div>
+          </div>
+        </slot>
+        <div :class="`${classPrefix}-modal-body`">
+          <slot name="body" />
+        </div>
+        <div :class="`${classPrefix}-modal-footer`">
+          <slot name="footer">
+            <va-button :focused="focused" @click.native="confirm" type="primary">
+              {{getL('confirm')}}
+            </va-button>
+            <va-button @click.native="close" type="subtle">
+              {{getL('cancel')}}
+            </va-button>
+          </slot>
+        </div>
+      </div>
+
     </div>
+  </div>
 </template>
 
 <script>
@@ -155,6 +156,13 @@
       })
     },
     watch: {
+      modalIsLoading(val) {
+        if (!val) {
+          setTimeout(() => {
+            this.focusTrap.activate()
+          }, 50)
+        }
+      },
       isShow(val) {
         /**
          * Stackable logic
@@ -179,7 +187,7 @@
                  * then we simply double the value by whatever it
                  * already is.
                  */
-                  // Slice 'px' off from the end.
+                // Slice 'px' off from the end.
                 let m = Math.abs(currentMarginLeft.slice(0, -2))
                 let dist = parseInt(m + distanceToMove)
                 x[i].style['margin-left'] = '-' + dist + 'px'
@@ -236,7 +244,9 @@
             })
           }
 
-          this.focusTrap.activate()
+          if (!this.modalIsLoading) {
+            this.focusTrap.activate()
+          }
         } else {
           if (this._blurModalContentEvent) this._blurModalContentEvent.remove()
           element.removeClass(el, this.classPrefix + '-modal-in')
