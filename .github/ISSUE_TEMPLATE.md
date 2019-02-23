@@ -20,6 +20,10 @@ If this is a BUG REPORT, please fill out the following:
 If this is a FEATURE REQUEST, please fill out the following:
 -->
 
+**Please describe the feature in detail:**
+
+**Would this be a breaking change?**
+
 **What problem does this feature solve?**
 
 <!--
