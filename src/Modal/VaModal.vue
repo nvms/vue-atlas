@@ -219,7 +219,8 @@
         const body = document.body
         const scrollBarWidth = getScrollBarWidth()
         if (val) {
-          el.querySelector('.' + this.classPrefix + '-modal-content').focus()
+          if (!this.modalIsLoading)
+            el.querySelector('.' + this.classPrefix + '-modal-content').focus()
           el.style.display = 'block'
           // this timeout is required for opacity transition
           setTimeout(() => {
