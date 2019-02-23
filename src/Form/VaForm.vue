@@ -136,6 +136,10 @@ export default {
       delete this.result.results[val.name]
       delete this._result.results[val.name]
     })
+
+    this.$on('Va@requestFormType', () => {
+      this.broadcast('VaFormItem', 'Va@formTypeChange', this.type)
+    })
   },
 
   data () {
