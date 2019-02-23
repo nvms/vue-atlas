@@ -1,11 +1,6 @@
 # atlas
 
-<div align="center">
-![](https://img.shields.io/npm/v/vue-atlas.svg?colorA=57D9A3&colorB=666666) ![](https://img.shields.io/npm/dm/vue-atlas.svg?colorA=57D9A3&colorB=666666)
-</div>
----
-
-A library of [Vue.js](https://vuejs.org) 2.x components.
+![](https://img.shields.io/npm/v/vue-atlas.svg?colorA=57D9A3&colorB=666666)
 
 Documentation and examples at [https://vue-atlas.com](https://vue-atlas.com)
 
