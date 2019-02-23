@@ -14,8 +14,11 @@
 </template>
 
 <script>
+import events from '../utils/events'
+
 export default {
   name: 'VaFormItem',
+  mixins: [events],
   inheritAttrs: false,
   props: {
     label: {
@@ -57,6 +60,7 @@ export default {
       this.vertical = (val === 'vertical' ? true : false)
       this.horizontal = (val === 'horizontal' ? true : false)
     })
+    this.dispatch('VaForm', 'Va@requestFormType', true)
   },
   computed: {
     label_col () {
