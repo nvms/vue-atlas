@@ -73,6 +73,8 @@ import VaColorPickerPopup from './ColorPicker/VaColorPickerPopup.vue'
 import VaSidebarGroupToggle from './Sidebar/VaSidebarGroupToggle.vue'
 import VaProgressTracker from './ProgressTracker/VaProgressTracker.vue'
 import VaPlaceholderHeading from './Placeholder/VaPlaceholderHeading.vue'
+
+
 import VaNotificationMethod from './Notification/VaNotificationMethod.js'
 
 const Components = {
@@ -157,7 +159,7 @@ const install = function (Vue, locale) {
   Vue.directive('VaPosition', relocate)
   Vue.prototype.VaToast = VaToastMethod
   Vue.prototype.VaModal = VaModalMethod
-  Vue.prototype.VaNotification = VaNotificationMethod
+  Vue.prototype.notification = VaNotificationMethod
   Vue.prototype.VaLocale = locale || 'en'
   window.VaLocale = locale || 'en'
 }

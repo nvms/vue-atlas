@@ -9,7 +9,7 @@
                     </div>
                     <div :class="`${classPrefix}-notification-content-inner-${type}-right`">
                         <div :class="`${classPrefix}-notification-content-inner-${type}-right-close`">
-                            <va-button @click="close" type="subtle">
+                            <va-button @click="close" type="subtle" size="sm">
                                 <va-icon size="14px" type="times"></va-icon>
                             </va-button>
                         </div>
