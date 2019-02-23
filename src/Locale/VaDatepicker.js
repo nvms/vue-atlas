@@ -2,96 +2,115 @@ export default {
   sunday: {
     en: 'Sun',
     es: 'Do',
-    fr: 'Dim'
+    fr: 'Dim',
+    ru: 'Вс'
   },
   monday: {
     en: 'Mon',
     es: 'Lu',
-    fr: 'Lun'
+    fr: 'Lun',
+    ru: 'Пн'
   },
   tuesday: {
     en: 'Tue',
     es: 'Ma',
-    fr: 'Mar'
+    fr: 'Mar',
+    ru: 'Вт'
   },
   wednesday: {
     en: 'Wed',
     es: 'Mi',
-    fr: 'Mer'
+    fr: 'Mer',
+    ru: 'Ср'
   },
   thursday: {
     en: 'Thu',
     es: 'Ju',
-    fr: 'Jeu'
+    fr: 'Jeu',
+    ru: 'Чт'
   },
   friday: {
     en: 'Fri',
     es: 'Vi',
-    fr: 'Ven'
+    fr: 'Ven',
+    ru: 'Пт'
   },
   saturday: {
     en: 'Sat',
     es: 'Sá',
-    fr: 'Sam'
+    fr: 'Sam',
+    ru: 'Сб'
   },
   january: {
     en: 'January',
     es: 'Ene',
-    fr: 'Janvier'
+    fr: 'Janvier',
+    ru: 'Январь'
   },
   february: {
     en: 'February',
     es: 'Feb',
-    fr: 'Février'
+    fr: 'Février',
+    ru: 'Февраль'
   },
   march: {
     en: 'March',
     es: 'Mar',
-    fr: 'Mars'
+    fr: 'Mars',
+    ru: 'Март'
   },
   april: {
     en: 'April',
     es: 'Abr',
-    fr: 'Avril'
+    fr: 'Avril',
+    ru: 'Апрель'
   },
   may: {
     en: 'May',
     es: 'May',
-    fr: 'Mai'
+    fr: 'Mai',
+    ru: 'Май'
   },
   june: {
     en: 'June',
     es: 'Jun',
-    fr: 'Juin'
+    fr: 'Juin',
+    ru: 'Июнь'
   },
   july: {
     en: 'July',
     es: 'Jul',
-    fr: 'Juillet'
+    fr: 'Juillet',
+    ru: 'Июль'
   },
   august: {
     en: 'August',
     es: 'Aug',
-    fr: 'Août'
+    fr: 'Août',
+    ru: 'Август'
   },
   september: {
     en: 'September',
     es: 'Sep',
-    fr: 'Septembre'
+    fr: 'Septembre',
+    ru: 'Сентябрь'
   },
   october: {
     en: 'October',
     es: 'Oct',
-    fr: 'Octobre'
+    fr: 'Octobre',
+    ru: 'Октябрь'
   },
   november: {
     en: 'November',
     es: 'Nov',
-    fr: 'Novembre'
+    fr: 'Novembre',
+    ru: 'Ноябрь'
   },
   december: {
     en: 'December',
     es: 'Dec',
-    fr: 'Décembre'
+    fr: 'Décembre',
+    ru: 'Декабрь'
   }
 }
