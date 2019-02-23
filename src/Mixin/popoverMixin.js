@@ -106,16 +106,48 @@ const PopoverMixin = {
           this.position.left = triger.offsetLeft - popover.offsetWidth / 2 + triger.offsetWidth / 2
           this.position.top = triger.offsetTop - popover.offsetHeight
           break
+        case 'top left':
+          this.position.left = triger.offsetLeft
+          this.position.top = triger.offsetTop - popover.offsetHeight
+          break
+        case 'top right':
+          this.position.left = triger.offsetLeft - (Math.abs(triger.offsetWidth - popover.offsetWidth))
+          this.position.top = triger.offsetTop - popover.offsetHeight
+          break
         case 'left':
           this.position.left = triger.offsetLeft - popover.offsetWidth
           this.position.top = triger.offsetTop + triger.offsetHeight / 2 - popover.offsetHeight / 2
+          break
+        case 'left top':
+          this.position.left = triger.offsetLeft - popover.offsetWidth
+          this.position.top = triger.offsetTop
+          break
+        case 'left bottom':
+          this.position.left = triger.offsetLeft - popover.offsetWidth
+          this.position.top = triger.offsetTop + (Math.abs(triger.offsetHeight - popover.offsetHeight))
           break
         case 'right':
           this.position.left = triger.offsetLeft + triger.offsetWidth
           this.position.top = triger.offsetTop + triger.offsetHeight / 2 - popover.offsetHeight / 2
           break
+        case 'right top':
+          this.position.left = triger.offsetLeft + triger.offsetWidth
+          this.position.top = triger.offsetTop
+          break
+        case 'right bottom':
+          this.position.left = triger.offsetLeft + triger.offsetWidth
+          this.position.top = triger.offsetTop + (Math.abs(triger.offsetHeight - popover.offsetHeight))
+          break
         case 'bottom':
           this.position.left = triger.offsetLeft - popover.offsetWidth / 2 + triger.offsetWidth / 2
+          this.position.top = triger.offsetTop + triger.offsetHeight
+          break
+        case 'bottom left':
+          this.position.left = triger.offsetLeft
+          this.position.top = triger.offsetTop + triger.offsetHeight
+          break
+        case 'bottom right':
+          this.position.left = triger.offsetLeft - (Math.abs(triger.offsetWidth - popover.offsetWidth))
           this.position.top = triger.offsetTop + triger.offsetHeight
           break
         default:
