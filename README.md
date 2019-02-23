@@ -55,5 +55,3 @@ Many thanks to those of you who have taken an interest in this project and have 
 - [SamuelRiversMoore](https://github.com/SamuelRiversMoore)
 - [marvinrabe](https://github.com/marvinrabe)
 - [rejifald](https://github.com/rejifald)
-
-)
