@@ -286,7 +286,6 @@
         }
         this.triggerMouseEvent(this.$refs.btn, 'mouseup')
         this.triggerMouseEvent(this.$refs.btn, 'click')
-        this.$emit('click')
       },
       focus () {
         this.$refs.btn.focus()
