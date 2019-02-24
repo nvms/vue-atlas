@@ -6,13 +6,26 @@
       border-radius: 3px;
       cursor: pointer;
       transition: background 0.2s ease-out;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
 
       i {
         width: 15px;
       }
 
+      &:hover, &:active {
+        outline: none;
+      }
+
       &:hover {
-        background: $N30;
+        background: $N20;
+      }
+
+      &:active {
+        background-color: $B50;
+        color: $B500;
       }
     }
 
