@@ -3,7 +3,8 @@
     :class="classObj"
     :style="styleObj"
     @click="onClick"
-    @keyup.enter="enterPressed"
+    @keydown.enter="enterKeyDown"
+    @keyup.enter="enterKeyUp"
     ref="btn"
     tabindex="0">
     <div
@@ -14,11 +15,6 @@
         :type="iconBefore"
         :style="iconBeforeStyleObj" />
         <slot/>
-        <va-badge
-          :margin="badgeMargin"
-          v-if="badge">
-          {{badge}}
-        </va-badge>
         <va-icon
           v-if="iconAfter !== undefined"
           :type="iconAfter"
@@ -38,8 +34,6 @@
         type: String,
         default: 'default',
         required: false,
-        values: ['default', 'primary'],
-        note: 'The style of button to render.',
         validator (v) {
           return [
             'default',
@@ -68,7 +62,6 @@
         type: String,
         default: 'md',
         required: false,
-        note: 'The size of button to render.',
         validator (v) {
           return [
             'xs',
@@ -78,40 +71,25 @@
           ].includes(v)
         }
       },
-      badge: {
-        type: [String, Number],
-        required: false,
-        note: 'Adds an VaBadge to the button.'
-      },
-      badgeMargin: {
-        type: String,
-        default: '0 5px 0 10px',
-        required: false,
-        note: 'Margin to be applied to the outside of the badge element. The default value works well for badges displayed to the right of the button text.'
-      },
       active: {
         type: Boolean,
         default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-active class.'
+        required: false
       },
       disabled: {
         type: Boolean,
         default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-disabled class.'
+        required: false
       },
       block: {
         type: Boolean,
         default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-block class.'
+        required: false
       },
       loading: {
         type: Boolean,
         default: false,
-        required: false,
-        note: 'If true, hides text and shows classPrefix-loading spinner.'
+        required: false
       },
       round: {
         type: Boolean,
@@ -293,15 +271,22 @@
       }
     },
     methods: {
-      enterPressed () {
+      triggerMouseEvent (node, eventType) {
+        let clickEvent = document.createEvent('MouseEvents')
+        clickEvent.initEvent(eventType, true, true)
+        this.$refs.btn.dispatchEvent(clickEvent)
+      },
+      enterKeyDown () {
+        this.triggerMouseEvent(this.$refs.btn, 'mouseover')
+        this.triggerMouseEvent(this.$refs.btn, 'mousedown')
+      },
+      enterKeyUp () {
         if (this.disabled) {
           return
         }
+        this.triggerMouseEvent(this.$refs.btn, 'mouseup')
+        this.triggerMouseEvent(this.$refs.btn, 'click')
         this.$emit('click')
-        let el = this.$refs.btn
-        let evObj = document.createEvent('Events')
-        evObj.initEvent('click', true, false)
-        el.dispatchEvent(evObj)
       },
       focus () {
         this.$refs.btn.focus()
