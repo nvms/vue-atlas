@@ -196,3 +196,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-pagination {
+  display: flex;
+  justify-content: space-around;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+}
+</style>

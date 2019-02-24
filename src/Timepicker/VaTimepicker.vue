@@ -225,3 +225,32 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-timepicker {
+  position: relative;
+  display: inline-block;
+  &-popup {
+    position: absolute;
+    background: $N0;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 220px;
+    float: left;
+    z-index: 1000;
+    padding: 15px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+    border-radius: 4px;
+  }
+  &-range-wrap {
+    position: relative;
+    margin: 0 0 13px 0;
+    span {
+      color: $N100;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+  &-range {}
+}
+</style>

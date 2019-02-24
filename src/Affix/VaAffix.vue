@@ -29,3 +29,10 @@
     }
   }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-affix {
+  position: sticky;
+  z-index: 900;
+}
+</style>

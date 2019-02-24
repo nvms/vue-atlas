@@ -318,3 +318,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-textarea-con {
+  overflow-y: hidden;
+  .#{$class-prefix}-form-control {
+    line-height: 16px;
+  }
+}
+
+.#{$class-prefix}-textarea {
+  overflow-y: hidden;
+  min-height: 50px;
+  height: 100%;
+}
+</style>

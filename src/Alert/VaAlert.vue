@@ -79,3 +79,81 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-alert {
+  display: flex;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  padding: 15px;
+  border-radius: 3px;
+
+  /*
+  when not using a title, we want to make sure that
+  whatever element comes first, is aligned with the icon.
+  typically a p
+  */
+  *:first-child:not(h1) {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    overflow-wrap: break-word;
+  }
+
+  &-warning-icon,
+  &-success-icon,
+  &-info-icon,
+  &-danger-icon,
+  &-change-icon {
+    display: block;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    width: 34px;
+    font-size: 18px;
+  }
+
+  &-warning {
+    background: $Y50;
+    &-icon {
+      color: $Y500;
+    }
+  }
+  &-success {
+    background: $G50;
+    &-icon {
+      color: $G500;
+    }
+  }
+  &-info {
+    background: $B50;
+    &-icon {
+      color: $B500;
+    }
+  }
+  &-danger {
+    background: $R50;
+    &-icon {
+      color: $R500;
+    }
+  }
+  &-change {
+    background: $P50;
+    &-icon {
+      color: $P500;
+    }
+  }
+}
+</style>
