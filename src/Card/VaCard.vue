@@ -22,13 +22,11 @@ export default {
       validator (v) {
         v = v.toString()
         return ['0', '1', '2', '3', '4', '5'].includes(v)
-      },
-      note: 'Defines the size of the box-shadow on the card to give the illusion of distance from the canvas.'
+      }
     },
     padding: {
       type: [Number, String],
-      default: '1em',
-      note: 'A convenience prop to help define the card\'s inner padding.'
+      default: '10px'
     },
     classPrefix: {
       type: String,

@@ -12,26 +12,12 @@ $elevation3Border,
 $elevation4BoxShadow,
 $elevation4Border,
 $elevation5BoxShadow,
-$elevation5Border,
-$headerBtnDefaultBackgroundColor,
-$headerBtnDefaultHoverBackgroundColor,
-$headerBtnDefaultActiveBackgroundColor) {
+$elevation5Border) {
   background: $background;
 
   &-header {
     background: $headerBackground;
     border-bottom: $headerBorderBottom;
-
-    .#{$class-prefix}-btn-default {
-      background-color: $headerBtnDefaultBackgroundColor;
-
-      &:hover:not(.#{$class-prefix}-va-select-btn-open) {
-        background-color: $headerBtnDefaultHoverBackgroundColor;
-      }
-      &:active {
-        background-color: $headerBtnDefaultActiveBackgroundColor !important;
-      }
-    }
   }
 
   &-elevation-0 {
@@ -63,46 +49,37 @@ $headerBtnDefaultActiveBackgroundColor) {
     box-shadow: $elevation5BoxShadow;
     border: $elevation5Border;
   }
-
-
 }
 
 .#{$class-prefix}-card,
 .#{$class-prefix}--theme-light .#{$class-prefix}-card {
   @include card-theme-mixin($background: $N0,
-    $headerBackground: $N20,
-    $headerBorderBottom: 1px solid #D5D9DF,
+    $headerBackground: $N0,
+    $headerBorderBottom: 1px solid $N40,
     $elevation0BoxShadow: none,
-    $elevation0Border: 1px solid #D5D9DF,
-    $elevation1BoxShadow: (0 2px 6px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
-    $elevation1Border: none,
-    $elevation2BoxShadow: (0 4px 8px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation0Border: none,
+    $elevation1BoxShadow: none,
+    $elevation1Border: 1px solid $N40,
+    $elevation2BoxShadow: (0 2px 6px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
     $elevation2Border: none,
-    $elevation3BoxShadow: (0 6px 10px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation3BoxShadow: (0 4px 8px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
     $elevation3Border: none,
-    $elevation4BoxShadow: (0 8px 12px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation4BoxShadow: (0 6px 10px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
     $elevation4Border: none,
-    $elevation5BoxShadow: (0 10px 14px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
-    $elevation5Border: none,
-    $headerBtnDefaultBackgroundColor: rgba(9, 30, 66, 0.04),
-    $headerBtnDefaultHoverBackgroundColor: rgba(9, 30, 66, 0.08),
-    $headerBtnDefaultActiveBackgroundColor: $B50);
+    $elevation5BoxShadow: (0 8px 12px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation5Border: none);
 }
 
 .#{$class-prefix}-card {
   border-radius: 3px;
 
   &-header {
-    padding-top: 5px;
-    padding-bottom: 5px;
     display: flex;
     flex-direction: column;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-
-    .#{$class-prefix}-btn-default {
-      &:hover {}
-    }
+    height: 44px;
+    justify-content: center;
 
     &-inner {
       &-left {
@@ -111,7 +88,6 @@ $headerBtnDefaultActiveBackgroundColor) {
         &>* {
           margin: 0;
           padding: 0;
-          line-height: 32px;
         }
       }
 
@@ -121,7 +97,6 @@ $headerBtnDefaultActiveBackgroundColor) {
         &>* {
           margin: 0;
           padding: 0;
-          line-height: 32px;
         }
       }
     }
