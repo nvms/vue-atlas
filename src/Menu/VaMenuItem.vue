@@ -2,6 +2,7 @@
   <div
     :class="`${classPrefix}-menu__item`"
     role="menuitem"
+    tabindex="0"
     @click="onSelect">
     <span>
       <slot />

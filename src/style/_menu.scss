@@ -3,9 +3,20 @@
     // padding: 8px 0;
   }
 
+  &__title {
+    margin-left: 16px;
+    height: 32px;
+    align-items: center;
+    display: flex;
+    text-transform: uppercase;
+    color: $N100;
+    font-size: 11px;
+    letter-spacing: 0.6px;
+  }
+
   &__divider {
     height: 1px;
-    border-bottom: 1px solid $N20;
+    border-bottom: 1px solid $N30;
     margin: 8px 0;
   }
 
@@ -16,18 +27,26 @@
     height: 32px;
     border-radius: 3px;
     color: $N400;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover, &:active, &:focus {
+      outline: none;
+    }
 
     &:hover {
-      background-color: $N10;
+      background-color: $N20;
     }
 
     &:active {
-      background-color: lighten($B50, 3%);
-      color: $N500;
+      background-color: $B50;
+      color: $B500;
     }
 
-    &:focus {
-      background-color: lighten($B50, 3%);
+    &:focus:not(:active):not(:hover) {
+      background-color: $N10;
     }
 
     span {
