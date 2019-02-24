@@ -17,17 +17,32 @@ const typeMap = {
     name: 'check',
     color: '#57D9A3'
   },
-  danger: {
-    name: 'exclamation-triangle',
-    color: '#CD4425'
+  info: {
+    name: 'info',
+    color: '#4C9AFF'
   },
   warning: {
     name: 'exclamation-triangle',
     color: '#F29D41'
   },
+  danger: {
+    name: 'exclamation-triangle',
+    color: '#CD4425'
+  }
+}
+
+const buttonTypeMap = {
+  success: {
+    appearance: 'primary'
+  },
   info: {
-    name: 'info',
-    color: '#4C9AFF'
+    appearance: 'primary'
+  },
+  warning: {
+    appearance: 'warning'
+  },
+  danger: {
+    appearance: 'danger'
   }
 }
 
@@ -36,12 +51,16 @@ const confirm = (options) => {
   /* eslint-disable no-new */
   new Vue({
     el: createNode(),
+    mixins: [localeMixin('VaModal')],
     mounted () {
       this.$refs.modal.open()
     },
     computed: {
       iconType () {
         return typeMap[type || 'info']
+      },
+      buttonType () {
+        return buttonTypeMap[type || 'primary']
       }
     },
     methods: {
@@ -80,6 +99,17 @@ const confirm = (options) => {
         ])
       }
       let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
+
+      let footerElement = createElement(VaButton, {
+        slot: 'footer',
+        props: {
+          type: this.buttonType.appearance
+        },
+        on: {
+          click: this.handleConfirm
+        }
+      }, [this.getL('confirm')])
+
       return createElement(VaModal, {
         ref: 'modal',
         props: {
@@ -96,7 +126,8 @@ const confirm = (options) => {
         }
       }, [
         titleElement,
-        bodyElement
+        bodyElement,
+        footerElement
       ])
     }
   })
@@ -114,6 +145,9 @@ const alert = (options) => {
     computed: {
       iconType () {
         return typeMap[type || 'info']
+      },
+      buttonType () {
+        return buttonTypeMap[type || 'primary']
       }
     },
     methods: {
@@ -158,7 +192,7 @@ const alert = (options) => {
       let footerElement = createElement(VaButton, {
         slot: 'footer',
         props: {
-          type: 'primary'
+          type: this.buttonType.appearance
         },
         on: {
           click: this.handleConfirm
