@@ -151,9 +151,13 @@
     },
     computed: {
       spinColor () {
-        let {type} = this
+        let {type, active} = this
         let white = '#FFFFFF'
         let darker = '#45526B'
+
+        if (active) {
+          return darker
+        }
 
         switch (type) {
           case 'default':
