@@ -127,7 +127,7 @@
 
   &-compact {
     .#{$class-prefix}-sidebar-group-item {
-      min-height: 26px;
+      min-height: 20px;
       line-height: inherit;
     }
 
@@ -136,11 +136,11 @@
     }
 
     .#{$class-prefix}-sidebar-group-item-text {
-      min-height: 26px;
+      min-height: 20px;
     }
 
     .#{$class-prefix}-sidebar-group-item-text a {
-      min-height: 26px;
+      min-height: 20px;
     }
   }
 
@@ -163,8 +163,6 @@
       &-text-fade {
         justify-content: flex-start;
       }
-
-      i.#{$class-prefix}-fa {}
 
       &:active {
         color: $N400;
@@ -213,8 +211,6 @@
     -ms-user-select: none;
     user-select: none;
   }
-
-  li {}
 }
 
 .#{$class-prefix}-sidebar-navigationlevel {
@@ -245,7 +241,7 @@ sidebar item defaults
   white-space: nowrap;
   padding: 0px 9px 0px 12px;
   font-size: 14px;
-  line-height: 2.2em;
+  line-height: 1em;
   border-radius: 3px;
   min-height: 36px;
   font-weight: 400;
@@ -257,16 +253,11 @@ sidebar item defaults
     min-width: 20px;
     display: flex;
     justify-content: space-around;
-    // position: absolute;
   }
 
   &:active,
   &:focus {
     outline: none;
-
-    .#{$class-prefix}-sidebar-group-item-icon {
-      // color: $B300;
-    }
   }
 
   &-text {
@@ -274,7 +265,6 @@ sidebar item defaults
     flex: 1;
     align-items: center;
     min-height: 36px;
-
     max-width: 100%;
 
     a {
@@ -282,7 +272,7 @@ sidebar item defaults
       position: relative;
       min-height: 36px;
       justify-content: center;
-      line-height: 2;
+      line-height: 1;
     }
 
     &-icon {
@@ -296,16 +286,10 @@ sidebar item defaults
   }
 }
 
-.#{$class-prefix}-sidebar-group-item-toggle {
-  &-closed {}
-}
-
 .#{$class-prefix}-sidebar-group-item-toggle-icon {
   position: relative;
   top: -1.5px;
   margin-right: 7px;
-
-  &-closed {}
 }
 
 .#{$class-prefix}-sidebar-group-item-label,
@@ -315,15 +299,12 @@ sidebar item defaults
   color: inherit !important;
   display: flex;
   flex-direction: column;
-  line-height: 2em;
+  line-height: 1em;
   max-width: 100%;
 
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
-  // padding-left: 30px;
-
-  &:active {}
 
   &:active,
   &:focus {
@@ -341,15 +322,6 @@ sidebar item defaults
   margin-bottom: 7px;
 }
 
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-foundation
-*/
 .#{$class-prefix}-sidebar {
   .#{$class-prefix}-placeholder {
     margin: 10px 5px 40px 20px;
@@ -402,9 +374,6 @@ foundation
   }
 }
 
-/*
-placeholder theme mixin
-*/
 @mixin placeholder-theme-mixin($textLineBG,
 $textLineBeforeBorder,
 $headingImageBG,
@@ -459,6 +428,7 @@ Disable box shadow and background on active/focus textLinks
 .#{$class-prefix}-sidebar-scrollarea {
   overflow-y: hidden;
   overflow-x: hidden;
+  margin-top: 25px;
 
   &:hover {
     overflow-y: auto;
@@ -506,6 +476,7 @@ Disable box shadow and background on active/focus textLinks
   .#{$class-prefix}-sidebar-group-item {
     &.active {
       background: none !important;
+      text-decoration: underline;
     }
     &:active {
       background: none !important;
@@ -514,6 +485,12 @@ Disable box shadow and background on active/focus textLinks
     &:hover {
       background: none !important;
       text-decoration: none;
+      a, a:link, a:active, a:visited {
+        text-decoration: underline !important;
+      }
+      .#{$class-prefix}-sidebar-group-item-label {
+        text-decoration: underline;
+      }
     }
   }
 }

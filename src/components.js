@@ -67,7 +67,6 @@ import VaSidebarGroupItem from './Sidebar/VaSidebarGroupItem.vue'
 import VaSidebarGroupLevel from './Sidebar/VaSidebarGroupLevel.vue'
 import VaSidebarGroupTitle from './Sidebar/VaSidebarGroupTitle.vue'
 import VaPlaceholderText from './Placeholder/VaPlaceholderText.vue'
-import VaSidebarScrollarea from './Sidebar/VaSidebarScrollarea.vue'
 import VaPlaceholderImage from './Placeholder/VaPlaceholderImage.vue'
 import VaColorPickerPopup from './ColorPicker/VaColorPickerPopup.vue'
 import VaSidebarGroupToggle from './Sidebar/VaSidebarGroupToggle.vue'
@@ -144,7 +143,6 @@ const Components = {
   VaSidebarGroupItem,
   VaPlaceholderImage,
   VaSidebarGroupTitle,
-  VaSidebarScrollarea,
   VaSidebarGroupLevel,
   VaPlaceholderHeading,
   VaCollapseTransition,
@@ -159,7 +157,7 @@ const install = function (Vue, locale) {
   Vue.directive('VaPosition', relocate)
   Vue.prototype.VaToast = VaToastMethod
   Vue.prototype.VaModal = VaModalMethod
-  Vue.prototype.VaNotification = VaNotificationMethod
+  Vue.prototype.notification = VaNotificationMethod
   Vue.prototype.VaLocale = locale || 'en'
   window.VaLocale = locale || 'en'
 }

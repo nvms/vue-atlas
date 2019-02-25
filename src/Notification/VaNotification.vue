@@ -17,7 +17,7 @@
             <div
               :class="`${classPrefix}-notification-content-inner-${type}-right-close`"
             >
-              <va-button @click="close" type="subtle">
+              <va-button @click="close" type="subtle" size="sm">
                 <va-icon size="14px" type="times"/>
               </va-button>
             </div>
@@ -230,7 +230,7 @@ export default {
   &-dialog {
     position: relative;
     width: auto;
-    padding: 40px 40px 25px 25px;
+    margin: 40px 40px 0 0;
   }
 
   &-content {
@@ -281,7 +281,7 @@ export default {
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        background-color: $borderColor;
+        border-left: 3px solid $borderColor;
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
         i {
@@ -321,24 +321,20 @@ export default {
     @include notification-content-inner-mixin($type, $borderColor, $iconColor);
   }
 
-  &-default {
-    @include notification-content-mixin('default', 1px, $N60, $N500);
-  }
-
   &-warning {
-    @include notification-content-mixin('warning', 1px, $Y200, $N400);
+    @include notification-content-mixin('warning', 1px, $Y200, $Y500);
   }
 
   &-danger {
-    @include notification-content-mixin('danger', 1px, $R300, $N10);
+    @include notification-content-mixin('danger', 1px, $R300, $R300);
   }
 
   &-success {
-    @include notification-content-mixin('success', 1px, $G200, $G500);
+    @include notification-content-mixin('success', 1px, $G200, $G400);
   }
 
   &-info {
-    @include notification-content-mixin('info', 1px, $B100, $B500);
+    @include notification-content-mixin('info', 1px, $B100, $B400);
   }
 }
 </style>

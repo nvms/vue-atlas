@@ -9,8 +9,8 @@ const createNode = () => {
   return $node
 }
 
-const open = (options) => {
-  let { title, message, effect, type, width, duration, onShow, onHide, onConfirm } = options
+const open = (options, type = 'info') => {
+  let { title, message, effect, width, duration, onShow, onHide, onConfirm } = options
   /* eslint-disable no-new */
   new Vue({
     el: createNode(),
@@ -49,7 +49,7 @@ const open = (options) => {
           message,
           type: type || 'default',
           effect: effect || 'fade-right',
-          width: width || '440px',
+          width: width || '400px',
           duration: duration
         },
         on: {
@@ -63,6 +63,14 @@ const open = (options) => {
   })
 }
 
+const info = (options) => { open(options, 'info') }
+const success = (options) => { open(options, 'success') }
+const warning = (options) => { open(options, 'warning') }
+const danger = (options) => { open(options, 'danger') }
+
 export default {
-  open
+  info,
+  success,
+  warning,
+  danger
 }
