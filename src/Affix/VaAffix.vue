@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="`${classPrefix}-affix`"
-    :style="affixStyle"
-  >
+  <div :class="`${classPrefix}-affix`" :style="affixStyle">
     <slot/>
   </div>
 </template>

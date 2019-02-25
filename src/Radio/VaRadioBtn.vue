@@ -3,7 +3,8 @@
     @click.prevent.native="handleClick"
     :class="classObj"
     :disabled="disabled"
-    :type="currentChecked ? 'primary' : 'default'">
+    :type="currentChecked ? 'primary' : 'default'"
+  >
     <slot/>
   </va-button>
 </template>
@@ -60,7 +61,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-radio-btn'] = true
@@ -69,7 +70,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@radiogroupChange', (val) => {
+    this.$on('Va@radiogroupChange', val => {
       this.currentChecked = val === this.label
     })
   },

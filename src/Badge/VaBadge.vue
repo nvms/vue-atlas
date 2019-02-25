@@ -1,8 +1,5 @@
 <template>
-  <span
-    :class="classObj"
-    :style="{ margin: margin }"
-  >
+  <span :class="classObj" :style="{ margin: margin }">
     <slot/>
   </span>
 </template>

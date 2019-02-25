@@ -2,12 +2,16 @@
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
       <div :class="`${classPrefix}-card-header-inner`">
-        <div :class="`${classPrefix}-card-header-inner-left`"><slot name="topLeft" /></div>
-        <div :class="`${classPrefix}-card-header-inner-right`"><slot name="topRight" /></div>
+        <div :class="`${classPrefix}-card-header-inner-left`">
+          <slot name="topLeft"/>
+        </div>
+        <div :class="`${classPrefix}-card-header-inner-right`">
+          <slot name="topRight"/>
+        </div>
       </div>
     </div>
     <div :style="bodyStyleObj" :class="`${classPrefix}-card-body`">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>
@@ -35,7 +39,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, elevation} = this
+      let { classPrefix, elevation } = this
       let classes = {}
 
       classes[classPrefix + '-card'] = true
@@ -44,7 +48,7 @@ export default {
       return classes
     },
     bodyStyleObj () {
-      let {padding} = this
+      let { padding } = this
       let style = {}
 
       style['padding'] = padding
@@ -52,7 +56,7 @@ export default {
       return style
     },
     headerClassObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-card-header'] = true
@@ -60,7 +64,7 @@ export default {
       return classes
     },
     headerStyleObj () {
-      let {padding} = this
+      let { padding } = this
       let style = {}
 
       style['padding-left'] = padding
@@ -76,21 +80,23 @@ export default {
 </script>
 
 <style lang="scss">
-@mixin card-theme-mixin($background,
-$headerBackground,
-$headerBorderBottom,
-$elevation0BoxShadow,
-$elevation0Border,
-$elevation1BoxShadow,
-$elevation1Border,
-$elevation2BoxShadow,
-$elevation2Border,
-$elevation3BoxShadow,
-$elevation3Border,
-$elevation4BoxShadow,
-$elevation4Border,
-$elevation5BoxShadow,
-$elevation5Border) {
+@mixin card-theme-mixin(
+  $background,
+  $headerBackground,
+  $headerBorderBottom,
+  $elevation0BoxShadow,
+  $elevation0Border,
+  $elevation1BoxShadow,
+  $elevation1Border,
+  $elevation2BoxShadow,
+  $elevation2Border,
+  $elevation3BoxShadow,
+  $elevation3Border,
+  $elevation4BoxShadow,
+  $elevation4Border,
+  $elevation5BoxShadow,
+  $elevation5Border
+) {
   background: $background;
 
   &-header {
@@ -131,21 +137,35 @@ $elevation5Border) {
 
 .#{$class-prefix}-card,
 .#{$class-prefix}--theme-light .#{$class-prefix}-card {
-  @include card-theme-mixin($background: $N0,
+  @include card-theme-mixin(
+    $background: $N0,
     $headerBackground: $N0,
     $headerBorderBottom: 1px solid $N40,
     $elevation0BoxShadow: none,
     $elevation0Border: none,
     $elevation1BoxShadow: none,
     $elevation1Border: 1px solid $N40,
-    $elevation2BoxShadow: (0 2px 6px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation2BoxShadow: (
+      0 2px 6px -2px rgba(9, 30, 66, 0.31),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    ),
     $elevation2Border: none,
-    $elevation3BoxShadow: (0 4px 8px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation3BoxShadow: (
+      0 4px 8px -2px rgba(9, 30, 66, 0.31),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    ),
     $elevation3Border: none,
-    $elevation4BoxShadow: (0 6px 10px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
+    $elevation4BoxShadow: (
+      0 6px 10px -2px rgba(9, 30, 66, 0.31),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    ),
     $elevation4Border: none,
-    $elevation5BoxShadow: (0 8px 12px -2px rgba(9, 30, 66, 0.31), 0 0 1px rgba(9, 30, 66, 0.31)),
-    $elevation5Border: none);
+    $elevation5BoxShadow: (
+      0 8px 12px -2px rgba(9, 30, 66, 0.31),
+      0 0 1px rgba(9, 30, 66, 0.31)
+    ),
+    $elevation5Border: none
+  );
 }
 
 .#{$class-prefix}-card {
@@ -163,7 +183,7 @@ $elevation5Border) {
       &-left {
         float: left;
 
-        &>* {
+        & > * {
           margin: 0;
           padding: 0;
         }
@@ -172,7 +192,7 @@ $elevation5Border) {
       &-right {
         float: right;
 
-        &>* {
+        & > * {
           margin: 0;
           padding: 0;
         }

@@ -1,6 +1,6 @@
 <template>
   <div :class="`${classPrefix}-sidebar-header`">
-    <slot />
+    <slot/>
   </div>
 </template>
 

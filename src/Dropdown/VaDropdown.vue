@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="[`${classPrefix}-dropdown-con`, classObj]"
-  >
+  <div :class="[`${classPrefix}-dropdown-con`, classObj]">
     <span ref="trigger" :focus="onFocus">
       <slot name="trigger"/>
     </span>

@@ -1,21 +1,9 @@
 <template>
-  <transition
-    :name="(this.placement === 'left') ? 'slideleft' : 'slideright'"
-  >
-    <div
-      :class="classObj"
-      :style="{width:width}"
-      ref="aside"
-      v-show="show"
-    >
+  <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
+    <div :class="classObj" :style="{width:width}" ref="aside" v-show="show">
       <div :class="`${classPrefix}-aside-dialog`">
-        <div
-          :class="`${classPrefix}-aside-content`"
-        >
-          <div
-            :class="`${classPrefix}-aside-header`"
-            v-if="header"
-          >
+        <div :class="`${classPrefix}-aside-content`">
+          <div :class="`${classPrefix}-aside-header`" v-if="header">
             <button
               :class="`${classPrefix}-close`"
               @click="close"
@@ -23,13 +11,9 @@
             >
               <span>&times;</span>
             </button>
-            <div
-              :class="`${classPrefix}-aside-title`"
-            >{{title}}</div>
+            <div :class="`${classPrefix}-aside-title`">{{title}}</div>
           </div>
-          <div
-            :class="`${classPrefix}-aside-body`"
-          >
+          <div :class="`${classPrefix}-aside-body`">
             <slot/>
           </div>
         </div>

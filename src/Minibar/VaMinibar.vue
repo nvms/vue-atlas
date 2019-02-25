@@ -1,36 +1,53 @@
 <template>
   <div :class="classObj" :style="styleObj">
-
     <div :class="`${classPrefix}-minibar-inner`" :style="styleObjInner">
-      
       <div :class="`${classPrefix}-minibar-top`">
-
         <div v-for="(item, index) in topItems" :key="index">
-          <va-minibar-item v-if="item.method" :tooltip="item.tooltip" :brand="item.brand" @click.native="item.method">
-            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          <va-minibar-item
+            v-if="item.method"
+            :tooltip="item.tooltip"
+            :brand="item.brand"
+            @click.native="item.method"
+          >
+            <va-icon
+              :type="item.icon"
+              :size="item.size"
+              :icon-style="item.iconStyle || 'solid'"
+            />
           </va-minibar-item>
           <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
-            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+            <va-icon
+              :type="item.icon"
+              :size="item.size"
+              :icon-style="item.iconStyle || 'solid'"
+            />
           </va-minibar-item>
         </div>
-
       </div>
 
       <div :class="`${classPrefix}-minibar-bottom`">
-
         <div v-for="(item, index) in bottomItems" :key="index">
-          <va-minibar-item v-if="item.method" @click.native="item.method" :tooltip="item.tooltip">
-            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+          <va-minibar-item
+            v-if="item.method"
+            @click.native="item.method"
+            :tooltip="item.tooltip"
+          >
+            <va-icon
+              :type="item.icon"
+              :size="item.size"
+              :icon-style="item.iconStyle || 'solid'"
+            />
           </va-minibar-item>
           <va-minibar-item v-else :tooltip="item.tooltip">
-            <va-icon :type="item.icon" :size="item.size" :icon-style="item.iconStyle || 'solid'"></va-icon>
+            <va-icon
+              :type="item.icon"
+              :size="item.size"
+              :icon-style="item.iconStyle || 'solid'"
+            />
           </va-minibar-item>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </template>
 
@@ -89,21 +106,51 @@ export default {
     }, 10)
   },
   created () {
-    this.$on('Va@minibarPresenceCheck', () => { this.dispatch('VaApp', 'Va@minibarPresenceReply', true) })
-    this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
-    this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
-    this.$on('Va@contentWidthChange', (val) => { this.currentContentWidth = val })
-    this.$on('Va@topbarHeightChange', (val) => { this.currentTopbarHeight = val })
-    this.$on('Va@minibarWidthChange', (val) => { this.currentMinibarWidth = val })
-    this.$on('Va@sidebarWidthChange', (val) => { this.currentSidebarWidth = val })
-    this.$on('Va@minibarPriorityChange', (val) => { this.minibarPriority = val })
-    this.$on('Va@sidebarPriorityChange', (val) => { this.sidebarPriority = val })
-    this.$on('Va@windowWidthChange', (val) => { this.currentWindowWidth = val })
-    this.$on('Va@minibarIsMobile', (val) => { this.isMobile = val })
-    this.$on('Va@reverseChange', (val) => { this.isReverse = val })
-    this.$on('Va@minibarThemeChange', (val) => { this.th = val })
-    this.$on('Va@splitChange', (val) => { this.isSplit = val })
-    this.$on('Va@rtlChange', (val) => { this.isRTL = val })
+    this.$on('Va@minibarPresenceCheck', () => {
+      this.dispatch('VaApp', 'Va@minibarPresenceReply', true)
+    })
+    this.$on('Va@desktopMinimumWidthChange', val => {
+      this.currentDesktopMinimumWidth = val
+    })
+    this.$on('Va@desktopMarginChange', val => {
+      this.currentDesktopMargin = val
+    })
+    this.$on('Va@contentWidthChange', val => {
+      this.currentContentWidth = val
+    })
+    this.$on('Va@topbarHeightChange', val => {
+      this.currentTopbarHeight = val
+    })
+    this.$on('Va@minibarWidthChange', val => {
+      this.currentMinibarWidth = val
+    })
+    this.$on('Va@sidebarWidthChange', val => {
+      this.currentSidebarWidth = val
+    })
+    this.$on('Va@minibarPriorityChange', val => {
+      this.minibarPriority = val
+    })
+    this.$on('Va@sidebarPriorityChange', val => {
+      this.sidebarPriority = val
+    })
+    this.$on('Va@windowWidthChange', val => {
+      this.currentWindowWidth = val
+    })
+    this.$on('Va@minibarIsMobile', val => {
+      this.isMobile = val
+    })
+    this.$on('Va@reverseChange', val => {
+      this.isReverse = val
+    })
+    this.$on('Va@minibarThemeChange', val => {
+      this.th = val
+    })
+    this.$on('Va@splitChange', val => {
+      this.isSplit = val
+    })
+    this.$on('Va@rtlChange', val => {
+      this.isRTL = val
+    })
   },
   beforeDestroy () {
     this.dispatch('VaApp', 'Va@minibarDisconnect', true)
@@ -116,7 +163,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, th} = this
+      let { classPrefix, th } = this
       let classes = {}
 
       classes[classPrefix + '-minibar'] = true
@@ -164,7 +211,7 @@ export default {
       if (!mobile) {
         if (cw < dmw) {
           let x = dmw - cw
-          dm = dm - (x / 2)
+          dm = dm - x / 2
         }
       } else {
         dm = 0
@@ -182,11 +229,11 @@ export default {
           if (rtl) {
             style['right'] = dm + 'px'
           } else {
-            style['left'] = (dm + sw) + 'px'
+            style['left'] = dm + sw + 'px'
           }
         } else {
           if (rtl) {
-            style['right'] = (dm + sw) + 'px'
+            style['right'] = dm + sw + 'px'
           } else {
             style['left'] = dm + 'px'
           }

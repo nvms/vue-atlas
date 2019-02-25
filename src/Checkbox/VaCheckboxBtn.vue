@@ -3,8 +3,9 @@
     @click.prevent.native="handleClick"
     :class="classObj"
     :disabled="disabled"
-    :type="currentChecked ? 'primary' : 'default'">
-    <slot />
+    :type="currentChecked ? 'primary' : 'default'"
+  >
+    <slot/>
   </va-button>
 </template>
 
@@ -36,7 +37,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-checked-btn'] = true
@@ -75,7 +76,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@checkboxgroupChange', (val) => {
+    this.$on('Va@checkboxgroupChange', val => {
       this.currentChecked = val.indexOf(this.label) > -1
     })
   }

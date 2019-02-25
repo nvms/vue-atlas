@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
 
       return [
         `${classPrefix}-col`,

@@ -22,14 +22,14 @@ export default {
       let items = []
 
       if (this.accordion) {
-        this.$children.forEach((item) => {
+        this.$children.forEach(item => {
           if (child !== item) {
             item.isOpen = false
           }
         })
       }
 
-      this.$children.forEach((item) => {
+      this.$children.forEach(item => {
         if (item.index) {
           items.push({
             index: item.index,
@@ -63,7 +63,8 @@ export default {
         width: 15px;
       }
 
-      &:hover, &:active {
+      &:hover,
+      &:active {
         outline: none;
       }
 

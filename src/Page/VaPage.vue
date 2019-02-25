@@ -4,10 +4,7 @@
     :style="wrapperStyleObj"
     :class="`${classPrefix}-page-wrapper`"
   >
-    <div
-      :style="containerStyleObj"
-      :class="`${classPrefix}-page-container`"
-    >
+    <div :style="containerStyleObj" :class="`${classPrefix}-page-container`">
       <div :class="classObj">
         <slot/>
         <div style="height:100px;">&nbsp;</div>
@@ -229,7 +226,6 @@ export default {
   }
 
   .#{$class-prefix}-page {
-
     &-container {
       color: $color;
     }
@@ -283,7 +279,6 @@ export default {
   &-container {
     position: relative;
     display: flex;
-    // margin-bottom: 500px;
 
     &-article {
       h1 {

@@ -5,7 +5,6 @@ export default {
     if (typeof str !== 'string') {
       return str
     }
-    // return moment(str).format(format).toString()
     return moment(str, format).toString()
   }
 }

@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="`${classPrefix}-datepicker`"
-    :style="styleObj"
-  >
+  <div :class="`${classPrefix}-datepicker`" :style="styleObj">
     <va-input
       v-if="!mobileDatepicker"
       v-bind="$attrs"
@@ -43,15 +40,9 @@
         v-show="displayDayView"
         v-va-position="displayDayView"
       >
-        <div
-          :class="`${classPrefix}-datepicker-inner`"
-        >
-          <div
-            :class="`${classPrefix}-datepicker-body`"
-          >
-            <div
-              :class="`${classPrefix}-datepicker-ctrl`"
-            >
+        <div :class="`${classPrefix}-datepicker-inner`">
+          <div :class="`${classPrefix}-datepicker-body`">
+            <div :class="`${classPrefix}-datepicker-ctrl`">
               <va-button
                 tabindex="0"
                 :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
@@ -59,10 +50,7 @@
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(0)"
               >
-                <va-icon
-                  type="arrow-left"
-                  size="10px"
-                />
+                <va-icon type="arrow-left" size="10px"/>
               </va-button>
               <va-button
                 @click.native="switchMonthView"
@@ -77,23 +65,13 @@
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(1)"
               >
-                <va-icon
-                  type="arrow-right"
-                  size="10px"
-                />
+                <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div
-              :class="`${classPrefix}-datepicker-weekRange`"
-            >
-              <span
-                v-for="(w, index) in weekRange"
-                :key="index"
-              >{{w}}</span>
+            <div :class="`${classPrefix}-datepicker-weekRange`">
+              <span v-for="(w, index) in weekRange" :key="index">{{w}}</span>
             </div>
-            <div
-              :class="`${classPrefix}-datepicker-dateRange`"
-            >
+            <div :class="`${classPrefix}-datepicker-dateRange`">
               <span
                 v-for="(d, index) in dateRange"
                 :class="d.sclass"
@@ -113,15 +91,9 @@
         v-show="displayMonthView"
         v-va-position="displayMonthView"
       >
-        <div
-          :class="`${classPrefix}-datepicker-inner`"
-        >
-          <div
-            :class="`${classPrefix}-datepicker-body`"
-          >
-            <div
-              :class="`${classPrefix}-datepicker-ctrl`"
-            >
+        <div :class="`${classPrefix}-datepicker-inner`">
+          <div :class="`${classPrefix}-datepicker-body`">
+            <div :class="`${classPrefix}-datepicker-ctrl`">
               <va-button
                 :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
                 @click.native="preNextYearClick(0)"
@@ -129,10 +101,7 @@
                 tabindex="0"
                 v-on:keyup.enter="preNextYearClick(0)"
               >
-                <va-icon
-                  type="arrow-left"
-                  size="10px"
-                />
+                <va-icon type="arrow-left" size="10px"/>
               </va-button>
               <va-button
                 @click.native="switchDecadeView"
@@ -147,18 +116,11 @@
                 tabindex="0"
                 v-on:keyup.enter="preNextYearClick(1)"
               >
-                <va-icon
-                  type="arrow-right"
-                  size="10px"
-                />
+                <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div
-              :class="`${classPrefix}-datepicker-monthRange`"
-            >
-              <template
-                v-for="(m, index) in monthNames"
-              >
+            <div :class="`${classPrefix}-datepicker-monthRange`">
+              <template v-for="(m, index) in monthNames">
                 <span
                   :class="monthClassObj(m)"
                   :key="index"
@@ -178,15 +140,9 @@
         v-show="displayYearView"
         v-va-position="displayYearView"
       >
-        <div
-          :class="`${classPrefix}-datepicker-inner`"
-        >
-          <div
-            :class="`${classPrefix}-datepicker-body`"
-          >
-            <div
-              :class="`${classPrefix}-datepicker-ctrl`"
-            >
+        <div :class="`${classPrefix}-datepicker-inner`">
+          <div :class="`${classPrefix}-datepicker-body`">
+            <div :class="`${classPrefix}-datepicker-ctrl`">
               <va-button
                 :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
                 @click.native="preNextDecadeClick(0)"
@@ -194,10 +150,7 @@
                 tabindex="0"
                 v-on:keyup.enter="preNextDecadeClick(0)"
               >
-                <va-icon
-                  type="arrow-left"
-                  size="10px"
-                ></va-icon>
+                <va-icon type="arrow-left" size="10px"></va-icon>
               </va-button>
               <va-button
                 :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-nextBtn`"
@@ -206,19 +159,14 @@
                 tabindex="0"
                 v-on:keyup.enter="preNextDecadeClick(1)"
               >
-                <va-icon
-                  type="arrow-right"
-                  size="10px"
-                ></va-icon>
+                <va-icon type="arrow-right" size="10px"></va-icon>
               </va-button>
               <p>{{stringifyDecadeHeader(currDate)}}</p>
             </div>
             <div
               :class="`${classPrefix}-datepicker-monthRange ${classPrefix}-datepicker-decadeRange`"
             >
-              <template
-                v-for="(decade, index) in decadeRange"
-              >
+              <template v-for="(decade, index) in decadeRange">
                 <span
                   :class="yearClassObj(decade)"
                   :key="index"

@@ -1,7 +1,11 @@
 <template>
   <span ref="tooltip" :class="`${classPrefix}-tooltip_wrapper`">
-    <span ref="trigger" :class="`${classPrefix}-tooltip_trigger`" v-on="listeners">
-      <slot />
+    <span
+      ref="trigger"
+      :class="`${classPrefix}-tooltip_trigger`"
+      v-on="listeners"
+    >
+      <slot/>
     </span>
     <transition :name="effect">
       <div :class="classObj" ref="popover" v-show="isShow">
@@ -36,7 +40,7 @@ export default {
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let {classPrefix, placement} = this
+      let { classPrefix, placement } = this
       let classes = {}
 
       classes[classPrefix + '-tooltip'] = true
@@ -45,13 +49,17 @@ export default {
       classes[classPrefix + '-tooltip-top-right'] = placement === 'top right'
       classes[classPrefix + '-tooltip-right'] = placement === 'right'
       classes[classPrefix + '-tooltip-right-top'] = placement === 'right top'
-      classes[classPrefix + '-tooltip-right-bottom'] = placement === 'right bottom'
+      classes[classPrefix + '-tooltip-right-bottom'] =
+        placement === 'right bottom'
       classes[classPrefix + '-tooltip-bottom'] = placement === 'bottom'
-      classes[classPrefix + '-tooltip-bottom-left'] = placement === 'bottom left'
-      classes[classPrefix + '-tooltip-bottom-right'] = placement === 'bottom right'
+      classes[classPrefix + '-tooltip-bottom-left'] =
+        placement === 'bottom left'
+      classes[classPrefix + '-tooltip-bottom-right'] =
+        placement === 'bottom right'
       classes[classPrefix + '-tooltip-left'] = placement === 'left'
       classes[classPrefix + '-tooltip-left-top'] = placement === 'left top'
-      classes[classPrefix + '-tooltip-left-bottom'] = placement === 'left bottom'
+      classes[classPrefix + '-tooltip-left-bottom'] =
+        placement === 'left bottom'
 
       return classes
     }
@@ -60,7 +68,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.#{$class-prefix}-tooltip_wrapper, .#{$class-prefix}-tooltip_trigger {
+.#{$class-prefix}-tooltip_wrapper,
+.#{$class-prefix}-tooltip_trigger {
   display: inline-block;
   width: auto;
   height: auto;
@@ -92,13 +101,19 @@ export default {
     border-color: transparent;
     border-style: solid;
   }
-  &-top, &-top-left, &-top-right {
+  &-top,
+  &-top-left,
+  &-top-right {
     margin-top: -5px;
   }
-  &-bottom, &-bottom-left, &-bottom-right {
+  &-bottom,
+  &-bottom-left,
+  &-bottom-right {
     margin-top: 5px;
   }
-  &-left, &-left-top, &-left-bottom {
+  &-left,
+  &-left-top,
+  &-left-bottom {
     margin-left: -5px;
     .#{$class-prefix}-tooltip-arrow {
       top: 50%;
@@ -108,7 +123,9 @@ export default {
       border-left-color: $N800;
     }
   }
-  &-right, &-right-top, &-right-bottom {
+  &-right,
+  &-right-top,
+  &-right-bottom {
     margin-left: 5px;
     .#{$class-prefix}-tooltip-arrow {
       top: 50%;
@@ -120,4 +137,3 @@ export default {
   }
 }
 </style>
-

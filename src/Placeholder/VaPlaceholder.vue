@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, rounded, centered, animated} = this
+      let { classPrefix, rounded, centered, animated } = this
       let classes = {}
 
       classes[classPrefix + '-placeholder'] = true
@@ -77,7 +77,12 @@ $placeholderRoundedRadius: 3px;
       width: 100vw;
       max-width: 1800px;
       height: 100%;
-      background: linear-gradient(to right, transparent 0%, $placeholderAnimationColor 15%, transparent 30%);
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        $placeholderAnimationColor 15%,
+        transparent 30%
+      );
       animation-duration: 1.5s;
       animation-fill-mode: forwards;
       animation-iteration-count: infinite;
@@ -107,7 +112,6 @@ $placeholderRoundedRadius: 3px;
       }
     }
   }
-  &-image {}
   &-heading {
     display: flex;
     &-image {

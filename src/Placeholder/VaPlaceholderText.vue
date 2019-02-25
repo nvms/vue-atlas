@@ -1,6 +1,10 @@
 <template>
   <div :class="`${classPrefix}-placeholder-text`">
-    <div v-for="line in lines" :key="line" :class="`${classPrefix}-placeholder-text-line`" />
+    <div
+      v-for="line in lines"
+      :key="line"
+      :class="`${classPrefix}-placeholder-text-line`"
+    />
   </div>
 </template>
 
