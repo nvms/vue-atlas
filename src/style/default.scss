@@ -1,4 +1,13 @@
-@import 'define';
+// General
+@import 'reset';
 @import 'colors';
-@import 'common';
+@import 'font';
+@import 'utilities';
+
+// Components
+@import 'animate';
+@import 'bars';
+@import 'form';
+
+// Themes
 @import 'themes';

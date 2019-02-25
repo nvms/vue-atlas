@@ -326,3 +326,174 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@mixin input-theme-mixin($iconColor,
+$iconHoverColor,
+$iconActiveColor) {
+
+  .#{$class-prefix}-input-clearable,
+  .#{$class-prefix}-input-show-icon,
+    {
+    color: $iconColor;
+  }
+
+  .#{$class-prefix}-input-clearable {
+    &:hover {
+      color: $iconHoverColor;
+    }
+
+    &:active,
+    &:focus {
+      color: $iconActiveColor;
+    }
+  }
+}
+
+@mixin input-ops-theme-mixin($opsBackground,
+$opsBtnBoxShadow) {
+
+  background: $opsBackground;
+
+  .#{$class-prefix}-btn {
+    box-shadow: $opsBtnBoxShadow;
+  }
+}
+
+.#{$class-prefix}-input,
+.#{$class-prefix}--theme-light.#{$class-prefix}-input {
+    &-con {
+      @include input-theme-mixin(
+        $iconColor: $N80,
+        $iconHoverColor: $N100,
+        $iconActiveColor: $B100
+      );
+    }
+    &-ops {
+      @include input-ops-theme-mixin(
+        $opsBackground: transparent,
+        $opsBtnBoxShadow: (0 2px 4px -1px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.25))
+      );
+    }
+}
+
+.#{$class-prefix}-input-con {
+  position: relative;
+  display: flex;
+
+  &:hover {
+    .#{$class-prefix}-input-clearable {
+      opacity: 1;
+    }
+  }
+}
+
+.#{$class-prefix}-clearable:hover .#{$class-prefix}-input-show-icon {
+  display: none;
+}
+
+/*the icon*/
+
+.#{$class-prefix}-input-icon-wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 30px;
+}
+
+.#{$class-prefix}-input-file {
+  overflow: hidden;
+}
+
+.#{$class-prefix}-input-clearable,
+.#{$class-prefix}-input-show-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 26px;
+  padding: 0;
+  -webkit-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+}
+
+.#{$class-prefix}-input-clearable {
+  opacity: 0;
+  cursor: default;
+}
+
+.#{$class-prefix}-input-show-icon {
+  opacity: 1;
+}
+
+/*positioning the icon based on input size*/
+
+/*sm*/
+
+.#{$class-prefix}-input-sm {
+  .#{$class-prefix}-input-icon-wrapper {
+    i {
+      top: 8px;
+    }
+  }
+}
+
+/*xs*/
+
+.#{$class-prefix}-input-xs {
+  .#{$class-prefix}-input-icon-wrapper {
+    i {
+      font-size: 12px !important;
+      top: 8px;
+    }
+  }
+}
+
+.#{$class-prefix}-input-ops {
+  position: absolute;
+  z-index: 4;
+}
+
+.#{$class-prefix}-input-prefix,
+.#{$class-prefix}-input-postfix {
+  display: flex;
+  background: #f4f5f7;
+  border: 2px solid $N40;
+  line-height: 2.15em;
+  padding: 0 8px;
+  color: $N300;
+  white-space: nowrap;
+}
+.#{$class-prefix}-input-prefix {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-right: 0;
+}
+.#{$class-prefix}-input-postfix {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-left: 0;
+}
+
+.#{$class-prefix}-input-has-prefix {
+  .#{$class-prefix}-form-control {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+}
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-form-control {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-input-icon-wrapper {
+    position: relative;
+    width: initial;
+    left: initial;
+    right: initial;
+  }
+}
+</style>
