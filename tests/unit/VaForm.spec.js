@@ -1,7 +1,6 @@
 import { mount } from '@vue/test-utils'
 import VaForm from '@/Form/VaForm.vue'
 import VaFormItem from '@/Form/VaFormitem.vue'
-import Vue from 'vue'
 
 describe('VaForm.vue', () => {
   it('renders correctly', () => {
