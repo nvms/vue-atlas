@@ -428,6 +428,7 @@ Disable box shadow and background on active/focus textLinks
 .#{$class-prefix}-sidebar-scrollarea {
   overflow-y: hidden;
   overflow-x: hidden;
+  margin-top: 25px;
 
   &:hover {
     overflow-y: auto;
