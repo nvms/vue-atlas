@@ -810,6 +810,7 @@ export default {
 
 .#{$class-prefix}-select-items-wrapper {
   overflow-y: auto;
+  cursor: default;
 }
 
 .#{$class-prefix}-select-group {
