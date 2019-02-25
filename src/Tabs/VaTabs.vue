@@ -5,16 +5,17 @@
         v-for="(tab, i) in tabs"
         :key="i"
         :class="[liclassObj(tab), disabledTabClass(tab)]"
-        v-show="tab.isVisible">
+        v-show="tab.isVisible"
+      >
         <a
           v-html="tab.header"
           @click="selectTab(tab.hash, $event)"
-          :href="tab.hash">
-        </a>
+          :href="tab.hash"
+        ></a>
       </li>
     </ul>
     <div :class="`${classPrefix}-tab-content`">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes['clearfix'] = true
@@ -66,7 +67,9 @@ export default {
     this.tabs = this.$children
   },
   mounted () {
-    window.addEventListener('hashchange', () => this.selectTab(window.location.hash))
+    window.addEventListener('hashchange', () =>
+      this.selectTab(window.location.hash)
+    )
 
     if (this.findTab(window.location.hash)) {
       this.selectTab(window.location.hash)
@@ -104,7 +107,7 @@ export default {
       }
 
       this.tabs.forEach(tab => {
-        tab.isActive = (tab.hash === selectedTab.hash)
+        tab.isActive = tab.hash === selectedTab.hash
       })
 
       this.$emit('changed', { tab: selectedTab })
@@ -125,7 +128,7 @@ export default {
       if (tab.isActive) {
         tab.isActive = visible
 
-        this.tabs.every((tab) => {
+        this.tabs.every(tab => {
           if (tab.isVisible) {
             tab.isActive = true
             return false
@@ -135,7 +138,7 @@ export default {
       }
     },
     liclassObj (tab) {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-nav-tab'] = true
@@ -153,3 +156,49 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-nav-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom: 2px solid $N30;
+  .#{$class-prefix}-nav-tab {
+    padding-bottom: 4px;
+    margin-right: 15px;
+    line-height: 20px !important;
+    &-disabled {
+      a {
+        color: $N70 !important;
+        font-weight: normal !important;
+        cursor: not-allowed;
+      }
+    }
+    a, a:link {
+      color: $N300;
+      font-weight: 600;
+      padding-bottom: 6px;
+      &:hover {
+        text-decoration: none !important;
+        color: $B300;
+      }
+      &:focus {
+        outline: none;
+      }
+      &:active {
+        background: none;
+        color: $B400;
+      }
+    }
+    &-active {
+      a, a:link {
+        color: $B400;
+        border-bottom: 2px solid $B300;
+      }
+    }
+  }
+}
+</style>

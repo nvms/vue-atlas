@@ -1,6 +1,6 @@
 {
   "name": "vue-atlas",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "A library of Vue.js 2.x components.",
   "license": "MIT",
   "main": "dist/vue-atlas.common.js",
@@ -48,20 +48,6 @@
     "sass-loader": "^7.0.1",
     "vue-router": "^3.0.2",
     "vue-template-compiler": "^2.6.6"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
   },
   "postcss": {
     "plugins": {

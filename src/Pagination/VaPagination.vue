@@ -1,56 +1,45 @@
 <template>
   <div :class="classObj">
     <ul>
-
       <va-pagination-item :disabled="onFirstPage" :index="currentValue - 1">
-        <va-icon type="angle-left"></va-icon>
+        <va-icon type="angle-left"/>
       </va-pagination-item>
 
-      <div v-if="!startEllipsis" style="width: 70px;">
-        &nbsp;
-      </div>
+      <div v-if="!startEllipsis" style="width: 70px;">&nbsp;</div>
 
-      <va-pagination-item v-if="startEllipsis" :index="1">
-        1
-      </va-pagination-item>
+      <va-pagination-item v-if="startEllipsis" :index="1">1</va-pagination-item>
 
       <va-pagination-item v-if="startEllipsis" :index="2" :disabled="true">
-        <va-icon type="ellipsis-h" size="10px"></va-icon>
+        <va-icon type="ellipsis-h" size="10px"/>
       </va-pagination-item>
 
       <va-pagination-item
         v-for="(page, index) in pages"
         :key="index"
         :active="page === currentValue"
-        :index="page">
-        {{page}}
-      </va-pagination-item>
+        :index="page"
+      >{{page}}</va-pagination-item>
 
       <template v-if="!endEllipsis && pageCount - 1 >= end">
-        <va-pagination-item>
-          {{pageCount}}
-        </va-pagination-item>
+        <va-pagination-item>{{pageCount}}</va-pagination-item>
       </template>
 
-      <va-pagination-item v-if="endEllipsis" :index="pageCount - 1" :disabled="true">
-        <va-icon type="ellipsis-h" size="10px"></va-icon>
+      <va-pagination-item
+        v-if="endEllipsis"
+        :index="pageCount - 1"
+        :disabled="true"
+      >
+        <va-icon type="ellipsis-h" size="10px"/>
       </va-pagination-item>
 
-      <va-pagination-item v-if="endEllipsis" :index="pageCount">
-        {{pageCount}}
-      </va-pagination-item>
+      <va-pagination-item v-if="endEllipsis" :index="pageCount">{{pageCount}}</va-pagination-item>
 
-      <div v-if="!endEllipsis" style="width: 35px;">
-        &nbsp;
-      </div>
-      <div v-if="pageCount - end === 0" style="width: 35px;">
-        &nbsp;
-      </div>
+      <div v-if="!endEllipsis" style="width: 35px;">&nbsp;</div>
+      <div v-if="pageCount - end === 0" style="width: 35px;">&nbsp;</div>
 
       <va-pagination-item :disabled="onLastPage" :index="currentValue + 1">
-        <va-icon type="angle-right"></va-icon>
+        <va-icon type="angle-right"/>
       </va-pagination-item>
-
     </ul>
   </div>
 </template>
@@ -122,15 +111,23 @@ export default {
       // let s = this.currentValue - Math.floor(this.max / 2)
       let e = this.currentValue + Math.floor(this.max / 2)
 
-      if (this.max < this.pageCount && !this.onLastPage && e < this.pageCount-1) {
+      if (
+        this.max < this.pageCount &&
+        !this.onLastPage &&
+        e < this.pageCount - 1
+      ) {
         this.endEllipsis = true
       }
-      if (this.max < this.pageCount && !this.onFirstPage && this.currentValue >= this.max) {
+      if (
+        this.max < this.pageCount &&
+        !this.onFirstPage &&
+        this.currentValue >= this.max
+      ) {
         this.startEllipsis = true
       }
     },
     changePage (index) {
-      let {max} = this
+      let { max } = this
       let middle = Math.ceil(max / 2)
 
       if (index <= 1) {
@@ -140,8 +137,8 @@ export default {
       }
 
       this.start = index - middle
-      this.end = Math.min((index + max - middle), this.pageCount)
-      
+      this.end = Math.min(index + max - middle, this.pageCount)
+
       if (index < max) {
         this.end = max
       }
@@ -169,7 +166,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-pagination'] = true
@@ -196,3 +193,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-pagination {
+  display: flex;
+  justify-content: space-around;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+  }
+}
+</style>

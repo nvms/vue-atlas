@@ -1,6 +1,6 @@
 <template>
   <section v-show="isActive" :id="hash">
-    <slot />
+    <slot/>
   </section>
 </template>
 

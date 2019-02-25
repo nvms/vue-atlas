@@ -2,14 +2,14 @@
   <div :class="`${classPrefix}-collapse__panel`">
     <div :class="`${classPrefix}-collapse__panel__header`" @click="toggle()">
       <slot name="header">
-        <va-icon v-if="!isOpen" type="angle-right" />
-        <va-icon v-else type="angle-down" />
+        <va-icon v-if="!isOpen" type="angle-right"/>
+        <va-icon v-else type="angle-down"/>
         {{header}}
       </slot>
     </div>
     <va-collapse-transition>
       <div :class="`${classPrefix}-collapse__panel__body`" v-if="isOpen">
-        <slot />
+        <slot/>
       </div>
     </va-collapse-transition>
   </div>

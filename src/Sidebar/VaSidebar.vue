@@ -104,7 +104,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, th, isMobile, comp, tl} = this
+      let { classPrefix, th, isMobile, comp, tl } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar'] = true

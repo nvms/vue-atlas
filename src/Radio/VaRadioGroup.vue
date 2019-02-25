@@ -1,12 +1,12 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
     <validate
       :name="name"
       :rules="rules"
       :custom-validate="customValidate"
-      :current="value">
-    </validate>
+      :current="value"
+    />
   </div>
 </template>
 
@@ -46,8 +46,8 @@ export default {
         let children = this.$children
         let ret
 
-        children.forEach((item) => {
-          item.currentChecked ? ret = item.label : ''
+        children.forEach(item => {
+          item.currentChecked ? (ret = item.label) : ''
         })
         this.currentValue = ret
       }
@@ -65,7 +65,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@radioChange', (val) => {
+    this.$on('Va@radioChange', val => {
       this.init(val)
     })
   },
@@ -80,7 +80,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, vertical} = this
+      let { classPrefix, vertical } = this
       let classes = {}
 
       // The -btn-group class is only necessary to give the proper border radius to buttons

@@ -1,256 +1,991 @@
 <template>
-    <a :class="classObj"
-       :style="styleObj"
-       @click="onClick"
-       @keyup.enter="enterPressed"
-       ref="btn"
-       tabindex="0">
-        <div :class="fadeclassObj">
-            <slot/>
-            <va-badge :margin="badgeMargin" v-if="badge">{{badge}}</va-badge>
-        </div>
-        <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
-    </a>
+  <a
+    :class="classObj"
+    :style="styleObj"
+    @click="onClick"
+    @keydown.enter="enterKeyDown"
+    @keyup.enter="enterKeyUp"
+    ref="btn"
+    tabindex="0"
+  >
+    <div :class="innerClassObj" :style="innerStyleObj">
+      <va-icon
+        v-if="iconBefore !== undefined"
+        :type="iconBefore"
+        :style="iconBeforeStyleObj"
+      />
+      <slot/>
+      <va-icon
+        v-if="iconAfter !== undefined"
+        :type="iconAfter"
+        :style="iconAfterStyleObj"
+      />
+    </div>
+    <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
+  </a>
 </template>
 
 <script>
-  import EventListener from '../utils/EventListener'
+import EventListener from '../utils/EventListener'
 
-  export default {
-    name: 'VaButton',
-    props: {
-      type: {
-        type: String,
-        default: 'default',
-        required: false,
-        values: ['default', 'primary'],
-        note: 'The style of button to render.',
-        validator(v) {
-          return [
-            'default',
-            'primary',
-            'primary-light',
-            'primary-dark',
-            'paleblue',
-            'success',
-            'info',
-            'warning',
-            'danger',
-            'subtle',
-            'link',
-            'subtle-link',
-            'active',
-            'dark',
-            'darker',
-            'purple',
-            'purple-light',
-            'purple-dark',
-            'black'
-          ].includes(v)
-        }
-      },
-      size: {
-        type: String,
-        default: 'md',
-        required: false,
-        note: 'The size of button to render.',
-        validator(v) {
-          return [
-            'xs',
-            'sm',
-            'md',
-            'lg'
-          ].includes(v)
-        }
-      },
-      badge: {
-        type: [String, Number],
-        required: false,
-        note: 'Adds an VaBadge to the button.'
-      },
-      badgeMargin: {
-        type: String,
-        default: '0 5px 0 10px',
-        required: false,
-        note: 'Margin to be applied to the outside of the badge element. The default value works well for badges displayed to the right of the button text.'
-      },
-      active: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-active class.'
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-disabled class.'
-      },
-      block: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'If true, applies the .${classPrefix}-btn-block class.'
-      },
-      loading: {
-        type: Boolean,
-        default: false,
-        required: false,
-        note: 'If true, hides text and shows classPrefix-loading spinner.'
-      },
-      round: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      focused: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      tall: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      classPrefix: {
-        type: String,
-        default: 'va'
+export default {
+  name: 'VaButton',
+  props: {
+    type: {
+      type: String,
+      default: 'default',
+      required: false,
+      validator (v) {
+        return [
+          'default',
+          'primary',
+          'primary-light',
+          'primary-dark',
+          'paleblue',
+          'success',
+          'info',
+          'warning',
+          'danger',
+          'subtle',
+          'link',
+          'subtle-link',
+          'active',
+          'dark',
+          'darker',
+          'purple',
+          'purple-light',
+          'purple-dark',
+          'black'
+        ].includes(v)
       }
     },
-    data() {
-      let loading = this.loading
-      return {
-        loadingSpinner: loading,
-        isFocused: this.focused
+    size: {
+      type: String,
+      default: 'md',
+      required: false,
+      validator (v) {
+        return ['xs', 'sm', 'md', 'lg'].includes(v)
       }
     },
-    computed: {
-      spinColor() {
-        let {type} = this
-        let white = '#FFFFFF'
-        let darker = '#45526B'
-
-        switch (type) {
-          case 'default':
-            return darker
-          case 'primary':
-            return white
-          case 'primary-light':
-            return white
-          case 'primary-dark':
-            return white
-          case 'success':
-            return white
-          case 'info':
-            return white
-          case 'warning':
-            return darker
-          case 'subtle':
-            return darker
-          case 'link':
-            return darker
-          case 'subtle-link':
-            return darker
-          case 'danger':
-            return white
-          case 'dark':
-            return white
-          case 'darker':
-            return white
-        }
-
-        return white
-      },
-      classObj() {
-        let {classPrefix, type, size, block, active, disabled, round, isFocused} = this
-        let classes = {}
-
-        classes[classPrefix + '-btn'] = true
-        classes[classPrefix + '-btn-block'] = block
-        classes[classPrefix + '-btn-active'] = active
-        classes[classPrefix + '-btn-disabled'] = disabled
-        size ? classes[classPrefix + '-btn-' + size] = true : ''
-        type ? classes[classPrefix + '-btn-' + type] = true : ''
-        classes[classPrefix + '-btn-round'] = round
-
-        classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
-
-        return classes
-      },
-      fadeclassObj() {
-        let {classPrefix, loadingSpinner} = this
-        let classes = {}
-
-        classes[classPrefix + '-btn-text-fade'] = true
-        loadingSpinner ? classes[classPrefix + '-btn-text-fade-out'] = true : ''
-
-        return classes
-      },
-      styleObj() {
-        let {tall} = this
-        let style = {}
-
-        if (tall) {
-          style['height'] = '100%'
-          style['border-radius'] = '0px'
-        }
-
-        return style
-      }
+    active: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    watch: {
-      loading(val) {
-        if (val) {
-          let rect = this.$el.getBoundingClientRect()
-
-          this.$el.style.width = rect.width + 'px'
-          this.$el.style.height = rect.height + 'px'
-
-          this.loadingSpinner = true
-        } else {
-          this.$el.style.width = 'auto'
-          this.$el.style.height = 'auto'
-          this.$nextTick(() => {
-            this.loadingSpinner = false
-          })
-        }
-      }
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    methods: {
-      enterPressed() {
-        if (this.disabled) {
-          return
-        }
-        this.$emit('click')
-        let el = this.$refs.btn
-        let evObj = document.createEvent('Events')
-        evObj.initEvent('click', true, false)
-        el.dispatchEvent(evObj)
-      },
-      focus() {
-        this.$refs.btn.focus()
-      },
-      onClick () {
-        if (this.disabled) {
-          return
-        }
-        this.$emit('click')
-      }
+    block: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    mounted() {
-      this.$nextTick(() => {
-        let el = this.$el
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    round: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    focused: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    tall: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    iconBefore: {
+      type: String,
+      required: false
+    },
+    iconAfter: {
+      type: String,
+      required: false
+    },
+    classPrefix: {
+      type: String,
+      default: 'va'
+    }
+  },
+  data () {
+    let loading = this.loading
+    return {
+      loadingSpinner: loading,
+      isFocused: this.focused,
+      componentWasMounted: false
+    }
+  },
+  computed: {
+    spinColor () {
+      let { type, active } = this
+      let white = '#FFFFFF'
+      let darker = '#45526B'
 
-        this._clickEvent = EventListener.listen(window, 'click', (e) => {
-          if (!el.contains(e.target)) {
-            this.isFocused = false
+      if (active) {
+        return darker
+      }
+
+      switch (type) {
+        case 'default':
+          return darker
+        case 'primary':
+          return white
+        case 'primary-light':
+          return white
+        case 'primary-dark':
+          return white
+        case 'success':
+          return white
+        case 'info':
+          return white
+        case 'warning':
+          return darker
+        case 'subtle':
+          return darker
+        case 'link':
+          return darker
+        case 'subtle-link':
+          return darker
+        case 'danger':
+          return white
+        case 'dark':
+          return white
+        case 'darker':
+          return white
+      }
+
+      return white
+    },
+    classObj () {
+      let {
+        classPrefix,
+        type,
+        size,
+        block,
+        active,
+        disabled,
+        round,
+        isFocused
+      } = this
+      let classes = {}
+
+      classes[classPrefix + '-btn'] = true
+      classes[classPrefix + '-btn-block'] = block
+      classes[classPrefix + '-btn-active'] = active
+      classes[classPrefix + '-btn-disabled'] = disabled
+      size ? (classes[classPrefix + '-btn-' + size] = true) : ''
+      type ? (classes[classPrefix + '-btn-' + type] = true) : ''
+      classes[classPrefix + '-btn-round'] = round
+
+      classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
+
+      return classes
+    },
+    innerClassObj () {
+      let { classPrefix, loadingSpinner } = this
+      let classes = {}
+
+      classes[classPrefix + '-btn-text-fade'] = true
+      loadingSpinner ? (classes[classPrefix + '-btn-text-fade-out'] = true) : ''
+
+      return classes
+    },
+    innerStyleObj () {
+      let { iconBefore, iconAfter } = this
+      let style = {}
+
+      if (this.componentWasMounted) {
+        let rect
+        let adjust = 0
+        let l = iconBefore !== undefined
+        let r = iconAfter !== undefined
+
+        if (l || r) {
+          rect = this.$el.getBoundingClientRect()
+          adjust = rect.width
+        }
+        if (this.$el.style.width !== '100%') {
+          if (l) {
+            adjust += 20
+            style['padding-left'] = '20px'
           }
-        })
-      })
+          if (r) {
+            adjust += 20
+            style['padding-right'] = '20px'
+          }
+        }
+        if (rect && adjust > rect.width) {
+          style['min-width'] = adjust + 'px'
+        }
+      }
+
+      return style
     },
-    beforeDestroy() {
-      if (this._clickEvent) this._clickEvent.remove()
+    styleObj () {
+      let { tall } = this
+      let style = {}
+
+      if (tall) {
+        style['height'] = '100%'
+        style['border-radius'] = '0px'
+      }
+
+      return style
+    },
+    iconBeforeStyleObj () {
+      let style = {}
+
+      style['position'] = 'absolute'
+      style['left'] = '3px'
+
+      return style
+    },
+    iconAfterStyleObj () {
+      let style = {}
+
+      style['position'] = 'absolute'
+      style['right'] = '3px'
+
+      return style
+    }
+  },
+  watch: {
+    loading (val) {
+      if (val) {
+        let rect = this.$el.getBoundingClientRect()
+
+        this.$el.style.width = rect.width + 'px'
+        this.$el.style.height = rect.height + 'px'
+
+        this.loadingSpinner = true
+      } else {
+        this.$el.style.width = 'auto'
+        this.$el.style.height = 'auto'
+        this.$nextTick(() => {
+          this.loadingSpinner = false
+        })
+      }
+    }
+  },
+  methods: {
+    triggerMouseEvent (node, eventType) {
+      let clickEvent = document.createEvent('MouseEvents')
+      clickEvent.initEvent(eventType, true, true)
+      this.$refs.btn.dispatchEvent(clickEvent)
+    },
+    enterKeyDown () {
+      this.triggerMouseEvent(this.$refs.btn, 'mouseover')
+      this.triggerMouseEvent(this.$refs.btn, 'mousedown')
+    },
+    enterKeyUp () {
+      if (this.disabled) {
+        return
+      }
+      this.triggerMouseEvent(this.$refs.btn, 'mouseup')
+      this.triggerMouseEvent(this.$refs.btn, 'click')
+    },
+    focus () {
+      this.$refs.btn.focus()
+    },
+    onClick () {
+      if (this.disabled) {
+        return
+      }
+      this.$emit('click')
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      let el = this.$el
+
+      this.componentWasMounted = true
+
+      this._clickEvent = EventListener.listen(window, 'click', e => {
+        if (!el.contains(e.target)) {
+          this.isFocused = false
+        }
+      })
+    })
+  },
+  beforeDestroy () {
+    if (this._clickEvent) this._clickEvent.remove()
+  }
+}
+</script>
+
+<style lang="scss">
+@mixin btn-type-mixin(
+  $bgCol,
+  $fontCol,
+  $bgColHover,
+  $fontColHover,
+  $bgColActive,
+  $fontColActive
+) {
+  background-color: $bgCol;
+  color: $fontCol;
+
+  &:hover:not(.#{$class-prefix}-btn-disabled) {
+    background-color: $bgColHover;
+    color: $fontColHover;
+  }
+
+  &:active:not(.#{$class-prefix}-btn-disabled) {
+    background-color: $bgColActive;
+    color: $fontColActive;
+  }
+}
+
+@mixin button-focus-mixin($boxShadowColor, $boxShadowOpacity: 0.6) {
+  // no ring on hover
+  // &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
+  //   box-shadow: $color 0px 0px 0px 2px; /* fallback */
+  //   box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
+  //   outline: none;
+  // }
+  // ring on hover
+  &:focus:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled),
+  &-focused:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled) {
+    box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
+    /* fallback */
+    box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
+    outline: none;
+  }
+}
+
+@mixin button-outline-mixin($outlineColor, $outlineWidth, $activeOutlineColor) {
+  box-shadow: inset $outlineColor 0px 0px 0px $outlineWidth;
+  outline: none;
+
+  &:active {
+    box-shadow: inset $activeOutlineColor 0px 0px 0px $outlineWidth;
+  }
+}
+
+.#{$class-prefix}-btn {
+  &-default {
+    @include btn-type-mixin(
+      $bgCol: $N20,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary {
+    @include btn-type-mixin(
+      $bgCol: $B400,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B500,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary-light {
+    @include btn-type-mixin(
+      $bgCol: $B300,
+      $fontCol: $N0,
+      $bgColHover: $B200,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-primary-dark {
+    @include btn-type-mixin(
+      $bgCol: $B500,
+      $fontCol: $N0,
+      $bgColHover: $B300,
+      $fontColHover: $N0,
+      $bgColActive: $B400,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-purple {
+    @include btn-type-mixin(
+      $bgCol: $P500,
+      $fontCol: $N0,
+      $bgColHover: $P400,
+      $fontColHover: $N0,
+      $bgColActive: $P600,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($P100, 1);
+  }
+
+  &-purple-light {
+    @include btn-type-mixin(
+      $bgCol: $P400,
+      $fontCol: $N0,
+      $bgColHover: $P300,
+      $fontColHover: $N0,
+      $bgColActive: $P300,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($P100, 1);
+  }
+
+  &-purple-dark {
+    @include btn-type-mixin(
+      $bgCol: darken($P600, 5%),
+      $fontCol: $N0,
+      $bgColHover: $P400,
+      $fontColHover: $N0,
+      $bgColActive: $P600,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($P300, 1);
+  }
+
+  &-paleblue {
+    @include btn-type-mixin(
+      $bgCol: $PB300,
+      $fontCol: $N0,
+      $bgColHover: $PB200,
+      $bgColActive: $PB400,
+      $fontColHover: $N0,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($PB100, 1);
+  }
+
+  &-success {
+    @include btn-type-mixin(
+      $bgCol: $G400,
+      $fontCol: $N0,
+      $bgColHover: $G300,
+      $fontColHover: $N0,
+      $bgColActive: $G500,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($G300, 1);
+  }
+
+  &-info {
+    @include btn-type-mixin(
+      $bgCol: $T400,
+      $fontCol: $N0,
+      $bgColHover: $T300,
+      $fontColHover: $N0,
+      $bgColActive: $T500,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($T200, 1);
+  }
+
+  &-warning {
+    @include btn-type-mixin(
+      $bgCol: $Y400,
+      $fontCol: $N500,
+      $bgColHover: $Y300,
+      $fontColHover: $N600,
+      $bgColActive: $Y500,
+      $fontColActive: $N600
+    );
+    @include button-focus-mixin(darken($Y500, 7%), 1);
+  }
+
+  &-danger {
+    @include btn-type-mixin(
+      $bgCol: $R400,
+      $fontCol: $N0,
+      $bgColHover: $R300,
+      $fontColHover: $N0,
+      $bgColActive: $R500,
+      $fontColActive: $N0
+    );
+    @include button-focus-mixin($R100, 1);
+  }
+
+  &-subtle {
+    @include btn-type-mixin(
+      $bgCol: transparent,
+      $fontCol: $N400,
+      $bgColHover: $N30,
+      $fontColHover: $N400,
+      $bgColActive: $B50,
+      $fontColActive: $B400
+    );
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-link {
+    @include btn-type-mixin(
+      $bgCol: transparent,
+      $fontCol: $B400,
+      $bgColHover: transparent,
+      $fontColHover: $B300,
+      $bgColActive: transparent,
+      $fontColActive: $B500
+    );
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-subtle-link {
+    @include btn-type-mixin(
+      $bgCol: transparent,
+      $fontCol: $N100,
+      $bgColHover: transparent,
+      $fontColHover: $N80,
+      $bgColActive: transparent,
+      $fontColActive: $N400
+    );
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+
+    @include button-focus-mixin($B200, 1);
+  }
+
+  &-dark {
+    @include btn-type-mixin(
+      $bgCol: $N700,
+      $fontCol: $N50,
+      $bgColHover: $N500,
+      $fontColHover: $N40,
+      $bgColActive: $N800,
+      $fontColActive: $N200
+    );
+    @include button-focus-mixin($N100, 1);
+  }
+
+  &-darker {
+    @include btn-type-mixin(
+      $bgCol: $N800,
+      $fontCol: $N50,
+      $bgColHover: $N500,
+      $fontColHover: $N40,
+      $bgColActive: $N700,
+      $fontColActive: $N200
+    );
+    @include button-focus-mixin($N100, 1);
+  }
+
+  &-active {
+    @include btn-type-mixin(
+      $bgCol: $B50,
+      $fontCol: $B400,
+      $bgColHover: $B50,
+      $fontColHover: $B400,
+      $bgColActive: $B50,
+      $fontColActive: $B400
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+
+  &-black {
+    @include btn-type-mixin(
+      $bgCol: #18171b,
+      $fontCol: $N200,
+      $bgColHover: #18171b,
+      $fontColHover: $N80,
+      $bgColActive: #18171b,
+      $fontColActive: $N400
+    );
+    @include button-focus-mixin($B100, 1);
+  }
+}
+
+@mixin xs-button-size-mixin() {
+  @include btn-size-mixin(
+    $padding: 4px 8px,
+    $fontSize: 12px,
+    $lineHeight: 1.5em,
+    $borderRadius: 4px
+  );
+  > div {
+    min-width: 13px;
+  }
+  min-height: 26px;
+  max-height: 26px;
+}
+
+@mixin sm-button-size-mixin() {
+  @include btn-size-mixin(
+    $padding: 1px 8px,
+    $fontSize: 13px,
+    $lineHeight: 2.2em,
+    $borderRadius: 4px
+  );
+  > div {
+    min-width: 15px;
+  }
+  min-height: 30px;
+  max-height: 30px;
+}
+
+@mixin md-button-size-mixin() {
+  @include btn-size-mixin(
+    $padding: 0px 9px,
+    $fontSize: 14px,
+    $lineHeight: 2.3em,
+    $borderRadius: 4px
+  );
+  > div {
+    min-width: 17px;
+  }
+  min-height: 34px;
+  max-height: 34px;
+}
+
+@mixin lg-button-size-mixin() {
+  @include btn-size-mixin(
+    $padding: 2px 15px,
+    $fontSize: 17px,
+    $lineHeight: 2.5em,
+    $borderRadius: 4px
+  );
+  > div {
+    min-width: 23px;
+  }
+  min-height: 45px;
+  max-height: 45px;
+}
+
+@mixin btn-size-mixin($padding, $fontSize, $lineHeight, $borderRadius) {
+  padding: $padding;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+  border-radius: $borderRadius;
+}
+
+.#{$class-prefix}-btn {
+  border: none;
+  outline: 0;
+  margin: 0;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  font-family: inherit;
+  text-decoration: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: background 0.1s ease-out,
+    box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:active:focus,
+  &-active:focus {
+    outline: 0;
+  }
+
+  &:active {
+    -webkit-transition-property: none;
+    -moz-transition-property: none;
+    -ms-transition-property: none;
+    transition-property: none;
+  }
+
+  &-disabled {
+    color: $N50 !important;
+    cursor: not-allowed;
+  }
+
+  > div {
+    > a {
+      cursor: default;
+
+      &:hover {
+        text-decoration: none !important;
+      }
     }
   }
-</script>
+
+  &-round {
+    border-radius: 50% !important;
+  }
+
+  &-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &-text-fade {
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s;
+    opacity: 1;
+    width: 100%;
+    justify-content: space-around;
+
+    &-out {
+      opacity: 0;
+    }
+  }
+
+  &-xs {
+    @include xs-button-size-mixin();
+  }
+
+  &-sm {
+    @include sm-button-size-mixin();
+  }
+
+  &-md {
+    @include md-button-size-mixin();
+  }
+
+  &-lg {
+    @include lg-button-size-mixin();
+  }
+
+  /**
+  Styles applied to the loading spinner inside of the button element.
+  All sizes defined here.
+  */
+  .#{$class-prefix}-page-loading-con {
+    position: absolute;
+  }
+
+  &-xs {
+    .#{$class-prefix}-page-loading-con {
+      margin-top: 1px;
+
+      svg {
+        width: 16px !important;
+      }
+    }
+  }
+
+  &-sm {
+    .#{$class-prefix}-page-loading-con {
+      margin-top: 3px;
+
+      svg {
+        width: 18px !important;
+      }
+    }
+  }
+
+  &-md {
+    .#{$class-prefix}-page-loading-con {
+      margin-top: 4px;
+
+      svg {
+        width: 20px !important;
+      }
+    }
+  }
+
+  &-lg {
+    .#{$class-prefix}-page-loading-con {
+      margin-top: 6px;
+
+      svg {
+        width: 25px !important;
+      }
+    }
+  }
+}
+
+/**
+Styles applied to buttons that are wrapped in a <va-button-group>
+are defined here.
+
+Ready to be confused?
+*/
+.#{$class-prefix}-btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.#{$class-prefix}-btn-group > .#{$class-prefix}-btn,
+.#{$class-prefix}-btn-group > .#{$class-prefix}-dropdown-con {
+  position: relative;
+  float: left;
+}
+
+.#{$class-prefix}-btn-group {
+  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+    border-radius: 0;
+    margin-right: 1px;
+  }
+
+  > .#{$class-prefix}-btn:first-child {
+    margin-left: 0;
+  }
+
+  > .#{$class-prefix}-btn:first-child:not(:last-child) {
+    margin-right: 1px;
+  }
+
+  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle)
+    > span
+    > div
+    > .#{$class-prefix}-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: 1px;
+  }
+
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child)
+    > span
+    > div
+    > .#{$class-prefix}-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .#{$class-prefix}-btn:last-child:not(:first-child),
+  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  > .#{$class-prefix}-dropdown-con:not(:first-child) {
+    > span > div > .#{$class-prefix}-btn {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  > .#{$class-prefix}-btn-group {
+    float: left;
+  }
+
+  > .#{$class-prefix}-btn-group:not(:first-child):not(:last-child)
+    > .#{$class-prefix}-btn {
+    border-radius: 0;
+  }
+
+  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
+    > .#{$class-prefix}-btn:last-child,
+  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
+    > .#{$class-prefix}-dropdown-toggle {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .#{$class-prefix}-btn-group:last-child:not(:first-child)
+    > .#{$class-prefix}-btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+/**
+And, of course, when the button group is a vertical button group arrangement.
+*/
+
+.#{$class-prefix}-btn-group-vertical {
+  position: relative;
+  display: inline-flex !important;
+  // display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+.#{$class-prefix}-btn-group-vertical > .#{$class-prefix}-btn {
+  position: relative;
+  float: left;
+  width: 100%;
+  display: flex;
+}
+
+.#{$class-prefix}-btn-group-vertical .#{$class-prefix}-btn {
+  width: 100%;
+}
+
+.#{$class-prefix}-btn-group-vertical {
+  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+    border-radius: 0;
+    margin-bottom: 1px;
+    margin-right: 0px;
+  }
+
+  > .#{$class-prefix}-btn:first-child {
+    margin-top: 0;
+  }
+
+  > .#{$class-prefix}-btn:first-child:not(:last-child) {
+    margin-bottom: 1px;
+  }
+
+  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+  }
+
+  > .#{$class-prefix}-btn:last-child:not(:first-child),
+  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  > .#{$class-prefix}-btn-group-vertical {
+    float: left;
+  }
+
+  > .#{$class-prefix}-btn-group-vertical:not(:first-child):not(:last-child)
+    > .#{$class-prefix}-btn {
+    border-radius: 0;
+  }
+
+  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
+    > .#{$class-prefix}-btn:last-child,
+  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
+    > .#{$class-prefix}-dropdown-toggle {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .#{$class-prefix}-btn-group-vertical:last-child:not(:first-child)
+    > .#{$class-prefix}-btn:first-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+</style>

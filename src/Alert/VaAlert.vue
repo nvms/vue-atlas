@@ -1,11 +1,13 @@
 <template>
   <div :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]">
     <div :class="`${classPrefix}-alert-${type}-icon`">
-      <va-icon :type="iconType" :icon-style="iconStyle" />
+      <va-icon :type="iconType" :icon-style="iconStyle"/>
     </div>
     <div>
       <h1 v-if="title">{{title}}</h1>
-      <div><slot/></div>
+      <div>
+        <slot/>
+      </div>
     </div>
   </div>
 </template>
@@ -16,23 +18,15 @@ export default {
   props: {
     title: {
       type: String,
-      required: false,
-      note: 'The title to be rendered.'
+      required: false
     },
     type: {
       type: String,
       default: 'warning',
       required: false,
       validator (v) {
-        return [
-          'success',
-          'info',
-          'warning',
-          'danger',
-          'change'
-        ].includes(v)
-      },
-      note: 'The type of alert to render.'
+        return ['success', 'info', 'warning', 'danger', 'change'].includes(v)
+      }
     },
     classPrefix: {
       type: String,
@@ -41,7 +35,7 @@ export default {
   },
   computed: {
     iconType () {
-      let {type} = this
+      let { type } = this
 
       switch (type) {
         case 'success':
@@ -59,7 +53,7 @@ export default {
       return 'info-circle'
     },
     iconStyle () {
-      let {type} = this
+      let { type } = this
 
       switch (type) {
         case 'success':
@@ -79,3 +73,81 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-alert {
+  display: flex;
+  line-height: 20px;
+  overflow-wrap: break-word;
+  padding: 15px;
+  border-radius: 3px;
+
+  /*
+  when not using a title, we want to make sure that
+  whatever element comes first, is aligned with the icon.
+  typically a p
+  */
+  *:first-child:not(h1) {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+    padding: 0;
+    overflow-wrap: break-word;
+  }
+
+  &-warning-icon,
+  &-success-icon,
+  &-info-icon,
+  &-danger-icon,
+  &-change-icon {
+    display: block;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    line-height: 20px;
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word;
+    width: 34px;
+    font-size: 18px;
+  }
+
+  &-warning {
+    background: $Y50;
+    &-icon {
+      color: $Y500;
+    }
+  }
+  &-success {
+    background: $G50;
+    &-icon {
+      color: $G500;
+    }
+  }
+  &-info {
+    background: $B50;
+    &-icon {
+      color: $B500;
+    }
+  }
+  &-danger {
+    background: $R50;
+    &-icon {
+      color: $R500;
+    }
+  }
+  &-change {
+    background: $P50;
+    &-icon {
+      color: $P500;
+    }
+  }
+}
+</style>

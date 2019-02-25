@@ -3,19 +3,23 @@
     <label
       v-if="label || inline || horizontal"
       v-bind="$attrs"
-      :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`">
+      :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`"
+    >
       {{label || '&nbsp;'}}
       <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
     <div :class="`${classPrefix}-col-sm-${col} ${classPrefix}-flex`">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>
 
 <script>
+import events from '../utils/events'
+
 export default {
   name: 'VaFormItem',
+  mixins: [events],
   inheritAttrs: false,
   props: {
     label: {
@@ -24,8 +28,7 @@ export default {
     labelCol: {
       type: [Number, String],
       default: 0,
-      required: false,
-      note: 'Used in horizontal and vertical type forms to allow you to assign a number of columns to the item label.'
+      required: false
     },
     wrapCol: {
       type: Number
@@ -36,29 +39,34 @@ export default {
     need: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'When true, all this does is render a red asterisk next to the label. This has nothing to do with validation.'
+      required: false
     },
     classPrefix: {
       type: String,
       default: 'va'
     }
   },
+  data () {
+    return {
+      inline: false,
+      vertical: false,
+      horizontal: true
+    }
+  },
+  created () {
+    this.$on('Va@formTypeChange', val => {
+      this.inline = val === 'inline'
+      this.vertical = val === 'vertical'
+      this.horizontal = val === 'horizontal'
+    })
+    this.dispatch('VaForm', 'Va@requestFormType', true)
+  },
   computed: {
-    inline () {
-      return this.$parent.type === 'inline'
-    },
-    vertical () {
-      return this.$parent.type == 'vertical'
-    },
-    horizontal () {
-      return this.$parent.type == 'horizontal'
-    },
     label_col () {
       let lc = parseInt(this.labelCol)
       let defaultCol = this.inline ? 0 : 2
       defaultCol = this.vertical ? 12 : defaultCol
-      return lc ? lc : defaultCol
+      return lc || defaultCol
     },
     col () {
       if (this.inline && !this.formCol) {
@@ -70,10 +78,10 @@ export default {
       }
 
       let wrapCol = this.wrapCol ? this.wrapCol : 12
-      return this.label_col == 12 ? 12 : wrapCol - this.label_col
+      return this.label_col === 12 ? 12 : wrapCol - this.label_col
     },
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-form-group'] = true

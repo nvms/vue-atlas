@@ -1,6 +1,12 @@
 <template>
-  <form :class="classObj" @submit.prevent="noop" :id="id" :name="name" v-bind="$attrs">
-    <slot />
+  <form
+    :class="classObj"
+    @submit.prevent="noop"
+    :id="id"
+    :name="name"
+    v-bind="$attrs"
+  >
+    <slot/>
   </form>
 </template>
 
@@ -24,13 +30,8 @@ export default {
       default: 'horizontal',
       required: false,
       validator (v) {
-        return [
-          'horizontal',
-          'inline',
-          'vertical'
-        ].includes(v)
-      },
-      note: 'The type of form to render. See documentation example.'
+        return ['horizontal', 'inline', 'vertical'].includes(v)
+      }
     },
     classPrefix: {
       type: String,
@@ -38,8 +39,7 @@ export default {
     }
   },
   methods: {
-    noop () {
-    },
+    noop () {},
     validateFields (cb) {
       this.validate = false
       this.$nextTick(() => {
@@ -54,7 +54,7 @@ export default {
     resetValidation (cb) {
       this.validate = false
       this.$nextTick(() => {
-        this.result = {results: {}, isvalid: true}
+        this.result = { results: {}, isvalid: true }
         this.$emit('validateChange', this.result)
         if (type.isFunction(cb)) {
           cb(this.result)
@@ -68,24 +68,28 @@ export default {
       if (val) {
         this.result = this._result
       } else {
-        this.result = {results: {}, isvalid: true}
+        this.result = { results: {}, isvalid: true }
       }
     },
     result (val) {
       if (this.validate) {
         this.$emit('validateChange', val)
       }
+    },
+    type (val) {
+      this.broadcast('VaFormItem', 'Va@formTypeChange', val)
     }
   },
   mounted () {
     if (!this.validate) {
-      this.result = {results: {}, isvalid: true}
+      this.result = { results: {}, isvalid: true }
     }
     this.broadcast('VaValidate', 'Va@openValidate', this.validate)
+    this.broadcast('VaFormItem', 'Va@formTypeChange', this.type)
   },
   computed: {
     classObj () {
-      let {classPrefix, type} = this
+      let { classPrefix, type } = this
       let classes = {}
 
       classes[classPrefix + '-form-horizontal'] = type === 'horizontal'
@@ -104,7 +108,7 @@ export default {
       this.validate = false
     })
 
-    this.$on('Va@validateChange', (val) => {
+    this.$on('Va@validateChange', val => {
       let name = val.name
       let validateResult = Object.assign({}, this._result)
 
@@ -128,17 +132,21 @@ export default {
       }
     })
 
-    this.$on('Va@validateDestroy', (val) => {
+    this.$on('Va@validateDestroy', val => {
       delete this.result.results[val.name]
       delete this._result.results[val.name]
+    })
+
+    this.$on('Va@requestFormType', () => {
+      this.broadcast('VaFormItem', 'Va@formTypeChange', this.type)
     })
   },
 
   data () {
     return {
       // eslint-disable-next-line
-      _result: {results: {}, isvalid: true},
-      result: {results: {}, isvalid: true},
+      _result: { results: {}, isvalid: true },
+      result: { results: {}, isvalid: true },
       validate: false
     }
   }

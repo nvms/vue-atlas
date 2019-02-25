@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
   </div>
 </template>
 
@@ -11,20 +11,14 @@ export default {
     hover: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'When true, changes the background color of rows when hovering.'
+      required: false
     },
     size: {
       type: String,
       default: 'lg',
       validator (v) {
-        return [
-          'lg',
-          'md',
-          'sm'
-        ].includes(v)
-      },
-      note: 'The size of the table.'
+        return ['lg', 'md', 'sm'].includes(v)
+      }
     },
     classPrefix: {
       type: String,
@@ -33,7 +27,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, size, hover} = this
+      let { classPrefix, size, hover } = this
       let classes = {}
 
       classes[classPrefix + '-table'] = true
@@ -45,3 +39,67 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-table {
+  margin: 1em 0;
+  &-fullwidth {
+    table {
+      width: 100%;
+    }
+  }
+
+  &-lg {
+    table {
+      width: 100%;
+    }
+  }
+  &-md {
+    table {
+      width: 960px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+  }
+  &-sm {
+    table {
+      width: 680px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+  }
+
+  &-hover {
+    table tbody tr:hover {
+      background: $N10;
+    }
+  }
+  table {
+    border-collapse: collapse;
+  }
+  thead,
+  tbody,
+  tfoot {
+    border-bottom: 2px solid $N40;
+  }
+  thead tr th {
+    color: $N90;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  table td,
+  table td:first-child,
+  table th,
+  table th:first-child {
+    margin: 0;
+    padding: 8px;
+    text-align: left;
+  }
+}
+
+.#{$class-prefix}-page-container-article {
+  .#{$class-prefix}-table {
+    margin: 3em 0 4em 0;
+  }
+}
+</style>

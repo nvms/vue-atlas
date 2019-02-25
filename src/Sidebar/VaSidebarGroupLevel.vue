@@ -2,12 +2,17 @@
   <div :class="classObj">
     <div :class="`${classPrefix}-sidebar-navigationlevel-parent`">
       <div :class="`${classPrefix}-sidebar-group-item`">
-        <va-sidebar-group-toggle :open="isOpen" @click.native="onToggleClick" v-if="st"/>
+        <va-sidebar-group-toggle
+          :open="isOpen"
+          @click.native="onToggleClick"
+          v-if="st"
+        />
         <va-sidebar-group-item
           :item="parentItem"
           @click.native="onItemClick"
           :is-open="isOpen"
-          :show-toggle="st" />
+          :show-toggle="st"
+        />
       </div>
     </div>
     <ul :class="`${classPrefix}-sidebar-navigationlevel-children`">
@@ -41,10 +46,7 @@ export default {
       type: String,
       required: false,
       validator (v) {
-        return [
-          'arrow',
-          'circle'
-        ].includes(v)
+        return ['arrow', 'circle'].includes(v)
       }
     },
     classPrefix: {
@@ -60,13 +62,13 @@ export default {
     }
   },
   created () {
-    this.$on('Va@showToggleChange', (val) => {
+    this.$on('Va@showToggleChange', val => {
       this.st = val
     })
   },
   computed: {
     classObj () {
-      let {classPrefix, isOpen, level} = this
+      let { classPrefix, isOpen, level } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar-navigationlevel'] = true

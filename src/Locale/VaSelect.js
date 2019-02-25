@@ -2,6 +2,7 @@ export default {
   all: {
     en: 'All',
     es: 'Todos',
-    fr: 'Tous'
+    fr: 'Tous',
+    ru: 'Все'
   }
 }

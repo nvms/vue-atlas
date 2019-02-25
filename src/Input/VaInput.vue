@@ -1,10 +1,10 @@
 <template>
-  <div :class="classObj" :style="{'width': actualWidth}" v-if="!showButtonsWarning">
-    <span
-      v-if="prefix !== ''"
-      :class="`${classPrefix}-input-prefix`">
-    {{prefix}}
-    </span>
+  <div
+    :class="classObj"
+    :style="{'width': actualWidth}"
+    v-if="!showButtonsWarning"
+  >
+    <span v-if="prefix !== ''" :class="`${classPrefix}-input-prefix`">{{prefix}}</span>
     <input
       v-if="noVModel"
       ref="input"
@@ -22,7 +22,8 @@
       @input="update($event.target.value)"
       tabindex="0"
       @keyup.enter="enterPressed"
-      :value="value" />
+      :value="value"
+    >
     <input
       v-else
       ref="input"
@@ -41,49 +42,59 @@
       tabindex="0"
       @keyup.enter="enterPressed"
       v-model="currentValue"
-      :value="value" />
-    <div :class="`${classPrefix}-input-icon-wrapper`" v-if="icon !== 'undefined' || clearable">
+      :value="value"
+    >
+    <div
+      :class="`${classPrefix}-input-icon-wrapper`"
+      v-if="icon !== 'undefined' || clearable"
+    >
       <va-icon
         v-if="clearable"
         type="times"
         icon-style="solid"
         :class="`${classPrefix}-input-clearable`"
-        @click.native.stop="clean"/>
+        @click.native.stop="clean"
+      />
       <va-icon
         :class="`${classPrefix}-input-show-icon`"
         :type="icon"
-        :icon-style="iconStyle"/>
+        :icon-style="iconStyle"
+      />
     </div>
     <span
       v-if="postfix !== ''"
-      :class="`${classPrefix}-input-postfix`">
-    {{postfix}}
-    </span>
+      :class="`${classPrefix}-input-postfix`"
+    >{{postfix}}</span>
     <va-input-ops
       v-if="buttons"
       :parent-position="position"
       @confirm="opsConfirm"
-      @cancel="opsCancel"/>
+      @cancel="opsCancel"
+    />
     <validate
       :name="name"
       v-model="validStatus"
       :rules="rules"
       :custom-validate="customValidate"
-      :current="value" />
+      :current="value"
+    />
   </div>
   <div v-else>
     <va-alert type="warning">
       <h4>Hold on</h4>
       <p>
-        If you're going to use <b>buttons</b> with this input component, you need
-        to also use the <b>loading</b> prop.
-
-        Handle the <b>@confirm</b> event emitted by the input component by setting the
-        <b>loading</b> prop to true, <i>doing some task</i>, and finally setting the
+        If you're going to use
+        <b>buttons</b> with this input component, you need
+        to also use the
+        <b>loading</b> prop.
+        Handle the
+        <b>@confirm</b> event emitted by the input component by setting the
+        <b>loading</b> prop to true,
+        <i>doing some task</i>, and finally setting the
         <b>loading</b> prop back to false.
-
         It is important that events happen in that order, because the input component
-        is watching the <b>loading</b> prop for those changes. That's how it knows to hide
+        is watching the
+        <b>loading</b> prop for those changes. That's how it knows to hide
         the confirm and cancel buttons.
       </p>
     </va-alert>
@@ -184,10 +195,16 @@ export default {
     }
   },
   created () {
-    this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
-    this.$on('Va@inputOpsConfirm', () => { })
-    this.$on('Va@inputOpsBlur', () => { this.focused = false })
-    this.$on('Va@pageScroll', () => { this.setPosition() })
+    this.$on('Va@inputOpsCancel', val => {
+      this.currentValue = val
+    })
+    this.$on('Va@inputOpsConfirm', () => {})
+    this.$on('Va@inputOpsBlur', () => {
+      this.focused = false
+    })
+    this.$on('Va@pageScroll', () => {
+      this.setPosition()
+    })
   },
   mounted () {
     window.addEventListener('resize', this.setPosition, false)
@@ -209,7 +226,7 @@ export default {
   },
   computed: {
     inputStyleObj () {
-      let {type} = this
+      let { type } = this
       let style = {}
 
       if (type === 'file') {
@@ -222,7 +239,16 @@ export default {
       return style
     },
     classObj () {
-      let {classPrefix, validStatus, clearable, size, icon, prefix, postfix, type} = this
+      let {
+        classPrefix,
+        validStatus,
+        clearable,
+        size,
+        icon,
+        prefix,
+        postfix,
+        type
+      } = this
       let classes = {}
 
       classes[classPrefix + '-has-error'] = validStatus === 'error'
@@ -230,17 +256,18 @@ export default {
       classes[classPrefix + '-has-warn'] = validStatus === 'warn'
       classes[classPrefix + '-input-con'] = true
       classes[classPrefix + '-clearable'] = clearable
-      classes[classPrefix + '-show-icon'] = icon ? true : false
-      size ? classes[classPrefix + '-input-' + size] = true : ''
-      classes[classPrefix + '-input-has-prefix'] = prefix !== '' ? true : false
-      classes[classPrefix + '-input-has-postfix'] = postfix !== '' ? true : false
-      classes[classPrefix + '-input-file'] = type === 'file' ? true : false
+      classes[classPrefix + '-show-icon'] = !!icon
+      size ? (classes[classPrefix + '-input-' + size] = true) : ''
+      classes[classPrefix + '-input-has-prefix'] = prefix !== ''
+      classes[classPrefix + '-input-has-postfix'] =
+        postfix !== ''
+      classes[classPrefix + '-input-file'] = type === 'file'
       classes['inline'] = true
 
       return classes
     },
     inputClassObj () {
-      let {classPrefix, theme} = this
+      let { classPrefix, theme } = this
       let classes = {}
 
       classes[classPrefix + '-form-control'] = true
@@ -326,3 +353,171 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@mixin input-theme-mixin($iconColor, $iconHoverColor, $iconActiveColor) {
+  .#{$class-prefix}-input-clearable,
+  .#{$class-prefix}-input-show-icon {
+    color: $iconColor;
+  }
+
+  .#{$class-prefix}-input-clearable {
+    &:hover {
+      color: $iconHoverColor;
+    }
+
+    &:active,
+    &:focus {
+      color: $iconActiveColor;
+    }
+  }
+}
+
+@mixin input-ops-theme-mixin($opsBackground, $opsBtnBoxShadow) {
+  background: $opsBackground;
+
+  .#{$class-prefix}-btn {
+    box-shadow: $opsBtnBoxShadow;
+  }
+}
+
+.#{$class-prefix}-input,
+.#{$class-prefix}--theme-light.#{$class-prefix}-input {
+  &-con {
+    @include input-theme-mixin(
+      $iconColor: $N80,
+      $iconHoverColor: $N100,
+      $iconActiveColor: $B100
+    );
+  }
+  &-ops {
+    @include input-ops-theme-mixin(
+      $opsBackground: transparent,
+      $opsBtnBoxShadow: (
+        0 2px 4px -1px rgba(9, 30, 66, 0.25),
+        0 0 1px rgba(9, 30, 66, 0.25)
+      )
+    );
+  }
+}
+
+.#{$class-prefix}-input-con {
+  position: relative;
+  display: flex;
+
+  &:hover {
+    .#{$class-prefix}-input-clearable {
+      opacity: 1;
+    }
+  }
+}
+
+.#{$class-prefix}-clearable:hover .#{$class-prefix}-input-show-icon {
+  display: none;
+}
+
+/*the icon*/
+
+.#{$class-prefix}-input-icon-wrapper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  width: 30px;
+}
+
+.#{$class-prefix}-input-file {
+  overflow: hidden;
+}
+
+.#{$class-prefix}-input-clearable,
+.#{$class-prefix}-input-show-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 26px;
+  padding: 0;
+  -webkit-transition: opacity 0.1s linear;
+  transition: opacity 0.1s linear;
+}
+
+.#{$class-prefix}-input-clearable {
+  opacity: 0;
+  cursor: default;
+}
+
+.#{$class-prefix}-input-show-icon {
+  opacity: 1;
+}
+
+/*positioning the icon based on input size*/
+
+/*sm*/
+
+.#{$class-prefix}-input-sm {
+  .#{$class-prefix}-input-icon-wrapper {
+    i {
+      top: 8px;
+    }
+  }
+}
+
+/*xs*/
+
+.#{$class-prefix}-input-xs {
+  .#{$class-prefix}-input-icon-wrapper {
+    i {
+      font-size: 12px !important;
+      top: 8px;
+    }
+  }
+}
+
+.#{$class-prefix}-input-ops {
+  position: absolute;
+  z-index: 4;
+}
+
+.#{$class-prefix}-input-prefix,
+.#{$class-prefix}-input-postfix {
+  display: flex;
+  background: #f4f5f7;
+  border: 2px solid $N40;
+  line-height: 2.15em;
+  padding: 0 8px;
+  color: $N300;
+  white-space: nowrap;
+}
+.#{$class-prefix}-input-prefix {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-right: 0;
+}
+.#{$class-prefix}-input-postfix {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-left: 0;
+}
+
+.#{$class-prefix}-input-has-prefix {
+  .#{$class-prefix}-form-control {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+}
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-form-control {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+}
+
+.#{$class-prefix}-input-has-postfix {
+  .#{$class-prefix}-input-icon-wrapper {
+    position: relative;
+    width: initial;
+    left: initial;
+    right: initial;
+  }
+}
+</style>

@@ -1,6 +1,11 @@
 <template>
-  <div ref="scrollArea" id="vaSidebarScrollArea" :class="classObj" @scroll="onScroll">
-      <slot/>
+  <div
+    ref="scrollArea"
+    id="vaSidebarScrollArea"
+    :class="classObj"
+    @scroll="onScroll"
+  >
+    <slot/>
   </div>
 </template>
 
@@ -32,7 +37,7 @@ export default {
   computed: {
     classObj () {
       // let {classPrefix, scrolled} = this
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar-scrollarea'] = true

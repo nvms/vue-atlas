@@ -1,82 +1,62 @@
 <template>
   <transition name="fadeDown">
-    <div
-      ref="popup"
-      :class="`${classPrefix}-color-picker-popup`">
-      <div
-        :class="`${classPrefix}-color-picker-upper`">
+    <div ref="popup" :class="`${classPrefix}-color-picker-popup`">
+      <div :class="`${classPrefix}-color-picker-upper`">
         <div
           ref="gradient"
           :style="gradientStyleObj"
           @mousedown="gradientOnMousedown"
           @touchstart="gradientOnMousedown"
-          :class="`${classPrefix}-color-picker-gradient`">
-          <div
-            :class="`${classPrefix}-color-picker-gradient-white`" />
-          <div
-            :class="`${classPrefix}-color-picker-gradient-black`" />
-          <div
-            :class="`${classPrefix}-color-picker-border`" />
+          :class="`${classPrefix}-color-picker-gradient`"
+        >
+          <div :class="`${classPrefix}-color-picker-gradient-white`"/>
+          <div :class="`${classPrefix}-color-picker-gradient-black`"/>
+          <div :class="`${classPrefix}-color-picker-border`"/>
           <div
             ref="gradientCursor"
-            :class="`${classPrefix}-color-picker-gradient-cursor`" />
+            :class="`${classPrefix}-color-picker-gradient-cursor`"
+          />
         </div>
         <div
           ref="hue"
           @mousedown="hueSliderOnMousedown"
           @touchstart="hueSliderOnMousedown"
-          :class="`${classPrefix}-color-picker-hue-track`">
-          <div
-            :class="`${classPrefix}-color-picker-border`" />
+          :class="`${classPrefix}-color-picker-hue-track`"
+        >
+          <div :class="`${classPrefix}-color-picker-border`"/>
           <div
             ref="hueCursor"
-            :class="`${classPrefix}-color-picker-hue-cursor`" />
+            :class="`${classPrefix}-color-picker-hue-cursor`"
+          />
         </div>
         <div
           ref="alpha"
           @mousedown="alphaSliderOnMousedown"
           @touchstart="alphaSliderOnMousedown"
-          :class="`${classPrefix}-color-picker-alpha-track`">
+          :class="`${classPrefix}-color-picker-alpha-track`"
+        >
           <div
             :style="alphaStyleObj"
-            :class="`${classPrefix}-color-picker-alpha-track-color`" />
-          <div
-            :class="`${classPrefix}-color-picker-border`" />
+            :class="`${classPrefix}-color-picker-alpha-track-color`"
+          />
+          <div :class="`${classPrefix}-color-picker-border`"/>
           <div
             ref="alphaCursor"
-            :class="`${classPrefix}-color-picker-alpha-cursor`" />
+            :class="`${classPrefix}-color-picker-alpha-cursor`"
+          />
         </div>
       </div>
-      <div
-        :class="`${classPrefix}-color-picker-lower`">
-        <va-input
-          size="xs"
-          v-model="hex"
-          @change="hexChange"
-          width="68px" />
-        <va-input
-          size="xs"
-          v-model="rgb.r"
-          @change="rChange"
-          width="38px" />
-        <va-input
-          size="xs"
-          v-model="rgb.g"
-          @change="gChange"
-          width="38px" />
-        <va-input
-          size="xs"
-          v-model="rgb.b"
-          @change="bChange"
-          width="38px" />
-        <va-input
-          size="xs"
-          v-model="alpha"
-          @change="aChange"
-          width="40px" />
+      <div :class="`${classPrefix}-color-picker-lower`">
+        <va-input size="xs" v-model="hex" @change="hexChange" width="68px"/>
+        <va-input size="xs" v-model="rgb.r" @change="rChange" width="38px"/>
+        <va-input size="xs" v-model="rgb.g" @change="gChange" width="38px"/>
+        <va-input size="xs" v-model="rgb.b" @change="bChange" width="38px"/>
+        <va-input size="xs" v-model="alpha" @change="aChange" width="40px"/>
       </div>
       <div
-        :class="`${classPrefix}-color-picker-lower`" style="margin:0;color:#999;">
+        :class="`${classPrefix}-color-picker-lower`"
+        style="margin:0;color:#999;"
+      >
         <span style="text-align:center;width:68px;font-size:10px;">HEX</span>
         <span style="text-align:center;width:38px;font-size:10px;">R</span>
         <span style="text-align:center;width:38px;font-size:10px;">G</span>
@@ -88,13 +68,7 @@
 </template>
 
 <script>
-import {
-  rgbToHsb,
-  rgbToHex,
-  hsbToRgb,
-  hexToHsb,
-  hsbToHex
-} from './conversions'
+import { rgbToHsb, rgbToHex, hsbToRgb, hexToHsb, hsbToHex } from './conversions'
 
 export default {
   name: 'VaColorPickerPopup',
@@ -139,18 +113,23 @@ export default {
   },
   computed: {
     gradientStyleObj () {
-      let {hsb, alpha} = this
+      let { hsb, alpha } = this
       let style = {}
 
-      style['background'] = 'hsl('+ hsb.h + ', 100%, 50%, ' + alpha + ')'
+      style['background'] = 'hsl(' + hsb.h + ', 100%, 50%, ' + alpha + ')'
 
       return style
     },
     alphaStyleObj () {
-      let {hsb} = this
+      let { hsb } = this
       let style = {}
 
-      style['background'] = 'linear-gradient(180deg, hsl('+ hsb.h + ', 100%, 50%, 0), hsl('+ hsb.h + ', 100%, 50%, 1))'
+      style['background'] =
+        'linear-gradient(180deg, hsl(' +
+        hsb.h +
+        ', 100%, 50%, 0), hsl(' +
+        hsb.h +
+        ', 100%, 50%, 1))'
 
       return style
     }
@@ -178,19 +157,19 @@ export default {
       this.$emit('change', colorsToEmit)
     },
     rChange (e) {
-      let rgb = {r:e, g:this.rgb.g, b:this.rgb.b}
+      let rgb = { r: e, g: this.rgb.g, b: this.rgb.b }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     gChange (e) {
-      let rgb = {r:this.rgb.r, g:e, b:this.rgb.b}
+      let rgb = { r: this.rgb.r, g: e, b: this.rgb.b }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     bChange (e) {
-      let rgb = {r:this.rgb.r, g:this.rgb.g, b:e}
+      let rgb = { r: this.rgb.r, g: this.rgb.g, b: e }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
@@ -227,7 +206,7 @@ export default {
       }
     },
     selectGradientColor () {
-      this.hsb.s = (this.x / this.gradientPosition.width * 100)
+      this.hsb.s = (this.x / this.gradientPosition.width) * 100
       this.hsb.b = 100 - (this.y / this.gradientPosition.height) * 100
 
       this.rgb = hsbToRgb(this.hsb)
@@ -236,7 +215,6 @@ export default {
       this.emitColors()
     },
     makeGradientSelection (e) {
-
       /**
        * the offset for where the cursor appears in
        * relation to the system cursor.
@@ -255,8 +233,14 @@ export default {
         arrowx = e.clientX - this.gradientPosition.left - cursorOffsetArrowLeft
         arrowy = e.clientY - this.gradientPosition.top - cursorOffsetArrowTop
       } else if (e.changedTouches !== undefined) {
-        arrowx = e.changedTouches[0].clientX - this.gradientPosition.left - cursorOffsetArrowLeft
-        arrowy = e.changedTouches[0].clientY - this.gradientPosition.top - cursorOffsetArrowTop
+        arrowx =
+          e.changedTouches[0].clientX -
+          this.gradientPosition.left -
+          cursorOffsetArrowLeft
+        arrowy =
+          e.changedTouches[0].clientY -
+          this.gradientPosition.top -
+          cursorOffsetArrowTop
       }
 
       /**
@@ -270,10 +254,10 @@ export default {
        * clamp
        */
       if (x < 0 - this.cursorOffsetLeft) x = 0 - this.cursorOffsetLeft
-      if (x > this.gradientPosition.width - this.cursorOffsetLeft) x = this.gradientPosition.width - this.cursorOffsetLeft
+      if (x > this.gradientPosition.width - this.cursorOffsetLeft) { x = this.gradientPosition.width - this.cursorOffsetLeft }
 
       if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
-      if (y > this.gradientPosition.height - this.cursorOffsetTop) y = this.gradientPosition.height - this.cursorOffsetTop
+      if (y > this.gradientPosition.height - this.cursorOffsetTop) { y = this.gradientPosition.height - this.cursorOffsetTop }
 
       /**
        * place the cursor, taking note that x and y are still affected
@@ -291,8 +275,6 @@ export default {
 
       this.selectGradientColor()
     },
-
-
 
     gradientOnMousedown (e) {
       this.prevent(e)
@@ -318,8 +300,6 @@ export default {
       window.removeEventListener('touchmove', this.gradientOnMousemove, false)
     },
 
-
-
     updateControls () {
       this.setHueSliderPositionFromHsb()
       this.setAlphaSliderPositionFromAlpha()
@@ -338,7 +318,10 @@ export default {
       if (e.clientY) {
         arrowy = e.clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
       } else if (e.changedTouches !== undefined) {
-        arrowy = e.changedTouches[0].clientY - this.hueSliderPosition.top - cursorOffsetArrowTop
+        arrowy =
+          e.changedTouches[0].clientY -
+          this.hueSliderPosition.top -
+          cursorOffsetArrowTop
       }
 
       /**
@@ -351,7 +334,7 @@ export default {
        * clamp
        */
       if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
-      if (y > this.hueSliderPosition.height - this.cursorOffsetTop) y = this.hueSliderPosition.height - this.cursorOffsetTop
+      if (y > this.hueSliderPosition.height - this.cursorOffsetTop) { y = this.hueSliderPosition.height - this.cursorOffsetTop }
 
       /**
        * place the cursor, taking note that y is still affected
@@ -368,7 +351,10 @@ export default {
     },
     setAlphaSliderPositionFromAlpha () {
       this.alphaSliderPosition = this.getElementRect(this.$refs.alpha)
-      this.$refs.alphaCursor.style.top = (this.alpha * this.alphaSliderPosition.height - this.cursorOffsetTop) + 'px'
+      this.$refs.alphaCursor.style.top =
+        this.alpha * this.alphaSliderPosition.height -
+        this.cursorOffsetTop +
+        'px'
     },
     setHueSliderPositionFromHsb () {
       this.$refs.hueCursor.style.top = this.hsb.h / 2 + 'px'
@@ -379,7 +365,8 @@ export default {
       /**
        * find where it needs to be in the x
        */
-      let left = (((this.hsb.s * this.gradientPosition.width) / 100) - this.cursorOffsetLeft)
+      let left =
+        (this.hsb.s * this.gradientPosition.width) / 100 - this.cursorOffsetLeft
       this.x = left
       this.$refs.gradientCursor.style.left = left + 'px'
       this.x += this.cursorOffsetLeft
@@ -388,12 +375,12 @@ export default {
        * find where it needs to be in the y
        */
       let top = this.hsb.b - 100
-      
+
       if (top < 0) {
         top *= -1
       }
 
-      top = ((top * this.gradientPosition.height) / 100) - this.cursorOffsetTop
+      top = (top * this.gradientPosition.height) / 100 - this.cursorOffsetTop
 
       this.y = top
       this.$refs.gradientCursor.style.top = top + 'px'
@@ -407,7 +394,7 @@ export default {
       // set hooks
       window.addEventListener('mousemove', this.hueSliderOnMousemove, false)
       window.addEventListener('mouseup', this.hueSliderOnMouseup, false)
-      
+
       window.addEventListener('touchmove', this.hueSliderOnMousemove, false)
       window.addEventListener('touchend', this.hueSliderOnMouseup, false)
     },
@@ -423,7 +410,6 @@ export default {
       window.removeEventListener('touchmove', this.hueSliderOnMousemove, false)
     },
 
-
     makeAlphaSelection (e) {
       let cursorOffsetArrowTop = 2
       /**
@@ -435,7 +421,10 @@ export default {
       if (e.clientY) {
         arrowy = e.clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
       } else if (e.changedTouches !== undefined) {
-        arrowy = e.changedTouches[0].clientY - this.alphaSliderPosition.top - cursorOffsetArrowTop
+        arrowy =
+          e.changedTouches[0].clientY -
+          this.alphaSliderPosition.top -
+          cursorOffsetArrowTop
       }
 
       /**
@@ -448,7 +437,7 @@ export default {
        * clamp
        */
       if (y < 0 - this.cursorOffsetTop) y = 0 - this.cursorOffsetTop
-      if (y > this.alphaSliderPosition.height - this.cursorOffsetTop) y = this.alphaSliderPosition.height - this.cursorOffsetTop
+      if (y > this.alphaSliderPosition.height - this.cursorOffsetTop) { y = this.alphaSliderPosition.height - this.cursorOffsetTop }
       /**
        * place the cursor, taking note that x and y are still affected
        * by cursorOffsetLeft and cursorOffsetTop.. we need to adjust before
@@ -480,10 +469,18 @@ export default {
     alphaSliderOnMouseup () {
       // remove hooks
       window.removeEventListener('mouseup', this.alphaSliderOnMouseup, false)
-      window.removeEventListener('mousemove', this.alphaSliderOnMousemove, false)
+      window.removeEventListener(
+        'mousemove',
+        this.alphaSliderOnMousemove,
+        false
+      )
 
       window.removeEventListener('touchend', this.alphaSliderOnMouseup, false)
-      window.removeEventListener('touchmove', this.alphaSliderOnMousemove, false)
+      window.removeEventListener(
+        'touchmove',
+        this.alphaSliderOnMousemove,
+        false
+      )
     }
   }
 }

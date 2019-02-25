@@ -1,6 +1,9 @@
 <template>
-  <i :class="[fontStyle, 'fa-' + type]" :style="{fontSize:size,color:color,margin:margin,backgroundColor:bgColor,borderRadius:'4px',padding:padding}">
-    <slot />
+  <i
+    :class="[fontStyle, 'fa-' + type]"
+    :style="{fontSize:size,color:color,margin:margin,backgroundColor:bgColor,borderRadius:'4px',padding:padding}"
+  >
+    <slot/>
   </i>
 </template>
 
@@ -10,50 +13,39 @@ export default {
   props: {
     type: {
       type: String,
-      required: true,
-      note: 'The type of icon: .fa-[type]'
+      required: true
     },
     iconStyle: {
       type: String,
       default: 'solid',
       required: false,
-      note: 'Use fa-regular, fa-solid or fa-brand?',
       validator (v) {
-        return [
-          'solid',
-          'regular',
-          'brands'
-        ].includes(v)
+        return ['solid', 'regular', 'brands'].includes(v)
       }
     },
     size: {
       type: String,
       required: false,
-      default: '1em',
-      note: 'The size, in px or em, of the icon.'
+      default: '1em'
     },
     color: {
       type: String,
-      required: false,
-      note: 'Color to apply to the icon.'
+      required: false
     },
     bgColor: {
       type: String,
       default: 'transparent',
-      required: false,
-      note: 'Background color of the icon'
+      required: false
     },
     margin: {
       type: String,
       default: '0px',
-      required: false,
-      note: 'Margin to be applied to the outside of the icon element.'
+      required: false
     },
     padding: {
       type: String,
       default: '0px',
-      required: false,
-      note: 'Convenience prop: padding to be applied to the icon. Useful for when you need to assign a custom bgColor to an icon.'
+      required: false
     },
     classPrefix: {
       type: String,

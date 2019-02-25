@@ -44,17 +44,9 @@ export default {
       type: String,
       default: 'div',
       validator (v) {
-        return [
-          'div',
-          'form',
-          'ul',
-          'ol'
-        ].includes(v)
+        return ['div', 'form', 'ul', 'ol'].includes(v)
       },
-      required: false,
-      note: `The tag to render around the animation queue.
-This is helpful when you want to animate items in a list, but not the entire list itself.
-For example, in this kind of scenario, you could pass tag="ul" or tag="ol".`
+      required: false
     },
     interval: {
       type: [Number, Array],
@@ -64,21 +56,17 @@ For example, in this kind of scenario, you could pass tag="ul" or tag="ol".`
     duration: {
       type: [Number, Array, String],
       default: 500,
-      required: false,
-      note: 'The speed of the animation'
+      required: false
     },
     delay: {
       type: [Number, Array, String],
       default: 0,
-      required: false,
-      note: 'The amount of time (ms) to wait between animating each node'
+      required: false
     },
     type: {
       type: [String, Array],
       default: 'right',
-      required: false,
-      note: `The type of enter and leave animation.
-When passing an array, the first item is the enter animation and the second is the leave animation.`
+      required: false
     },
     animConfig: {
       type: [String, Array],
@@ -96,8 +84,7 @@ When passing an array, the first item is the enter animation and the second is t
     leaveReverse: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'When true, during the leave animation the nodes will be transitioned out from last to first, instead of from first to last.'
+      required: false
     },
     classPrefix: {
       type: String,
@@ -113,8 +100,11 @@ When passing an array, the first item is the enter animation and the second is t
     }
   },
   mounted () {
-    let {classPrefix} = this
-    this.animatingClassName = [classPrefix + '-anim-queue-entering', classPrefix + '-anim-queue-leaving']
+    let { classPrefix } = this
+    this.animatingClassName = [
+      classPrefix + '-anim-queue-entering',
+      classPrefix + '-anim-queue-leaving'
+    ]
 
     // this.$nextTick(() => {
     this.keysAnimating = []
@@ -223,7 +213,9 @@ When passing an array, the first item is the enter animation and the second is t
   methods: {
     _getKeysChild () {
       const ret = []
-      const keyNodes = Array.prototype.slice.call(this.$el.querySelectorAll('[anim-key]'))
+      const keyNodes = Array.prototype.slice.call(
+        this.$el.querySelectorAll('[anim-key]')
+      )
 
       keyNodes.forEach(child => {
         if (!child) {
@@ -248,7 +240,9 @@ When passing an array, the first item is the enter animation and the second is t
     },
     _getFreeKeysAndChild () {
       const ret = []
-      const keyNodes = Array.prototype.slice.call(this.$el.querySelectorAll('[anim-key]:not([__scope_key__])'))
+      const keyNodes = Array.prototype.slice.call(
+        this.$el.querySelectorAll('[anim-key]:not([__scope_key__])')
+      )
 
       keyNodes.forEach(child => {
         if (!child) {
@@ -284,7 +278,7 @@ When passing an array, the first item is the enter animation and the second is t
       const config = this._getVelocityConfig(1)
       const ret = {}
 
-      Object.keys(config).forEach((key) => {
+      Object.keys(config).forEach(key => {
         if (Array.isArray(config[key])) {
           ret[key] = Array.prototype.slice.call(config[key]).reverse()
         } else {
@@ -301,7 +295,7 @@ When passing an array, the first item is the enter animation and the second is t
       })
     },
     _hiddenVelocityNode () {
-      this.children.forEach((item) => {
+      this.children.forEach(item => {
         const node = item.el
         if (!node) {
           return
@@ -331,7 +325,7 @@ When passing an array, the first item is the enter animation and the second is t
         duration: duration,
         easing: this._getVelocityEasing()[0],
         visibility: 'visible',
-        begin: (elements) => {
+        begin: elements => {
           this._enterBegin(key, elements)
           if (node.__vue__) {
             const _enterFn = node.__vue__._animateEnter
@@ -360,7 +354,7 @@ When passing an array, the first item is the enter animation and the second is t
       const interval = parseInt(transformArguments(this.interval)[1])
       const delay = parseInt(transformArguments(this.delay)[1])
       const duration = parseInt(transformArguments(this.duration)[1])
-      const order = this.leaveReverse ? (this.children.length - i - 1) : i
+      const order = this.leaveReverse ? this.children.length - i - 1 : i
 
       velocity(node, 'stop')
       velocity(node, this._getVelocityLeaveConfig('leave'), {
@@ -368,7 +362,7 @@ When passing an array, the first item is the enter animation and the second is t
         duration: duration,
         easing: this._getVelocityEasing()[1],
         begin: this._leaveBegin.bind(this),
-        complete: (elements) => {
+        complete: elements => {
           this._leaveComplete(key, elements)
           const len = this.children.length
           if (i === len - 1) {
@@ -383,8 +377,10 @@ When passing an array, the first item is the enter animation and the second is t
         this.keysAnimating.splice(this.keysAnimating.indexOf(key), 1)
       }
       elements.forEach(elem => {
-        elem.className = elem.className.replace(self.animatingClassName[1], '').trim()
-        elem.className += (' ' + self.animatingClassName[0])
+        elem.className = elem.className
+          .replace(self.animatingClassName[1], '')
+          .trim()
+        elem.className += ' ' + self.animatingClassName[0]
       })
     },
     _enterComplete (key, elements) {
@@ -393,14 +389,18 @@ When passing an array, the first item is the enter animation and the second is t
         this.keysAnimating.splice(this.keysAnimating.indexOf(key), 1)
       }
       elements.forEach(elem => {
-        elem.className = elem.className.replace(self.animatingClassName[0], '').trim()
+        elem.className = elem.className
+          .replace(self.animatingClassName[0], '')
+          .trim()
       })
     },
     _leaveBegin (elements) {
       const self = this
       elements.forEach(elem => {
-        elem.className = elem.className.replace(self.animatingClassName[0], '').trim()
-        elem.className += (' ' + self.animatingClassName[1])
+        elem.className = elem.className
+          .replace(self.animatingClassName[0], '')
+          .trim()
+        elem.className += ' ' + self.animatingClassName[1]
       })
     },
     _leaveComplete (key, elements) {
@@ -410,7 +410,9 @@ When passing an array, the first item is the enter animation and the second is t
       }
       this.keysAnimating.splice(this.keysAnimating.indexOf(key), 1)
       elements.forEach(elem => {
-        elem.className = elem.className.replace(self.animatingClassName[1], '').trim()
+        elem.className = elem.className
+          .replace(self.animatingClassName[1], '')
+          .trim()
       })
     }
   }

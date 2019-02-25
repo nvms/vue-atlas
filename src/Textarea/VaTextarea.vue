@@ -3,7 +3,8 @@
     v-if="!showButtonsWarning"
     :class="classObjContainer"
     :style="styleObjContainer"
-    ref="textareaContainer">
+    ref="textareaContainer"
+  >
     <textarea
       ref="textarea"
       :disabled="disabled"
@@ -18,37 +19,40 @@
       :placeholder="placeholder"
       @keydown.tab="kd_tab"
       v-bind="$attrs"
-      v-model="currentValue">
-    </textarea>
-
-    <!-- v-on:keyup.enter="enterPressed" -->
+      v-model="currentValue"
+    />
 
     <va-input-ops
       v-if="buttons"
       :parent-position="position"
       @confirm="opsConfirm"
-      @cancel="opsCancel"/>
+      @cancel="opsCancel"
+    />
 
     <validate
       :name="name"
       :rules="rules"
       :custom-validate="customValidate"
-      :current="value">
-    </validate>
+      :current="value"
+    />
   </div>
   <div v-else>
     <va-alert type="warning">
       <h4>Hold on</h4>
       <p>
-        If you're going to use <b>buttons</b> with this textarea component, you need
-        to also use the <b>loading</b> prop.
-
-        Handle the <b>@confirm</b> event emitted by the input component, set the
-        <b>loading</b> prop to true, <i>do some task</i>, and finally set the <b>loading</b>
+        If you're going to use
+        <b>buttons</b> with this textarea component, you need
+        to also use the
+        <b>loading</b> prop.
+        Handle the
+        <b>@confirm</b> event emitted by the input component, set the
+        <b>loading</b> prop to true,
+        <i>do some task</i>, and finally set the
+        <b>loading</b>
         prop back to false.
-
         It is important that events happen in that order, because the input component
-        is watching the <b>loading</b> prop for those changes. That's how it knows to hide
+        is watching the
+        <b>loading</b> prop for those changes. That's how it knows to hide
         the confirm and cancel buttons.
       </p>
     </va-alert>
@@ -139,10 +143,16 @@ export default {
     validate
   },
   created () {
-    this.$on('Va@inputOpsCancel', (val) => { this.currentValue = val })
-    this.$on('Va@inputOpsConfirm', () => { })
-    this.$on('Va@inputOpsBlur', () => { this.focused = false })
-    this.$on('Va@pageScroll', () => { this.setPosition() })
+    this.$on('Va@inputOpsCancel', val => {
+      this.currentValue = val
+    })
+    this.$on('Va@inputOpsConfirm', () => {})
+    this.$on('Va@inputOpsBlur', () => {
+      this.focused = false
+    })
+    this.$on('Va@pageScroll', () => {
+      this.setPosition()
+    })
     // document.addEventListener('keyup', this.keyup)
   },
   beforeDestroy () {
@@ -161,10 +171,10 @@ export default {
     }
     if (this.autosize) {
       this.$nextTick(() => {
-        this.$refs.textareaContainer.style.height = this.$refs.textareaContainer.scrollHeight + 'px'
+        this.$refs.textareaContainer.style.height =
+          this.$refs.textareaContainer.scrollHeight + 'px'
       })
     }
-
   },
   watch: {
     loading (val) {
@@ -216,7 +226,6 @@ export default {
       setTimeout(() => {
         this.position = this.getPosition()
       }, 20)
-      
     },
     focus () {
       /**
@@ -224,7 +233,7 @@ export default {
        * this.$refs.input.focus() when the input is inside of something
        * like, say, a dropdown. We need to give the element time to be
        * added to the DOM before we send a focus event to it.
-       * 
+       *
        * This short timeout provides, what seems like, a fine amount of
        * time for this to happen without being noticable by the human eye.
        */
@@ -273,14 +282,15 @@ export default {
     resizeTextarea (event) {
       if (this.autosize) {
         this.$refs.textareaContainer.style.height = 'auto'
-        this.$refs.textareaContainer.style.height = (event.target.scrollHeight + 4) + 'px'
+        this.$refs.textareaContainer.style.height =
+          event.target.scrollHeight + 4 + 'px'
         this.position = this.getPosition()
       }
     }
   },
   computed: {
     styleObj () {
-      let {resize, actualWidth} = this
+      let { resize, actualWidth } = this
       let style = {}
 
       style['resize'] = resize ? 'both' : 'none'
@@ -289,7 +299,7 @@ export default {
       return style
     },
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-form-control'] = true
@@ -298,7 +308,7 @@ export default {
       return classes
     },
     styleObjContainer () {
-      let {minHeight, width} = this
+      let { minHeight, width } = this
       let style = {}
 
       style['width'] = width
@@ -307,7 +317,7 @@ export default {
       return style
     },
     classObjContainer () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-textarea-con'] = true
@@ -318,3 +328,18 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-textarea-con {
+  overflow-y: hidden;
+  .#{$class-prefix}-form-control {
+    line-height: 16px;
+  }
+}
+
+.#{$class-prefix}-textarea {
+  overflow-y: hidden;
+  min-height: 50px;
+  height: 100%;
+}
+</style>

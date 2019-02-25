@@ -1,8 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-err-tip`" v-if="validate && tips">
-    <!-- <va-icon type="exclamation-triangle" color="#DE350B"></va-icon> -->
-    {{tips}}
-  </div>
+  <div :class="`${classPrefix}-err-tip`" v-if="validate && tips">{{tips}}</div>
 </template>
 
 <script>
@@ -26,8 +23,7 @@ export default {
     name: {
       type: String
     },
-    current: {
-    },
+    current: {},
     classPrefix: {
       type: String,
       default: 'va'
@@ -43,15 +39,15 @@ export default {
     }
   },
   created () {
-    this.$on('Va@openValidate', (val) => {
+    this.$on('Va@openValidate', val => {
       this.validate = val
-      val ? this.vStatus = this.status : this.vStatus = ''
+      val ? (this.vStatus = this.status) : (this.vStatus = '')
     })
   },
   beforeDestroy () {
     this.dispatch('VaForm', 'Va@validateChange', {
       name: this.name,
-      result: {results: {}, isvalid: true}
+      result: { results: {}, isvalid: true }
     })
     this.dispatch('VaForm', 'Va@validateDestroy', {
       name: this.name,
@@ -71,14 +67,14 @@ export default {
         for (let key in val) {
           let obj = val[key]
           if (type.isObject(obj)) {
-            obj.tips ? tips += obj.tips + '  ' : ''
+            obj.tips ? (tips += obj.tips + '  ') : ''
             if (obj.validStatus !== 'success') {
               status = 'error'
             }
           }
         }
 
-        status !== 'error' ? status = 'success' : 0
+        status !== 'error' ? (status = 'success') : 0
 
         self.status = status
 
@@ -251,7 +247,7 @@ export default {
     rulesValid (value) {
       let self = this
 
-      self.rules.forEach((val) => {
+      self.rules.forEach(val => {
         self.rulesItemValid(val, value)
       })
 

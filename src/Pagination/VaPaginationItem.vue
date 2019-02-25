@@ -5,7 +5,8 @@
       :active="active"
       :disabled="disabled"
       type="subtle"
-      @click.native="handleClick">
+      @click.native="handleClick"
+    >
       <slot/>
     </va-button>
   </li>
@@ -40,7 +41,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {disabled, classPrefix} = this
+      let { disabled, classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-pagination-item-disabled'] = disabled

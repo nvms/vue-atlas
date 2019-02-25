@@ -6,51 +6,97 @@
 -->
 <template>
   <span :class="classObj" ref="itemText" v-on="itemMethod">
-
     <!-- The toggle icon -->
-    <span v-if="st && toggleType === 'circle'" :class="`${classPrefix}-sidebar-group-item-text-icon`">
-      <va-icon type="circle"></va-icon>
+    <span
+      v-if="st && toggleType === 'circle'"
+      :class="`${classPrefix}-sidebar-group-item-text-icon`"
+    >
+      <va-icon type="circle"/>
     </span>
 
     <span :class="`${classPrefix}-sidebar-group-item-text`">
-
       <!-- The item's FontAwesome icon, if any -->
       <span v-if="showIcon" :class="`${classPrefix}-sidebar-group-item-icon`">
-        <va-icon v-if="item.iconColor" :type="item.icon" :color="item.iconColor" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
-        <va-icon v-else :type="item.icon" :size="item.iconSize" :icon-style="item.iconStyle"></va-icon>
+        <va-icon
+          v-if="item.iconColor"
+          :type="item.icon"
+          :color="item.iconColor"
+          :size="item.iconSize"
+          :icon-style="item.iconStyle"
+        />
+        <va-icon
+          v-else
+          :type="item.icon"
+          :size="item.iconSize"
+          :icon-style="item.iconStyle"
+        />
       </span>
 
       <!-- If this is just a label -->
-      <span v-if="showLabel" :class="`${classPrefix}-sidebar-group-item-label`" :style="styleObj">
+      <span
+        v-if="showLabel"
+        :class="`${classPrefix}-sidebar-group-item-label`"
+        :style="styleObj"
+      >
         {{item.name}}
-        <span v-if="item.sub" :class="`${classPrefix}-sidebar-group-item-substring`">{{item.sub}}</span>
+        <span
+          v-if="item.sub"
+          :class="`${classPrefix}-sidebar-group-item-substring`"
+        >{{item.sub}}</span>
       </span>
 
       <!-- If this is a router link -->
-      <router-link v-if="showRouterLink" :to="item.meta.target" :class="`${classPrefix}-sidebar-group-item-router-link`" :style="styleObj">
+      <router-link
+        v-if="showRouterLink"
+        :to="item.meta.target"
+        :class="`${classPrefix}-sidebar-group-item-router-link`"
+        :style="styleObj"
+      >
         {{item.name}}
-        <span v-if="item.sub" :class="`${classPrefix}-sidebar-group-item-substring`">{{item.sub}}</span>
+        <span
+          v-if="item.sub"
+          :class="`${classPrefix}-sidebar-group-item-substring`"
+        >{{item.sub}}</span>
       </router-link>
 
       <!-- If this is a hyperlink -->
-      <a v-if="showHyperLink" :href="item.meta.target" :class="`${classPrefix}-sidebar-group-item-link`" :style="styleObj">
+      <a
+        v-if="showHyperLink"
+        :href="item.meta.target"
+        :class="`${classPrefix}-sidebar-group-item-link`"
+        :style="styleObj"
+      >
         {{item.name}}
-        <span v-if="item.sub" :class="`${classPrefix}-sidebar-group-item-substring`">{{item.sub}}</span>
+        <span
+          v-if="item.sub"
+          :class="`${classPrefix}-sidebar-group-item-substring`"
+        >{{item.sub}}</span>
       </a>
 
       <!-- If this is an external hyperlink -->
-      <a v-if="showExternalHyperLink" :href="item.meta.target" target="_blank" :class="`${classPrefix}-sidebar-group-item-external-link`" :style="styleObj">
+      <a
+        v-if="showExternalHyperLink"
+        :href="item.meta.target"
+        target="_blank"
+        :class="`${classPrefix}-sidebar-group-item-external-link`"
+        :style="styleObj"
+      >
         {{item.name}}
-        <span v-if="item.sub" :class="`${classPrefix}-sidebar-group-item-substring`">{{item.sub}}</span>
+        <span
+          v-if="item.sub"
+          :class="`${classPrefix}-sidebar-group-item-substring`"
+        >{{item.sub}}</span>
       </a>
 
       <!-- If there's a lozenge -->
       <span v-if="item.lozenge" style="display: flex;">
-        <va-lozenge :bold="item.lozenge.bold" uppercase :type="item.lozenge.type">{{item.lozenge.text}}</va-lozenge>
+        <va-lozenge
+          :bold="item.lozenge.bold"
+          uppercase
+          :type="item.lozenge.type"
+        >{{item.lozenge.text}}</va-lozenge>
       </span>
-
     </span>
-
   </span>
 </template>
 
@@ -86,7 +132,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@showToggleChange', (val) => {
+    this.$on('Va@showToggleChange', val => {
       this.st = val
     })
   },
@@ -126,7 +172,7 @@ export default {
       return this.showLink && this.$router !== undefined
     },
     classObj () {
-      let {classPrefix, minified} = this
+      let { classPrefix, minified } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar-group-item-text'] = true
@@ -135,7 +181,7 @@ export default {
       return classes
     },
     styleObj () {
-      let {showIcon} = this
+      let { showIcon } = this
       let style = {}
 
       style['padding-left'] = showIcon ? '0px' : '0px'
@@ -163,8 +209,7 @@ export default {
     }
   },
   watch: {
-    item () {
-    },
+    item () {},
     $route () {
       this.setAsActiveIfActive()
     }

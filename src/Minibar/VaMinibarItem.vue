@@ -1,12 +1,19 @@
 <template>
   <div>
-    <va-tooltip v-if="tooltip" :content="tooltip" placement="right" trigger="hover" effect="tooltip-fade-right" arrow>
+    <va-tooltip
+      v-if="tooltip"
+      :content="tooltip"
+      placement="right"
+      trigger="hover"
+      effect="tooltip-fade-right"
+      arrow
+    >
       <div :class="classObj">
-          <slot />
+        <slot/>
       </div>
     </va-tooltip>
     <div v-else :class="classObj">
-      <slot />
+      <slot/>
     </div>
   </div>
 </template>
@@ -18,8 +25,7 @@ export default {
     brand: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'If true, this item will have a larger bottom margin so as to make a distinction between it and other items.'
+      required: false
     },
     tooltip: {
       type: String,
@@ -33,7 +39,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, brand} = this
+      let { classPrefix, brand } = this
       let classes = {}
 
       classes[classPrefix + '-minibar-item'] = true

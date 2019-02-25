@@ -1,4 +1,4 @@
-import { mount, shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import VaInput from '@/Input/VaInput.vue'
 
 describe('VaInput.vue', () => {
@@ -43,7 +43,7 @@ describe('VaInput.vue', () => {
     wrapper.vm.update = updateMock
     wrapper.update()
 
-    const input = wrapper.find('.va-form-control').trigger('input')
+    wrapper.find('.va-form-control').trigger('input')
     expect(updateMock.mock.calls.length).toBe(1)
   })
 
@@ -53,7 +53,7 @@ describe('VaInput.vue', () => {
     wrapper.vm.enterPressed = enterMock
     wrapper.update()
 
-    const input = wrapper.find('.va-form-control').trigger('keyup.enter')
+    wrapper.find('.va-form-control').trigger('keyup.enter')
     expect(enterMock.mock.calls.length).toBe(1)
   })
 

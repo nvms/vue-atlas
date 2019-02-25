@@ -1,12 +1,12 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
     <validate
       :name="name"
       :rules="rules"
       :custom-validate="customValidate"
-      :current="currentValue">
-    </validate>
+      :current="currentValue"
+    />
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
     init () {
       let children = this.$children
       let ret = []
-      children.forEach((item) => {
+      children.forEach(item => {
         item.currentChecked ? ret.push(item.label) : ''
       })
       this.currentValue = ret
@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, vertical} = this
+      let { classPrefix, vertical } = this
       let classes = {}
 
       classes[classPrefix + '-btn-group'] = !vertical
@@ -91,7 +91,6 @@ export default {
 
       return classes
     }
-
   }
 }
 </script>

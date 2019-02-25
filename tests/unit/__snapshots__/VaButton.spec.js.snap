@@ -2,7 +2,8 @@
 
 exports[`VaButton.vue icon passed to slot should render correctly 1`] = `
 <a tabindex="0" class="va-btn va-btn-md va-btn-default">
-  <div class="va-btn-text-fade"><i class="fas fa-home" style="font-size: 1em; margin: 0px; background-color: transparent; border-radius: 4px; padding: 0px;"></i>
+  <div class="va-btn-text-fade">
+    <!----> <i class="fas fa-home" style="font-size: 1em; margin: 0px; background-color: transparent; border-radius: 4px; padding: 0px;"></i>
     <!---->
   </div>
   <!---->
@@ -17,7 +18,8 @@ exports[`VaButton.vue renders correctly 1`] = `
   <div
     class="va-btn-text-fade"
   >
-     
+    <!---->
+      
     <!---->
   </div>
    
@@ -27,9 +29,29 @@ exports[`VaButton.vue renders correctly 1`] = `
 
 exports[`VaButton.vue should change loading state on click 1`] = `
 <a tabindex="0" class="va-btn va-btn-md va-btn-default" style="width: 0px; height: 0px;">
-  <div class="va-btn-text-fade va-btn-text-fade-out">Hello
+  <div class="va-btn-text-fade va-btn-text-fade-out">
+    <!----> Hello
     <!---->
   </div>
   <va-loading color="#45526B" size="md"></va-loading>
+</a>
+`;
+
+exports[`VaButton.vue value passed to iconAfter should render correctly 1`] = `
+<a tabindex="0" class="va-btn va-btn-md va-btn-default">
+  <div class="va-btn-text-fade">
+    <!----> Hello <va-icon type="home" style="position: absolute; right: 3px;"></va-icon>
+  </div>
+  <!---->
+</a>
+`;
+
+exports[`VaButton.vue value passed to iconBefore should render correctly 1`] = `
+<a tabindex="0" class="va-btn va-btn-md va-btn-default">
+  <div class="va-btn-text-fade">
+    <va-icon type="home" style="position: absolute; left: 3px;"></va-icon> Hello
+    <!---->
+  </div>
+  <!---->
 </a>
 `;

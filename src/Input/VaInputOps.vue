@@ -7,16 +7,18 @@
         :loading="loading"
         type="default"
         @click.native="confirmClicked"
-        style="margin-right: 3px;">
-        <va-icon type="check" size="10px"></va-icon>
+        style="margin-right: 3px;"
+      >
+        <va-icon type="check" size="10px"/>
       </va-button>
       <va-button
         size="sm"
         :style="{ visibility: loading ? 'hidden' : 'visible' }"
         ref="cancelButton"
         type="default"
-        @click.native="cancel">
-        <va-icon type="times" size="10px"></va-icon>
+        @click.native="cancel"
+      >
+        <va-icon type="times" size="10px"/>
       </va-button>
     </div>
   </transition>
@@ -46,16 +48,28 @@ export default {
       position: {},
       shouldBlur: false,
       loading: false,
-      opacity: false, /* exists to hide element until getPosition finishes to prevent flicker */
+      opacity: false /* exists to hide element until getPosition finishes to prevent flicker */
     }
   },
   created () {
-    this.$on('Va@inputBlur', (val) => { this.handleBlur(val) })
-    this.$on('Va@inputFocus', (val) => { this.handleFocus(val) })
-    this.$on('Va@inputLoading', (val) => { this.handleInputLoading(val) })
-    this.$on('Va@inputUpdate', (val) => { this.handleInputUpdate(val) })
-    this.$on('Va@inputEnterPressed', (val) => { this.handleEnterPressed(val) })
-    this.$on('Va@inputCurrentValueUpdate', (val) => { this.handleCurrentValueUpdate(val) })
+    this.$on('Va@inputBlur', val => {
+      this.handleBlur(val)
+    })
+    this.$on('Va@inputFocus', val => {
+      this.handleFocus(val)
+    })
+    this.$on('Va@inputLoading', val => {
+      this.handleInputLoading(val)
+    })
+    this.$on('Va@inputUpdate', val => {
+      this.handleInputUpdate(val)
+    })
+    this.$on('Va@inputEnterPressed', val => {
+      this.handleEnterPressed(val)
+    })
+    this.$on('Va@inputCurrentValueUpdate', val => {
+      this.handleCurrentValueUpdate(val)
+    })
   },
   mounted () {
     const $body = document.querySelector('body')
@@ -145,7 +159,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-input-ops'] = true
@@ -159,8 +173,9 @@ export default {
       let position = this.position
 
       style['position'] = 'fixed'
-      style['top'] = (parentPosition.top + parentPosition.height + 3) + 'px'
-      style['left'] = parentPosition.left + (parentPosition.width - position.width) + 'px'
+      style['top'] = parentPosition.top + parentPosition.height + 3 + 'px'
+      style['left'] =
+        parentPosition.left + (parentPosition.width - position.width) + 'px'
       style['opacity'] = opacity ? '1' : '0'
 
       return style
@@ -190,4 +205,3 @@ export default {
   }
 }
 </script>
-

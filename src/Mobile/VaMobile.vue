@@ -22,7 +22,9 @@ export default {
     }
   },
   created () {
-    this.$on('Va@mobileIsMobile', (val) => { this.isMobile = val })
+    this.$on('Va@mobileIsMobile', val => {
+      this.isMobile = val
+    })
 
     /**
      * In case this component is instantiated after the App

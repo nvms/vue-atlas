@@ -1,9 +1,19 @@
 <template>
   <div class="wrap" :style="{width: width || '100%'}">
-    <input ref="range" :class="`${classPrefix}-range`" :value="currentValue" type="range" :name="name" :min="min" :max="max" :step="step" @input="onInput" />
+    <input
+      ref="range"
+      :class="`${classPrefix}-range`"
+      :value="currentValue"
+      type="range"
+      :name="name"
+      :min="min"
+      :max="max"
+      :step="step"
+      @input="onInput"
+    >
     <transition name="fade">
       <div v-if="showoutput" class="output_position">
-        <output for="r" ></output>
+        <output for="r"/>
       </div>
     </transition>
   </div>
@@ -92,37 +102,39 @@ export default {
       let max = parseInt(this.max, 10)
 
       /**
-      *  I wonder if there's a way to figure out the width of the runnable track..
-      *  Right now, we listen for isMobile from App.
-      *  Width is 16px on desktop, 28px on mobile.
-      */
+       *  I wonder if there's a way to figure out the width of the runnable track..
+       *  Right now, we listen for isMobile from App.
+       *  Width is 16px on desktop, 28px on mobile.
+       */
 
       let thumbWidth
-      this.isMobile ? thumbWidth = 28 : thumbWidth = 16
+      this.isMobile ? (thumbWidth = 28) : (thumbWidth = 16)
 
       max = max - min
       cv = cv - min
       min = min - min
 
       if (min === 0 && max === 100) {
-        return cv * w / 100 - (cv * thumbWidth / 100) // because the thumb is 16px wide
+        return (cv * w) / 100 - (cv * thumbWidth) / 100 // because the thumb is 16px wide
       } else {
-        let p = cv * 100 / max
-        let pp = p * w / 100
-        pp = pp - (p * thumbWidth / 100)
+        let p = (cv * 100) / max
+        let pp = (p * w) / 100
+        pp = pp - (p * thumbWidth) / 100
 
         return pp
       }
     },
     init () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       var wrp = document.createElement('div')
       var preBar = document.createElement('p')
 
       wrp.className = classPrefix + '-range-barCnt'
       preBar.className = classPrefix + '-range-preBar'
 
-      this.$refs.range.className = this.$refs.range.className.length ? (this.$refs.range.className + ' colorized') : 'colorized'
+      this.$refs.range.className = this.$refs.range.className.length
+        ? this.$refs.range.className + ' colorized'
+        : 'colorized'
       this.$refs.range.parentNode.replaceChild(wrp, this.$refs.range)
 
       wrp.appendChild(this.$refs.range)
@@ -157,7 +169,7 @@ export default {
     }
   },
   created () {
-    this.$on('Va@rangeIsMobile', (val) => {
+    this.$on('Va@rangeIsMobile', val => {
       if (val === true) {
         this.isMobile = true
       } else {
@@ -182,3 +194,114 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.#{$class-prefix}-range-barCnt {
+  position: relative;
+  height: 10px;
+  padding: 5px 0px;
+}
+
+.#{$class-prefix}-range-barCnt .#{$class-prefix}-range-preBar {
+  position: absolute;
+  background-color: $B400;
+  height: 5px;
+  line-height: 5px;
+  z-index: 200;
+  border-radius: 3px;
+  padding: 0px;
+  margin: 0px;
+  pointer-events: none;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  padding: 0px;
+  margin: 0px;
+  cursor: default;
+  z-index: 100;
+  left: 0px;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-runnable-track {
+  height: 5px;
+  background: $N30;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  position: relative;
+  z-index: 201 !important;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.31) 0px 0px 3px 1px;
+  margin-top: -5px;
+}
+
+@media (max-width: 768px) {
+  input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-thumb {
+    height: 28px;
+    width: 28px;
+    margin-top: -12px;
+  }
+  .#{$class-prefix}-range-barCnt {
+    margin-top: 14px;
+    height: 28px;
+    line-height: 28px;
+  }
+  .#{$class-prefix}-range-barCnt .#{$class-prefix}-range-preBar {
+    height: 7px;
+    line-height: 7px;
+  }
+}
+
+input[type='range'].#{$class-prefix}-range.colorized:focus {
+  outline: none;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 1px 2px rgb(11, 66, 175),
+    0 7px 12px -3px rgba(9, 30, 66, 0.25);
+}
+
+input[type='range'].#{$class-prefix}-range.colorized:focus::-webkit-slider-runnable-track {
+  background: $N30;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  background: $N30;
+  border: none;
+  border-radius: 3px;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.31) 0px 0px 3px 1px;
+  z-index: 400;
+}
+
+input[type='range'].#{$class-prefix}-range.colorized::-moz-focus-outer {
+  border: 0;
+}
+
+input[type='range'].#{$class-prefix}-range.colored:focus::-moz-range-thumb {
+  box-shadow: 0 0 1px 2px rgb(11, 66, 175),
+    0 7px 12px -3px rgba(9, 30, 66, 0.25);
+}
+</style>
