@@ -1,6 +1,9 @@
 <template>
-  <span :class="classObj" :style="{margin:margin}">
-    <slot />
+  <span
+    :class="classObj"
+    :style="{ margin: margin }"
+  >
+    <slot/>
   </span>
 </template>
 
@@ -21,14 +24,12 @@ export default {
           'warning',
           'danger'
         ].includes(v)
-      },
-      note: 'The style of badge to render.'
+      }
     },
     margin: {
       type: String,
       default: '0px',
-      required: false,
-      note: 'Margin to be applied to the outside of the badge element.'
+      required: false
     },
     classPrefix: {
       type: String,
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, type} = this
+      let { classPrefix, type } = this
       let classes = {}
 
       classes[classPrefix + '-badge'] = true
@@ -85,8 +86,4 @@ export default {
     color: $N0;
   }
 }
-
-.#{$class-prefix}-btn .#{$class-prefix}-badge {}
-
-.#{$class-prefix}-btn-xs .#{$class-prefix}-badge {}
 </style>

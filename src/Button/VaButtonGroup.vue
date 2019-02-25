@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, vertical} = this
+      let { classPrefix, vertical } = this
       let classes = {}
 
       classes[classPrefix + '-btn-group'] = true

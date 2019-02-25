@@ -4,8 +4,9 @@
       ref="dom"
       :class="classObj"
       @click="handleClick"
-      v-if="show">
-      <span v-text="text" />
+      v-if="show"
+    >
+      <span v-text="text"/>
     </div>
   </transition>
 </template>
@@ -16,8 +17,7 @@ export default {
   props: {
     text: {
       type: String,
-      required: true,
-      note: 'The inner text of the toast.'
+      required: true
     },
     placement: {
       type: String,
@@ -32,8 +32,7 @@ export default {
           'bottom-left',
           'center'
         ].includes(v)
-      },
-      note: 'Where in the window the toast will appear.'
+      }
     },
     type: {
       type: String,
@@ -48,18 +47,15 @@ export default {
           'warning',
           'danger'
         ].includes(v)
-      },
-      note: 'What kind of toast do you like?'
+      }
     },
     duration: {
       type: Number,
-      default: 3000,
-      note: 'Length in milliseconds until the toast disappears.'
+      default: 3000
     },
     closeOnClick: {
       type: Boolean,
-      default: true,
-      note: 'When true, clicking the toast will dismiss it immediately.'
+      default: true
     },
     classPrefix: {
       type: String,
@@ -73,7 +69,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, placement, type} = this
+      let { classPrefix, placement, type } = this
       let classes = {}
 
       classes[classPrefix + '-toast'] = true
@@ -98,10 +94,13 @@ export default {
           this.$nextTick(() => {
             // recompute position
             if (this.placement === 'top' || this.placement === 'bottom') {
-              this.$refs.dom.style.marginLeft = -1 * this.$refs.dom.offsetWidth / 2 + 'px'
+              this.$refs.dom.style.marginLeft =
+                (-1 * this.$refs.dom.offsetWidth) / 2 + 'px'
             } else if (this.placement === 'center') {
-              this.$refs.dom.style.marginLeft = -1 * this.$refs.dom.offsetWidth / 2 + 'px'
-              this.$refs.dom.style.marginTop = -1 * this.$refs.dom.offsetHeight / 2 + 'px'
+              this.$refs.dom.style.marginLeft =
+                (-1 * this.$refs.dom.offsetWidth) / 2 + 'px'
+              this.$refs.dom.style.marginTop =
+                (-1 * this.$refs.dom.offsetHeight) / 2 + 'px'
             }
           })
         }

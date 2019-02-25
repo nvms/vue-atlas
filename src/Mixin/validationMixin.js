@@ -1,15 +1,13 @@
 export default {
   props: {
     name: {
-      type: String,
-      note: 'For validation: name of the validation element.'
+      type: String
     },
     customValidate: {
       type: Function
     },
     rules: {
-      type: Array,
-      note: 'For validation: custom validation rules.'
+      type: Array
     }
   }
 }

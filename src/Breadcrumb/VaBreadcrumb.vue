@@ -11,14 +11,12 @@ export default {
     separator: {
       type: String,
       default: '/',
-      required: false,
-      note: 'The separator to be rendered between breadcrumb items.'
+      required: false
     },
     separatorIcon: {
       type: String,
       default: '',
-      required: false,
-      note: 'The separator icon to be rendered between breadcrumb items. It\'s a va-icon component, so a valid icon type must be passed.'
+      required: false
     },
     classPrefix: {
       type: String,
@@ -38,11 +36,9 @@ export default {
   cursor: default;
   &-item {
     color: $N200;
-    &-icon {
-
-    }
-    &-icon, &-separator {
-      margin:0 5px !important;
+    &-icon,
+    &-separator {
+      margin: 0 5px !important;
     }
     &:last-child {
       .#{$class-prefix}-breadcrumb-item-icon {
