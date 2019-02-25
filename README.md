@@ -46,7 +46,7 @@ Vue.use(VaDropdown)
 
 ## 🎉 Contributors
 
-If you would like to contribte, please read [CONTRIBUTING.md](https://github.com/nvms/vue-atlas/blob/master/.github/CONTRIBUTING.md).
+If you would like to contribute, please read [CONTRIBUTING.md](https://github.com/nvms/vue-atlas/blob/master/.github/CONTRIBUTING.md).
 
 Many thanks to those of you who have taken an interest in this project and have decided to make contributions. Significant contribution will get you added to the list!
 
