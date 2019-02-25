@@ -9,7 +9,7 @@
           <div
             :class="`${classPrefix}-notification-content-inner-${type}-left`"
           >
-            <va-icon :type="notificationIconType"></va-icon>
+            <va-icon :type="notificationIconType"/>
           </div>
           <div
             :class="`${classPrefix}-notification-content-inner-${type}-right`"
@@ -18,7 +18,7 @@
               :class="`${classPrefix}-notification-content-inner-${type}-right-close`"
             >
               <va-button @click="close" type="subtle" size="sm">
-                <va-icon size="14px" type="times"></va-icon>
+                <va-icon size="14px" type="times"/>
               </va-button>
             </div>
             <div
@@ -27,7 +27,7 @@
             <div
               :class="`${classPrefix}-notification-content-inner-${type}-right-message`"
               v-html="message"
-            ></div>
+            />
           </div>
         </div>
       </div>
@@ -230,7 +230,6 @@ export default {
   &-dialog {
     position: relative;
     width: auto;
-    max-width: 100%;
     margin: 40px 40px 0 0;
   }
 
@@ -282,7 +281,6 @@ export default {
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        // background-color: $borderColor;
         border-left: 3px solid $borderColor;
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
