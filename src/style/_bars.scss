@@ -127,7 +127,7 @@
 
   &-compact {
     .#{$class-prefix}-sidebar-group-item {
-      min-height: 26px;
+      min-height: 20px;
       line-height: inherit;
     }
 
@@ -136,11 +136,11 @@
     }
 
     .#{$class-prefix}-sidebar-group-item-text {
-      min-height: 26px;
+      min-height: 20px;
     }
 
     .#{$class-prefix}-sidebar-group-item-text a {
-      min-height: 26px;
+      min-height: 20px;
     }
   }
 
@@ -241,7 +241,7 @@ sidebar item defaults
   white-space: nowrap;
   padding: 0px 9px 0px 12px;
   font-size: 14px;
-  line-height: 2.2em;
+  line-height: 1em;
   border-radius: 3px;
   min-height: 36px;
   font-weight: 400;
@@ -272,7 +272,7 @@ sidebar item defaults
       position: relative;
       min-height: 36px;
       justify-content: center;
-      line-height: 2;
+      line-height: 1;
     }
 
     &-icon {
@@ -299,7 +299,7 @@ sidebar item defaults
   color: inherit !important;
   display: flex;
   flex-direction: column;
-  line-height: 2em;
+  line-height: 1em;
   max-width: 100%;
 
   white-space: nowrap; 
@@ -476,6 +476,7 @@ Disable box shadow and background on active/focus textLinks
   .#{$class-prefix}-sidebar-group-item {
     &.active {
       background: none !important;
+      text-decoration: underline;
     }
     &:active {
       background: none !important;
@@ -484,6 +485,12 @@ Disable box shadow and background on active/focus textLinks
     &:hover {
       background: none !important;
       text-decoration: none;
+      a, a:link, a:active, a:visited {
+        text-decoration: underline !important;
+      }
+      .#{$class-prefix}-sidebar-group-item-label {
+        text-decoration: underline;
+      }
     }
   }
 }
