@@ -155,7 +155,7 @@ const install = function (Vue, locale) {
   Vue.directive('VaPosition', relocate)
   Vue.prototype.VaToast = VaToastMethod
   Vue.prototype.VaModal = VaModalMethod
-  Vue.prototype.VaNotification = VaNotificationMethod
+  Vue.prototype.notification = VaNotificationMethod
   Vue.prototype.VaLocale = locale || 'en'
   window.VaLocale = locale || 'en'
 }
