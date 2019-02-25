@@ -82,6 +82,7 @@ const VaSidebarGroup = {
       },
       [level0]
     )
+    const contentSlot = createElement('div', this.$slots.default)
     const headerItem = createElement(
       'div',
       {
@@ -96,7 +97,7 @@ const VaSidebarGroup = {
       {
 
       },
-      [headerItem, treeNavigation]
+      [headerItem, contentSlot, treeNavigation]
     )
 
     return entireGroup

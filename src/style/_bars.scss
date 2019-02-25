@@ -164,8 +164,6 @@
         justify-content: flex-start;
       }
 
-      i.#{$class-prefix}-fa {}
-
       &:active {
         color: $N400;
         -webkit-box-shadow: inset 0px 0px 0px 2px $B200;
@@ -213,8 +211,6 @@
     -ms-user-select: none;
     user-select: none;
   }
-
-  li {}
 }
 
 .#{$class-prefix}-sidebar-navigationlevel {
@@ -257,16 +253,11 @@ sidebar item defaults
     min-width: 20px;
     display: flex;
     justify-content: space-around;
-    // position: absolute;
   }
 
   &:active,
   &:focus {
     outline: none;
-
-    .#{$class-prefix}-sidebar-group-item-icon {
-      // color: $B300;
-    }
   }
 
   &-text {
@@ -274,7 +265,6 @@ sidebar item defaults
     flex: 1;
     align-items: center;
     min-height: 36px;
-
     max-width: 100%;
 
     a {
@@ -296,16 +286,10 @@ sidebar item defaults
   }
 }
 
-.#{$class-prefix}-sidebar-group-item-toggle {
-  &-closed {}
-}
-
 .#{$class-prefix}-sidebar-group-item-toggle-icon {
   position: relative;
   top: -1.5px;
   margin-right: 7px;
-
-  &-closed {}
 }
 
 .#{$class-prefix}-sidebar-group-item-label,
@@ -321,9 +305,6 @@ sidebar item defaults
   white-space: nowrap; 
   overflow: hidden;
   text-overflow: ellipsis;
-  // padding-left: 30px;
-
-  &:active {}
 
   &:active,
   &:focus {
@@ -341,15 +322,6 @@ sidebar item defaults
   margin-bottom: 7px;
 }
 
-/*
-        _                _           _     _           
-  _ __ | | __ _  ___ ___| |__   ___ | | __| | ___ _ __ 
- | '_ \| |/ _` |/ __/ _ \ '_ \ / _ \| |/ _` |/ _ \ '__|
- | |_) | | (_| | (_|  __/ | | | (_) | | (_| |  __/ |   
- | .__/|_|\__,_|\___\___|_| |_|\___/|_|\__,_|\___|_|   
- |_|
-foundation
-*/
 .#{$class-prefix}-sidebar {
   .#{$class-prefix}-placeholder {
     margin: 10px 5px 40px 20px;
@@ -402,9 +374,6 @@ foundation
   }
 }
 
-/*
-placeholder theme mixin
-*/
 @mixin placeholder-theme-mixin($textLineBG,
 $textLineBeforeBorder,
 $headingImageBG,
