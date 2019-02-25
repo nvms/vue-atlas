@@ -1,6 +1,8 @@
 <template>
   <div :class="classObj" :style="styleObj">
+    <div :class="`${classPrefix}-sidebar-scrollarea`">
       <slot />
+    </div>
   </div>
 </template>
 
