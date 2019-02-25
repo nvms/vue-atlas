@@ -1,43 +1,43 @@
 <template>
-  <div :class="[`${classPrefix}-dropdown-con`, classObj]">
+  <div
+    :class="[`${classPrefix}-dropdown-con`, classObj]"
+  >
     <span ref="trigger" :focus="onFocus">
-      <slot name="trigger" />
+      <slot name="trigger"/>
     </span>
 
     <transition :name="effect">
-      <ul v-va-position="show" :class="`${classPrefix}-dropdown-menu`" v-show="show">
-        <slot />
+      <ul
+        v-va-position="show"
+        :class="`${classPrefix}-dropdown-menu`"
+        v-show="show"
+      >
+        <slot/>
       </ul>
     </transition>
-
   </div>
 </template>
 
 <script>
-  import EventListener from '../utils/EventListener'
+import EventListener from '../utils/EventListener'
 
-  export default {
+export default {
   name: 'VaDropdown',
   props: {
     triggerEvent: {
       type: String,
       default: 'click',
-      required: false,
-      note: 'Trigger method. Can be either \'click\' or \'hover\'.'
+      required: false
     },
     clickClose: {
       type: Boolean,
       default: false,
-      required: false,
-      note: `If true, require that the trigger element be clicked
-            again in order to close the dropdown menu. Otherwise,
-            clicking anywhere else in the window will close it.`
+      required: false
     },
     effect: {
       type: String,
       default: 'fadeDown',
-      required: false,
-      note: 'The effect to use.'
+      required: false
     },
     tall: {
       type: Boolean,
@@ -67,12 +67,11 @@
       this.show ? this.close() : this.open()
       this.$emit('toggle')
     },
-    onFocus () {
-    }
+    onFocus () {}
   },
   computed: {
     classObj () {
-      let {classPrefix, tall} = this
+      let { classPrefix, tall } = this
       let classes = {}
 
       classes[classPrefix + '-dropdown-selected'] = this.show
@@ -87,7 +86,7 @@
       let trig = this.$refs.trigger.children[0]
       if (this.triggerEvent === 'click') {
         this._clickEvent = EventListener.listen(trig, 'click', this.toggle)
-        this._closeEvent = EventListener.listen(window, 'click', (e) => {
+        this._closeEvent = EventListener.listen(window, 'click', e => {
           if (!this.clickClose && !el.contains(e.target) && this.show) {
             this.close()
           }
@@ -113,7 +112,7 @@
 </script>
 
 <style lang="scss">
-@mixin dropdown-theme-mixin (
+@mixin dropdown-theme-mixin(
   $menuBackground,
   $menuBoxShadow,
   $menuScrollbarThumbBackground,
@@ -126,7 +125,7 @@
   $selectedColor,
   $selectedHoverBackground,
   $selectedHoverColor
-  ) {
+) {
   &-con {
     .#{$class-prefix}-dropdown-menu {
       background: $menuBackground;
@@ -137,10 +136,11 @@
           background: $menuScrollbarThumbBackgroundHover;
         }
       }
-      >li>a, >div>li>a {
+      > li > a,
+      > div > li > a {
         color: $liAnchorColor;
         &:hover {
-          background: $liAnchorColorHoverBackground
+          background: $liAnchorColorHoverBackground;
         }
         &:active {
           color: $liAnchorColorActiveColor;
@@ -154,7 +154,7 @@
   trigger that is currently active, meaning the dropdown is opened.
   */
   &-selected {
-    >span>div>a.#{$class-prefix}-btn {
+    > span > div > a.#{$class-prefix}-btn {
       background: $selectedBackground;
       color: $selectedColor;
       &:hover {
@@ -182,7 +182,10 @@
 .#{$class-prefix}--theme-light.#{$class-prefix}-dropdown {
   @include dropdown-theme-mixin(
     $menuBackground: $N0,
-    $menuBoxShadow: (rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px),
+    $menuBoxShadow: (
+      rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.31) 0px 0px 1px
+    ),
     $menuScrollbarThumbBackground: rgba(23, 47, 87, 0.22),
     $menuScrollbarThumbBackgroundHover: rgba(9, 30, 66, 0.45),
     $liAnchorColor: $N800,
@@ -196,8 +199,8 @@
   );
 }
 
-.#{$class-prefix}-dropdown-con>span>div>a.#{$class-prefix}-btn,
-.#{$class-prefix}-dropdown-con>span>div>a.#{$class-prefix}-btn:hover {
+.#{$class-prefix}-dropdown-con > span > div > a.#{$class-prefix}-btn,
+.#{$class-prefix}-dropdown-con > span > div > a.#{$class-prefix}-btn:hover {
   cursor: default;
 }
 
@@ -254,7 +257,8 @@
       // overflow-y: auto;
     }
 
-    >li, >div>li {
+    > li,
+    > div > li {
       white-space: nowrap;
       display: block;
 
@@ -267,7 +271,8 @@
       }
     }
 
-    >li>a, >div>li>a {
+    > li > a,
+    > div > li > a {
       display: flex;
       justify-content: space-between;
       padding: 5px 12px;
@@ -303,8 +308,14 @@
 /**
 Dropdowns, while active, don't need a focus ring. It shows focus state by changing the background color.
 */
-.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected>span>div>.#{$class-prefix}-btn:focus:not(:active):not(.#{$class-prefix}-select-btn-open),
-.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected>span>div>.#{$class-prefix}-btn-focused:not(:active):not(.#{$class-prefix}-select-btn-open) {
+.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected
+  > span
+  > div
+  > .#{$class-prefix}-btn:focus:not(:active):not(.#{$class-prefix}-select-btn-open),
+.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected
+  > span
+  > div
+  > .#{$class-prefix}-btn-focused:not(:active):not(.#{$class-prefix}-select-btn-open) {
   box-shadow: none !important;
 }
 
@@ -315,12 +326,12 @@ that resides inside of the va-topbar element.
 
 .#{$class-prefix}-topbar--theme-blue {
   .#{$class-prefix}-dropdown-selected {
-    >span>div>a.#{$class-prefix}-btn {
+    > span > div > a.#{$class-prefix}-btn {
       background-color: $B500;
       color: $N20;
     }
 
-    >span>div>a.#{$class-prefix}-btn-primary-dark {
+    > span > div > a.#{$class-prefix}-btn-primary-dark {
       background: $B400;
     }
   }
@@ -328,12 +339,12 @@ that resides inside of the va-topbar element.
 
 .#{$class-prefix}-topbar--theme-purple {
   .#{$class-prefix}-dropdown-selected {
-    >span>div>a.#{$class-prefix}-btn {
+    > span > div > a.#{$class-prefix}-btn {
       background-color: $P400;
       color: $N20;
     }
 
-    >span>div>a.#{$class-prefix}-btn-purple-dark {
+    > span > div > a.#{$class-prefix}-btn-purple-dark {
       background: $P400;
     }
   }

@@ -1,14 +1,20 @@
 <template>
   <span :class="`${classPrefix}-breadcrumb-item`">
-
     <span
       :class="[classPrefix + '-breadcrumb-item-inner', to ? classPrefix + '-breadcrumb-link' : '']"
-      ref="link">
+      ref="link"
+    >
       <slot/>
     </span>
-
-    <va-icon v-if="separatorIcon" :type="separatorIcon" :class="`${classPrefix}-breadcrumb-item-icon`"></va-icon>
-    <span v-else :class="`${classPrefix}-breadcrumb-item-separator`">{{separator}}</span>
+    <va-icon
+      v-if="separatorIcon"
+      :type="separatorIcon"
+      :class="`${classPrefix}-breadcrumb-item-icon`"
+    ></va-icon>
+    <span
+      v-else
+      :class="`${classPrefix}-breadcrumb-item-separator`"
+    >{{separator}}</span>
   </span>
 </template>
 
@@ -20,8 +26,7 @@ export default {
     replace: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'When true, the router method used is replace() instead of push(), which does not leave a history trail.'
+      required: false
     },
     classPrefix: {
       type: String,

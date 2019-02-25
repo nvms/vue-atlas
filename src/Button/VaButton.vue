@@ -6,318 +6,337 @@
     @keydown.enter="enterKeyDown"
     @keyup.enter="enterKeyUp"
     ref="btn"
-    tabindex="0">
+    tabindex="0"
+  >
     <div
       :class="innerClassObj"
-      :style="innerStyleObj">
+      :style="innerStyleObj"
+    >
       <va-icon
         v-if="iconBefore !== undefined"
         :type="iconBefore"
-        :style="iconBeforeStyleObj" />
-        <slot/>
-        <va-icon
-          v-if="iconAfter !== undefined"
-          :type="iconAfter"
-          :style="iconAfterStyleObj" />
+        :style="iconBeforeStyleObj"
+      />
+      <slot/>
+      <va-icon
+        v-if="iconAfter !== undefined"
+        :type="iconAfter"
+        :style="iconAfterStyleObj"
+      />
     </div>
-    <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
+    <va-loading
+      :color="spinColor"
+      :size="size"
+      v-if="loadingSpinner"
+    />
   </a>
 </template>
 
 <script>
-  import EventListener from '../utils/EventListener'
+import EventListener from '../utils/EventListener'
 
-  export default {
-    name: 'VaButton',
-    props: {
-      type: {
-        type: String,
-        default: 'default',
-        required: false,
-        validator (v) {
-          return [
-            'default',
-            'primary',
-            'primary-light',
-            'primary-dark',
-            'paleblue',
-            'success',
-            'info',
-            'warning',
-            'danger',
-            'subtle',
-            'link',
-            'subtle-link',
-            'active',
-            'dark',
-            'darker',
-            'purple',
-            'purple-light',
-            'purple-dark',
-            'black'
-          ].includes(v)
-        }
-      },
-      size: {
-        type: String,
-        default: 'md',
-        required: false,
-        validator (v) {
-          return [
-            'xs',
-            'sm',
-            'md',
-            'lg'
-          ].includes(v)
-        }
-      },
-      active: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      disabled: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      block: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      loading: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      round: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      focused: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      tall: {
-        type: Boolean,
-        default: false,
-        required: false
-      },
-      iconBefore: {
-        type: String,
-        required: false
-      },
-      iconAfter: {
-        type: String,
-        required: false
-      },
-      classPrefix: {
-        type: String,
-        default: 'va'
+export default {
+  name: 'VaButton',
+  props: {
+    type: {
+      type: String,
+      default: 'default',
+      required: false,
+      validator (v) {
+        return [
+          'default',
+          'primary',
+          'primary-light',
+          'primary-dark',
+          'paleblue',
+          'success',
+          'info',
+          'warning',
+          'danger',
+          'subtle',
+          'link',
+          'subtle-link',
+          'active',
+          'dark',
+          'darker',
+          'purple',
+          'purple-light',
+          'purple-dark',
+          'black'
+        ].includes(v)
       }
     },
-    data () {
-      let loading = this.loading
-      return {
-        loadingSpinner: loading,
-        isFocused: this.focused,
-        componentWasMounted: false
+    size: {
+      type: String,
+      default: 'md',
+      required: false,
+      validator (v) {
+        return ['xs', 'sm', 'md', 'lg'].includes(v)
       }
     },
-    computed: {
-      spinColor () {
-        let {type, active} = this
-        let white = '#FFFFFF'
-        let darker = '#45526B'
-
-        if (active) {
-          return darker
-        }
-
-        switch (type) {
-          case 'default':
-            return darker
-          case 'primary':
-            return white
-          case 'primary-light':
-            return white
-          case 'primary-dark':
-            return white
-          case 'success':
-            return white
-          case 'info':
-            return white
-          case 'warning':
-            return darker
-          case 'subtle':
-            return darker
-          case 'link':
-            return darker
-          case 'subtle-link':
-            return darker
-          case 'danger':
-            return white
-          case 'dark':
-            return white
-          case 'darker':
-            return white
-        }
-
-        return white
-      },
-      classObj () {
-        let {classPrefix, type, size, block, active, disabled, round, isFocused} = this
-        let classes = {}
-
-        classes[classPrefix + '-btn'] = true
-        classes[classPrefix + '-btn-block'] = block
-        classes[classPrefix + '-btn-active'] = active
-        classes[classPrefix + '-btn-disabled'] = disabled
-        size ? classes[classPrefix + '-btn-' + size] = true : ''
-        type ? classes[classPrefix + '-btn-' + type] = true : ''
-        classes[classPrefix + '-btn-round'] = round
-
-        classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
-
-        return classes
-      },
-      innerClassObj () {
-        let {classPrefix, loadingSpinner} = this
-        let classes = {}
-
-        classes[classPrefix + '-btn-text-fade'] = true
-        loadingSpinner ? classes[classPrefix + '-btn-text-fade-out'] = true : ''
-
-        return classes
-      },
-      innerStyleObj () {
-        let {iconBefore, iconAfter} = this
-        let style = {}
-
-        if (this.componentWasMounted) {
-          let rect
-          let adjust = 0
-          let l = iconBefore !== undefined ? true : false
-          let r = iconAfter !== undefined ? true : false
-
-          if (l || r) {
-            rect = this.$el.getBoundingClientRect()
-            adjust = rect.width
-          }
-          if (this.$el.style.width !== '100%') {
-            if (l) {
-              adjust += 20
-              style['padding-left'] = '20px'
-            }
-            if (r) {
-              adjust += 20
-              style['padding-right'] = '20px'
-            }
-          }
-          if (rect && adjust > rect.width) {
-            style['min-width'] = adjust + 'px'
-          }
-        }
-
-        return style
-      },
-      styleObj () {
-        let {tall} = this
-        let style = {}
-
-        if (tall) {
-          style['height'] = '100%'
-          style['border-radius'] = '0px'
-        }
-
-        return style
-      },
-      iconBeforeStyleObj () {
-        let style = {}
-
-        style['position'] = 'absolute'
-        style['left'] = '3px'
-
-        return style
-      },
-      iconAfterStyleObj () {
-        let style = {}
-
-        style['position'] = 'absolute'
-        style['right'] = '3px'
-
-        return style
-      }
+    active: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    watch: {
-      loading (val) {
-        if (val) {
-          let rect = this.$el.getBoundingClientRect()
-
-          this.$el.style.width = rect.width + 'px'
-          this.$el.style.height = rect.height + 'px'
-
-          this.loadingSpinner = true
-        } else {
-          this.$el.style.width = 'auto'
-          this.$el.style.height = 'auto'
-          this.$nextTick(() => {
-            this.loadingSpinner = false
-          })
-        }
-      }
+    disabled: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    methods: {
-      triggerMouseEvent (node, eventType) {
-        let clickEvent = document.createEvent('MouseEvents')
-        clickEvent.initEvent(eventType, true, true)
-        this.$refs.btn.dispatchEvent(clickEvent)
-      },
-      enterKeyDown () {
-        this.triggerMouseEvent(this.$refs.btn, 'mouseover')
-        this.triggerMouseEvent(this.$refs.btn, 'mousedown')
-      },
-      enterKeyUp () {
-        if (this.disabled) {
-          return
-        }
-        this.triggerMouseEvent(this.$refs.btn, 'mouseup')
-        this.triggerMouseEvent(this.$refs.btn, 'click')
-      },
-      focus () {
-        this.$refs.btn.focus()
-      },
-      onClick () {
-        if (this.disabled) {
-          return
-        }
-        this.$emit('click')
-      }
+    block: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    mounted () {
-      this.$nextTick(() => {
-        let el = this.$el
-
-        this.componentWasMounted = true
-
-        this._clickEvent = EventListener.listen(window, 'click', (e) => {
-          if (!el.contains(e.target)) {
-            this.isFocused = false
-          }
-        })
-      })
+    loading: {
+      type: Boolean,
+      default: false,
+      required: false
     },
-    beforeDestroy () {
-      if (this._clickEvent) this._clickEvent.remove()
+    round: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    focused: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    tall: {
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    iconBefore: {
+      type: String,
+      required: false
+    },
+    iconAfter: {
+      type: String,
+      required: false
+    },
+    classPrefix: {
+      type: String,
+      default: 'va'
     }
+  },
+  data () {
+    let loading = this.loading
+    return {
+      loadingSpinner: loading,
+      isFocused: this.focused,
+      componentWasMounted: false
+    }
+  },
+  computed: {
+    spinColor () {
+      let { type, active } = this
+      let white = '#FFFFFF'
+      let darker = '#45526B'
+
+      if (active) {
+        return darker
+      }
+
+      switch (type) {
+        case 'default':
+          return darker
+        case 'primary':
+          return white
+        case 'primary-light':
+          return white
+        case 'primary-dark':
+          return white
+        case 'success':
+          return white
+        case 'info':
+          return white
+        case 'warning':
+          return darker
+        case 'subtle':
+          return darker
+        case 'link':
+          return darker
+        case 'subtle-link':
+          return darker
+        case 'danger':
+          return white
+        case 'dark':
+          return white
+        case 'darker':
+          return white
+      }
+
+      return white
+    },
+    classObj () {
+      let {
+        classPrefix,
+        type,
+        size,
+        block,
+        active,
+        disabled,
+        round,
+        isFocused
+      } = this
+      let classes = {}
+
+      classes[classPrefix + '-btn'] = true
+      classes[classPrefix + '-btn-block'] = block
+      classes[classPrefix + '-btn-active'] = active
+      classes[classPrefix + '-btn-disabled'] = disabled
+      size ? (classes[classPrefix + '-btn-' + size] = true) : ''
+      type ? (classes[classPrefix + '-btn-' + type] = true) : ''
+      classes[classPrefix + '-btn-round'] = round
+
+      classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
+
+      return classes
+    },
+    innerClassObj () {
+      let { classPrefix, loadingSpinner } = this
+      let classes = {}
+
+      classes[classPrefix + '-btn-text-fade'] = true
+      loadingSpinner ? (classes[classPrefix + '-btn-text-fade-out'] = true) : ''
+
+      return classes
+    },
+    innerStyleObj () {
+      let { iconBefore, iconAfter } = this
+      let style = {}
+
+      if (this.componentWasMounted) {
+        let rect
+        let adjust = 0
+        let l = iconBefore !== undefined
+        let r = iconAfter !== undefined
+
+        if (l || r) {
+          rect = this.$el.getBoundingClientRect()
+          adjust = rect.width
+        }
+        if (this.$el.style.width !== '100%') {
+          if (l) {
+            adjust += 20
+            style['padding-left'] = '20px'
+          }
+          if (r) {
+            adjust += 20
+            style['padding-right'] = '20px'
+          }
+        }
+        if (rect && adjust > rect.width) {
+          style['min-width'] = adjust + 'px'
+        }
+      }
+
+      return style
+    },
+    styleObj () {
+      let { tall } = this
+      let style = {}
+
+      if (tall) {
+        style['height'] = '100%'
+        style['border-radius'] = '0px'
+      }
+
+      return style
+    },
+    iconBeforeStyleObj () {
+      let style = {}
+
+      style['position'] = 'absolute'
+      style['left'] = '3px'
+
+      return style
+    },
+    iconAfterStyleObj () {
+      let style = {}
+
+      style['position'] = 'absolute'
+      style['right'] = '3px'
+
+      return style
+    }
+  },
+  watch: {
+    loading (val) {
+      if (val) {
+        let rect = this.$el.getBoundingClientRect()
+
+        this.$el.style.width = rect.width + 'px'
+        this.$el.style.height = rect.height + 'px'
+
+        this.loadingSpinner = true
+      } else {
+        this.$el.style.width = 'auto'
+        this.$el.style.height = 'auto'
+        this.$nextTick(() => {
+          this.loadingSpinner = false
+        })
+      }
+    }
+  },
+  methods: {
+    triggerMouseEvent (node, eventType) {
+      let clickEvent = document.createEvent('MouseEvents')
+      clickEvent.initEvent(eventType, true, true)
+      this.$refs.btn.dispatchEvent(clickEvent)
+    },
+    enterKeyDown () {
+      this.triggerMouseEvent(this.$refs.btn, 'mouseover')
+      this.triggerMouseEvent(this.$refs.btn, 'mousedown')
+    },
+    enterKeyUp () {
+      if (this.disabled) {
+        return
+      }
+      this.triggerMouseEvent(this.$refs.btn, 'mouseup')
+      this.triggerMouseEvent(this.$refs.btn, 'click')
+    },
+    focus () {
+      this.$refs.btn.focus()
+    },
+    onClick () {
+      if (this.disabled) {
+        return
+      }
+      this.$emit('click')
+    }
+  },
+  mounted () {
+    this.$nextTick(() => {
+      let el = this.$el
+
+      this.componentWasMounted = true
+
+      this._clickEvent = EventListener.listen(window, 'click', e => {
+        if (!el.contains(e.target)) {
+          this.isFocused = false
+        }
+      })
+    })
+  },
+  beforeDestroy () {
+    if (this._clickEvent) this._clickEvent.remove()
   }
+}
 </script>
 
 <style lang="scss">
-@mixin btn-type-mixin($bgCol, $fontCol, $bgColHover, $fontColHover, $bgColActive, $fontColActive) {
+@mixin btn-type-mixin(
+  $bgCol,
+  $fontCol,
+  $bgColHover,
+  $fontColHover,
+  $bgColActive,
+  $fontColActive
+) {
   background-color: $bgCol;
   color: $fontCol;
 
@@ -333,7 +352,6 @@
 }
 
 @mixin button-focus-mixin($boxShadowColor, $boxShadowOpacity: 0.6) {
-
   // no ring on hover
   // &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
   //   box-shadow: $color 0px 0px 0px 2px; /* fallback */
@@ -350,11 +368,7 @@
   }
 }
 
-@mixin button-outline-mixin(
-  $outlineColor,
-  $outlineWidth,
-  $activeOutlineColor
-  ) {
+@mixin button-outline-mixin($outlineColor, $outlineWidth, $activeOutlineColor) {
   box-shadow: inset $outlineColor 0px 0px 0px $outlineWidth;
   outline: none;
 
@@ -365,142 +379,170 @@
 
 .#{$class-prefix}-btn {
   &-default {
-    @include btn-type-mixin($bgCol: $N20,
+    @include btn-type-mixin(
+      $bgCol: $N20,
       $fontCol: $N400,
       $bgColHover: $N30,
       $fontColHover: $N400,
       $bgColActive: $B50,
-      $fontColActive: $B400);
+      $fontColActive: $B400
+    );
     @include button-focus-mixin($B100, 1);
   }
 
   &-primary {
-    @include btn-type-mixin($bgCol: $B400,
+    @include btn-type-mixin(
+      $bgCol: $B400,
       $fontCol: $N0,
       $bgColHover: $B300,
       $fontColHover: $N0,
       $bgColActive: $B500,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($B100, 1);
   }
 
   &-primary-light {
-    @include btn-type-mixin($bgCol: $B300,
+    @include btn-type-mixin(
+      $bgCol: $B300,
       $fontCol: $N0,
       $bgColHover: $B200,
       $fontColHover: $N0,
       $bgColActive: $B400,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($B100, 1);
   }
 
   &-primary-dark {
-    @include btn-type-mixin($bgCol: $B500,
+    @include btn-type-mixin(
+      $bgCol: $B500,
       $fontCol: $N0,
       $bgColHover: $B300,
       $fontColHover: $N0,
       $bgColActive: $B400,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($B100, 1);
   }
 
   &-purple {
-    @include btn-type-mixin($bgCol: $P500,
+    @include btn-type-mixin(
+      $bgCol: $P500,
       $fontCol: $N0,
       $bgColHover: $P400,
       $fontColHover: $N0,
       $bgColActive: $P600,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($P100, 1);
   }
 
   &-purple-light {
-    @include btn-type-mixin($bgCol: $P400,
+    @include btn-type-mixin(
+      $bgCol: $P400,
       $fontCol: $N0,
       $bgColHover: $P300,
       $fontColHover: $N0,
       $bgColActive: $P300,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($P100, 1);
   }
 
   &-purple-dark {
-    @include btn-type-mixin($bgCol: darken($P600, 5%),
+    @include btn-type-mixin(
+      $bgCol: darken($P600, 5%),
       $fontCol: $N0,
       $bgColHover: $P400,
       $fontColHover: $N0,
       $bgColActive: $P600,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($P300, 1);
   }
 
   &-paleblue {
-    @include btn-type-mixin($bgCol: $PB300,
+    @include btn-type-mixin(
+      $bgCol: $PB300,
       $fontCol: $N0,
       $bgColHover: $PB200,
       $bgColActive: $PB400,
       $fontColHover: $N0,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($PB100, 1);
   }
 
   &-success {
-    @include btn-type-mixin($bgCol: $G400,
+    @include btn-type-mixin(
+      $bgCol: $G400,
       $fontCol: $N0,
       $bgColHover: $G300,
       $fontColHover: $N0,
       $bgColActive: $G500,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($G300, 1);
   }
 
   &-info {
-    @include btn-type-mixin($bgCol: $T400,
+    @include btn-type-mixin(
+      $bgCol: $T400,
       $fontCol: $N0,
       $bgColHover: $T300,
       $fontColHover: $N0,
       $bgColActive: $T500,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($T200, 1);
   }
 
   &-warning {
-    @include btn-type-mixin($bgCol: $Y400,
+    @include btn-type-mixin(
+      $bgCol: $Y400,
       $fontCol: $N500,
       $bgColHover: $Y300,
       $fontColHover: $N600,
       $bgColActive: $Y500,
-      $fontColActive: $N600);
+      $fontColActive: $N600
+    );
     @include button-focus-mixin(darken($Y500, 7%), 1);
   }
 
   &-danger {
-    @include btn-type-mixin($bgCol: $R400,
+    @include btn-type-mixin(
+      $bgCol: $R400,
       $fontCol: $N0,
       $bgColHover: $R300,
       $fontColHover: $N0,
       $bgColActive: $R500,
-      $fontColActive: $N0);
+      $fontColActive: $N0
+    );
     @include button-focus-mixin($R100, 1);
   }
 
   &-subtle {
-    @include btn-type-mixin($bgCol: transparent,
+    @include btn-type-mixin(
+      $bgCol: transparent,
       $fontCol: $N400,
       $bgColHover: $N30,
       $fontColHover: $N400,
       $bgColActive: $B50,
-      $fontColActive: $B400);
+      $fontColActive: $B400
+    );
     @include button-focus-mixin($B200, 1);
   }
 
   &-link {
-    @include btn-type-mixin($bgCol: transparent,
+    @include btn-type-mixin(
+      $bgCol: transparent,
       $fontCol: $B400,
       $bgColHover: transparent,
       $fontColHover: $B300,
       $bgColActive: transparent,
-      $fontColActive: $B500);
+      $fontColActive: $B500
+    );
 
     &:hover {
       text-decoration: underline;
@@ -515,12 +557,14 @@
   }
 
   &-subtle-link {
-    @include btn-type-mixin($bgCol: transparent,
+    @include btn-type-mixin(
+      $bgCol: transparent,
       $fontCol: $N100,
       $bgColHover: transparent,
       $fontColHover: $N80,
       $bgColActive: transparent,
-      $fontColActive: $N400);
+      $fontColActive: $N400
+    );
 
     &:hover {
       text-decoration: underline;
@@ -535,53 +579,61 @@
   }
 
   &-dark {
-    @include btn-type-mixin($bgCol: $N700,
+    @include btn-type-mixin(
+      $bgCol: $N700,
       $fontCol: $N50,
       $bgColHover: $N500,
       $fontColHover: $N40,
       $bgColActive: $N800,
-      $fontColActive: $N200);
+      $fontColActive: $N200
+    );
     @include button-focus-mixin($N100, 1);
   }
 
   &-darker {
-    @include btn-type-mixin($bgCol: $N800,
+    @include btn-type-mixin(
+      $bgCol: $N800,
       $fontCol: $N50,
       $bgColHover: $N500,
       $fontColHover: $N40,
       $bgColActive: $N700,
-      $fontColActive: $N200);
+      $fontColActive: $N200
+    );
     @include button-focus-mixin($N100, 1);
   }
 
   &-active {
-    @include btn-type-mixin($bgCol: $B50,
+    @include btn-type-mixin(
+      $bgCol: $B50,
       $fontCol: $B400,
       $bgColHover: $B50,
       $fontColHover: $B400,
       $bgColActive: $B50,
-      $fontColActive: $B400);
+      $fontColActive: $B400
+    );
     @include button-focus-mixin($B100, 1);
   }
 
   &-black {
-    @include btn-type-mixin($bgCol: #18171B,
+    @include btn-type-mixin(
+      $bgCol: #18171b,
       $fontCol: $N200,
-      $bgColHover: #18171B,
+      $bgColHover: #18171b,
       $fontColHover: $N80,
-      $bgColActive: #18171B,
-      $fontColActive: $N400);
+      $bgColActive: #18171b,
+      $fontColActive: $N400
+    );
     @include button-focus-mixin($B100, 1);
   }
 }
 
-
-
 @mixin xs-button-size-mixin() {
-  @include btn-size-mixin($padding: 4px 8px,
+  @include btn-size-mixin(
+    $padding: 4px 8px,
     $fontSize: 12px,
     $lineHeight: 1.5em,
-    $borderRadius: 4px);
+    $borderRadius: 4px
+  );
   > div {
     min-width: 13px;
   }
@@ -590,10 +642,12 @@
 }
 
 @mixin sm-button-size-mixin() {
-  @include btn-size-mixin($padding: 1px 8px,
+  @include btn-size-mixin(
+    $padding: 1px 8px,
     $fontSize: 13px,
     $lineHeight: 2.2em,
-    $borderRadius: 4px);
+    $borderRadius: 4px
+  );
   > div {
     min-width: 15px;
   }
@@ -602,10 +656,12 @@
 }
 
 @mixin md-button-size-mixin() {
-  @include btn-size-mixin($padding: 0px 9px,
+  @include btn-size-mixin(
+    $padding: 0px 9px,
     $fontSize: 14px,
     $lineHeight: 2.3em,
-    $borderRadius: 4px);
+    $borderRadius: 4px
+  );
   > div {
     min-width: 17px;
   }
@@ -614,10 +670,12 @@
 }
 
 @mixin lg-button-size-mixin() {
-  @include btn-size-mixin($padding: 2px 15px,
+  @include btn-size-mixin(
+    $padding: 2px 15px,
     $fontSize: 17px,
     $lineHeight: 2.5em,
-    $borderRadius: 4px);
+    $borderRadius: 4px
+  );
   > div {
     min-width: 23px;
   }
@@ -674,8 +732,8 @@
     cursor: not-allowed;
   }
 
-  >div {
-    >a {
+  > div {
+    > a {
       cursor: default;
 
       &:hover {
@@ -708,19 +766,19 @@
   }
 
   &-xs {
-    @include xs-button-size-mixin()
+    @include xs-button-size-mixin();
   }
 
   &-sm {
-    @include sm-button-size-mixin()
+    @include sm-button-size-mixin();
   }
 
   &-md {
-    @include md-button-size-mixin()
+    @include md-button-size-mixin();
   }
 
   &-lg {
-    @include lg-button-size-mixin()
+    @include lg-button-size-mixin();
   }
 
   /**
@@ -784,68 +842,77 @@ Ready to be confused?
   vertical-align: middle;
 }
 
-.#{$class-prefix}-btn-group>.#{$class-prefix}-btn,
-.#{$class-prefix}-btn-group>.#{$class-prefix}-dropdown-con {
+.#{$class-prefix}-btn-group > .#{$class-prefix}-btn,
+.#{$class-prefix}-btn-group > .#{$class-prefix}-dropdown-con {
   position: relative;
   float: left;
 }
 
 .#{$class-prefix}-btn-group {
-
-  >.#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-radius: 0;
     margin-right: 1px;
   }
 
-  >.#{$class-prefix}-btn:first-child {
+  > .#{$class-prefix}-btn:first-child {
     margin-left: 0;
   }
 
-  >.#{$class-prefix}-btn:first-child:not(:last-child) {
+  > .#{$class-prefix}-btn:first-child:not(:last-child) {
     margin-right: 1px;
   }
 
-  >.#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  >.#{$class-prefix}-dropdown-con:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle)>span>div>.#{$class-prefix}-btn {
+  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle)
+    > span
+    > div
+    > .#{$class-prefix}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 1px;
   }
 
-  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child)>span>div>.#{$class-prefix}-btn {
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child)
+    > span
+    > div
+    > .#{$class-prefix}-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$class-prefix}-btn:last-child:not(:first-child),
-  >.#{$class-prefix}-dropdown-toggle:not(:first-child) {
+  > .#{$class-prefix}-btn:last-child:not(:first-child),
+  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  >.#{$class-prefix}-dropdown-con:not(:first-child) {
-    >span>div>.#{$class-prefix}-btn {
+  > .#{$class-prefix}-dropdown-con:not(:first-child) {
+    > span > div > .#{$class-prefix}-btn {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
 
-  >.#{$class-prefix}-btn-group {
+  > .#{$class-prefix}-btn-group {
     float: left;
   }
 
-  >.#{$class-prefix}-btn-group:not(:first-child):not(:last-child)>.#{$class-prefix}-btn {
+  > .#{$class-prefix}-btn-group:not(:first-child):not(:last-child)
+    > .#{$class-prefix}-btn {
     border-radius: 0;
   }
 
-  >.#{$class-prefix}-btn-group:first-child:not(:last-child)>.#{$class-prefix}-btn:last-child,
-  >.#{$class-prefix}-btn-group:first-child:not(:last-child)>.#{$class-prefix}-dropdown-toggle {
+  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
+    > .#{$class-prefix}-btn:last-child,
+  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
+    > .#{$class-prefix}-dropdown-toggle {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$class-prefix}-btn-group:last-child:not(:first-child)>.#{$class-prefix}-btn:first-child {
+  > .#{$class-prefix}-btn-group:last-child:not(:first-child)
+    > .#{$class-prefix}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -863,67 +930,67 @@ And, of course, when the button group is a vertical button group arrangement.
   vertical-align: middle;
 }
 
-.#{$class-prefix}-btn-group-vertical>.#{$class-prefix}-btn {
+.#{$class-prefix}-btn-group-vertical > .#{$class-prefix}-btn {
   position: relative;
   float: left;
   width: 100%;
   display: flex;
-
 }
 
 .#{$class-prefix}-btn-group-vertical .#{$class-prefix}-btn {
   width: 100%;
-
 }
 
 .#{$class-prefix}-btn-group-vertical {
-
-  >.#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  >.#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
+  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-radius: 0;
     margin-bottom: 1px;
     margin-right: 0px;
   }
 
-  >.#{$class-prefix}-btn:first-child {
+  > .#{$class-prefix}-btn:first-child {
     margin-top: 0;
   }
 
-  >.#{$class-prefix}-btn:first-child:not(:last-child) {
+  > .#{$class-prefix}-btn:first-child:not(:last-child) {
     margin-bottom: 1px;
   }
 
-  >.#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
   }
 
-  >.#{$class-prefix}-btn:last-child:not(:first-child),
-  >.#{$class-prefix}-dropdown-toggle:not(:first-child) {
+  > .#{$class-prefix}-btn:last-child:not(:first-child),
+  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
   }
 
-
-  >.#{$class-prefix}-btn-group-vertical {
+  > .#{$class-prefix}-btn-group-vertical {
     float: left;
   }
 
-  >.#{$class-prefix}-btn-group-vertical:not(:first-child):not(:last-child)>.#{$class-prefix}-btn {
+  > .#{$class-prefix}-btn-group-vertical:not(:first-child):not(:last-child)
+    > .#{$class-prefix}-btn {
     border-radius: 0;
   }
 
-  >.#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)>.#{$class-prefix}-btn:last-child,
-  >.#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)>.#{$class-prefix}-dropdown-toggle {
+  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
+    > .#{$class-prefix}-btn:last-child,
+  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
+    > .#{$class-prefix}-dropdown-toggle {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  >.#{$class-prefix}-btn-group-vertical:last-child:not(:first-child)>.#{$class-prefix}-btn:first-child {
+  > .#{$class-prefix}-btn-group-vertical:last-child:not(:first-child)
+    > .#{$class-prefix}-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

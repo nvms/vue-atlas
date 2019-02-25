@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
   </div>
 </template>
 
@@ -11,20 +11,14 @@ export default {
     hover: {
       type: Boolean,
       default: false,
-      required: false,
-      note: 'When true, changes the background color of rows when hovering.'
+      required: false
     },
     size: {
       type: String,
       default: 'lg',
       validator (v) {
-        return [
-          'lg',
-          'md',
-          'sm'
-        ].includes(v)
-      },
-      note: 'The size of the table.'
+        return ['lg', 'md', 'sm'].includes(v)
+      }
     },
     classPrefix: {
       type: String,
@@ -33,7 +27,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, size, hover} = this
+      let { classPrefix, size, hover } = this
       let classes = {}
 
       classes[classPrefix + '-table'] = true
@@ -102,7 +96,6 @@ export default {
     text-align: left;
   }
 }
-
 
 .#{$class-prefix}-page-container-article {
   .#{$class-prefix}-table {

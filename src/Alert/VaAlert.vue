@@ -1,11 +1,20 @@
 <template>
-  <div :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]">
-    <div :class="`${classPrefix}-alert-${type}-icon`">
-      <va-icon :type="iconType" :icon-style="iconStyle" />
+  <div
+    :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]"
+  >
+    <div
+      :class="`${classPrefix}-alert-${type}-icon`"
+    >
+      <va-icon
+        :type="iconType"
+        :icon-style="iconStyle"
+      />
     </div>
     <div>
       <h1 v-if="title">{{title}}</h1>
-      <div><slot/></div>
+      <div>
+        <slot/>
+      </div>
     </div>
   </div>
 </template>
@@ -16,23 +25,15 @@ export default {
   props: {
     title: {
       type: String,
-      required: false,
-      note: 'The title to be rendered.'
+      required: false
     },
     type: {
       type: String,
       default: 'warning',
       required: false,
       validator (v) {
-        return [
-          'success',
-          'info',
-          'warning',
-          'danger',
-          'change'
-        ].includes(v)
-      },
-      note: 'The type of alert to render.'
+        return ['success', 'info', 'warning', 'danger', 'change'].includes(v)
+      }
     },
     classPrefix: {
       type: String,
@@ -41,7 +42,7 @@ export default {
   },
   computed: {
     iconType () {
-      let {type} = this
+      let { type } = this
 
       switch (type) {
         case 'success':
@@ -59,7 +60,7 @@ export default {
       return 'info-circle'
     },
     iconStyle () {
-      let {type} = this
+      let { type } = this
 
       switch (type) {
         case 'success':
