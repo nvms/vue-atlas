@@ -63,7 +63,7 @@ Modify your editor settings to include the following configuration rules:
     "vetur.format.options.useTabs": false,
     "vetur.format.defaultFormatterOptions": {
         "prettyhtml": {
-          "printWidth": 50, // No line exceeds 50 characters
+          "printWidth": 80, // No line exceeds 80 characters
           "singleQuote": false
         },
         "prettier": {
