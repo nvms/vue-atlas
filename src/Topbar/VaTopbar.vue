@@ -62,23 +62,57 @@ export default {
     }, 10)
   },
   created () {
-    this.$on('Va@topbarPresenceCheck', () => { this.dispatch('VaApp', 'Va@topbarPresenceReply', true) })
-    this.$on('Va@desktopMinimumWidthChange', (val) => { this.currentDesktopMinimumWidth = val })
-    this.$on('Va@desktopMarginChange', (val) => { this.currentDesktopMargin = val })
-    this.$on('Va@minibarWidthChange', (val) => { this.currentMinibarWidth = val })
-    this.$on('Va@topbarHeightChange', (val) => { this.currentTopbarHeight = val })
-    this.$on('Va@contentWidthChange', (val) => { this.currentContentWidth = val })
-    this.$on('Va@sidebarWidthChange', (val) => { this.currentSidebarWidth = val })
-    this.$on('Va@sidebarPriorityChange', (val) => { this.sidebarPriority = val })
-    this.$on('Va@minibarPriorityChange', (val) => { this.minibarPriority = val })
-    this.$on('Va@windowWidthChange', (val) => { this.currentWindowWidth = val })
-    this.$on('Va@topbarPriorityChange', (val) => { this.topbarPriority = val })
-    this.$on('Va@topbarPaddedChange', (val) => { this.topbarPadded = val })
-    this.$on('Va@reverseChange', (val) => { this.isReverse = val })
-    this.$on('Va@topbarIsMobile', (val) => { this.isMobile = val })
-    this.$on('Va@topbarThemeChange', (val) => { this.th = val })
-    this.$on('Va@splitChange', (val) => { this.isSplit = val })
-    this.$on('Va@rtlChange', (val) => { this.isRTL = val })
+    this.$on('Va@topbarPresenceCheck', () => {
+      this.dispatch('VaApp', 'Va@topbarPresenceReply', true)
+    })
+    this.$on('Va@desktopMinimumWidthChange', val => {
+      this.currentDesktopMinimumWidth = val
+    })
+    this.$on('Va@desktopMarginChange', val => {
+      this.currentDesktopMargin = val
+    })
+    this.$on('Va@minibarWidthChange', val => {
+      this.currentMinibarWidth = val
+    })
+    this.$on('Va@topbarHeightChange', val => {
+      this.currentTopbarHeight = val
+    })
+    this.$on('Va@contentWidthChange', val => {
+      this.currentContentWidth = val
+    })
+    this.$on('Va@sidebarWidthChange', val => {
+      this.currentSidebarWidth = val
+    })
+    this.$on('Va@sidebarPriorityChange', val => {
+      this.sidebarPriority = val
+    })
+    this.$on('Va@minibarPriorityChange', val => {
+      this.minibarPriority = val
+    })
+    this.$on('Va@windowWidthChange', val => {
+      this.currentWindowWidth = val
+    })
+    this.$on('Va@topbarPriorityChange', val => {
+      this.topbarPriority = val
+    })
+    this.$on('Va@topbarPaddedChange', val => {
+      this.topbarPadded = val
+    })
+    this.$on('Va@reverseChange', val => {
+      this.isReverse = val
+    })
+    this.$on('Va@topbarIsMobile', val => {
+      this.isMobile = val
+    })
+    this.$on('Va@topbarThemeChange', val => {
+      this.th = val
+    })
+    this.$on('Va@splitChange', val => {
+      this.isSplit = val
+    })
+    this.$on('Va@rtlChange', val => {
+      this.isRTL = val
+    })
   },
   beforeDestroy () {
     this.dispatch('VaApp', 'Va@topbarDisconnect', true)
@@ -91,7 +125,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, th} = this
+      let { classPrefix, th } = this
       let classes = {}
 
       classes[classPrefix + '-topbar'] = true
@@ -127,7 +161,7 @@ export default {
       if (!mobile) {
         if (cw < dmw) {
           let x = dmw - cw
-          dm = dm - (x / 2)
+          dm = dm - x / 2
         }
       } else {
         dm = 0
@@ -138,7 +172,7 @@ export default {
        * If a minimum desktop width is set
        */
       if (dmw !== 0) {
-        style['min-width'] = (dmw - mw - sw) + 'px'
+        style['min-width'] = dmw - mw - sw + 'px'
       } else {
         style['min-width'] = '0px'
       }
@@ -150,36 +184,36 @@ export default {
         if (split) {
           if (reverse) {
             if (mp) {
-              style['left'] = (dm + sw) + 'px'
-              style['right'] = (dm + mw) + 'px'
+              style['left'] = dm + sw + 'px'
+              style['right'] = dm + mw + 'px'
             } else {
-              style['left'] = (dm + sw) + 'px'
+              style['left'] = dm + sw + 'px'
               style['right'] = dm + 'px'
             }
           } else {
             if (mp) {
-              style['left'] = (dm + mw) + 'px'
-              style['right'] = (dm + sw) + 'px'
+              style['left'] = dm + mw + 'px'
+              style['right'] = dm + sw + 'px'
             } else {
               style['left'] = dm + 'px'
-              style['right'] = (dm + sw) + 'px'
+              style['right'] = dm + sw + 'px'
             }
           }
         } else {
           if (reverse) {
             if (mp) {
-              style['left'] = (sw + mw + dm) + 'px'
+              style['left'] = sw + mw + dm + 'px'
               style['right'] = dm + 'px'
             } else {
-              style['left'] = (dm + sw) + 'px'
+              style['left'] = dm + sw + 'px'
               style['right'] = dm + 'px'
             }
           } else {
             if (mp) {
-              style['left'] = (sw + mw + dm) + 'px'
+              style['left'] = sw + mw + dm + 'px'
               style['right'] = dm + 'px'
             } else {
-              style['left'] = (sw + mw + dm) + 'px'
+              style['left'] = sw + mw + dm + 'px'
               style['right'] = dm + 'px'
             }
           }
@@ -191,14 +225,14 @@ export default {
           if (reverse) {
             if (mp) {
               style['left'] = dm + 'px'
-              style['right'] = (dm + mw) + 'px'
+              style['right'] = dm + mw + 'px'
             } else {
               style['left'] = dm + 'px'
               style['right'] = dm + 'px'
             }
           } else {
             if (mp) {
-              style['left'] = (dm + mw) + 'px'
+              style['left'] = dm + mw + 'px'
               style['right'] = dm + 'px'
             } else {
               style['left'] = dm + 'px'
@@ -208,7 +242,7 @@ export default {
         } else {
           if (reverse) {
             if (mp) {
-              style['left'] = (sw + mw + dm) + 'px'
+              style['left'] = sw + mw + dm + 'px'
               style['right'] = dm + 'px'
             } else {
               style['left'] = dm + 'px'
@@ -216,7 +250,7 @@ export default {
             }
           } else {
             if (mp) {
-              style['left'] = (dm + mw) + 'px'
+              style['left'] = dm + mw + 'px'
               style['right'] = dm + 'px'
             } else {
               style['left'] = dm + 'px'
@@ -232,25 +266,25 @@ export default {
           if (reverse) {
             if (sp) {
               style['left'] = dm + 'px'
-              style['right'] = (sw + mw + dm) + 'px'
+              style['right'] = sw + mw + dm + 'px'
             } else {
               if (mp) {
                 style['left'] = dm + 'px'
-                style['right'] = (dm + mw) + 'px'
+                style['right'] = dm + mw + 'px'
               }
             }
           } else {
             if (sp) {
               if (mp) {
-                style['right'] = (mw + sw + dm) + 'px'
+                style['right'] = mw + sw + dm + 'px'
                 style['left'] = dm + 'px'
               } else {
-                style['right'] = (dm + sw) + 'px'
+                style['right'] = dm + sw + 'px'
                 style['left'] = dm + 'px'
               }
             } else {
               if (mp) {
-                style['right'] = (mw + sw + dm) + 'px'
+                style['right'] = mw + sw + dm + 'px'
                 style['left'] = dm + 'px'
               }
             }
@@ -263,8 +297,8 @@ export default {
         style['right'] = '0px'
 
         if (tpad) {
-          style['padding-left'] = (dm + 8) + 'px'
-          style['padding-right'] = (dm + 8) + 'px'
+          style['padding-left'] = dm + 8 + 'px'
+          style['padding-right'] = dm + 8 + 'px'
           /**
            * Why 8px?
            * Because a 50px Minibar looks best, and if the

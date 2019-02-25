@@ -1,118 +1,124 @@
 <template>
-    <label :class="`${classPrefix}-radio-con`">
-        <span :class="objClass">
-          <span :class="`${classPrefix}-radio-inner`"
-                :tabindex="disabled ? -1 : 0"
-                @keypress.space.prevent="handleClick"
-                @keyup.enter="handleClick"></span>
-          <input :checked="currentChecked"
-                 :class="`${classPrefix}-radio-input`"
-                 :disabled="disabled"
-                 :name="name"
-                 @click.prevent="handleClick"
-                 tabindex="-1"
-                 type="radio">
-        </span>
-        <span :class="`${classPrefix}-label`" tabindex="-1">
-            <slot/>
-        </span>
-        <validate :current="checked"
-                  :custom-validate="customValidate"
-                  :name="name"
-                  :rules="rules">
-        </validate>
-    </label>
+  <label :class="`${classPrefix}-radio-con`">
+    <span :class="objClass">
+      <span
+        :class="`${classPrefix}-radio-inner`"
+        :tabindex="disabled ? -1 : 0"
+        @keypress.space.prevent="handleClick"
+        @keyup.enter="handleClick"
+      />
+      <input
+        :checked="currentChecked"
+        :class="`${classPrefix}-radio-input`"
+        :disabled="disabled"
+        :name="name"
+        @click.prevent="handleClick"
+        tabindex="-1"
+        type="radio"
+      >
+    </span>
+    <span :class="`${classPrefix}-label`" tabindex="-1">
+      <slot/>
+    </span>
+    <validate
+      :current="checked"
+      :custom-validate="customValidate"
+      :name="name"
+      :rules="rules"
+    />
+  </label>
 </template>
 
 <script>
-  import validationMixin from '../Mixin/validationMixin'
-  import events from '../utils/events'
-  import validate from '../validate'
+import validationMixin from '../Mixin/validationMixin'
+import events from '../utils/events'
+import validate from '../validate'
 
-  export default {
-    name: 'VaRadio',
-    mixins: [validationMixin, events],
-    props: {
-      name: {
-        type: String
-      },
-      value: {
-        type: String
-      },
-      checked: {
-        type: Boolean,
-        default: false
-      },
-      label: {
-        type: [String, Number]
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      classPrefix: {
-        type: String,
-        default: 'va'
-      }
+export default {
+  name: 'VaRadio',
+  mixins: [validationMixin, events],
+  props: {
+    name: {
+      type: String
     },
-    components: {
-      validate
+    value: {
+      type: String
     },
-    data() {
-      let checked = this.checked
-      if (checked !== undefined) {
-        this.$emit('input', checked)
-      } else {
-        checked = !!this.value
-      }
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    label: {
+      type: [String, Number]
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    classPrefix: {
+      type: String,
+      default: 'va'
+    }
+  },
+  components: {
+    validate
+  },
+  data () {
+    let checked = this.checked
+    if (checked !== undefined) {
+      this.$emit('input', checked)
+    } else {
+      checked = !!this.value
+    }
 
-      return {
-        currentChecked: checked
-      }
-    },
-    computed: {
-      objClass() {
-        let {classPrefix, currentChecked, disabled} = this
-        let classes = {}
+    return {
+      currentChecked: checked
+    }
+  },
+  computed: {
+    objClass () {
+      let { classPrefix, currentChecked, disabled } = this
+      let classes = {}
 
-        classes[classPrefix + '-radio-span'] = true
-        classes[classPrefix + '-radio-checked'] = currentChecked
-        classes[classPrefix + '-radio-disabled'] = disabled
+      classes[classPrefix + '-radio-span'] = true
+      classes[classPrefix + '-radio-checked'] = currentChecked
+      classes[classPrefix + '-radio-disabled'] = disabled
 
-        return classes
-      }
+      return classes
+    }
+  },
+  watch: {
+    value (val) {
+      this.currentChecked = val
     },
-    watch: {
-      value(val) {
-        this.currentChecked = val
-      },
-      checked(val) {
-        this.currentChecked = val
-      },
-      currentChecked(val) {
-        this.$emit('input', val)
-      }
+    checked (val) {
+      this.currentChecked = val
     },
-    created() {
-      this.$on('Va@radiogroupChange', (val) => {
-        // this.currentChecked = val.indexOf(this.label) > -1
-        this.currentChecked = val === this.label
-      })
-    },
-    methods: {
-      handleClick() {
-        if (this.currentChecked) return
-        this.currentChecked = true
-        this.dispatch('VaRadioGroup', 'Va@radioChange', this.label)
-        this.$emit('change', this.currentChecked)
-      }
+    currentChecked (val) {
+      this.$emit('input', val)
+    }
+  },
+  created () {
+    this.$on('Va@radiogroupChange', val => {
+      // this.currentChecked = val.indexOf(this.label) > -1
+      this.currentChecked = val === this.label
+    })
+  },
+  methods: {
+    handleClick () {
+      if (this.currentChecked) return
+      this.currentChecked = true
+      this.dispatch('VaRadioGroup', 'Va@radioChange', this.label)
+      this.$emit('change', this.currentChecked)
     }
   }
+}
 </script>
 
 <style lang="scss">
 @mixin radio-focus-mixin($color, $opacity: 0.6) {
-  &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
+  &:focus:not(:active):not(:hover),
+  &-focused:not(:active):not(:hover) {
     box-shadow: $color 0px 0px 0px 2px; /* fallback */
     box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
     outline: none;
@@ -150,8 +156,8 @@
     border-width: 2px;
     border-style: solid;
     border-radius: 14px;
-    border-color: #DFE1E6;
-    background-color: #FAFBFC;
+    border-color: #dfe1e6;
+    background-color: #fafbfc;
     transition: all 0.3s;
     @include radio-focus-mixin($B200, 0.6);
   }
@@ -176,7 +182,7 @@
   &:hover {
     .#{$class-prefix}-radio-span:not(.#{$class-prefix}-radio-checked) {
       .#{$class-prefix}-radio-inner {
-        background-color: #EBECF0;
+        background-color: #ebecf0;
       }
     }
   }
@@ -226,7 +232,7 @@
   }
 }
 
-.#{$class-prefix}-radio-btn input[type=radio] {
+.#{$class-prefix}-radio-btn input[type='radio'] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;

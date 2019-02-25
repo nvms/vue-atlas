@@ -14,8 +14,8 @@
       :clearable="true"
       icon="clock"
       icon-style="regular"
-      v-model="currentValue">
-    </va-input>
+      v-model="currentValue"
+    />
     <va-input
       v-if="isMobile"
       :width="width"
@@ -27,21 +27,55 @@
       :readonly="readonly"
       :clearable="true"
       type="time"
-      v-model="currentValue">
-    </va-input>
+      v-model="currentValue"
+    />
     <transition name="fadeDown">
-      <div v-show="show" v-va-position="show" :class="`${classPrefix}-timepicker-popup`">
-        <div v-if="hour" data-role="hour" :class="`${classPrefix}-timepicker-range-wrap`">
+      <div
+        v-show="show"
+        v-va-position="show"
+        :class="`${classPrefix}-timepicker-popup`"
+      >
+        <div
+          v-if="hour"
+          data-role="hour"
+          :class="`${classPrefix}-timepicker-range-wrap`"
+        >
           <span>{{getL('hour')}}</span>
-          <va-range :width="190" v-model="time.hour" :min="hourRange[0]" :max="hourRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
+          <va-range
+            :width="190"
+            v-model="time.hour"
+            :min="hourRange[0]"
+            :max="hourRange[1]"
+            :class="`${classPrefix}-timepicker-range`"
+          />
         </div>
-        <div v-if="minute" data-role="minute" :class="`${classPrefix}-timepicker-range-wrap`">
+        <div
+          v-if="minute"
+          data-role="minute"
+          :class="`${classPrefix}-timepicker-range-wrap`"
+        >
           <span>{{getL('minute')}}</span>
-          <va-range :width="190" v-model="time.minute" :min="minuteRange[0]" :max="minuteRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
+          <va-range
+            :width="190"
+            v-model="time.minute"
+            :min="minuteRange[0]"
+            :max="minuteRange[1]"
+            :class="`${classPrefix}-timepicker-range`"
+          />
         </div>
-        <div v-if="second" data-role="second" :class="`${classPrefix}-timepicker-range-wrap`">
+        <div
+          v-if="second"
+          data-role="second"
+          :class="`${classPrefix}-timepicker-range-wrap`"
+        >
           <span>{{getL('second')}}</span>
-          <va-range :width="190" v-model="time.second" :min="secondRange[0]" :max="secondRange[1]" :class="`${classPrefix}-timepicker-range`"></va-range>
+          <va-range
+            :width="190"
+            v-model="time.second"
+            :min="secondRange[0]"
+            :max="secondRange[1]"
+            :class="`${classPrefix}-timepicker-range`"
+          />
         </div>
       </div>
     </transition>
@@ -136,12 +170,24 @@ export default {
       deep: true,
       handler () {
         var ret = ''
-        this.time.hour > this.hourRange[1] ? this.time.hour = this.hourRange[1] : 0
-        this.time.minute > this.minuteRange[1] ? this.time.minute = this.minuteRange[1] : 0
-        this.time.second > this.secondRange[1] ? this.time.second = this.secondRange[1] : 0
-        this.time.hour < this.hourRange[0] ? this.time.hour = this.hourRange[0] : 0
-        this.time.minute < this.minuteRange[0] ? this.time.minute = this.minuteRange[0] : 0
-        this.time.second < this.secondRange[0] ? this.time.second = this.secondRange[0] : 0
+        this.time.hour > this.hourRange[1]
+          ? (this.time.hour = this.hourRange[1])
+          : 0
+        this.time.minute > this.minuteRange[1]
+          ? (this.time.minute = this.minuteRange[1])
+          : 0
+        this.time.second > this.secondRange[1]
+          ? (this.time.second = this.secondRange[1])
+          : 0
+        this.time.hour < this.hourRange[0]
+          ? (this.time.hour = this.hourRange[0])
+          : 0
+        this.time.minute < this.minuteRange[0]
+          ? (this.time.minute = this.minuteRange[0])
+          : 0
+        this.time.second < this.secondRange[0]
+          ? (this.time.second = this.secondRange[0])
+          : 0
         if (this.hour) {
           ret += this.fix(this.time.hour, 2) + ':'
         }
@@ -177,7 +223,9 @@ export default {
     fix (num, length) {
       num = parseInt(num)
       num = isNaN(num) ? 0 : num
-      return ('' + num).length < length ? ((new Array(length + 1)).join('0') + num).slice(-length) : '' + num
+      return ('' + num).length < length
+        ? (new Array(length + 1).join('0') + num).slice(-length)
+        : '' + num
     },
     _format (str) {
       if (str) {
@@ -207,7 +255,9 @@ export default {
   },
   created () {
     this._format(this.currentValue)
-    this.$on('Va@timepickerIsMobile', (val) => { this.isMobile = val })
+    this.$on('Va@timepickerIsMobile', val => {
+      this.isMobile = val
+    })
 
     /**
      * In case this component is instantiated after the App
@@ -216,7 +266,7 @@ export default {
     this.dispatch('VaApp', 'Va@requestIsMobile', true)
   },
   mounted () {
-    this._closeEvent = EventListener.listen(window, 'click', (e) => {
+    this._closeEvent = EventListener.listen(window, 'click', e => {
       if (!this.$el.contains(e.target)) this.close()
     })
   },
@@ -239,7 +289,8 @@ export default {
     float: left;
     z-index: 1000;
     padding: 15px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+      rgba(9, 30, 66, 0.31) 0px 0px 1px;
     border-radius: 4px;
   }
   &-range-wrap {
@@ -251,6 +302,5 @@ export default {
       font-weight: 600;
     }
   }
-  &-range {}
 }
 </style>

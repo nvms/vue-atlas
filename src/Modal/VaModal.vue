@@ -1,30 +1,15 @@
 <template>
-  <div
-    :class="classObj"
-    :style="styleObj"
-    ref="modal"
-  >
-    <div
-      :class="`${classPrefix}-modal-dialog`"
-      :style="{'width': width }"
-    >
+  <div :class="classObj" :style="styleObj" ref="modal">
+    <div :class="`${classPrefix}-modal-dialog`" :style="{'width': width }">
       <va-collapse-transition>
-        <div
-          :class="`${classPrefix}-modal-loading`"
-          v-show="modalIsLoading"
-        >
+        <div :class="`${classPrefix}-modal-loading`" v-show="modalIsLoading">
           <va-loading color="#888" size="md"/>
         </div>
       </va-collapse-transition>
 
-      <div
-        :class="`${classPrefix}-modal-content`"
-        v-show="!modalIsLoading"
-      >
+      <div :class="`${classPrefix}-modal-content`" v-show="!modalIsLoading">
         <slot name="header">
-          <div
-            :class="`${classPrefix}-modal-header`"
-          >
+          <div :class="`${classPrefix}-modal-header`">
             <va-button
               tabindex="-1"
               :class="`${classPrefix}-close`"
@@ -33,9 +18,7 @@
             >
               <va-icon type="times"/>
             </va-button>
-            <div
-              :class="`${classPrefix}-modal-title`"
-            >
+            <div :class="`${classPrefix}-modal-title`">
               <slot name="title">{{title}}</slot>
             </div>
           </div>
@@ -43,19 +26,14 @@
         <div :class="`${classPrefix}-modal-body`">
           <slot name="body"/>
         </div>
-        <div
-          :class="`${classPrefix}-modal-footer`"
-        >
+        <div :class="`${classPrefix}-modal-footer`">
           <slot name="footer">
             <va-button
               :focused="focused"
               @click.native="confirm"
               type="primary"
             >{{getL('confirm')}}</va-button>
-            <va-button
-              @click.native="close"
-              type="subtle"
-            >{{getL('cancel')}}</va-button>
+            <va-button @click.native="close" type="subtle">{{getL('cancel')}}</va-button>
           </slot>
         </div>
       </div>

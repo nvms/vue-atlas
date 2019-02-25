@@ -1,11 +1,6 @@
 <template>
   <transition name="fade">
-    <div
-      ref="dom"
-      :class="classObj"
-      @click="handleClick"
-      v-if="show"
-    >
+    <div ref="dom" :class="classObj" @click="handleClick" v-if="show">
       <span v-text="text"/>
     </div>
   </transition>

@@ -1,14 +1,7 @@
 <template>
-  <div
-    :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]"
-  >
-    <div
-      :class="`${classPrefix}-alert-${type}-icon`"
-    >
-      <va-icon
-        :type="iconType"
-        :icon-style="iconStyle"
-      />
+  <div :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]">
+    <div :class="`${classPrefix}-alert-${type}-icon`">
+      <va-icon :type="iconType" :icon-style="iconStyle"/>
     </div>
     <div>
       <h1 v-if="title">{{title}}</h1>

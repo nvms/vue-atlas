@@ -1,10 +1,18 @@
 <template>
   <transition name="fade">
     <span :class="classObj" ref="load">
-      <i :class="iclassObj" />
-      <slot />
+      <i :class="iclassObj"/>
+      <slot/>
       <svg viewBox="0 0 50 50" :class="`${classPrefix}-spinner`">
-        <circle :class="`${classPrefix}-path`" :style="{ stroke: color }" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        <circle
+          :class="`${classPrefix}-path`"
+          :style="{ stroke: color }"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          stroke-width="5"
+        />
       </svg>
     </span>
   </transition>
@@ -21,13 +29,7 @@ export default {
       type: String,
       default: 'md',
       validator (v) {
-        return [
-          'xl',
-          'lg',
-          'md',
-          'sm',
-          'xs'
-        ].includes(v)
+        return ['xl', 'lg', 'md', 'sm', 'xs'].includes(v)
       }
     },
     center: {
@@ -53,7 +55,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, center} = this
+      let { classPrefix, center } = this
       let classes = {}
 
       classes[classPrefix + '-page-loading-con'] = true
@@ -62,12 +64,12 @@ export default {
       return classes
     },
     iclassObj () {
-      let {classPrefix, type, size} = this
+      let { classPrefix, type, size } = this
       let classes = {}
 
       classes[classPrefix + '-page-loading'] = true
-      type ? classes[classPrefix + '-loading-' + type] = true : ''
-      size ? classes[classPrefix + '-loading-' + size] = true : ''
+      type ? (classes[classPrefix + '-loading-' + type] = true) : ''
+      size ? (classes[classPrefix + '-loading-' + size] = true) : ''
 
       return classes
     }
@@ -82,7 +84,7 @@ export default {
   position: relative;
   /*see _button.scss for more position information related to*/
   /*-page-loading-con being inside of a button*/
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   // opacity: 0;
 }
 .#{$class-prefix}-path {
@@ -170,7 +172,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(255,255,255,0.88);
+  background: rgba(255, 255, 255, 0.88);
   display: flex;
   align-content: center;
   justify-content: center;

@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj">
-    <slot />
+    <slot/>
   </div>
 </template>
 <script>
@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, fluid} = this
+      let { classPrefix, fluid } = this
       let classes = {}
 
       classes[classPrefix + '-container-fluid'] = fluid

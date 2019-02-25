@@ -8,10 +8,7 @@
     ref="btn"
     tabindex="0"
   >
-    <div
-      :class="innerClassObj"
-      :style="innerStyleObj"
-    >
+    <div :class="innerClassObj" :style="innerStyleObj">
       <va-icon
         v-if="iconBefore !== undefined"
         :type="iconBefore"
@@ -24,11 +21,7 @@
         :style="iconAfterStyleObj"
       />
     </div>
-    <va-loading
-      :color="spinColor"
-      :size="size"
-      v-if="loadingSpinner"
-    />
+    <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
   </a>
 </template>
 

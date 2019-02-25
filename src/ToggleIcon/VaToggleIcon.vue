@@ -1,13 +1,6 @@
 <template>
-  <span
-    class="va-toggle-icon_wrapper"
-    v-on="$listeners"
-    :style="style"
-  >
-    <div
-      class="va-toggle-icon_container"
-      v-on="listeners"
-    >
+  <span class="va-toggle-icon_wrapper" v-on="$listeners" :style="style">
+    <div class="va-toggle-icon_container" v-on="listeners">
       <transition-group name="fade">
         <va-icon
           class="va-toggle-icon_icon"

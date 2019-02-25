@@ -6,14 +6,9 @@
       :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`"
     >
       {{label || '&nbsp;'}}
-      <em
-        :class="`${classPrefix}-form-need`"
-        v-if="need"
-      >*</em>
+      <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
     </label>
-    <div
-      :class="`${classPrefix}-col-sm-${col} ${classPrefix}-flex`"
-    >
+    <div :class="`${classPrefix}-col-sm-${col} ${classPrefix}-flex`">
       <slot/>
     </div>
   </div>

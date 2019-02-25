@@ -1,122 +1,127 @@
 <template>
-    <label :class="classObj">
-        <span>
-          <span :class="`${classPrefix}-checkbox-inner`"
-                :tabindex="disabled ? -1 : 0"
-                @keypress.space.prevent="handleClick"
-                @keyup.enter="enterPressed">
-            <va-icon :class="`${classPrefix}-checkbox-inner-check`" type="check"></va-icon>
-          </span>
-          <input :checked="currentChecked"
-                 :class="`${classPrefix}-checkbox-input`"
-                 :disabled="disabled"
-                 :name="name"
-                 @click="handleClick"
-                 tabindex="-1"
-                 type="checkbox"/>
-        </span>
-        <span :class="`${classPrefix}-label`">
-          <slot/>
-        </span>
-        <validate
-                :current="currentChecked"
-                :custom-validate="customValidate"
-                :name="name"
-                :rules="rules">
-        </validate>
-    </label>
+  <label :class="classObj">
+    <span>
+      <span
+        :class="`${classPrefix}-checkbox-inner`"
+        :tabindex="disabled ? -1 : 0"
+        @keypress.space.prevent="handleClick"
+        @keyup.enter="enterPressed"
+      >
+        <va-icon :class="`${classPrefix}-checkbox-inner-check`" type="check"/>
+      </span>
+      <input
+        :checked="currentChecked"
+        :class="`${classPrefix}-checkbox-input`"
+        :disabled="disabled"
+        :name="name"
+        @click="handleClick"
+        tabindex="-1"
+        type="checkbox"
+      >
+    </span>
+    <span :class="`${classPrefix}-label`">
+      <slot/>
+    </span>
+    <validate
+      :current="currentChecked"
+      :custom-validate="customValidate"
+      :name="name"
+      :rules="rules"
+    />
+  </label>
 </template>
 
 <script>
-  import events from '../utils/events'
-  import validationMixin from '../Mixin/validationMixin'
-  import validate from '../validate'
+import events from '../utils/events'
+import validationMixin from '../Mixin/validationMixin'
+import validate from '../validate'
 
-  export default {
-    name: 'VaCheckbox',
-    mixins: [validationMixin, events],
-    props: {
-      name: {
-        type: String
-      },
-      value: {
-        type: [String, Boolean]
-      },
-      checked: {
-        type: Boolean,
-        default: false
-      },
-      label: {
-        type: [String, Number]
-      },
-      disabled: {
-        type: Boolean,
-        default: false
-      },
-      classPrefix: {
-        type: String,
-        default: 'va'
-      }
+export default {
+  name: 'VaCheckbox',
+  mixins: [validationMixin, events],
+  props: {
+    name: {
+      type: String
     },
-    components: {
-      validate
+    value: {
+      type: [String, Boolean]
     },
-    data() {
-      let checked = this.checked
-      if (checked !== undefined) {
-        this.$emit('input', checked)
-      } else {
-        checked = !!this.value
-      }
+    checked: {
+      type: Boolean,
+      default: false
+    },
+    label: {
+      type: [String, Number]
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    classPrefix: {
+      type: String,
+      default: 'va'
+    }
+  },
+  components: {
+    validate
+  },
+  data () {
+    let checked = this.checked
+    if (checked !== undefined) {
+      this.$emit('input', checked)
+    } else {
+      checked = !!this.value
+    }
 
-      return {
-        currentChecked: checked
-      }
+    return {
+      currentChecked: checked
+    }
+  },
+  watch: {
+    value (val) {
+      this.currentChecked = val
     },
-    watch: {
-      value(val) {
-        this.currentChecked = val
-      },
-      checked(val) {
-        this.currentChecked = val
-      },
-      currentChecked(val) {
-        this.$emit('input', val)
-      }
+    checked (val) {
+      this.currentChecked = val
     },
-    computed: {
-      classObj() {
-        let {classPrefix, currentChecked, disabled} = this
-        let classes = {}
+    currentChecked (val) {
+      this.$emit('input', val)
+    }
+  },
+  computed: {
+    classObj () {
+      let { classPrefix, currentChecked, disabled } = this
+      let classes = {}
 
-        classes[classPrefix + '-checkbox-label'] = true
-        classes[classPrefix + '-checkbox-checked'] = currentChecked
-        classes[classPrefix + '-checkbox-disabled'] = disabled
+      classes[classPrefix + '-checkbox-label'] = true
+      classes[classPrefix + '-checkbox-checked'] = currentChecked
+      classes[classPrefix + '-checkbox-disabled'] = disabled
 
-        return classes
-      }
+      return classes
+    }
+  },
+  created () {
+    this.$on('Va@checkboxgroupChange', val => {
+      this.currentChecked = val.indexOf(this.label) > -1
+    })
+  },
+  methods: {
+    handleClick () {
+      this.currentChecked = !this.currentChecked
+      this.dispatch('VaCheckboxGroup', 'Va@checkboxChange', this)
+      this.$emit('change', this.currentChecked)
     },
-    created() {
-      this.$on('Va@checkboxgroupChange', (val) => {
-        this.currentChecked = val.indexOf(this.label) > -1
-      })
-    },
-    methods: {
-      handleClick() {
-        this.currentChecked = !this.currentChecked
-        this.dispatch('VaCheckboxGroup', 'Va@checkboxChange', this)
-        this.$emit('change', this.currentChecked)
-      },
-      enterPressed() {
-        this.handleClick()
-      }
+    enterPressed () {
+      this.handleClick()
     }
   }
+}
 </script>
 
 <style lang="scss">
 @mixin checkbox-focus-mixin($color, $opacity: 0.6) {
-  &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
+  &:focus:not(:active):not(:hover),
+  &-focused:not(:active):not(:hover) {
     box-shadow: $color 0px 0px 0px 2px; /* fallback */
     box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
     outline: none;
@@ -141,10 +146,10 @@
 .#{$class-prefix}-checkbox-label:not(.#{$class-prefix}-checkbox-checked) {
   &:hover {
     .#{$class-prefix}-checkbox-inner {
-      border-color: #DFE1E6;
-      background-color: #EBECF0;
+      border-color: #dfe1e6;
+      background-color: #ebecf0;
       &-check {
-        color: #EBECF0;
+        color: #ebecf0;
       }
     }
   }
@@ -187,11 +192,11 @@
   border-width: 2px;
   border-style: solid;
   border-radius: 3px;
-  border-color: #DFE1E6;
-  background-color: #FAFBFC;
+  border-color: #dfe1e6;
+  background-color: #fafbfc;
   transition: all 0.3s;
   &-check {
-    color: #FAFBFC;
+    color: #fafbfc;
     font-size: 9px !important;
     position: relative;
     top: -2px;
@@ -226,14 +231,14 @@
   border-color: $N500;
   background-color: $N500;
   i.#{$class-prefix}-checkbox-inner-check {
-    color:$N500;
+    color: $N500;
   }
 }
 
 .#{$class-prefix}-checkbox-disabled.#{$class-prefix}-checkbox-label:hover {
   &:hover {
     .#{$class-prefix}-checkbox-inner {
-      background-color:$N500;
+      background-color: $N500;
       border-color: $N500;
     }
     i.#{$class-prefix}-checkbox-inner-check {
@@ -256,7 +261,7 @@
   top: 1px;
 }
 
-.#{$class-prefix}-checkbox-btn input[type=checkbox] {
+.#{$class-prefix}-checkbox-btn input[type='checkbox'] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;

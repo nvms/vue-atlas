@@ -23,7 +23,7 @@ function animate (node, show, transitionName, done) {
     complete: complete,
     easing: 'easeInOutQuad'
   })
-  
+
   return {
     stop () {
       velocity(node, 'finish')
@@ -44,7 +44,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

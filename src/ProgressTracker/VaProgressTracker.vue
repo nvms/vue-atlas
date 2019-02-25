@@ -96,7 +96,7 @@ $stepRoundLineMargin: 7px;
 
   &-wrap {
     padding: 0;
-    flex:1;
+    flex: 1;
   }
   &-wrap > div {
     width: 100%;
@@ -116,7 +116,7 @@ $stepRoundLineMargin: 7px;
     border-style: solid;
     border-width: $stepHeight/2;
     position: absolute;
-    right: -$stepHeight+1;
+    right: -$stepHeight + 1;
     z-index: 1;
   }
   &-triangle-right-bg {
@@ -126,7 +126,7 @@ $stepRoundLineMargin: 7px;
     position: absolute;
     z-index: 1;
     border-width: $stepHeight/2;
-    right: -($stepHeight+1);
+    right: -($stepHeight + 1);
     border-color: transparent transparent transparent $N0;
   }
   &-round {
@@ -137,7 +137,7 @@ $stepRoundLineMargin: 7px;
     text-align: center;
     line-height: 16px;
   }
-  
+
   &-round + span:before {
     content: '\00a0';
   }
@@ -188,7 +188,7 @@ $stepRoundLineMargin: 7px;
   margin: 18px 0px;
   padding: 0px;
   display: flex;
-  line-height:1em !important;
+  line-height: 1em !important;
 
   .#{$class-prefix}-steps-finished,
   .#{$class-prefix}-steps-current {
@@ -206,10 +206,10 @@ $stepRoundLineMargin: 7px;
   > .#{$class-prefix}-steps-finished:before {
     background-color: $primaryColorHover;
   }
-  > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
+  // > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
     // background-color: $primaryColorHover;
     // border: 4px $primaryColorHover solid;
-  }
+  // }
   > .#{$class-prefix}-steps-finished label {
     // color: $primaryColorHover;
     color: $N600 !important;
@@ -224,7 +224,7 @@ $stepRoundLineMargin: 7px;
   > .#{$class-prefix}-steps-current .#{$class-prefix}-steps-round {
     background-color: $B300;
     border: 4px $B300 solid;
-    color:$N0;
+    color: $N0;
   }
   > .#{$class-prefix}-steps-current label {
     color: $B300 !important;
@@ -233,14 +233,14 @@ $stepRoundLineMargin: 7px;
   > li {
     padding: 0px;
     position: relative;
-    flex:1;
-    background-color:transparent;
+    flex: 1;
+    background-color: transparent;
     line-height: 22.5px !important;
   }
 
   &:before,
   &:after {
-    content: " ";
+    content: ' ';
     display: table;
     clear: both;
   }

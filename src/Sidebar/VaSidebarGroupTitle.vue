@@ -1,6 +1,6 @@
 <template>
   <div :class="`${classPrefix}-sidebar-group-title`">
-    <slot />
+    <slot/>
   </div>
 </template>
 

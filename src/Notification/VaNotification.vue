@@ -1,26 +1,15 @@
 <template>
-  <div
-    :class="classObj"
-    :style="styleObj"
-    ref="notification"
-    v-if="alive"
-  >
+  <div :class="classObj" :style="styleObj" ref="notification" v-if="alive">
     <div
       :class="`${classPrefix}-notification-dialog`"
       :style="{'width': width }"
     >
-      <div
-        :class="`${classPrefix}-notification-content`"
-      >
-        <div
-          :class="`${classPrefix}-notification-content-inner-${type}`"
-        >
+      <div :class="`${classPrefix}-notification-content`">
+        <div :class="`${classPrefix}-notification-content-inner-${type}`">
           <div
             :class="`${classPrefix}-notification-content-inner-${type}-left`"
           >
-            <va-icon
-              :type="notificationIconType"
-            />
+            <va-icon :type="notificationIconType"/>
           </div>
           <div
             :class="`${classPrefix}-notification-content-inner-${type}-right`"
@@ -28,14 +17,8 @@
             <div
               :class="`${classPrefix}-notification-content-inner-${type}-right-close`"
             >
-              <va-button
-                @click="close"
-                type="subtle"
-              >
-                <va-icon
-                  size="14px"
-                  type="times"
-                />
+              <va-button @click="close" type="subtle">
+                <va-icon size="14px" type="times"/>
               </va-button>
             </div>
             <div
@@ -247,7 +230,6 @@ export default {
   &-dialog {
     position: relative;
     width: auto;
-    // max-width: 90%;
     padding: 40px 40px 25px 25px;
   }
 
@@ -259,7 +241,6 @@ export default {
     outline: 0;
     box-shadow: none;
     border: none;
-    // padding: 15px;
   }
 
   /**

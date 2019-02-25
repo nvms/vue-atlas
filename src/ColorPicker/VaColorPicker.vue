@@ -1,11 +1,9 @@
 <template>
   <va-dropdown>
     <div slot="trigger">
-      <va-button
-        ref="colorpicker"
-        @click.native="toggleColorPicker">
+      <va-button ref="colorpicker" @click.native="toggleColorPicker">
         <div :class="`${classPrefix}-color-picker-button-inner`">
-          <div :style="buttonStyleObj" />
+          <div :style="buttonStyleObj"/>
         </div>
       </va-button>
     </div>
@@ -13,7 +11,8 @@
       ref="colorpickerpopup"
       :color="color"
       :show="show"
-      @change="onChange"/>
+      @change="onChange"
+    />
   </va-dropdown>
 </template>
 
@@ -47,8 +46,26 @@ export default {
     },
     onChange (e) {
       this.colors = e
-      this.col = 'rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
-      this.rgba = 'rgba(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ', ' + e.rgba.a + ')'
+      this.col =
+        'rgba(' +
+        e.rgba.r +
+        ', ' +
+        e.rgba.g +
+        ', ' +
+        e.rgba.b +
+        ', ' +
+        e.rgba.a +
+        ')'
+      this.rgba =
+        'rgba(' +
+        e.rgba.r +
+        ', ' +
+        e.rgba.g +
+        ', ' +
+        e.rgba.b +
+        ', ' +
+        e.rgba.a +
+        ')'
       this.rgb = 'rgb(' + e.rgba.r + ', ' + e.rgba.g + ', ' + e.rgba.b + ')'
 
       this.$emit('change', e)
@@ -67,7 +84,7 @@ export default {
       return style
     },
     classObj () {
-      let {classPrefix} = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-color-picker'] = true
@@ -111,7 +128,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 3px;
-    background: linear-gradient(90deg, #FFF, hsla(0, 0%, 100%, 0));
+    background: linear-gradient(90deg, #fff, hsla(0, 0%, 100%, 0));
   }
 
   &-black {
@@ -153,7 +170,7 @@ export default {
   height: 190px;
   border-radius: 3px;
   margin-left: 10px;
-  background: linear-gradient(180deg, red, #FF0, #0F0, #0FF, #00F, #F0F, red);
+  background: linear-gradient(180deg, red, #ff0, #0f0, #0ff, #00f, #f0f, red);
   overflow: hidden;
 }
 

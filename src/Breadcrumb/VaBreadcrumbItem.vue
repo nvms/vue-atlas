@@ -10,7 +10,7 @@
       v-if="separatorIcon"
       :type="separatorIcon"
       :class="`${classPrefix}-breadcrumb-item-icon`"
-    ></va-icon>
+    />
     <span
       v-else
       :class="`${classPrefix}-breadcrumb-item-separator`"

@@ -1,8 +1,8 @@
 <template>
   <span :class="classObj">
     <span :class="iconObj">
-      <va-icon type="angle-right" size="12px" margin="0 6px 0 0" v-if="!open"></va-icon>
-      <va-icon type="angle-down" size="12px" margin="0 4.5px 0 0" v-else></va-icon>
+      <va-icon type="angle-right" size="12px" margin="0 6px 0 0" v-if="!open"/>
+      <va-icon type="angle-down" size="12px" margin="0 4.5px 0 0" v-else/>
     </span>
   </span>
 </template>
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     classObj () {
-      let {classPrefix, open} = this
+      let { classPrefix, open } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar-group-item-toggle'] = true
@@ -31,7 +31,7 @@ export default {
       return classes
     },
     iconObj () {
-      let {classPrefix, open} = this
+      let { classPrefix, open } = this
       let classes = {}
 
       classes[classPrefix + '-sidebar-group-item-toggle-icon'] = true

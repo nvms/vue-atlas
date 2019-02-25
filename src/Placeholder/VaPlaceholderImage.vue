@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-placeholder-image`" />
+  <div :class="`${classPrefix}-placeholder-image`"/>
 </template>
 
 <script>
