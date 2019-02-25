@@ -177,20 +177,24 @@ export default {
         cursor: not-allowed;
       }
     }
-    a {
+    a, a:link {
       color: $N300;
       font-weight: 600;
       padding-bottom: 6px;
       &:hover {
-        text-decoration: none;
+        text-decoration: none !important;
         color: $B300;
       }
       &:focus {
         outline: none;
       }
+      &:active {
+        background: none;
+        color: $B400;
+      }
     }
     &-active {
-      a {
+      a, a:link {
         color: $B400;
         border-bottom: 2px solid $B300;
       }
