@@ -29,3 +29,45 @@ Start the development server:
 ```bash
 $ npm run serve # or yarn
 ```
+
+This project is built in VSCode. If you are going to use VSCode as well,
+it is encouraged to:
+
+- Install Vetur
+- Install [Sass](https://marketplace.visualstudio.com/items?itemName=robinbentley.sass-indented) for syntax highlighting
+- Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+Modify your editor settings to include the following configuration rules:
+
+```json
+{
+  "eslint.validate": [
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        },
+    ],
+    "eslint.autoFixOnSave": true,
+    "vetur.format.defaultFormatter.html": "prettyhtml",
+    "vetur.format.defaultFormatter.css": "prettier",
+    "vetur.format.defaultFormatter.postcss": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
+    "vetur.format.defaultFormatter.less": "prettier",
+    "vetur.format.defaultFormatter.js": "prettier",
+    "vetur.format.defaultFormatter.ts": "prettier",
+    "vetur.format.options.tabSize": 2,
+    "vetur.format.options.useTabs": false,
+    "vetur.format.defaultFormatterOptions": {
+        "prettyhtml": {
+          "printWidth": 100, // No line exceeds 100 characters
+          "singleQuote": false
+        }
+      },
+    "prettier.eslintIntegration": true,
+    "prettier.singleQuote": true
+}
+```
