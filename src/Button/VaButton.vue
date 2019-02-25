@@ -203,27 +203,16 @@ export default {
       let style = {}
 
       if (this.componentWasMounted) {
-        let rect
-        let adjust = 0
         let l = iconBefore !== undefined
         let r = iconAfter !== undefined
 
-        if (l || r) {
-          rect = this.$el.getBoundingClientRect()
-          adjust = rect.width
-        }
         if (this.$el.style.width !== '100%') {
           if (l) {
-            adjust += 20
-            style['padding-left'] = '20px'
+            style['padding-left'] = '26px'
           }
           if (r) {
-            adjust += 20
-            style['padding-right'] = '20px'
+            style['padding-right'] = '26px'
           }
-        }
-        if (rect && adjust > rect.width) {
-          style['min-width'] = adjust + 'px'
         }
       }
 
