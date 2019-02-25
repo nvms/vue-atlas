@@ -114,6 +114,7 @@ a:active:not(.#{$class-prefix}-btn),
 a:link:active:not(.#{$class-prefix}-btn) {
   color: $B500;
   text-decoration: none;
+  background: inherit;
 }
 
 a:active {
