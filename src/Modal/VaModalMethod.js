@@ -100,7 +100,7 @@ const confirm = (options) => {
       }
       let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
 
-      let footerElement = createElement(VaButton, {
+      let confirmElement = createElement(VaButton, {
         slot: 'footer',
         props: {
           type: this.buttonType.appearance
@@ -109,6 +109,13 @@ const confirm = (options) => {
           click: this.handleConfirm
         }
       }, [this.getL('confirm')])
+
+      let cancelElement = createElement(VaButton, {
+        slot: 'footer',
+        on: {
+          click: this.handleClose
+        }
+      }, [this.getL('cancel')])
 
       return createElement(VaModal, {
         ref: 'modal',
@@ -127,7 +134,8 @@ const confirm = (options) => {
       }, [
         titleElement,
         bodyElement,
-        footerElement
+        confirmElement,
+        cancelElement
       ])
     }
   })
