@@ -14,19 +14,19 @@ const createNode = () => {
 
 const typeMap = {
   success: {
-    name: 'check',
+    name: 'check-circle',
     color: '#57D9A3'
   },
   info: {
-    name: 'info',
+    name: 'info-circle',
     color: '#4C9AFF'
   },
   warning: {
-    name: 'exclamation-triangle',
+    name: 'exclamation-circle',
     color: '#F29D41'
   },
   danger: {
-    name: 'exclamation-triangle',
+    name: 'exclamation-circle',
     color: '#CD4425'
   }
 }
