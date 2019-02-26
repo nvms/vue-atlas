@@ -483,11 +483,11 @@ export default {
   &-warning {
     @include btn-type-mixin(
       $bgCol: $Y400,
-      $fontCol: $N500,
+      $fontCol: $N900,
       $bgColHover: $Y300,
-      $fontColHover: $N600,
+      $fontColHover: $N900,
       $bgColActive: $Y500,
-      $fontColActive: $N600
+      $fontColActive: $N900
     );
     @include button-focus-mixin(darken($Y500, 7%), 1);
   }
