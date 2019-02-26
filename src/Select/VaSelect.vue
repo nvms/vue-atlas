@@ -13,7 +13,7 @@
         :class="`${classPrefix}-select-placeholder`"
         v-if="showPlaceholder || !showSelected"
       >{{placeholder}}</span>
-      <span style="display: flex;" v-if="showSelected">
+      <span v-if="showSelected">
         <template v-if="multiple">
           <div
             :class="`${classPrefix}-selected-tag`"
@@ -682,7 +682,7 @@ export default {
 
   .#{$class-prefix}-selected-tag {
     $self: &;
-    display: flex;
+    display: inline-flex;
     align-items: baseline;
     padding: 0 0 0 8px;
     margin-right: 3px;
@@ -790,6 +790,7 @@ export default {
 
     .#{$class-prefix}-btn-text-fade {
       justify-content: space-between !important;
+      white-space: normal;
 
       i {
         position: inherit;

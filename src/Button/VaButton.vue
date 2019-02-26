@@ -620,7 +620,6 @@ export default {
     min-width: 13px;
   }
   min-height: 26px;
-  max-height: 26px;
 }
 
 @mixin sm-button-size-mixin() {
@@ -634,7 +633,6 @@ export default {
     min-width: 15px;
   }
   min-height: 30px;
-  max-height: 30px;
 }
 
 @mixin md-button-size-mixin() {
@@ -648,7 +646,6 @@ export default {
     min-width: 17px;
   }
   min-height: 34px;
-  max-height: 34px;
 }
 
 @mixin lg-button-size-mixin() {
@@ -662,7 +659,6 @@ export default {
     min-width: 23px;
   }
   min-height: 45px;
-  max-height: 45px;
 }
 
 @mixin btn-size-mixin($padding, $fontSize, $lineHeight, $borderRadius) {
