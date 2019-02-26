@@ -52,9 +52,9 @@ export default {
           'active',
           'dark',
           'darker',
-          'purple',
-          'purple-light',
-          'purple-dark',
+          'help',
+          'help-light',
+          'help-dark',
           'black'
         ].includes(v)
       }
@@ -408,7 +408,7 @@ export default {
     @include button-focus-mixin($B100, 1);
   }
 
-  &-purple {
+  &-help {
     @include btn-type-mixin(
       $bgCol: $P500,
       $fontCol: $N0,
@@ -420,7 +420,7 @@ export default {
     @include button-focus-mixin($P100, 1);
   }
 
-  &-purple-light {
+  &-help-light {
     @include btn-type-mixin(
       $bgCol: $P400,
       $fontCol: $N0,
@@ -432,7 +432,7 @@ export default {
     @include button-focus-mixin($P100, 1);
   }
 
-  &-purple-dark {
+  &-help-dark {
     @include btn-type-mixin(
       $bgCol: darken($P600, 5%),
       $fontCol: $N0,

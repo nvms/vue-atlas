@@ -20,7 +20,7 @@ export default {
           'warning',
           'danger',
           'subtle',
-          'purple'
+          'help'
         ].includes(v)
       }
     },
@@ -129,7 +129,7 @@ export default {
       @include lozengeType($bgCol: $Y400, $fontCol: $N600);
     }
   }
-  &.#{$class-prefix}-lozenge-purple {
+  &.#{$class-prefix}-lozenge-help {
     @include lozengeType($bgCol: $P50, $fontCol: $P500);
     &.#{$class-prefix}-lozenge-bold {
       @include lozengeType($bgCol: $P400, $fontCol: $N20);

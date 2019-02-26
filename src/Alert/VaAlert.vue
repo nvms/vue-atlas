@@ -25,7 +25,7 @@ export default {
       default: 'warning',
       required: false,
       validator (v) {
-        return ['success', 'info', 'warning', 'danger', 'change'].includes(v)
+        return ['success', 'info', 'warning', 'danger', 'help'].includes(v)
       }
     },
     classPrefix: {
@@ -44,7 +44,7 @@ export default {
           return 'info-circle'
         case 'warning':
           return 'exclamation-circle'
-        case 'change':
+        case 'help':
           return 'question-circle'
         case 'danger':
           return 'exclamation-circle'
@@ -62,7 +62,7 @@ export default {
           return 'solid'
         case 'warning':
           return 'solid'
-        case 'change':
+        case 'help':
           return 'solid'
         case 'danger':
           return 'solid'
@@ -106,7 +106,7 @@ export default {
   &-success-icon,
   &-info-icon,
   &-danger-icon,
-  &-change-icon {
+  &-help-icon {
     display: block;
     flex-basis: auto;
     flex-grow: 0;
@@ -143,7 +143,7 @@ export default {
       color: $R500;
     }
   }
-  &-change {
+  &-help {
     background: $P50;
     &-icon {
       color: $P500;

@@ -35,7 +35,6 @@ export default {
       validator (v) {
         return [
           'default',
-          'default-notification',
           'success',
           'primary',
           'info',
