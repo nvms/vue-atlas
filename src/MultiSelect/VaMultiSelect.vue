@@ -19,7 +19,7 @@
           </span>
           <input class="va-mselect__input" ref="input" v-model="searchText" />
         </div>
-        <span class="va-mselect__clear" @click="clearAll">
+        <span class="va-mselect__clear" @click="clearAll" v-if="selectedItems.length > 0">
           <va-icon type="times-circle" />
         </span>
         <div class="va-mselect__indicator">
@@ -431,6 +431,7 @@ export default {
         line-height: 20px;
         border: 0px;
         background: transparent;
+        margin: 5px 0 4px 0;
 
         &:focus {
           outline: none;
@@ -442,6 +443,11 @@ export default {
       padding: 0 10px;
       font-size: 14px;
       color: $N500;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      height: 23px;
     }
   }
 }
