@@ -37,6 +37,18 @@
           <p>That's some fancy modal.</p>
         </div>
       </va-modal>
+      <br/>
+      valOne: {{valOne}}<br/>
+      valTwo: {{valTwo}}
+      <div style="width: 300px;">
+        <va-multi-select v-model="valOne">
+          <va-multi-select-option value="1" text="text1" label="label1"></va-multi-select-option>
+          <va-multi-select-option value="2" text="text2" label="label2"></va-multi-select-option>
+          <va-multi-select-option value="3" text="text3" label="label3"></va-multi-select-option>
+        </va-multi-select>
+        <br/>
+        <va-multi-select v-model="valTwo" :options="valTwoItems" />
+      </div>
     </va-page>
     <va-aside ref="aside" placement="right">Hey!</va-aside>
   </va-app>
@@ -47,6 +59,32 @@ export default {
   name: 'App',
   data () {
     return {
+      valOne: ['1'],
+      valTwo: ['val1', { 'someKey': 'someVal' }],
+      valTwoItems: [
+        { value: 'val1', text: 'text1', label: 'label1' },
+        { value: 'val2', text: 'text2', label: 'label2' },
+        { value: 'val3', text: 'text3', label: 'label3' },
+        { value: 'val4', text: 'text4', label: 'label4' },
+        { value: 'val5', text: 'text5', label: '' },
+        { value: 'val6', text: 'text6', label: 'label6' },
+        { value: 'val7', text: 'text7', label: 'label7' },
+        { value: 'val8', text: 'text8', label: 'label8' },
+        { value: 'val9', text: 'text9', label: 'label9' },
+        { value: 'val10', text: 'text10', label: 'label10' },
+        { value: 'val11', text: 'text11', label: 'label11' },
+        { value: 'val12', text: 'text12', label: 'label12' },
+        { value: 'val13', text: 'text13', label: 'label13' },
+        { value: 'val14', text: 'text14', label: 'label14' },
+        {
+          value: {
+            someKey: 'someVal'
+          },
+          text: 'text15',
+          label: 'label15'
+        }
+      ],
+
       mbTopItems: [
         {
           icon: 'vuejs',
