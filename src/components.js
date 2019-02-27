@@ -23,6 +23,7 @@ import VaColumn from './Grid/VaColumn.vue'
 import VaOption from './Select/VaOption.vue'
 import VaButton from './Button/VaButton.vue'
 import VaSelect from './Select/VaSelect.vue'
+import VaMultiSelect from './MultiSelect/VaMultiSelect.vue'
 import VaTopbar from './Topbar/VaTopbar.vue'
 import VaMobile from './Mobile/VaMobile.vue'
 import VaFormItem from './Form/VaFormItem.vue'
@@ -39,6 +40,7 @@ import VaAppConfig from './App/VaAppConfig.vue'
 import VaInputOps from './Input/VaInputOps.vue'
 import VaLozenge from './Lozenge/VaLozenge.vue'
 import VaContainer from './Grid/VaContainer.vue'
+import VaMultiSelectOption from './MultiSelect/VaMultiSelectOption.vue'
 import VaDropdown from './Dropdown/VaDropdown.vue'
 import VaCheckbox from './Checkbox/VaCheckbox.vue'
 import VaTextarea from './Textarea/VaTextarea.vue'
@@ -115,6 +117,7 @@ const Components = {
   VaTypeahead,
   VaCollapse,
   VaCollapsePanel,
+  VaMultiSelect,
   VaAnimQueue,
   VaAppConfig,
   VaContainer,
@@ -136,6 +139,7 @@ const Components = {
   VaBreadcrumbItem,
   VaPaginationItem,
   VaProgressTracker,
+  VaMultiSelectOption,
   VaPlaceholderText,
   VaColorPickerPopup,
   VaSidebarGroupItem,
