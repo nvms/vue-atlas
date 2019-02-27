@@ -17,13 +17,16 @@
               <va-icon type="times"/>
             </span>
           </span>
-          <input class="va-mselect__input" ref="input" v-model="searchText" />
+          <input
+            class="va-mselect__input"
+            ref="input"
+            v-model="searchText" />
         </div>
-        <span class="va-mselect__clear" @click="clearAll" v-if="selectedItems.length > 0">
+        <span class="va-mselect__clear" @click.stop="clearAll" v-if="selectedItems.length > 0">
           <va-icon type="times-circle" />
         </span>
         <div class="va-mselect__indicator">
-          <va-icon type="angle-down" />
+          <va-icon :type="show ? 'angle-up' : 'angle-down'" />
         </div>
       </div>
       <transition name="fadeDown">
@@ -34,6 +37,7 @@
           <slot>
           <va-multi-select-option
             :key="index"
+            :index="index"
             :label="option.label"
             :text="option.text"
             :value="option.value"
@@ -109,16 +113,20 @@ export default {
     return {
       addSelectOption: this.addOption,
       selectOption: this.select,
-      isOptionSelected: this.isSelected
+      isOptionSelected: this.isSelected,
+      getIndexByValue: this.getIndexByValue
     }
   },
   methods: {
     onInnerClick (e) {
       this.$refs.input.focus()
-      this.showDropdown()
+      this.showMenu()
     },
     isSelected (option) {
       return this.findIndex(option.value) !== -1
+    },
+    getIndexByValue (value) {
+      return this.findIndex(value, this.options)
     },
     keyup (e) {
       if (e.keyCode === 27) {
@@ -129,7 +137,7 @@ export default {
       if (search === '') return options
       var ret = []
       for (var i = 0, l = options.length; i < l; i++) {
-        var v = options[i] && String(options[i].label).replace(/<.*?>/g, '')
+        var v = options[i] && String(options[i].text).replace(/<.*?>/g, '')
         var s = search
 
         if (!this.matchCase) {
@@ -192,10 +200,11 @@ export default {
           .indexOf(option.value) !== -1
       )
     },
-    addOption (value, label) {
+    addOption (value, label, text) {
       let option = {
         value,
-        label
+        label,
+        text
       }
       if (this.optionExists(option)) {
         return
@@ -210,6 +219,8 @@ export default {
     del (item) {
       var index = this.findIndex(item.value)
       this.remove(this.selectedItems, index, 1)
+      this.show = true
+      this.$refs.input.focus()
     },
     remove (array, index, num) {
       var a = array.slice(0)
@@ -222,20 +233,17 @@ export default {
         ? this.add(option)
         : this.remove(this.selectedItems, index, 1)
     },
-    toggleDropdown () {
-      if (!this.disabled && !this.readonly) {
-        this.show = !this.show
-      }
-    },
-    showDropdown () {
+    showMenu () {
       if (!this.disabled) {
         this.show = true
       }
     },
     clearAll () {
       this.selectedItems = []
+      this.$refs.input.focus()
+      this.show = true
     },
-    hideDropdown () {
+    hideMenu () {
       this.show = false
     }
   },
@@ -273,6 +281,15 @@ export default {
       return this.filter(this.currentOptions, this.searchText)
     }
   },
+  watch: {
+    value (val) {
+      this.currentValue = val
+    },
+    currentValue (val) {
+      this.$emit('input', val)
+      this.$emit('change', val)
+    }
+  },
   mounted () {
     this.$nextTick(() => {
       this._closeEvent = EventListener.listen(window, 'click', e => {
@@ -296,9 +313,16 @@ export default {
   position: relative;
   min-height: 40px;
 
+  transition: background 0.1s ease-out,
+    box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38);
+
+  &:hover {
+    background-color: $N30;
+  }
+
   &--active {
     box-shadow: inset rgba($B100, 1) 0px 0px 0px 2px;
-    background-color: white;
+    background-color: white !important;
   }
 
   &__clear {
@@ -331,6 +355,8 @@ export default {
     left: 0;
     padding: 4px;
     list-style-type: none;
+    max-height: 300px;
+    overflow: auto;
 
     &-item {
       cursor: pointer;
@@ -363,6 +389,9 @@ export default {
 
           &__text {
             color: $N700;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
           }
           &__label {
             color: $N100;
@@ -392,39 +421,44 @@ export default {
       #{$self}__tag {
         display: flex;
         white-space: nowrap;
-        background-color: $N40;
+        // background-color: $N40;
+        background-color: $N200;
+        color: $N0;
         max-width: 100%;
         margin: 2px;
         border-radius: 3px;
         outline: none;
 
         &-text {
-          color: $N800;
-          font-size: 85%;
-          padding: 0 4px 0 4px;
+          // color: $N800;
+          font-size: 100%;
+          padding: 0 2px 0 6px;
           text-overflow: ellipsis;
           white-space: nowrap;
           overflow: hidden;
         }
         &-remove {
           align-items: center;
+          color: $N50;
           display: flex;
           padding: 0 5px;
           cursor: pointer;
-          font-size: 9px;
+          font-size: 10px;
           border-top-right-radius: 3px;
           border-bottom-right-radius: 3px;
 
           &:hover {
-            background: $R75;
+            background: $R100;
+            color: $N0;
           }
           &:active {
-            background: $R100;
+            background: $R200;
           }
         }
       }
 
       #{$self}__input {
+        font-size: 14px;
         height: 100%;
         width: 60px;
         flex: 1 1 auto;

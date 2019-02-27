@@ -9,7 +9,7 @@
       />
       <span class="va-mselect__menu-item-value">
         <span class="va-mselect__menu-item-value__text">
-          <slot>{{ fullText }}</slot>
+          <slot>{{index + 1}}. {{ text }}</slot>
         </span>
         <span class="va-mselect__menu-item-value__label">
           {{label}}
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'VaMultiSelectOption',
-  inject: ['addSelectOption', 'isOptionSelected', 'selectOption'],
+  inject: ['addSelectOption', 'isOptionSelected', 'selectOption', 'getIndexByValue'],
   props: {
     value: {},
     text: {
@@ -35,6 +35,9 @@ export default {
     }
   },
   computed: {
+    index () {
+      return this.getIndexByValue(this.value)
+    },
     fullText () {
       return this.text // || this.value
     },
@@ -53,7 +56,7 @@ export default {
     }
   },
   mounted () {
-    this.addSelectOption(this.value, this.fullText)
+    this.addSelectOption(this.value, this.label, this.text)
   }
 }
 </script>
