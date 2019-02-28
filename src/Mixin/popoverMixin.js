@@ -124,7 +124,7 @@ const PopoverMixin = {
           break
         case 'left bottom':
           this.position.left = triger.offsetLeft - popover.offsetWidth
-          this.position.top = triger.offsetTop + (Math.abs(triger.offsetHeight - popover.offsetHeight))
+          this.position.top = triger.offsetTop - (Math.abs(triger.offsetHeight - popover.offsetHeight))
           break
         case 'right':
           this.position.left = triger.offsetLeft + triger.offsetWidth
@@ -136,7 +136,7 @@ const PopoverMixin = {
           break
         case 'right bottom':
           this.position.left = triger.offsetLeft + triger.offsetWidth
-          this.position.top = triger.offsetTop + (Math.abs(triger.offsetHeight - popover.offsetHeight))
+          this.position.top = triger.offsetTop - (Math.abs(triger.offsetHeight - popover.offsetHeight))
           break
         case 'bottom':
           this.position.left = triger.offsetLeft - popover.offsetWidth / 2 + triger.offsetWidth / 2
