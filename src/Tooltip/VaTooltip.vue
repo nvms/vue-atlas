@@ -40,26 +40,11 @@ export default {
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let { classPrefix, placement } = this
+      let { classPrefix } = this
       let classes = {}
 
       classes[classPrefix + '-tooltip'] = true
-      classes[classPrefix + '-tooltip-top'] = placement === 'top'
-      classes[classPrefix + '-tooltip-top-left'] = placement === 'top left'
-      classes[classPrefix + '-tooltip-top-right'] = placement === 'top right'
-      classes[classPrefix + '-tooltip-right'] = placement === 'right'
-      classes[classPrefix + '-tooltip-right-top'] = placement === 'right top'
-      classes[classPrefix + '-tooltip-right-bottom'] =
-        placement === 'right bottom'
-      classes[classPrefix + '-tooltip-bottom'] = placement === 'bottom'
-      classes[classPrefix + '-tooltip-bottom-left'] =
-        placement === 'bottom left'
-      classes[classPrefix + '-tooltip-bottom-right'] =
-        placement === 'bottom right'
-      classes[classPrefix + '-tooltip-left'] = placement === 'left'
-      classes[classPrefix + '-tooltip-left-top'] = placement === 'left top'
-      classes[classPrefix + '-tooltip-left-bottom'] =
-        placement === 'left bottom'
+      classes[classPrefix + '-tooltip-' + this.placement.split(' ').join('-')] = true
 
       return classes
     }
