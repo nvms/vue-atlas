@@ -1,6 +1,7 @@
 <template>
   <va-button
     @click.prevent.native="handleClick"
+    :size="size"
     :class="classObj"
     :disabled="disabled"
     :type="currentChecked ? 'primary' : 'default'"
@@ -33,6 +34,10 @@ export default {
     classPrefix: {
       type: String,
       default: 'va'
+    },
+    size: {
+      type: String,
+      default: 'md'
     }
   },
   computed: {
