@@ -72,6 +72,7 @@ import VaColorPickerPopup from './ColorPicker/VaColorPickerPopup.vue'
 import VaSidebarGroupToggle from './Sidebar/VaSidebarGroupToggle.vue'
 import VaProgressTracker from './ProgressTracker/VaProgressTracker.vue'
 import VaPlaceholderHeading from './Placeholder/VaPlaceholderHeading.vue'
+import VaFilePicker from './FilePicker/VaFilePicker.vue'
 import VaNotificationMethod from './Notification/VaNotificationMethod.js'
 
 const Components = {
@@ -119,6 +120,7 @@ const Components = {
   VaAppConfig,
   VaContainer,
   VaTimepicker,
+  VaFilePicker,
   VaRadioGroup,
   VaDatepicker,
   VaPagination,
