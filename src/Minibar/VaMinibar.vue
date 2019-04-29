@@ -1,52 +1,58 @@
 <template>
   <div :class="classObj" :style="styleObj">
     <div :class="`${classPrefix}-minibar-inner`" :style="styleObjInner">
+
       <div :class="`${classPrefix}-minibar-top`">
-        <div v-for="(item, index) in topItems" :key="index">
-          <va-minibar-item
-            v-if="item.method"
-            :tooltip="item.tooltip"
-            :brand="item.brand"
-            @click.native="item.method"
-          >
-            <va-icon
-              :type="item.icon"
-              :size="item.size"
-              :icon-style="item.iconStyle || 'solid'"
-            />
-          </va-minibar-item>
-          <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
-            <va-icon
-              :type="item.icon"
-              :size="item.size"
-              :icon-style="item.iconStyle || 'solid'"
-            />
-          </va-minibar-item>
-        </div>
+        <slot name="top">
+          <div v-for="(item, index) in topItems" :key="index">
+            <va-minibar-item
+              v-if="item.method"
+              :tooltip="item.tooltip"
+              :brand="item.brand"
+              @click.native="item.method"
+            >
+              <va-icon
+                :type="item.icon"
+                :size="item.size"
+                :icon-style="item.iconStyle || 'solid'"
+              />
+            </va-minibar-item>
+            <va-minibar-item v-else :brand="item.brand" :tooltip="item.tooltip">
+              <va-icon
+                :type="item.icon"
+                :size="item.size"
+                :icon-style="item.iconStyle || 'solid'"
+              />
+            </va-minibar-item>
+          </div>
+        </slot>
       </div>
 
       <div :class="`${classPrefix}-minibar-bottom`">
-        <div v-for="(item, index) in bottomItems" :key="index">
-          <va-minibar-item
-            v-if="item.method"
-            @click.native="item.method"
-            :tooltip="item.tooltip"
-          >
-            <va-icon
-              :type="item.icon"
-              :size="item.size"
-              :icon-style="item.iconStyle || 'solid'"
-            />
-          </va-minibar-item>
-          <va-minibar-item v-else :tooltip="item.tooltip">
-            <va-icon
-              :type="item.icon"
-              :size="item.size"
-              :icon-style="item.iconStyle || 'solid'"
-            />
-          </va-minibar-item>
-        </div>
+        <slot name="bottom">
+          <div v-for="(item, index) in bottomItems" :key="index">
+            <va-minibar-item
+              v-if="item.method"
+              @click.native="item.method"
+              :tooltip="item.tooltip"
+            >
+              <va-icon
+                :type="item.icon"
+                :size="item.size"
+                :icon-style="item.iconStyle || 'solid'"
+              />
+            </va-minibar-item>
+            <va-minibar-item v-else :tooltip="item.tooltip">
+              <va-icon
+                :type="item.icon"
+                :size="item.size"
+                :icon-style="item.iconStyle || 'solid'"
+              />
+            </va-minibar-item>
+          </div>
+        </slot>
       </div>
+
     </div>
   </div>
 </template>
