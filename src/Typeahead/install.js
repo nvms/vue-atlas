@@ -1,7 +1,7 @@
 import VaTypeahead from './VaTypeahead.vue'
-import position from '../position'
+import relocate from '../relocate'
 
 export default Vue => {
   Vue.component(VaTypeahead.name, VaTypeahead)
-  Vue.directive('VaPosition', position)
+  Vue.directive('VaPosition', relocate)
 }

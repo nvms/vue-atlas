@@ -1,7 +1,7 @@
 import VaDatepicker from './VaDatepicker.vue'
-import position from '../position'
+import relocate from '../relocate'
 
 export default Vue => {
   Vue.component(VaDatepicker.name, VaDatepicker)
-  Vue.directive('VaPosition', position)
+  Vue.directive('VaPosition', relocate)
 }
