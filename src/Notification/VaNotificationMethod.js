@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VaNotification from './VaNotification.vue'
 
-const $body = document.querySelector('body')
-
 const createNode = () => {
+  const $body = document.querySelector('body')
   const $node = document.createElement('div')
   $body.appendChild($node)
   return $node
@@ -12,6 +11,7 @@ const createNode = () => {
 const open = (options, type = 'info') => {
   let { title, message, effect, width, duration, onShow, onHide, onConfirm } = options
   /* eslint-disable no-new */
+
   new Vue({
     el: createNode(),
     data () {
@@ -62,7 +62,6 @@ const open = (options, type = 'info') => {
     }
   })
 }
-
 const info = (options) => { open(options, 'info') }
 const success = (options) => { open(options, 'success') }
 const warning = (options) => { open(options, 'warning') }
