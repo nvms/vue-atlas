@@ -31,6 +31,7 @@
 
     <validate
       :name="name"
+      v-model="validStatus"
       :rules="rules"
       :custom-validate="customValidate"
       :current="value"
@@ -313,13 +314,17 @@ export default {
 
       style['width'] = width
       style['min-height'] = minHeight
+      style['position'] = 'relative'
 
       return style
     },
     classObjContainer () {
-      let { classPrefix } = this
+      let { classPrefix, validStatus } = this
       let classes = {}
 
+      classes[classPrefix + '-has-error'] = validStatus === 'error'
+      classes[classPrefix + '-has-success'] = validStatus === 'success'
+      classes[classPrefix + '-has-warn'] = validStatus === 'warn'
       classes[classPrefix + '-textarea-con'] = true
       // classes['inline'] = true
 
@@ -331,7 +336,6 @@ export default {
 
 <style lang="scss">
 .#{$class-prefix}-textarea-con {
-  overflow-y: hidden;
   .#{$class-prefix}-form-control {
     line-height: 16px;
   }
