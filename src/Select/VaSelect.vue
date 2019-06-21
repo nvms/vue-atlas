@@ -388,7 +388,7 @@
       find(v, array) {
         var a = array || this.selectedItems
         for (var i = 0; i < a.length; i++) {
-          if (v === a[i].value) {
+          if (JSON.stringify(v) === JSON.stringify(a[i].value)) {
             return a[i]
           }
         }
@@ -397,7 +397,7 @@
       findIndex(v, array) {
         var a = array || this.selectedItems
         for (var i = 0; i < a.length; i++) {
-          if (v === a[i].value) {
+          if (JSON.stringify(v) === JSON.stringify(a[i].value)) {
             return i
           }
         }
