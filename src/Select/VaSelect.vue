@@ -13,7 +13,7 @@
         :class="`${classPrefix}-select-placeholder`"
         v-if="showPlaceholder || !showSelected"
       >{{placeholder}}</span>
-      <span style="display: flex;" v-if="showSelected">
+      <span style="display: flex;flex-wrap: wrap;" v-if="showSelected">
         <template v-if="multiple">
           <div
             :class="`${classPrefix}-selected-tag`"
@@ -405,7 +405,7 @@ export default {
     find (v, array) {
       var a = array || this.selectedItems
       for (var i = 0; i < a.length; i++) {
-        if (v === a[i].value) {
+        if (JSON.stringify(v) === JSON.stringify(a[i].value)) {
           return a[i]
         }
       }
@@ -414,7 +414,7 @@ export default {
     findIndex (v, array) {
       var a = array || this.selectedItems
       for (var i = 0; i < a.length; i++) {
-        if (v === a[i].value) {
+        if (JSON.stringify(v) === JSON.stringify(a[i].value)) {
           return i
         }
       }
