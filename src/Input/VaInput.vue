@@ -220,6 +220,7 @@ export default {
   },
   beforeDestroy () {
     window.removeEventListener('scroll', this.setPosition, false)
+    window.removeEventListener('resize', this.setPosition, false)
   },
   components: {
     validate
