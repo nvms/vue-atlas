@@ -84,23 +84,23 @@
 }
 
 @mixin extraLargeInputSize() {
-  @include input-size( $padding: 9px, $fontSize: 14px, $lineHeight: 1.75em, $borderRadius: 4px, $minHeight: 44px, $maxHeight: 44px);
+  @include input-size( $padding: 9px, $fontSize: 14px, $lineHeight: 1.75em, $borderRadius: 3px, $minHeight: 44px, $maxHeight: 44px);
 }
 
 @mixin largeInputSize() {
-  @include input-size( $padding: 8px, $fontSize: 14px, $lineHeight: 1.7em, $borderRadius: 4px, $minHeight: 40px, $maxHeight: 40px);
+  @include input-size( $padding: 8px, $fontSize: 14px, $lineHeight: 1.7em, $borderRadius: 3px, $minHeight: 40px, $maxHeight: 40px);
 }
 
 @mixin defaultInputSize() {
-  @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 4px, $minHeight: 34px, $maxHeight: 34px);
+  @include input-size( $padding: 7px, $fontSize: 14px, $lineHeight: 1.45em, $borderRadius: 3px, $minHeight: 34px, $maxHeight: 34px);
 }
 
 @mixin smallInputSize() {
-  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 4px, $minHeight: 30px, $maxHeight: 30px);
+  @include input-size( $padding: 6px, $fontSize: 13px, $lineHeight: 1.3em, $borderRadius: 3px, $minHeight: 30px, $maxHeight: 30px);
 }
 
 @mixin extraSmallInputSize() {
-  @include input-size( $padding: 5px, $fontSize: 12px, $lineHeight: 1.2em, $borderRadius: 4px, $minHeight: 28px, $maxHeight: 28px);
+  @include input-size( $padding: 5px, $fontSize: 12px, $lineHeight: 1.2em, $borderRadius: 3px, $minHeight: 28px, $maxHeight: 28px);
 }
 
 /*sizes*/
