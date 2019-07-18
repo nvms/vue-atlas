@@ -676,7 +676,7 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  cursor: default;
+  cursor: pointer;
   font-family: inherit;
   text-decoration: none;
   vertical-align: middle;
