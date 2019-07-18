@@ -141,8 +141,8 @@ export default {
           background: $liAnchorColorHoverBackground;
         }
         &:active {
-          color: $liAnchorColorActiveColor;
-          background: $liAnchorColorActiveBackground;
+          color: $liAnchorColorActiveColor !important;
+          background: $liAnchorColorActiveBackground !important;
         }
       }
     }
@@ -190,10 +190,10 @@ export default {
     $liAnchorColorHoverBackground: #e8eaef,
     $liAnchorColorActiveBackground: $B75,
     $liAnchorColorActiveColor: inherit,
-    $selectedBackground: $B50,
-    $selectedColor: $B400,
-    $selectedHoverBackground: $B50,
-    $selectedHoverColor: $B400
+    $selectedBackground: $N500,
+    $selectedColor: $N0,
+    $selectedHoverBackground: $N500,
+    $selectedHoverColor: $N0
   );
 }
 

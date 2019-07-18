@@ -505,6 +505,7 @@ export default {
   $dropdownPlaceholderColor,
   $dropdownPlaceholderActiveColor,
   $itemActiveBackground,
+  $itemActiveColor,
   $itemActiveHoverBackground,
   $selectOpenBtnFocusBoxShadow,
   $searchWrapBackground,
@@ -615,9 +616,12 @@ export default {
 
   &-item-active {
     background: $itemActiveBackground;
+    color: $itemActiveColor !important;
 
     &:hover {
-      background: $itemActiveHoverBackground !important;
+      // background: $itemActiveHoverBackground !important;
+      background: $itemActiveBackground !important;
+      color: $itemActiveColor !important;
     }
   }
 
@@ -658,7 +662,8 @@ export default {
     $selectAllAnchorIconColor: $N60,
     $dropdownPlaceholderColor: $N70,
     $dropdownPlaceholderActiveColor: $B400,
-    $itemActiveBackground: $N20,
+    $itemActiveBackground: $N500,
+    $itemActiveColor: $N0,
     $itemActiveHoverBackground: $N20 !important,
     $selectOpenBtnFocusBoxShadow: none,
     $searchWrapBackground: #f4f5f7,
@@ -701,7 +706,7 @@ export default {
   }
 
   .#{$class-prefix}-select-btn.#{$class-prefix}-btn {
-    cursor: default;
+    cursor: pointer;
 
     &:after {
       content: '';
