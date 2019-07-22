@@ -274,6 +274,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       line-height: 1.5;
+      text-decoration: none;
 
       &:hover {
         text-decoration: none;

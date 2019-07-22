@@ -166,10 +166,12 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   border-bottom: 2px solid $N30;
+
   .#{$class-prefix}-nav-tab {
     padding-bottom: 4px;
     margin-right: 15px;
     line-height: 20px !important;
+
     &-disabled {
       a {
         color: $N70 !important;
@@ -181,6 +183,8 @@ export default {
       color: $N300;
       font-weight: 600;
       padding-bottom: 6px;
+      text-decoration: none;
+
       &:hover {
         text-decoration: none !important;
         color: $B300;
