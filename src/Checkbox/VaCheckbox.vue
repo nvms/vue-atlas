@@ -130,7 +130,7 @@ export default {
 
 .#{$class-prefix}-checkbox-label {
   white-space: nowrap;
-  cursor: default;
+  cursor: pointer;
   outline: none;
   display: inline-block;
   line-height: 1;
@@ -210,7 +210,7 @@ export default {
   position: absolute !important;
   left: 0;
   z-index: 1;
-  cursor: default;
+  cursor: pointer;
   opacity: 0;
   top: 0;
   bottom: 0;

@@ -618,8 +618,8 @@ export default {
     background: $itemActiveBackground;
     color: $itemActiveColor !important;
 
+    // an active item, when hovered, should not change bgcolor
     &:hover {
-      // background: $itemActiveHoverBackground !important;
       background: $itemActiveBackground !important;
       color: $itemActiveColor !important;
     }
@@ -662,7 +662,7 @@ export default {
     $selectAllAnchorIconColor: $N60,
     $dropdownPlaceholderColor: $N70,
     $dropdownPlaceholderActiveColor: $B400,
-    $itemActiveBackground: $N500,
+    $itemActiveBackground: $N700,
     $itemActiveColor: $N0,
     $itemActiveHoverBackground: $N20 !important,
     $selectOpenBtnFocusBoxShadow: none,

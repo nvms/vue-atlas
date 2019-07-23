@@ -131,12 +131,11 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: pointer !important;
+
   .#{$class-prefix}-label {
     margin-left: 8px;
     outline: none;
-  }
-  &:hover {
-    cursor: default;
   }
   .#{$class-prefix}-radio-span {
     white-space: nowrap;
@@ -171,7 +170,7 @@ export default {
     position: absolute !important;
     left: 0;
     z-index: 1;
-    cursor: default;
+    cursor: pointer; // not inheriting pointer !important from -radio-con?
     opacity: 0;
     top: 0;
     bottom: 0;

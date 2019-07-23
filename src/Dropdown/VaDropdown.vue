@@ -134,9 +134,9 @@ export default {
           background: $menuScrollbarThumbBackgroundHover;
         }
       }
-      > li > a,
-      > div > li > a {
-        color: $liAnchorColor;
+      > li > a:not(.#{$class-prefix}-select-item-active),
+      > div > li > a:not(.#{$class-prefix}-select-item-active) {
+        color: $liAnchorColor !important;
         &:hover {
           background: $liAnchorColorHoverBackground;
         }
@@ -187,19 +187,14 @@ export default {
     $menuScrollbarThumbBackground: rgba(23, 47, 87, 0.22),
     $menuScrollbarThumbBackgroundHover: rgba(9, 30, 66, 0.45),
     $liAnchorColor: $N800,
-    $liAnchorColorHoverBackground: #e8eaef,
+    $liAnchorColorHoverBackground: $N20,
     $liAnchorColorActiveBackground: $B75,
     $liAnchorColorActiveColor: inherit,
-    $selectedBackground: $N500,
+    $selectedBackground: $N700,
     $selectedColor: $N0,
-    $selectedHoverBackground: $N500,
+    $selectedHoverBackground: $N700,
     $selectedHoverColor: $N0
   );
-}
-
-.#{$class-prefix}-dropdown-con > span > div > a.#{$class-prefix}-btn,
-.#{$class-prefix}-dropdown-con > span > div > a.#{$class-prefix}-btn:hover {
-  cursor: default;
 }
 
 .#{$class-prefix}-dropdown-con {
@@ -247,8 +242,6 @@ export default {
       &::-webkit-scrollbar {
         width: 7px;
       }
-
-      // overflow-y: auto;
     }
 
     > li,
@@ -277,7 +270,8 @@ export default {
       text-decoration: none;
 
       &:hover {
-        text-decoration: none;
+        text-decoration: none !important;
+        color: red;
       }
 
       &:active {
