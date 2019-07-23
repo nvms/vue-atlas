@@ -180,26 +180,26 @@ export default {
       }
     }
     a, a:link {
-      color: $N300;
+      color: $N300 !important;
       font-weight: 600;
       padding-bottom: 6px;
       text-decoration: none;
 
       &:hover {
         text-decoration: none !important;
-        color: $B300;
+        color: $B300 !important;
       }
       &:focus {
         outline: none;
       }
       &:active {
         background: none;
-        color: $B400;
+        color: $B400 !important;
       }
     }
     &-active {
       a, a:link {
-        color: $B400;
+        color: $B400 !important;
         border-bottom: 2px solid $B300;
       }
     }
