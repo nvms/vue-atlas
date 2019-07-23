@@ -243,7 +243,7 @@ sidebar item defaults
   font-size: 14px;
   line-height: 1em;
   border-radius: 3px;
-  min-height: 36px;
+  min-height: 30px;
   font-weight: 400;
 
   &-icon {
@@ -264,13 +264,13 @@ sidebar item defaults
     display: flex;
     flex: 1;
     align-items: center;
-    min-height: 36px;
+    min-height: 30px;
     max-width: 100%;
 
     a {
       flex: 1;
       position: relative;
-      min-height: 36px;
+      min-height: 30px;
       justify-content: center;
       line-height: 1;
     }
