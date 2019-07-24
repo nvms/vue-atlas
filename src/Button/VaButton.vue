@@ -1,12 +1,11 @@
 <template>
-  <a
+  <button
     :class="classObj"
     :style="styleObj"
     @click="onClick"
     @keydown.enter="enterKeyDown"
     @keyup.enter="enterKeyUp"
     ref="btn"
-    tabindex="0"
   >
     <div :class="innerClassObj" :style="innerStyleObj">
       <va-icon
@@ -22,7 +21,7 @@
       />
     </div>
     <va-loading :color="spinColor" :size="size" v-if="loadingSpinner"/>
-  </a>
+  </button>
 </template>
 
 <script>

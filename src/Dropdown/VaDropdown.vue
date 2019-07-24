@@ -152,7 +152,7 @@ export default {
   trigger that is currently active, meaning the dropdown is opened.
   */
   &-selected {
-    > span > div > a.#{$class-prefix}-btn {
+    > span > div > button.#{$class-prefix}-btn {
       background: $selectedBackground;
       color: $selectedColor;
       &:hover {
@@ -166,7 +166,7 @@ export default {
   doing something like this:
 
   &-selected {
-    >span>div>a.#{$class-prefix}-btn-primary {
+    >span>div>button.#{$class-prefix}-btn-primary {
       background: $B300;
       color: $N20;
     }
@@ -315,12 +315,12 @@ that resides inside of the va-topbar element.
 
 .#{$class-prefix}-topbar--theme-blue {
   .#{$class-prefix}-dropdown-selected {
-    > span > div > a.#{$class-prefix}-btn {
+    > span > div > button.#{$class-prefix}-btn {
       background-color: $B500;
       color: $N20;
     }
 
-    > span > div > a.#{$class-prefix}-btn-primary-dark {
+    > span > div > button.#{$class-prefix}-btn-primary-dark {
       background: $B400;
     }
   }
@@ -328,12 +328,12 @@ that resides inside of the va-topbar element.
 
 .#{$class-prefix}-topbar--theme-purple {
   .#{$class-prefix}-dropdown-selected {
-    > span > div > a.#{$class-prefix}-btn {
+    > span > div > button.#{$class-prefix}-btn {
       background-color: $P400;
       color: $N20;
     }
 
-    > span > div > a.#{$class-prefix}-btn-purple-dark {
+    > span > div > button.#{$class-prefix}-btn-purple-dark {
       background: $P400;
     }
   }
