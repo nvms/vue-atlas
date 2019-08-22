@@ -23,6 +23,10 @@ export default {
   name: 'VaBreadcrumbItem',
   props: {
     to: {},
+    href: {
+      type: String,
+      required: false
+    },
     replace: {
       type: Boolean,
       default: false,
@@ -46,6 +50,11 @@ export default {
     const link = this.$refs.link
 
     link.addEventListener('click', () => {
+      if (this.href) {
+        window.location.href = this.href
+        return
+      }
+
       const { to, $router } = this
 
       if (!to || !$router) return
