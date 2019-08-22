@@ -1,7 +1,7 @@
 <template>
   <span :class="`${classPrefix}-breadcrumb-item`">
     <span
-      :class="[classPrefix + '-breadcrumb-item-inner', to ? classPrefix + '-breadcrumb-link' : '']"
+      :class="[classPrefix + '-breadcrumb-item-inner', to || href ? classPrefix + '-breadcrumb-link' : '']"
       ref="link"
     >
       <slot/>
