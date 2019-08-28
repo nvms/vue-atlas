@@ -101,6 +101,9 @@
 </template>
 
 <script>
+const stripTrailingSlash = (str) => {
+  return str.endsWith('/') ? str.slice(0, -1) : str
+}
 export default {
   name: 'VaSidebarGroupItem',
   props: {
@@ -198,8 +201,14 @@ export default {
         }
       }
       if (this.item.route !== undefined) {
-        if (this.$route.path !== undefined) {
+        if (this.$route !== undefined && this.$route.path !== undefined) {
           if (this.item.route === this.$route.path) {
+            if (parentElement.classList) {
+              parentElement.classList.add('active')
+            }
+          }
+        } else {
+          if (stripTrailingSlash(this.item.route) === stripTrailingSlash(window.location.pathname)) {
             if (parentElement.classList) {
               parentElement.classList.add('active')
             }
