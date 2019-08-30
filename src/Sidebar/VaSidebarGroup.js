@@ -37,8 +37,7 @@ const VaSidebarGroup = {
       const self = this
 
       if (self.items !== undefined) {
-        const items = JSON.parse(JSON.stringify(self.items))
-        return insertMetadataToItems(items)
+        return insertMetadataToItems(self.items)
       }
 
       return false
