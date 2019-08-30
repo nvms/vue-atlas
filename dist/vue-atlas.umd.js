@@ -14774,8 +14774,7 @@ var VaSidebarGroup = {
       var self = this;
 
       if (self.items !== undefined) {
-        var items = JSON.parse(JSON.stringify(self.items));
-        return insertMetadataToItems(items);
+        return insertMetadataToItems(self.items);
       }
 
       return false;
