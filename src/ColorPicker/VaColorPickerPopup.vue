@@ -308,7 +308,7 @@ export default {
 
     updateControls () {
       this.setHueSliderPositionFromHsb()
-      this.setAlphaSliderPositionFromAlpha()
+      if (!this.hideAlpha) this.setAlphaSliderPositionFromAlpha()
       this.setGradientCursorPositionFromHsb()
       this.emitColors()
     },
