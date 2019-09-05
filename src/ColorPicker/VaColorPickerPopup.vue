@@ -34,13 +34,15 @@
           @mousedown="alphaSliderOnMousedown"
           @touchstart="alphaSliderOnMousedown"
           :class="`${classPrefix}-color-picker-alpha-track`"
+          v-if="!hideAlpha"
         >
           <div
             :style="alphaStyleObj"
             :class="`${classPrefix}-color-picker-alpha-track-color`"
+            v-if="!hideAlpha"
           />
           <div :class="`${classPrefix}-color-picker-border`"/>
-          <div
+          <div v-if="!hideAlpha"
             ref="alphaCursor"
             :class="`${classPrefix}-color-picker-alpha-cursor`"
           />
@@ -51,7 +53,7 @@
         <va-input size="xs" v-model="rgb.r" @change="rChange" width="38px"/>
         <va-input size="xs" v-model="rgb.g" @change="gChange" width="38px"/>
         <va-input size="xs" v-model="rgb.b" @change="bChange" width="38px"/>
-        <va-input size="xs" v-model="alpha" @change="aChange" width="40px"/>
+        <va-input size="xs" v-model="alpha" @change="aChange" width="40px" v-if="!hideAlpha"/>
       </div>
       <div
         :class="`${classPrefix}-color-picker-lower`"
@@ -61,7 +63,7 @@
         <span style="text-align:center;width:38px;font-size:10px;">R</span>
         <span style="text-align:center;width:38px;font-size:10px;">G</span>
         <span style="text-align:center;width:38px;font-size:10px;">B</span>
-        <span style="text-align:center;width:38px;font-size:10px;">A</span>
+        <span style="text-align:center;width:38px;font-size:10px;" v-if="!hideAlpha">A</span>
       </div>
     </div>
   </transition>
@@ -79,6 +81,10 @@ export default {
     classPrefix: {
       type: String,
       default: 'va'
+    },
+    hideAlpha: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -302,7 +308,7 @@ export default {
 
     updateControls () {
       this.setHueSliderPositionFromHsb()
-      this.setAlphaSliderPositionFromAlpha()
+      if (!this.hideAlpha) this.setAlphaSliderPositionFromAlpha()
       this.setGradientCursorPositionFromHsb()
       this.emitColors()
     },

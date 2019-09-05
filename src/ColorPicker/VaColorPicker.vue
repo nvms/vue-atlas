@@ -11,6 +11,7 @@
       ref="colorpickerpopup"
       :color="color"
       :show="show"
+      :hide-alpha="hideAlpha"
       @change="onChange"
     />
   </va-dropdown>
@@ -28,6 +29,10 @@ export default {
     classPrefix: {
       type: String,
       default: 'va'
+    },
+    hideAlpha: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
