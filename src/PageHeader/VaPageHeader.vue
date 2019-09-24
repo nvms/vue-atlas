@@ -118,7 +118,7 @@ export default {
 
   &-bottom-wrapper {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin-top: 16px;
 
     & > div {
