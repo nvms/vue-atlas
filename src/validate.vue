@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-err-tip`" v-if="validate && tips">{{tips}}</div>
+  <div :class="`va-err-tip`" v-if="validate && tips">{{tips}}</div>
 </template>
 
 <script>
@@ -23,11 +23,7 @@ export default {
     name: {
       type: String
     },
-    current: {},
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
+    current: {}
   },
   data () {
     return {

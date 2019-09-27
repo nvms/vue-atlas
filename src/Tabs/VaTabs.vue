@@ -14,7 +14,7 @@
         ></a>
       </li>
     </ul>
-    <div :class="`${classPrefix}-tab-content`">
+    <div :class="`va-tab-content`">
       <slot/>
     </div>
   </div>
@@ -37,10 +37,6 @@ export default {
       default: () => ({
         useUrlFragment: false
       })
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -51,11 +47,10 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
       classes['clearfix'] = true
-      classes[classPrefix + '-nav-tabs'] = true
+      classes['va-nav-tabs'] = true
 
       return classes
     },
@@ -138,17 +133,16 @@ export default {
       }
     },
     liclassObj (tab) {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-nav-tab'] = true
-      classes[classPrefix + '-nav-tab-active'] = tab.isActive
+      classes['va-nav-tab'] = true
+      classes['va-nav-tab-active'] = tab.isActive
 
       return classes
     },
     disabledTabClass (tab) {
       if (tab.isDisabled) {
-        return this.classPrefix + '-nav-tab-disabled'
+        return 'va-nav-tab-disabled'
       } else {
         return ''
       }
@@ -158,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-nav-tabs {
+.va-nav-tabs {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -167,7 +161,7 @@ export default {
   justify-content: flex-start;
   border-bottom: 2px solid $N30;
 
-  .#{$class-prefix}-nav-tab {
+  .va-nav-tab {
     padding-bottom: 4px;
     margin-right: 15px;
     line-height: 20px !important;

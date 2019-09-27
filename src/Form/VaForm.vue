@@ -32,10 +32,6 @@ export default {
       validator (v) {
         return ['horizontal', 'inline', 'vertical'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   methods: {
@@ -89,11 +85,11 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, type } = this
+      let { type } = this
       let classes = {}
 
-      classes[classPrefix + '-form-horizontal'] = type === 'horizontal'
-      classes[classPrefix + '-form-inline'] = type === 'inline'
+      classes['va-form-horizontal'] = type === 'horizontal'
+      classes['va-form-inline'] = type === 'inline'
       classes['clearfix'] = true
 
       return classes

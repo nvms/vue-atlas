@@ -1,9 +1,9 @@
 <template>
-  <div :class="`${classPrefix}-placeholder-heading`">
-    <div v-if="image" :class="`${classPrefix}-placeholder-heading-image`"/>
-    <div :class="`${classPrefix}-placeholder-heading-content`">
-      <div :class="`${classPrefix}-placeholder-heading-content-title`"/>
-      <div :class="`${classPrefix}-placeholder-heading-content-subtitle`"/>
+  <div :class="`va-placeholder-heading`">
+    <div v-if="image" :class="`va-placeholder-heading-image`"/>
+    <div :class="`va-placeholder-heading-content`">
+      <div :class="`va-placeholder-heading-content-title`"/>
+      <div :class="`va-placeholder-heading-content-subtitle`"/>
     </div>
   </div>
 </template>
@@ -15,10 +15,6 @@ export default {
     image: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   }
 }

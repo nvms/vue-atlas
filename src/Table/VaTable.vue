@@ -19,20 +19,16 @@ export default {
       validator (v) {
         return ['lg', 'md', 'sm'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, size, hover } = this
+      let { size, hover } = this
       let classes = {}
 
-      classes[classPrefix + '-table'] = true
-      classes[classPrefix + '-table-' + size] = true
-      classes[classPrefix + '-table-hover'] = hover
+      classes['va-table'] = true
+      classes['va-table-' + size] = true
+      classes['va-table-hover'] = hover
 
       return classes
     }
@@ -41,7 +37,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-table {
+.va-table {
   margin: 1em 0;
   &-fullwidth {
     table {
@@ -97,8 +93,8 @@ export default {
   }
 }
 
-.#{$class-prefix}-page-container-article {
-  .#{$class-prefix}-table {
+.va-page-container-article {
+  .va-table {
     margin: 3em 0 4em 0;
   }
 }

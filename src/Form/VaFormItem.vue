@@ -3,12 +3,12 @@
     <label
       v-if="label || inline || horizontal"
       v-bind="$attrs"
-      :class="`${classPrefix}-col-sm-${label_col} ${classPrefix}-control-label`"
+      :class="`va-col-sm-${label_col} va-control-label`"
     >
       {{label || '&nbsp;'}}
-      <em :class="`${classPrefix}-form-need`" v-if="need">*</em>
+      <em :class="`va-form-need`" v-if="need">*</em>
     </label>
-    <div :class="`${classPrefix}-col-sm-${col} ${classPrefix}-flex`">
+    <div :class="`va-col-sm-${col} va-flex`">
       <slot/>
     </div>
   </div>
@@ -40,10 +40,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -81,10 +77,9 @@ export default {
       return this.label_col === 12 ? 12 : wrapCol - this.label_col
     },
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-form-group'] = true
+      classes['va-form-group'] = true
 
       return classes
     }

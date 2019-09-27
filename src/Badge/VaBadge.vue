@@ -27,19 +27,15 @@ export default {
       type: String,
       default: '0px',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, type } = this
+      let { type } = this
       let classes = {}
 
-      classes[classPrefix + '-badge'] = true
-      classes[classPrefix + '-badge-' + type] = true
+      classes['va-badge'] = true
+      classes['va-badge-' + type] = true
 
       return classes
     }
@@ -48,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-badge {
+.va-badge {
   display: inline-block;
   text-align: center;
   font-weight: normal;

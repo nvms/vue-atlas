@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-row`" :style="styles">
+  <div :class="`va-row`" :style="styles">
     <slot/>
   </div>
 </template>
@@ -11,10 +11,6 @@ export default {
     gutter: {
       type: Number,
       default: 0
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
@@ -69,7 +65,7 @@ $outer-margin: rem(16px, $context);
 $half-gutter-width: $gutter-width / 2;
 
 @mixin column($name, $num) {
-  .#{$class-prefix}-col-#{$name}-#{$num} {
+  .va-col-#{$name}-#{$num} {
     box-sizing: border-box;
     flex: 0 0 auto;
     padding-right: $gutter-width * 0.5;
@@ -80,13 +76,13 @@ $half-gutter-width: $gutter-width / 2;
 }
 
 @mixin offset($name, $num) {
-  .#{$class-prefix}-col-#{$name}-offset-#{$num} {
+  .va-col-#{$name}-offset-#{$num} {
     margin-left: 100% / $num-columns * $num;
   }
 }
 
 @mixin container($width) {
-  .#{$class-prefix}-container {
+  .va-container {
     box-sizing: border-box;
     width: $width;
     margin-right: auto;
@@ -97,46 +93,46 @@ $half-gutter-width: $gutter-width / 2;
 }
 
 @mixin positions($size) {
-  .#{$class-prefix}-start-#{$size} {
+  .va-start-#{$size} {
     justify-content: flex-start;
     text-align: start;
   }
 
-  .#{$class-prefix}-center-#{$size} {
+  .va-center-#{$size} {
     justify-content: center;
     text-align: center;
   }
 
-  .#{$class-prefix}-end-#{$size} {
+  .va-end-#{$size} {
     justify-content: flex-end;
     text-align: end;
   }
 
-  .#{$class-prefix}-top-#{$size} {
+  .va-top-#{$size} {
     align-items: flex-start;
   }
 
-  .#{$class-prefix}-middle-#{$size} {
+  .va-middle-#{$size} {
     align-items: center;
   }
 
-  .#{$class-prefix}-bottom-#{$size} {
+  .va-bottom-#{$size} {
     align-items: flex-end;
   }
 
-  .#{$class-prefix}-around-#{$size} {
+  .va-around-#{$size} {
     justify-content: space-around;
   }
 
-  .#{$class-prefix}-between-#{$size} {
+  .va-between-#{$size} {
     justify-content: space-between;
   }
 
-  .#{$class-prefix}-first-#{$size} {
+  .va-first-#{$size} {
     order: -1;
   }
 
-  .#{$class-prefix}-last-#{$size} {
+  .va-last-#{$size} {
     order: 1;
   }
 }
@@ -160,7 +156,7 @@ $half-gutter-width: $gutter-width / 2;
   }
 }
 
-.#{$class-prefix}-row {
+.va-row {
   display: flex;
   flex-flow: row wrap;
   flex: 0 1 auto;

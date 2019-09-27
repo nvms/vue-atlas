@@ -1,7 +1,7 @@
 <template>
-  <span :class="`${classPrefix}-breadcrumb-item`">
+  <span :class="`va-breadcrumb-item`">
     <span
-      :class="[classPrefix + '-breadcrumb-item-inner', to || href ? classPrefix + '-breadcrumb-link' : '']"
+      :class="['va-breadcrumb-item-inner', to || href ? 'va-breadcrumb-link' : '']"
       ref="link"
     >
       <slot/>
@@ -9,11 +9,11 @@
     <va-icon
       v-if="separatorIcon"
       :type="separatorIcon"
-      :class="`${classPrefix}-breadcrumb-item-icon`"
+      :class="`va-breadcrumb-item-icon`"
     />
     <span
       v-else
-      :class="`${classPrefix}-breadcrumb-item-separator`"
+      :class="`va-breadcrumb-item-separator`"
     >{{separator}}</span>
   </span>
 </template>
@@ -31,10 +31,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {

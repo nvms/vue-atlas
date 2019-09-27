@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-affix`" :style="affixStyle">
+  <div :class="`va-affix`" :style="affixStyle">
     <slot/>
   </div>
 </template>
@@ -12,10 +12,6 @@ export default {
       type: [Number, String],
       default: 0,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
@@ -29,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-affix {
+.va-affix {
   position: sticky;
   z-index: 900;
 }

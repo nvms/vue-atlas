@@ -1,17 +1,11 @@
 <template>
-  <div :class="`${classPrefix}-sidebar-group-title`">
+  <div :class="`va-sidebar-group-title`">
     <slot/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'VaSidebarGroupTitle',
-  props: {
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
-  }
+  name: 'VaSidebarGroupTitle'
 }
 </script>

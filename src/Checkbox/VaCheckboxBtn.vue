@@ -31,10 +31,6 @@ export default {
       type: Boolean,
       default: false
     },
-    classPrefix: {
-      type: String,
-      default: 'va'
-    },
     size: {
       type: String,
       default: 'md'
@@ -42,10 +38,9 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-checked-btn'] = true
+      classes['va-checked-btn'] = true
 
       return classes
     }

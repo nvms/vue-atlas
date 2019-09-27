@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" :style="styleObj">
     <va-button
-      :class="[`${classPrefix}-dropdown-toggle`, `${classPrefix}-select-btn`, showSelected && multiple && value.length ? `${classPrefix}-select-multiple` : '', show ? `${classPrefix}-select-btn-open` : '']"
+      :class="[`va-dropdown-toggle`, `va-select-btn`, showSelected && multiple && value.length ? `va-select-multiple` : '', show ? `va-select-btn-open` : '']"
       :disabled="disabled"
       :size="size"
       :style="{minWidth:'100%'}"
@@ -10,24 +10,24 @@
       ref="button"
     >
       <span
-        :class="`${classPrefix}-select-placeholder`"
+        :class="`va-select-placeholder`"
         v-if="showPlaceholder || !showSelected"
       >{{placeholder}}</span>
       <span style="display: flex;flex-wrap: wrap;" v-if="showSelected">
         <template v-if="multiple">
           <div
-            :class="`${classPrefix}-selected-tag`"
+            :class="`va-selected-tag`"
             :key="index"
             @click.stop="del(item)"
             tabindex="0"
             v-for="(item, index) in selectedItems"
           >
-            <span :class="`${classPrefix}-selected-tag__label`">
+            <span :class="`va-selected-tag__label`">
               <slot :item="item" name="item">
                 <span v-html="format(item)"/>
               </slot>
             </span>
-            <span :class="`${classPrefix}-selected-tag__icon`">
+            <span :class="`va-selected-tag__icon`">
               <va-icon type="times"/>
             </span>
           </div>
@@ -45,16 +45,16 @@
     </va-button>
     <transition name="fadeDown">
       <ul
-        :class="[`${classPrefix}-dropdown-menu`, search ? `${classPrefix}-has-search` : ``]"
+        :class="[`va-dropdown-menu`, search ? `va-has-search` : ``]"
         :style="{minWidth: '100%', maxHeight: menuMaxHeight}"
         ref="menu"
         v-show="show"
         v-va-position="show"
       >
         <li v-if="search">
-          <div :class="`${classPrefix}-search-wrap`">
+          <div :class="`va-search-wrap`">
             <va-input
-              :class="`${classPrefix}-select-search`"
+              :class="`va-select-search`"
               :placeholder="inputPlaceholder"
               @confirm="addExtra"
               icon="search"
@@ -65,7 +65,7 @@
             />
           </div>
         </li>
-        <li :class="`${classPrefix}-select-all`" v-if="multiple">
+        <li :class="`va-select-all`" v-if="multiple">
           <a @click.prevent="selectAll">
             {{getL('all')}}
             <va-icon
@@ -77,7 +77,7 @@
             />
           </a>
         </li>
-        <div :class="`${classPrefix}-select-items-wrapper`">
+        <div :class="`va-select-items-wrapper`">
           <slot>
             <va-option
               :key="index"
@@ -88,7 +88,7 @@
           </slot>
         </div>
         <div
-          :class="`${classPrefix}-notify`"
+          :class="`va-notify`"
           transition="fadeDown"
           v-show="showNotify"
         >Limit: {{limit}}</div>
@@ -186,10 +186,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -200,7 +196,7 @@ export default {
       showNotify: false,
       currentValue: this.value,
       currentOptions: this.options,
-      activeItemClass: this.classPrefix + '-select-item-active'
+      activeItemClass: 'va-select-item-active'
     }
   },
   provide () {
@@ -267,16 +263,16 @@ export default {
       return style
     },
     classObj () {
-      let { classPrefix, validStatus } = this
+      let { validStatus } = this
       let classes = {}
 
-      classes[classPrefix + '-has-error'] = validStatus === 'error'
-      classes[classPrefix + '-has-success'] = validStatus === 'success'
-      classes[classPrefix + '-has-warn'] = validStatus === 'warn'
+      classes['va-has-error'] = validStatus === 'error'
+      classes['va-has-success'] = validStatus === 'success'
+      classes['va-has-warn'] = validStatus === 'warn'
 
-      classes[classPrefix + '-btn-group'] = true
-      classes[classPrefix + '-select-group'] = true
-      classes[classPrefix + '-dropdown-con'] = true
+      classes['va-btn-group'] = true
+      classes['va-select-group'] = true
+      classes['va-dropdown-con'] = true
 
       return classes
     },
@@ -521,20 +517,20 @@ export default {
     color: $btnOpenColor !important;
   }
   &-group {
-    &.#{$class-prefix}-has-error {
-      .#{$class-prefix}-btn {
+    &.va-has-error {
+      .va-btn {
         &:after {
           border: $hasErrorBtnBorder;
         }
       }
     }
 
-    .#{$class-prefix}-search-wrap {
+    .va-search-wrap {
       background: $searchWrapBackground;
       border-bottom: 1px solid $searchWrapBorderBottomColor;
     }
 
-    .#{$class-prefix}-selected-tag {
+    .va-selected-tag {
       $self: &;
       background: $selectedTagBackground;
 
@@ -549,7 +545,7 @@ export default {
       &:hover {
         color: $selectedTagHoverColor;
 
-        .#{$class-prefix}-selected-tag__icon {
+        .va-selected-tag__icon {
           color: $selectedTagHoverIconColor !important;
         }
       }
@@ -557,28 +553,28 @@ export default {
       &:active {
         color: $selectedTagActiveColor;
 
-        .#{$class-prefix}-selected-tag__icon {
+        .va-selected-tag__icon {
           color: $selectedTagActiveIconColor !important;
         }
       }
     }
 
-    .#{$class-prefix}-dropdown-menu {
+    .va-dropdown-menu {
       background-color: $dropdownMenuBackground;
       -webkit-box-shadow: $dropdownMenuBoxShadow;
       box-shadow: $dropdownMenuBoxShadow;
 
-      .#{$class-prefix}-notify {
+      .va-notify {
         background: $notifyBackground;
         border: $notifyBorder;
         box-shadow: $notifyBoxShadow;
       }
 
-      .#{$class-prefix}-fa-plus-square-o {
+      .va-fa-plus-square-o {
         color: $addButtonColor;
       }
 
-      .#{$class-prefix}-select-all {
+      .va-select-all {
         border-bottom: $selectAllBorderBottom;
 
         a {
@@ -589,13 +585,13 @@ export default {
       }
     }
 
-    .#{$class-prefix}-dropdown-toggle {
-      .#{$class-prefix}-select-placeholder {
+    .va-dropdown-toggle {
+      .va-select-placeholder {
         color: $dropdownPlaceholderColor !important;
       }
 
-      &:active:not(.#{$class-prefix}-select-btn-open) {
-        .#{$class-prefix}-select-placeholder {
+      &:active:not(.va-select-btn-open) {
+        .va-select-placeholder {
           color: $dropdownPlaceholderActiveColor !important;
         }
         i {
@@ -604,8 +600,8 @@ export default {
       }
     }
 
-    .#{$class-prefix}-select-btn-open {
-      .#{$class-prefix}-select-placeholder {
+    .va-select-btn-open {
+      .va-select-placeholder {
         color: $dropdownPlaceholderActiveColor !important;
       }
       i {
@@ -628,14 +624,14 @@ export default {
   /**
   No focus ring on an open Select
   */
-  &-btn-open.#{$class-prefix}-btn:focus,
-  &-btn-open.#{$class-prefix}-btn-focused {
+  &-btn-open.va-btn:focus,
+  &-btn-open.va-btn-focused {
     box-shadow: $selectOpenBtnFocusBoxShadow;
   }
 }
 
-.#{$class-prefix}-select,
-.#{$class-prefix}--theme-light .#{$class-prefix}-select {
+.va-select,
+.va--theme-light .va-select {
   @include select-theme-mixin(
     $hasErrorBtnBorder: 2px solid $R400 !important,
     $btnOpenBackgroundColor: $B50 !important,
@@ -671,8 +667,8 @@ export default {
   );
 }
 
-.#{$class-prefix}-select-group {
-  .#{$class-prefix}-select-btn-open {
+.va-select-group {
+  .va-select-btn-open {
     &:after {
       content: '';
       display: block;
@@ -685,7 +681,7 @@ export default {
     }
   }
 
-  .#{$class-prefix}-selected-tag {
+  .va-selected-tag {
     $self: &;
     display: flex;
     align-items: baseline;
@@ -705,7 +701,7 @@ export default {
     }
   }
 
-  .#{$class-prefix}-select-btn.#{$class-prefix}-btn {
+  .va-select-btn.va-btn {
     cursor: pointer;
 
     &:after {
@@ -721,13 +717,13 @@ export default {
     }
   }
 
-  .#{$class-prefix}-search-wrap {
+  .va-search-wrap {
     padding: 10px 10px 10px 10px;
     z-index: 10;
     margin-top: -4px;
   }
 
-  .#{$class-prefix}-select-search {
+  .va-select-search {
     border: 0px;
     padding: 0;
     width: 100%;
@@ -735,7 +731,7 @@ export default {
     z-index: 10;
   }
 
-  .#{$class-prefix}-dropdown-menu {
+  .va-dropdown-menu {
     display: block;
     overflow-y: auto;
     list-style-type: none;
@@ -765,7 +761,7 @@ export default {
       }
     }
 
-    .#{$class-prefix}-notify {
+    .va-notify {
       position: absolute;
       bottom: 5px;
       width: 96%;
@@ -776,24 +772,24 @@ export default {
       pointer-events: none;
     }
 
-    .#{$class-prefix}-select-all {
+    .va-select-all {
       position: relative;
       cursor: default;
     }
   }
 
-  .#{$class-prefix}-has-search {
+  .va-has-search {
     width: 230px;
   }
 
-  .#{$class-prefix}-dropdown-toggle {
+  .va-dropdown-toggle {
     text-align: left;
     display: flex;
     align-items: center;
     min-width: 80px;
     justify-content: space-evenly;
 
-    .#{$class-prefix}-btn-text-fade {
+    .va-btn-text-fade {
       justify-content: space-between !important;
 
       i {
@@ -813,13 +809,13 @@ export default {
   }
 }
 
-.#{$class-prefix}-select-items-wrapper {
+.va-select-items-wrapper {
   overflow-y: auto;
   cursor: default;
 }
 
-.#{$class-prefix}-select-group {
-  .#{$class-prefix}-dropdown-toggle {
+.va-select-group {
+  .va-dropdown-toggle {
     width: 100%;
   }
 }

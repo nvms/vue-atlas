@@ -2,7 +2,7 @@
   <label :class="classObj" @click.prevent>
     <input
       :checked="value"
-      :class="`${classPrefix}-toggle__input`"
+      :class="`va-toggle__input`"
       :name="name"
       @keypress.space.prevent="toggle"
       tabindex="-1"
@@ -10,14 +10,14 @@
     >
     <div
       :aria-label="label"
-      :class="`${classPrefix}-toggle__slide`"
+      :class="`va-toggle__slide`"
       :tabindex="disabled ? -1 : 0"
       @click="toggle"
       @keypress.space.prevent="toggle"
     >
-      <div :class="`${classPrefix}-toggle__inner`">
-        <span :class="`${classPrefix}-toggle__handle`"></span>
-        <span :class="`${classPrefix}-toggle__icon`">
+      <div :class="`va-toggle__inner`">
+        <span :class="`va-toggle__handle`"></span>
+        <span :class="`va-toggle__icon`">
           <va-icon :type="icon"></va-icon>
         </span>
       </div>
@@ -50,19 +50,15 @@ export default {
       validator (v) {
         return ['md', 'lg'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
       let classes = {}
-      classes[this.classPrefix + '-toggle'] = true
-      classes[this.classPrefix + '-toggle--checked'] = this.value
-      classes[this.classPrefix + '-toggle--disabled'] = this.disabled
-      classes[this.classPrefix + '-toggle--lg'] = this.size === 'lg'
+      classes['va-toggle'] = true
+      classes['va-toggle--checked'] = this.value
+      classes['va-toggle--disabled'] = this.disabled
+      classes['va-toggle--lg'] = this.size === 'lg'
       return classes
     },
     icon () {

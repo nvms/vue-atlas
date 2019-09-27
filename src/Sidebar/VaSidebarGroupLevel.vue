@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj">
-    <div :class="`${classPrefix}-sidebar-navigationlevel-parent`">
-      <div :class="`${classPrefix}-sidebar-group-item`">
+    <div :class="`va-sidebar-navigationlevel-parent`">
+      <div :class="`va-sidebar-group-item`">
         <va-sidebar-group-toggle
           :open="isOpen"
           @click.native="onToggleClick"
@@ -15,7 +15,7 @@
         />
       </div>
     </div>
-    <ul :class="`${classPrefix}-sidebar-navigationlevel-children`">
+    <ul :class="`va-sidebar-navigationlevel-children`">
       <slot/>
     </ul>
   </div>
@@ -48,10 +48,6 @@ export default {
       validator (v) {
         return ['arrow', 'circle'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -68,13 +64,13 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, isOpen, level } = this
+      let { isOpen, level } = this
       let classes = {}
 
-      classes[classPrefix + '-sidebar-navigationlevel'] = true
-      classes[classPrefix + '-sidebar-navigationlevel-closed'] = !isOpen
-      classes[classPrefix + '-sidebar-navigationlevel-open'] = isOpen
-      classes[classPrefix + '-sidebar-navigationlevel-level-' + level] = true
+      classes['va-sidebar-navigationlevel'] = true
+      classes['va-sidebar-navigationlevel-closed'] = !isOpen
+      classes['va-sidebar-navigationlevel-open'] = isOpen
+      classes['va-sidebar-navigationlevel-level-' + level] = true
 
       return classes
     }

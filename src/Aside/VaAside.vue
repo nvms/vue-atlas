@@ -1,19 +1,19 @@
 <template>
   <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
     <div :class="classObj" :style="{width:width}" ref="aside" v-show="show">
-      <div :class="`${classPrefix}-aside-dialog`">
-        <div :class="`${classPrefix}-aside-content`">
-          <div :class="`${classPrefix}-aside-header`" v-if="header">
+      <div :class="`va-aside-dialog`">
+        <div :class="`va-aside-content`">
+          <div :class="`va-aside-header`" v-if="header">
             <button
-              :class="`${classPrefix}-close`"
+              :class="`va-close`"
               @click="close"
               type="button"
             >
               <span>&times;</span>
             </button>
-            <div :class="`${classPrefix}-aside-title`">{{title}}</div>
+            <div :class="`va-aside-title`">{{title}}</div>
           </div>
-          <div :class="`${classPrefix}-aside-body`">
+          <div :class="`va-aside-body`">
             <slot/>
           </div>
         </div>
@@ -49,11 +49,6 @@ export default {
       type: String,
       default: '304px',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va',
-      required: false
     }
   },
   data () {
@@ -64,12 +59,12 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, placement } = this
+      let { placement } = this
       let classes = {}
 
-      classes[classPrefix + '-aside'] = true
-      classes[classPrefix + '-aside-left'] = placement === 'left'
-      classes[classPrefix + '-aside-right'] = placement === 'right'
+      classes['va-aside'] = true
+      classes['va-aside-left'] = placement === 'left'
+      classes['va-aside-right'] = placement === 'right'
 
       return classes
     }
@@ -103,17 +98,16 @@ export default {
   watch: {
     show (val) {
       let backdrop = document.createElement('div')
-      let classPrefix = this.classPrefix
       const body = document.body
-      backdrop.className = classPrefix + '-aside-backdrop'
+      backdrop.className = 'va-aside-backdrop'
 
       if (val) {
         body.appendChild(backdrop)
-        element.addClass(body, classPrefix + '-modal-open')
+        element.addClass(body, 'va-modal-open')
 
         // This timeout is included to allow for opacity transition.
         setTimeout(() => {
-          backdrop.className += ' ' + classPrefix + '-aside-in'
+          backdrop.className += ' ' + 'va-aside-in'
           this._clickEvent = EventListener.listen(backdrop, 'click', this.close)
           this.$emit('show')
         }, 20)
@@ -136,15 +130,14 @@ export default {
       if (this._clickEvent) this._clickEvent.remove()
 
       const body = document.body
-      let classPrefix = this.classPrefix
       let backdrop = document.querySelector(
-        '.' + classPrefix + '-aside-backdrop'
+        '.' + 'va-aside-backdrop'
       )
 
       if (backdrop) {
-        backdrop.className = classPrefix + '-aside-backdrop'
+        backdrop.className = 'va-aside-backdrop'
         setTimeout(() => {
-          element.removeClass(body, classPrefix + '-modal-open')
+          element.removeClass(body, 'va-modal-open')
           body.removeChild(backdrop)
         }, 300)
         this.$emit('hide')
@@ -155,11 +148,11 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-aside-open {
+.va-aside-open {
   transition: transform 0.3s;
 }
 
-.#{$class-prefix}-aside {
+.va-aside {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -178,12 +171,12 @@ export default {
     outline: 0;
   }
   &-dialog {
-    .#{$class-prefix}-aside-header {
-      .#{$class-prefix}-close {
+    .va-aside-header {
+      .va-close {
         font-size: 24px;
         color: $N300;
       }
-      .#{$class-prefix}-aside-title {
+      .va-aside-title {
         padding-top: 8px;
         font-size: 24px;
         color: $N300;

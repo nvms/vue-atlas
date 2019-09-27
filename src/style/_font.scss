@@ -81,7 +81,7 @@ p {
   line-height: 20px;
 }
 
-.#{$class-prefix}-sidebar {
+.va-sidebar {
   a,
   a:link,
   a:active,
@@ -96,38 +96,38 @@ p {
   }
 }
 
-.#{$class-prefix}-notification-dialog a:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-notification-dialog a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-notification-dialog a:link:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-notification-dialog a:visited:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:link:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:visited:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:link:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:visited:not(.#{$class-prefix}-btn) {
+.va-notification-dialog a:not(.va-btn),
+.va-notification-dialog a:active:not(.va-btn),
+.va-notification-dialog a:link:not(.va-btn),
+.va-notification-dialog a:visited:not(.va-btn),
+.va-modal-dialog a:not(.va-btn),
+.va-modal-dialog a:active:not(.va-btn),
+.va-modal-dialog a:link:not(.va-btn),
+.va-modal-dialog a:visited:not(.va-btn),
+.va-page-container a:not(.va-btn),
+.va-page-container a:active:not(.va-btn),
+.va-page-container a:link:not(.va-btn),
+.va-page-container a:visited:not(.va-btn) {
   color: $B400;
   text-decoration: none;
 }
 
-.#{$class-prefix}-notification-dialog a:hover:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-notification-dialog a:link:hover:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:hover:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:link:hover:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:hover:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:link:hover:not(.#{$class-prefix}-btn) {
+.va-notification-dialog a:hover:not(.va-btn),
+.va-notification-dialog a:link:hover:not(.va-btn),
+.va-modal-dialog a:hover:not(.va-btn),
+.va-modal-dialog a:link:hover:not(.va-btn),
+.va-page-container a:hover:not(.va-btn),
+.va-page-container a:link:hover:not(.va-btn) {
   text-decoration: underline;
   color: $B300;
 }
 
-.#{$class-prefix}-notification-dialog a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-notification-dialog a:link:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-modal-dialog a:link:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:active:not(.#{$class-prefix}-btn),
-.#{$class-prefix}-page-container a:link:active:not(.#{$class-prefix}-btn) {
+.va-notification-dialog a:active:not(.va-btn),
+.va-notification-dialog a:link:active:not(.va-btn),
+.va-modal-dialog a:active:not(.va-btn),
+.va-modal-dialog a:link:active:not(.va-btn),
+.va-page-container a:active:not(.va-btn),
+.va-page-container a:link:active:not(.va-btn) {
   color: $B500;
   text-decoration: none;
   background: inherit;

@@ -1,13 +1,13 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`${classPrefix}-topbar-inner`">
-      <div :class="`${classPrefix}-topbar-left`">
+    <div :class="`va-topbar-inner`">
+      <div :class="`va-topbar-left`">
         <slot name="left"/>
       </div>
-      <div :class="`${classPrefix}-topbar-center`">
+      <div :class="`va-topbar-center`">
         <slot name="center"/>
       </div>
-      <div :class="`${classPrefix}-topbar-right`">
+      <div :class="`va-topbar-right`">
         <slot name="right"/>
       </div>
     </div>
@@ -25,10 +25,6 @@ export default {
       type: String,
       default: 'blue',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -125,11 +121,11 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, th } = this
+      let { th } = this
       let classes = {}
 
-      classes[classPrefix + '-topbar'] = true
-      classes[classPrefix + '-topbar--theme-' + th] = true
+      classes['va-topbar'] = true
+      classes['va-topbar--theme-' + th] = true
 
       return classes
     },

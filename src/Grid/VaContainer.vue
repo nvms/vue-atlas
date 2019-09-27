@@ -9,19 +9,15 @@ export default {
   props: {
     fluid: {
       type: Boolean
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, fluid } = this
+      let { fluid } = this
       let classes = {}
 
-      classes[classPrefix + '-container-fluid'] = fluid
-      classes[classPrefix + '-container'] = !fluid
+      classes['va-container-fluid'] = fluid
+      classes['va-container'] = !fluid
       classes['clearfix'] = true
 
       return classes
