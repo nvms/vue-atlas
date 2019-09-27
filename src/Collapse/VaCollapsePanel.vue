@@ -1,7 +1,7 @@
 <template>
   <div :class="`va-collapse__panel`">
     <div :class="`va-collapse__panel__header`" @click="toggle()">
-      <slot name="header">
+      <slot name="header" :is-open="isOpen">
         <va-icon v-if="!isOpen" type="angle-right"/>
         <va-icon v-else type="angle-down"/>
         {{header}}
