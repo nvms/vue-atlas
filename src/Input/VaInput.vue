@@ -4,7 +4,7 @@
     :style="{'width': actualWidth}"
     v-if="!showButtonsWarning"
   >
-    <span v-if="prefix !== ''" :class="`${classPrefix}-input-prefix`">{{prefix}}</span>
+    <span v-if="prefix !== ''" :class="`va-input-prefix`">{{prefix}}</span>
     <input
       v-if="noVModel"
       ref="input"
@@ -45,25 +45,25 @@
       :value="value"
     >
     <div
-      :class="`${classPrefix}-input-icon-wrapper`"
+      :class="`va-input-icon-wrapper`"
       v-if="icon !== 'undefined' || clearable"
     >
       <va-icon
         v-if="clearable"
         type="times"
         icon-style="solid"
-        :class="`${classPrefix}-input-clearable`"
+        :class="`va-input-clearable`"
         @click.native.stop="clean"
       />
       <va-icon
-        :class="`${classPrefix}-input-show-icon`"
+        :class="`va-input-show-icon`"
         :type="icon"
         :icon-style="iconStyle"
       />
     </div>
     <span
       v-if="postfix !== ''"
-      :class="`${classPrefix}-input-postfix`"
+      :class="`va-input-postfix`"
     >{{postfix}}</span>
     <va-input-ops
       v-if="buttons"
@@ -178,10 +178,6 @@ export default {
           'purple'
         ].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -241,7 +237,6 @@ export default {
     },
     classObj () {
       let {
-        classPrefix,
         validStatus,
         clearable,
         size,
@@ -252,27 +247,27 @@ export default {
       } = this
       let classes = {}
 
-      classes[classPrefix + '-has-error'] = validStatus === 'error'
-      classes[classPrefix + '-has-success'] = validStatus === 'success'
-      classes[classPrefix + '-has-warn'] = validStatus === 'warn'
-      classes[classPrefix + '-input-con'] = true
-      classes[classPrefix + '-clearable'] = clearable
-      classes[classPrefix + '-show-icon'] = !!icon
-      size ? (classes[classPrefix + '-input-' + size] = true) : ''
-      classes[classPrefix + '-input-has-prefix'] = prefix !== ''
-      classes[classPrefix + '-input-has-postfix'] =
+      classes['va-has-error'] = validStatus === 'error'
+      classes['va-has-success'] = validStatus === 'success'
+      classes['va-has-warn'] = validStatus === 'warn'
+      classes['va-input-con'] = true
+      classes['va-clearable'] = clearable
+      classes['va-show-icon'] = !!icon
+      size ? (classes['va-input-' + size] = true) : ''
+      classes['va-input-has-prefix'] = prefix !== ''
+      classes['va-input-has-postfix'] =
         postfix !== ''
-      classes[classPrefix + '-input-file'] = type === 'file'
+      classes['va-input-file'] = type === 'file'
       classes['inline'] = true
 
       return classes
     },
     inputClassObj () {
-      let { classPrefix, theme } = this
+      let { theme } = this
       let classes = {}
 
-      classes[classPrefix + '-form-control'] = true
-      classes[classPrefix + '-form-control-' + theme] = true
+      classes['va-form-control'] = true
+      classes['va-form-control-' + theme] = true
 
       return classes
     }
@@ -357,12 +352,12 @@ export default {
 
 <style lang="scss">
 @mixin input-theme-mixin($iconColor, $iconHoverColor, $iconActiveColor) {
-  .#{$class-prefix}-input-clearable,
-  .#{$class-prefix}-input-show-icon {
+  .va-input-clearable,
+  .va-input-show-icon {
     color: $iconColor;
   }
 
-  .#{$class-prefix}-input-clearable {
+  .va-input-clearable {
     &:hover {
       color: $iconHoverColor;
     }
@@ -377,13 +372,13 @@ export default {
 @mixin input-ops-theme-mixin($opsBackground, $opsBtnBoxShadow) {
   background: $opsBackground;
 
-  .#{$class-prefix}-btn {
+  .va-btn {
     box-shadow: $opsBtnBoxShadow;
   }
 }
 
-.#{$class-prefix}-input,
-.#{$class-prefix}--theme-light.#{$class-prefix}-input {
+.va-input,
+.va--theme-light.va-input {
   &-con {
     @include input-theme-mixin(
       $iconColor: $N80,
@@ -402,24 +397,24 @@ export default {
   }
 }
 
-.#{$class-prefix}-input-con {
+.va-input-con {
   position: relative;
   display: flex;
 
   &:hover {
-    .#{$class-prefix}-input-clearable {
+    .va-input-clearable {
       opacity: 1;
     }
   }
 }
 
-.#{$class-prefix}-clearable:hover .#{$class-prefix}-input-show-icon {
+.va-clearable:hover .va-input-show-icon {
   display: none;
 }
 
 /*the icon*/
 
-.#{$class-prefix}-input-icon-wrapper {
+.va-input-icon-wrapper {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -427,12 +422,12 @@ export default {
   width: 30px;
 }
 
-.#{$class-prefix}-input-file {
+.va-input-file {
   overflow: hidden;
 }
 
-.#{$class-prefix}-input-clearable,
-.#{$class-prefix}-input-show-icon {
+.va-input-clearable,
+.va-input-show-icon {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -442,12 +437,12 @@ export default {
   transition: opacity 0.1s linear;
 }
 
-.#{$class-prefix}-input-clearable {
+.va-input-clearable {
   opacity: 0;
   cursor: default;
 }
 
-.#{$class-prefix}-input-show-icon {
+.va-input-show-icon {
   opacity: 1;
 }
 
@@ -455,8 +450,8 @@ export default {
 
 /*sm*/
 
-.#{$class-prefix}-input-sm {
-  .#{$class-prefix}-input-icon-wrapper {
+.va-input-sm {
+  .va-input-icon-wrapper {
     i {
       top: 8px;
     }
@@ -465,8 +460,8 @@ export default {
 
 /*xs*/
 
-.#{$class-prefix}-input-xs {
-  .#{$class-prefix}-input-icon-wrapper {
+.va-input-xs {
+  .va-input-icon-wrapper {
     i {
       font-size: 12px !important;
       top: 8px;
@@ -474,13 +469,13 @@ export default {
   }
 }
 
-.#{$class-prefix}-input-ops {
+.va-input-ops {
   position: absolute;
   z-index: 4;
 }
 
-.#{$class-prefix}-input-prefix,
-.#{$class-prefix}-input-postfix {
+.va-input-prefix,
+.va-input-postfix {
   display: flex;
   background: #f4f5f7;
   border: 2px solid $N40;
@@ -489,32 +484,32 @@ export default {
   color: $N300;
   white-space: nowrap;
 }
-.#{$class-prefix}-input-prefix {
+.va-input-prefix {
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border-right: 0;
 }
-.#{$class-prefix}-input-postfix {
+.va-input-postfix {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   border-left: 0;
 }
 
-.#{$class-prefix}-input-has-prefix {
-  .#{$class-prefix}-form-control {
+.va-input-has-prefix {
+  .va-form-control {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
   }
 }
-.#{$class-prefix}-input-has-postfix {
-  .#{$class-prefix}-form-control {
+.va-input-has-postfix {
+  .va-form-control {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
   }
 }
 
-.#{$class-prefix}-input-has-postfix {
-  .#{$class-prefix}-input-icon-wrapper {
+.va-input-has-postfix {
+  .va-input-icon-wrapper {
     position: relative;
     width: initial;
     left: initial;

@@ -1,16 +1,16 @@
 <template>
-  <span ref="tooltip" :class="`${classPrefix}-tooltip_wrapper`">
+  <span ref="tooltip" :class="`va-tooltip_wrapper`">
     <span
       ref="trigger"
-      :class="`${classPrefix}-tooltip_trigger`"
+      :class="`va-tooltip_trigger`"
       v-on="listeners"
     >
       <slot/>
     </span>
     <transition :name="effect">
       <div :class="classObj" ref="popover" v-show="isShow">
-        <div v-if="arrow" :class="`${classPrefix}-tooltip-arrow`"></div>
-        <div :class="`${classPrefix}-tooltip-inner`">
+        <div v-if="arrow" :class="`va-tooltip-arrow`"></div>
+        <div :class="`va-tooltip-inner`">
           <span v-html="content"></span>
         </div>
       </div>
@@ -31,20 +31,15 @@ export default {
     effect: {
       type: String,
       default: 'tooltip-fade-top' // tooltip-fade-top, -left, -right, -bottom
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-tooltip'] = true
-      classes[classPrefix + '-tooltip-' + this.placement.split(' ').join('-')] = true
+      classes['va-tooltip'] = true
+      classes['va-tooltip-' + this.placement.split(' ').join('-')] = true
 
       return classes
     }
@@ -53,13 +48,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.#{$class-prefix}-tooltip_wrapper,
-.#{$class-prefix}-tooltip_trigger {
+.va-tooltip_wrapper,
+.va-tooltip_trigger {
   display: inline-block;
   width: auto;
   height: auto;
 }
-.#{$class-prefix}-tooltip {
+.va-tooltip {
   position: absolute;
   z-index: 1010;
   display: block;
@@ -100,7 +95,7 @@ export default {
   &-left-top,
   &-left-bottom {
     margin-left: -5px;
-    .#{$class-prefix}-tooltip-arrow {
+    .va-tooltip-arrow {
       top: 50%;
       right: -5px;
       margin-top: -5px;
@@ -112,7 +107,7 @@ export default {
   &-right-top,
   &-right-bottom {
     margin-left: 5px;
-    .#{$class-prefix}-tooltip-arrow {
+    .va-tooltip-arrow {
       top: 50%;
       left: -5px;
       margin-top: -5px;

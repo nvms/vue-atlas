@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-timepicker`">
+  <div :class="`va-timepicker`">
     <va-input
       v-if="!isMobile"
       :width="width"
@@ -33,12 +33,12 @@
       <div
         v-show="show"
         v-va-position="show"
-        :class="`${classPrefix}-timepicker-popup`"
+        :class="`va-timepicker-popup`"
       >
         <div
           v-if="hour"
           data-role="hour"
-          :class="`${classPrefix}-timepicker-range-wrap`"
+          :class="`va-timepicker-range-wrap`"
         >
           <span>{{getL('hour')}}</span>
           <va-range
@@ -46,13 +46,13 @@
             v-model="time.hour"
             :min="hourRange[0]"
             :max="hourRange[1]"
-            :class="`${classPrefix}-timepicker-range`"
+            :class="`va-timepicker-range`"
           />
         </div>
         <div
           v-if="minute"
           data-role="minute"
-          :class="`${classPrefix}-timepicker-range-wrap`"
+          :class="`va-timepicker-range-wrap`"
         >
           <span>{{getL('minute')}}</span>
           <va-range
@@ -60,13 +60,13 @@
             v-model="time.minute"
             :min="minuteRange[0]"
             :max="minuteRange[1]"
-            :class="`${classPrefix}-timepicker-range`"
+            :class="`va-timepicker-range`"
           />
         </div>
         <div
           v-if="second"
           data-role="second"
-          :class="`${classPrefix}-timepicker-range-wrap`"
+          :class="`va-timepicker-range-wrap`"
         >
           <span>{{getL('second')}}</span>
           <va-range
@@ -74,7 +74,7 @@
             v-model="time.second"
             :min="secondRange[0]"
             :max="secondRange[1]"
-            :class="`${classPrefix}-timepicker-range`"
+            :class="`va-timepicker-range`"
           />
         </div>
       </div>
@@ -127,10 +127,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -277,7 +273,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-timepicker {
+.va-timepicker {
   position: relative;
   display: inline-block;
   &-popup {

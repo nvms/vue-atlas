@@ -1,6 +1,6 @@
 <template>
-  <div :class="[`${classPrefix}-alert`, `${classPrefix}-alert-${type}`]">
-    <div :class="`${classPrefix}-alert-${type}-icon`">
+  <div :class="[`va-alert`, `va-alert-${type}`]">
+    <div :class="`va-alert-${type}-icon`">
       <va-icon :type="iconType" :icon-style="iconStyle"/>
     </div>
     <div>
@@ -27,10 +27,6 @@ export default {
       validator (v) {
         return ['success', 'info', 'warning', 'danger', 'help'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
@@ -75,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-alert {
+.va-alert {
   display: flex;
   line-height: 20px;
   overflow-wrap: break-word;

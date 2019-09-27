@@ -15,10 +15,6 @@ export default {
     label: {
       type: String,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
@@ -31,7 +27,7 @@ export default {
     classes () {
       let classes = {}
 
-      classes[`${this.classPrefix}-select-item-active`] = this.isOptionSelected(
+      classes[`va-select-item-active`] = this.isOptionSelected(
         this.option
       )
 

@@ -2,16 +2,16 @@
   <label :class="classObj">
     <span>
       <span
-        :class="`${classPrefix}-checkbox-inner`"
+        :class="`va-checkbox-inner`"
         :tabindex="disabled ? -1 : 0"
         @keypress.space.prevent="handleClick"
         @keyup.enter="enterPressed"
       >
-        <va-icon :class="`${classPrefix}-checkbox-inner-check`" type="check"/>
+        <va-icon :class="`va-checkbox-inner-check`" type="check"/>
       </span>
       <input
         :checked="currentChecked"
-        :class="`${classPrefix}-checkbox-input`"
+        :class="`va-checkbox-input`"
         :disabled="disabled"
         :name="name"
         @click="handleClick"
@@ -19,7 +19,7 @@
         type="checkbox"
       >
     </span>
-    <span :class="`${classPrefix}-label`">
+    <span :class="`va-label`">
       <slot/>
     </span>
     <validate
@@ -56,10 +56,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   components: {
@@ -90,12 +86,12 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, currentChecked, disabled } = this
+      let { currentChecked, disabled } = this
       let classes = {}
 
-      classes[classPrefix + '-checkbox-label'] = true
-      classes[classPrefix + '-checkbox-checked'] = currentChecked
-      classes[classPrefix + '-checkbox-disabled'] = disabled
+      classes['va-checkbox-label'] = true
+      classes['va-checkbox-checked'] = currentChecked
+      classes['va-checkbox-disabled'] = disabled
 
       return classes
     }
@@ -128,7 +124,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-checkbox-label {
+.va-checkbox-label {
   white-space: nowrap;
   cursor: pointer;
   outline: none;
@@ -143,9 +139,9 @@ export default {
   user-select: none;
 }
 
-.#{$class-prefix}-checkbox-label:not(.#{$class-prefix}-checkbox-checked) {
+.va-checkbox-label:not(.va-checkbox-checked) {
   &:hover {
-    .#{$class-prefix}-checkbox-inner {
+    .va-checkbox-inner {
       border-color: #dfe1e6;
       background-color: #ebecf0;
       &-check {
@@ -154,7 +150,7 @@ export default {
     }
   }
   &:active {
-    .#{$class-prefix}-checkbox-inner {
+    .va-checkbox-inner {
       border-color: transparent;
       background-color: $B75;
       &-check {
@@ -164,15 +160,15 @@ export default {
   }
 }
 
-.#{$class-prefix}-checkbox-label.#{$class-prefix}-checkbox-checked {
+.va-checkbox-label.va-checkbox-checked {
   &:hover {
-    .#{$class-prefix}-checkbox-inner {
+    .va-checkbox-inner {
       background-color: $B300;
       border-color: $B300;
     }
   }
   &:active {
-    .#{$class-prefix}-checkbox-inner {
+    .va-checkbox-inner {
       background-color: $B75;
       border-color: $B75;
       &-check {
@@ -182,7 +178,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-checkbox-inner {
+.va-checkbox-inner {
   position: relative;
   top: 0;
   left: 0;
@@ -206,7 +202,7 @@ export default {
   @include checkbox-focus-mixin($B200, 0.6);
 }
 
-.#{$class-prefix}-checkbox-input {
+.va-checkbox-input {
   position: absolute !important;
   left: 0;
   z-index: 1;
@@ -219,7 +215,7 @@ export default {
   height: 100%;
 }
 
-.#{$class-prefix}-checkbox-checked .#{$class-prefix}-checkbox-inner {
+.va-checkbox-checked .va-checkbox-inner {
   border-color: $B400;
   background-color: $B400;
   &-check {
@@ -227,53 +223,53 @@ export default {
   }
 }
 
-.#{$class-prefix}-checkbox-disabled .#{$class-prefix}-checkbox-inner {
+.va-checkbox-disabled .va-checkbox-inner {
   border-color: $N500;
   background-color: $N500;
-  i.#{$class-prefix}-checkbox-inner-check {
+  i.va-checkbox-inner-check {
     color: $N500;
   }
 }
 
-.#{$class-prefix}-checkbox-disabled.#{$class-prefix}-checkbox-label:hover {
+.va-checkbox-disabled.va-checkbox-label:hover {
   &:hover {
-    .#{$class-prefix}-checkbox-inner {
+    .va-checkbox-inner {
       background-color: $N500;
       border-color: $N500;
     }
-    i.#{$class-prefix}-checkbox-inner-check {
+    i.va-checkbox-inner-check {
       color: $N500;
     }
   }
 }
 
-.#{$class-prefix}-checkbox-disabled .#{$class-prefix}-checkbox-inner:after {
+.va-checkbox-disabled .va-checkbox-inner:after {
   display: none;
 }
 
-.#{$class-prefix}-checkbox-label span {
+.va-checkbox-label span {
   vertical-align: top;
 }
 
-.#{$class-prefix}-checkbox-label span.#{$class-prefix}-label {
+.va-checkbox-label span.va-label {
   margin-left: 7px;
   position: relative;
   top: 1px;
 }
 
-.#{$class-prefix}-checkbox-btn input[type='checkbox'] {
+.va-checkbox-btn input[type='checkbox'] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
 
-.#{$class-prefix}-checkbox-group {
+.va-checkbox-group {
   display: flex;
   flex-direction: row;
   &-vertical {
     display: flex;
     flex-direction: column;
-    .#{$class-prefix}-checkbox-label {
+    .va-checkbox-label {
       margin-bottom: 9px;
     }
   }

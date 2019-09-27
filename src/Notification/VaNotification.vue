@@ -1,31 +1,31 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="notification" v-if="alive">
     <div
-      :class="`${classPrefix}-notification-dialog`"
+      :class="`va-notification-dialog`"
       :style="{'width': width }"
     >
-      <div :class="`${classPrefix}-notification-content`">
-        <div :class="`${classPrefix}-notification-content-inner-${type}`">
+      <div :class="`va-notification-content`">
+        <div :class="`va-notification-content-inner-${type}`">
           <div
-            :class="`${classPrefix}-notification-content-inner-${type}-left`"
+            :class="`va-notification-content-inner-${type}-left`"
           >
             <va-icon :type="notificationIconType"/>
           </div>
           <div
-            :class="`${classPrefix}-notification-content-inner-${type}-right`"
+            :class="`va-notification-content-inner-${type}-right`"
           >
             <div
-              :class="`${classPrefix}-notification-content-inner-${type}-right-close`"
+              :class="`va-notification-content-inner-${type}-right-close`"
             >
               <va-button @click="close" type="subtle" size="sm">
                 <va-icon size="14px" type="times"/>
               </va-button>
             </div>
             <div
-              :class="`${classPrefix}-notification-content-inner-${type}-right-title`"
+              :class="`va-notification-content-inner-${type}-right-title`"
             >{{title}}</div>
             <div
-              :class="`${classPrefix}-notification-content-inner-${type}-right-message`"
+              :class="`va-notification-content-inner-${type}-right-message`"
               v-html="message"
             />
           </div>
@@ -75,10 +75,6 @@ export default {
       type: Number,
       default: 0,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -102,7 +98,7 @@ export default {
        */
       if (val) {
         let x = document.getElementsByClassName(
-          this.classPrefix + '-notification-in'
+          'va-notification-in'
         )
         this.numberOfParentModals = x.length
         let distanceToMove = 5
@@ -122,7 +118,7 @@ export default {
         }
       } else {
         let x = document.getElementsByClassName(
-          this.classPrefix + '-notification-in'
+          'va-notification-in'
         )
         this.numberOfParentModals = x.length
         let distanceToMove = 5
@@ -146,21 +142,21 @@ export default {
       const body = document.body
       if (val) {
         this.$emit('show', { type: 'show' })
-        el.querySelector('.' + this.classPrefix + '-notification')
+        el.querySelector('.' + 'va-notification')
         el.style.display = 'block'
         // timeout required for opacity transition
         setTimeout(() => {
-          element.addClass(el, this.classPrefix + '-notification-in')
+          element.addClass(el, 'va-notification-in')
         }, 20)
-        element.addClass(body, this.classPrefix + '-notification-open')
+        element.addClass(body, 'va-notification-open')
       } else {
         this.$emit('hide', { type: 'hide' })
-        element.removeClass(el, this.classPrefix + '-notification-in')
-        element.addClass(el, this.classPrefix + '-notification-out')
+        element.removeClass(el, 'va-notification-in')
+        element.addClass(el, 'va-notification-out')
         setTimeout(() => {
           el.style.display = 'none'
-          element.removeClass(body, this.classPrefix + '-notification-open')
-          element.removeClass(el, this.classPrefix + '-notification-out')
+          element.removeClass(body, 'va-notification-open')
+          element.removeClass(el, 'va-notification-out')
           this.$emit('closed', { type: 'closed' })
         }, 300)
       }
@@ -182,12 +178,12 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, effect, type } = this
+      let { effect, type } = this
       let classes = {}
 
-      classes[classPrefix + '-notification'] = true
-      classes[classPrefix + '-notification-' + type] = true
-      classes[classPrefix + '-notification-' + effect] = true
+      classes['va-notification'] = true
+      classes['va-notification-' + type] = true
+      classes['va-notification-' + effect] = true
 
       return classes
     },
@@ -217,7 +213,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-notification {
+.va-notification {
   position: fixed;
   top: 0px;
   right: 0px;
@@ -272,7 +268,7 @@ export default {
   }
 
   @mixin notification-content-inner-mixin($type, $borderColor, $iconColor) {
-    .#{$class-prefix}-notification-content-inner-#{$type} {
+    .va-notification-content-inner-#{$type} {
       display: flex;
       flex-direction: row;
       &-left {
@@ -313,7 +309,7 @@ export default {
     $borderColor,
     $iconColor
   ) {
-    .#{$class-prefix}-notification-content {
+    .va-notification-content {
       border-top: $borderSize solid $borderColor;
       border-right: $borderSize solid $borderColor;
       border-bottom: $borderSize solid $borderColor;

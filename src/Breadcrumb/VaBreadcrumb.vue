@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-breadcrumb`">
+  <div :class="`va-breadcrumb`">
     <slot/>
   </div>
 </template>
@@ -17,10 +17,6 @@ export default {
       type: String,
       default: '',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   provide () {
@@ -32,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-breadcrumb {
+.va-breadcrumb {
   cursor: default;
   &-item {
     color: $N200;
@@ -41,10 +37,10 @@ export default {
       margin: 0 5px !important;
     }
     &:last-child {
-      .#{$class-prefix}-breadcrumb-item-icon {
+      .va-breadcrumb-item-icon {
         display: none;
       }
-      .#{$class-prefix}-breadcrumb-item-separator {
+      .va-breadcrumb-item-separator {
         display: none !important;
       }
     }

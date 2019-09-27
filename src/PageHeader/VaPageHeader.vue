@@ -1,16 +1,16 @@
 <template>
-  <div :class="`${classPrefix}-page-header`">
+  <div :class="`va-page-header`">
     <div
       v-if="hasBreadcrumb"
-      :class="`${classPrefix}-page-header-breadcrumb-wrapper`"
+      :class="`va-page-header-breadcrumb-wrapper`"
     >
-      <div :class="`${classPrefix}-page-header-breadcrumb-container`">
+      <div :class="`va-page-header-breadcrumb-container`">
         <slot name="breadcrumb">&nbsp;</slot>
       </div>
     </div>
 
-    <div :class="`${classPrefix}-page-header-title-wrapper`">
-      <div :class="`${classPrefix}-page-header-title-container`">
+    <div :class="`va-page-header-title-wrapper`">
+      <div :class="`va-page-header-title-container`">
         <h1>
           <slot name="title"/>
         </h1>
@@ -21,13 +21,13 @@
 
       <div
         v-if="hasActions"
-        :class="`${classPrefix}-page-header-actions-wrapper`"
+        :class="`va-page-header-actions-wrapper`"
       >
         <slot name="actions"/>
       </div>
     </div>
 
-    <div v-if="hasBottom" :class="`${classPrefix}-page-header-bottom-wrapper`">
+    <div v-if="hasBottom" :class="`va-page-header-bottom-wrapper`">
       <slot name="bottom">&nbsp;</slot>
     </div>
   </div>
@@ -36,12 +36,6 @@
 <script>
 export default {
   name: 'VaPageHeader',
-  props: {
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
-  },
   computed: {
     hasActions () {
       return !!this.$slots['actions']
@@ -60,7 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-page-header {
+.va-page-header {
   margin-top: 24px;
   margin-bottom: 16px;
 

@@ -62,11 +62,6 @@ export default {
     perPage: {
       type: Number,
       default: 10
-    },
-    classPrefix: {
-      type: String,
-      required: false,
-      default: 'va'
     }
   },
   data () {
@@ -166,10 +161,9 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-pagination'] = true
+      classes['va-pagination'] = true
 
       return classes
     }
@@ -195,7 +189,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-pagination {
+.va-pagination {
   display: flex;
   justify-content: space-around;
   ul {
