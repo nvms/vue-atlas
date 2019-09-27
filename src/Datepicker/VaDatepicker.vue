@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-datepicker`" :style="styleObj">
+  <div :class="`va-datepicker`" :style="styleObj">
     <va-input
       v-if="!mobileDatepicker"
       v-bind="$attrs"
@@ -36,16 +36,16 @@
 
     <transition name="fadeDown">
       <div
-        :class="`${classPrefix}-datepicker-popup`"
+        :class="`va-datepicker-popup`"
         v-show="displayDayView"
         v-va-position="displayDayView"
       >
-        <div :class="`${classPrefix}-datepicker-inner`">
-          <div :class="`${classPrefix}-datepicker-body`">
-            <div :class="`${classPrefix}-datepicker-ctrl`">
+        <div :class="`va-datepicker-inner`">
+          <div :class="`va-datepicker-body`">
+            <div :class="`va-datepicker-ctrl`">
               <va-button
                 tabindex="0"
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
+                :class="`va-month-btn va-datepicker-preBtn`"
                 @click.native="preNextMonthClick(0)"
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(0)"
@@ -60,7 +60,7 @@
               >{{stringifyDayHeader(currDate)}}</va-button>
               <va-button
                 tabindex="0"
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-nextBtn`"
+                :class="`va-month-btn va-datepicker-nextBtn`"
                 @click.native="preNextMonthClick(1)"
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(1)"
@@ -68,10 +68,10 @@
                 <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div :class="`${classPrefix}-datepicker-weekRange`">
+            <div :class="`va-datepicker-weekRange`">
               <span v-for="(w, index) in weekRange" :key="index">{{w}}</span>
             </div>
-            <div :class="`${classPrefix}-datepicker-dateRange`">
+            <div :class="`va-datepicker-dateRange`">
               <span
                 v-for="(d, index) in dateRange"
                 :class="d.sclass"
@@ -87,15 +87,15 @@
     </transition>
     <transition name="fadeDown">
       <div
-        :class="`${classPrefix}-datepicker-popup`"
+        :class="`va-datepicker-popup`"
         v-show="displayMonthView"
         v-va-position="displayMonthView"
       >
-        <div :class="`${classPrefix}-datepicker-inner`">
-          <div :class="`${classPrefix}-datepicker-body`">
-            <div :class="`${classPrefix}-datepicker-ctrl`">
+        <div :class="`va-datepicker-inner`">
+          <div :class="`va-datepicker-body`">
+            <div :class="`va-datepicker-ctrl`">
               <va-button
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
+                :class="`va-month-btn va-datepicker-preBtn`"
                 @click.native="preNextYearClick(0)"
                 type="subtle"
                 tabindex="0"
@@ -110,7 +110,7 @@
                 v-on:keyup.enter="switchDecadeView"
               >{{stringifyYearHeader(currDate)}}</va-button>
               <va-button
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-nextBtn`"
+                :class="`va-month-btn va-datepicker-nextBtn`"
                 @click.native="preNextYearClick(1)"
                 type="subtle"
                 tabindex="0"
@@ -119,7 +119,7 @@
                 <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div :class="`${classPrefix}-datepicker-monthRange`">
+            <div :class="`va-datepicker-monthRange`">
               <template v-for="(m, index) in monthNames">
                 <span
                   :class="monthClassObj(m)"
@@ -136,15 +136,15 @@
     </transition>
     <transition name="fadeDown">
       <div
-        :class="`${classPrefix}-datepicker-popup`"
+        :class="`va-datepicker-popup`"
         v-show="displayYearView"
         v-va-position="displayYearView"
       >
-        <div :class="`${classPrefix}-datepicker-inner`">
-          <div :class="`${classPrefix}-datepicker-body`">
-            <div :class="`${classPrefix}-datepicker-ctrl`">
+        <div :class="`va-datepicker-inner`">
+          <div :class="`va-datepicker-body`">
+            <div :class="`va-datepicker-ctrl`">
               <va-button
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-preBtn`"
+                :class="`va-month-btn va-datepicker-preBtn`"
                 @click.native="preNextDecadeClick(0)"
                 type="subtle"
                 tabindex="0"
@@ -153,7 +153,7 @@
                 <va-icon type="arrow-left" size="10px"></va-icon>
               </va-button>
               <va-button
-                :class="`${classPrefix}-month-btn ${classPrefix}-datepicker-nextBtn`"
+                :class="`va-month-btn va-datepicker-nextBtn`"
                 @click.native="preNextDecadeClick(1)"
                 type="subtle"
                 tabindex="0"
@@ -164,7 +164,7 @@
               <p>{{stringifyDecadeHeader(currDate)}}</p>
             </div>
             <div
-              :class="`${classPrefix}-datepicker-monthRange ${classPrefix}-datepicker-decadeRange`"
+              :class="`va-datepicker-monthRange va-datepicker-decadeRange`"
             >
               <template v-for="(decade, index) in decadeRange">
                 <span
@@ -218,10 +218,6 @@ export default {
     autoclose: {
       type: Boolean,
       default: true
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -306,10 +302,10 @@ export default {
       this.$emit('input', null)
     },
     monthClassObj (m) {
-      let { classPrefix, currentValue, monthNames, parse, currDate } = this
+      let { currentValue, monthNames, parse, currDate } = this
       let classes = {}
 
-      classes[classPrefix + '-datepicker-dateRange-item-active'] =
+      classes['va-datepicker-dateRange-item-active'] =
         currentValue &&
         parse(currentValue) &&
         monthNames[parse(currentValue).getMonth()] === m &&
@@ -318,10 +314,10 @@ export default {
       return classes
     },
     yearClassObj (decade) {
-      let { classPrefix, currentValue, parse } = this
+      let { currentValue, parse } = this
       let classes = {}
 
-      classes[classPrefix + '-datepicker-dateRange-item-active'] =
+      classes['va-datepicker-dateRange-item-active'] =
         currentValue &&
         parse(currentValue) &&
         parse(currentValue).getFullYear() === decade.text
@@ -392,7 +388,7 @@ export default {
     },
     daySelect (date, dayNumber, classes) {
       if (
-        classes.indexOf(this.classPrefix + '-datepicker-item-disabled') > -1
+        classes.indexOf('va-datepicker-item-disabled') > -1
       ) {
         return false
       } else {
@@ -526,7 +522,7 @@ export default {
           this.dateRange.push({
             text: dayText,
             date: new Date(preMonth.year, preMonth.month, dayText),
-            sclass: this.classPrefix + '-datepicker-item-gray'
+            sclass: 'va-datepicker-item-gray'
           })
         }
       }
@@ -536,7 +532,7 @@ export default {
         let sclass = ''
 
         if (i === today.day && time.month === today.month) {
-          sclass = this.classPrefix + '-datepicker-dateRange-item-today'
+          sclass = 'va-datepicker-dateRange-item-today'
         }
 
         if (i === time.day) {
@@ -547,7 +543,7 @@ export default {
                 valueDate.getFullYear() === time.year &&
                 valueDate.getMonth() === time.month
               ) {
-                sclass = this.classPrefix + '-datepicker-dateRange-item-active'
+                sclass = 'va-datepicker-dateRange-item-active'
               }
             }
           }
@@ -567,7 +563,7 @@ export default {
           this.dateRange.push({
             text: i,
             date: new Date(nextMonth.year, nextMonth.month, i),
-            sclass: this.classPrefix + '-datepicker-item-gray'
+            sclass: 'va-datepicker-item-gray'
           })
         }
       }
@@ -636,7 +632,7 @@ $datepickerSpanSize: 35px;
 $datepickerSpanRadius: 3px;
 $datepickerRangeSize: 40px;
 
-.#{$class-prefix}-datepicker {
+.va-datepicker {
   position: relative;
   // display: inline-block;
 
@@ -701,8 +697,8 @@ $datepickerRangeSize: 40px;
     cursor: not-allowed !important;
   }
 
-  .#{$class-prefix}-datepicker-decadeRange span:first-child,
-  .#{$class-prefix}-datepicker-decadeRange span:last-child,
+  .va-datepicker-decadeRange span:first-child,
+  .va-datepicker-decadeRange span:last-child,
   &-item-disable,
   &-item-gray {
     color: $N60;
@@ -784,7 +780,7 @@ $datepickerRangeSize: 40px;
     }
   }
 
-  .#{$class-prefix}-month-btn {
+  .va-month-btn {
     font-weight: bold;
     user-select: none;
 

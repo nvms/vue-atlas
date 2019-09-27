@@ -1,32 +1,32 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="modal">
-    <div :class="`${classPrefix}-modal-dialog`" :style="{'width': width }">
+    <div :class="`va-modal-dialog`" :style="{'width': width }">
       <va-collapse-transition>
-        <div :class="`${classPrefix}-modal-loading`" v-show="modalIsLoading">
+        <div :class="`va-modal-loading`" v-show="modalIsLoading">
           <va-loading color="#888" size="md"/>
         </div>
       </va-collapse-transition>
 
-      <div :class="`${classPrefix}-modal-content`" v-show="!modalIsLoading">
+      <div :class="`va-modal-content`" v-show="!modalIsLoading">
         <slot name="header">
-          <div :class="`${classPrefix}-modal-header`">
+          <div :class="`va-modal-header`">
             <va-button
               tabindex="-1"
-              :class="`${classPrefix}-close`"
+              :class="`va-close`"
               @click="close"
               type="subtle"
             >
               <va-icon type="times"/>
             </va-button>
-            <div :class="`${classPrefix}-modal-title`">
+            <div :class="`va-modal-title`">
               <slot name="title">{{title}}</slot>
             </div>
           </div>
         </slot>
-        <div :class="`${classPrefix}-modal-body`">
+        <div :class="`va-modal-body`">
           <slot name="body"/>
         </div>
-        <div :class="`${classPrefix}-modal-footer`">
+        <div :class="`va-modal-footer`">
           <slot name="footer">
             <va-button
               :focused="focused"
@@ -85,10 +85,6 @@ export default {
       type: Boolean,
       default: true,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -102,11 +98,11 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, effect } = this
+      let { effect } = this
       let classes = {}
 
-      classes[classPrefix + '-modal'] = true
-      classes[classPrefix + '-modal-' + effect] = true
+      classes['va-modal'] = true
+      classes['va-modal-' + effect] = true
 
       return classes
     },
@@ -164,7 +160,7 @@ export default {
        */
       if (val) {
         this.$emit('show', { type: 'show' })
-        let x = document.getElementsByClassName(this.classPrefix + '-modal-in')
+        let x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
 
         /**
@@ -198,7 +194,7 @@ export default {
       } else {
         this.$emit('hide', { type: 'hide' })
 
-        let x = document.getElementsByClassName(this.classPrefix + '-modal-in')
+        let x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
         let distanceToMove = 20
         if (this.numberOfParentModals > 0) {
@@ -223,16 +219,16 @@ export default {
       const scrollBarWidth = getScrollBarWidth()
       if (val) {
         if (!this.modalIsLoading) {
-          el.querySelector('.' + this.classPrefix + '-modal-content').focus()
+          el.querySelector('.' + 'va-modal-content').focus()
         }
         el.style.display = 'block'
         // this timeout is required for opacity transition
         setTimeout(() => {
-          element.addClass(el, this.classPrefix + '-modal-in')
+          element.addClass(el, 'va-modal-in')
         }, 20)
-        element.addClass(body, this.classPrefix + '-modal-open')
+        element.addClass(body, 'va-modal-open')
         if (!scrollBarWidth) {
-          element.addClass(body, this.classPrefix + '-modal-hide-y')
+          element.addClass(body, 'va-modal-hide-y')
         }
         if (this.backdropClickable) {
           this._blurModalContentEvent = EventListener.listen(
@@ -249,13 +245,13 @@ export default {
         }
       } else {
         if (this._blurModalContentEvent) this._blurModalContentEvent.remove()
-        element.removeClass(el, this.classPrefix + '-modal-in')
-        element.addClass(el, this.classPrefix + '-modal-out')
+        element.removeClass(el, 'va-modal-in')
+        element.addClass(el, 'va-modal-out')
         setTimeout(() => {
           el.style.display = 'none'
-          element.removeClass(body, this.classPrefix + '-modal-open')
-          element.removeClass(body, this.classPrefix + '-modal-hide-y')
-          element.removeClass(el, this.classPrefix + '-modal-out')
+          element.removeClass(body, 'va-modal-open')
+          element.removeClass(body, 'va-modal-hide-y')
+          element.removeClass(el, 'va-modal-out')
           body.style.paddingRight = '0'
           this.$emit('closed', { type: 'closed' })
         }, 300)
@@ -294,30 +290,30 @@ export default {
   $modalTitleColor,
   $modalBoxShadow
 ) {
-  .#{$class-prefix}-modal-dialog {
+  .va-modal-dialog {
     box-shadow: $modalBoxShadow;
   }
 
-  &.#{$class-prefix}-modal-in {
+  &.va-modal-in {
     background: $modalInBackground;
   }
 
-  .#{$class-prefix}-modal-content {
+  .va-modal-content {
     background-color: $modalContentBackground;
     color: $modalContentColor;
   }
 
-  .#{$class-prefix}-modal-loading {
+  .va-modal-loading {
     background-color: $modalLoadingBackground;
   }
 
-  .#{$class-prefix}-modal-title {
+  .va-modal-title {
     color: $modalTitleColor;
   }
 }
 
-.#{$class-prefix}-modal,
-.#{$class-prefix}--theme-light.#{$class-prefix}-modal {
+.va-modal,
+.va--theme-light.va-modal {
   @include modal-theme-mixin(
     $modalInBackground: rgba(9, 30, 66, 0.55),
     $modalContentBackground: $N0,
@@ -332,7 +328,7 @@ export default {
   );
 }
 
-.#{$class-prefix}-modal {
+.va-modal {
   position: fixed;
   top: 0;
   right: 0;
@@ -382,7 +378,7 @@ export default {
     align-items: center;
     padding: 30px 0;
 
-    .#{$class-prefix}-page-loading-con {
+    .va-page-loading-con {
       display: table;
       margin: 0 auto;
     }
@@ -402,7 +398,7 @@ export default {
     display: flex;
     align-items: center;
 
-    .#{$class-prefix}-fa {
+    .va-fa {
       font-size: 14px;
       margin-right: 10px;
     }
@@ -415,7 +411,7 @@ export default {
   &-footer {
     text-align: right;
 
-    .#{$class-prefix}-btn {
+    .va-btn {
       margin-left: 5px;
     }
   }

@@ -2,7 +2,7 @@
   <va-dropdown>
     <div slot="trigger">
       <va-button ref="colorpicker" @click.native="toggleColorPicker">
-        <div :class="`${classPrefix}-color-picker-button-inner`">
+        <div :class="`va-color-picker-button-inner`">
           <div :style="buttonStyleObj"/>
         </div>
       </va-button>
@@ -25,10 +25,6 @@ export default {
       type: String,
       default: '#ff6900',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     },
     hideAlpha: {
       type: Boolean,
@@ -89,10 +85,9 @@ export default {
       return style
     },
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-color-picker'] = true
+      classes['va-color-picker'] = true
 
       return classes
     }
@@ -101,25 +96,25 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-color-picker-button-inner {
+.va-color-picker-button-inner {
   height: 15px;
   line-height: 1;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==);
   border-radius: 50%;
 }
 
-.#{$class-prefix}-color-picker-popup {
+.va-color-picker-popup {
   margin: 5px 10px;
   overflow: hidden;
 }
 
-.#{$class-prefix}-color-picker-upper {
+.va-color-picker-upper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.#{$class-prefix}-color-picker-gradient {
+.va-color-picker-gradient {
   position: relative;
   width: 190px;
   height: 190px;
@@ -159,7 +154,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-color-picker-border {
+.va-color-picker-border {
   position: absolute;
   top: 0;
   left: 0;
@@ -169,7 +164,7 @@ export default {
   box-shadow: inset rgba(223, 225, 229, 0.5) 0px 0px 0px 2px;
 }
 
-.#{$class-prefix}-color-picker-hue-track {
+.va-color-picker-hue-track {
   position: relative;
   width: 16px;
   height: 190px;
@@ -179,8 +174,8 @@ export default {
   overflow: hidden;
 }
 
-.#{$class-prefix}-color-picker-alpha-cursor,
-.#{$class-prefix}-color-picker-hue-cursor {
+.va-color-picker-alpha-cursor,
+.va-color-picker-hue-cursor {
   position: absolute;
   cursor: default;
   width: 10px;
@@ -191,7 +186,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 0px 1px;
 }
 
-.#{$class-prefix}-color-picker-alpha-track {
+.va-color-picker-alpha-track {
   position: relative;
   width: 16px;
   height: 190px;
@@ -210,7 +205,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-color-picker-lower {
+.va-color-picker-lower {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

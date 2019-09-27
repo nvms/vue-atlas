@@ -1,9 +1,9 @@
 <template>
-  <div :class="`${classPrefix}-placeholder-text`">
+  <div :class="`va-placeholder-text`">
     <div
       v-for="line in lines"
       :key="line"
-      :class="`${classPrefix}-placeholder-text-line`"
+      :class="`va-placeholder-text-line`"
     />
   </div>
 </template>
@@ -15,10 +15,6 @@ export default {
     lines: {
       type: Number,
       default: 4
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   }
 }

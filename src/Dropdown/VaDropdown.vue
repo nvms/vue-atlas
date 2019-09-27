@@ -1,5 +1,5 @@
 <template>
-  <div :class="[`${classPrefix}-dropdown-con`, classObj]">
+  <div :class="[`va-dropdown-con`, classObj]">
     <span ref="trigger" :focus="onFocus">
       <slot name="trigger"/>
     </span>
@@ -7,7 +7,7 @@
     <transition :name="effect">
       <ul
         v-va-position="show"
-        :class="`${classPrefix}-dropdown-menu`"
+        :class="`va-dropdown-menu`"
         v-show="show"
       >
         <slot/>
@@ -41,10 +41,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -69,11 +65,11 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, tall } = this
+      let { tall } = this
       let classes = {}
 
-      classes[classPrefix + '-dropdown-selected'] = this.show
-      classes[classPrefix + '-dropdown-con-tall'] = tall
+      classes['va-dropdown-selected'] = this.show
+      classes['va-dropdown-con-tall'] = tall
 
       return classes
     }
@@ -125,7 +121,7 @@ export default {
   $selectedHoverColor
 ) {
   &-con {
-    .#{$class-prefix}-dropdown-menu {
+    .va-dropdown-menu {
       background: $menuBackground;
       box-shadow: $menuBoxShadow;
       &::-webkit-scrollbar-thumb {
@@ -134,8 +130,8 @@ export default {
           background: $menuScrollbarThumbBackgroundHover;
         }
       }
-      > li > a:not(.#{$class-prefix}-select-item-active),
-      > div > li > a:not(.#{$class-prefix}-select-item-active) {
+      > li > a:not(.va-select-item-active),
+      > div > li > a:not(.va-select-item-active) {
         color: $liAnchorColor !important;
         &:hover {
           background: $liAnchorColorHoverBackground;
@@ -152,7 +148,7 @@ export default {
   trigger that is currently active, meaning the dropdown is opened.
   */
   &-selected {
-    > span > div > button.#{$class-prefix}-btn {
+    > span > div > button.va-btn {
       background: $selectedBackground;
       color: $selectedColor;
       &:hover {
@@ -166,7 +162,7 @@ export default {
   doing something like this:
 
   &-selected {
-    >span>div>button.#{$class-prefix}-btn-primary {
+    >span>div>button.va-btn-primary {
       background: $B300;
       color: $N20;
     }
@@ -176,8 +172,8 @@ export default {
   */
 }
 
-.#{$class-prefix}-dropdown,
-.#{$class-prefix}--theme-light.#{$class-prefix}-dropdown {
+.va-dropdown,
+.va--theme-light.va-dropdown {
   @include dropdown-theme-mixin(
     $menuBackground: $N0,
     $menuBoxShadow: (
@@ -197,12 +193,12 @@ export default {
   );
 }
 
-.#{$class-prefix}-dropdown-con {
+.va-dropdown-con {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 
-  .#{$class-prefix}-dropdown-menu {
+  .va-dropdown-menu {
     position: absolute;
     overflow: auto;
     top: 100%;
@@ -286,25 +282,25 @@ export default {
   }
 }
 
-.#{$class-prefix}-dropdown {
+.va-dropdown {
   position: relative;
 }
 
-.#{$class-prefix}-dropdown-toggle:focus {
+.va-dropdown-toggle:focus {
   outline: 0;
 }
 
 /**
 Dropdowns, while active, don't need a focus ring. It shows focus state by changing the background color.
 */
-.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected
+.va-dropdown-con.va-dropdown-selected
   > span
   > div
-  > .#{$class-prefix}-btn:focus:not(:active):not(.#{$class-prefix}-select-btn-open),
-.#{$class-prefix}-dropdown-con.#{$class-prefix}-dropdown-selected
+  > .va-btn:focus:not(:active):not(.va-select-btn-open),
+.va-dropdown-con.va-dropdown-selected
   > span
   > div
-  > .#{$class-prefix}-btn-focused:not(:active):not(.#{$class-prefix}-select-btn-open) {
+  > .va-btn-focused:not(:active):not(.va-select-btn-open) {
   box-shadow: none !important;
 }
 
@@ -313,34 +309,34 @@ The following styles apply to a button that exists as a dropdown trigger
 that resides inside of the va-topbar element.
 */
 
-.#{$class-prefix}-topbar--theme-blue {
-  .#{$class-prefix}-dropdown-selected {
-    > span > div > button.#{$class-prefix}-btn {
+.va-topbar--theme-blue {
+  .va-dropdown-selected {
+    > span > div > button.va-btn {
       background-color: $B500;
       color: $N20;
     }
 
-    > span > div > button.#{$class-prefix}-btn-primary-dark {
+    > span > div > button.va-btn-primary-dark {
       background: $B400;
     }
   }
 }
 
-.#{$class-prefix}-topbar--theme-purple {
-  .#{$class-prefix}-dropdown-selected {
-    > span > div > button.#{$class-prefix}-btn {
+.va-topbar--theme-purple {
+  .va-dropdown-selected {
+    > span > div > button.va-btn {
       background-color: $P400;
       color: $N20;
     }
 
-    > span > div > button.#{$class-prefix}-btn-purple-dark {
+    > span > div > button.va-btn-purple-dark {
       background: $P400;
     }
   }
 }
 
-.#{$class-prefix}-topbar {
-  .#{$class-prefix}-dropdown-con-tall {
+.va-topbar {
+  .va-dropdown-con-tall {
     height: 100%;
     > span {
       height: 100%;

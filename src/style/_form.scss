@@ -12,18 +12,18 @@
   $errorBorderColor,
   $placeholderColor
 ) {
-  .#{$class-prefix}-form-need {
+  .va-form-need {
     font-weight: $requiredWeight;
     color: $requiredColor;
   }
 
-  .#{$class-prefix}-has-error {
-    .#{$class-prefix}-form-control {
+  .va-has-error {
+    .va-form-control {
       border-color: $errorBorderColor;
     }
   }
 
-  .#{$class-prefix}-form-control {
+  .va-form-control {
     background: $background;
     color: $color;
     border-color: $borderColor;
@@ -43,7 +43,7 @@
   
   }
 
-  .#{$class-prefix}-control-label {
+  .va-control-label {
     font-weight: $labelWeight;
     color: $labelColor;
   }
@@ -105,7 +105,7 @@
 
 /*sizes*/
 
-.#{$class-prefix}-form-control {
+.va-form-control {
 
   align-items: center;
   display: block;
@@ -132,13 +132,13 @@
   }
 }
 
-textarea.#{$class-prefix}-form-control {
+textarea.va-form-control {
   max-height: unset;
   min-height: unset;
 }
 
-input[type="date"].#{$class-prefix}-form-control,
-input[type="time"].#{$class-prefix}-form-control  {
+input[type="date"].va-form-control,
+input[type="time"].va-form-control  {
   /**
   For some reason, if this is anything other than 'transparent',
   then Safari on iOS adopts a real ugly white>gray gradient, with an arrow
@@ -147,7 +147,7 @@ input[type="time"].#{$class-prefix}-form-control  {
   background: transparent;
 }
 
-input[type="file"].#{$class-prefix}-form-control {
+input[type="file"].va-form-control {
   outline: none;
 
   &:focus {
@@ -155,42 +155,42 @@ input[type="file"].#{$class-prefix}-form-control {
   }
 }
 
-.#{$class-prefix}-input-xl {
-  .#{$class-prefix}-form-control {
+.va-input-xl {
+  .va-form-control {
     @include extraLargeInputSize();
   }
 }
 
-.#{$class-prefix}-input-lg {
-  .#{$class-prefix}-form-control {
+.va-input-lg {
+  .va-form-control {
     @include largeInputSize();
   }
 }
 
-.#{$class-prefix}-input-sm {
-  .#{$class-prefix}-form-control {
+.va-input-sm {
+  .va-form-control {
     @include smallInputSize();
   }
 }
 
-.#{$class-prefix}-input-xs {
-  .#{$class-prefix}-form-control {
+.va-input-xs {
+  .va-form-control {
     @include extraSmallInputSize();
     font-weight: 500;
   }
 }
 
-.#{$class-prefix}-control-label {
+.va-control-label {
   font-size: 12px;
   align-self: flex-start;
 }
 
-.#{$class-prefix}-form-horizontal .#{$class-prefix}-control-label {
+.va-form-horizontal .va-control-label {
   margin-bottom: 8px;
   text-align: left;
 }
 
-.#{$class-prefix}-form-need {
+.va-form-need {
   position: relative;
   top: 3px;
   left: 1px;
@@ -199,26 +199,26 @@ input[type="file"].#{$class-prefix}-form-control {
 }
 
 @media (min-width: 768px) {
-  .#{$class-prefix}-form-inline {
+  .va-form-inline {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    .#{$class-prefix}-form-group {
+    .va-form-group {
       display: inline-block;
       margin-bottom: 20px;
       margin-right: 6px;
       vertical-align: middle;
 
     }
-    .#{$class-prefix}-form-control {
+    .va-form-control {
       display: inline-block;
       width: auto;
       vertical-align: middle;
     }
-    .#{$class-prefix}-form-control-static {
+    .va-form-control-static {
       display: inline-block;
     }
-    .#{$class-prefix}-control-label {
+    .va-control-label {
       margin-bottom: 0;
       vertical-align: top;
       font-size: 0.86em;
@@ -226,18 +226,18 @@ input[type="file"].#{$class-prefix}-form-control {
   }
 }
 
-.#{$class-prefix}-form-group {
+.va-form-group {
   margin: 0 0 15px;
 }
 
-.#{$class-prefix}-form-horizontal .#{$class-prefix}-form-group {
+.va-form-horizontal .va-form-group {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 @media (min-width: 768px) {
-  .#{$class-prefix}-form-horizontal .#{$class-prefix}-control-label {
+  .va-form-horizontal .va-control-label {
     margin: 0;
     text-align: right;
   }
@@ -255,7 +255,7 @@ input[type="file"].#{$class-prefix}-form-control {
   left: initial !important;
 }
 
-.#{$class-prefix}-err-tip {
+.va-err-tip {
   @include validationDefaults();
   color: $R400;
 }
@@ -271,7 +271,7 @@ Input theme mixin.
   $focusBGColor,
   $hoverBGColor
 ) {
-  .#{$class-prefix}-form-control-#{$selector} {
+  .va-form-control-#{$selector} {
     background-color: $backgroundColor;
     color: $color;
     &:focus {

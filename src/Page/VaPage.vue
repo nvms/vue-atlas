@@ -2,9 +2,9 @@
   <div
     @scroll="onScroll"
     :style="wrapperStyleObj"
-    :class="`${classPrefix}-page-wrapper`"
+    :class="`va-page-wrapper`"
   >
-    <div :style="containerStyleObj" :class="`${classPrefix}-page-container`">
+    <div :style="containerStyleObj" :class="`va-page-container`">
       <div :class="classObj">
         <slot/>
         <div style="height:100px;">&nbsp;</div>
@@ -30,10 +30,6 @@ export default {
     article: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -128,13 +124,13 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, sz, article, isMobile } = this
+      let { sz, article, isMobile } = this
       let classes = {}
 
       isMobile
-        ? (classes[classPrefix + '-page-container-lg'] = true)
-        : (classes[classPrefix + '-page-container-' + sz] = true)
-      classes[classPrefix + '-page-container-article'] = article
+        ? (classes['va-page-container-lg'] = true)
+        : (classes['va-page-container-' + sz] = true)
+      classes['va-page-container-article'] = article
 
       return classes
     },
@@ -218,14 +214,14 @@ export default {
 
 <style lang="scss">
 @mixin page-theme-mixin($background, $color, $scrollbarBackground) {
-  &.#{$class-prefix}-page-wrapper {
+  .va-page-wrapper {
     background: $background;
     &::-webkit-scrollbar {
       background: $scrollbarBackground;
     }
   }
 
-  .#{$class-prefix}-page {
+  .va-page {
     &-container {
       color: $color;
     }
@@ -238,7 +234,7 @@ export default {
   $scrollbarBackground: #ffffff
 );
 
-.#{$class-prefix}-page {
+.va-page {
   &-wrapper {
     z-index: 1;
     height: 100%;

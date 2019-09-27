@@ -1,5 +1,5 @@
 <template>
-  <div :class="`${classPrefix}-collapse`">
+  <div :class="`va-collapse`">
     <slot/>
   </div>
 </template>
@@ -11,10 +11,6 @@ export default {
     accordion: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   methods: {
@@ -46,7 +42,7 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-collapse {
+.va-collapse {
   &__panel {
     &__header {
       color: $N400;

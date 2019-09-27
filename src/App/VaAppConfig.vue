@@ -308,12 +308,6 @@ import events from '../utils/events'
 export default {
   name: 'VaAppConfig',
   mixins: [events],
-  props: {
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
-  },
   data () {
     return {
       /**
@@ -444,7 +438,6 @@ export default {
   },
   computed: {
     classObj () {
-      // let classPrefix = this
       let classes = {}
 
       return classes

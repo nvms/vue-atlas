@@ -31,8 +31,8 @@
 ) {
   background: $mainBG;
 
-    &.#{$class-prefix}-sidebar-text-links {
-      .#{$class-prefix}-sidebar-group-item {
+    &.va-sidebar-text-links {
+      .va-sidebar-group-item {
         &:hover {
           color: $itemHoverColorTextLinks !important;
         }
@@ -46,11 +46,11 @@
     }
 
 
-  .#{$class-prefix}-sidebar-group-title {
+  .va-sidebar-group-title {
     color: $groupTitleColor;
   }
-  .#{$class-prefix}-sidebar-header {
-    .#{$class-prefix}-btn {
+  .va-sidebar-header {
+    .va-btn {
       color: $headerColor;
       background: $headerBG;
       &:hover {
@@ -65,7 +65,7 @@
       }
     }
   }
-  .#{$class-prefix}-sidebar-scrollarea {
+  .va-sidebar-scrollarea {
     &-topdiv {
       box-shadow: $topDivBoxShadow;
     }
@@ -76,7 +76,7 @@
       }
     }
   }
-  .#{$class-prefix}-sidebar-group-item {
+  .va-sidebar-group-item {
     background: $itemBG;
     color: $itemColor;
     &-substring {
@@ -96,7 +96,7 @@
     &.active {
       color: $itemActiveStateColor;
       background: $itemActiveStateBG;
-      .#{$class-prefix}-sidebar-group-item-icon {
+      .va-sidebar-group-item-icon {
         color: $itemActiveStateIconColor !important;
       }
     }

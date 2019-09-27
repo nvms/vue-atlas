@@ -1,5 +1,5 @@
 <template>
-  <div :class="[classPrefix + '-dropdown-con']" :style="styleObj">
+  <div :class="['va-dropdown-con']" :style="styleObj">
     <va-input
       :custom-validate="customValidate"
       :disabled="disabled"
@@ -25,7 +25,7 @@
     />
 
     <ul
-      :class="`${classPrefix}-dropdown-menu`"
+      :class="`va-dropdown-menu`"
       :style="{minWidth: actualWidth, maxHeight: dropdownHeight}"
       v-show="show"
       v-va-position="show"
@@ -109,10 +109,6 @@ export default {
     },
     items: {
       type: Array
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   watch: {
@@ -196,7 +192,7 @@ export default {
       this.show = false
     },
     isActive (index) {
-      let classes = this.classPrefix + '-dropdown-active'
+      let classes = 'va-dropdown-active'
       return this.current === index ? classes : ''
     },
     hit (index) {

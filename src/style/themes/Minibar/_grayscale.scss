@@ -1,4 +1,4 @@
-.#{$class-prefix}-minibar--theme-grayscale {
+.va-minibar--theme-grayscale {
   @include minibar-theme-mixin($mainBG: #252525,
     $itemBG: transparent,
     $iconColor: $N0,

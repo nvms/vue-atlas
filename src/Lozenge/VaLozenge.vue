@@ -45,24 +45,19 @@ export default {
       validator (v) {
         return ['lg', 'sm'].includes(v)
       }
-    },
-    classPrefix: {
-      type: String,
-      required: false,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, bold, type, size, uppercase, truncate } = this
+      let { bold, type, size, uppercase, truncate } = this
       let classes = {}
 
-      classes[classPrefix + '-lozenge'] = true
-      classes[classPrefix + '-lozenge-bold'] = bold
-      type ? (classes[classPrefix + '-lozenge-' + type] = true) : ''
-      size ? (classes[classPrefix + '-lozenge-' + size] = true) : ''
-      uppercase ? (classes[classPrefix + '-lozenge-uppercase'] = true) : ''
-      truncate ? (classes[classPrefix + '-lozenge-truncate'] = true) : ''
+      classes['va-lozenge'] = true
+      classes['va-lozenge-bold'] = bold
+      type ? (classes['va-lozenge-' + type] = true) : ''
+      size ? (classes['va-lozenge-' + size] = true) : ''
+      uppercase ? (classes['va-lozenge-uppercase'] = true) : ''
+      truncate ? (classes['va-lozenge-truncate'] = true) : ''
 
       return classes
     }
@@ -76,7 +71,7 @@ export default {
   color: $fontCol;
 }
 
-.#{$class-prefix}-lozenge {
+.va-lozenge {
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
@@ -105,45 +100,45 @@ export default {
     font-size: 14px;
     font-weight: 500;
   }
-  &.#{$class-prefix}-lozenge-default {
+  &.va-lozenge-default {
     @include lozengeType($bgCol: $N20, $fontCol: $N300);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $N500, $fontCol: $N20);
     }
   }
-  &.#{$class-prefix}-lozenge-primary {
+  &.va-lozenge-primary {
     @include lozengeType($bgCol: $B50, $fontCol: $B500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $B400, $fontCol: $N20);
     }
   }
-  &.#{$class-prefix}-lozenge-success {
+  &.va-lozenge-success {
     @include lozengeType($bgCol: $G50, $fontCol: $G500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $G400, $fontCol: $N20);
     }
   }
-  &.#{$class-prefix}-lozenge-warning {
+  &.va-lozenge-warning {
     @include lozengeType($bgCol: $Y75, $fontCol: $N500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $Y400, $fontCol: $N600);
     }
   }
-  &.#{$class-prefix}-lozenge-help {
+  &.va-lozenge-help {
     @include lozengeType($bgCol: $P50, $fontCol: $P500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $P400, $fontCol: $N20);
     }
   }
-  &.#{$class-prefix}-lozenge-danger {
+  &.va-lozenge-danger {
     @include lozengeType($bgCol: $R50, $fontCol: $R500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $R400, $fontCol: $N20);
     }
   }
-  &.#{$class-prefix}-lozenge-subtle {
+  &.va-lozenge-subtle {
     @include lozengeType($bgCol: $N0, $fontCol: $N500);
-    &.#{$class-prefix}-lozenge-bold {
+    &.va-lozenge-bold {
       @include lozengeType($bgCol: $N0, $fontCol: $N90);
     }
   }

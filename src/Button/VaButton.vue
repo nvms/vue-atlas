@@ -108,10 +108,6 @@ export default {
     iconAfter: {
       type: String,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -165,7 +161,6 @@ export default {
     },
     classObj () {
       let {
-        classPrefix,
         type,
         size,
         block,
@@ -176,24 +171,24 @@ export default {
       } = this
       let classes = {}
 
-      classes[classPrefix + '-btn'] = true
-      classes[classPrefix + '-btn-block'] = block
-      classes[classPrefix + '-btn-active'] = active
-      classes[classPrefix + '-btn-disabled'] = disabled
-      size ? (classes[classPrefix + '-btn-' + size] = true) : ''
-      type ? (classes[classPrefix + '-btn-' + type] = true) : ''
-      classes[classPrefix + '-btn-round'] = round
+      classes['va-btn'] = true
+      classes['va-btn-block'] = block
+      classes['va-btn-active'] = active
+      classes['va-btn-disabled'] = disabled
+      size ? (classes['va-btn-' + size] = true) : ''
+      type ? (classes['va-btn-' + type] = true) : ''
+      classes['va-btn-round'] = round
 
-      classes[classPrefix + '-btn-' + type + '-focused'] = isFocused
+      classes['va-btn-' + type + '-focused'] = isFocused
 
       return classes
     },
     innerClassObj () {
-      let { classPrefix, loadingSpinner } = this
+      let { loadingSpinner } = this
       let classes = {}
 
-      classes[classPrefix + '-btn-text-fade'] = true
-      loadingSpinner ? (classes[classPrefix + '-btn-text-fade-out'] = true) : ''
+      classes['va-btn-text-fade'] = true
+      loadingSpinner ? (classes['va-btn-text-fade-out'] = true) : ''
 
       return classes
     },
@@ -321,12 +316,12 @@ export default {
   background-color: $bgCol;
   color: $fontCol;
 
-  &:hover:not(.#{$class-prefix}-btn-disabled) {
+  &:hover:not(.va-btn-disabled) {
     background-color: $bgColHover;
     color: $fontColHover;
   }
 
-  &:active:not(.#{$class-prefix}-btn-disabled) {
+  &:active:not(.va-btn-disabled) {
     background-color: $bgColActive;
     color: $fontColActive;
   }
@@ -340,8 +335,8 @@ export default {
   //   outline: none;
   // }
   // ring on hover
-  &:focus:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled),
-  &-focused:not(:active):not(.#{$class-prefix}-select-btn-open):not(.#{$class-prefix}-btn-disabled) {
+  &:focus:not(:active):not(.va-select-btn-open):not(.va-btn-disabled),
+  &-focused:not(:active):not(.va-select-btn-open):not(.va-btn-disabled) {
     box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
     /* fallback */
     box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
@@ -358,7 +353,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-btn {
+.va-btn {
   &-default {
     @include btn-type-mixin(
       $bgCol: $N20,
@@ -667,7 +662,7 @@ export default {
   border-radius: $borderRadius;
 }
 
-.#{$class-prefix}-btn {
+.va-btn {
   border: none;
   outline: 0;
   margin: 0;
@@ -762,12 +757,12 @@ export default {
   Styles applied to the loading spinner inside of the button element.
   All sizes defined here.
   */
-  .#{$class-prefix}-page-loading-con {
+  .va-page-loading-con {
     position: absolute;
   }
 
   &-xs {
-    .#{$class-prefix}-page-loading-con {
+    .va-page-loading-con {
       margin-top: 1px;
 
       svg {
@@ -777,7 +772,7 @@ export default {
   }
 
   &-sm {
-    .#{$class-prefix}-page-loading-con {
+    .va-page-loading-con {
       margin-top: 3px;
 
       svg {
@@ -787,7 +782,7 @@ export default {
   }
 
   &-md {
-    .#{$class-prefix}-page-loading-con {
+    .va-page-loading-con {
       margin-top: 4px;
 
       svg {
@@ -797,7 +792,7 @@ export default {
   }
 
   &-lg {
-    .#{$class-prefix}-page-loading-con {
+    .va-page-loading-con {
       margin-top: 6px;
 
       svg {
@@ -813,83 +808,83 @@ are defined here.
 
 Ready to be confused?
 */
-.#{$class-prefix}-btn-group {
+.va-btn-group {
   position: relative;
   display: inline-block;
   vertical-align: middle;
 }
 
-.#{$class-prefix}-btn-group > .#{$class-prefix}-btn,
-.#{$class-prefix}-btn-group > .#{$class-prefix}-dropdown-con {
+.va-btn-group > .va-btn,
+.va-btn-group > .va-dropdown-con {
   position: relative;
   float: left;
 }
 
-.#{$class-prefix}-btn-group {
-  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+.va-btn-group {
+  > .va-btn:not(:first-child):not(:last-child):not(.va-dropdown-toggle),
+  > .va-dropdown-con:not(:first-child):not(:last-child):not(.va-dropdown-toggle) {
     border-radius: 0;
     margin-right: 1px;
   }
 
-  > .#{$class-prefix}-btn:first-child {
+  > .va-btn:first-child {
     margin-left: 0;
   }
 
-  > .#{$class-prefix}-btn:first-child:not(:last-child) {
+  > .va-btn:first-child:not(:last-child) {
     margin-right: 1px;
   }
 
-  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  > .#{$class-prefix}-dropdown-con:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle)
+  > .va-btn:first-child:not(:last-child):not(.va-dropdown-toggle),
+  > .va-dropdown-con:first-child:not(:last-child):not(.va-dropdown-toggle)
     > span
     > div
-    > .#{$class-prefix}-btn {
+    > .va-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     margin-right: 1px;
   }
 
-  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child)
+  > .va-dropdown-con:not(:first-child):not(:last-child)
     > span
     > div
-    > .#{$class-prefix}-btn {
+    > .va-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  > .#{$class-prefix}-btn:last-child:not(:first-child),
-  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
+  > .va-btn:last-child:not(:first-child),
+  > .va-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
 
-  > .#{$class-prefix}-dropdown-con:not(:first-child) {
-    > span > div > .#{$class-prefix}-btn {
+  > .va-dropdown-con:not(:first-child) {
+    > span > div > .va-btn {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
   }
 
-  > .#{$class-prefix}-btn-group {
+  > .va-btn-group {
     float: left;
   }
 
-  > .#{$class-prefix}-btn-group:not(:first-child):not(:last-child)
-    > .#{$class-prefix}-btn {
+  > .va-btn-group:not(:first-child):not(:last-child)
+    > .va-btn {
     border-radius: 0;
   }
 
-  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
-    > .#{$class-prefix}-btn:last-child,
-  > .#{$class-prefix}-btn-group:first-child:not(:last-child)
-    > .#{$class-prefix}-dropdown-toggle {
+  > .va-btn-group:first-child:not(:last-child)
+    > .va-btn:last-child,
+  > .va-btn-group:first-child:not(:last-child)
+    > .va-dropdown-toggle {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  > .#{$class-prefix}-btn-group:last-child:not(:first-child)
-    > .#{$class-prefix}-btn:first-child {
+  > .va-btn-group:last-child:not(:first-child)
+    > .va-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -899,7 +894,7 @@ Ready to be confused?
 And, of course, when the button group is a vertical button group arrangement.
 */
 
-.#{$class-prefix}-btn-group-vertical {
+.va-btn-group-vertical {
   position: relative;
   display: inline-flex !important;
   // display: flex;
@@ -907,67 +902,67 @@ And, of course, when the button group is a vertical button group arrangement.
   vertical-align: middle;
 }
 
-.#{$class-prefix}-btn-group-vertical > .#{$class-prefix}-btn {
+.va-btn-group-vertical > .va-btn {
   position: relative;
   float: left;
   width: 100%;
   display: flex;
 }
 
-.#{$class-prefix}-btn-group-vertical .#{$class-prefix}-btn {
+.va-btn-group-vertical .va-btn {
   width: 100%;
 }
 
-.#{$class-prefix}-btn-group-vertical {
-  > .#{$class-prefix}-btn:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle),
-  > .#{$class-prefix}-dropdown-con:not(:first-child):not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+.va-btn-group-vertical {
+  > .va-btn:not(:first-child):not(:last-child):not(.va-dropdown-toggle),
+  > .va-dropdown-con:not(:first-child):not(:last-child):not(.va-dropdown-toggle) {
     border-radius: 0;
     margin-bottom: 1px;
     margin-right: 0px;
   }
 
-  > .#{$class-prefix}-btn:first-child {
+  > .va-btn:first-child {
     margin-top: 0;
   }
 
-  > .#{$class-prefix}-btn:first-child:not(:last-child) {
+  > .va-btn:first-child:not(:last-child) {
     margin-bottom: 1px;
   }
 
-  > .#{$class-prefix}-btn:first-child:not(:last-child):not(.#{$class-prefix}-dropdown-toggle) {
+  > .va-btn:first-child:not(:last-child):not(.va-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
   }
 
-  > .#{$class-prefix}-btn:last-child:not(:first-child),
-  > .#{$class-prefix}-dropdown-toggle:not(:first-child) {
+  > .va-btn:last-child:not(:first-child),
+  > .va-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
   }
 
-  > .#{$class-prefix}-btn-group-vertical {
+  > .va-btn-group-vertical {
     float: left;
   }
 
-  > .#{$class-prefix}-btn-group-vertical:not(:first-child):not(:last-child)
-    > .#{$class-prefix}-btn {
+  > .va-btn-group-vertical:not(:first-child):not(:last-child)
+    > .va-btn {
     border-radius: 0;
   }
 
-  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
-    > .#{$class-prefix}-btn:last-child,
-  > .#{$class-prefix}-btn-group-vertical:first-child:not(:last-child)
-    > .#{$class-prefix}-dropdown-toggle {
+  > .va-btn-group-vertical:first-child:not(:last-child)
+    > .va-btn:last-child,
+  > .va-btn-group-vertical:first-child:not(:last-child)
+    > .va-dropdown-toggle {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  > .#{$class-prefix}-btn-group-vertical:last-child:not(:first-child)
-    > .#{$class-prefix}-btn:first-child {
+  > .va-btn-group-vertical:last-child:not(:first-child)
+    > .va-btn:first-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }

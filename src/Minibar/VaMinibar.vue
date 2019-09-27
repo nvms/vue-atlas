@@ -1,8 +1,8 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`${classPrefix}-minibar-inner`" :style="styleObjInner">
+    <div :class="`va-minibar-inner`" :style="styleObjInner">
 
-      <div :class="`${classPrefix}-minibar-top`">
+      <div :class="`va-minibar-top`">
         <slot name="top">
           <div v-for="(item, index) in topItems" :key="index">
             <va-minibar-item
@@ -28,7 +28,7 @@
         </slot>
       </div>
 
-      <div :class="`${classPrefix}-minibar-bottom`">
+      <div :class="`va-minibar-bottom`">
         <slot name="bottom">
           <div v-for="(item, index) in bottomItems" :key="index">
             <va-minibar-item
@@ -76,10 +76,6 @@ export default {
       type: String,
       default: 'blue',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -169,11 +165,11 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, th } = this
+      let { th } = this
       let classes = {}
 
-      classes[classPrefix + '-minibar'] = true
-      classes[classPrefix + '-minibar--theme-' + th] = true
+      classes['va-minibar'] = true
+      classes['va-minibar--theme-' + th] = true
 
       return classes
     },

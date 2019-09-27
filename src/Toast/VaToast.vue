@@ -50,10 +50,6 @@ export default {
     closeOnClick: {
       type: Boolean,
       default: true
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -63,12 +59,12 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, placement, type } = this
+      let { placement, type } = this
       let classes = {}
 
-      classes[classPrefix + '-toast'] = true
-      classes[classPrefix + '-toast-' + type] = true
-      classes[classPrefix + '-toast-' + placement] = true
+      classes['va-toast'] = true
+      classes['va-toast-' + type] = true
+      classes['va-toast-' + placement] = true
 
       return classes
     }
@@ -111,7 +107,7 @@ $toastBottom: 20px;
 $toastRight: 20px;
 $toastLeft: 20px;
 
-.#{$class-prefix}-toast {
+.va-toast {
   position: fixed;
   border-radius: 5px;
   font-size: 14px;
@@ -148,44 +144,44 @@ $toastLeft: 20px;
   }
 }
 
-.#{$class-prefix}-toast-center {
+.va-toast-center {
   margin: 0 auto;
   left: 50%;
   top: 50%;
 }
 
-.#{$class-prefix}-toast-top {
+.va-toast-top {
   top: $toastTop;
   margin: 0 auto;
   left: 50%;
 }
 
-.#{$class-prefix}-toast-bottom {
+.va-toast-bottom {
   bottom: $toastBottom;
   margin: 0 auto;
   left: 50%;
   top: initial;
 }
 
-.#{$class-prefix}-toast-top-right {
+.va-toast-top-right {
   top: $toastTop;
   right: $toastRight;
   left: initial;
 }
 
-.#{$class-prefix}-toast-top-left {
+.va-toast-top-left {
   top: $toastTop;
   left: $toastLeft;
 }
 
-.#{$class-prefix}-toast-bottom-right {
+.va-toast-bottom-right {
   bottom: $toastBottom;
   right: $toastRight;
   left: initial;
   top: initial;
 }
 
-.#{$class-prefix}-toast-bottom-left {
+.va-toast-bottom-left {
   top: initial;
   bottom: $toastBottom;
   left: $toastBottom;

@@ -18,54 +18,54 @@
 </template>
 
 <script>
-  export default {
-    name: 'VaFilePicker',
-    inheritAttrs: false,
-    props: {
-      preview: {
-        type: Boolean,
-        default: false
-      },
-      multiple: {
-        type: Boolean,
-        default: false
+export default {
+  name: 'VaFilePicker',
+  inheritAttrs: false,
+  props: {
+    preview: {
+      type: Boolean,
+      default: false
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    label () {
+      return this.multiple || !this.value ? 'Upload' : this.value.name
+    }
+  },
+  data () {
+    return { value: null }
+  },
+  methods: {
+    getMIMEIcon (type) {
+      switch (true) {
+        case type.startsWith('image/'):
+          return 'image'
+        case type.startsWith('video/'):
+          return 'video'
+        case type.startsWith('audio/'):
+          return 'file-audio'
+        default:
+          return 'file'
       }
     },
-    computed: {
-      label () {
-        return this.multiple || !this.value ? 'Upload' : this.value.name
-      }
+    onClick () {
+      this.$refs.input.click()
     },
-    data () {
-      return { value: null }
+    onChange (evt) {
+      this.value = this.multiple ? Array.from(evt.target.files).concat(this.value || []) : evt.target.files[0]
+      this.$emit('input', this.value)
+      this.$emit('change', this.value)
     },
-    methods: {
-      getMIMEIcon (type) {
-        switch (true) {
-          case type.startsWith('image/'):
-            return 'image'
-          case type.startsWith('video/'):
-            return 'video'
-          case type.startsWith('audio/'):
-            return 'file-audio'
-          default:
-            return 'file'
-        }
-      },
-      onClick () {
-        this.$refs.input.click()
-      },
-      onChange (evt) {
-        this.value = this.multiple ? Array.from(evt.target.files).concat(this.value || []) : evt.target.files[0]
-        this.$emit('input', this.value)
-        this.$emit('change', this.value)
-      },
-      onRemove (index) {
-        this.$emit('remove', this.value[index])
-        this.value.splice(index, 1)
-      }
+    onRemove (index) {
+      this.$emit('remove', this.value[index])
+      this.value.splice(index, 1)
     }
   }
+}
 </script>
 
 <style scoped lang="scss">

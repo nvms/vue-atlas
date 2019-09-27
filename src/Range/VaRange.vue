@@ -2,7 +2,7 @@
   <div class="wrap" :style="{width: width || '100%'}">
     <input
       ref="range"
-      :class="`${classPrefix}-range`"
+      :class="`va-range`"
       :value="currentValue"
       type="range"
       :name="name"
@@ -52,10 +52,6 @@ export default {
     },
     width: {
       type: String
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -125,12 +121,11 @@ export default {
       }
     },
     init () {
-      let { classPrefix } = this
       var wrp = document.createElement('div')
       var preBar = document.createElement('p')
 
-      wrp.className = classPrefix + '-range-barCnt'
-      preBar.className = classPrefix + '-range-preBar'
+      wrp.className = 'va-range-barCnt'
+      preBar.className = 'va-range-preBar'
 
       this.$refs.range.className = this.$refs.range.className.length
         ? this.$refs.range.className + ' colorized'
@@ -196,13 +191,13 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-range-barCnt {
+.va-range-barCnt {
   position: relative;
   height: 10px;
   padding: 5px 0px;
 }
 
-.#{$class-prefix}-range-barCnt .#{$class-prefix}-range-preBar {
+.va-range-barCnt .va-range-preBar {
   position: absolute;
   background-color: $B400;
   height: 5px;
@@ -214,7 +209,7 @@ export default {
   pointer-events: none;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized {
+input[type='range'].va-range.colorized {
   -webkit-appearance: none;
   width: 100%;
   height: 5px;
@@ -226,14 +221,14 @@ input[type='range'].#{$class-prefix}-range.colorized {
   left: 0px;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-runnable-track {
+input[type='range'].va-range.colorized::-webkit-slider-runnable-track {
   height: 5px;
   background: $N30;
   border: none;
   border-radius: 3px;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-thumb {
+input[type='range'].va-range.colorized::-webkit-slider-thumb {
   -webkit-appearance: none;
   position: relative;
   z-index: 201 !important;
@@ -248,36 +243,36 @@ input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-thumb {
 }
 
 @media (max-width: 768px) {
-  input[type='range'].#{$class-prefix}-range.colorized::-webkit-slider-thumb {
+  input[type='range'].va-range.colorized::-webkit-slider-thumb {
     height: 28px;
     width: 28px;
     margin-top: -12px;
   }
-  .#{$class-prefix}-range-barCnt {
+  .va-range-barCnt {
     margin-top: 14px;
     height: 28px;
     line-height: 28px;
   }
-  .#{$class-prefix}-range-barCnt .#{$class-prefix}-range-preBar {
+  .va-range-barCnt .va-range-preBar {
     height: 7px;
     line-height: 7px;
   }
 }
 
-input[type='range'].#{$class-prefix}-range.colorized:focus {
+input[type='range'].va-range.colorized:focus {
   outline: none;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized:focus::-webkit-slider-thumb {
+input[type='range'].va-range.colorized:focus::-webkit-slider-thumb {
   box-shadow: 0 0 1px 2px rgb(11, 66, 175),
     0 7px 12px -3px rgba(9, 30, 66, 0.25);
 }
 
-input[type='range'].#{$class-prefix}-range.colorized:focus::-webkit-slider-runnable-track {
+input[type='range'].va-range.colorized:focus::-webkit-slider-runnable-track {
   background: $N30;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized::-moz-range-track {
+input[type='range'].va-range.colorized::-moz-range-track {
   width: 100%;
   height: 5px;
   background: $N30;
@@ -285,7 +280,7 @@ input[type='range'].#{$class-prefix}-range.colorized::-moz-range-track {
   border-radius: 3px;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized::-moz-range-thumb {
+input[type='range'].va-range.colorized::-moz-range-thumb {
   border: none;
   height: 16px;
   width: 16px;
@@ -296,11 +291,11 @@ input[type='range'].#{$class-prefix}-range.colorized::-moz-range-thumb {
   z-index: 400;
 }
 
-input[type='range'].#{$class-prefix}-range.colorized::-moz-focus-outer {
+input[type='range'].va-range.colorized::-moz-focus-outer {
   border: 0;
 }
 
-input[type='range'].#{$class-prefix}-range.colored:focus::-moz-range-thumb {
+input[type='range'].va-range.colored:focus::-moz-range-thumb {
   box-shadow: 0 0 1px 2px rgb(11, 66, 175),
     0 7px 12px -3px rgba(9, 30, 66, 0.25);
 }

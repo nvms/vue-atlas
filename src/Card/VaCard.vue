@@ -1,16 +1,16 @@
 <template>
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
-      <div :class="`${classPrefix}-card-header-inner`">
-        <div :class="`${classPrefix}-card-header-inner-left`">
+      <div :class="`va-card-header-inner`">
+        <div :class="`va-card-header-inner-left`">
           <slot name="topLeft"/>
         </div>
-        <div :class="`${classPrefix}-card-header-inner-right`">
+        <div :class="`va-card-header-inner-right`">
           <slot name="topRight"/>
         </div>
       </div>
     </div>
-    <div :style="bodyStyleObj" :class="`${classPrefix}-card-body`">
+    <div :style="bodyStyleObj" :class="`va-card-body`">
       <slot/>
     </div>
   </div>
@@ -31,19 +31,15 @@ export default {
     padding: {
       type: [Number, String],
       default: '10px'
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, elevation } = this
+      let { elevation } = this
       let classes = {}
 
-      classes[classPrefix + '-card'] = true
-      classes[classPrefix + '-card-elevation-' + elevation] = true
+      classes['va-card'] = true
+      classes['va-card-elevation-' + elevation] = true
 
       return classes
     },
@@ -56,10 +52,9 @@ export default {
       return style
     },
     headerClassObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-card-header'] = true
+      classes['va-card-header'] = true
 
       return classes
     },
@@ -135,8 +130,8 @@ export default {
   }
 }
 
-.#{$class-prefix}-card,
-.#{$class-prefix}--theme-light .#{$class-prefix}-card {
+.va-card,
+.va--theme-light .va-card {
   @include card-theme-mixin(
     $background: $N0,
     $headerBackground: $N0,
@@ -168,7 +163,7 @@ export default {
   );
 }
 
-.#{$class-prefix}-card {
+.va-card {
   border-radius: 3px;
 
   &-header {
