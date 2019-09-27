@@ -10,12 +10,6 @@ import events from '../utils/events'
 export default {
   name: 'VaDesktop',
   mixins: [events],
-  props: {
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
-  },
   data () {
     return {
       isMobile: false

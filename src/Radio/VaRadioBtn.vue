@@ -30,10 +30,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   watch: {
@@ -61,10 +57,9 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-radio-btn'] = true
+      classes['va-radio-btn'] = true
 
       return classes
     }

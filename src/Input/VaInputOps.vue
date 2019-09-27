@@ -33,10 +33,6 @@ export default {
   props: {
     parentPosition: {
       type: Object
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -159,10 +155,9 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-input-ops'] = true
+      classes['va-input-ops'] = true
 
       return classes
     },

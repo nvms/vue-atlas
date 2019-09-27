@@ -1,4 +1,4 @@
-.#{$class-prefix}-minibar {
+.va-minibar {
   position: fixed;
   z-index: 6;
   display: flex;
@@ -28,15 +28,15 @@
       justify-content: flex-start;
       width: auto !important;
 
-      .#{$class-prefix}-minibar-top,
-      .#{$class-prefix}-minibar-bottom {
+      .va-minibar-top,
+      .va-minibar-bottom {
         >div {
           display: flex;
           flex-direction: row;
         }
       }
 
-      .#{$class-prefix}-page-container {
+      .va-page-container {
         position: absolute;
       }
     }
@@ -72,7 +72,7 @@
   }
 }
 
-.#{$class-prefix}-topbar {
+.va-topbar {
   position: fixed;
   z-index: 5;
   top: 0;
@@ -92,7 +92,7 @@
     justify-content: space-between;
     cursor: default;
 
-    .#{$class-prefix}-btn {
+    .va-btn {
       max-height: unset;
     }
   }
@@ -104,9 +104,9 @@
   }
 }
 
-.#{$class-prefix}-topbar-left>div,
-.#{$class-prefix}-topbar-right>div,
-.#{$class-prefix}-topbar-center>div {
+.va-topbar-left>div,
+.va-topbar-right>div,
+.va-topbar-center>div {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -114,7 +114,7 @@
 }
 
 
-.#{$class-prefix}-sidebar {
+.va-sidebar {
   position: fixed;
   z-index: 2;
   display: flex;
@@ -126,20 +126,20 @@
   -webkit-overflow-scrolling: touch;
 
   &-compact {
-    .#{$class-prefix}-sidebar-group-item {
+    .va-sidebar-group-item {
       min-height: 20px;
       line-height: inherit;
     }
 
-    .#{$class-prefix}-sidebar-group-item-text>.#{$class-prefix}-sidebar-group-item-icon {
+    .va-sidebar-group-item-text>.va-sidebar-group-item-icon {
       font-size: 12px;
     }
 
-    .#{$class-prefix}-sidebar-group-item-text {
+    .va-sidebar-group-item-text {
       min-height: 20px;
     }
 
-    .#{$class-prefix}-sidebar-group-item-text a {
+    .va-sidebar-group-item-text a {
       min-height: 20px;
     }
   }
@@ -151,7 +151,7 @@
       outline: none !important;
     }
 
-    .#{$class-prefix}-btn {
+    .va-btn {
       padding-left: 4px;
       padding-top: 4px;
       padding-bottom: 4px;
@@ -196,7 +196,7 @@
   }
 }
 
-.#{$class-prefix}-sidebar-treenavigation {
+.va-sidebar-treenavigation {
   display: inline-block;
   padding: 0 11px 0 10px;
   margin: 0 0 10px 0;
@@ -213,7 +213,7 @@
   }
 }
 
-.#{$class-prefix}-sidebar-navigationlevel {
+.va-sidebar-navigationlevel {
   &-closed {
     ul {
       display: none;
@@ -230,7 +230,7 @@
 /*
 sidebar item defaults
 */
-.#{$class-prefix}-sidebar-group-item {
+.va-sidebar-group-item {
   $el: &;
   display: flex;
   align-items: center;
@@ -286,16 +286,16 @@ sidebar item defaults
   }
 }
 
-.#{$class-prefix}-sidebar-group-item-toggle-icon {
+.va-sidebar-group-item-toggle-icon {
   position: relative;
   top: -1.5px;
   margin-right: 7px;
 }
 
-.#{$class-prefix}-sidebar-group-item-label,
-.#{$class-prefix}-sidebar-group-item-link,
-.#{$class-prefix}-sidebar-group-item-router-link,
-.#{$class-prefix}-sidebar-group-item-external-link {
+.va-sidebar-group-item-label,
+.va-sidebar-group-item-link,
+.va-sidebar-group-item-router-link,
+.va-sidebar-group-item-external-link {
   color: inherit !important;
   display: flex;
   flex-direction: column;
@@ -313,7 +313,7 @@ sidebar item defaults
   }
 }
 
-.#{$class-prefix}-sidebar-group-item-substring {
+.va-sidebar-group-item-substring {
   font-size: 12px;
   line-height: 1;
   overflow: hidden;
@@ -322,8 +322,8 @@ sidebar item defaults
   margin-bottom: 7px;
 }
 
-.#{$class-prefix}-sidebar {
-  .#{$class-prefix}-placeholder {
+.va-sidebar {
+  .va-placeholder {
     margin: 10px 5px 40px 20px;
 
     &-text {
@@ -379,7 +379,7 @@ $textLineBeforeBorder,
 $headingImageBG,
 $headingContentTitleBG,
 $animatedBeforeBG) {
-  .#{$class-prefix}-placeholder {
+  .va-placeholder {
     &-text {
       &-line {
         background: $textLineBG;
@@ -415,8 +415,8 @@ $animatedBeforeBG) {
 /**
 Disable box shadow and background on active/focus textLinks
 */
-.#{$class-prefix}-sidebar.#{$class-prefix}-sidebar-text-links {
-  .#{$class-prefix}-sidebar-group-item {
+.va-sidebar.va-sidebar-text-links {
+  .va-sidebar-group-item {
     &:active,
     &:focus {
       box-shadow: none;
@@ -425,7 +425,7 @@ Disable box shadow and background on active/focus textLinks
   }
 }
 
-.#{$class-prefix}-sidebar-scrollarea {
+.va-sidebar-scrollarea {
   overflow-y: hidden;
   overflow-x: hidden;
   margin-top: 25px;
@@ -435,13 +435,13 @@ Disable box shadow and background on active/focus textLinks
   }
 }
 
-.#{$class-prefix}-sidebar-mobile {
-  .#{$class-prefix}-sidebar-scrollarea {
+.va-sidebar-mobile {
+  .va-sidebar-scrollarea {
     overflow-y: auto;
   }
 }
 
-.#{$class-prefix}-sidebar-grabber {
+.va-sidebar-grabber {
   position: absolute;
   width: 12px;
   height: 100%;
@@ -457,7 +457,7 @@ Disable box shadow and background on active/focus textLinks
   }
 }
 
-.#{$class-prefix}-sidebar-scrollarea {
+.va-sidebar-scrollarea {
   &::-webkit-scrollbar-track {
     border-radius: 10px;
   }
@@ -472,8 +472,8 @@ Disable box shadow and background on active/focus textLinks
   }
 }
 
-.#{$class-prefix}-sidebar-text-links {
-  .#{$class-prefix}-sidebar-group-item {
+.va-sidebar-text-links {
+  .va-sidebar-group-item {
     &.active {
       background: none !important;
       text-decoration: underline;
@@ -488,7 +488,7 @@ Disable box shadow and background on active/focus textLinks
       a, a:link, a:active, a:visited {
         text-decoration: underline !important;
       }
-      .#{$class-prefix}-sidebar-group-item-label {
+      .va-sidebar-group-item-label {
         text-decoration: underline;
       }
     }

@@ -26,10 +26,6 @@ export default {
     vertical: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -80,15 +76,15 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, vertical } = this
+      let { vertical } = this
       let classes = {}
 
       // The -btn-group class is only necessary to give the proper border radius to buttons
       // in a radio group if radio buttons are used instead of regular radio elements.
-      classes[classPrefix + '-btn-group'] = !vertical
-      classes[classPrefix + '-btn-group-vertical'] = vertical
-      classes[classPrefix + '-radio-group'] = true
-      classes[classPrefix + '-radio-group-vertical'] = vertical
+      classes['va-btn-group'] = !vertical
+      classes['va-btn-group-vertical'] = vertical
+      classes['va-radio-group'] = true
+      classes['va-radio-group-vertical'] = vertical
 
       return classes
     }

@@ -1,7 +1,7 @@
 @mixin minibar-theme-mixin($mainBG, $itemBG, $iconColor, $itemHoverBG, $itemActiveBG, $itemFocusBorder, $itemBrandHoverBG, $itemBrandActiveBorder, $itemBrandActiveIconColor) {
   background: $mainBG;
 
-  .#{$class-prefix}-minibar-item {
+  .va-minibar-item {
     background: $itemBG;
 
     i {

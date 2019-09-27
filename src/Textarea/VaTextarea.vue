@@ -123,10 +123,6 @@ export default {
     autosize: {
       type: Boolean,
       default: true
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -300,11 +296,10 @@ export default {
       return style
     },
     classObj () {
-      let { classPrefix } = this
       let classes = {}
 
-      classes[classPrefix + '-form-control'] = true
-      classes[classPrefix + '-textarea'] = true
+      classes['va-form-control'] = true
+      classes['va-textarea'] = true
 
       return classes
     },
@@ -319,13 +314,13 @@ export default {
       return style
     },
     classObjContainer () {
-      let { classPrefix, validStatus } = this
+      let { validStatus } = this
       let classes = {}
 
-      classes[classPrefix + '-has-error'] = validStatus === 'error'
-      classes[classPrefix + '-has-success'] = validStatus === 'success'
-      classes[classPrefix + '-has-warn'] = validStatus === 'warn'
-      classes[classPrefix + '-textarea-con'] = true
+      classes['va-has-error'] = validStatus === 'error'
+      classes['va-has-success'] = validStatus === 'success'
+      classes['va-has-warn'] = validStatus === 'warn'
+      classes['va-textarea-con'] = true
       // classes['inline'] = true
 
       return classes
@@ -335,13 +330,13 @@ export default {
 </script>
 
 <style lang="scss">
-.#{$class-prefix}-textarea-con {
-  .#{$class-prefix}-form-control {
+.va-textarea-con {
+  .va-form-control {
     line-height: 16px;
   }
 }
 
-.#{$class-prefix}-textarea {
+.va-textarea {
   overflow-y: hidden;
   min-height: 50px;
   height: 100%;

@@ -31,19 +31,15 @@ export default {
       type: String,
       default: '',
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, brand } = this
+      let { brand } = this
       let classes = {}
 
-      classes[classPrefix + '-minibar-item'] = true
-      classes[classPrefix + '-minibar-item-brand'] = brand
+      classes['va-minibar-item'] = true
+      classes['va-minibar-item-brand'] = brand
 
       return classes
     }

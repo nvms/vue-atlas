@@ -1,15 +1,15 @@
 <template>
-  <label :class="`${classPrefix}-radio-con`">
+  <label :class="`va-radio-con`">
     <span :class="objClass">
       <span
-        :class="`${classPrefix}-radio-inner`"
+        :class="`va-radio-inner`"
         :tabindex="disabled ? -1 : 0"
         @keypress.space.prevent="handleClick"
         @keyup.enter="handleClick"
       />
       <input
         :checked="currentChecked"
-        :class="`${classPrefix}-radio-input`"
+        :class="`va-radio-input`"
         :disabled="disabled"
         :name="name"
         @click.prevent="handleClick"
@@ -17,7 +17,7 @@
         type="radio"
       >
     </span>
-    <span :class="`${classPrefix}-label`" tabindex="-1">
+    <span :class="`va-label`" tabindex="-1">
       <slot/>
     </span>
     <validate
@@ -54,10 +54,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   components: {
@@ -77,12 +73,12 @@ export default {
   },
   computed: {
     objClass () {
-      let { classPrefix, currentChecked, disabled } = this
+      let { currentChecked, disabled } = this
       let classes = {}
 
-      classes[classPrefix + '-radio-span'] = true
-      classes[classPrefix + '-radio-checked'] = currentChecked
-      classes[classPrefix + '-radio-disabled'] = disabled
+      classes['va-radio-span'] = true
+      classes['va-radio-checked'] = currentChecked
+      classes['va-radio-disabled'] = disabled
 
       return classes
     }
@@ -125,7 +121,7 @@ export default {
   }
 }
 
-.#{$class-prefix}-radio-con {
+.va-radio-con {
   margin-right: 10px;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -133,11 +129,11 @@ export default {
   user-select: none;
   cursor: pointer !important;
 
-  .#{$class-prefix}-label {
+  .va-label {
     margin-left: 8px;
     outline: none;
   }
-  .#{$class-prefix}-radio-span {
+  .va-radio-span {
     white-space: nowrap;
     outline: none;
     display: inline-block;
@@ -145,7 +141,7 @@ export default {
     line-height: 1;
     vertical-align: middle;
   }
-  .#{$class-prefix}-radio-inner {
+  .va-radio-inner {
     position: relative;
     top: 0;
     left: 0;
@@ -161,12 +157,12 @@ export default {
     @include radio-focus-mixin($B200, 0.6);
   }
   &:active {
-    .#{$class-prefix}-radio-inner {
+    .va-radio-inner {
       background-color: $B75 !important;
       border-color: $B75 !important;
     }
   }
-  .#{$class-prefix}-radio-input {
+  .va-radio-input {
     position: absolute !important;
     left: 0;
     z-index: 1;
@@ -179,38 +175,38 @@ export default {
     height: 100%;
   }
   &:hover {
-    .#{$class-prefix}-radio-span:not(.#{$class-prefix}-radio-checked) {
-      .#{$class-prefix}-radio-inner {
+    .va-radio-span:not(.va-radio-checked) {
+      .va-radio-inner {
         background-color: #ebecf0;
       }
     }
   }
-  .#{$class-prefix}-radio-checked {
+  .va-radio-checked {
     &:hover {
-      .#{$class-prefix}-radio-inner {
+      .va-radio-inner {
         background-color: $B300;
         border-color: $B300;
       }
     }
   }
   &:active {
-    .#{$class-prefix}-radio-checked {
-      .#{$class-prefix}-radio-inner {
+    .va-radio-checked {
+      .va-radio-inner {
         &:after {
           background-color: $B500;
         }
       }
     }
   }
-  .#{$class-prefix}-radio-checked .#{$class-prefix}-radio-inner:after {
+  .va-radio-checked .va-radio-inner:after {
     transform: scale(1);
     opacity: 1;
   }
-  .#{$class-prefix}-radio-checked .#{$class-prefix}-radio-inner {
+  .va-radio-checked .va-radio-inner {
     background-color: $B400;
     border-color: $B400;
   }
-  .#{$class-prefix}-radio-inner:after {
+  .va-radio-inner:after {
     position: absolute;
     width: 4px;
     height: 4px;
@@ -225,19 +221,19 @@ export default {
     transform: scale(0);
     opacity: 0;
   }
-  .#{$class-prefix}-radio-disabled .#{$class-prefix}-radio-inner {
+  .va-radio-disabled .va-radio-inner {
     border-color: $N40;
     background-color: $N100;
   }
 }
 
-.#{$class-prefix}-radio-btn input[type='radio'] {
+.va-radio-btn input[type='radio'] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
 }
 
-.#{$class-prefix}-radio-group {
+.va-radio-group {
   display: flex !important;
   flex-direction: row;
   &-vertical {

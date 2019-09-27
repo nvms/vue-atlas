@@ -85,10 +85,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -100,10 +96,9 @@ export default {
     }
   },
   mounted () {
-    let { classPrefix } = this
     this.animatingClassName = [
-      classPrefix + '-anim-queue-entering',
-      classPrefix + '-anim-queue-leaving'
+      'va-anim-queue-entering',
+      'va-anim-queue-leaving'
     ]
 
     // this.$nextTick(() => {

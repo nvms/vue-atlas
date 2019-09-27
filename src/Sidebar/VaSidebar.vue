@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`${classPrefix}-sidebar-scrollarea`">
+    <div :class="`va-sidebar-scrollarea`">
       <slot />
     </div>
   </div>
@@ -32,10 +32,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -106,14 +102,14 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, th, isMobile, comp, tl } = this
+      let { th, isMobile, comp, tl } = this
       let classes = {}
 
-      classes[classPrefix + '-sidebar'] = true
-      classes[classPrefix + '-sidebar--theme-' + th] = true
-      classes[classPrefix + '-sidebar-mobile'] = isMobile
-      classes[classPrefix + '-sidebar-compact'] = comp
-      classes[classPrefix + '-sidebar-text-links'] = tl
+      classes['va-sidebar'] = true
+      classes['va-sidebar--theme-' + th] = true
+      classes['va-sidebar-mobile'] = isMobile
+      classes['va-sidebar-compact'] = comp
+      classes['va-sidebar-text-links'] = tl
 
       return classes
     },

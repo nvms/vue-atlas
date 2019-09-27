@@ -11,23 +11,17 @@ export default {
     xs: Number,
     sm: Number,
     md: Number,
-    lg: Number,
-    classPrefix: {
-      type: String,
-      default: 'va'
-    }
+    lg: Number
   },
   computed: {
     classObj () {
-      let { classPrefix } = this
-
       return [
-        `${classPrefix}-col`,
+        `va-col`,
         {
-          [`${classPrefix}-col-xs-${this.xs}`]: this.xs,
-          [`${classPrefix}-col-sm-${this.sm}`]: this.sm,
-          [`${classPrefix}-col-md-${this.md}`]: this.md,
-          [`${classPrefix}-col-lg-${this.lg}`]: this.lg
+          [`va-col-xs-${this.xs}`]: this.xs,
+          [`va-col-sm-${this.sm}`]: this.sm,
+          [`va-col-md-${this.md}`]: this.md,
+          [`va-col-lg-${this.lg}`]: this.lg
         }
       ]
     }

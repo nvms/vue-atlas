@@ -19,21 +19,17 @@ export default {
     animated: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   computed: {
     classObj () {
-      let { classPrefix, rounded, centered, animated } = this
+      let { rounded, centered, animated } = this
       let classes = {}
 
-      classes[classPrefix + '-placeholder'] = true
-      classes[classPrefix + '-placeholder-rounded'] = rounded
-      classes[classPrefix + '-placeholder-centered'] = centered
-      classes[classPrefix + '-placeholder-animated'] = animated
+      classes['va-placeholder'] = true
+      classes['va-placeholder-rounded'] = rounded
+      classes['va-placeholder-centered'] = centered
+      classes['va-placeholder-animated'] = animated
 
       return classes
     }
@@ -57,7 +53,7 @@ $placeholderRoundedRadius: 3px;
   }
 }
 
-.#{$class-prefix}-placeholder {
+.va-placeholder {
   position: relative;
   overflow: hidden;
   max-width: 100%;

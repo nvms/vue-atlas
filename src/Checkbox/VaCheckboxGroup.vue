@@ -32,10 +32,6 @@ export default {
     type: {
       type: String,
       default: 'checkbox'
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {
@@ -81,13 +77,13 @@ export default {
   },
   computed: {
     classObj () {
-      let { classPrefix, vertical } = this
+      let { vertical } = this
       let classes = {}
 
-      classes[classPrefix + '-btn-group'] = !vertical
-      classes[classPrefix + '-btn-group-vertical'] = vertical
-      classes[classPrefix + '-checkbox-group'] = true
-      classes[classPrefix + '-checkbox-group-vertical'] = vertical
+      classes['va-btn-group'] = !vertical
+      classes['va-btn-group-vertical'] = vertical
+      classes['va-checkbox-group'] = true
+      classes['va-checkbox-group-vertical'] = vertical
 
       return classes
     }

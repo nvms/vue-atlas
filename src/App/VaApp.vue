@@ -104,10 +104,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   data () {

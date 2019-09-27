@@ -1,9 +1,9 @@
 <template>
-  <ul v-if="round" :class="`${classPrefix}-steps-round-con`">
+  <ul v-if="round" :class="`va-steps-round-con`">
     <template v-for="(label, index) in labels">
       <li :class="[getClassFromIndex(index)]" :key="index">
-        <div :class="`${classPrefix}-steps-wrap`">
-          <div :class="`${classPrefix}-steps-round`">
+        <div :class="`va-steps-wrap`">
+          <div :class="`va-steps-round`">
             <!-- {{index + 1}} -->
           </div>
         </div>
@@ -12,19 +12,19 @@
     </template>
   </ul>
 
-  <div v-else :class="`${classPrefix}-steps clearfix`">
+  <div v-else :class="`va-steps clearfix`">
     <template v-for="(label, index) in labels">
-      <div :class="`${classPrefix}-steps-wrap`" :key="index">
+      <div :class="`va-steps-wrap`" :key="index">
         <div :class="getClassFromIndex(index)">
           <label>
-            <span :class="`${classPrefix}-steps-round`">
+            <span :class="`va-steps-round`">
               <!-- {{index + 1}} -->
             </span>
             <span>{{label}}</span>
           </label>
           <template v-if="index < labels.length - 1">
-            <i :class="`${classPrefix}-steps-triangle-right-bg`"></i>
-            <i :class="`${classPrefix}-steps-triangle-right`"></i>
+            <i :class="`va-steps-triangle-right-bg`"></i>
+            <i :class="`va-steps-triangle-right`"></i>
           </template>
         </div>
       </div>
@@ -47,10 +47,6 @@ export default {
     round: {
       type: Boolean,
       default: false
-    },
-    classPrefix: {
-      type: String,
-      default: 'va'
     }
   },
   methods: {
@@ -65,7 +61,7 @@ export default {
         ret = 'todo'
       }
 
-      return this.classPrefix + '-steps-' + ret
+      return 'v-steps-' + ret
     }
   }
 }
@@ -83,7 +79,7 @@ $lightGrayColor: $N80;
 $stepRoundLineHeight: 8px;
 $stepRoundLineMargin: 7px;
 
-.#{$class-prefix}-steps {
+.va-steps {
   font-size: 0px;
   overflow: hidden;
   line-height: 0px;
@@ -183,50 +179,50 @@ $stepRoundLineMargin: 7px;
   }
 }
 
-.#{$class-prefix}-steps-round-con {
+.va-steps-round-con {
   list-style-type: none;
   margin: 18px 0px;
   padding: 0px;
   display: flex;
   line-height: 1em !important;
 
-  .#{$class-prefix}-steps-finished,
-  .#{$class-prefix}-steps-current {
-    .#{$class-prefix}-steps-wrap {
-      .#{$class-prefix}-steps-round {
+  .va-steps-finished,
+  .va-steps-current {
+    .va-steps-wrap {
+      .va-steps-round {
         display: none !important;
       }
     }
   }
 
-  > li .#{$class-prefix}-steps-round {
+  > li .va-steps-round {
     color: $N0;
     background-color: $lightGrayColor;
   }
-  > .#{$class-prefix}-steps-finished:before {
+  > .va-steps-finished:before {
     background-color: $primaryColorHover;
   }
-  // > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
+  // > .va-steps-finished .va-steps-round {
     // background-color: $primaryColorHover;
     // border: 4px $primaryColorHover solid;
   // }
-  > .#{$class-prefix}-steps-finished label {
+  > .va-steps-finished label {
     // color: $primaryColorHover;
     color: $N600 !important;
     font-weight: 600;
   }
-  > .#{$class-prefix}-steps-current:before {
+  > .va-steps-current:before {
     background-color: $primaryColor;
     width: 50%;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
   }
-  > .#{$class-prefix}-steps-current .#{$class-prefix}-steps-round {
+  > .va-steps-current .va-steps-round {
     background-color: $B300;
     border: 4px $B300 solid;
     color: $N0;
   }
-  > .#{$class-prefix}-steps-current label {
+  > .va-steps-current label {
     color: $B300 !important;
     font-weight: 700;
   }
@@ -261,7 +257,7 @@ $stepRoundLineMargin: 7px;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
   }
-  > li .#{$class-prefix}-steps-wrap {
+  > li .va-steps-wrap {
     position: absolute;
     left: 50%;
     margin-left: -25px;
@@ -269,7 +265,7 @@ $stepRoundLineMargin: 7px;
     text-align: center;
     top: 0px;
   }
-  > li .#{$class-prefix}-steps-round {
+  > li .va-steps-round {
     width: $stepRoundSize;
     height: $stepRoundSize;
     border-radius: 50%;
@@ -282,7 +278,7 @@ $stepRoundLineMargin: 7px;
     border: 4px $lightGrayColor solid;
     color: $weightGrayColor;
   }
-  > li .#{$class-prefix}-steps-round > i {
+  > li .va-steps-round > i {
     color: $primaryColorHover;
     font-size: 12px;
   }
@@ -298,19 +294,19 @@ $stepRoundLineMargin: 7px;
     display: inline-block;
   }
 
-  > .#{$class-prefix}-steps-finished:before,
-  .#{$class-prefix}-steps-current:before {
+  > .va-steps-finished:before,
+  .va-steps-current:before {
     background-color: $primaryColorHover;
   }
 
-  > .#{$class-prefix}-steps-finished .#{$class-prefix}-steps-round {
+  > .va-steps-finished .va-steps-round {
     border: 4px $primaryColorHover solid;
     background-color: $primaryColorHover;
     color: $N0;
   }
 
-  > .#{$class-prefix}-steps-finished label,
-  .#{$class-prefix}-steps-current label {
+  > .va-steps-finished label,
+  .va-steps-current label {
     color: $primaryColorHover;
   }
 }
