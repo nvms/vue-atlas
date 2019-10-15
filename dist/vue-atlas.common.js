@@ -17485,12 +17485,12 @@ var VaNotification_component = normalizeComponent(
 
 VaNotification_component.options.__file = "VaNotification.vue"
 /* harmony default export */ var VaNotification = (VaNotification_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"3e799450-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Breadcrumb/VaBreadcrumbItem.vue?vue&type=template&id=6a2d58e4&
-var VaBreadcrumbItemvue_type_template_id_6a2d58e4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{class:"va-breadcrumb-item"},[_c('span',{ref:"link",class:['va-breadcrumb-item-inner', _vm.to || _vm.href ? 'va-breadcrumb-link' : '']},[_vm._t("default")],2),(_vm.separatorIcon)?_c('va-icon',{class:"va-breadcrumb-item-icon",attrs:{"type":_vm.separatorIcon}}):_c('span',{class:"va-breadcrumb-item-separator"},[_vm._v(_vm._s(_vm.separator))])],1)}
-var VaBreadcrumbItemvue_type_template_id_6a2d58e4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules//.cache//vue-loader","cacheIdentifier":"3e799450-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/Breadcrumb/VaBreadcrumbItem.vue?vue&type=template&id=951372cc&
+var VaBreadcrumbItemvue_type_template_id_951372cc_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('span',{class:"va-breadcrumb-item"},[_c('span',{ref:"link",class:['va-breadcrumb-item-inner', _vm.to || _vm.href ? 'va-breadcrumb-link' : '']},[_vm._t("default")],2),(_vm.separatorIcon)?_c('va-icon',{class:"va-breadcrumb-item-icon",attrs:{"type":_vm.separatorIcon}}):_c('span',{class:"va-breadcrumb-item-separator"},[_vm._v(_vm._s(_vm.separator))])],1)}
+var VaBreadcrumbItemvue_type_template_id_951372cc_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/Breadcrumb/VaBreadcrumbItem.vue?vue&type=template&id=6a2d58e4&
+// CONCATENATED MODULE: ./src/Breadcrumb/VaBreadcrumbItem.vue?vue&type=template&id=951372cc&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.string.link.js
 var es6_string_link = __webpack_require__("b54a");
@@ -17545,7 +17545,9 @@ var es6_string_link = __webpack_require__("b54a");
     this.separator = this.VaBreadcrumbParent.separator;
     this.separatorIcon = this.VaBreadcrumbParent.separatorIcon;
     var link = this.$refs.link;
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (e) {
+      _this.$emit('click', e);
+
       if (_this.href) {
         window.location.href = _this.href;
         return;
@@ -17570,8 +17572,8 @@ var es6_string_link = __webpack_require__("b54a");
 
 var VaBreadcrumbItem_component = normalizeComponent(
   Breadcrumb_VaBreadcrumbItemvue_type_script_lang_js_,
-  VaBreadcrumbItemvue_type_template_id_6a2d58e4_render,
-  VaBreadcrumbItemvue_type_template_id_6a2d58e4_staticRenderFns,
+  VaBreadcrumbItemvue_type_template_id_951372cc_render,
+  VaBreadcrumbItemvue_type_template_id_951372cc_staticRenderFns,
   false,
   null,
   null,
