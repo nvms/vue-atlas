@@ -45,7 +45,8 @@ export default {
     this.separatorIcon = this.VaBreadcrumbParent.separatorIcon
     const link = this.$refs.link
 
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      this.$emit('click', e);
       if (this.href) {
         window.location.href = this.href
         return
