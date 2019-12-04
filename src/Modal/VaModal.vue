@@ -10,14 +10,16 @@
       <div :class="`va-modal-content`" v-show="!modalIsLoading">
         <slot name="header">
           <div :class="`va-modal-header`">
-            <va-button
-              tabindex="-1"
-              :class="`va-close`"
-              @click="close"
-              type="subtle"
-            >
-              <va-icon type="times"/>
-            </va-button>
+            <div class="va-modal-closer">
+              <va-button
+                tabindex="-1"
+                :class="`va-close`"
+                @click="close"
+                type="subtle"
+              >
+                <va-icon type="times"/>
+              </va-button>
+            </div>
             <div :class="`va-modal-title`">
               <slot name="title">{{title}}</slot>
             </div>
@@ -315,15 +317,14 @@ export default {
 .va-modal,
 .va--theme-light.va-modal {
   @include modal-theme-mixin(
-    $modalInBackground: rgba(9, 30, 66, 0.55),
+    $modalInBackground: rgba(23, 43, 77, 0.45),
     $modalContentBackground: $N0,
     $modalContentColor: inherit,
     $modalLoadingBackground: $N0,
     $modalTitleColor: $N900,
     $modalBoxShadow: (
-      rgba(9, 30, 66, 0.2) 0px 0px 0px 1px,
-      rgba(9, 30, 66, 0.08) 0px 2px 1px,
-      rgba(9, 30, 66, 0.51) 0px 0px 20px -6px
+      rgba(9, 30, 66, 0.3) 0px 0px 1px,
+      rgba(9, 30, 66, 0.25) 0px 8px 16px -4px
     )
   );
 }
@@ -364,7 +365,7 @@ export default {
     outline: 0;
     box-shadow: none;
     border: none;
-    padding: 15px;
+    padding: 0;
   }
 
   &-loading {
@@ -388,6 +389,11 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    /* border-bottom: 2px solid $N30; */
+  }
+
+  &-closer {
+      padding: 10px;
   }
 
   &-title {
@@ -397,6 +403,7 @@ export default {
     font-size: 20px;
     display: flex;
     align-items: center;
+    padding: 10px;
 
     .va-fa {
       font-size: 14px;
@@ -405,10 +412,12 @@ export default {
   }
 
   &-body {
-    padding: 15px 0;
+    padding: 10px;
   }
 
   &-footer {
+    /* border-top: 2px solid $N30; */
+    padding: 10px;
     text-align: right;
 
     .va-btn {
@@ -436,7 +445,6 @@ export default {
   &-fade-up#{&}-in &-dialog {
     opacity: 1;
     transform: translateY(0);
-    // box-shadow: rgba(9, 30, 66, .2) 0px 0px 0px 1px, rgba(9, 30, 66, 0.08) 0px 2px 1px, rgba(9, 30, 66, 0.51) 0px 0px 20px -6px;
   }
 
   &-fade-up#{&}-out &-dialog {
