@@ -327,22 +327,23 @@ export default {
   }
 }
 
+@mixin button-focus-mixin($backgroundColor) {
+    &:focus:not(:active):not(.va-select-btn-open):not(.va-btn-disabled),
+    &-focused:not(:active):not(.va-select-btn-open):not(.va-btn-disabled) {
+        background-color: $backgroundColor;
+    }
+}
+
+/*
 @mixin button-focus-mixin($boxShadowColor, $boxShadowOpacity: 0.6) {
-  // no ring on hover
-  // &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
-  //   box-shadow: $color 0px 0px 0px 2px; /* fallback */
-  //   box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
-  //   outline: none;
-  // }
-  // ring on hover
   &:focus:not(:active):not(.va-select-btn-open):not(.va-btn-disabled),
   &-focused:not(:active):not(.va-select-btn-open):not(.va-btn-disabled) {
     box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
-    /* fallback */
     box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
     outline: none;
   }
 }
+*/
 
 @mixin button-outline-mixin($outlineColor, $outlineWidth, $activeOutlineColor) {
   box-shadow: inset $outlineColor 0px 0px 0px $outlineWidth;
@@ -363,7 +364,7 @@ export default {
       $bgColActive: $B50,
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-primary {
@@ -375,7 +376,7 @@ export default {
       $bgColActive: $B500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B300);
   }
 
   &-primary-light {
@@ -387,7 +388,8 @@ export default {
       $bgColActive: $B400,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    /* @include button-focus-mixin($B100, 1); */
+    @include button-focus-mixin($B200);
   }
 
   &-primary-dark {
@@ -399,7 +401,7 @@ export default {
       $bgColActive: $B400,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B300);
   }
 
   &-help {
@@ -411,7 +413,7 @@ export default {
       $bgColActive: $P600,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P100, 1);
+    @include button-focus-mixin($P400);
   }
 
   &-help-light {
@@ -423,7 +425,7 @@ export default {
       $bgColActive: $P300,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P100, 1);
+    @include button-focus-mixin($P300);
   }
 
   &-help-dark {
@@ -435,7 +437,7 @@ export default {
       $bgColActive: $P600,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P300, 1);
+    @include button-focus-mixin($P400);
   }
 
   &-paleblue {
@@ -447,7 +449,7 @@ export default {
       $fontColHover: $N0,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($PB100, 1);
+    @include button-focus-mixin($PB200);
   }
 
   &-success {
@@ -459,7 +461,7 @@ export default {
       $bgColActive: $G500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($G300, 1);
+    @include button-focus-mixin($G300);
   }
 
   &-info {
@@ -471,7 +473,7 @@ export default {
       $bgColActive: $T500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($T200, 1);
+    @include button-focus-mixin($T300);
   }
 
   &-warning {
@@ -483,7 +485,7 @@ export default {
       $bgColActive: $Y500,
       $fontColActive: $N900
     );
-    @include button-focus-mixin(darken($Y500, 7%), 1);
+    @include button-focus-mixin($Y300);
   }
 
   &-danger {
@@ -495,7 +497,7 @@ export default {
       $bgColActive: $R500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($R100, 1);
+    @include button-focus-mixin($R300);
   }
 
   &-subtle {
@@ -507,7 +509,7 @@ export default {
       $bgColActive: $B50,
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-link {
@@ -529,7 +531,7 @@ export default {
       text-decoration: none;
     }
 
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-subtle-link {
@@ -551,7 +553,7 @@ export default {
       text-decoration: none;
     }
 
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-dark {
@@ -563,7 +565,7 @@ export default {
       $bgColActive: $N800,
       $fontColActive: $N200
     );
-    @include button-focus-mixin($N100, 1);
+    @include button-focus-mixin($N500);
   }
 
   &-darker {
@@ -575,7 +577,7 @@ export default {
       $bgColActive: $N700,
       $fontColActive: $N200
     );
-    @include button-focus-mixin($N100, 1);
+    @include button-focus-mixin($N500);
   }
 
   &-active {
@@ -587,7 +589,7 @@ export default {
       $bgColActive: $B50,
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B50);
   }
 
   &-black {
@@ -599,7 +601,7 @@ export default {
       $bgColActive: #18171b,
       $fontColActive: $N400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin(#18171b);
   }
 }
 
