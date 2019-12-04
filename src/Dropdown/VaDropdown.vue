@@ -149,7 +149,7 @@ export default {
   */
   &-selected {
     > span > div > button.va-btn {
-      background: $selectedBackground;
+      background: $selectedBackground !important;
       color: $selectedColor;
       &:hover {
         background: $selectedHoverBackground;
