@@ -377,6 +377,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($B300);
+    font-weight: 500;
   }
 
   &-primary-light {
@@ -388,8 +389,8 @@ export default {
       $bgColActive: $B400,
       $fontColActive: $N0
     );
-    /* @include button-focus-mixin($B100, 1); */
     @include button-focus-mixin($B200);
+    font-weight: 500;
   }
 
   &-primary-dark {
@@ -414,6 +415,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($P400);
+    font-weight: 500;
   }
 
   &-help-light {
@@ -426,6 +428,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($P300);
+    font-weight: 500;
   }
 
   &-help-dark {
@@ -438,6 +441,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($P400);
+    font-weight: 500;
   }
 
   &-paleblue {
@@ -450,6 +454,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($PB200);
+    font-weight: 500;
   }
 
   &-success {
@@ -462,6 +467,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($G300);
+    font-weight: 500;
   }
 
   &-info {
@@ -474,6 +480,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($T300);
+    font-weight: 500;
   }
 
   &-warning {
@@ -486,6 +493,7 @@ export default {
       $fontColActive: $N900
     );
     @include button-focus-mixin($Y300);
+    font-weight: 500;
   }
 
   &-danger {
@@ -498,6 +506,7 @@ export default {
       $fontColActive: $N0
     );
     @include button-focus-mixin($R300);
+    font-weight: 500;
   }
 
   &-subtle {
@@ -523,12 +532,12 @@ export default {
     );
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
     &:active,
     &:focus {
-      text-decoration: none;
+      text-decoration: underline !important;
     }
 
     @include button-focus-mixin($N30);
@@ -545,12 +554,12 @@ export default {
     );
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
     &:active,
     &:focus {
-      text-decoration: none;
+      text-decoration: underline !important;
     }
 
     @include button-focus-mixin($N30);
@@ -566,6 +575,7 @@ export default {
       $fontColActive: $N200
     );
     @include button-focus-mixin($N500);
+    font-weight: 500;
   }
 
   &-darker {
@@ -578,6 +588,7 @@ export default {
       $fontColActive: $N200
     );
     @include button-focus-mixin($N500);
+    font-weight: 500;
   }
 
   &-active {
@@ -590,6 +601,7 @@ export default {
       $fontColActive: $B400
     );
     @include button-focus-mixin($B50);
+    font-weight: 500;
   }
 
   &-black {
@@ -602,6 +614,7 @@ export default {
       $fontColActive: $N400
     );
     @include button-focus-mixin(#18171b);
+    font-weight: 500;
   }
 }
 
@@ -610,7 +623,7 @@ export default {
     $padding: 4px 8px,
     $fontSize: 12px,
     $lineHeight: 1.5em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 13px;
@@ -623,7 +636,7 @@ export default {
     $padding: 1px 8px,
     $fontSize: 13px,
     $lineHeight: 2.2em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 15px;
@@ -636,7 +649,7 @@ export default {
     $padding: 0px 9px,
     $fontSize: 14px,
     $lineHeight: 2.3em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 17px;
@@ -649,7 +662,7 @@ export default {
     $padding: 2px 15px,
     $fontSize: 17px,
     $lineHeight: 2.5em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 23px;
