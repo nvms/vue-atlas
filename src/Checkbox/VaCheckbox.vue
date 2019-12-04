@@ -142,16 +142,16 @@ export default {
 .va-checkbox-label:not(.va-checkbox-checked) {
   &:hover {
     .va-checkbox-inner {
-      border-color: #dfe1e6;
-      background-color: #ebecf0;
+      /* border-color: #dfe1e6; */
+      background-color: $N20;
       &-check {
-        color: #ebecf0;
+        color: $N20;
       }
     }
   }
   &:active {
     .va-checkbox-inner {
-      border-color: transparent;
+      border-color: $B300;
       background-color: $B75;
       &-check {
         color: $B75;
@@ -163,16 +163,16 @@ export default {
 .va-checkbox-label.va-checkbox-checked {
   &:hover {
     .va-checkbox-inner {
-      background-color: $B300;
-      border-color: $B300;
+      background-color: $N300;
+      border-color: $N300;
     }
   }
   &:active {
     .va-checkbox-inner {
+      border-color: $B300;
       background-color: $B75;
-      border-color: $B75;
       &-check {
-        color: $B500;
+        color: $N0;
       }
     }
   }
@@ -183,21 +183,19 @@ export default {
   top: 0;
   left: 0;
   display: inline-block;
-  width: 17px;
-  height: 17px;
-  border-width: 2px;
+  width: 14px;
+  height: 14px;
+  border-width: 1px;
   border-style: solid;
-  border-radius: 3px;
-  border-color: #dfe1e6;
-  background-color: #fafbfc;
-  transition: all 0.3s;
+  border-radius: 2px;
+  border-color: $N60;
+  background-color: $N10;
   &-check {
     color: #fafbfc;
-    font-size: 9px !important;
+    font-size: 8px !important;
     position: relative;
-    top: -2px;
+    top: -3px;
     left: 2px;
-    transition: all 0.3s;
   }
   @include checkbox-focus-mixin($B200, 0.6);
 }
@@ -216,8 +214,8 @@ export default {
 }
 
 .va-checkbox-checked .va-checkbox-inner {
-  border-color: $B400;
-  background-color: $B400;
+  border-color: $N400;
+  background-color: $N400;
   &-check {
     color: $N0;
   }
@@ -254,7 +252,6 @@ export default {
 .va-checkbox-label span.va-label {
   margin-left: 7px;
   position: relative;
-  top: 1px;
 }
 
 .va-checkbox-btn input[type='checkbox'] {
