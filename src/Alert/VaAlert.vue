@@ -4,7 +4,7 @@
       <va-icon :type="iconType" :icon-style="iconStyle"/>
     </div>
     <div>
-      <h1 v-if="title">{{title}}</h1>
+      <h1 v-if="title" :class="`va-alert-${type}-title`">{{title}}</h1>
       <div>
         <slot/>
       </div>
@@ -75,7 +75,7 @@ export default {
   display: flex;
   line-height: 20px;
   overflow-wrap: break-word;
-  padding: 15px;
+  padding: 10px;
   border-radius: 3px;
 
   /*
@@ -90,7 +90,7 @@ export default {
 
   h1 {
     display: block;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 600;
     line-height: 20px;
     margin: 0 0 10px 0;
@@ -120,11 +120,17 @@ export default {
     &-icon {
       color: $Y500;
     }
+    &-title {
+        color: hsl(33, 100%, 33%);
+    }
   }
   &-success {
     background: $G50;
     &-icon {
       color: $G500;
+    }
+    &-title {
+        color: hsl(160, 100%, 23%);
     }
   }
   &-info {
@@ -132,17 +138,26 @@ export default {
     &-icon {
       color: $B500;
     }
+    &-title {
+        color: hsl(216, 100%, 30%);
+    }
   }
   &-danger {
     background: $R50;
     &-icon {
       color: $R500;
     }
+    &-title {
+        color: hsl(12, 100%, 25%);
+    }
   }
   &-help {
     background: $P50;
     &-icon {
       color: $P500;
+    }
+    &-title {
+        color: hsl(249, 100%, 33%);
     }
   }
 }
