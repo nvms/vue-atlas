@@ -947,16 +947,16 @@ And, of course, when the button group is a vertical button group arrangement.
   > .va-btn:first-child:not(:last-child):not(.va-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
   }
 
   > .va-btn:last-child:not(:first-child),
   > .va-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 
   > .va-btn-group-vertical {
