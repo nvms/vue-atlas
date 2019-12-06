@@ -211,7 +211,7 @@ export default {
     padding: 4px 0;
     margin-top: 6px;
     margin-bottom: 6px;
-    border-radius: 4px;
+    border-radius: 3px;
     list-style-type: none;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
