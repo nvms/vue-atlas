@@ -7,7 +7,7 @@
 - [ ] Code style update
 - [ ] Refactor
 - [ ] Build-related changes:
-- [ ] Other,please describe:
+- [ ] Other, please describe:
 
 **Does this PR introduce a breaking change?** (check one)
 
@@ -15,11 +15,6 @@
 - [ ] No
 
 If yes, please describe the impact and migration path for existing applications:
-
-**The PR fulfills these requirements:**
-
-- [ ] All tests are passing
-- [ ] New/updated tests are included
 
 If adding a **new feature**, the PR's description includes:
 - [ ] A convincing reason for adding this feature
