@@ -118,7 +118,7 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer !important;
+  cursor: pointer;
 
   .va-label {
     margin-left: 7px;
@@ -211,8 +211,8 @@ export default {
     opacity: 0;
   }
   .va-radio-disabled .va-radio-inner {
-    border-color: $N40;
-    background-color: $N100;
+    border-color: $N80 !important;
+    background-color: $N80 !important;
   }
 }
 

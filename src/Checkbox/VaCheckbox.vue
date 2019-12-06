@@ -222,21 +222,21 @@ export default {
 }
 
 .va-checkbox-disabled .va-checkbox-inner {
-  border-color: $N500;
-  background-color: $N500;
+  border-color: $N80;
+  background-color: $N80;
   i.va-checkbox-inner-check {
-    color: $N500;
+    color: $N80;
   }
 }
 
 .va-checkbox-disabled.va-checkbox-label:hover {
   &:hover {
     .va-checkbox-inner {
-      background-color: $N500;
-      border-color: $N500;
+      background-color: $N80;
+      border-color: $N80;
     }
     i.va-checkbox-inner-check {
-      color: $N500;
+      color: $N80;
     }
   }
 }
