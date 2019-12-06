@@ -44,6 +44,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-badge {
   display: inline-block;
   text-align: center;

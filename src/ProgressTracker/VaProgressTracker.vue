@@ -68,6 +68,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 $stepHeight: 24px;
 $primaryColorHover: $B300;
 $stepLabelMargin: 14px;

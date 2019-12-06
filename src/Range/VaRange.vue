@@ -191,6 +191,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-range-barCnt {
   position: relative;
   height: 10px;

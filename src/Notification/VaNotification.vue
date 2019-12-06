@@ -213,6 +213,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-notification {
   position: fixed;
   top: 0px;

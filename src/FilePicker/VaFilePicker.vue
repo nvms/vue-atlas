@@ -69,6 +69,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../variables";
+
   .va-file-picker_wrapper {
     width: 100%;
   }

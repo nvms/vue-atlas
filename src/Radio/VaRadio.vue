@@ -112,6 +112,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-radio-con {
   margin-right: 10px;
   -webkit-user-select: none;

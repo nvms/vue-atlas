@@ -148,6 +148,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-aside-open {
   transition: transform 0.3s;
 }

@@ -305,6 +305,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin btn-type-mixin(
   $bgCol,
   $fontCol,

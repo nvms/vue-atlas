@@ -215,3 +215,9 @@ export default {
   // }
 }
 </script>
+
+<style lang="scss">
+@import "../variables";
+@import "../style/bars";
+@import "../style/themes";
+</style>

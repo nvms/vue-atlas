@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-collapse {
   &__panel {
     &__header {

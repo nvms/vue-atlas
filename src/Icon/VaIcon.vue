@@ -68,3 +68,8 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "../variables";
+@import "../style/font";
+</style>

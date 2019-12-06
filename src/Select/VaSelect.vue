@@ -477,6 +477,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin select-theme-mixin(
   $hasErrorBtnBorder,
   $btnOpenBackgroundColor,

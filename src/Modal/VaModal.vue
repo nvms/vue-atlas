@@ -284,6 +284,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin modal-theme-mixin(
   $modalInBackground,
   $modalContentBackground,

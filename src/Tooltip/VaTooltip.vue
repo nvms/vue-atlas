@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../variables";
+
 .va-tooltip_wrapper,
 .va-tooltip_trigger {
   display: inline-block;

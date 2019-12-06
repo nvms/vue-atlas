@@ -152,6 +152,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-nav-tabs {
   list-style-type: none;
   margin: 0;

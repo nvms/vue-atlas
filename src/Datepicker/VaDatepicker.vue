@@ -627,6 +627,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 $datepickerWidth: 250px;
 $datepickerSpanSize: 35px;
 $datepickerSpanRadius: 3px;

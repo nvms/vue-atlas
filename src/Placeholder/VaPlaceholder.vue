@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 $placeholderLineHeight: 15px;
 $placeholderLineSpacing: 10px;
 $placeholderPrimaryColor: $N20;

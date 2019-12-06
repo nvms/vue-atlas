@@ -351,6 +351,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../style/form";
+
 @mixin input-theme-mixin($iconColor, $iconHoverColor, $iconActiveColor) {
   .va-input-clearable,
   .va-input-show-icon {

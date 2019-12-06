@@ -37,6 +37,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-table {
   margin: 1em 0;
   &-fullwidth {

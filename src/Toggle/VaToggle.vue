@@ -79,6 +79,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-toggle {
   $self: &;
   display: inline-block;

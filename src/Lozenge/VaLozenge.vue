@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin lozengeType($bgCol, $fontCol) {
   background-color: $bgCol;
   color: $fontCol;

@@ -115,6 +115,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin checkbox-focus-mixin($color, $opacity: 0.6) {
   &:focus:not(:active):not(:hover),
   &-focused:not(:active):not(:hover) {

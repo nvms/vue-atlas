@@ -273,6 +273,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-timepicker {
   position: relative;
   display: inline-block;

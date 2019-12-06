@@ -330,6 +330,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../style/form";
+
 .va-textarea-con {
   .va-form-control {
     line-height: 16px;

@@ -213,6 +213,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin page-theme-mixin($background, $color, $scrollbarBackground) {
   .va-page-wrapper {
     background: $background;

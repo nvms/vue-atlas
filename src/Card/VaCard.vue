@@ -75,6 +75,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 @mixin card-theme-mixin(
   $background,
   $headerBackground,

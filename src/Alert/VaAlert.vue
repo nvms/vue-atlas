@@ -71,6 +71,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../variables";
+
 .va-alert {
   display: flex;
   line-height: 20px;
