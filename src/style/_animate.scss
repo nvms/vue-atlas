@@ -102,7 +102,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .3s;
+  transition: opacity .15s;
   opacity: 1;
 }
 
@@ -128,7 +128,7 @@
 
 .fadeLeft-enter-active,
 .fadeLeft-leave-active {
-  transition: all .3s ease;
+  transition: all .15s ease;
 }
 
 .fadeLeft-enter,
@@ -141,7 +141,7 @@
 
 .fadeRight-enter-active,
 .fadeRight-leave-active {
-  transition: all .3s ease;
+  transition: all .15s ease;
 }
 
 .fadeRight-enter,
@@ -154,7 +154,7 @@
 
 .fadeUp-enter-active,
 .fadeUp-leave-active {
-  transition: all .3s ease;
+  transition: all .15s ease;
 }
 
 .fadeUp-enter,
@@ -167,7 +167,7 @@
 
 .fadeDown-enter-active,
 .fadeDown-leave-active {
-  transition: all .3s ease;
+  transition: all .15s ease;
 }
 
 .fadeDown-enter,
@@ -250,11 +250,11 @@
 /*slide*/
 
 .slideleft-enter-active {
-  animation: slideleft-in .3s;
+  animation: slideleft-in .15s;
 }
 
 .slideleft-leave-active {
-  animation: slideleft-out .3s;
+  animation: slideleft-out .15s;
 }
 
 @keyframes slideleft-in {
@@ -280,11 +280,11 @@
 }
 
 .slideright-enter-active {
-  animation: slideright-in .3s;
+  animation: slideright-in .15s;
 }
 
 .slideright-leave-active {
-  animation: slideright-out .3s;
+  animation: slideright-out .15s;
 }
 
 @keyframes slideright-in {

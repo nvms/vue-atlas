@@ -103,7 +103,7 @@ export default {
     border-color: transparent;
     border-image: initial;
     padding: 2px;
-    transition: all 0.2s ease 0s;
+    transition: all 0.15s ease 0s;
 
     &:focus {
       border-color: $B100;
@@ -122,7 +122,6 @@ export default {
     flex-direction: row-reverse;
     height: 100%;
     width: 100%;
-    transition: all 0.2s ease 0s;
   }
 
   &__handle {
@@ -135,7 +134,7 @@ export default {
     transform: initial;
     width: 12px;
     border-radius: 50%;
-    transition: all 0.2s ease 0s;
+    transition: all 0.15s ease 0s;
   }
 
   &__icon {

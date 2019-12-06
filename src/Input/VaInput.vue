@@ -433,8 +433,8 @@ export default {
   right: 10px;
   font-size: 26px;
   padding: 0;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
 }
 
 .va-input-clearable {

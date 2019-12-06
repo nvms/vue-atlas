@@ -742,7 +742,7 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
-    transition: opacity 0.2s;
+    transition: opacity 0.15s;
     opacity: 1;
     width: 100%;
     justify-content: space-around;

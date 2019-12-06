@@ -80,7 +80,7 @@ export default {
   position: relative;
   /*see _button.scss for more position information related to*/
   /*-page-loading-con being inside of a button*/
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
   // opacity: 0;
 }
 .va-path {
