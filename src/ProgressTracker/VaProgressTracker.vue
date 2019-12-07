@@ -61,7 +61,7 @@ export default {
         ret = 'todo'
       }
 
-      return 'v-steps-' + ret
+      return 'va-steps-' + ret
     }
   }
 }
