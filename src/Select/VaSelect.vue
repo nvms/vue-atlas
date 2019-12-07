@@ -547,7 +547,7 @@ export default {
       &:hover {
         color: $selectedTagHoverColor;
 
-        .va-selected-tag__icon {
+        .va-selected-tag__icon i {
           color: $selectedTagHoverIconColor !important;
         }
       }
@@ -555,8 +555,8 @@ export default {
       &:active {
         color: $selectedTagActiveColor;
 
-        .va-selected-tag__icon {
-          color: $selectedTagActiveIconColor !important;
+        .va-selected-tag__icon i {
+          color: $R500 !important;
         }
       }
     }
@@ -591,23 +591,27 @@ export default {
       .va-select-placeholder {
         color: $dropdownPlaceholderColor !important;
       }
-
-      &:active:not(.va-select-btn-open) {
-        .va-select-placeholder {
-          color: $dropdownPlaceholderActiveColor !important;
-        }
-        i {
-          color: $dropdownPlaceholderActiveColor !important;
-        }
-      }
     }
 
     .va-select-btn-open {
       .va-select-placeholder {
         color: $dropdownPlaceholderActiveColor !important;
       }
+      .va-selected-tag:hover {
+          .va-selected-tag__label {
+              color: $R400;
+          }
+      }
+      .va-selected-tag:active {
+          .va-selected-tag__label {
+              color: $R500;
+          }
+      }
+      .va-selected-tag__label {
+          color: $B400;
+      }
       i {
-        color: $dropdownPlaceholderActiveColor !important;
+        color: $dropdownPlaceholderActiveColor;
       }
     }
   }
@@ -616,7 +620,6 @@ export default {
     background: $itemActiveBackground;
     color: $itemActiveColor !important;
 
-    // an active item, when hovered, should not change bgcolor
     &:hover {
       background: $itemActiveBackground !important;
       color: $itemActiveColor !important;
@@ -681,6 +684,12 @@ export default {
       left: 0;
       border-radius: 3px;
     }
+  }
+
+  &:active {
+      .va-selected-tag__icon i {
+          color: $B400;
+      }
   }
 
   .va-selected-tag {
