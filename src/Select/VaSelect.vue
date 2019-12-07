@@ -472,13 +472,14 @@ export default {
       }
     },
     toggleDropdown (e) {
-      let tagName = e.target.tagName.toUpperCase();
+      let tagName = e.target.tagName.toUpperCase()
 
       // If the target wasn't the button, don't open it
-      if (tagName !== "BUTTON") {
-          e.preventDefault();
-          e.stopPropagation();
-          return;
+      if (tagName !== 'BUTTON') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        return
       }
 
       if (!this.disabled && !this.readonly) {
