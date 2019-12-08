@@ -89,6 +89,7 @@ export default {
       this.dispatch('VaApp', 'Va@configSidebarThemeChange', this.th)
       this.dispatch('VaApp', 'Va@configCompactChange', this.comp)
       this.dispatch('VaApp', 'Va@configTextLinksChange', this.tl)
+      this.dispatch('VaApp', 'Va@configShowToggleChange', this.st)
     }, 10)
   },
   beforeDestroy () {

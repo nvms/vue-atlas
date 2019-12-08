@@ -121,8 +121,8 @@ export default {
     let dDesktopMargin = this.desktopMargin
     let dTopbarPadded = this.topbarPadded
     let dPageBgColor = this.pageBgColor
-    let dReverse = this.reverse
     let dShowToggle = this.showToggle
+    let dReverse = this.reverse
     let dBgColor = this.bgColor
     let dSplit = this.split
     let dRtl = this.rtl
@@ -142,23 +142,23 @@ export default {
       mTopbarPadded: dTopbarPadded,
       pastMobileBreakpoint: false,
       mPageBgColor: dPageBgColor,
+      mShowToggle: dShowToggle,
       allowMarginUpdates: true,
-      currentMinibarWidth: 0,
       currentTopbarHeight: 0,
       currentSidebarWidth: 0,
-      mMinibarTheme: 'blue',
+      currentMinibarWidth: 0,
       mSidebarTheme: 'blue',
+      mMinibarTheme: 'blue',
       mTopbarTheme: 'blue',
       mReverse: dReverse,
-      haveMinibar: false,
-      mShowToggle: dShowToggle,
       mBgColor: dBgColor,
       haveSidebar: false,
-      haveTopbar: false,
+      haveMinibar: false,
       mTextLinks: false,
+      haveTopbar: false,
       mCompact: false,
-      havePage: false,
       isMobile: false,
+      havePage: false,
       contentWidth: 0,
       mPageSize: 'md',
       mSplit: dSplit,
@@ -740,7 +740,10 @@ export default {
     this.broadcastContentWidth(this.contentWidth)
     this.broadcastPageBgColor(this.mPageBgColor)
     this.broadcastWindowWidth(this.windowWidth)
+    this.broadcastShowToggle(this.mShowToggle)
+    this.broadcastTextLinks(this.mTextLinks)
     this.broadcastIsReverse(this.mReverse)
+    this.broadcastCompact(this.mCompact)
     this.broadcastIsSplit(this.mSplit)
     this.broadcastIsRTL(this.mRtl)
 
