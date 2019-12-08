@@ -76,6 +76,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
+     if (!this.$refs.trigger) {
+         return
+     }
       let el = this.$el
       let trig = this.$refs.trigger.children[0]
       if (this.triggerEvent === 'click') {
