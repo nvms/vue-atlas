@@ -72,7 +72,7 @@ export default {
 
     h1 {
       font-weight: 500;
-      font-size: 1.71em;
+      font-size: 2em;
       font-style: inherit;
       letter-spacing: -0.01em;
       line-height: 32px;
@@ -81,11 +81,11 @@ export default {
     }
 
     h2 {
-      font-weight: 400;
-      font-size: 1.25em;
+      font-weight: 300;
+      font-size: 1.15em;
       font-style: inherit;
       letter-spacing: -0.01em;
-      line-height: 26px;
+      line-height: 22.5px;
       margin-top: 0;
       margin-bottom: 8px;
     }

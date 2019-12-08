@@ -17,24 +17,24 @@
       </transition>
       <span style="display: flex;flex-wrap: wrap;" v-if="showSelected">
         <template v-if="multiple">
-            <transition-group name="fade" class="va-trans-group-flex">
-              <div
-                :class="`va-selected-tag va-selected-tag-multiple`"
-                :key="index"
-                @click.stop="del(item)"
-                tabindex="0"
-                v-for="(item, index) in selectedItems"
-              >
-                <span :class="`va-selected-tag__label`">
-                  <slot :item="item" name="item">
-                    <span v-html="format(item)"/>
-                  </slot>
-                </span>
-                <span :class="`va-selected-tag__icon`">
-                  <va-icon type="times"/>
-                </span>
-              </div>
-            </transition-group>
+          <transition-group name="fade" class="va-trans-group-flex">
+            <div
+              :class="`va-selected-tag va-selected-tag-multiple`"
+              :key="index"
+              @click.stop="del(item)"
+              tabindex="0"
+              v-for="(item, index) in selectedItems"
+            >
+              <span :class="`va-selected-tag__label`">
+                <slot :item="item" name="item">
+                  <span v-html="format(item)"/>
+                </slot>
+              </span>
+              <span :class="`va-selected-tag__icon`">
+                <va-icon type="times"/>
+              </span>
+            </div>
+          </transition-group>
         </template>
         <template v-else>
           <div class="va-single-flex-wrap">
@@ -543,6 +543,24 @@ export default {
     border-bottom: $searchBorderBottom;
   }
 
+  &-group:hover {
+      .va-selected-tag-multiple {
+        box-shadow: inset 0 0 0 1px $N50;
+        background: $N50;
+      }
+  }
+
+  &-btn:active {
+      .va-select-placeholder {
+          color: $B400 !important;
+      }
+      .va-btn-text-fade {
+          > i {
+              color: $B400 !important;
+          }
+      }
+  }
+
   &-btn-open {
     background-color: $btnOpenBackgroundColor;
     color: $btnOpenColor !important;
@@ -593,49 +611,66 @@ export default {
     .va-selected-tag-multiple {
         padding: 0 8px 0 8px !important;
         line-height: 1.5 !important;
-        // border: 1px solid $N70;
-        background: $N0;
+        background: $N40;
         border-radius: 3px !important;
-        box-shadow: inset 0 0 0 1px $N70;
-        transition: all 0.1s linear;
+        box-shadow: inset 0 0 0 1px $N40;
 
         &:hover {
-            box-shadow: inset 0 0 0 1px $R100;
-            background: $R50;
+            box-shadow: inset 0 0 0 1px $R75;
+            background: $R75;
         }
 
         &:active {
-            background: $R50;
-            // box-shadow: inset 0 0 0 1px $R200;
-            box-shadow: inset 0 0 0 1px $R400 !important;
+            box-shadow: inset 0 0 0 1px $R100 !important;
+            background: $R100 !important;
+
+            .va-selected-tag__label {
+                color: $R500 !important;
+            }
         }
     }
 
     .va-select-btn-open {
         .va-selected-tag-multiple:hover {
-            // border: 1px solid $R300;
-            box-shadow: inset 0 0 0 1px $R200;
+            box-shadow: inset 0 0 0 1px $R50;
             background: $R50;
         }
 
         .va-selected-tag-multiple:active {
-            box-shadow: inset 0 0 0 1px $R400 !important;
-            background: $R50;
+            box-shadow: inset 0 0 0 1px $R100 !important;
+            background: $R100 !important;
+
+            .va-selected-tag__label {
+                color: $R500 !important;
+            }
         }
     }
 
     .va-select-btn-open {
         .va-selected-tag-multiple {
-            // border: 1px solid $B500;
-            box-shadow: inset 0 0 0 1px $B400;
-            background: $N0;
+            box-shadow: inset 0 0 0 1px $B75;
+            background: $B75;
+
+            .va-selected-tag__label {
+                color: $B300;
+            }
+            .va-selected-tag__icon i {
+                color: $B300;
+            }
         }
     }
 
     .va-select-btn:active {
         .va-selected-tag-multiple {
-            // border: 1px solid $B500;
-            box-shadow: inset 0 0 0 1px $B400;
+            box-shadow: inset 0 0 0 1px $B75;
+            background: $B75;
+
+            .va-selected-tag__label {
+                color: $B300;
+            }
+            .va-selected-tag__icon i {
+                color: $B300;
+            }
         }
     }
 
@@ -667,13 +702,13 @@ export default {
 
     .va-dropdown-toggle {
       .va-select-placeholder {
-        color: $dropdownPlaceholderColor !important;
+        color: $dropdownPlaceholderColor;
       }
     }
 
     .va-select-btn-open {
       .va-select-placeholder {
-        color: $dropdownPlaceholderActiveColor !important;
+        color: $dropdownPlaceholderActiveColor;
       }
       .va-selected-tag:hover {
           .va-selected-tag__label {
@@ -717,7 +752,7 @@ export default {
 .va--theme-light .va-select {
   @include select-theme-mixin(
     $hasErrorBtnBorder: 2px solid $R400 !important,
-    $btnOpenBackgroundColor: $B50 !important,
+    $btnOpenBackgroundColor: rgba(179, 212, 255, 0.6) !important,
     $btnOpenColor: $B400 !important,
     $selectedTagBackground: none,
     $selectedTagFocusOutline: none,
@@ -764,18 +799,18 @@ export default {
     }
 
     & > div > i {
-        color: $B400 !important;
+      color: $B400 !important;
     }
 
     & .va-single-flex-wrap {
-        color: $B400 !important;
+      color: $B400 !important;
     }
   }
 
   &:active {
-      .va-selected-tag__icon i {
-          color: $B400;
-      }
+    .va-selected-tag__icon i {
+      color: $B400;
+    }
   }
 
   .va-selected-tag {
@@ -794,7 +829,10 @@ export default {
     }
 
     &__icon {
-      font-size: 0.8em;
+      font-size: 0.7em;
+      top: -1px;
+      position: relative;
+      left: 6px;
     }
   }
 

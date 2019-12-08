@@ -361,9 +361,9 @@ export default {
     @include btn-type-mixin(
       $bgCol: $N20,
       $fontCol: $N400,
-      $bgColHover: $N30,
+      $bgColHover: rgba(9, 30, 66, 0.08),
       $fontColHover: $N400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
     @include button-focus-mixin($N30);
@@ -517,7 +517,7 @@ export default {
       $fontCol: $N400,
       $bgColHover: $N30,
       $fontColHover: $N400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
     @include button-focus-mixin($N30);
@@ -595,11 +595,11 @@ export default {
 
   &-active {
     @include btn-type-mixin(
-      $bgCol: $B50,
+      $bgCol: rgba(179, 212, 255, 0.6),
       $fontCol: $B400,
-      $bgColHover: $B50,
+      $bgColHover: rgba(179, 212, 255, 0.6),
       $fontColHover: $B400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
     @include button-focus-mixin($B50);
