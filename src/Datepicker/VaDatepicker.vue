@@ -13,7 +13,7 @@
       :size="size !== 'md' ? size : null"
       icon="calendar-alt"
       @clean="clean"
-      @click.native="inputClick"
+      @mousedown.native="inputClick"
       :no-v-model="true"
       v-model="currentValue"
     />
@@ -121,13 +121,13 @@
             </div>
             <div :class="`va-datepicker-monthRange`">
               <template v-for="(m, index) in monthNames">
-                <span
-                  :class="monthClassObj(m)"
-                  :key="index"
-                  tabindex="0"
-                  v-on:keyup.enter="monthSelect(index)"
-                  @click="monthSelect(index)"
-                >{{m}}</span>
+                <va-button
+                    :class="monthClassObj(m)"
+                    :key="index"
+                    @keyup.enter="monthSelect(index)"
+                    @click="monthSelect(index)">
+                    {{m}}
+                </va-button>
               </template>
             </div>
           </div>
@@ -161,19 +161,19 @@
               >
                 <va-icon type="arrow-right" size="10px"></va-icon>
               </va-button>
-              <p>{{stringifyDecadeHeader(currDate)}}</p>
+              <va-button type="subtle">{{stringifyDecadeHeader(currDate)}}</va-button>
             </div>
             <div
               :class="`va-datepicker-monthRange va-datepicker-decadeRange`"
             >
               <template v-for="(decade, index) in decadeRange">
-                <span
-                  :class="yearClassObj(decade)"
-                  :key="index"
-                  tabindex="0"
-                  v-on:keyup.enter="yearSelect(decade.text)"
-                  @click.stop="yearSelect(decade.text)"
-                >{{decade.text}}</span>
+                <va-button
+                    :class="yearClassObj(decade)"
+                    :key="index"
+                    @keyup.enter="yearSelect(decade.text)"
+                    @click.stop="yearSelect(decade.text)">
+                    {{decade.text}}
+                </va-button>
               </template>
             </div>
           </div>
@@ -683,11 +683,10 @@ $datepickerRangeSize: 40px;
     text-align: center;
   }
 
-  &-monthRange span {
+  &-monthRange .va-btn {
     width: 88px;
-    height: 30px;
     line-height: 26px;
-    margin: 2px 12px;
+    margin: 0px 12px;
 
     &:focus {
       outline: none;
@@ -710,19 +709,20 @@ $datepickerRangeSize: 40px;
   &-dateRange-item-active {
     background: $N400 !important;
     color: white !important;
-    border: 2px solid $B100 !important;
+    // border: 2px solid $B100 !important;
 
     &:hover {
-      background: $N30 !important;
-      color: $N900 !important;
+      // background: $N30 !important;
+      // color: $N900 !important;
     }
   }
 
   &-dateRange-item-today {
-    background: $B75 !important;
+    // background: $B75 !important;
+    border: 2px solid $N40 !important;
     &:hover {
-      background: $N30 !important;
-      border: 2px solid $B100 !important;
+      // background: $N30 !important;
+      // border: 2px solid $B100 !important;
     }
   }
 
