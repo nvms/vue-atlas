@@ -480,7 +480,8 @@ export default {
 <style lang="scss">
 .themeModalBody {
   hr {
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 15px;
   }
 }
 .themeModalBody .va-col {

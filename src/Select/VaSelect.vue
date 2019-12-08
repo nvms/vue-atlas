@@ -616,13 +616,13 @@ export default {
         box-shadow: inset 0 0 0 1px $N40;
 
         &:hover {
-            box-shadow: inset 0 0 0 1px $R75;
-            background: $R75;
+            box-shadow: inset 0 0 0 1px $R50;
+            background: $R50;
         }
 
         &:active {
-            box-shadow: inset 0 0 0 1px $R100 !important;
-            background: $R100 !important;
+            box-shadow: inset 0 0 0 1px $R75 !important;
+            background: $R75 !important;
 
             .va-selected-tag__label {
                 color: $R500 !important;
@@ -637,8 +637,8 @@ export default {
         }
 
         .va-selected-tag-multiple:active {
-            box-shadow: inset 0 0 0 1px $R100 !important;
-            background: $R100 !important;
+            box-shadow: inset 0 0 0 1px $R75 !important;
+            background: $R75 !important;
 
             .va-selected-tag__label {
                 color: $R500 !important;

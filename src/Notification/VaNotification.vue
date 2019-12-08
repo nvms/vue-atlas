@@ -223,19 +223,18 @@ export default {
   display: none;
   overflow: auto;
   outline: 0;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 
   &-dialog {
     position: relative;
     width: auto;
-    margin: 40px;
+    margin: 25px;
   }
 
   &-content {
     position: relative;
     background-color: $N0;
     background-clip: padding-box;
-    border-radius: 3px;
     outline: 0;
     box-shadow: none;
     border: none;
@@ -254,7 +253,7 @@ export default {
   &-fade-right &-content {
     opacity: 0;
     transform: translateX(20px);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.15s, opacity 0.15s;
   }
 
   &-fade-right#{&}-in &-content {
@@ -279,9 +278,7 @@ export default {
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        border-left: 3px solid $borderColor;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
+        border-left: 2px solid $borderColor;
         i {
           color: $iconColor;
         }
@@ -320,19 +317,19 @@ export default {
   }
 
   &-warning {
-    @include notification-content-mixin('warning', 1px, $Y200, $Y500);
+    @include notification-content-mixin('warning', 2px, $Y200, $Y500);
   }
 
   &-danger {
-    @include notification-content-mixin('danger', 1px, $R300, $R300);
+    @include notification-content-mixin('danger', 2px, $R300, $R300);
   }
 
   &-success {
-    @include notification-content-mixin('success', 1px, $G200, $G400);
+    @include notification-content-mixin('success', 2px, $G200, $G400);
   }
 
   &-info {
-    @include notification-content-mixin('info', 1px, $B100, $B400);
+    @include notification-content-mixin('info', 2px, $B100, $B400);
   }
 }
 </style>

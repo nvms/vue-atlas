@@ -342,7 +342,7 @@ export default {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &-open {
     overflow-x: hidden;
@@ -430,7 +430,7 @@ export default {
   /*fade*
   &-fade &-dialog {
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
   }
   /*expands to class="va-modal-fade va-modal-in" and references a child va-modal-dialog selector*/
   &-fade#{&}-in &-dialog {
@@ -441,7 +441,7 @@ export default {
   &-fade-up &-dialog {
     opacity: 0;
     transform: translateY(20px);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.2s, opacity 0.2s;
   }
 
   &-fade-up#{&}-in &-dialog {
@@ -451,7 +451,7 @@ export default {
 
   &-fade-up#{&}-out &-dialog {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 }
 </style>

@@ -79,7 +79,7 @@ export default {
   line-height: 1;
   display: inline-block;
   padding: 3px 4px 3px;
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
   vertical-align: sub;
 
@@ -93,12 +93,12 @@ export default {
   }
   &-sm {
     padding: 2px 3px 2px;
-    border-radius: 3px;
+    border-radius: 2px;
     font-size: 10px;
   }
   &-lg {
     padding: 3px 4px 3px;
-    border-radius: 4px;
+    border-radius: 3px;
     font-size: 14px;
     font-weight: 500;
   }

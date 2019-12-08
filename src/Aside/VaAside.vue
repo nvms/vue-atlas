@@ -151,7 +151,7 @@ export default {
 @import "../variables";
 
 .va-aside-open {
-  transition: transform 0.3s;
+  transition: transform 0.15s;
 }
 
 .va-aside {
@@ -193,7 +193,7 @@ export default {
     left: 0;
     z-index: 5;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
     background: rgba(9, 30, 66, 0.54);
   }
   &-in {
