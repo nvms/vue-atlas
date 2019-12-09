@@ -116,8 +116,10 @@ export default {
     margin-top: 16px;
 
     & > div {
-      display: contents;
+      display: flex;
       flex-direction: row;
+      align-items: center;
+
       & > * {
         margin-right: 6px;
       }
