@@ -1,9 +1,9 @@
 <template>
-  <ul v-if="round" :class="`va-steps-round-con`">
+  <ul v-if="round" class="va-steps-round-con">
     <template v-for="(label, index) in labels">
       <li :class="[getClassFromIndex(index)]" :key="index">
-        <div :class="`va-steps-wrap`">
-          <div :class="`va-steps-round`">
+        <div class="va-steps-wrap">
+          <div class="va-steps-round">
             <!-- {{index + 1}} -->
           </div>
         </div>
@@ -12,19 +12,19 @@
     </template>
   </ul>
 
-  <div v-else :class="`va-steps clearfix`">
+  <div v-else class="va-steps clearfix">
     <template v-for="(label, index) in labels">
-      <div :class="`va-steps-wrap`" :key="index">
+      <div class="va-steps-wrap" :key="index">
         <div :class="getClassFromIndex(index)">
           <label>
-            <span :class="`va-steps-round`">
+            <span class="va-steps-round">
               <!-- {{index + 1}} -->
             </span>
             <span>{{label}}</span>
           </label>
           <template v-if="index < labels.length - 1">
-            <i :class="`va-steps-triangle-right-bg`"></i>
-            <i :class="`va-steps-triangle-right`"></i>
+            <i class="va-steps-triangle-right-bg"></i>
+            <i class="va-steps-triangle-right"></i>
           </template>
         </div>
       </div>

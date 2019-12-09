@@ -1,34 +1,35 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="modal">
-    <div :class="`va-modal-dialog`" :style="{'width': width }">
-      <va-collapse-transition>
-        <div :class="`va-modal-loading`" v-show="modalIsLoading">
+    <div class="va-modal-dialog" :style="{'width': width }">
+
+      <div v-if="modalIsLoading">
+        <div class="va-modal-loading">
           <va-loading color="#888" size="md"/>
         </div>
-      </va-collapse-transition>
+      </div>
 
-      <div :class="`va-modal-content`" v-show="!modalIsLoading">
+      <div v-else class="va-modal-content">
         <slot name="header">
-          <div :class="`va-modal-header`">
+          <div class="va-modal-header">
             <div class="va-modal-closer">
               <va-button
                 tabindex="-1"
-                :class="`va-close`"
+                class="va-close"
                 @click="close"
                 type="subtle"
               >
                 <va-icon type="times"/>
               </va-button>
             </div>
-            <div :class="`va-modal-title`">
+            <div class="va-modal-title">
               <slot name="title">{{title}}</slot>
             </div>
           </div>
         </slot>
-        <div :class="`va-modal-body`">
+        <div class="va-modal-body">
           <slot name="body"/>
         </div>
-        <div :class="`va-modal-footer`">
+        <div class="va-modal-footer">
           <slot name="footer">
             <va-button
               :focused="focused"
@@ -39,6 +40,7 @@
           </slot>
         </div>
       </div>
+
     </div>
   </div>
 </template>

@@ -1,16 +1,16 @@
 <template>
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
-      <div :class="`va-card-header-inner`">
-        <div :class="`va-card-header-inner-left`">
+      <div class="va-card-header-inner">
+        <div class="va-card-header-inner-left">
           <slot name="topLeft"/>
         </div>
-        <div :class="`va-card-header-inner-right`">
+        <div class="va-card-header-inner-right">
           <slot name="topRight"/>
         </div>
       </div>
     </div>
-    <div :style="bodyStyleObj" :class="`va-card-body`">
+    <div :style="bodyStyleObj" class="va-card-body">
       <slot/>
     </div>
   </div>

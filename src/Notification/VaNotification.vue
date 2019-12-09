@@ -1,10 +1,10 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="notification" v-if="alive">
     <div
-      :class="`va-notification-dialog`"
+      class="va-notification-dialog"
       :style="{'width': width }"
     >
-      <div :class="`va-notification-content`">
+      <div class="va-notification-content">
         <div :class="`va-notification-content-inner-${type}`">
           <div
             :class="`va-notification-content-inner-${type}-left`"

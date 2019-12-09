@@ -14,7 +14,7 @@
         ></a>
       </li>
     </ul>
-    <div :class="`va-tab-content`">
+    <div class="va-tab-content">
       <slot/>
     </div>
   </div>

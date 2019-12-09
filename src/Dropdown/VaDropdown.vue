@@ -7,7 +7,7 @@
     <transition :name="effect">
       <ul
         v-va-position="show"
-        :class="`va-dropdown-menu`"
+        class="va-dropdown-menu"
         v-show="show"
       >
         <slot/>

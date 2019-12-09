@@ -11,7 +11,7 @@
     >
       <transition name="fade">
         <span
-          :class="`va-select-placeholder`"
+          class="va-select-placeholder"
           v-if="showPlaceholder || !showSelected"
         >{{placeholder}}</span>
       </transition>
@@ -19,18 +19,18 @@
         <template v-if="multiple">
           <transition-group name="fade" class="va-trans-group-flex">
             <div
-              :class="`va-selected-tag va-selected-tag-multiple`"
+              class="va-selected-tag va-selected-tag-multiple"
               :key="index"
               @click.stop="del(item)"
               tabindex="0"
               v-for="(item, index) in selectedItems"
             >
-              <span :class="`va-selected-tag__label`">
+              <span class="va-selected-tag__label">
                 <slot :item="item" name="item">
                   <span v-html="format(item)"/>
                 </slot>
               </span>
-              <span :class="`va-selected-tag__icon`">
+              <span class="va-selected-tag__icon">
                 <va-icon type="times"/>
               </span>
             </div>
@@ -56,9 +56,9 @@
         v-va-position="show"
       >
         <li v-if="search">
-          <div :class="`va-search-wrap`">
+          <div class="va-search-wrap">
             <va-input
-              :class="`va-select-search`"
+              class="va-select-search"
               :placeholder="inputPlaceholder"
               @confirm="addExtra"
               icon="search"
@@ -69,7 +69,7 @@
             />
           </div>
         </li>
-        <li :class="`va-select-all`" v-if="multiple">
+        <li class="va-select-all" v-if="multiple">
           <a @click.prevent="selectAll">
             {{getL('all')}}
             <va-icon
@@ -81,7 +81,7 @@
             />
           </a>
         </li>
-        <div :class="`va-select-items-wrapper`">
+        <div class="va-select-items-wrapper">
           <slot>
             <va-option
               :key="index"
@@ -92,7 +92,7 @@
           </slot>
         </div>
         <div
-          :class="`va-notify`"
+          class="va-notify"
           transition="fadeDown"
           v-show="showNotify"
         >Limit: {{limit}}</div>

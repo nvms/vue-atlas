@@ -1,6 +1,6 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`va-sidebar-scrollarea`">
+    <div class="va-sidebar-scrollarea">
       <slot />
     </div>
   </div>

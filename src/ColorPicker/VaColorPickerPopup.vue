@@ -1,54 +1,54 @@
 <template>
   <transition name="fadeDown">
-    <div ref="popup" :class="`va-color-picker-popup`">
-      <div :class="`va-color-picker-upper`">
+    <div ref="popup" class="va-color-picker-popup">
+      <div class="va-color-picker-upper">
         <div
           ref="gradient"
           :style="gradientStyleObj"
           @mousedown="gradientOnMousedown"
           @touchstart="gradientOnMousedown"
-          :class="`va-color-picker-gradient`"
+          class="va-color-picker-gradient"
         >
-          <div :class="`va-color-picker-gradient-white`"/>
-          <div :class="`va-color-picker-gradient-black`"/>
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-gradient-white"/>
+          <div class="va-color-picker-gradient-black"/>
+          <div class="va-color-picker-border"/>
           <div
             ref="gradientCursor"
-            :class="`va-color-picker-gradient-cursor`"
+            class="va-color-picker-gradient-cursor"
           />
         </div>
         <div
           ref="hue"
           @mousedown="hueSliderOnMousedown"
           @touchstart="hueSliderOnMousedown"
-          :class="`va-color-picker-hue-track`"
+          class="va-color-picker-hue-track"
         >
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-border"/>
           <div
             ref="hueCursor"
-            :class="`va-color-picker-hue-cursor`"
+            class="va-color-picker-hue-cursor"
           />
         </div>
         <div
           ref="alpha"
           @mousedown="alphaSliderOnMousedown"
           @touchstart="alphaSliderOnMousedown"
-          :class="`va-color-picker-alpha-track`"
+          class="va-color-picker-alpha-track"
           v-if="!hideAlpha"
         >
           <div
             :style="alphaStyleObj"
-            :class="`va-color-picker-alpha-track-color`"
+            class="va-color-picker-alpha-track-color"
             v-if="!hideAlpha"
           />
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-border"/>
           <div v-if="!hideAlpha"
             ref="alphaCursor"
-            :class="`va-color-picker-alpha-cursor`"
+            class="va-color-picker-alpha-cursor"
           />
         </div>
       </div>
-      <div :class="`va-color-picker-lower`">
+      <div class="va-color-picker-lower">
         <va-input size="xs" v-model="hex" @change="hexChange" width="68px"/>
         <va-input size="xs" v-model="rgb.r" @change="rChange" width="38px"/>
         <va-input size="xs" v-model="rgb.g" @change="gChange" width="38px"/>
@@ -56,7 +56,7 @@
         <va-input size="xs" v-model="alpha" @change="aChange" width="40px" v-if="!hideAlpha"/>
       </div>
       <div
-        :class="`va-color-picker-lower`"
+        class="va-color-picker-lower"
         style="margin:0;color:#999;"
       >
         <span style="text-align:center;width:68px;font-size:10px;">HEX</span>

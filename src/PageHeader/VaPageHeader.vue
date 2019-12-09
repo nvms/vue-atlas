@@ -1,16 +1,16 @@
 <template>
-  <div :class="`va-page-header`">
+  <div class="va-page-header">
     <div
       v-if="hasBreadcrumb"
-      :class="`va-page-header-breadcrumb-wrapper`"
+      class="va-page-header-breadcrumb-wrapper"
     >
-      <div :class="`va-page-header-breadcrumb-container`">
+      <div class="va-page-header-breadcrumb-container">
         <slot name="breadcrumb">&nbsp;</slot>
       </div>
     </div>
 
-    <div :class="`va-page-header-title-wrapper`">
-      <div :class="`va-page-header-title-container`">
+    <div class="va-page-header-title-wrapper">
+      <div class="va-page-header-title-container">
         <h1>
           <slot name="title"/>
         </h1>
@@ -21,13 +21,13 @@
 
       <div
         v-if="hasActions"
-        :class="`va-page-header-actions-wrapper`"
+        class="va-page-header-actions-wrapper"
       >
         <slot name="actions"/>
       </div>
     </div>
 
-    <div v-if="hasBottom" :class="`va-page-header-bottom-wrapper`">
+    <div v-if="hasBottom" class="va-page-header-bottom-wrapper">
       <slot name="bottom">&nbsp;</slot>
     </div>
   </div>

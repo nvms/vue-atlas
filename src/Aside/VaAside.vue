@@ -1,19 +1,19 @@
 <template>
   <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
     <div :class="classObj" :style="{width:width}" ref="aside" v-show="show">
-      <div :class="`va-aside-dialog`">
-        <div :class="`va-aside-content`">
-          <div :class="`va-aside-header`" v-if="header">
+      <div class="va-aside-dialog">
+        <div class="va-aside-content">
+          <div class="va-aside-header" v-if="header">
             <button
-              :class="`va-close`"
+              class="va-close"
               @click="close"
               type="button"
             >
               <span>&times;</span>
             </button>
-            <div :class="`va-aside-title`">{{title}}</div>
+            <div class="va-aside-title">{{title}}</div>
           </div>
-          <div :class="`va-aside-body`">
+          <div class="va-aside-body">
             <slot/>
           </div>
         </div>

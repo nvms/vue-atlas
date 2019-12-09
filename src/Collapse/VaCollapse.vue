@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-collapse`">
+  <div class="va-collapse">
     <slot/>
   </div>
 </template>

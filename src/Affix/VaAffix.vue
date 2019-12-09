@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-affix`" :style="affixStyle">
+  <div class="va-affix" :style="affixStyle">
     <slot/>
   </div>
 </template>

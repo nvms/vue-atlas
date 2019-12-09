@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-sidebar-header`">
+  <div class="va-sidebar-header">
     <slot/>
   </div>
 </template>

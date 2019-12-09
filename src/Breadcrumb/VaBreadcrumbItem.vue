@@ -1,5 +1,5 @@
 <template>
-  <span :class="`va-breadcrumb-item`">
+  <span class="va-breadcrumb-item">
     <span
       :class="['va-breadcrumb-item-inner', to || href ? 'va-breadcrumb-link' : '']"
       ref="link"
@@ -9,11 +9,11 @@
     <va-icon
       v-if="separatorIcon"
       :type="separatorIcon"
-      :class="`va-breadcrumb-item-icon`"
+      class="va-breadcrumb-item-icon"
     />
     <span
       v-else
-      :class="`va-breadcrumb-item-separator`"
+      class="va-breadcrumb-item-separator"
     >{{separator}}</span>
   </span>
 </template>

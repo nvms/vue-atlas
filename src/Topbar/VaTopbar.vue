@@ -1,13 +1,13 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`va-topbar-inner`">
-      <div :class="`va-topbar-left`">
+    <div class="va-topbar-inner">
+      <div class="va-topbar-left">
         <slot name="left"/>
       </div>
-      <div :class="`va-topbar-center`">
+      <div class="va-topbar-center">
         <slot name="center"/>
       </div>
-      <div :class="`va-topbar-right`">
+      <div class="va-topbar-right">
         <slot name="right"/>
       </div>
     </div>

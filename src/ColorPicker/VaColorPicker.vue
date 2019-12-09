@@ -2,7 +2,7 @@
   <va-dropdown>
     <div slot="trigger">
       <va-button ref="colorpicker" @click.native.prevent="toggleColorPicker">
-        <div :class="`va-color-picker-button-inner`">
+        <div class="va-color-picker-button-inner">
           <div :style="buttonStyleObj"/>
         </div>
       </va-button>

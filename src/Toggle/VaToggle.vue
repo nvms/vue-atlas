@@ -2,7 +2,7 @@
   <label :class="classObj" @click.prevent>
     <input
       :checked="value"
-      :class="`va-toggle__input`"
+      class="va-toggle__input"
       :name="name"
       @keypress.space.prevent="toggle"
       tabindex="-1"
@@ -10,14 +10,14 @@
     >
     <div
       :aria-label="label"
-      :class="`va-toggle__slide`"
+      class="va-toggle__slide"
       :tabindex="disabled ? -1 : 0"
       @click="toggle"
       @keypress.space.prevent="toggle"
     >
-      <div :class="`va-toggle__inner`">
-        <span :class="`va-toggle__handle`"></span>
-        <span :class="`va-toggle__icon`">
+      <div class="va-toggle__inner">
+        <span class="va-toggle__handle"></span>
+        <span class="va-toggle__icon">
           <va-icon :type="icon"></va-icon>
         </span>
       </div>

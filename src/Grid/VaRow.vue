@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-row`" :style="styles">
+  <div class="va-row" :style="styles">
     <slot/>
   </div>
 </template>

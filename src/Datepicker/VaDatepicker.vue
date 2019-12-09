@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-datepicker`" :style="styleObj">
+  <div class="va-datepicker" :style="styleObj">
     <va-input
       v-if="!mobileDatepicker"
       v-bind="$attrs"
@@ -36,16 +36,16 @@
 
     <transition name="fadeDown">
       <div
-        :class="`va-datepicker-popup`"
+        class="va-datepicker-popup"
         v-show="displayDayView"
         v-va-position="displayDayView"
       >
-        <div :class="`va-datepicker-inner`">
-          <div :class="`va-datepicker-body`">
-            <div :class="`va-datepicker-ctrl`">
+        <div class="va-datepicker-inner">
+          <div class="va-datepicker-body">
+            <div class="va-datepicker-ctrl">
               <va-button
                 tabindex="0"
-                :class="`va-month-btn va-datepicker-preBtn`"
+                class="va-month-btn va-datepicker-preBtn"
                 @click.native="preNextMonthClick(0)"
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(0)"
@@ -60,7 +60,7 @@
               >{{stringifyDayHeader(currDate)}}</va-button>
               <va-button
                 tabindex="0"
-                :class="`va-month-btn va-datepicker-nextBtn`"
+                class="va-month-btn va-datepicker-nextBtn"
                 @click.native="preNextMonthClick(1)"
                 type="subtle"
                 v-on:keyup.enter="preNextMonthClick(1)"
@@ -68,10 +68,10 @@
                 <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div :class="`va-datepicker-weekRange`">
+            <div class="va-datepicker-weekRange">
               <span v-for="(w, index) in weekRange" :key="index">{{w}}</span>
             </div>
-            <div :class="`va-datepicker-dateRange`">
+            <div class="va-datepicker-dateRange">
               <span
                 v-for="(d, index) in dateRange"
                 :class="d.sclass"
@@ -87,15 +87,15 @@
     </transition>
     <transition name="fadeDown">
       <div
-        :class="`va-datepicker-popup`"
+        class="va-datepicker-popup"
         v-show="displayMonthView"
         v-va-position="displayMonthView"
       >
-        <div :class="`va-datepicker-inner`">
-          <div :class="`va-datepicker-body`">
-            <div :class="`va-datepicker-ctrl`">
+        <div class="va-datepicker-inner">
+          <div class="va-datepicker-body">
+            <div class="va-datepicker-ctrl">
               <va-button
-                :class="`va-month-btn va-datepicker-preBtn`"
+                class="va-month-btn va-datepicker-preBtn"
                 @click.native="preNextYearClick(0)"
                 type="subtle"
                 tabindex="0"
@@ -110,7 +110,7 @@
                 v-on:keyup.enter="switchDecadeView"
               >{{stringifyYearHeader(currDate)}}</va-button>
               <va-button
-                :class="`va-month-btn va-datepicker-nextBtn`"
+                class="va-month-btn va-datepicker-nextBtn"
                 @click.native="preNextYearClick(1)"
                 type="subtle"
                 tabindex="0"
@@ -119,7 +119,7 @@
                 <va-icon type="arrow-right" size="10px"/>
               </va-button>
             </div>
-            <div :class="`va-datepicker-monthRange`">
+            <div class="va-datepicker-monthRange">
               <template v-for="(m, index) in monthNames">
                 <va-button
                     :class="monthClassObj(m)"
@@ -136,15 +136,15 @@
     </transition>
     <transition name="fadeDown">
       <div
-        :class="`va-datepicker-popup`"
+        class="va-datepicker-popup"
         v-show="displayYearView"
         v-va-position="displayYearView"
       >
-        <div :class="`va-datepicker-inner`">
-          <div :class="`va-datepicker-body`">
-            <div :class="`va-datepicker-ctrl`">
+        <div class="va-datepicker-inner">
+          <div class="va-datepicker-body">
+            <div class="va-datepicker-ctrl">
               <va-button
-                :class="`va-month-btn va-datepicker-preBtn`"
+                class="va-month-btn va-datepicker-preBtn"
                 @click.native="preNextDecadeClick(0)"
                 type="subtle"
                 tabindex="0"
@@ -153,7 +153,7 @@
                 <va-icon type="arrow-left" size="10px"></va-icon>
               </va-button>
               <va-button
-                :class="`va-month-btn va-datepicker-nextBtn`"
+                class="va-month-btn va-datepicker-nextBtn"
                 @click.native="preNextDecadeClick(1)"
                 type="subtle"
                 tabindex="0"
@@ -163,9 +163,7 @@
               </va-button>
               <va-button type="subtle">{{stringifyDecadeHeader(currDate)}}</va-button>
             </div>
-            <div
-              :class="`va-datepicker-monthRange va-datepicker-decadeRange`"
-            >
+            <div class="va-datepicker-monthRange va-datepicker-decadeRange">
               <template v-for="(decade, index) in decadeRange">
                 <va-button
                     :class="yearClassObj(decade)"

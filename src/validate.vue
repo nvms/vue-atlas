@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-err-tip`" v-if="validate && tips">{{tips}}</div>
+  <div class="va-err-tip" v-if="validate && tips">{{tips}}</div>
 </template>
 
 <script>

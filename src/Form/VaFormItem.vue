@@ -6,7 +6,7 @@
       :class="`va-col-sm-${label_col} va-control-label`"
     >
       {{label || '&nbsp;'}}
-      <em :class="`va-form-need`" v-if="need">*</em>
+      <em class="va-form-need" v-if="need">*</em>
     </label>
     <div :class="`va-col-sm-${col} va-flex`">
       <slot/>

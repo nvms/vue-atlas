@@ -1,15 +1,15 @@
 <template>
-  <label :class="`va-radio-con`">
+  <label class="va-radio-con">
     <span :class="objClass">
       <span
-        :class="`va-radio-inner`"
+        class="va-radio-inner"
         :tabindex="disabled ? -1 : 0"
         @keypress.space.prevent="handleClick"
         @keyup.enter="handleClick"
       />
       <input
         :checked="currentChecked"
-        :class="`va-radio-input`"
+        class="va-radio-input"
         :disabled="disabled"
         :name="name"
         @click.prevent="handleClick"
@@ -17,7 +17,7 @@
         type="radio"
       >
     </span>
-    <span :class="`va-label`" tabindex="-1">
+    <span class="va-label" tabindex="-1">
       <slot/>
     </span>
     <validate

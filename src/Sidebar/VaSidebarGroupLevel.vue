@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj">
-    <div :class="`va-sidebar-navigationlevel-parent`">
-      <div :class="`va-sidebar-group-item`">
+    <div class="va-sidebar-navigationlevel-parent">
+      <div class="va-sidebar-group-item">
         <va-sidebar-group-toggle
           :open="isOpen"
           @click.native="onToggleClick"
@@ -15,7 +15,7 @@
         />
       </div>
     </div>
-    <ul :class="`va-sidebar-navigationlevel-children`">
+    <ul class="va-sidebar-navigationlevel-children">
       <slot/>
     </ul>
   </div>

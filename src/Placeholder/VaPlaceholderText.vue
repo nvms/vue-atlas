@@ -1,9 +1,9 @@
 <template>
-  <div :class="`va-placeholder-text`">
+  <div class="va-placeholder-text">
     <div
       v-for="line in lines"
       :key="line"
-      :class="`va-placeholder-text-line`"
+      class="va-placeholder-text-line"
     />
   </div>
 </template>

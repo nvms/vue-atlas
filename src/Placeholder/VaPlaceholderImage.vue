@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-placeholder-image`"/>
+  <div class="va-placeholder-image"/>
 </template>
 
 <script>

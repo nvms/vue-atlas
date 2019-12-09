@@ -2,9 +2,9 @@
   <div
     @scroll="onScroll"
     :style="wrapperStyleObj"
-    :class="`va-page-wrapper`"
+    class="va-page-wrapper"
   >
-    <div :style="containerStyleObj" :class="`va-page-container`">
+    <div :style="containerStyleObj" class="va-page-container">
       <div :class="classObj">
         <slot/>
         <div style="height:100px;">&nbsp;</div>

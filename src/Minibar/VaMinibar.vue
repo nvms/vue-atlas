@@ -1,8 +1,8 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`va-minibar-inner`" :style="styleObjInner">
+    <div class="va-minibar-inner" :style="styleObjInner">
 
-      <div :class="`va-minibar-top`">
+      <div class="va-minibar-top">
         <slot name="top">
           <div v-for="(item, index) in topItems" :key="index">
             <va-minibar-item
@@ -28,7 +28,7 @@
         </slot>
       </div>
 
-      <div :class="`va-minibar-bottom`">
+      <div class="va-minibar-bottom">
         <slot name="bottom">
           <div v-for="(item, index) in bottomItems" :key="index">
             <va-minibar-item

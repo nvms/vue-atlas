@@ -1,16 +1,16 @@
 <template>
-  <span ref="tooltip" :class="`va-tooltip_wrapper`">
+  <span ref="tooltip" class="va-tooltip_wrapper">
     <span
       ref="trigger"
-      :class="`va-tooltip_trigger`"
+      class="va-tooltip_trigger"
       v-on="listeners"
     >
       <slot/>
     </span>
     <transition :name="effect">
       <div :class="classObj" ref="popover" v-show="isShow">
-        <div v-if="arrow" :class="`va-tooltip-arrow`"></div>
-        <div :class="`va-tooltip-inner`">
+        <div v-if="arrow" class="va-tooltip-arrow"></div>
+        <div class="va-tooltip-inner">
           <span v-html="content"></span>
         </div>
       </div>

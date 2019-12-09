@@ -2,16 +2,16 @@
   <label :class="classObj">
     <span>
       <span
-        :class="`va-checkbox-inner`"
+        class="va-checkbox-inner"
         :tabindex="disabled ? -1 : 0"
         @keypress.space.prevent="handleClick"
         @keyup.enter="enterPressed"
       >
-        <va-icon :class="`va-checkbox-inner-check`" type="check"/>
+        <va-icon class="va-checkbox-inner-check" type="check"/>
       </span>
       <input
         :checked="currentChecked"
-        :class="`va-checkbox-input`"
+        class="va-checkbox-input"
         :disabled="disabled"
         :name="name"
         @click="handleClick"
@@ -19,7 +19,7 @@
         type="checkbox"
       >
     </span>
-    <span :class="`va-label`">
+    <span class="va-label">
       <slot/>
     </span>
     <validate

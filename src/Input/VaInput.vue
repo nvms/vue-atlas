@@ -4,7 +4,7 @@
     :style="{'width': actualWidth}"
     v-if="!showButtonsWarning"
   >
-    <span v-if="prefix !== ''" :class="`va-input-prefix`">{{prefix}}</span>
+    <span v-if="prefix !== ''" class="va-input-prefix">{{prefix}}</span>
     <input
       v-if="noVModel"
       ref="input"
@@ -45,25 +45,25 @@
       :value="value"
     >
     <div
-      :class="`va-input-icon-wrapper`"
+      class="va-input-icon-wrapper"
       v-if="icon !== 'undefined' || clearable"
     >
       <va-icon
         v-if="clearable"
         type="times"
         icon-style="solid"
-        :class="`va-input-clearable`"
+        class="va-input-clearable"
         @click.native.stop="clean"
       />
       <va-icon
-        :class="`va-input-show-icon`"
+        class="va-input-show-icon"
         :type="icon"
         :icon-style="iconStyle"
       />
     </div>
     <span
       v-if="postfix !== ''"
-      :class="`va-input-postfix`"
+      class="va-input-postfix"
     >{{postfix}}</span>
     <va-input-ops
       v-if="buttons"

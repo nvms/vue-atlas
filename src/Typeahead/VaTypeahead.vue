@@ -25,7 +25,7 @@
     />
 
     <ul
-      :class="`va-dropdown-menu`"
+      class="va-dropdown-menu"
       :style="{minWidth: actualWidth, maxHeight: dropdownHeight}"
       v-show="show"
       v-va-position="show"

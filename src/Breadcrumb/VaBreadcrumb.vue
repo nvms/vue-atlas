@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-breadcrumb`">
+  <div class="va-breadcrumb">
     <slot/>
   </div>
 </template>

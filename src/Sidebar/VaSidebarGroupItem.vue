@@ -9,14 +9,14 @@
     <!-- The toggle icon -->
     <span
       v-if="st && toggleType === 'circle'"
-      :class="`va-sidebar-group-item-text-icon`"
+      class="va-sidebar-group-item-text-icon"
     >
       <va-icon type="circle"/>
     </span>
 
-    <span :class="`va-sidebar-group-item-text`">
+    <span class="va-sidebar-group-item-text">
       <!-- The item's FontAwesome icon, if any -->
-      <span v-if="showIcon" :class="`va-sidebar-group-item-icon`">
+      <span v-if="showIcon" class="va-sidebar-group-item-icon">
         <va-icon
           v-if="item.iconColor"
           :type="item.icon"
@@ -35,13 +35,13 @@
       <!-- If this is just a label -->
       <span
         v-if="showLabel"
-        :class="`va-sidebar-group-item-label`"
+        class="va-sidebar-group-item-label"
         :style="styleObj"
       >
         {{item.name}}
         <span
           v-if="item.sub"
-          :class="`va-sidebar-group-item-substring`"
+          class="va-sidebar-group-item-substring"
         >{{item.sub}}</span>
       </span>
 
@@ -49,13 +49,13 @@
       <router-link
         v-if="showRouterLink"
         :to="item.meta.target"
-        :class="`va-sidebar-group-item-router-link`"
+        class="va-sidebar-group-item-router-link"
         :style="styleObj"
       >
         {{item.name}}
         <span
           v-if="item.sub"
-          :class="`va-sidebar-group-item-substring`"
+          class="va-sidebar-group-item-substring"
         >{{item.sub}}</span>
       </router-link>
 
@@ -63,13 +63,13 @@
       <a
         v-if="showHyperLink"
         :href="item.meta.target"
-        :class="`va-sidebar-group-item-link`"
+        class="va-sidebar-group-item-link"
         :style="styleObj"
       >
         {{item.name}}
         <span
           v-if="item.sub"
-          :class="`va-sidebar-group-item-substring`"
+          class="va-sidebar-group-item-substring"
         >{{item.sub}}</span>
       </a>
 
@@ -78,13 +78,13 @@
         v-if="showExternalHyperLink"
         :href="item.meta.target"
         target="_blank"
-        :class="`va-sidebar-group-item-external-link`"
+        class="va-sidebar-group-item-external-link"
         :style="styleObj"
       >
         {{item.name}}
         <span
           v-if="item.sub"
-          :class="`va-sidebar-group-item-substring`"
+          class="va-sidebar-group-item-substring"
         >{{item.sub}}</span>
       </a>
 
