@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { size, hover } = this
-      let classes = {}
+      const { size, hover } = this
+      const classes = {}
 
       classes['va-table'] = true
       classes['va-table-' + size] = true

@@ -16,8 +16,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { vertical } = this
-      let classes = {}
+      const { vertical } = this
+      const classes = {}
 
       classes['va-btn-group'] = true
       classes['va-btn-group-vertical'] = vertical

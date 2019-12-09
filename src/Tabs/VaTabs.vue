@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['clearfix'] = true
       classes['va-nav-tabs'] = true
@@ -133,7 +133,7 @@ export default {
       }
     },
     liclassObj (tab) {
-      let classes = {}
+      const classes = {}
 
       classes['va-nav-tab'] = true
       classes['va-nav-tab-active'] = tab.isActive

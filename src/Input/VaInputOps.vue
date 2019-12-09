@@ -140,7 +140,7 @@ export default {
       this.position = this.getPosition()
     },
     getPosition () {
-      let rect = this.$refs.popup.getBoundingClientRect()
+      const rect = this.$refs.popup.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -155,17 +155,17 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-input-ops'] = true
 
       return classes
     },
     styleObj () {
-      let style = {}
-      let opacity = this.opacity
-      let parentPosition = this.parentPosition
-      let position = this.position
+      const style = {}
+      const opacity = this.opacity
+      const parentPosition = this.parentPosition
+      const position = this.position
 
       style['position'] = 'fixed'
       style['top'] = parentPosition.top + parentPosition.height + 3 + 'px'

@@ -15,6 +15,7 @@ export default {
   },
   methods: {
     change (child) {
+      // eslint-disable-next-line
       let items = []
 
       if (this.accordion) {

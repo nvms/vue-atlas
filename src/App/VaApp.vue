@@ -107,25 +107,25 @@ export default {
     }
   },
   data () {
-    let dDesktopMinimumWidth = this.desktopMinimumWidth
-    let dDesktopTopbarHeight = this.desktopTopbarHeight
-    let dDesktopMinibarWidth = this.desktopMinibarWidth
-    let dDesktopSidebarWidth = this.desktopSidebarWidth
-    let dMobileSidebarWidth = this.mobileSidebarWidth
-    let dMobileMinibarWidth = this.mobileMinibarWidth
-    let dMobileTopbarHeight = this.mobileTopbarHeight
-    let dSidebarPriority = this.sidebarPriority
-    let dMinibarPriority = this.minibarPriority
-    let currDesktopMargin = this.desktopMargin
-    let dTopbarPriority = this.topbarPriority
-    let dDesktopMargin = this.desktopMargin
-    let dTopbarPadded = this.topbarPadded
-    let dPageBgColor = this.pageBgColor
-    let dShowToggle = this.showToggle
-    let dReverse = this.reverse
-    let dBgColor = this.bgColor
-    let dSplit = this.split
-    let dRtl = this.rtl
+    const dDesktopMinimumWidth = this.desktopMinimumWidth
+    const dDesktopTopbarHeight = this.desktopTopbarHeight
+    const dDesktopMinibarWidth = this.desktopMinibarWidth
+    const dDesktopSidebarWidth = this.desktopSidebarWidth
+    const dMobileSidebarWidth = this.mobileSidebarWidth
+    const dMobileMinibarWidth = this.mobileMinibarWidth
+    const dMobileTopbarHeight = this.mobileTopbarHeight
+    const dSidebarPriority = this.sidebarPriority
+    const dMinibarPriority = this.minibarPriority
+    const currDesktopMargin = this.desktopMargin
+    const dTopbarPriority = this.topbarPriority
+    const dDesktopMargin = this.desktopMargin
+    const dTopbarPadded = this.topbarPadded
+    const dPageBgColor = this.pageBgColor
+    const dShowToggle = this.showToggle
+    const dReverse = this.reverse
+    const dBgColor = this.bgColor
+    const dSplit = this.split
+    const dRtl = this.rtl
     return {
       mDesktopTopbarHeight: dDesktopTopbarHeight,
       mDesktopMinimumWidth: dDesktopMinimumWidth,
@@ -323,7 +323,7 @@ export default {
   },
   methods: {
     _handleResize () {
-      let ww = window.innerWidth || document.body.clientWidth
+      const ww = window.innerWidth || document.body.clientWidth
 
       if (parseInt(ww) < this.mobileBreakpoint) {
         this.pastMobileBreakpoint = true
@@ -826,8 +826,8 @@ export default {
   },
   computed: {
     styleObj () {
-      let bg = this.mBgColor
-      let style = {}
+      const bg = this.mBgColor
+      const style = {}
 
       style['background'] = bg
       style['position'] = 'fixed'

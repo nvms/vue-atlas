@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     label_col () {
-      let lc = parseInt(this.labelCol)
+      const lc = parseInt(this.labelCol)
       let defaultCol = this.inline ? 0 : 2
       defaultCol = this.vertical ? 12 : defaultCol
       return lc || defaultCol
@@ -73,11 +73,11 @@ export default {
         return this.formCol
       }
 
-      let wrapCol = this.wrapCol ? this.wrapCol : 12
+      const wrapCol = this.wrapCol ? this.wrapCol : 12
       return this.label_col === 12 ? 12 : wrapCol - this.label_col
     },
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-form-group'] = true
 

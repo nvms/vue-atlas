@@ -31,8 +31,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { type } = this
-      let classes = {}
+      const { type } = this
+      const classes = {}
 
       classes['va-badge'] = true
       classes['va-badge-' + type] = true

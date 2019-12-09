@@ -36,8 +36,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { disabled } = this
-      let classes = {}
+      const { disabled } = this
+      const classes = {}
 
       classes['va-pagination-item-disabled'] = disabled
 

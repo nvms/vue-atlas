@@ -35,10 +35,10 @@ export default {
     }
   },
   data () {
-    let tli = this.textLinks
-    let s = this.showToggle
-    let c = this.compact
-    let t = this.theme
+    const tli = this.textLinks
+    const s = this.showToggle
+    const c = this.compact
+    const t = this.theme
     return {
       currentDesktopMinimumWidth: 0,
       currentDesktopMargin: 0,
@@ -103,8 +103,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { th, isMobile, comp, tl } = this
-      let classes = {}
+      const { th, isMobile, comp, tl } = this
+      const classes = {}
 
       classes['va-sidebar'] = true
       classes['va-sidebar--theme-' + th] = true
@@ -117,17 +117,17 @@ export default {
     styleObj () {
       let dmw = parseInt(this.currentDesktopMinimumWidth)
       let dm = parseInt(this.currentDesktopMargin)
-      let sw = parseInt(this.currentSidebarWidth)
-      let th = parseInt(this.currentTopbarHeight)
-      let cw = parseInt(this.currentContentWidth)
-      let mw = parseInt(this.currentMinibarWidth)
-      let sp = this.sidebarPriority
-      let mp = this.minibarPriority
-      let reverse = this.isReverse
-      let mobile = this.isMobile
-      let split = this.isSplit
-      let rtl = this.isRTL
-      let style = {}
+      const sw = parseInt(this.currentSidebarWidth)
+      const th = parseInt(this.currentTopbarHeight)
+      const cw = parseInt(this.currentContentWidth)
+      const mw = parseInt(this.currentMinibarWidth)
+      const sp = this.sidebarPriority
+      const mp = this.minibarPriority
+      const reverse = this.isReverse
+      const mobile = this.isMobile
+      const split = this.isSplit
+      const rtl = this.isRTL
+      const style = {}
 
       style['width'] = sw + 'px'
       style['min-width'] = sw + 'px'
@@ -144,7 +144,7 @@ export default {
        */
       if (!mobile) {
         if (cw < dmw) {
-          let x = dmw - cw
+          const x = dmw - cw
           dm = dm - (x / 2)
         }
       } else {

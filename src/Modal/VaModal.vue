@@ -90,7 +90,7 @@ export default {
     }
   },
   data () {
-    let show = this.show
+    const show = this.show
     return {
       isShow: show,
       focused: false,
@@ -100,8 +100,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { effect } = this
-      let classes = {}
+      const { effect } = this
+      const classes = {}
 
       classes['va-modal'] = true
       classes['va-modal-' + effect] = true
@@ -109,14 +109,14 @@ export default {
       return classes
     },
     styleObj () {
-      let { backdrop, numberOfParentModals } = this
-      let style = {}
+      const { backdrop, numberOfParentModals } = this
+      const style = {}
 
       if (!backdrop) {
         style['background'] = 'none !important'
       }
 
-      let topMargin = parseInt(numberOfParentModals) * 10
+      const topMargin = parseInt(numberOfParentModals) * 10
       style['padding-top'] = topMargin + 'px'
 
       return style
@@ -162,17 +162,17 @@ export default {
        */
       if (val) {
         this.$emit('show', { type: 'show' })
-        let x = document.getElementsByClassName('va-modal-in')
+        const x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
 
         /**
          * If any parent modals do exist, then let's stack them in a
          * nicely fashion, by moving each over to the left a bit.
          */
-        let distanceToMove = 20
+        const distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginLeft = x[i].style['margin-left']
+            const currentMarginLeft = x[i].style['margin-left']
             if (currentMarginLeft && currentMarginLeft !== '0px') {
               /**
                * If this modal already has a margin-left applied,
@@ -181,8 +181,8 @@ export default {
                * already is.
                */
               // Slice 'px' off from the end.
-              let m = Math.abs(currentMarginLeft.slice(0, -2))
-              let dist = parseInt(m + distanceToMove)
+              const m = Math.abs(currentMarginLeft.slice(0, -2))
+              const dist = parseInt(m + distanceToMove)
               x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               /**
@@ -196,15 +196,15 @@ export default {
       } else {
         this.$emit('hide', { type: 'hide' })
 
-        let x = document.getElementsByClassName('va-modal-in')
+        const x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
-        let distanceToMove = 20
+        const distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginLeft = x[i].style['margin-left']
+            const currentMarginLeft = x[i].style['margin-left']
             if (currentMarginLeft && currentMarginLeft !== '0px') {
-              let m = Math.abs(currentMarginLeft.slice(0, -2))
-              let dist = parseInt(m - distanceToMove)
+              const m = Math.abs(currentMarginLeft.slice(0, -2))
+              const dist = parseInt(m - distanceToMove)
               x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               //

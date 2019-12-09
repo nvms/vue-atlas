@@ -56,12 +56,12 @@ export default {
         return this.results
       },
       set (val) {
-        let self = this
+        const self = this
         let tips = ''
         let status = ''
 
-        for (let key in val) {
-          let obj = val[key]
+        for (const key in val) {
+          const obj = val[key]
           if (type.isObject(obj)) {
             obj.tips ? (tips += obj.tips + '  ') : ''
             if (obj.validStatus !== 'success') {
@@ -81,15 +81,15 @@ export default {
         let isvalid = true
         self.tips = tips
 
-        for (let i in val) {
-          let validStatus = val[i]['validStatus']
+        for (const i in val) {
+          const validStatus = val[i].validStatus
           if (validStatus === 'error') {
             isvalid = false
             break
           }
         }
 
-        let newVal = Object.assign({}, val)
+        const newVal = Object.assign({}, val)
         newVal.isvalid = isvalid
 
         if (this.isEqual(newVal, this.results)) {
@@ -119,15 +119,15 @@ export default {
   methods: {
     isEqual (a, b) {
       let e = true
-      let propsA = Object.keys(a)
-      let propsB = Object.keys(b)
+      const propsA = Object.keys(a)
+      const propsB = Object.keys(b)
 
       if (propsA.length !== propsB.length) {
         return false
       }
 
       propsA.forEach(i => {
-        if (a[i]['validStatus'] !== b[i]['validStatus']) {
+        if (a[i].validStatus !== b[i].validStatus) {
           e = false
           return false
         }
@@ -136,7 +136,7 @@ export default {
       return e
     },
     setResult (key, value) {
-      let o = Object.assign({}, this.results)
+      const o = Object.assign({}, this.results)
       o[key] = value
       this._results = o
     },
@@ -146,9 +146,9 @@ export default {
       }
     },
     rulesItemValid (rule, value) {
-      let self = this
-      let tip = rule.tip
-      let type = rule.type
+      const self = this
+      const tip = rule.tip
+      const type = rule.type
 
       switch (type) {
         case 'required':
@@ -184,7 +184,7 @@ export default {
       this.setResult('customValidate', this.customValidate(val))
     },
     requiredValid (val, tip) {
-      let self = this
+      const self = this
 
       self._results = self._results || {}
 
@@ -201,8 +201,8 @@ export default {
       }
     },
     maxlengthValid (type, val, tip) {
-      let self = this
-      let maxlength = type.split('=')[1] - 0
+      const self = this
+      const maxlength = type.split('=')[1] - 0
 
       self._results = self._results || {}
 
@@ -221,8 +221,8 @@ export default {
       }
     },
     minlengthValid (type, val, tip) {
-      let self = this
-      let minlength = type.split('=')[1] - 0
+      const self = this
+      const minlength = type.split('=')[1] - 0
 
       self._results = self._results || {}
 
@@ -241,7 +241,7 @@ export default {
       }
     },
     rulesValid (value) {
-      let self = this
+      const self = this
 
       self.rules.forEach(val => {
         self.rulesItemValid(val, value)
@@ -252,7 +252,7 @@ export default {
       }
     },
     phoneValid (value, tip) {
-      let rule = /^1\d{10}$/
+      const rule = /^1\d{10}$/
 
       if (rule.test(value) || value === '') {
         this.setResult('isPhoneValid', {
@@ -267,7 +267,7 @@ export default {
       }
     },
     numberValid (value, tip) {
-      let rule = /^\d*$/
+      const rule = /^\d*$/
 
       if (rule.test(value) || value === '') {
         this.setResult('isNumberValid', {
@@ -298,7 +298,7 @@ export default {
       }
     },
     emailValid (value, tip) {
-      let rule = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+      const rule = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
 
       if (rule.test(value) || value === '') {
         this.setResult('isEmailValid', {

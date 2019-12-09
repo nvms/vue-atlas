@@ -49,8 +49,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { bold, type, size, uppercase, truncate } = this
-      let classes = {}
+      const { bold, type, size, uppercase, truncate } = this
+      const classes = {}
 
       classes['va-lozenge'] = true
       classes['va-lozenge-bold'] = bold

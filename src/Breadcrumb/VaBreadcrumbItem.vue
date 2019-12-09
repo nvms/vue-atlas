@@ -46,7 +46,7 @@ export default {
     const link = this.$refs.link
 
     link.addEventListener('click', (e) => {
-      this.$emit('click', e);
+      this.$emit('click', e)
       if (this.href) {
         window.location.href = this.href
         return

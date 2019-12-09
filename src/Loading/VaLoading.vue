@@ -51,8 +51,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { center } = this
-      let classes = {}
+      const { center } = this
+      const classes = {}
 
       classes['va-page-loading-con'] = true
       classes['va-loading-center'] = center
@@ -60,8 +60,8 @@ export default {
       return classes
     },
     iclassObj () {
-      let { type, size } = this
-      let classes = {}
+      const { type, size } = this
+      const classes = {}
 
       classes['va-page-loading'] = true
       type ? (classes['va-loading-' + type] = true) : ''

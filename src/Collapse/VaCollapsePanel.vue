@@ -29,7 +29,7 @@ export default {
     index: {}
   },
   data () {
-    let isOpen = this.open
+    const isOpen = this.open
     return {
       isOpen: isOpen
     }
@@ -43,7 +43,7 @@ export default {
     toggle () {
       this.isOpen = !this.isOpen
 
-      let item = {
+      const item = {
         index: this.index,
         header: this.header,
         isOpen: this.isOpen

@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-checked-btn'] = true
 

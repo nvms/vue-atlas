@@ -9,7 +9,7 @@ const createNode = () => {
 }
 
 const open = (options, type = 'info') => {
-  let { title, message, effect, width, duration, onShow, onHide, onConfirm } = options
+  const { title, message, effect, width, duration, onShow, onHide, onConfirm } = options
   /* eslint-disable no-new */
 
   new Vue({

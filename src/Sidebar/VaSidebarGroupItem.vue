@@ -124,7 +124,7 @@ export default {
     }
   },
   data () {
-    let s = this.showToggle
+    const s = this.showToggle
     return {
       st: s,
       minified: false
@@ -171,8 +171,8 @@ export default {
       return this.showLink && this.$router !== undefined
     },
     classObj () {
-      let { minified } = this
-      let classes = {}
+      const { minified } = this
+      const classes = {}
 
       classes['va-sidebar-group-item-text'] = true
       classes['va-sidebar-group-item-minified'] = minified
@@ -180,8 +180,8 @@ export default {
       return classes
     },
     styleObj () {
-      let { showIcon } = this
-      let style = {}
+      const { showIcon } = this
+      const style = {}
 
       style['padding-left'] = showIcon ? '0px' : '0px'
 
@@ -190,7 +190,7 @@ export default {
   },
   methods: {
     setAsActiveIfActive () {
-      let parentElement = this.$refs.itemText.parentElement
+      const parentElement = this.$refs.itemText.parentElement
       if (parentElement.classList) {
         if (parentElement.classList.contains('active')) {
           parentElement.classList.remove('active')

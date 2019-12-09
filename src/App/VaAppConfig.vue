@@ -387,7 +387,7 @@ export default {
       }, 10)
     },
     getPosition (el) {
-      let rect = el.getBoundingClientRect()
+      const rect = el.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -438,12 +438,12 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       return classes
     },
     styleObj () {
-      let style = {}
+      const style = {}
 
       style['position'] = 'fixed'
       style['right'] = '20px'

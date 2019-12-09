@@ -181,7 +181,7 @@ export default {
     }
   },
   data () {
-    let cv = this.value
+    const cv = this.value
     return {
       focused: false,
       currentValue: cv,
@@ -223,8 +223,8 @@ export default {
   },
   computed: {
     inputStyleObj () {
-      let { type } = this
-      let style = {}
+      const { type } = this
+      const style = {}
 
       if (type === 'file') {
         style['opacity'] = '0.2'
@@ -236,16 +236,8 @@ export default {
       return style
     },
     classObj () {
-      let {
-        validStatus,
-        clearable,
-        size,
-        icon,
-        prefix,
-        postfix,
-        type
-      } = this
-      let classes = {}
+      const { validStatus, clearable, size, icon, prefix, postfix, type } = this
+      const classes = {}
 
       classes['va-has-error'] = validStatus === 'error'
       classes['va-has-success'] = validStatus === 'success'
@@ -263,8 +255,8 @@ export default {
       return classes
     },
     inputClassObj () {
-      let { theme } = this
-      let classes = {}
+      const { theme } = this
+      const classes = {}
 
       classes['va-form-control'] = true
       classes['va-form-control-' + theme] = true
@@ -328,7 +320,7 @@ export default {
       this.position = this.getPosition()
     },
     getPosition () {
-      let rect = this.$refs.input.getBoundingClientRect()
+      const rect = this.$refs.input.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,

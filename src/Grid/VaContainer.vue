@@ -13,8 +13,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { fluid } = this
-      let classes = {}
+      const { fluid } = this
+      const classes = {}
 
       classes['va-container-fluid'] = fluid
       classes['va-container'] = !fluid

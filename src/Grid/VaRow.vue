@@ -15,8 +15,8 @@ export default {
   },
   computed: {
     styles () {
-      let ret = {}
-      let half = Math.floor(this.gutter / 2)
+      const ret = {}
+      const half = Math.floor(this.gutter / 2)
       ret.marginLeft = ret.marginRight = `${-half}px`
       this.$nextTick(() => {
         this.$children.forEach(children => {

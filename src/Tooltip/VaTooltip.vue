@@ -36,7 +36,7 @@ export default {
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-tooltip'] = true
       classes['va-tooltip-' + this.placement.split(' ').join('-')] = true

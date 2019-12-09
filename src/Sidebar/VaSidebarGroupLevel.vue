@@ -51,7 +51,7 @@ export default {
     }
   },
   data () {
-    let s = this.showToggle
+    const s = this.showToggle
     return {
       st: s,
       isOpen: this.open
@@ -64,8 +64,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { isOpen, level } = this
-      let classes = {}
+      const { isOpen, level } = this
+      const classes = {}
 
       classes['va-sidebar-navigationlevel'] = true
       classes['va-sidebar-navigationlevel-closed'] = !isOpen

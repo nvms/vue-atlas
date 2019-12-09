@@ -136,8 +136,8 @@ export default {
   },
   computed: {
     styleObj () {
-      let style = {}
-      let { actualWidth } = this
+      const style = {}
+      const { actualWidth } = this
 
       actualWidth.slice(-1) === '%'
         ? (style['width'] = actualWidth)
@@ -174,7 +174,7 @@ export default {
     },
     update () {
       clearTimeout(this.timeoutID)
-      let self = this
+      const self = this
       if (this.readonly || this.disabled) return
       this.timeoutID = setTimeout(() => {
         if (!self.query) {
@@ -192,7 +192,7 @@ export default {
       this.show = false
     },
     isActive (index) {
-      let classes = 'va-dropdown-active'
+      const classes = 'va-dropdown-active'
       return this.current === index ? classes : ''
     },
     hit (index) {

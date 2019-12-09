@@ -126,7 +126,7 @@ export default {
     }
   },
   data () {
-    let cv = this.value
+    const cv = this.value
     return {
       focused: false,
       currentValue: cv,
@@ -198,12 +198,12 @@ export default {
   methods: {
     kd_tab (e) {
       e.preventDefault()
-      let textarea = this.$refs.textarea
-      let start = textarea.selectionStart
-      let end = textarea.selectionEnd
+      const textarea = this.$refs.textarea
+      const start = textarea.selectionStart
+      const end = textarea.selectionEnd
 
-      let target = e.target
-      let value = target.value
+      const target = e.target
+      const value = target.value
 
       target.value = value.substring(0, start) + '\t' + value.substring(end)
 
@@ -258,7 +258,7 @@ export default {
       this.position = this.getPosition()
     },
     getPosition () {
-      let rect = this.$refs.textarea.getBoundingClientRect()
+      const rect = this.$refs.textarea.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -287,8 +287,8 @@ export default {
   },
   computed: {
     styleObj () {
-      let { resize, actualWidth } = this
-      let style = {}
+      const { resize, actualWidth } = this
+      const style = {}
 
       style['resize'] = resize ? 'both' : 'none'
       style['width'] = actualWidth
@@ -296,7 +296,7 @@ export default {
       return style
     },
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-form-control'] = true
       classes['va-textarea'] = true
@@ -304,8 +304,8 @@ export default {
       return classes
     },
     styleObjContainer () {
-      let { minHeight, width } = this
-      let style = {}
+      const { minHeight, width } = this
+      const style = {}
 
       style['width'] = width
       style['min-height'] = minHeight
@@ -314,8 +314,8 @@ export default {
       return style
     },
     classObjContainer () {
-      let { validStatus } = this
-      let classes = {}
+      const { validStatus } = this
+      const classes = {}
 
       classes['va-has-error'] = validStatus === 'error'
       classes['va-has-success'] = validStatus === 'success'

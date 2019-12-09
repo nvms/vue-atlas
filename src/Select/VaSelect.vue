@@ -15,7 +15,7 @@
           v-if="showPlaceholder || !showSelected"
         >{{placeholder}}</span>
       </transition>
-      <span style="display: flex;flex-wrap: wrap;" v-if="showSelected">
+      <span style="display: flex;flex-wrap: wrap;margin-right:14px;" v-if="showSelected">
         <template v-if="multiple">
           <transition-group name="fade" class="va-trans-group-flex">
             <div
@@ -257,8 +257,8 @@ export default {
       return !!this.$slots.default
     },
     styleObj () {
-      let style = {}
-      let { actualWidth } = this
+      const style = {}
+      const { actualWidth } = this
 
       actualWidth.slice(-1) === '%'
         ? (style['width'] = actualWidth)
@@ -267,8 +267,8 @@ export default {
       return style
     },
     classObj () {
-      let { validStatus } = this
-      let classes = {}
+      const { validStatus } = this
+      const classes = {}
 
       classes['va-has-error'] = validStatus === 'error'
       classes['va-has-success'] = validStatus === 'success'
@@ -294,9 +294,9 @@ export default {
         return this.findInOptions(a)
       },
       set (value) {
-        let self = this
+        const self = this
         if (this.multiple) {
-          let ret = []
+          const ret = []
           for (let i = 0; i < value.length; i++) {
             ret.push(value[i].value)
           }
@@ -428,7 +428,7 @@ export default {
       )
     },
     addOption (value, label) {
-      let option = {
+      const option = {
         value,
         label
       }
@@ -472,7 +472,7 @@ export default {
       }
     },
     toggleDropdown (e) {
-      let tagName = e.target.tagName.toUpperCase()
+      const tagName = e.target.tagName.toUpperCase()
 
       // If the target wasn't the button, don't open it
       if (tagName !== 'BUTTON') {
@@ -495,17 +495,15 @@ export default {
 @import "../style/animate";
 
 .va-trans-group-flex {
-    display: flex;
-    position: absolute;
-    left: 0;
-    top: 6px;
+  display: flex;
 }
 
 .va-single-flex-wrap {
-    display: flex;
-    position: absolute;
-    left: 0;
-    top: 0;
+  display: flex;
+}
+
+.va-select-placeholder {
+  position: absolute;
 }
 
 @mixin select-theme-mixin(

@@ -85,8 +85,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { type } = this
-      let classes = {}
+      const { type } = this
+      const classes = {}
 
       classes['va-form-horizontal'] = type === 'horizontal'
       classes['va-form-inline'] = type === 'inline'
@@ -105,15 +105,15 @@ export default {
     })
 
     this.$on('Va@validateChange', val => {
-      let name = val.name
-      let validateResult = Object.assign({}, this._result)
+      const name = val.name
+      const validateResult = Object.assign({}, this._result)
 
       if (!validateResult.results) validateResult.results = {}
       validateResult.results[name] = val.result
 
       validateResult.isvalid = true
 
-      for (let i in validateResult.results) {
+      for (const i in validateResult.results) {
         if (!validateResult.results[i]['isvalid']) {
           validateResult.isvalid = false
           break

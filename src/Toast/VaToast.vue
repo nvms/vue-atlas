@@ -59,8 +59,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { placement, type } = this
-      let classes = {}
+      const { placement, type } = this
+      const classes = {}
 
       classes['va-toast'] = true
       classes['va-toast-' + type] = true

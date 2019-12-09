@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     iconType () {
-      let { type } = this
+      const { type } = this
 
       switch (type) {
         case 'success':
@@ -49,7 +49,7 @@ export default {
       return 'info-circle'
     },
     iconStyle () {
-      let { type } = this
+      const { type } = this
 
       switch (type) {
         case 'success':

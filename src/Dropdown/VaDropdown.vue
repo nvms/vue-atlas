@@ -65,8 +65,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { tall } = this
-      let classes = {}
+      const { tall } = this
+      const classes = {}
 
       classes['va-dropdown-selected'] = this.show
       classes['va-dropdown-con-tall'] = tall
@@ -76,11 +76,11 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-     if (!this.$refs.trigger) {
-         return
-     }
-      let el = this.$el
-      let trig = this.$refs.trigger.children[0]
+      if (!this.$refs.trigger) {
+        return
+      }
+      const el = this.$el
+      const trig = this.$refs.trigger.children[0]
       if (this.triggerEvent === 'click') {
         this._clickEvent = EventListener.listen(trig, 'click', this.toggle)
         this._closeEvent = EventListener.listen(window, 'click', e => {

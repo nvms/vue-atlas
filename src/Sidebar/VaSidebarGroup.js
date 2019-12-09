@@ -50,7 +50,7 @@ const VaSidebarGroup = {
     }, 10)
   },
   render (createElement) {
-    let { title } = this
+    const { title } = this
     const self = this
     const level = 1
     const tree = createElement(

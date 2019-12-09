@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
       classes['va-toggle'] = true
       classes['va-toggle--checked'] = this.value
       classes['va-toggle--disabled'] = this.disabled
@@ -70,7 +70,7 @@ export default {
       if (this.disabled) {
         return
       }
-      let newState = !this.value
+      const newState = !this.value
       this.$emit('input', newState)
       this.$emit('change', newState)
     }

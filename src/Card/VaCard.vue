@@ -35,8 +35,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { elevation } = this
-      let classes = {}
+      const { elevation } = this
+      const classes = {}
 
       classes['va-card'] = true
       classes['va-card-elevation-' + elevation] = true
@@ -44,23 +44,23 @@ export default {
       return classes
     },
     bodyStyleObj () {
-      let { padding } = this
-      let style = {}
+      const { padding } = this
+      const style = {}
 
       style['padding'] = padding
 
       return style
     },
     headerClassObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-card-header'] = true
 
       return classes
     },
     headerStyleObj () {
-      let { padding } = this
-      let style = {}
+      const { padding } = this
+      const style = {}
 
       style['padding-left'] = padding
       style['padding-right'] = padding

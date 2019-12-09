@@ -59,8 +59,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { placement } = this
-      let classes = {}
+      const { placement } = this
+      const classes = {}
 
       classes['va-aside'] = true
       classes['va-aside-left'] = placement === 'left'
@@ -97,7 +97,7 @@ export default {
   },
   watch: {
     show (val) {
-      let backdrop = document.createElement('div')
+      const backdrop = document.createElement('div')
       const body = document.body
       backdrop.className = 'va-aside-backdrop'
 
@@ -130,7 +130,7 @@ export default {
       if (this._clickEvent) this._clickEvent.remove()
 
       const body = document.body
-      let backdrop = document.querySelector(
+      const backdrop = document.querySelector(
         '.' + 'va-aside-backdrop'
       )
 

@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { rounded, centered, animated } = this
-      let classes = {}
+      const { rounded, centered, animated } = this
+      const classes = {}
 
       classes['va-placeholder'] = true
       classes['va-placeholder-rounded'] = rounded

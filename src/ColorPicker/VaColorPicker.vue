@@ -32,7 +32,7 @@ export default {
     }
   },
   data () {
-    let c = this.color
+    const c = this.color
     return {
       col: c,
       colors: {},
@@ -74,7 +74,7 @@ export default {
   },
   computed: {
     buttonStyleObj () {
-      let style = {}
+      const style = {}
 
       style['width'] = '15px'
       style['height'] = '100%'
@@ -85,7 +85,7 @@ export default {
       return style
     },
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-color-picker'] = true
 

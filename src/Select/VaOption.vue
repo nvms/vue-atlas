@@ -25,9 +25,9 @@ export default {
       return { label: this.fullLabel, value: this.value }
     },
     classes () {
-      let classes = {}
+      const classes = {}
 
-      classes[`va-select-item-active`] = this.isOptionSelected(
+      classes['va-select-item-active'] = this.isOptionSelected(
         this.option
       )
 

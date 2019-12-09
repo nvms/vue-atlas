@@ -86,8 +86,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { currentChecked, disabled } = this
-      let classes = {}
+      const { currentChecked, disabled } = this
+      const classes = {}
 
       classes['va-checkbox-label'] = true
       classes['va-checkbox-checked'] = currentChecked

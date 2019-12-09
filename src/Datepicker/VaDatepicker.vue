@@ -302,8 +302,8 @@ export default {
       this.$emit('input', null)
     },
     monthClassObj (m) {
-      let { currentValue, monthNames, parse, currDate } = this
-      let classes = {}
+      const { currentValue, monthNames, parse, currDate } = this
+      const classes = {}
 
       classes['va-datepicker-dateRange-item-active'] =
         currentValue &&
@@ -314,8 +314,8 @@ export default {
       return classes
     },
     yearClassObj (decade) {
-      let { currentValue, parse } = this
-      let classes = {}
+      const { currentValue, parse } = this
+      const classes = {}
 
       classes['va-datepicker-dateRange-item-active'] =
         currentValue &&
@@ -585,8 +585,8 @@ export default {
   },
   computed: {
     isDateSupported () {
-      let input = document.createElement('input')
-      let value = 'a'
+      const input = document.createElement('input')
+      const value = 'a'
       input.setAttribute('type', 'date')
       input.setAttribute('value', value)
       return input.value !== value
@@ -599,8 +599,8 @@ export default {
       return true
     },
     styleObj () {
-      let style = {}
-      let { actualWidth } = this
+      const style = {}
+      const { actualWidth } = this
 
       actualWidth.slice(-1) === '%'
         ? (style['width'] = actualWidth)

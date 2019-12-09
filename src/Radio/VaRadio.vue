@@ -73,8 +73,8 @@ export default {
   },
   computed: {
     objClass () {
-      let { currentChecked, disabled } = this
-      let classes = {}
+      const { currentChecked, disabled } = this
+      const classes = {}
 
       classes['va-radio-span'] = true
       classes['va-radio-checked'] = currentChecked

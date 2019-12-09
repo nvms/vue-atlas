@@ -92,7 +92,7 @@ export const renderLevelAsOpen = (parentItem, level, defaultOpenLevel) => {
   }
 
   for (let i = 0; i < parentItem.children.length; i++) {
-    let child = parentItem.children[i]
+    const child = parentItem.children[i]
 
     if (
       child.meta.target !== '' &&

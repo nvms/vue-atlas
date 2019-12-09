@@ -78,7 +78,7 @@ export default {
     }
   },
   data () {
-    let show = this.show
+    const show = this.show
     return {
       isShow: show,
       alive: true
@@ -97,17 +97,17 @@ export default {
        * Stackable logic
        */
       if (val) {
-        let x = document.getElementsByClassName(
+        const x = document.getElementsByClassName(
           'va-notification-in'
         )
         this.numberOfParentModals = x.length
-        let distanceToMove = 5
+        const distanceToMove = 5
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginTop = x[i].style['top']
+            const currentMarginTop = x[i].style['top']
             if (currentMarginTop && currentMarginTop !== '0px') {
-              let m = Math.abs(currentMarginTop.slice(0, -2))
-              let dist = parseInt(m + distanceToMove)
+              const m = Math.abs(currentMarginTop.slice(0, -2))
+              const dist = parseInt(m + distanceToMove)
               x[i].style['top'] = '-' + dist + 'px'
               x[i].style['right'] = '-' + dist + 'px'
             } else {
@@ -117,17 +117,17 @@ export default {
           }
         }
       } else {
-        let x = document.getElementsByClassName(
+        const x = document.getElementsByClassName(
           'va-notification-in'
         )
         this.numberOfParentModals = x.length
-        let distanceToMove = 5
+        const distanceToMove = 5
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginTop = x[i].style['top']
+            const currentMarginTop = x[i].style['top']
             if (currentMarginTop && currentMarginTop !== '0px') {
-              let m = Math.abs(currentMarginTop.slice(0, -2))
-              let dist = parseInt(m - distanceToMove)
+              const m = Math.abs(currentMarginTop.slice(0, -2))
+              const dist = parseInt(m - distanceToMove)
               x[i].style['top'] = '-' + dist + 'px'
               x[i].style['right'] = '-' + dist + 'px'
             }
@@ -178,8 +178,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { effect, type } = this
-      let classes = {}
+      const { effect, type } = this
+      const classes = {}
 
       classes['va-notification'] = true
       classes['va-notification-' + type] = true
@@ -191,7 +191,7 @@ export default {
       return {}
     },
     notificationIconType () {
-      let { type } = this
+      const { type } = this
 
       switch (type) {
         case 'default':

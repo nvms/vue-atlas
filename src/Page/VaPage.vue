@@ -33,7 +33,7 @@ export default {
     }
   },
   data () {
-    let s = this.size
+    const s = this.size
     return {
       currentDesktopMinimumWidth: 0,
       currentSidebarWidth: 0,
@@ -124,8 +124,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { sz, article, isMobile } = this
-      let classes = {}
+      const { sz, article, isMobile } = this
+      const classes = {}
 
       isMobile
         ? (classes['va-page-container-lg'] = true)
@@ -135,24 +135,24 @@ export default {
       return classes
     },
     containerStyleObj () {
-      let style = {}
+      const style = {}
 
       return style
     },
     wrapperStyleObj () {
-      let split = this.isSplit
-      let rtl = this.isRTL
-      let reverse = this.isReverse
-      let bg = this.bg
-      let style = {}
+      const split = this.isSplit
+      const rtl = this.isRTL
+      const reverse = this.isReverse
+      const bg = this.bg
+      const style = {}
 
-      let sw = parseInt(this.currentSidebarWidth)
-      let mw = parseInt(this.currentMinibarWidth)
-      let th = parseInt(this.currentTopbarHeight)
+      const sw = parseInt(this.currentSidebarWidth)
+      const mw = parseInt(this.currentMinibarWidth)
+      const th = parseInt(this.currentTopbarHeight)
       let dm = parseInt(this.currentDesktopMargin)
       let dmw = parseInt(this.currentDesktopMinimumWidth)
-      let cw = parseInt(this.currentContentWidth)
-      let mobile = this.isMobile
+      const cw = parseInt(this.currentContentWidth)
+      const mobile = this.isMobile
 
       style['background'] = bg
       style['position'] = 'fixed'
@@ -167,7 +167,7 @@ export default {
        */
       if (!mobile) {
         if (cw < dmw) {
-          let x = dmw - cw
+          const x = dmw - cw
           dm = dm - x / 2
         }
       } else {

@@ -41,8 +41,8 @@ export default {
   },
   methods: {
     init () {
-      let children = this.$children
-      let ret = []
+      const children = this.$children
+      const ret = []
       children.forEach(item => {
         item.currentChecked ? ret.push(item.label) : ''
       })
@@ -54,7 +54,7 @@ export default {
       this.currentValue = val
     },
     currentValue (val) {
-      let value = val || this.value
+      const value = val || this.value
       this.broadcast('VaCheckbox', 'Va@checkboxgroupChange', value)
       this.broadcast('VaCheckboxBtn', 'Va@checkboxgroupChange', value)
       this.$emit('input', value)
@@ -77,8 +77,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { vertical } = this
-      let classes = {}
+      const { vertical } = this
+      const classes = {}
 
       classes['va-btn-group'] = !vertical
       classes['va-btn-group-vertical'] = vertical
