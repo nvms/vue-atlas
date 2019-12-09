@@ -608,7 +608,7 @@ export default {
 
     .va-selected-tag-multiple {
         padding: 0 8px 0 8px !important;
-        line-height: 1.5 !important;
+        line-height: 1.6 !important;
         background: $N40;
         border-radius: 3px !important;
         box-shadow: inset 0 0 0 1px $N40;
