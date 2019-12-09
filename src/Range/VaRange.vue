@@ -2,7 +2,7 @@
   <div class="wrap" :style="{width: width || '100%'}">
     <input
       ref="range"
-      :class="va-range"
+      class="va-range"
       :value="currentValue"
       type="range"
       :name="name"
