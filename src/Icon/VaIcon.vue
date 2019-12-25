@@ -69,7 +69,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "../style/_reset.scss";
+</style><style lang="scss">
 @import "../variables";
 @import "../style/font";
 </style>
