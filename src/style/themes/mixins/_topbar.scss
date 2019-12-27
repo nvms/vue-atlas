@@ -9,10 +9,14 @@
   $formControlFocusBG
 ) {
   background: $mainBG;
+
   .va-topbar-inner {
     color: $mainColor;
   }
-  .va-input-con {
+
+  > .va-topbar-inner > .va-topbar-left > div > .va-input-con,
+  > .va-topbar-inner > .va-topbar-center > div > .va-input-con,
+  > .va-topbar-inner > .va-topbar-right > div > .va-input-con {
     input[type=text].va-form-control::-webkit-input-placeholder {
       color: $inputPlaceholderColor;
     }
