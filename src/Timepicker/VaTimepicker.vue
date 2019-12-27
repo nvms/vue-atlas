@@ -10,7 +10,7 @@
       :disabled="disabled"
       :readonly="readonly"
       @clean="clean"
-      @click.native="inputClick"
+      @mousedown.native="inputClick"
       :clearable="true"
       icon="clock"
       icon-style="regular"
@@ -40,9 +40,17 @@
           data-role="hour"
           class="va-timepicker-range-wrap"
         >
+          <div class="va-timepicker-preview">
+              <div>
+                {{fix(time.hour, 2)}}:{{fix(time.minute, 2)}}.{{fix(time.second, 2)}}
+              </div>
+              <div class="va-timepicker-preview-twelvehour">
+                {{fix(twelvehour, 2)}}:{{fix(time.minute, 2)}}.{{fix(time.second, 2)}} {{ampm}}
+              </div>
+          </div>
           <span>{{getL('hour')}}</span>
           <va-range
-            :width="190"
+            width="190"
             v-model="time.hour"
             :min="hourRange[0]"
             :max="hourRange[1]"
@@ -56,7 +64,7 @@
         >
           <span>{{getL('minute')}}</span>
           <va-range
-            :width="190"
+            width="190"
             v-model="time.minute"
             :min="minuteRange[0]"
             :max="minuteRange[1]"
@@ -70,7 +78,7 @@
         >
           <span>{{getL('second')}}</span>
           <va-range
-            :width="190"
+            width="190"
             v-model="time.second"
             :min="secondRange[0]"
             :max="secondRange[1]"
@@ -247,6 +255,12 @@ export default {
     },
     second () {
       return this.format.indexOf('ss') > -1
+    },
+    twelvehour () {
+      return this.time.hour > 12 ? this.time.hour - 12 : this.time.hour === 0 ? 12 : this.time.hour
+    },
+    ampm () {
+      return this.time.hour >= 12 ? 'PM' : 'AM'
     }
   },
   created () {
@@ -284,7 +298,7 @@ export default {
     background: $N0;
     margin-top: 6px;
     margin-bottom: 6px;
-    width: 220px;
+    width: 400px;
     float: left;
     z-index: 1000;
     padding: 15px;
@@ -292,9 +306,29 @@ export default {
       rgba(9, 30, 66, 0.31) 0px 0px 1px;
     border-radius: 3px;
   }
+  &-preview {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    color: $N100;
+    background: $N10;
+    margin-left: -15px;
+    margin-top: -15px;
+    margin-right: -15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-bottom: 1px solid $N30;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &-twelvehour {
+      display: inline-flex;
+      color: $N50;
+    }
+  }
   &-range-wrap {
     position: relative;
-    margin: 0 0 13px 0;
+    margin: 0 0 5px 0;
     span {
       color: $N100;
       font-size: 12px;
