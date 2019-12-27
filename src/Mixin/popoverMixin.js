@@ -151,7 +151,7 @@ const PopoverMixin = {
           this.position.top = triger.offsetTop + triger.offsetHeight
           break
         default:
-          console.error('Wrong placement group')
+          break
       }
       popover.style.top = this.position.top + 'px'
       popover.style.left = this.position.left + 'px'
