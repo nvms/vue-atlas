@@ -6,34 +6,38 @@
       :size="size"
       :style="{minWidth:'100%'}"
       :type="type"
-      @click.native="toggleDropdown"
+      @mousedown.native="toggleDropdown"
       ref="button"
     >
-      <span
-        :class="`va-select-placeholder`"
-        v-if="showPlaceholder || !showSelected"
-      >{{placeholder}}</span>
-      <span style="display: flex;flex-wrap: wrap;" v-if="showSelected">
+      <transition name="fade">
+        <span
+          class="va-select-placeholder"
+          v-if="showPlaceholder || !showSelected"
+        >{{placeholder}}</span>
+      </transition>
+      <span style="display: flex;flex-wrap: wrap;margin-right:14px;" v-if="showSelected">
         <template v-if="multiple">
-          <div
-            :class="`va-selected-tag`"
-            :key="index"
-            @click.stop="del(item)"
-            tabindex="0"
-            v-for="(item, index) in selectedItems"
-          >
-            <span :class="`va-selected-tag__label`">
-              <slot :item="item" name="item">
-                <span v-html="format(item)"/>
-              </slot>
-            </span>
-            <span :class="`va-selected-tag__icon`">
-              <va-icon type="times"/>
-            </span>
-          </div>
+          <transition-group name="fade" class="va-trans-group-flex">
+            <div
+              class="va-selected-tag va-selected-tag-multiple"
+              :key="Math.round(Math.random() * Number.MAX_SAFE_INTEGER)"
+              @click.stop="del(item)"
+              tabindex="0"
+              v-for="(item, index) in selectedItems"
+            >
+              <span class="va-selected-tag__label">
+                <slot :item="item" name="item">
+                  <span v-html="format(item)"/>
+                </slot>
+              </span>
+              <span class="va-selected-tag__icon">
+                <va-icon type="times"/>
+              </span>
+            </div>
+          </transition-group>
         </template>
         <template v-else>
-          <div>
+          <div class="va-single-flex-wrap">
             <slot :item="selectedItems[0]" name="item">
               <span v-html="format(selectedItems[0])"/>
             </slot>
@@ -52,9 +56,9 @@
         v-va-position="show"
       >
         <li v-if="search">
-          <div :class="`va-search-wrap`">
+          <div class="va-search-wrap">
             <va-input
-              :class="`va-select-search`"
+              class="va-select-search"
               :placeholder="inputPlaceholder"
               @confirm="addExtra"
               icon="search"
@@ -65,7 +69,7 @@
             />
           </div>
         </li>
-        <li :class="`va-select-all`" v-if="multiple">
+        <li class="va-select-all" v-if="multiple">
           <a @click.prevent="selectAll">
             {{getL('all')}}
             <va-icon
@@ -77,7 +81,7 @@
             />
           </a>
         </li>
-        <div :class="`va-select-items-wrapper`">
+        <div class="va-select-items-wrapper">
           <slot>
             <va-option
               :key="index"
@@ -88,7 +92,7 @@
           </slot>
         </div>
         <div
-          :class="`va-notify`"
+          class="va-notify"
           transition="fadeDown"
           v-show="showNotify"
         >Limit: {{limit}}</div>
@@ -253,8 +257,8 @@ export default {
       return !!this.$slots.default
     },
     styleObj () {
-      let style = {}
-      let { actualWidth } = this
+      const style = {}
+      const { actualWidth } = this
 
       actualWidth.slice(-1) === '%'
         ? (style['width'] = actualWidth)
@@ -263,8 +267,8 @@ export default {
       return style
     },
     classObj () {
-      let { validStatus } = this
-      let classes = {}
+      const { validStatus } = this
+      const classes = {}
 
       classes['va-has-error'] = validStatus === 'error'
       classes['va-has-success'] = validStatus === 'success'
@@ -290,9 +294,9 @@ export default {
         return this.findInOptions(a)
       },
       set (value) {
-        let self = this
+        const self = this
         if (this.multiple) {
-          let ret = []
+          const ret = []
           for (let i = 0; i < value.length; i++) {
             ret.push(value[i].value)
           }
@@ -424,7 +428,7 @@ export default {
       )
     },
     addOption (value, label) {
-      let option = {
+      const option = {
         value,
         label
       }
@@ -467,7 +471,17 @@ export default {
         this.$refs.button.focus()
       }
     },
-    toggleDropdown () {
+    toggleDropdown (e) {
+      const tagName = e.target.tagName.toUpperCase()
+
+      // If the target wasn't the button, don't open it
+      if (tagName !== 'BUTTON') {
+        e.preventDefault()
+        e.stopPropagation()
+
+        return
+      }
+
       if (!this.disabled && !this.readonly) {
         this.show = !this.show
       }
@@ -476,7 +490,23 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+@import "../style/animate";
+
+.va-trans-group-flex {
+  display: flex;
+}
+
+.va-single-flex-wrap {
+  display: flex;
+}
+
+.va-select-placeholder {
+  position: absolute;
+}
+
 @mixin select-theme-mixin(
   $hasErrorBtnBorder,
   $btnOpenBackgroundColor,
@@ -512,6 +542,24 @@ export default {
     border-bottom: $searchBorderBottom;
   }
 
+  &-group:hover {
+      .va-selected-tag-multiple {
+        box-shadow: inset 0 0 0 1px $N50;
+        background: $N50;
+      }
+  }
+
+  &-btn:active {
+      .va-select-placeholder {
+          color: $B400 !important;
+      }
+      .va-btn-text-fade {
+          > i {
+              color: $B400 !important;
+          }
+      }
+  }
+
   &-btn-open {
     background-color: $btnOpenBackgroundColor;
     color: $btnOpenColor !important;
@@ -539,13 +587,13 @@ export default {
       }
 
       &__icon {
-        color: $selectedTagIconColor;
+        color: $N200;
       }
 
       &:hover {
         color: $selectedTagHoverColor;
 
-        .va-selected-tag__icon {
+        .va-selected-tag__icon i {
           color: $selectedTagHoverIconColor !important;
         }
       }
@@ -553,10 +601,76 @@ export default {
       &:active {
         color: $selectedTagActiveColor;
 
-        .va-selected-tag__icon {
-          color: $selectedTagActiveIconColor !important;
+        .va-selected-tag__icon i {
+          color: $R500 !important;
         }
       }
+    }
+
+    .va-selected-tag-multiple {
+        padding: 0 8px 0 8px !important;
+        line-height: 1.6 !important;
+        background: $N40;
+        border-radius: 3px !important;
+        box-shadow: inset 0 0 0 1px $N40;
+
+        &:hover {
+            box-shadow: inset 0 0 0 1px $R50;
+            background: $R50;
+        }
+
+        &:active {
+            box-shadow: inset 0 0 0 1px $R75 !important;
+            background: $R75 !important;
+
+            .va-selected-tag__label {
+                color: $R500 !important;
+            }
+        }
+    }
+
+    .va-select-btn-open {
+        .va-selected-tag-multiple:hover {
+            box-shadow: inset 0 0 0 1px $R50;
+            background: $R50;
+        }
+
+        .va-selected-tag-multiple:active {
+            box-shadow: inset 0 0 0 1px $R75 !important;
+            background: $R75 !important;
+
+            .va-selected-tag__label {
+                color: $R500 !important;
+            }
+        }
+    }
+
+    .va-select-btn-open {
+        .va-selected-tag-multiple {
+            box-shadow: inset 0 0 0 1px $B75;
+            background: $B75;
+
+            .va-selected-tag__label {
+                color: $B300;
+            }
+            .va-selected-tag__icon i {
+                color: $B300;
+            }
+        }
+    }
+
+    .va-select-btn:active {
+        .va-selected-tag-multiple {
+            box-shadow: inset 0 0 0 1px $B75;
+            background: $B75;
+
+            .va-selected-tag__label {
+                color: $B300;
+            }
+            .va-selected-tag__icon i {
+                color: $B300;
+            }
+        }
     }
 
     .va-dropdown-menu {
@@ -587,25 +701,29 @@ export default {
 
     .va-dropdown-toggle {
       .va-select-placeholder {
-        color: $dropdownPlaceholderColor !important;
-      }
-
-      &:active:not(.va-select-btn-open) {
-        .va-select-placeholder {
-          color: $dropdownPlaceholderActiveColor !important;
-        }
-        i {
-          color: $dropdownPlaceholderActiveColor !important;
-        }
+        color: $dropdownPlaceholderColor;
       }
     }
 
     .va-select-btn-open {
       .va-select-placeholder {
-        color: $dropdownPlaceholderActiveColor !important;
+        color: $dropdownPlaceholderActiveColor;
+      }
+      .va-selected-tag:hover {
+          .va-selected-tag__label {
+              color: $R300;
+          }
+      }
+      .va-selected-tag:active {
+          .va-selected-tag__label {
+              color: $R500;
+          }
+      }
+      .va-selected-tag__label {
+          color: $B400;
       }
       i {
-        color: $dropdownPlaceholderActiveColor !important;
+        color: $dropdownPlaceholderActiveColor;
       }
     }
   }
@@ -614,7 +732,6 @@ export default {
     background: $itemActiveBackground;
     color: $itemActiveColor !important;
 
-    // an active item, when hovered, should not change bgcolor
     &:hover {
       background: $itemActiveBackground !important;
       color: $itemActiveColor !important;
@@ -634,7 +751,7 @@ export default {
 .va--theme-light .va-select {
   @include select-theme-mixin(
     $hasErrorBtnBorder: 2px solid $R400 !important,
-    $btnOpenBackgroundColor: $B50 !important,
+    $btnOpenBackgroundColor: rgba(179, 212, 255, 0.6) !important,
     $btnOpenColor: $B400 !important,
     $selectedTagBackground: none,
     $selectedTagFocusOutline: none,
@@ -679,6 +796,20 @@ export default {
       left: 0;
       border-radius: 3px;
     }
+
+    & > div > i {
+      color: $B400 !important;
+    }
+
+    & .va-single-flex-wrap {
+      color: $B400 !important;
+    }
+  }
+
+  &:active {
+    .va-selected-tag__icon i {
+      color: $B400;
+    }
   }
 
   .va-selected-tag {
@@ -686,7 +817,7 @@ export default {
     display: flex;
     align-items: baseline;
     padding: 0 0 0 8px;
-    margin-right: 3px;
+    margin-right: 5px;
     border-radius: 2px;
     line-height: 2;
     position: relative;
@@ -697,7 +828,10 @@ export default {
     }
 
     &__icon {
-      font-size: 0.8em;
+      font-size: 0.7em;
+      top: -1px;
+      position: relative;
+      left: 6px;
     }
   }
 

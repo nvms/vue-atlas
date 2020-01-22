@@ -1,8 +1,8 @@
 <template>
   <div :class="classObj" :style="styleObj">
-    <div :class="`va-minibar-inner`" :style="styleObjInner">
+    <div class="va-minibar-inner" :style="styleObjInner">
 
-      <div :class="`va-minibar-top`">
+      <div class="va-minibar-top">
         <slot name="top">
           <div v-for="(item, index) in topItems" :key="index">
             <va-minibar-item
@@ -28,7 +28,7 @@
         </slot>
       </div>
 
-      <div :class="`va-minibar-bottom`">
+      <div class="va-minibar-bottom">
         <slot name="bottom">
           <div v-for="(item, index) in bottomItems" :key="index">
             <va-minibar-item
@@ -79,7 +79,7 @@ export default {
     }
   },
   data () {
-    let t = this.theme
+    const t = this.theme
     return {
       currentDesktopMinimumWidth: 0,
       currentDesktopMargin: 0,
@@ -165,8 +165,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { th } = this
-      let classes = {}
+      const { th } = this
+      const classes = {}
 
       classes['va-minibar'] = true
       classes['va-minibar--theme-' + th] = true
@@ -174,7 +174,7 @@ export default {
       return classes
     },
     styleObjInner () {
-      let style = {}
+      const style = {}
 
       // style['background'] = 'linear-gradient(to left, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.15) 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0) 40px)'
 
@@ -183,17 +183,17 @@ export default {
     styleObj () {
       let dmw = parseInt(this.currentDesktopMinimumWidth)
       let dm = parseInt(this.currentDesktopMargin)
-      let mw = parseInt(this.currentMinibarWidth)
-      let th = parseInt(this.currentTopbarHeight)
-      let cw = parseInt(this.currentContentWidth)
-      let sw = parseInt(this.currentSidebarWidth)
-      let sp = this.sidebarPriority
-      let mp = this.minibarPriority
-      let reverse = this.isReverse
-      let mobile = this.isMobile
-      let split = this.isSplit
-      let rtl = this.isRTL
-      let style = {}
+      const mw = parseInt(this.currentMinibarWidth)
+      const th = parseInt(this.currentTopbarHeight)
+      const cw = parseInt(this.currentContentWidth)
+      const sw = parseInt(this.currentSidebarWidth)
+      const sp = this.sidebarPriority
+      const mp = this.minibarPriority
+      const reverse = this.isReverse
+      const mobile = this.isMobile
+      const split = this.isSplit
+      const rtl = this.isRTL
+      const style = {}
 
       style['width'] = mw + 'px'
       style['min-width'] = mw + 'px'
@@ -212,7 +212,7 @@ export default {
        */
       if (!mobile) {
         if (cw < dmw) {
-          let x = dmw - cw
+          const x = dmw - cw
           dm = dm - x / 2
         }
       } else {
@@ -270,3 +270,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss">
+@import "../variables";
+@import "../style/bars";
+@import "../style/themes";
+</style>

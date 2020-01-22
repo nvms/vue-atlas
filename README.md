@@ -12,44 +12,54 @@ $ yarn add vue-atlas
 $ npm install vue-atlas
 ```
 
-You can either import all of the components into your project or, to decrease bundle size, import only the components you require.
+## Usage
 
-## 📦 Importing components
+### Import everything
 
-### As a whole
+The minified stylesheet is roughly 200kb (~30kb gzipped). If this worries you, please see below how to import
+only the components you require for a smaller bundle.
 
 ```javascript
-import Vue from 'vue'
-
+// Wherever your Vue entrypoint is.
 import Va from 'vue-atlas'
 import 'vue-atlas/dist/vue-atlas.css'
 
-Vue.use(Va, 'en')
+Vue.use(Va, 'en') // or 'es', 'fr', 'ru'
 ```
 
-### Individually
-
-For now, component stylesheets have not been modularized, so you will need to import the entire CSS bundle.
+### Import something specific
 
 ```javascript
-import Vue from 'vue'
+// You will need sass-loader and node-sass for this.
+import { VaDatepicker } from 'vue-atlas/src/Datepicker'
 
-import { VaButton } from 'vue-atlas/src/Button'
-import { VaSelect } from 'vue-atlas/src/Select'
-import { VaDropdown } from 'vue-atlas/src/Dropdown'
-import 'vue-atlas/dist/vue-atlas.css'
+Vue.use(VaDatepicker)
 
-Vue.use(VaButton)
-Vue.use(VaSelect)
-Vue.use(VaDropdown)
+// The Datepicker component will check for the presence
+// of the VaLocale prototype to decide how to display content.
+Vue.prototype.VaLocale = 'fr' // default 'en'
 ```
 
-## 🎉 Contributors
+Create or modify your project's `vue.config.js` and point `css.loaderOptions.sass.prependData`
+to `node_modules/vue-atlas/src/variables.scss`. This will provide imported
+components with the color definitions that they need. It's just color definitions.
+It's a small file. It will also give *your* components access to
 
-If you would like to contribute, please read [CONTRIBUTING.md](https://github.com/nvms/vue-atlas/blob/master/.github/CONTRIBUTING.md).
+If you want access to
+the [atlas color variables](https://github.com/nvms/vue-atlas/blob/master/src/style/_colors.scss)
+in your own project's components, modify your project's `vue.config.js` and point
+`css.loaderOptions.sass.prependData` to `node_modules/vue-atlas/src/style/_colors.scss`.
 
-Many thanks to those of you who have taken an interest in this project and have decided to make contributions. Significant contribution will get you added to the list!
+`vue.config.js`
 
-- [SamuelRiversMoore](https://github.com/SamuelRiversMoore)
-- [marvinrabe](https://github.com/marvinrabe)
-- [rejifald](https://github.com/rejifald)
+```javascript
+module.exports = {
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `@import "@/../node_modules/vue-atlas/src/style/_colors.scss";`
+      }
+    }
+  }
+}
+```

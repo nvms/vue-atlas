@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj">
-    <div :class="`va-sidebar-navigationlevel-parent`">
-      <div :class="`va-sidebar-group-item`">
+    <div class="va-sidebar-navigationlevel-parent">
+      <div class="va-sidebar-group-item">
         <va-sidebar-group-toggle
           :open="isOpen"
           @click.native="onToggleClick"
@@ -15,7 +15,7 @@
         />
       </div>
     </div>
-    <ul :class="`va-sidebar-navigationlevel-children`">
+    <ul class="va-sidebar-navigationlevel-children">
       <slot/>
     </ul>
   </div>
@@ -51,7 +51,7 @@ export default {
     }
   },
   data () {
-    let s = this.showToggle
+    const s = this.showToggle
     return {
       st: s,
       isOpen: this.open
@@ -64,8 +64,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { isOpen, level } = this
-      let classes = {}
+      const { isOpen, level } = this
+      const classes = {}
 
       classes['va-sidebar-navigationlevel'] = true
       classes['va-sidebar-navigationlevel-closed'] = !isOpen

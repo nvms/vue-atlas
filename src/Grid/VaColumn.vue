@@ -16,7 +16,7 @@ export default {
   computed: {
     classObj () {
       return [
-        `va-col`,
+        'va-col',
         {
           [`va-col-xs-${this.xs}`]: this.xs,
           [`va-col-sm-${this.sm}`]: this.sm,

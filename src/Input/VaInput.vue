@@ -4,7 +4,7 @@
     :style="{'width': actualWidth}"
     v-if="!showButtonsWarning"
   >
-    <span v-if="prefix !== ''" :class="`va-input-prefix`">{{prefix}}</span>
+    <span v-if="prefix !== ''" class="va-input-prefix">{{prefix}}</span>
     <input
       v-if="noVModel"
       ref="input"
@@ -45,25 +45,25 @@
       :value="value"
     >
     <div
-      :class="`va-input-icon-wrapper`"
+      class="va-input-icon-wrapper"
       v-if="icon !== 'undefined' || clearable"
     >
       <va-icon
         v-if="clearable"
         type="times"
         icon-style="solid"
-        :class="`va-input-clearable`"
+        class="va-input-clearable"
         @click.native.stop="clean"
       />
       <va-icon
-        :class="`va-input-show-icon`"
+        class="va-input-show-icon"
         :type="icon"
         :icon-style="iconStyle"
       />
     </div>
     <span
       v-if="postfix !== ''"
-      :class="`va-input-postfix`"
+      class="va-input-postfix"
     >{{postfix}}</span>
     <va-input-ops
       v-if="buttons"
@@ -181,7 +181,7 @@ export default {
     }
   },
   data () {
-    let cv = this.value
+    const cv = this.value
     return {
       focused: false,
       currentValue: cv,
@@ -223,8 +223,8 @@ export default {
   },
   computed: {
     inputStyleObj () {
-      let { type } = this
-      let style = {}
+      const { type } = this
+      const style = {}
 
       if (type === 'file') {
         style['opacity'] = '0.2'
@@ -236,16 +236,8 @@ export default {
       return style
     },
     classObj () {
-      let {
-        validStatus,
-        clearable,
-        size,
-        icon,
-        prefix,
-        postfix,
-        type
-      } = this
-      let classes = {}
+      const { validStatus, clearable, size, icon, prefix, postfix, type } = this
+      const classes = {}
 
       classes['va-has-error'] = validStatus === 'error'
       classes['va-has-success'] = validStatus === 'success'
@@ -263,8 +255,8 @@ export default {
       return classes
     },
     inputClassObj () {
-      let { theme } = this
-      let classes = {}
+      const { theme } = this
+      const classes = {}
 
       classes['va-form-control'] = true
       classes['va-form-control-' + theme] = true
@@ -328,7 +320,7 @@ export default {
       this.position = this.getPosition()
     },
     getPosition () {
-      let rect = this.$refs.input.getBoundingClientRect()
+      const rect = this.$refs.input.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -351,6 +343,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../style/form";
+
 @mixin input-theme-mixin($iconColor, $iconHoverColor, $iconActiveColor) {
   .va-input-clearable,
   .va-input-show-icon {
@@ -433,8 +427,8 @@ export default {
   right: 10px;
   font-size: 26px;
   padding: 0;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
+  -webkit-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
 }
 
 .va-input-clearable {

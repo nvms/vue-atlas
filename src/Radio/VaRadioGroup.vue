@@ -39,7 +39,7 @@ export default {
         this.currentValue = val
       } else {
         // first load
-        let children = this.$children
+        const children = this.$children
         let ret
 
         children.forEach(item => {
@@ -76,8 +76,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { vertical } = this
-      let classes = {}
+      const { vertical } = this
+      const classes = {}
 
       // The -btn-group class is only necessary to give the proper border radius to buttons
       // in a radio group if radio buttons are used instead of regular radio elements.

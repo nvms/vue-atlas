@@ -1,54 +1,54 @@
 <template>
   <transition name="fadeDown">
-    <div ref="popup" :class="`va-color-picker-popup`">
-      <div :class="`va-color-picker-upper`">
+    <div ref="popup" class="va-color-picker-popup">
+      <div class="va-color-picker-upper">
         <div
           ref="gradient"
           :style="gradientStyleObj"
           @mousedown="gradientOnMousedown"
           @touchstart="gradientOnMousedown"
-          :class="`va-color-picker-gradient`"
+          class="va-color-picker-gradient"
         >
-          <div :class="`va-color-picker-gradient-white`"/>
-          <div :class="`va-color-picker-gradient-black`"/>
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-gradient-white"/>
+          <div class="va-color-picker-gradient-black"/>
+          <div class="va-color-picker-border"/>
           <div
             ref="gradientCursor"
-            :class="`va-color-picker-gradient-cursor`"
+            class="va-color-picker-gradient-cursor"
           />
         </div>
         <div
           ref="hue"
           @mousedown="hueSliderOnMousedown"
           @touchstart="hueSliderOnMousedown"
-          :class="`va-color-picker-hue-track`"
+          class="va-color-picker-hue-track"
         >
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-border"/>
           <div
             ref="hueCursor"
-            :class="`va-color-picker-hue-cursor`"
+            class="va-color-picker-hue-cursor"
           />
         </div>
         <div
           ref="alpha"
           @mousedown="alphaSliderOnMousedown"
           @touchstart="alphaSliderOnMousedown"
-          :class="`va-color-picker-alpha-track`"
+          class="va-color-picker-alpha-track"
           v-if="!hideAlpha"
         >
           <div
             :style="alphaStyleObj"
-            :class="`va-color-picker-alpha-track-color`"
+            class="va-color-picker-alpha-track-color"
             v-if="!hideAlpha"
           />
-          <div :class="`va-color-picker-border`"/>
+          <div class="va-color-picker-border"/>
           <div v-if="!hideAlpha"
             ref="alphaCursor"
-            :class="`va-color-picker-alpha-cursor`"
+            class="va-color-picker-alpha-cursor"
           />
         </div>
       </div>
-      <div :class="`va-color-picker-lower`">
+      <div class="va-color-picker-lower">
         <va-input size="xs" v-model="hex" @change="hexChange" width="68px"/>
         <va-input size="xs" v-model="rgb.r" @change="rChange" width="38px"/>
         <va-input size="xs" v-model="rgb.g" @change="gChange" width="38px"/>
@@ -56,7 +56,7 @@
         <va-input size="xs" v-model="alpha" @change="aChange" width="40px" v-if="!hideAlpha"/>
       </div>
       <div
-        :class="`va-color-picker-lower`"
+        class="va-color-picker-lower"
         style="margin:0;color:#999;"
       >
         <span style="text-align:center;width:68px;font-size:10px;">HEX</span>
@@ -115,16 +115,16 @@ export default {
   },
   computed: {
     gradientStyleObj () {
-      let { hsb, alpha } = this
-      let style = {}
+      const { hsb, alpha } = this
+      const style = {}
 
       style['background'] = 'hsl(' + hsb.h + ', 100%, 50%, ' + alpha + ')'
 
       return style
     },
     alphaStyleObj () {
-      let { hsb } = this
-      let style = {}
+      const { hsb } = this
+      const style = {}
 
       style['background'] =
         'linear-gradient(180deg, hsl(' +
@@ -144,7 +144,7 @@ export default {
       }, 50)
     },
     emitColors () {
-      let colorsToEmit = {
+      const colorsToEmit = {
         rgb: this.rgb,
         rgba: {
           r: this.rgb.r,
@@ -159,19 +159,19 @@ export default {
       this.$emit('change', colorsToEmit)
     },
     rChange (e) {
-      let rgb = { r: e, g: this.rgb.g, b: this.rgb.b }
+      const rgb = { r: e, g: this.rgb.g, b: this.rgb.b }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     gChange (e) {
-      let rgb = { r: this.rgb.r, g: e, b: this.rgb.b }
+      const rgb = { r: this.rgb.r, g: e, b: this.rgb.b }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
     },
     bChange (e) {
-      let rgb = { r: this.rgb.r, g: this.rgb.g, b: e }
+      const rgb = { r: this.rgb.r, g: this.rgb.g, b: e }
       this.hsb = rgbToHsb(rgb)
       this.hex = hsbToHex(rgbToHsb(rgb))
       this.updateControls()
@@ -195,7 +195,7 @@ export default {
       e.returnValue = false
     },
     getElementRect (el) {
-      let rect = el.getBoundingClientRect()
+      const rect = el.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -221,8 +221,8 @@ export default {
        * the offset for where the cursor appears in
        * relation to the system cursor.
        */
-      let cursorOffsetArrowLeft = 1
-      let cursorOffsetArrowTop = 2
+      const cursorOffsetArrowLeft = 1
+      const cursorOffsetArrowTop = 2
 
       /**
        * absolute x and y position of the system cursor
@@ -310,7 +310,7 @@ export default {
     },
 
     makeHueSelection (e) {
-      let cursorOffsetArrowTop = 2
+      const cursorOffsetArrowTop = 2
       /**
        * absolute y position of the system cursor
        * in relation to the hue track
@@ -367,7 +367,7 @@ export default {
       /**
        * find where it needs to be in the x
        */
-      let left =
+      const left =
         (this.hsb.s * this.gradientPosition.width) / 100 - this.cursorOffsetLeft
       this.x = left
       this.$refs.gradientCursor.style.left = left + 'px'
@@ -413,7 +413,7 @@ export default {
     },
 
     makeAlphaSelection (e) {
-      let cursorOffsetArrowTop = 2
+      const cursorOffsetArrowTop = 2
       /**
        * absolute y position of the system cursor
        * in relation to the alpha track

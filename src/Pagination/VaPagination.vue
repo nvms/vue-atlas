@@ -82,8 +82,8 @@ export default {
       return Math.max(this.max, this.pageCount)
     },
     countPage (end, start = 0) {
-      let pages = []
-      let min = Math.min(end, this.pageCount)
+      const pages = []
+      const min = Math.min(end, this.pageCount)
 
       for (let i = start; i < min; i++) {
         pages.push(i + 1)
@@ -104,7 +104,7 @@ export default {
         this.onLastPage = true
       }
       // let s = this.currentValue - Math.floor(this.max / 2)
-      let e = this.currentValue + Math.floor(this.max / 2)
+      const e = this.currentValue + Math.floor(this.max / 2)
 
       if (
         this.max < this.pageCount &&
@@ -122,8 +122,8 @@ export default {
       }
     },
     changePage (index) {
-      let { max } = this
-      let middle = Math.ceil(max / 2)
+      const { max } = this
+      const middle = Math.ceil(max / 2)
 
       if (index <= 1) {
         index = 1
@@ -161,7 +161,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-pagination'] = true
 

@@ -49,8 +49,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { bold, type, size, uppercase, truncate } = this
-      let classes = {}
+      const { bold, type, size, uppercase, truncate } = this
+      const classes = {}
 
       classes['va-lozenge'] = true
       classes['va-lozenge-bold'] = bold
@@ -65,7 +65,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 @mixin lozengeType($bgCol, $fontCol) {
   background-color: $bgCol;
   color: $fontCol;
@@ -77,7 +80,7 @@ export default {
   line-height: 1;
   display: inline-block;
   padding: 3px 4px 3px;
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
   vertical-align: sub;
 
@@ -91,12 +94,12 @@ export default {
   }
   &-sm {
     padding: 2px 3px 2px;
-    border-radius: 3px;
+    border-radius: 2px;
     font-size: 10px;
   }
   &-lg {
     padding: 3px 4px 3px;
-    border-radius: 4px;
+    border-radius: 3px;
     font-size: 14px;
     font-weight: 500;
   }

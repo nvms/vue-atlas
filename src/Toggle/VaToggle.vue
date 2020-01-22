@@ -2,7 +2,7 @@
   <label :class="classObj" @click.prevent>
     <input
       :checked="value"
-      :class="`va-toggle__input`"
+      class="va-toggle__input"
       :name="name"
       @keypress.space.prevent="toggle"
       tabindex="-1"
@@ -10,14 +10,14 @@
     >
     <div
       :aria-label="label"
-      :class="`va-toggle__slide`"
+      class="va-toggle__slide"
       :tabindex="disabled ? -1 : 0"
       @click="toggle"
       @keypress.space.prevent="toggle"
     >
-      <div :class="`va-toggle__inner`">
-        <span :class="`va-toggle__handle`"></span>
-        <span :class="`va-toggle__icon`">
+      <div class="va-toggle__inner">
+        <span class="va-toggle__handle"></span>
+        <span class="va-toggle__icon">
           <va-icon :type="icon"></va-icon>
         </span>
       </div>
@@ -54,7 +54,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
       classes['va-toggle'] = true
       classes['va-toggle--checked'] = this.value
       classes['va-toggle--disabled'] = this.disabled
@@ -70,7 +70,7 @@ export default {
       if (this.disabled) {
         return
       }
-      let newState = !this.value
+      const newState = !this.value
       this.$emit('input', newState)
       this.$emit('change', newState)
     }
@@ -78,7 +78,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-toggle {
   $self: &;
   display: inline-block;
@@ -103,7 +106,7 @@ export default {
     border-color: transparent;
     border-image: initial;
     padding: 2px;
-    transition: all 0.2s ease 0s;
+    transition: all 0.15s ease 0s;
 
     &:focus {
       border-color: $B100;
@@ -122,7 +125,6 @@ export default {
     flex-direction: row-reverse;
     height: 100%;
     width: 100%;
-    transition: all 0.2s ease 0s;
   }
 
   &__handle {
@@ -135,7 +137,7 @@ export default {
     transform: initial;
     width: 12px;
     border-radius: 50%;
-    transition: all 0.2s ease 0s;
+    transition: all 0.15s ease 0s;
   }
 
   &__icon {

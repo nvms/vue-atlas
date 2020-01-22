@@ -1,19 +1,19 @@
 <template>
   <transition :name="(this.placement === 'left') ? 'slideleft' : 'slideright'">
     <div :class="classObj" :style="{width:width}" ref="aside" v-show="show">
-      <div :class="`va-aside-dialog`">
-        <div :class="`va-aside-content`">
-          <div :class="`va-aside-header`" v-if="header">
+      <div class="va-aside-dialog">
+        <div class="va-aside-content">
+          <div class="va-aside-header" v-if="header">
             <button
-              :class="`va-close`"
+              class="va-close"
               @click="close"
               type="button"
             >
               <span>&times;</span>
             </button>
-            <div :class="`va-aside-title`">{{title}}</div>
+            <div class="va-aside-title">{{title}}</div>
           </div>
-          <div :class="`va-aside-body`">
+          <div class="va-aside-body">
             <slot/>
           </div>
         </div>
@@ -59,8 +59,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { placement } = this
-      let classes = {}
+      const { placement } = this
+      const classes = {}
 
       classes['va-aside'] = true
       classes['va-aside-left'] = placement === 'left'
@@ -97,7 +97,7 @@ export default {
   },
   watch: {
     show (val) {
-      let backdrop = document.createElement('div')
+      const backdrop = document.createElement('div')
       const body = document.body
       backdrop.className = 'va-aside-backdrop'
 
@@ -130,7 +130,7 @@ export default {
       if (this._clickEvent) this._clickEvent.remove()
 
       const body = document.body
-      let backdrop = document.querySelector(
+      const backdrop = document.querySelector(
         '.' + 'va-aside-backdrop'
       )
 
@@ -147,9 +147,12 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-aside-open {
-  transition: transform 0.3s;
+  transition: transform 0.15s;
 }
 
 .va-aside {
@@ -191,7 +194,7 @@ export default {
     left: 0;
     z-index: 5;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.15s ease-in-out;
     background: rgba(9, 30, 66, 0.54);
   }
   &-in {

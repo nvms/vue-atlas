@@ -1,16 +1,16 @@
 <template>
-  <span ref="tooltip" :class="`va-tooltip_wrapper`">
+  <span ref="tooltip" class="va-tooltip_wrapper">
     <span
       ref="trigger"
-      :class="`va-tooltip_trigger`"
+      class="va-tooltip_trigger"
       v-on="listeners"
     >
       <slot/>
     </span>
     <transition :name="effect">
       <div :class="classObj" ref="popover" v-show="isShow">
-        <div v-if="arrow" :class="`va-tooltip-arrow`"></div>
-        <div :class="`va-tooltip-inner`">
+        <div v-if="arrow" class="va-tooltip-arrow"></div>
+        <div class="va-tooltip-inner">
           <span v-html="content"></span>
         </div>
       </div>
@@ -36,7 +36,7 @@ export default {
   mixins: [PopoverMixin],
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-tooltip'] = true
       classes['va-tooltip-' + this.placement.split(' ').join('-')] = true
@@ -47,7 +47,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss">
+@import "../variables";
+
 .va-tooltip_wrapper,
 .va-tooltip_trigger {
   display: inline-block;

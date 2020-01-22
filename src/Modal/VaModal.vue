@@ -1,32 +1,35 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="modal">
-    <div :class="`va-modal-dialog`" :style="{'width': width }">
-      <va-collapse-transition>
-        <div :class="`va-modal-loading`" v-show="modalIsLoading">
+    <div class="va-modal-dialog" :style="{'width': width }">
+
+      <div v-if="modalIsLoading">
+        <div class="va-modal-loading">
           <va-loading color="#888" size="md"/>
         </div>
-      </va-collapse-transition>
+      </div>
 
-      <div :class="`va-modal-content`" v-show="!modalIsLoading">
+      <div v-else class="va-modal-content">
         <slot name="header">
-          <div :class="`va-modal-header`">
-            <va-button
-              tabindex="-1"
-              :class="`va-close`"
-              @click="close"
-              type="subtle"
-            >
-              <va-icon type="times"/>
-            </va-button>
-            <div :class="`va-modal-title`">
+          <div class="va-modal-header">
+            <div class="va-modal-closer">
+              <va-button
+                tabindex="-1"
+                class="va-close"
+                @click="close"
+                type="subtle"
+              >
+                <va-icon type="times"/>
+              </va-button>
+            </div>
+            <div class="va-modal-title">
               <slot name="title">{{title}}</slot>
             </div>
           </div>
         </slot>
-        <div :class="`va-modal-body`">
+        <div class="va-modal-body">
           <slot name="body"/>
         </div>
-        <div :class="`va-modal-footer`">
+        <div class="va-modal-footer">
           <slot name="footer">
             <va-button
               :focused="focused"
@@ -37,6 +40,7 @@
           </slot>
         </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -88,7 +92,7 @@ export default {
     }
   },
   data () {
-    let show = this.show
+    const show = this.show
     return {
       isShow: show,
       focused: false,
@@ -98,8 +102,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { effect } = this
-      let classes = {}
+      const { effect } = this
+      const classes = {}
 
       classes['va-modal'] = true
       classes['va-modal-' + effect] = true
@@ -107,14 +111,14 @@ export default {
       return classes
     },
     styleObj () {
-      let { backdrop, numberOfParentModals } = this
-      let style = {}
+      const { backdrop, numberOfParentModals } = this
+      const style = {}
 
       if (!backdrop) {
         style['background'] = 'none !important'
       }
 
-      let topMargin = parseInt(numberOfParentModals) * 10
+      const topMargin = parseInt(numberOfParentModals) * 10
       style['padding-top'] = topMargin + 'px'
 
       return style
@@ -160,17 +164,17 @@ export default {
        */
       if (val) {
         this.$emit('show', { type: 'show' })
-        let x = document.getElementsByClassName('va-modal-in')
+        const x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
 
         /**
          * If any parent modals do exist, then let's stack them in a
          * nicely fashion, by moving each over to the left a bit.
          */
-        let distanceToMove = 20
+        const distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginLeft = x[i].style['margin-left']
+            const currentMarginLeft = x[i].style['margin-left']
             if (currentMarginLeft && currentMarginLeft !== '0px') {
               /**
                * If this modal already has a margin-left applied,
@@ -179,8 +183,8 @@ export default {
                * already is.
                */
               // Slice 'px' off from the end.
-              let m = Math.abs(currentMarginLeft.slice(0, -2))
-              let dist = parseInt(m + distanceToMove)
+              const m = Math.abs(currentMarginLeft.slice(0, -2))
+              const dist = parseInt(m + distanceToMove)
               x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               /**
@@ -194,15 +198,15 @@ export default {
       } else {
         this.$emit('hide', { type: 'hide' })
 
-        let x = document.getElementsByClassName('va-modal-in')
+        const x = document.getElementsByClassName('va-modal-in')
         this.numberOfParentModals = x.length
-        let distanceToMove = 20
+        const distanceToMove = 20
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginLeft = x[i].style['margin-left']
+            const currentMarginLeft = x[i].style['margin-left']
             if (currentMarginLeft && currentMarginLeft !== '0px') {
-              let m = Math.abs(currentMarginLeft.slice(0, -2))
-              let dist = parseInt(m - distanceToMove)
+              const m = Math.abs(currentMarginLeft.slice(0, -2))
+              const dist = parseInt(m - distanceToMove)
               x[i].style['margin-left'] = '-' + dist + 'px'
             } else {
               //
@@ -281,7 +285,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 @mixin modal-theme-mixin(
   $modalInBackground,
   $modalContentBackground,
@@ -315,15 +322,14 @@ export default {
 .va-modal,
 .va--theme-light.va-modal {
   @include modal-theme-mixin(
-    $modalInBackground: rgba(9, 30, 66, 0.55),
+    $modalInBackground: rgba(23, 43, 77, 0.45),
     $modalContentBackground: $N0,
     $modalContentColor: inherit,
     $modalLoadingBackground: $N0,
     $modalTitleColor: $N900,
     $modalBoxShadow: (
-      rgba(9, 30, 66, 0.2) 0px 0px 0px 1px,
-      rgba(9, 30, 66, 0.08) 0px 2px 1px,
-      rgba(9, 30, 66, 0.51) 0px 0px 20px -6px
+      rgba(9, 30, 66, 0.3) 0px 0px 1px,
+      rgba(9, 30, 66, 0.25) 0px 8px 16px -4px
     )
   );
 }
@@ -339,7 +345,7 @@ export default {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 
   &-open {
     overflow-x: hidden;
@@ -364,7 +370,7 @@ export default {
     outline: 0;
     box-shadow: none;
     border: none;
-    padding: 15px;
+    padding: 0;
   }
 
   &-loading {
@@ -388,6 +394,11 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
+    /* border-bottom: 2px solid $N30; */
+  }
+
+  &-closer {
+      padding: 10px;
   }
 
   &-title {
@@ -397,6 +408,7 @@ export default {
     font-size: 20px;
     display: flex;
     align-items: center;
+    padding: 10px;
 
     .va-fa {
       font-size: 14px;
@@ -405,10 +417,12 @@ export default {
   }
 
   &-body {
-    padding: 15px 0;
+    padding: 10px;
   }
 
   &-footer {
+    /* border-top: 2px solid $N30; */
+    padding: 10px;
     text-align: right;
 
     .va-btn {
@@ -419,7 +433,7 @@ export default {
   /*fade*
   &-fade &-dialog {
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
   }
   /*expands to class="va-modal-fade va-modal-in" and references a child va-modal-dialog selector*/
   &-fade#{&}-in &-dialog {
@@ -430,18 +444,17 @@ export default {
   &-fade-up &-dialog {
     opacity: 0;
     transform: translateY(20px);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.2s, opacity 0.2s;
   }
 
   &-fade-up#{&}-in &-dialog {
     opacity: 1;
     transform: translateY(0);
-    // box-shadow: rgba(9, 30, 66, .2) 0px 0px 0px 1px, rgba(9, 30, 66, 0.08) 0px 2px 1px, rgba(9, 30, 66, 0.51) 0px 0px 20px -6px;
   }
 
   &-fade-up#{&}-out &-dialog {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
 }
 </style>

@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { rounded, centered, animated } = this
-      let classes = {}
+      const { rounded, centered, animated } = this
+      const classes = {}
 
       classes['va-placeholder'] = true
       classes['va-placeholder-rounded'] = rounded
@@ -37,7 +37,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 $placeholderLineHeight: 15px;
 $placeholderLineSpacing: 10px;
 $placeholderPrimaryColor: $N20;

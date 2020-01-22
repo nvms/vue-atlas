@@ -18,8 +18,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { open } = this
-      let classes = {}
+      const { open } = this
+      const classes = {}
 
       classes['va-sidebar-group-item-toggle'] = true
       classes['va-sidebar-group-item-toggle-closed'] = !open
@@ -27,8 +27,8 @@ export default {
       return classes
     },
     iconObj () {
-      let { open } = this
-      let classes = {}
+      const { open } = this
+      const classes = {}
 
       classes['va-sidebar-group-item-toggle-icon'] = true
       classes['va-sidebar-group-item-toggle-icon-closed'] = !open

@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     actualWidth () {
-      let { width } = this
+      const { width } = this
 
       switch (width) {
         case 'xs':

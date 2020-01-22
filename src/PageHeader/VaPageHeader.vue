@@ -1,16 +1,16 @@
 <template>
-  <div :class="`va-page-header`">
+  <div class="va-page-header">
     <div
       v-if="hasBreadcrumb"
-      :class="`va-page-header-breadcrumb-wrapper`"
+      class="va-page-header-breadcrumb-wrapper"
     >
-      <div :class="`va-page-header-breadcrumb-container`">
+      <div class="va-page-header-breadcrumb-container">
         <slot name="breadcrumb">&nbsp;</slot>
       </div>
     </div>
 
-    <div :class="`va-page-header-title-wrapper`">
-      <div :class="`va-page-header-title-container`">
+    <div class="va-page-header-title-wrapper">
+      <div class="va-page-header-title-container">
         <h1>
           <slot name="title"/>
         </h1>
@@ -21,13 +21,13 @@
 
       <div
         v-if="hasActions"
-        :class="`va-page-header-actions-wrapper`"
+        class="va-page-header-actions-wrapper"
       >
         <slot name="actions"/>
       </div>
     </div>
 
-    <div v-if="hasBottom" :class="`va-page-header-bottom-wrapper`">
+    <div v-if="hasBottom" class="va-page-header-bottom-wrapper">
       <slot name="bottom">&nbsp;</slot>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
 
     h1 {
       font-weight: 500;
-      font-size: 1.71em;
+      font-size: 2em;
       font-style: inherit;
       letter-spacing: -0.01em;
       line-height: 32px;
@@ -81,11 +81,11 @@ export default {
     }
 
     h2 {
-      font-weight: 400;
-      font-size: 1.25em;
+      font-weight: 300;
+      font-size: 1.15em;
       font-style: inherit;
       letter-spacing: -0.01em;
-      line-height: 26px;
+      line-height: 22.5px;
       margin-top: 0;
       margin-bottom: 8px;
     }
@@ -116,8 +116,10 @@ export default {
     margin-top: 16px;
 
     & > div {
-      display: contents;
+      display: flex;
       flex-direction: row;
+      align-items: center;
+
       & > * {
         margin-right: 6px;
       }

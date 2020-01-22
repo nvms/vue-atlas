@@ -214,6 +214,16 @@
 }
 
 .va-sidebar-navigationlevel {
+  &-open {
+    > .va-sidebar-navigationlevel-parent {
+      > .va-sidebar-group-item {
+        > .va-sidebar-group-item-text {
+          // reserved for styling an expanded parent
+        }
+      }
+    }
+  }
+
   &-closed {
     ul {
       display: none;

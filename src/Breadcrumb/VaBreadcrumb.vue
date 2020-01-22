@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-breadcrumb`">
+  <div class="va-breadcrumb">
     <slot/>
   </div>
 </template>
@@ -27,7 +27,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-breadcrumb {
   cursor: default;
   &-item {

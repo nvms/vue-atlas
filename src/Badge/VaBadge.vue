@@ -31,8 +31,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { type } = this
-      let classes = {}
+      const { type } = this
+      const classes = {}
 
       classes['va-badge'] = true
       classes['va-badge-' + type] = true
@@ -43,7 +43,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-badge {
   display: inline-block;
   text-align: center;

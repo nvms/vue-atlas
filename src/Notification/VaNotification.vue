@@ -1,10 +1,10 @@
 <template>
   <div :class="classObj" :style="styleObj" ref="notification" v-if="alive">
     <div
-      :class="`va-notification-dialog`"
+      class="va-notification-dialog"
       :style="{'width': width }"
     >
-      <div :class="`va-notification-content`">
+      <div class="va-notification-content">
         <div :class="`va-notification-content-inner-${type}`">
           <div
             :class="`va-notification-content-inner-${type}-left`"
@@ -78,7 +78,7 @@ export default {
     }
   },
   data () {
-    let show = this.show
+    const show = this.show
     return {
       isShow: show,
       alive: true
@@ -97,17 +97,17 @@ export default {
        * Stackable logic
        */
       if (val) {
-        let x = document.getElementsByClassName(
+        const x = document.getElementsByClassName(
           'va-notification-in'
         )
         this.numberOfParentModals = x.length
-        let distanceToMove = 5
+        const distanceToMove = 5
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginTop = x[i].style['top']
+            const currentMarginTop = x[i].style['top']
             if (currentMarginTop && currentMarginTop !== '0px') {
-              let m = Math.abs(currentMarginTop.slice(0, -2))
-              let dist = parseInt(m + distanceToMove)
+              const m = Math.abs(currentMarginTop.slice(0, -2))
+              const dist = parseInt(m + distanceToMove)
               x[i].style['top'] = '-' + dist + 'px'
               x[i].style['right'] = '-' + dist + 'px'
             } else {
@@ -117,17 +117,17 @@ export default {
           }
         }
       } else {
-        let x = document.getElementsByClassName(
+        const x = document.getElementsByClassName(
           'va-notification-in'
         )
         this.numberOfParentModals = x.length
-        let distanceToMove = 5
+        const distanceToMove = 5
         if (this.numberOfParentModals > 0) {
           for (let i = 0; i < this.numberOfParentModals; i++) {
-            let currentMarginTop = x[i].style['top']
+            const currentMarginTop = x[i].style['top']
             if (currentMarginTop && currentMarginTop !== '0px') {
-              let m = Math.abs(currentMarginTop.slice(0, -2))
-              let dist = parseInt(m - distanceToMove)
+              const m = Math.abs(currentMarginTop.slice(0, -2))
+              const dist = parseInt(m - distanceToMove)
               x[i].style['top'] = '-' + dist + 'px'
               x[i].style['right'] = '-' + dist + 'px'
             }
@@ -178,8 +178,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { effect, type } = this
-      let classes = {}
+      const { effect, type } = this
+      const classes = {}
 
       classes['va-notification'] = true
       classes['va-notification-' + type] = true
@@ -191,7 +191,7 @@ export default {
       return {}
     },
     notificationIconType () {
-      let { type } = this
+      const { type } = this
 
       switch (type) {
         case 'default':
@@ -212,7 +212,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-notification {
   position: fixed;
   top: 0px;
@@ -221,19 +224,18 @@ export default {
   display: none;
   overflow: auto;
   outline: 0;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 
   &-dialog {
     position: relative;
     width: auto;
-    margin: 40px;
+    margin: 25px;
   }
 
   &-content {
     position: relative;
     background-color: $N0;
     background-clip: padding-box;
-    border-radius: 3px;
     outline: 0;
     box-shadow: none;
     border: none;
@@ -252,7 +254,7 @@ export default {
   &-fade-right &-content {
     opacity: 0;
     transform: translateX(20px);
-    transition: transform 0.3s, opacity 0.3s;
+    transition: transform 0.15s, opacity 0.15s;
   }
 
   &-fade-right#{&}-in &-content {
@@ -277,9 +279,7 @@ export default {
         flex-direction: column;
         justify-content: space-around;
         text-align: center;
-        border-left: 3px solid $borderColor;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
+        border-left: 2px solid $borderColor;
         i {
           color: $iconColor;
         }
@@ -318,19 +318,19 @@ export default {
   }
 
   &-warning {
-    @include notification-content-mixin('warning', 1px, $Y200, $Y500);
+    @include notification-content-mixin('warning', 2px, $Y200, $Y500);
   }
 
   &-danger {
-    @include notification-content-mixin('danger', 1px, $R300, $R300);
+    @include notification-content-mixin('danger', 2px, $R300, $R300);
   }
 
   &-success {
-    @include notification-content-mixin('success', 1px, $G200, $G400);
+    @include notification-content-mixin('success', 2px, $G200, $G400);
   }
 
   &-info {
-    @include notification-content-mixin('info', 1px, $B100, $B400);
+    @include notification-content-mixin('info', 2px, $B100, $B400);
   }
 }
 </style>

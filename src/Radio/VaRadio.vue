@@ -1,15 +1,15 @@
 <template>
-  <label :class="`va-radio-con`">
+  <label class="va-radio-con">
     <span :class="objClass">
       <span
-        :class="`va-radio-inner`"
+        class="va-radio-inner"
         :tabindex="disabled ? -1 : 0"
         @keypress.space.prevent="handleClick"
         @keyup.enter="handleClick"
       />
       <input
         :checked="currentChecked"
-        :class="`va-radio-input`"
+        class="va-radio-input"
         :disabled="disabled"
         :name="name"
         @click.prevent="handleClick"
@@ -17,7 +17,7 @@
         type="radio"
       >
     </span>
-    <span :class="`va-label`" tabindex="-1">
+    <span class="va-label" tabindex="-1">
       <slot/>
     </span>
     <validate
@@ -73,8 +73,8 @@ export default {
   },
   computed: {
     objClass () {
-      let { currentChecked, disabled } = this
-      let classes = {}
+      const { currentChecked, disabled } = this
+      const classes = {}
 
       classes['va-radio-span'] = true
       classes['va-radio-checked'] = currentChecked
@@ -111,15 +111,9 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
-@mixin radio-focus-mixin($color, $opacity: 0.6) {
-  &:focus:not(:active):not(:hover),
-  &-focused:not(:active):not(:hover) {
-    box-shadow: $color 0px 0px 0px 2px; /* fallback */
-    box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
-    outline: none;
-  }
-}
+@import "../variables";
 
 .va-radio-con {
   margin-right: 10px;
@@ -127,10 +121,10 @@ export default {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  cursor: pointer !important;
+  cursor: pointer;
 
   .va-label {
-    margin-left: 8px;
+    margin-left: 7px;
     outline: none;
   }
   .va-radio-span {
@@ -146,20 +140,18 @@ export default {
     top: 0;
     left: 0;
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    border-width: 2px;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
     border-style: solid;
-    border-radius: 14px;
-    border-color: #dfe1e6;
-    background-color: #fafbfc;
-    transition: all 0.3s;
-    @include radio-focus-mixin($B200, 0.6);
+    border-radius: 15px;
+    border-color: $N60;
+    background-color: $N10;
   }
   &:active {
     .va-radio-inner {
       background-color: $B75 !important;
-      border-color: $B75 !important;
+      border-color: $B300 !important;
     }
   }
   .va-radio-input {
@@ -184,8 +176,8 @@ export default {
   .va-radio-checked {
     &:hover {
       .va-radio-inner {
-        background-color: $B300;
-        border-color: $B300;
+        background-color: $N300;
+        border-color: $N300;
       }
     }
   }
@@ -193,7 +185,7 @@ export default {
     .va-radio-checked {
       .va-radio-inner {
         &:after {
-          background-color: $B500;
+          background-color: $N0;
         }
       }
     }
@@ -203,8 +195,8 @@ export default {
     opacity: 1;
   }
   .va-radio-checked .va-radio-inner {
-    background-color: $B400;
-    border-color: $B400;
+    background-color: $N400;
+    border-color: $N400;
   }
   .va-radio-inner:after {
     position: absolute;
@@ -222,8 +214,8 @@ export default {
     opacity: 0;
   }
   .va-radio-disabled .va-radio-inner {
-    border-color: $N40;
-    background-color: $N100;
+    border-color: $N80 !important;
+    background-color: $N80 !important;
   }
 }
 

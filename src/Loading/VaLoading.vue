@@ -3,9 +3,9 @@
     <span :class="classObj" ref="load">
       <i :class="iclassObj"/>
       <slot/>
-      <svg viewBox="0 0 50 50" :class="`va-spinner`">
+      <svg viewBox="0 0 50 50" class="va-spinner">
         <circle
-          :class="`va-path`"
+          class="va-path"
           :style="{ stroke: color }"
           cx="25"
           cy="25"
@@ -51,8 +51,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { center } = this
-      let classes = {}
+      const { center } = this
+      const classes = {}
 
       classes['va-page-loading-con'] = true
       classes['va-loading-center'] = center
@@ -60,8 +60,8 @@ export default {
       return classes
     },
     iclassObj () {
-      let { type, size } = this
-      let classes = {}
+      const { type, size } = this
+      const classes = {}
 
       classes['va-page-loading'] = true
       type ? (classes['va-loading-' + type] = true) : ''
@@ -80,7 +80,7 @@ export default {
   position: relative;
   /*see _button.scss for more position information related to*/
   /*-page-loading-con being inside of a button*/
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
   // opacity: 0;
 }
 .va-path {

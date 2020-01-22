@@ -2,7 +2,7 @@
   <div class="wrap" :style="{width: width || '100%'}">
     <input
       ref="range"
-      :class="`va-range`"
+      class="va-range"
       :value="currentValue"
       type="range"
       :name="name"
@@ -55,7 +55,7 @@ export default {
     }
   },
   data () {
-    let value = this.value
+    const value = this.value
     return {
       showoutput: false,
       currentValue: value,
@@ -113,7 +113,7 @@ export default {
       if (min === 0 && max === 100) {
         return (cv * w) / 100 - (cv * thumbWidth) / 100 // because the thumb is 16px wide
       } else {
-        let p = (cv * 100) / max
+        const p = (cv * 100) / max
         let pp = (p * w) / 100
         pp = pp - (p * thumbWidth) / 100
 
@@ -135,7 +135,7 @@ export default {
       wrp.appendChild(this.$refs.range)
       wrp.appendChild(preBar)
 
-      let r = this.$refs.range
+      const r = this.$refs.range
       this._inputEvent = EventListener.listen(r, 'input', () => {
         preBar.style.width = this.getVal() + 'px'
       })
@@ -153,10 +153,10 @@ export default {
   },
   computed: {
     styleObj () {
-      let style = {}
+      const style = {}
 
-      let l = this.value - this.min
-      let r = this.max - this.min
+      const l = this.value - this.min
+      const r = this.max - this.min
 
       style['transform'] = 'translate(calc(' + l / r + ' * 11.25em - 50%))'
 
@@ -190,7 +190,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-range-barCnt {
   position: relative;
   height: 10px;

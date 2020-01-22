@@ -4,12 +4,5 @@ module.exports = {
       moment: 'moment',
       'velocity-animate': 'velocity-animate'
     } : {}
-  },
-  css: {
-    loaderOptions: {
-      sass: {
-        data: `@import "@/variables.scss";`
-      }
-    }
   }
 }

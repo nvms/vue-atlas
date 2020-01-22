@@ -35,8 +35,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { brand } = this
-      let classes = {}
+      const { brand } = this
+      const classes = {}
 
       classes['va-minibar-item'] = true
       classes['va-minibar-item-brand'] = brand

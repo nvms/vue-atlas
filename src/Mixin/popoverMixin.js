@@ -35,7 +35,7 @@ const PopoverMixin = {
     }
   },
   data () {
-    let show = this.show
+    const show = this.show
     return {
       isShow: show,
       listeners: this.getListeners(),
@@ -95,9 +95,9 @@ const PopoverMixin = {
       this.isShow = !this.isShow
     },
     resize () {
-      let popover = this.$refs.popover
+      const popover = this.$refs.popover
       if (!popover) return
-      let triger = this.$refs.trigger
+      const triger = this.$refs.trigger
       if (!triger) return
       popover.style.display = 'block'
 
@@ -151,7 +151,7 @@ const PopoverMixin = {
           this.position.top = triger.offsetTop + triger.offsetHeight
           break
         default:
-          console.error('Wrong placement group')
+          break
       }
       popover.style.top = this.position.top + 'px'
       popover.style.left = this.position.left + 'px'

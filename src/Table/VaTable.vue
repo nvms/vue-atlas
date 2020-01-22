@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { size, hover } = this
-      let classes = {}
+      const { size, hover } = this
+      const classes = {}
 
       classes['va-table'] = true
       classes['va-table-' + size] = true
@@ -36,7 +36,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-table {
   margin: 1em 0;
   &-fullwidth {

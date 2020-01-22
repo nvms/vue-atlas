@@ -165,13 +165,13 @@ export default {
     // watchValue (newValue, oldValue) {
     watchValue () {
       this.$nextTick(() => {
-        let shouldEnterChild = []
-        let shouldLeaveChild = []
+        const shouldEnterChild = []
+        const shouldLeaveChild = []
         const newChild = this._getKeysChild()
         // const nodeMap = {}
 
         for (let i = 0; i < this.children.length; i++) {
-          let curChild = this.children[i]
+          const curChild = this.children[i]
           let hasRemove = true
 
           for (let j = 0; j < newChild.length; j++) {
@@ -185,7 +185,7 @@ export default {
         }
 
         for (let i = 0; i < newChild.length; i++) {
-          let curChild = newChild[i]
+          const curChild = newChild[i]
           let hasAdd = true
 
           for (let j = 0; j < this.children.length; j++) {

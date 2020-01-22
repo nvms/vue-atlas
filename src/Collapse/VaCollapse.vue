@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-collapse`">
+  <div class="va-collapse">
     <slot/>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
   },
   methods: {
     change (child) {
+      // eslint-disable-next-line
       let items = []
 
       if (this.accordion) {
@@ -41,7 +42,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-collapse {
   &__panel {
     &__header {

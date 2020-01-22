@@ -82,7 +82,7 @@ const confirm = (options) => {
       }
     },
     render (createElement) {
-      let iconElement = createElement(VaIcon, {
+      const iconElement = createElement(VaIcon, {
         props: {
           type: this.iconType.name,
           margin: '0 10px 0 0'
@@ -98,9 +98,9 @@ const confirm = (options) => {
           title
         ])
       }
-      let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
+      const bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
 
-      let confirmElement = createElement(VaButton, {
+      const confirmElement = createElement(VaButton, {
         slot: 'footer',
         props: {
           type: this.buttonType.appearance
@@ -110,7 +110,7 @@ const confirm = (options) => {
         }
       }, [this.getL('confirm')])
 
-      let cancelElement = createElement(VaButton, {
+      const cancelElement = createElement(VaButton, {
         slot: 'footer',
         on: {
           click: this.handleClose
@@ -177,7 +177,7 @@ const alert = (options) => {
       }
     },
     render (createElement) {
-      let iconElement = createElement(VaIcon, {
+      const iconElement = createElement(VaIcon, {
         props: {
           type: this.iconType.name,
           margin: '0 10px 0 0'
@@ -195,9 +195,9 @@ const alert = (options) => {
         ])
       }
 
-      let bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
+      const bodyElement = createElement('div', { slot: 'body', domProps: { innerHTML: message } })
 
-      let footerElement = createElement(VaButton, {
+      const footerElement = createElement(VaButton, {
         slot: 'footer',
         props: {
           type: this.buttonType.appearance

@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-sidebar-group-title`">
+  <div class="va-sidebar-group-title">
     <slot/>
   </div>
 </template>

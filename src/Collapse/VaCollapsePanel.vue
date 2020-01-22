@@ -1,6 +1,6 @@
 <template>
-  <div :class="`va-collapse__panel`">
-    <div :class="`va-collapse__panel__header`" @click="toggle()">
+  <div class="va-collapse__panel">
+    <div class="va-collapse__panel__header" @click="toggle()">
       <slot name="header" :is-open="isOpen">
         <va-icon v-if="!isOpen" type="angle-right"/>
         <va-icon v-else type="angle-down"/>
@@ -8,7 +8,7 @@
       </slot>
     </div>
     <va-collapse-transition>
-      <div :class="`va-collapse__panel__body`" v-if="isOpen">
+      <div class="va-collapse__panel__body" v-if="isOpen">
         <slot/>
       </div>
     </va-collapse-transition>
@@ -29,7 +29,7 @@ export default {
     index: {}
   },
   data () {
-    let isOpen = this.open
+    const isOpen = this.open
     return {
       isOpen: isOpen
     }
@@ -43,7 +43,7 @@ export default {
     toggle () {
       this.isOpen = !this.isOpen
 
-      let item = {
+      const item = {
         index: this.index,
         header: this.header,
         isOpen: this.isOpen

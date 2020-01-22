@@ -56,7 +56,7 @@ export default {
   },
 
   isUndefined (arg) {
-    return arg === void 0
+    return arg === undefined
   },
 
   isRegExp (re) {

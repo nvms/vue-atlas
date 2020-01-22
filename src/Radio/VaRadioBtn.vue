@@ -57,7 +57,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-radio-btn'] = true
 

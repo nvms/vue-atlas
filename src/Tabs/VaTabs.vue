@@ -14,7 +14,7 @@
         ></a>
       </li>
     </ul>
-    <div :class="`va-tab-content`">
+    <div class="va-tab-content">
       <slot/>
     </div>
   </div>
@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       classes['clearfix'] = true
       classes['va-nav-tabs'] = true
@@ -133,7 +133,7 @@ export default {
       }
     },
     liclassObj (tab) {
-      let classes = {}
+      const classes = {}
 
       classes['va-nav-tab'] = true
       classes['va-nav-tab-active'] = tab.isActive
@@ -151,7 +151,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 .va-nav-tabs {
   list-style-type: none;
   margin: 0;

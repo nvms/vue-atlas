@@ -111,7 +111,7 @@ export default {
     }
   },
   data () {
-    let loading = this.loading
+    const loading = this.loading
     return {
       loadingSpinner: loading,
       isFocused: this.focused,
@@ -120,9 +120,9 @@ export default {
   },
   computed: {
     spinColor () {
-      let { type, active } = this
-      let white = '#FFFFFF'
-      let darker = '#45526B'
+      const { type, active } = this
+      const white = '#FFFFFF'
+      const darker = '#45526B'
 
       if (active) {
         return darker
@@ -160,7 +160,7 @@ export default {
       return white
     },
     classObj () {
-      let {
+      const {
         type,
         size,
         block,
@@ -169,7 +169,7 @@ export default {
         round,
         isFocused
       } = this
-      let classes = {}
+      const classes = {}
 
       classes['va-btn'] = true
       classes['va-btn-block'] = block
@@ -184,8 +184,8 @@ export default {
       return classes
     },
     innerClassObj () {
-      let { loadingSpinner } = this
-      let classes = {}
+      const { loadingSpinner } = this
+      const classes = {}
 
       classes['va-btn-text-fade'] = true
       loadingSpinner ? (classes['va-btn-text-fade-out'] = true) : ''
@@ -193,12 +193,12 @@ export default {
       return classes
     },
     innerStyleObj () {
-      let { iconBefore, iconAfter } = this
-      let style = {}
+      const { iconBefore, iconAfter } = this
+      const style = {}
 
       if (this.componentWasMounted) {
-        let l = iconBefore !== undefined
-        let r = iconAfter !== undefined
+        const l = iconBefore !== undefined
+        const r = iconAfter !== undefined
 
         if (this.$el.style.width !== '100%') {
           if (l) {
@@ -213,8 +213,8 @@ export default {
       return style
     },
     styleObj () {
-      let { tall } = this
-      let style = {}
+      const { tall } = this
+      const style = {}
 
       if (tall) {
         style['height'] = '100%'
@@ -224,7 +224,7 @@ export default {
       return style
     },
     iconBeforeStyleObj () {
-      let style = {}
+      const style = {}
 
       style['position'] = 'absolute'
       style['left'] = '3px'
@@ -232,7 +232,7 @@ export default {
       return style
     },
     iconAfterStyleObj () {
-      let style = {}
+      const style = {}
 
       style['position'] = 'absolute'
       style['right'] = '3px'
@@ -243,7 +243,7 @@ export default {
   watch: {
     loading (val) {
       if (val) {
-        let rect = this.$el.getBoundingClientRect()
+        const rect = this.$el.getBoundingClientRect()
 
         this.$el.style.width = rect.width + 'px'
         this.$el.style.height = rect.height + 'px'
@@ -260,7 +260,7 @@ export default {
   },
   methods: {
     triggerMouseEvent (node, eventType) {
-      let clickEvent = document.createEvent('MouseEvents')
+      const clickEvent = document.createEvent('MouseEvents')
       clickEvent.initEvent(eventType, true, true)
       this.$refs.btn.dispatchEvent(clickEvent)
     },
@@ -287,7 +287,7 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      let el = this.$el
+      const el = this.$el
 
       this.componentWasMounted = true
 
@@ -304,7 +304,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 @mixin btn-type-mixin(
   $bgCol,
   $fontCol,
@@ -327,22 +330,23 @@ export default {
   }
 }
 
+@mixin button-focus-mixin($backgroundColor) {
+    &:focus:not(:active):not(.va-select-btn-open):not(.va-btn-disabled),
+    &-focused:not(:active):not(.va-select-btn-open):not(.va-btn-disabled) {
+        background-color: $backgroundColor;
+    }
+}
+
+/*
 @mixin button-focus-mixin($boxShadowColor, $boxShadowOpacity: 0.6) {
-  // no ring on hover
-  // &:focus:not(:active):not(:hover), &-focused:not(:active):not(:hover) {
-  //   box-shadow: $color 0px 0px 0px 2px; /* fallback */
-  //   box-shadow: rgba($color, $opacity) 0px 0px 0px 2px;
-  //   outline: none;
-  // }
-  // ring on hover
   &:focus:not(:active):not(.va-select-btn-open):not(.va-btn-disabled),
   &-focused:not(:active):not(.va-select-btn-open):not(.va-btn-disabled) {
     box-shadow: inset $boxShadowColor 0px 0px 0px 2px;
-    /* fallback */
     box-shadow: inset rgba($boxShadowColor, $boxShadowOpacity) 0px 0px 0px 2px;
     outline: none;
   }
 }
+*/
 
 @mixin button-outline-mixin($outlineColor, $outlineWidth, $activeOutlineColor) {
   box-shadow: inset $outlineColor 0px 0px 0px $outlineWidth;
@@ -358,12 +362,12 @@ export default {
     @include btn-type-mixin(
       $bgCol: $N20,
       $fontCol: $N400,
-      $bgColHover: $N30,
+      $bgColHover: rgba(9, 30, 66, 0.08),
       $fontColHover: $N400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-primary {
@@ -375,7 +379,8 @@ export default {
       $bgColActive: $B500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B300);
+    font-weight: 500;
   }
 
   &-primary-light {
@@ -387,7 +392,8 @@ export default {
       $bgColActive: $B400,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B200);
+    font-weight: 500;
   }
 
   &-primary-dark {
@@ -399,7 +405,7 @@ export default {
       $bgColActive: $B400,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B300);
   }
 
   &-help {
@@ -411,7 +417,8 @@ export default {
       $bgColActive: $P600,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P100, 1);
+    @include button-focus-mixin($P400);
+    font-weight: 500;
   }
 
   &-help-light {
@@ -423,7 +430,8 @@ export default {
       $bgColActive: $P300,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P100, 1);
+    @include button-focus-mixin($P300);
+    font-weight: 500;
   }
 
   &-help-dark {
@@ -435,7 +443,8 @@ export default {
       $bgColActive: $P600,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($P300, 1);
+    @include button-focus-mixin($P400);
+    font-weight: 500;
   }
 
   &-paleblue {
@@ -447,7 +456,8 @@ export default {
       $fontColHover: $N0,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($PB100, 1);
+    @include button-focus-mixin($PB200);
+    font-weight: 500;
   }
 
   &-success {
@@ -459,7 +469,8 @@ export default {
       $bgColActive: $G500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($G300, 1);
+    @include button-focus-mixin($G300);
+    font-weight: 500;
   }
 
   &-info {
@@ -471,7 +482,8 @@ export default {
       $bgColActive: $T500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($T200, 1);
+    @include button-focus-mixin($T300);
+    font-weight: 500;
   }
 
   &-warning {
@@ -483,7 +495,8 @@ export default {
       $bgColActive: $Y500,
       $fontColActive: $N900
     );
-    @include button-focus-mixin(darken($Y500, 7%), 1);
+    @include button-focus-mixin($Y300);
+    font-weight: 500;
   }
 
   &-danger {
@@ -495,7 +508,8 @@ export default {
       $bgColActive: $R500,
       $fontColActive: $N0
     );
-    @include button-focus-mixin($R100, 1);
+    @include button-focus-mixin($R300);
+    font-weight: 500;
   }
 
   &-subtle {
@@ -504,10 +518,10 @@ export default {
       $fontCol: $N400,
       $bgColHover: $N30,
       $fontColHover: $N400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-link {
@@ -521,15 +535,15 @@ export default {
     );
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
     &:active,
     &:focus {
-      text-decoration: none;
+      text-decoration: underline !important;
     }
 
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-subtle-link {
@@ -543,15 +557,15 @@ export default {
     );
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
     }
 
     &:active,
     &:focus {
-      text-decoration: none;
+      text-decoration: underline !important;
     }
 
-    @include button-focus-mixin($B200, 1);
+    @include button-focus-mixin($N30);
   }
 
   &-dark {
@@ -563,7 +577,8 @@ export default {
       $bgColActive: $N800,
       $fontColActive: $N200
     );
-    @include button-focus-mixin($N100, 1);
+    @include button-focus-mixin($N500);
+    font-weight: 500;
   }
 
   &-darker {
@@ -575,19 +590,21 @@ export default {
       $bgColActive: $N700,
       $fontColActive: $N200
     );
-    @include button-focus-mixin($N100, 1);
+    @include button-focus-mixin($N500);
+    font-weight: 500;
   }
 
   &-active {
     @include btn-type-mixin(
-      $bgCol: $B50,
+      $bgCol: rgba(179, 212, 255, 0.6),
       $fontCol: $B400,
-      $bgColHover: $B50,
+      $bgColHover: rgba(179, 212, 255, 0.6),
       $fontColHover: $B400,
-      $bgColActive: $B50,
+      $bgColActive: rgba(179, 212, 255, 0.6),
       $fontColActive: $B400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin($B50);
+    font-weight: 500;
   }
 
   &-black {
@@ -599,7 +616,8 @@ export default {
       $bgColActive: #18171b,
       $fontColActive: $N400
     );
-    @include button-focus-mixin($B100, 1);
+    @include button-focus-mixin(#18171b);
+    font-weight: 500;
   }
 }
 
@@ -608,7 +626,7 @@ export default {
     $padding: 4px 8px,
     $fontSize: 12px,
     $lineHeight: 1.5em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 13px;
@@ -621,7 +639,7 @@ export default {
     $padding: 1px 8px,
     $fontSize: 13px,
     $lineHeight: 2.2em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 15px;
@@ -634,7 +652,7 @@ export default {
     $padding: 0px 9px,
     $fontSize: 14px,
     $lineHeight: 2.3em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 17px;
@@ -647,7 +665,7 @@ export default {
     $padding: 2px 15px,
     $fontSize: 17px,
     $lineHeight: 2.5em,
-    $borderRadius: 4px
+    $borderRadius: 3px
   );
   > div {
     min-width: 23px;
@@ -727,7 +745,7 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
-    transition: opacity 0.2s;
+    transition: opacity 0.15s;
     opacity: 1;
     width: 100%;
     justify-content: space-around;
@@ -932,16 +950,16 @@ And, of course, when the button group is a vertical button group arrangement.
   > .va-btn:first-child:not(:last-child):not(.va-dropdown-toggle) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
   }
 
   > .va-btn:last-child:not(:first-child),
   > .va-dropdown-toggle:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 
   > .va-btn-group-vertical {

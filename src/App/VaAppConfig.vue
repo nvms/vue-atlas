@@ -387,7 +387,7 @@ export default {
       }, 10)
     },
     getPosition (el) {
-      let rect = el.getBoundingClientRect()
+      const rect = el.getBoundingClientRect()
       return {
         top: rect.top,
         right: rect.right,
@@ -438,12 +438,12 @@ export default {
   },
   computed: {
     classObj () {
-      let classes = {}
+      const classes = {}
 
       return classes
     },
     styleObj () {
-      let style = {}
+      const style = {}
 
       style['position'] = 'fixed'
       style['right'] = '20px'
@@ -477,10 +477,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import "../style/_reset.scss";
+</style><style lang="scss">
 .themeModalBody {
   hr {
-    margin-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 15px;
   }
 }
 .themeModalBody .va-col {

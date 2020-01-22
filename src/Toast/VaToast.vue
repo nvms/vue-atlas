@@ -59,8 +59,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { placement, type } = this
-      let classes = {}
+      const { placement, type } = this
+      const classes = {}
 
       classes['va-toast'] = true
       classes['va-toast-' + type] = true
@@ -101,7 +101,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 $toastTop: 20px;
 $toastBottom: 20px;
 $toastRight: 20px;

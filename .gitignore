@@ -6,6 +6,8 @@
 dist
 *.patch
 **/*scsslint_tmp*.*
+tags
+tags.lock
 
 
 ############################

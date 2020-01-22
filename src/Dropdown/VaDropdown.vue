@@ -7,7 +7,7 @@
     <transition :name="effect">
       <ul
         v-va-position="show"
-        :class="`va-dropdown-menu`"
+        class="va-dropdown-menu"
         v-show="show"
       >
         <slot/>
@@ -65,8 +65,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { tall } = this
-      let classes = {}
+      const { tall } = this
+      const classes = {}
 
       classes['va-dropdown-selected'] = this.show
       classes['va-dropdown-con-tall'] = tall
@@ -76,8 +76,11 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      let el = this.$el
-      let trig = this.$refs.trigger.children[0]
+      if (!this.$refs.trigger) {
+        return
+      }
+      const el = this.$el
+      const trig = this.$refs.trigger.children[0]
       if (this.triggerEvent === 'click') {
         this._clickEvent = EventListener.listen(trig, 'click', this.toggle)
         this._closeEvent = EventListener.listen(window, 'click', e => {
@@ -105,7 +108,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 @mixin dropdown-theme-mixin(
   $menuBackground,
   $menuBoxShadow,
@@ -149,7 +155,7 @@ export default {
   */
   &-selected {
     > span > div > button.va-btn {
-      background: $selectedBackground;
+      background: $selectedBackground !important;
       color: $selectedColor;
       &:hover {
         background: $selectedHoverBackground;
@@ -211,7 +217,7 @@ export default {
     padding: 4px 0;
     margin-top: 6px;
     margin-bottom: 6px;
-    border-radius: 4px;
+    border-radius: 3px;
     list-style-type: none;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;

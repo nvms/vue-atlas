@@ -1,5 +1,5 @@
 <template>
-  <div :class="`va-affix`" :style="affixStyle">
+  <div class="va-affix" :style="affixStyle">
     <slot/>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
 .va-affix {
   position: sticky;

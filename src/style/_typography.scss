@@ -1,0 +1,144 @@
+$font_0: -apple-system;
+$font_1: BlinkMacSystemFont;
+$font_2: Segoe UI;
+$font_3: Arial;
+$font_4: Ubuntu;
+$font_5: Roboto;
+$font_6: Fira Sans;
+$font_7: Droid Sans;
+$font_8: Helvetica Neue;
+$font_9: sans-serif;
+$font_mono: SFMono-Medium,
+"SF Mono",
+"Segoe UI Mono",
+"Roboto Mono",
+"Ubuntu Mono",
+Menlo,
+Courier,
+monospace;
+* {
+  font-family: $font_0, $font_1, $font_2, $font_3, $font_4, $font_5, $font_6, $font_7, $font_8, $font_9;
+}
+
+body {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $N800;
+  margin-bottom: 8px;
+}
+
+h1 {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 28px;
+}
+
+h2 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 24px;
+}
+
+h3 {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 20px;
+}
+
+h4 {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.006em;
+  line-height: 16px;
+}
+
+.subheading {
+  font-size: 16px;
+  line-height: 1.4em;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+p {
+  margin: 12px 0 0 0;
+  line-height: 20px;
+}
+
+.va-sidebar {
+  a,
+  a:link,
+  a:active,
+  a:visited {
+    text-decoration: none !important;
+  }
+  a:hover,
+  a:link:hover,
+  a:active:hover,
+  a:visited:hover {
+    text-decoration: none !important;
+  }
+}
+
+.va-notification-dialog a:not(.va-btn),
+.va-notification-dialog a:active:not(.va-btn),
+.va-notification-dialog a:link:not(.va-btn),
+.va-notification-dialog a:visited:not(.va-btn),
+.va-modal-dialog a:not(.va-btn),
+.va-modal-dialog a:active:not(.va-btn),
+.va-modal-dialog a:link:not(.va-btn),
+.va-modal-dialog a:visited:not(.va-btn),
+.va-page-container a:not(.va-btn),
+.va-page-container a:active:not(.va-btn),
+.va-page-container a:link:not(.va-btn),
+.va-page-container a:visited:not(.va-btn) {
+  color: $B400;
+  text-decoration: none;
+}
+
+.va-notification-dialog a:hover:not(.va-btn),
+.va-notification-dialog a:link:hover:not(.va-btn),
+.va-modal-dialog a:hover:not(.va-btn),
+.va-modal-dialog a:link:hover:not(.va-btn),
+.va-page-container a:hover:not(.va-btn),
+.va-page-container a:link:hover:not(.va-btn) {
+  text-decoration: underline;
+  color: $B300;
+}
+
+.va-notification-dialog a:active:not(.va-btn),
+.va-notification-dialog a:link:active:not(.va-btn),
+.va-modal-dialog a:active:not(.va-btn),
+.va-modal-dialog a:link:active:not(.va-btn),
+.va-page-container a:active:not(.va-btn),
+.va-page-container a:link:active:not(.va-btn) {
+  color: $B500;
+  text-decoration: none;
+  background: inherit;
+}
+
+code,
+code * {
+  font-family: $font_mono;
+  letter-spacing: -0.07px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+

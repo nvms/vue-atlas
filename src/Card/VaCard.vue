@@ -1,16 +1,16 @@
 <template>
   <div :class="classObj">
     <div :class="headerClassObj" :style="headerStyleObj" v-if="hasHeaderData">
-      <div :class="`va-card-header-inner`">
-        <div :class="`va-card-header-inner-left`">
+      <div class="va-card-header-inner">
+        <div class="va-card-header-inner-left">
           <slot name="topLeft"/>
         </div>
-        <div :class="`va-card-header-inner-right`">
+        <div class="va-card-header-inner-right">
           <slot name="topRight"/>
         </div>
       </div>
     </div>
-    <div :style="bodyStyleObj" :class="`va-card-body`">
+    <div :style="bodyStyleObj" class="va-card-body">
       <slot/>
     </div>
   </div>
@@ -35,8 +35,8 @@ export default {
   },
   computed: {
     classObj () {
-      let { elevation } = this
-      let classes = {}
+      const { elevation } = this
+      const classes = {}
 
       classes['va-card'] = true
       classes['va-card-elevation-' + elevation] = true
@@ -44,23 +44,23 @@ export default {
       return classes
     },
     bodyStyleObj () {
-      let { padding } = this
-      let style = {}
+      const { padding } = this
+      const style = {}
 
       style['padding'] = padding
 
       return style
     },
     headerClassObj () {
-      let classes = {}
+      const classes = {}
 
       classes['va-card-header'] = true
 
       return classes
     },
     headerStyleObj () {
-      let { padding } = this
-      let style = {}
+      const { padding } = this
+      const style = {}
 
       style['padding-left'] = padding
       style['padding-right'] = padding
@@ -74,7 +74,10 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
+@import "../variables";
+
 @mixin card-theme-mixin(
   $background,
   $headerBackground,

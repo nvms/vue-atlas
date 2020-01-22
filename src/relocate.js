@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
 const getWindowSize = () => {
-  let ww = window.innerWidth
-  let wh = window.innerHeight
+  const ww = window.innerWidth
+  const wh = window.innerHeight
   return {
     width: ww,
     height: wh
@@ -10,7 +10,7 @@ const getWindowSize = () => {
 }
 
 const getPosition = (el) => {
-  let rect = el.getBoundingClientRect()
+  const rect = el.getBoundingClientRect()
   return {
     top: rect.top,
     right: rect.right,
@@ -24,14 +24,14 @@ const getPosition = (el) => {
 }
 
 const removeClassByPrefix = (el, prefix) => {
-  let regx = new RegExp('\\b' + prefix + '(.*)?\\b', 'g')
+  const regx = new RegExp('\\b' + prefix + '(.*)?\\b', 'g')
   el.className = el.className.replace(regx, '')
   return el
 }
 
 const relocate = (el) => {
-  let pos = getPosition(el)
-  let win = getWindowSize()
+  const pos = getPosition(el)
+  const win = getWindowSize()
   let pos1 = 'right'
   let pos2 = 'bottom'
 
