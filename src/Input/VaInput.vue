@@ -42,7 +42,6 @@
       tabindex="0"
       @keyup.enter="enterPressed"
       v-model="currentValue"
-      :value="value"
     >
     <div
       class="va-input-icon-wrapper"
