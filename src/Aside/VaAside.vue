@@ -5,7 +5,7 @@
         <div class="va-aside-content">
           <div class="va-aside-header" v-if="header">
             <button
-              class="va-close"
+              class="va-button va-close"
               @click="close"
               type="button"
             >

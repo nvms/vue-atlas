@@ -9,55 +9,19 @@ body {
   // -webkit-font-smoothing: antialiased;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-img {
-  border: 0;
-}
-
-svg:not(:root) {
+svg.va-svg:not(:root) {
   overflow: hidden;
 }
 
-button {
+button.va-button {
   overflow: visible;
 }
 
-button,
-select {
+button.va-button {
   text-transform: none;
 }
 
-
-
-button::-moz-focus-inner,
+button.va-button::-moz-focus-inner,
 input.va-input::-moz-focus-inner {
   padding: 0;
   border: 0;

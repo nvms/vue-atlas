@@ -3,7 +3,7 @@
     <span :class="classObj" ref="load">
       <i :class="iclassObj"/>
       <slot/>
-      <svg viewBox="0 0 50 50" class="va-spinner">
+      <svg viewBox="0 0 50 50" class="va-svg va-spinner">
         <circle
           class="va-path"
           :style="{ stroke: color }"

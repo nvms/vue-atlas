@@ -1,5 +1,6 @@
 <template>
   <button
+    class="va-button"
     :class="classObj"
     :style="styleObj"
     @click="onClick"
