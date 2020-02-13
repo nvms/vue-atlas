@@ -286,7 +286,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 

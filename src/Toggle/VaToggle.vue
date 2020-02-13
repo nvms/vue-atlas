@@ -2,7 +2,7 @@
   <label :class="classObj" @click.prevent>
     <input
       :checked="value"
-      class="va-toggle__input"
+      class="va-input va-checkbox va-toggle__input"
       :name="name"
       @keypress.space.prevent="toggle"
       tabindex="-1"
@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 

@@ -11,7 +11,7 @@
       </span>
       <input
         :checked="currentChecked"
-        class="va-checkbox-input"
+        class="va-input va-checkbox-input"
         :disabled="disabled"
         :name="name"
         @click="handleClick"
@@ -114,7 +114,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 

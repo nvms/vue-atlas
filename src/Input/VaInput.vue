@@ -259,6 +259,8 @@ export default {
 
       classes['va-form-control'] = true
       classes['va-form-control-' + theme] = true
+      classes['va-input'] = true
+      classes['va-' + this.type] = true
 
       return classes
     }
@@ -341,6 +343,7 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../style/form";
 
