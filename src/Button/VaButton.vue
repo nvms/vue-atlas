@@ -15,9 +15,10 @@
         :type="iconBefore"
         :style="iconBeforeStyleObj"
       />
-      <div class="va-btn-inner-ie">
+      <div v-if="isIE" style="padding-top: 0px;">
         <slot/>
       </div>
+      <slot v-else/>
       <va-icon
         v-if="iconAfter !== undefined"
         :class="'va-btn-icon-'+size"
@@ -124,6 +125,9 @@ export default {
     }
   },
   computed: {
+    isIE () {
+      return !!window.document.documentMode
+    },
     spinColor () {
       const { type, active } = this
       const white = '#FFFFFF'
@@ -375,9 +379,6 @@ export default {
   }
   .va-btn-icon-lg {
     bottom: 12px;
-  }
-  .va-btn-inner-ie {
-    padding-top: 0px;
   }
 }
 
