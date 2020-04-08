@@ -1,7 +1,7 @@
 <template>
   <div class="va-file-picker_wrapper">
     <div class="va-file-picker_input">
-      <input v-bind="$attrs" :multiple="multiple" @change="onChange" type="file" ref="input"/>
+      <input class="va-multiple va-file" v-bind="$attrs" :multiple="multiple" @change="onChange" type="file" ref="input"/>
       <div class="va-file-picker_trigger">
         <va-button class="va-file-picker_trigger-button" @click="onClick" icon-after="upload">
           {{label}}
@@ -68,6 +68,7 @@ export default {
 }
 </script>
 
+<style lang="scss" src="../style/_reset.scss"></style>
 <style scoped lang="scss">
 @import "../variables";
 

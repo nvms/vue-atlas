@@ -147,7 +147,15 @@ export default {
 
     document.querySelector('body').appendChild(this.$refs.modal)
     this.$once('hook:beforeDestroy', () => {
-      document.querySelector('body').removeChild(this.$refs.modal)
+      try {
+        document.querySelector('body').removeChild(this.$refs.modal)
+      } catch (error) {
+        if (error.name === 'NotFoundError') {
+          // already removed https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild
+          return
+        }
+        throw error
+      }
     })
   },
   watch: {
@@ -285,7 +293,6 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
 <style lang="scss">
 @import "../variables";
 

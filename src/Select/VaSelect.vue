@@ -20,7 +20,7 @@
           <transition-group name="fade" class="va-trans-group-flex">
             <div
               class="va-selected-tag va-selected-tag-multiple"
-              :key="Math.round(Math.random() * Number.MAX_SAFE_INTEGER)"
+              :key="Math.round(Math.random()/(index+1) * Number.MAX_SAFE_INTEGER)"
               @click.stop="del(item)"
               tabindex="0"
               v-for="(item, index) in selectedItems"
@@ -490,7 +490,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 @import "../style/animate";

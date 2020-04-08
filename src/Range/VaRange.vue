@@ -2,7 +2,7 @@
   <div class="wrap" :style="{width: width || '100%'}">
     <input
       ref="range"
-      class="va-range"
+      class="va-input va-range"
       :value="currentValue"
       type="range"
       :name="name"
@@ -190,7 +190,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 

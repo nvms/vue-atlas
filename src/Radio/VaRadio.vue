@@ -9,7 +9,7 @@
       />
       <input
         :checked="currentChecked"
-        class="va-radio-input"
+        class="va-input va-radio va-radio-input"
         :disabled="disabled"
         :name="name"
         @click.prevent="handleClick"
@@ -111,7 +111,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 
@@ -136,6 +136,7 @@ export default {
     vertical-align: middle;
   }
   .va-radio-inner {
+    box-sizing: border-box;
     position: relative;
     top: 0;
     left: 0;

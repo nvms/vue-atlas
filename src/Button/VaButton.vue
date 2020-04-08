@@ -1,5 +1,6 @@
 <template>
   <button
+    class="va-button"
     :class="classObj"
     :style="styleObj"
     @click="onClick"
@@ -10,12 +11,17 @@
     <div :class="innerClassObj" :style="innerStyleObj">
       <va-icon
         v-if="iconBefore !== undefined"
+        :class="'va-btn-icon-'+size"
         :type="iconBefore"
         :style="iconBeforeStyleObj"
       />
-      <slot/>
+      <div v-if="isIE" style="padding-top: 0px;">
+        <slot/>
+      </div>
+      <slot v-else/>
       <va-icon
         v-if="iconAfter !== undefined"
+        :class="'va-btn-icon-'+size"
         :type="iconAfter"
         :style="iconAfterStyleObj"
       />
@@ -119,6 +125,9 @@ export default {
     }
   },
   computed: {
+    isIE () {
+      return !!window.document.documentMode
+    },
     spinColor () {
       const { type, active } = this
       const white = '#FFFFFF'
@@ -304,7 +313,7 @@ export default {
 }
 </script>
 
-<style lang="scss" src="../style/_reset.scss" scoped></style>
+<style lang="scss" src="../style/_reset.scss"></style>
 <style lang="scss">
 @import "../variables";
 
@@ -354,6 +363,22 @@ export default {
 
   &:active {
     box-shadow: inset $activeOutlineColor 0px 0px 0px $outlineWidth;
+  }
+}
+
+/* IE 10+ fix */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .va-btn-icon-xs {
+    bottom: 3px;
+  }
+  .va-btn-icon-sm {
+    bottom: 7px;
+  }
+  .va-btn-icon-md {
+    bottom: 7px;
+  }
+  .va-btn-icon-lg {
+    bottom: 12px;
   }
 }
 
