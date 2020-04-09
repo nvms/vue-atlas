@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" :style="styleObj">
     <va-button
-      :class="[`va-dropdown-toggle`, `va-select-btn`, showSelected && multiple && value.length ? `va-select-multiple` : '', show ? `va-select-btn-open` : '']"
+      :class="[`va-dropdown-toggle`, `va-select-btn`, showSelected && multiple && typeof value !== 'undefined' && value.length ? `va-select-multiple` : '', show ? `va-select-btn-open` : '']"
       :disabled="disabled"
       :size="size"
       :style="{minWidth:'100%'}"
