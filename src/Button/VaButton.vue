@@ -280,6 +280,7 @@ export default {
     },
     onClick (event) {
       if (this.disabled) {
+        event.stopPropagation()
         return
       }
       this.$emit('click', event)
