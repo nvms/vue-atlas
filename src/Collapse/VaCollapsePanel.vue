@@ -26,7 +26,11 @@ export default {
       type: Boolean,
       default: false
     },
-    index: {}
+    index: {},
+    storeState: {
+      type: Boolean,
+      default: false
+    }
   },
   data () {
     const isOpen = this.open
@@ -34,12 +38,34 @@ export default {
       isOpen: isOpen
     }
   },
+  computed: {
+    storageKey () {
+      return this.index ? this.name + '_' + this.index : this.name + '_' + this.header
+    }
+  },
+  created () {
+    if (this.storeState) {
+      let storedValue = this.getStoredState()
+      if (storedValue) {
+        this.isOpen = (storedValue === 'open')
+      }
+    }
+  },
   watch: {
     open (val) {
       this.isOpen = val
+    },
+    isOpen (val) {
+      this.store(val)
     }
   },
   methods: {
+    store (isOpen) {
+      localStorage.setItem(this.storageKey, isOpen ? 'open' : 'closed')
+    },
+    getStoredState () {
+      return localStorage.getItem(this.storageKey)
+    },
     toggle () {
       this.isOpen = !this.isOpen
 
