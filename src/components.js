@@ -162,10 +162,6 @@ const install = function (Vue, locale) {
   window.VaLocale = locale || 'en'
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
-}
-
 Components.install = install
 
 export default Components
