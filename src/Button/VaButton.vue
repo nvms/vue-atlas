@@ -1,6 +1,7 @@
 <template>
   <button
     class="va-button"
+    :type="buttonType"
     :class="classObj"
     :style="styleObj"
     @click="onClick"
@@ -114,6 +115,12 @@ export default {
     iconAfter: {
       type: String,
       required: false
+    },
+    buttonType: {
+      type: String,
+      validator (v) {
+        return ['button', 'submit', 'reset'].includes(v)
+      }
     }
   },
   data () {
