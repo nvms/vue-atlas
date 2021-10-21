@@ -40,13 +40,7 @@ Vue.use(VaDatepicker)
 Vue.prototype.VaLocale = 'fr' // default 'en'
 ```
 
-Create or modify your project's `vue.config.js` and point `css.loaderOptions.sass.prependData`
-to `node_modules/vue-atlas/src/variables.scss`. This will provide imported
-components with the color definitions that they need. It's just color definitions.
-It's a small file. It will also give *your* components access to
-
-If you want access to
-the [atlas color variables](https://github.com/nvms/vue-atlas/blob/master/src/style/_colors.scss)
+If you want to use the [atlas color variables](https://github.com/nvms/vue-atlas/blob/master/src/style/_colors.scss)
 in your own project's components, modify your project's `vue.config.js` and point
 `css.loaderOptions.sass.prependData` to `node_modules/vue-atlas/src/style/_colors.scss`.
 
