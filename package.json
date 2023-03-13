@@ -27,7 +27,6 @@
     "*.js"
   ],
   "dependencies": {
-    "moment": "^2.22.0",
     "velocity-animate": "^1.5.0",
     "vue": "^2.6.6"
   },
